@@ -54,12 +54,12 @@ export const Navigation = (): ReactElement => {
 };
 
 const NavigationIcon = styled(FontAwesomeIcon)`
-  color: black;
+  color: ${(props) => props.theme.textMain};
 `;
 
 const NavigationIconContainer = styled.span`
   margin: 0 8px;
-  font-size: 30px;
+  font-size: ${(props) => props.theme.iconSizeExtra};
   width: 32px;
   height: 32px;
 `;
@@ -75,7 +75,7 @@ const Dimmer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: black;
+  background: ${(props) => props.theme.backgroundDimmer};
   opacity: 0.7;
   z-index: 90;
 `;
@@ -86,7 +86,7 @@ const Drawer = styled.div`
   bottom: 0;
   width: 60%;
   z-index: 100;
-  border-right: 1px solid black;
-  color: black;
+  border-right: 1px solid ${(props) => props.theme.borderNavigation};
+  color: ${(props) => props.theme.textMain};
   background: ${(props) => props.theme.backgroundHighlight};
 `;

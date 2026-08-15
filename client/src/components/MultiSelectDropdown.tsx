@@ -192,7 +192,7 @@ const Placeholder = styled.span`
 
 const CaretIcon = styled(FontAwesomeIcon)`
   margin: 0 0 0 auto;
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSizeSmaller};
 `;
 
 const Panel = styled.div`

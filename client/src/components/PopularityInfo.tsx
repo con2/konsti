@@ -132,7 +132,7 @@ const FireIcon = styled(FontAwesomeIcon)<{
   color: string;
 }>`
   color: ${(props) => props.color};
-  font-size: 14px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
   position: absolute;
   left: 17px;
   top: -4px;

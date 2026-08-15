@@ -158,7 +158,7 @@ const StyledPopularityInfo = styled(PopularityInfo)`
   align-items: center;
   justify-content: center;
 
-  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+  @media (min-width: ${(props) => props.theme.breakpointPhoneMin}) {
     justify-content: left;
     padding-left: 8px;
   }

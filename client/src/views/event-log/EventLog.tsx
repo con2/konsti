@@ -92,5 +92,5 @@ const MessageCreatedAt = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: ${(props) => props.theme.mainHeaderFontSize};
+  font-size: ${(props) => props.theme.fontSizeMainHeader};
 `;

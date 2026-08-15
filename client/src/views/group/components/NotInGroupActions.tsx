@@ -153,7 +153,7 @@ const InfoTextParagraph = styled.p`
 `;
 
 const StyledInput = styled(ControlledInput)`
-  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+  @media (min-width: ${(props) => props.theme.breakpointPhoneMin}) {
     max-width: 500px;
   }
 `;

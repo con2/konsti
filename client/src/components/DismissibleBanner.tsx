@@ -67,7 +67,7 @@ const BannerIcon = styled(FontAwesomeIcon)<{
   $highlightStyle: HighlightStyle;
 }>`
   flex-shrink: 0;
-  font-size: 20px;
+  font-size: ${(props) => props.theme.iconSizeNormal};
   color: ${(props) => getHighlightColor(props.theme, props.$highlightStyle)};
 `;
 

@@ -420,9 +420,9 @@ const EmailTestForm = styled.div`
 
   input {
     padding: 8px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid ${(props) => props.theme.borderCard};
     border-radius: 4px;
-    font-size: 14px;
+    font-size: ${(props) => props.theme.fontSizeSmall};
     max-width: 300px;
   }
 `;

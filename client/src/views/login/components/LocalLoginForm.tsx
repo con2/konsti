@@ -138,7 +138,7 @@ const FormFieldError = styled.div`
 const StyledInput = styled(UncontrolledInput)`
   width: min(260px, 100%);
 
-  @media (min-width: ${(props) => props.theme.breakpointDesktop}) {
+  @media (min-width: ${(props) => props.theme.breakpointDesktopMin}) {
     width: 360px;
   }
 `;

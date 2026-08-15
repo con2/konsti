@@ -52,10 +52,10 @@ const RouterLink = styled(NavLink)`
   position: relative;
   display: inline-block;
   padding: 10px 12px 10px 12px;
-  font-size: ${(props) => props.theme.linkFontSize};
+  font-size: ${(props) => props.theme.fontSizeLink};
   text-decoration: none;
   color: ${(props) => props.theme.textMain};
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.borderNavigation};
 
   /* Touch devices emulate :hover on tap and keep it active after the tap,
      so only style hover when the device can actually hover */

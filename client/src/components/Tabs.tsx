@@ -67,7 +67,7 @@ const ListItem = styled.li`
   float: left;
   padding-right: 16px;
 
-  @media (min-width: ${(props) => props.theme.breakpointDesktop}) {
+  @media (min-width: ${(props) => props.theme.breakpointDesktopMin}) {
     padding-right: 24px;
   }
 `;

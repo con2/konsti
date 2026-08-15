@@ -36,7 +36,7 @@ const Container = styled.div`
   border: none;
   padding: 8px 0 8px 4px;
   color: ${(props) => props.theme.textLink};
-  font-size: ${(props) => props.theme.linkFontSize};
+  font-size: ${(props) => props.theme.fontSizeLink};
   cursor: pointer;
   width: fit-content;
 `;

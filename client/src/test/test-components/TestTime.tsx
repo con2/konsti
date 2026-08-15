@@ -102,12 +102,12 @@ export const TestTime = (): ReactElement => {
 };
 
 const StyledTestTime = styled.div`
-  font-size: 30px;
-  color: red;
+  font-size: ${(props) => props.theme.iconSizeExtra};
+  color: ${(props) => props.theme.textError};
   width: fit-content;
   pointer-events: auto;
 `;
 
 const PhaseIndicator = styled.div`
-  font-size: 16px;
+  font-size: ${(props) => props.theme.fontSizeNormal};
 `;
