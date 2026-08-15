@@ -93,6 +93,37 @@ export default defineConfig(({ mode, command }) => {
       sourcemap: "hidden",
       // Vite 8 uses Oxc which uses same target format as esbuild
       target: browserslistToEsbuild(),
+
+      rolldownOptions: {
+        output: {
+          // Keep dependencies out of the app's own chunks so their content
+          // hashes survive a deploy. Without this split every
+          // app change also re-downloads React and everything else bundled
+          // alongside it. React and Sentry get their own chunks because they
+          // are the two largest and update on their own schedule
+          advancedChunks: {
+            groups: [
+              {
+                name: "react",
+                // Separator-anchored so react-dom is matched but the unrelated
+                // react-* packages fall through to the vendor group
+                test: /node_modules[\\/](react-dom|react|scheduler)[\\/]/,
+                priority: 2,
+              },
+              {
+                name: "sentry",
+                test: /node_modules[\\/]@sentry[\\/]/,
+                priority: 2,
+              },
+              {
+                name: "vendor",
+                test: /node_modules[\\/]/,
+                priority: 1,
+              },
+            ],
+          },
+        },
+      },
     },
 
     plugins: [
