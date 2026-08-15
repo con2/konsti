@@ -10,16 +10,12 @@ import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback
 import { Tabs } from "client/components/Tabs";
 import { isAdmin, isAdminOrHelper } from "client/utils/checkUserGroup";
 import { useAppSelector } from "client/utils/hooks";
-import { AboutView } from "client/views/about/AboutView";
-import { FaqView } from "client/views/about/FaqView";
-import { InstructionsView } from "client/views/about/InstructionsView";
-import { AdminView } from "client/views/admin/AdminView";
+import { lazyWithRetry } from "client/utils/lazyWithRetry";
 import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTicketView";
 import { AllProgramItemsView } from "client/views/all-program-items/AllProgramItemsView";
 import { DashboardView } from "client/views/dashboard/DashboardView";
 import { EventLog } from "client/views/event-log/EventLog";
 import { GroupView } from "client/views/group/GroupView";
-import { HelperView } from "client/views/helper/HelperView";
 import { LoginView } from "client/views/login/LoginView";
 import { FinalizeRegistration } from "client/views/login/components/FinalizeRegistration";
 import { LogoutView } from "client/views/logout/LogoutView";
@@ -27,6 +23,26 @@ import { MyProgramItemsView } from "client/views/my-program-items/MyProgramItems
 import { ProfileView } from "client/views/profile/ProfileView";
 import { ProgramItemView } from "client/views/program-item/ProgramItemView";
 import { RegistrationView } from "client/views/registration/RegistrationView";
+
+// Split out of the main bundle: the About tabs carry the bulk of the Markdown
+// content, and the admin and helper tools are reachable by a handful of users.
+// Rendered inside the Suspense boundary that wraps these routes
+const AboutView = lazyWithRetry(async () => ({
+  default: (await import("client/views/about/AboutView")).AboutView,
+}));
+const FaqView = lazyWithRetry(async () => ({
+  default: (await import("client/views/about/FaqView")).FaqView,
+}));
+const InstructionsView = lazyWithRetry(async () => ({
+  default: (await import("client/views/about/InstructionsView"))
+    .InstructionsView,
+}));
+const AdminView = lazyWithRetry(async () => ({
+  default: (await import("client/views/admin/AdminView")).AdminView,
+}));
+const HelperView = lazyWithRetry(async () => ({
+  default: (await import("client/views/helper/HelperView")).HelperView,
+}));
 
 export enum AppRoute {
   ROOT = "/",

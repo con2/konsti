@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, Suspense, useEffect, useState } from "react";
 import { BrowserRouter } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
@@ -120,7 +120,12 @@ const App = (): ReactElement => {
             </StickyBars>
             {showAnnouncement && <Announcement />}
             <AppContainer>
-              <AppRoutes />
+              {/* Boundary for the lazily loaded views, placed here rather than
+                  around the whole app so navigating to one keeps the header and
+                  bars on screen instead of blanking the page */}
+              <Suspense fallback={<Loading />}>
+                <AppRoutes />
+              </Suspense>
             </AppContainer>
           </HistoryProvider>
         </BrowserRouter>
