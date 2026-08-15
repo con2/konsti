@@ -1,7 +1,7 @@
 import { ReactElement, ReactNode, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { partition } from "remeda";
+import styled from "styled-components";
 import { ExpandButton } from "client/components/ExpandButton";
 import { RaisedCard } from "client/components/RaisedCard";
 

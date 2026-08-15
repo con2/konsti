@@ -1,8 +1,8 @@
-import { MouseEventHandler, ReactElement } from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MouseEventHandler, ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 interface Props {
   isFavorite: boolean;

@@ -1,7 +1,7 @@
-import { ReactElement, ReactNode, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import { ReactElement, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {

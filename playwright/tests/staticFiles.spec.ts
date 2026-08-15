@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 // robots.txt must be reachable at the site root, where crawlers look for it.
 // It is served from the client's publicDir, which the build copies to the

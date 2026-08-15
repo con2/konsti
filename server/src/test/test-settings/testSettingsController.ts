@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
+import { PostTestSettingsRequest } from "shared/test-types/api/testSettings";
 import {
   fetchTestSettings,
   updateTestSettings,
 } from "server/test/test-settings/testSettingsService";
-import { PostTestSettingsRequest } from "shared/test-types/api/testSettings";
 
 export const getTestSettings = async (
   _req: Request,

@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { SignupQuestion } from "shared/types/models/settings";
 
 interface Props {
@@ -16,7 +16,7 @@ export const SignupQuestionAnswer = ({
   const { t, i18n } = useTranslation();
 
   return (
-    <SignupQuestion>
+    <SignupQuestionText>
       <FontAwesomeIcon icon={["far", "comment"]} aria-hidden="true" />
       {` ${t("myProgramView.yourAnswer")} "${
         i18n.language === "fi"
@@ -27,11 +27,11 @@ export const SignupQuestionAnswer = ({
           ? ` (${t("privateOnlyVisibleToOrganizers")})`
           : ""
       }: ${signupMessage}`}
-    </SignupQuestion>
+    </SignupQuestionText>
   );
 };
 
-const SignupQuestion = styled.p`
+const SignupQuestionText = styled.p`
   padding: 0;
   margin: 8px 0 4px 0;
   color: ${(props) => props.theme.textSecondary};

@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
-import { populateDb, login, postSettings } from "playwright/playwrightUtils";
+import { expect, test } from "@playwright/test";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { LoginPage } from "playwright/pages/LoginPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
-import { LoginProvider } from "shared/config/eventConfigTypes";
+import { login, populateDb, postSettings } from "playwright/playwrightUtils";
 
 test("Update email notification address and password from profile", async ({
   page,

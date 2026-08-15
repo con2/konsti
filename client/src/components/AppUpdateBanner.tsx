@@ -1,12 +1,12 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
-import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
 import { Button, ButtonStyle } from "client/components/Button";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle } from "client/components/RaisedCard";
+import { useAppSelector } from "client/utils/hooks";
 import {
   getAppUpdateReloadedBuildTime,
   saveAppUpdateReloadedBuildTime,

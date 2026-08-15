@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { getAttendeeType } from "client/utils/getAttendeeType";
+import styled from "styled-components";
 import { ProgramType } from "shared/types/models/programItem";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { getAttendeeType } from "client/utils/getAttendeeType";
 
 interface Props {
   isValidMinAttendanceValue: boolean;

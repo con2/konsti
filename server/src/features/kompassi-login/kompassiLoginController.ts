@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import {
-  getBaseUrl,
-  doKompassiLogin,
-  verifyKompassiLogin,
-} from "server/features/kompassi-login/kompassiLoginService";
-import {
   PostKompassiLoginRedirectRequest,
   PostKompassiLoginRequest,
   PostVerifyKompassiLoginRequest,
 } from "shared/types/api/login";
+import {
+  doKompassiLogin,
+  getBaseUrl,
+  verifyKompassiLogin,
+} from "server/features/kompassi-login/kompassiLoginService";
 import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
 import { getAuthUsername } from "server/middleware/requireAuth";
 

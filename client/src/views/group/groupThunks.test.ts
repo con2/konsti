@@ -1,13 +1,13 @@
-import { afterEach, expect, test, vi, type Mock } from "vitest";
-import { configureStore, type Store } from "@reduxjs/toolkit";
-import { combinedReducer } from "client/utils/store";
-import { type AppDispatch, type RootState } from "client/types/reduxTypes";
-import { submitJoinGroup } from "client/views/group/groupThunks";
-import { submitGetUserAsync } from "client/views/my-program-items/myProgramItemsSlice";
-import { submitLoginAsync } from "client/views/login/loginSlice";
+import { type Store, configureStore } from "@reduxjs/toolkit";
+import { type Mock, afterEach, expect, test, vi } from "vitest";
 import { UserGroup } from "shared/types/models/user";
 import { getGroup, postJoinGroup } from "client/services/groupServices";
 import { getUser } from "client/services/userServices";
+import { type AppDispatch, type RootState } from "client/types/reduxTypes";
+import { combinedReducer } from "client/utils/store";
+import { submitJoinGroup } from "client/views/group/groupThunks";
+import { submitLoginAsync } from "client/views/login/loginSlice";
+import { submitGetUserAsync } from "client/views/my-program-items/myProgramItemsSlice";
 
 vi.mock("client/services/groupServices", () => ({
   postCreateGroup: vi.fn(),

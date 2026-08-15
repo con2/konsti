@@ -4,15 +4,15 @@
 //
 // Ropecon 2021 was a remote / COVID-era convention with direct sign-up only
 // (no lottery), so twoPhaseSignupProgramTypes is empty.
-
 import {
   AssignmentAlgorithm,
-  EventName,
   EventConfig,
+  EventName,
   EventSignupStrategy,
   LoginProvider,
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const eventConfig: Partial<EventConfig> = {
   // Event info

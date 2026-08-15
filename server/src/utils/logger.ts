@@ -1,11 +1,12 @@
-import { createLogger, format, transports } from "winston";
 import type { TransformableInfo } from "logform";
+import { createLogger, format, transports } from "winston";
 import _WinstonTransport from "winston-transport-sentry-node";
+import { config } from "shared/config";
+
 // Node.js ESM CJS interop: package uses exports.default, so the class is wrapped as { default: Class }
 const WinstonTransport = (
   _WinstonTransport as unknown as { default: typeof _WinstonTransport }
 ).default;
-import { config } from "shared/config";
 
 const SPLAT = Symbol.for("splat");
 const LEVEL = Symbol.for("level");

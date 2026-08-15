@@ -1,6 +1,6 @@
-import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
 import { AssignmentLotterySignup } from "server/types/userTypes";
+import { logger } from "server/utils/logger";
 
 export const getLotterySignupProgramItems = (
   startingProgramItems: readonly ProgramItem[],

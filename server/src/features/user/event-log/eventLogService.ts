@@ -1,8 +1,9 @@
-import { updateEventLogItemIsSeen } from "server/features/user/event-log/eventLogRepository";
 import {
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
 } from "shared/types/api/eventLog";
+import { updateEventLogItemIsSeen } from "server/features/user/event-log/eventLogRepository";
+
 export const storeEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
   username: string,

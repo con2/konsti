@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { Link } from "react-router";
+import styled from "styled-components";
+import { RaisedCard } from "client/components/RaisedCard";
 import KompassiLogo from "client/components/icons/kompassi.svg";
 import KonstiLogo from "client/components/icons/konsti.svg";
-import { RaisedCard } from "client/components/RaisedCard";
 import { KompassiLoginButton } from "client/views/login/components/KompassiLoginButton";
 import { LocalLoginForm } from "client/views/login/components/LocalLoginForm";
 

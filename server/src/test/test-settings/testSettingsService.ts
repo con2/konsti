@@ -1,12 +1,13 @@
 import {
-  findTestSettings,
-  saveTestSettings,
-} from "server/test/test-settings/testSettingsRepository";
-import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-types/api/testSettings";
+import {
+  findTestSettings,
+  saveTestSettings,
+} from "server/test/test-settings/testSettingsRepository";
+
 export const fetchTestSettings = async (): Promise<GetTestSettingsResponse> => {
   const responseResult = await findTestSettings();
   if (!responseResult.ok) {

@@ -1,16 +1,15 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  DeleteDirectSignupErrorMessage,
-  submitDeleteDirectSignup,
-} from "client/views/my-program-items/myProgramItemsThunks";
-import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
+import styled from "styled-components";
+import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
+import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { TertiaryButton } from "client/components/TertiaryButton";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   MyProgramButtonContainerMobile,
   MyProgramCancelSignupFormContainer,
@@ -19,11 +18,12 @@ import {
   MyProgramListItem,
   myProgramMessageMargin,
 } from "client/views/my-program-items/components/shared";
-import { InfoText, InfoTextVariant } from "client/components/InfoText";
-import { AppRoute } from "client/app/AppRoutes";
 import { DirectSignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
-import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
-import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
+import {
+  DeleteDirectSignupErrorMessage,
+  submitDeleteDirectSignup,
+} from "client/views/my-program-items/myProgramItemsThunks";
+import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 
 interface Props {
   signup: DirectSignupWithProgramItem;

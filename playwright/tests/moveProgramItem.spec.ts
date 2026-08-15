@@ -1,15 +1,15 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postTestSettings,
-  login,
-  addProgramItems,
-  clearDb,
-  populateDb,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  clearDb,
+  login,
+  populateDb,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct signup is moved", async ({
   page,

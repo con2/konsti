@@ -1,11 +1,11 @@
 import { Command } from "commander";
-import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
-import { wildFix } from "./fixer-helpers/wildFix";
-import { formatJson } from "./fixer-helpers/formatJson";
-import { formatFields } from "./fixer-helpers/formatFields";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
 import { getMatchingEmails } from "server/features/statistics/matchingEmails";
+import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
+import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
+import { formatFields } from "./fixer-helpers/formatFields";
+import { formatJson } from "./fixer-helpers/formatJson";
+import { wildFix } from "./fixer-helpers/wildFix";
 
 const fixData = (): void => {
   initializeDayjs();

@@ -1,15 +1,15 @@
 import {
-  InclusivityValue,
-  ProgramItem,
+  AgeGroup,
   Gamestyle,
   Genre,
+  InclusivityValue,
   Language,
-  ProgramType,
-  Tag,
-  AgeGroup,
-  SignupType,
   Popularity,
+  ProgramItem,
+  ProgramType,
+  SignupType,
   State,
+  Tag,
 } from "shared/types/models/programItem";
 
 export const testProgramItem: ProgramItem = {

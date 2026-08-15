@@ -1,19 +1,19 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { LoginProvider } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { ProgramType } from "shared/types/models/programItem";
+import { LoginPage } from "playwright/pages/LoginPage";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import { RegistrationPage } from "playwright/pages/RegistrationPage";
 import {
   addProgramItems,
   populateDb,
   postSettings,
   postTestSettings,
 } from "playwright/playwrightUtils";
-import { LoginPage } from "playwright/pages/LoginPage";
-import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { RegistrationPage } from "playwright/pages/RegistrationPage";
-import { LoginProvider } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
 
 const programItemStartTime = dayjs(config.event().eventStartTime)
   .add(1, "hour")

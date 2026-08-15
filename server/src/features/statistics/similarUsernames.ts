@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import { distance, closest } from "fastest-levenshtein";
+import { closest, distance } from "fastest-levenshtein";
 import { sortBy } from "remeda";
-import { logger } from "server/utils/logger";
-import { User } from "shared/types/models/user";
 import { config } from "shared/config";
+import { User } from "shared/types/models/user";
+import { logger } from "server/utils/logger";
 
 export const getSimilarUsernames = (event: string, year: number): void => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

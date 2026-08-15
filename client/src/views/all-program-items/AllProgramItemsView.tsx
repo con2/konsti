@@ -5,24 +5,21 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useDebounce } from "use-debounce";
 import { useSearchParams } from "react-router";
-import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
-import { usePreviousLocation } from "client/app/HistoryContext";
-import { AppRoute } from "client/app/AppRoutes";
-import { Loading } from "client/components/Loading";
+import { useDebounce } from "use-debounce";
 import {
-  ProgramItem,
-  Language,
-  Tag,
   AgeGroup,
+  Language,
+  ProgramItem,
+  Tag,
 } from "shared/types/models/programItem";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
+import { AppRoute } from "client/app/AppRoutes";
+import { usePreviousLocation } from "client/app/HistoryContext";
+import { Loading } from "client/components/Loading";
+import { ScrollToTopButton } from "client/components/ScrollToTopButton";
+import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  selectActiveProgramItems,
-  selectHiddenProgramItems,
-  setActiveProgramTypes,
-} from "client/views/admin/adminSlice";
 import {
   SessionStorageValue,
   getSavedHideFull,
@@ -30,10 +27,13 @@ import {
   getSavedStartingTime,
   getSavedTags,
 } from "client/utils/sessionStorage";
+import {
+  selectActiveProgramItems,
+  selectHiddenProgramItems,
+  setActiveProgramTypes,
+} from "client/views/admin/adminSlice";
+import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { SearchAndFilterCard } from "client/views/all-program-items/components/SearchAndFilterCard";
-import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
-import { ScrollToTopButton } from "client/components/ScrollToTopButton";
-import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import {
   StartingTimeOption,
   getVisibleProgramItems,

@@ -1,7 +1,7 @@
 import { allPaths, existingPaths, getGitChanges } from "./gitChanges.ts";
-import { getProjectRoot, runNodeTool, type ToolResult } from "./nodeTool.ts";
+import { type ToolResult, getProjectRoot, runNodeTool } from "./nodeTool.ts";
 import { getSessionScope } from "./transcriptFiles.ts";
-import { isBuildConfig, PROJECT_ARGS, projectsForPaths } from "./tsProjects.ts";
+import { PROJECT_ARGS, isBuildConfig, projectsForPaths } from "./tsProjects.ts";
 
 // Stop hook: type-check, lint and knip the session's changes before finishing.
 //

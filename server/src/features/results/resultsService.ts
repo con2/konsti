@@ -1,5 +1,5 @@
-import { findResults } from "server/features/results/resultsRepository";
 import { GetResultsResponse } from "shared/types/api/results";
+import { findResults } from "server/features/results/resultsRepository";
 
 export const fetchResults = async (): Promise<GetResultsResponse> => {
   const findResultsResult = await findResults();

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TestSettingsState } from "client/types/reduxTypes";
 
 const initialState: TestSettingsState = {

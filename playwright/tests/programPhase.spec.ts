@@ -1,19 +1,19 @@
-import { test, expect, APIRequestContext } from "@playwright/test";
+import { APIRequestContext, expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postTestSettings,
-  login,
-  addProgramItems,
-  clearDb,
-  populateDb,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
-import { Tag } from "shared/types/models/programItem";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  clearDb,
+  login,
+  populateDb,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
 // Pre-convention week program takes place before the main event starts

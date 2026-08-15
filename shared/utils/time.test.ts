@@ -1,7 +1,7 @@
-import { beforeAll, expect, test, vi } from "vitest";
 import dayjs, { ManipulateType } from "dayjs";
-import { setLocale } from "shared/utils/setLocale";
+import { beforeAll, expect, test, vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { setLocale } from "shared/utils/setLocale";
 
 const timeNow = "2019-07-26T17:00:00Z";
 

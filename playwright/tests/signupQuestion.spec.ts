@@ -1,22 +1,22 @@
-import { test, expect, APIRequestContext } from "@playwright/test";
+import { APIRequestContext, expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  populateDb,
-  login,
-  addProgramItems,
-  postSettings,
-  postTestSettings,
-} from "playwright/playwrightUtils";
-import { HelperPage } from "playwright/pages/HelperPage";
-import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { LoginProvider } from "shared/config/eventConfigTypes";
+import { HelperPage } from "playwright/pages/HelperPage";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  login,
+  populateDb,
+  postSettings,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 test("Admin adds a text signup question to a program item", async ({
   page,

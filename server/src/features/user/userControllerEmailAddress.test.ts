@@ -1,15 +1,15 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, describe, beforeEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { closeServer, startServer } from "server/utils/server";
-import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
 import { PostUpdateUserEmailAddressRequest } from "shared/types/api/login";
+import { UserGroup } from "shared/types/models/user";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import Instructions from "client/markdown/KonstiInstructions.mdx";
 import { config } from "shared/config";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
+import Instructions from "client/markdown/KonstiInstructions.mdx";
 
 export const InstructionsView = (): ReactElement => {
   return (

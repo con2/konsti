@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
-import { PopularityInfo } from "client/components/PopularityInfo";
 import { Popularity, ProgramType } from "shared/types/models/programItem";
+import { PopularityInfo } from "client/components/PopularityInfo";
 
 export const LotteryThermometerValues = (): ReactElement => {
   return (

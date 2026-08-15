@@ -1,24 +1,24 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, ButtonStyle } from "client/components/Button";
-import { useAppDispatch } from "client/utils/hooks";
-import {
-  submitRegistration,
-  RegistrationErrorMessage,
-} from "client/views/registration/registrationThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { Button, ButtonStyle } from "client/components/Button";
 import { Checkbox } from "client/components/Checkbox";
+import { ErrorMessage } from "client/components/ErrorMessage";
 import { PrivacyNotice } from "client/components/PrivacyNotice";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { useAppDispatch } from "client/utils/hooks";
+import {
+  RegistrationErrorMessage,
+  submitRegistration,
+} from "client/views/registration/registrationThunks";
 
 export interface KonstiRegistrationFormFields {
   password: string;

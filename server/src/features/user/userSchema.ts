@@ -1,10 +1,13 @@
+// Registers the global mongoose plugins, which are applied when a model is
+// compiled below, so it has to stay above the other imports
+import "server/db/mongoosePlugins";
+import dayjs from "dayjs";
 import mongoose, { ObjectId } from "mongoose";
 import mongooseLeanVirtuals from "mongoose-lean-virtuals";
 import { z } from "zod";
-import dayjs from "dayjs";
+import { StoredEmailSchema } from "shared/constants/validation";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { UserGroup } from "shared/types/models/user";
-import { StoredEmailSchema } from "shared/constants/validation";
 
 const LotterySignupSchemaDb = z.object({
   programItemId: z.string(),

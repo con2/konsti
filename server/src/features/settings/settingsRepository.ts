@@ -1,18 +1,18 @@
 import dayjs from "dayjs";
-import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/types/api/errors";
+import { PostSettingsRequest } from "shared/types/api/settings";
+import { Settings, SignupQuestion } from "shared/types/models/settings";
+import {
+  Result,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/result";
 import {
   SETTINGS_SINGLETON_KEY,
   SettingsModel,
   SettingsSchemaDb,
 } from "server/features/settings/settingsSchema";
-import { Settings, SignupQuestion } from "shared/types/models/settings";
-import { PostSettingsRequest } from "shared/types/api/settings";
-import {
-  Result,
-  makeSuccessResult,
-  makeErrorResult,
-} from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { logger } from "server/utils/logger";
 
 // All queries target the single settings document by its unique key, so a
 // concurrent create loses on duplicate key instead of inserting a second

@@ -1,6 +1,6 @@
-import { logger } from "server/utils/logger";
-import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
+import { User } from "shared/types/models/user";
+import { logger } from "server/utils/logger";
 
 export const getGroupCreators = (
   users: readonly User[],

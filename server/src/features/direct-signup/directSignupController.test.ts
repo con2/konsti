@@ -1,12 +1,41 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
-import request, { Test } from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { startServer, closeServer } from "server/utils/server";
+import request, { Test } from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { getJWT } from "server/utils/jwt";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  DeleteDirectSignupRequest,
+  PostDirectSignupError,
+  PostDirectSignupRequest,
+  PostDirectSignupResult,
+} from "shared/types/api/myProgramItems";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
+import { SignupQuestionType } from "shared/types/models/settings";
 import { UserGroup } from "shared/types/models/user";
+import {
+  findDirectSignups,
+  findUserDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  createSettings,
+  saveHidden,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
+import {
+  saveGroupCode,
+  saveGroupCreator,
+} from "server/features/user/group/groupRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
   mockUser,
@@ -15,39 +44,10 @@ import {
   mockUser4,
   mockUser5,
 } from "server/test/mock-data/mockUser";
-import { testProgramItem } from "shared/tests/testProgramItem";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import {
-  saveGroupCode,
-  saveGroupCreator,
-} from "server/features/user/group/groupRepository";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import {
-  createSettings,
-  saveHidden,
-  saveSignupQuestion,
-} from "server/features/settings/settingsRepository";
-import {
-  findDirectSignups,
-  findUserDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
-import { NewUser } from "server/types/userTypes";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import {
-  DeleteDirectSignupRequest,
-  PostDirectSignupError,
-  PostDirectSignupRequest,
-  PostDirectSignupResult,
-} from "shared/types/api/myProgramItems";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import { config } from "shared/config";
-import {
-  ProgramType,
-  SignupType,
-  State,
-} from "shared/types/models/programItem";
-import { SignupQuestionType } from "shared/types/models/settings";
+import { NewUser } from "server/types/userTypes";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

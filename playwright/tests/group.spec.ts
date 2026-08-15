@@ -1,22 +1,22 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postSettings,
-  postTestSettings,
-  login,
-  addProgramItems,
-  populateDb,
-  postAssignment,
-  testPostDirectSignup,
-} from "playwright/playwrightUtils";
-import { GroupPage } from "playwright/pages/GroupPage";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { GroupPage } from "playwright/pages/GroupPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  login,
+  populateDb,
+  postAssignment,
+  postSettings,
+  postTestSettings,
+  testPostDirectSignup,
+} from "playwright/playwrightUtils";
 
 test("Can create and join a group and receive a shared lottery result", async ({
   page,

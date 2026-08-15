@@ -1,5 +1,5 @@
+import { captureException, close, flush, init } from "@sentry/react";
 import { afterEach, describe, expect, test } from "vitest";
-import { init, captureException, flush, close } from "@sentry/react";
 import {
   createRecordingTransport,
   fakeDsn,

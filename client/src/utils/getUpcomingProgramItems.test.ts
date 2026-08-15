@@ -1,5 +1,5 @@
-import { afterEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
 

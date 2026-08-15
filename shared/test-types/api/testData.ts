@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { ProgramItemSchema } from "shared/types/models/programItem";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ApiError, ApiResult } from "shared/types/api/errors";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { ProgramItemSchema } from "shared/types/models/programItem";
 
 // POST test settings
 

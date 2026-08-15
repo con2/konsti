@@ -1,7 +1,7 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import { getIconLibrary } from "client/utils/icons";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { getIconLibrary } from "client/utils/icons";
 
 // Icons
 getIconLibrary();

@@ -1,35 +1,35 @@
 import { isDeepEqual } from "remeda";
-import { getUser } from "client/services/userServices";
-import { postFavorite } from "client/services/favoriteServices";
-import { AppThunk } from "client/types/reduxTypes";
-import {
-  submitDeleteDirectSignupAsync,
-  submitPostDirectSignupAsync,
-  submitGetUserAsync,
-  submitPostLotterySignupAsync,
-  submitUpdateFavoritesAsync,
-  submitDeleteLotterySignupAsync,
-} from "client/views/my-program-items/myProgramItemsSlice";
 import {
   DeleteDirectSignupRequest,
   DeleteLotterySignupRequest,
   PostDirectSignupRequest,
   PostLotterySignupRequest,
 } from "shared/types/api/myProgramItems";
+import { NewFavorite } from "shared/types/models/user";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { postFavorite } from "client/services/favoriteServices";
 import {
   deleteDirectSignup,
   deleteLotterySignup,
   postDirectSignup,
   postLotterySignup,
 } from "client/services/myProgramItemsServices";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { NewFavorite } from "shared/types/models/user";
-import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
+import { getUser } from "client/services/userServices";
+import { AppThunk } from "client/types/reduxTypes";
+import { submitUpdateDirectSignupAsync } from "client/views/all-program-items/allProgramItemsSlice";
 import {
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
 } from "client/views/group/groupSlice";
-import { submitUpdateDirectSignupAsync } from "client/views/all-program-items/allProgramItemsSlice";
+import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
+import {
+  submitDeleteDirectSignupAsync,
+  submitDeleteLotterySignupAsync,
+  submitGetUserAsync,
+  submitPostDirectSignupAsync,
+  submitPostLotterySignupAsync,
+  submitUpdateFavoritesAsync,
+} from "client/views/my-program-items/myProgramItemsSlice";
 
 export const submitGetUser = (username: string): AppThunk<Promise<boolean>> => {
   return async (dispatch, useState): Promise<boolean> => {

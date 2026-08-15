@@ -1,6 +1,6 @@
-import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { toPercent } from "server/features/statistics/statsUtil";
+import { logger } from "server/utils/logger";
 
 export const getUsersWithoutSignups = (
   users: readonly User[],

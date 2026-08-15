@@ -1,8 +1,8 @@
 import { ReactElement, useEffect } from "react";
 import { Navigate } from "react-router";
-import { submitLogout } from "client/views/logout/logoutActions";
-import { useAppDispatch } from "client/utils/hooks";
 import { AppRoute } from "client/app/AppRoutes";
+import { useAppDispatch } from "client/utils/hooks";
+import { submitLogout } from "client/views/logout/logoutActions";
 
 export const KompassiLogoutCallback = (): ReactElement => {
   const dispatch = useAppDispatch();

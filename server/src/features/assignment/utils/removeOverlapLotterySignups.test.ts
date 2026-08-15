@@ -1,29 +1,29 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { db } from "server/db/mongodb";
-import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
-import {
-  mockUser,
-  mockLotterySignups,
-  mockUser2,
-  mockUser3,
-} from "server/test/mock-data/mockUser";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
+import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { findUser, saveUser } from "server/features/user/userRepository";
+import { UserAssignmentResult } from "shared/types/models/result";
+import { db } from "server/db/mongodb";
+import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import {
+  mockLotterySignups,
+  mockUser,
+  mockUser2,
+  mockUser3,
+} from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { UserAssignmentResult } from "shared/types/models/result";
-import { config } from "shared/config";
-import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));

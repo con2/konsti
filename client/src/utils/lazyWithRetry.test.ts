@@ -1,5 +1,4 @@
 // @vitest-environment node
-
 import { ComponentType } from "react";
 import {
   afterAll,

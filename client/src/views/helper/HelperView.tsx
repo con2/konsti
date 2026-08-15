@@ -1,12 +1,12 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
-import { loadSettings, loadSignupMessages } from "client/utils/loadData";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { Button, ButtonStyle } from "client/components/Button";
-import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { useAppSelector } from "client/utils/hooks";
-import { LoginProvider } from "shared/config/eventConfigTypes";
+import { loadSettings, loadSignupMessages } from "client/utils/loadData";
+import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
+import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
 
 enum HelperTool {
   PASSWORD_MANAGEMENT = "passwordManagement",

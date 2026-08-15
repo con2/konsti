@@ -1,8 +1,8 @@
 import { shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
-import { Event } from "server/types/assignmentTypes";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { Event } from "server/types/assignmentTypes";
 
 export const getEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],

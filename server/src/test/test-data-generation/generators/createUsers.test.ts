@@ -1,12 +1,12 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { db } from "server/db/mongodb";
+import { findUsers } from "server/features/user/userRepository";
 import {
   createIndividualUsers,
   createUsersInGroup,
 } from "server/test/test-data-generation/generators/createUsers";
-import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {

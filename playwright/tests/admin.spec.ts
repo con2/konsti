@@ -1,23 +1,23 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  populateDb,
-  login,
-  postSettings,
-  postTestSettings,
-  addProgramItems,
-} from "playwright/playwrightUtils";
-import { AdminPage } from "playwright/pages/AdminPage";
-import { LoginPage } from "playwright/pages/LoginPage";
-import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   EventSignupStrategy,
   LoginProvider,
 } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { SignupQuestionType } from "shared/types/models/settings";
+import { AdminPage } from "playwright/pages/AdminPage";
+import { LoginPage } from "playwright/pages/LoginPage";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  login,
+  populateDb,
+  postSettings,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 test("Admin can open and close the app", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });

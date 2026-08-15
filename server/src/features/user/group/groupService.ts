@@ -1,7 +1,26 @@
 import { randomBytes } from "node:crypto";
 import dayjs, { Dayjs } from "dayjs";
+import { MongoDbError } from "shared/types/api/errors";
+import {
+  GetGroupResponse,
+  PostCloseGroupResponse,
+  PostCreateGroupError,
+  PostCreateGroupResponse,
+  PostJoinGroupError,
+  PostJoinGroupResponse,
+  PostLeaveGroupResponse,
+} from "shared/types/api/groups";
+import { ProgramItem } from "shared/types/models/programItem";
+import {
+  Result,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/result";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { getLotteryNotYetRunProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
+import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   checkGroupExists,
   findGroupMembers,
@@ -10,25 +29,6 @@ import {
 } from "server/features/user/group/groupRepository";
 import { delLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser } from "server/features/user/userRepository";
-import { MongoDbError } from "shared/types/api/errors";
-import {
-  PostCloseGroupResponse,
-  PostCreateGroupResponse,
-  GetGroupResponse,
-  PostJoinGroupResponse,
-  PostLeaveGroupResponse,
-  PostCreateGroupError,
-  PostJoinGroupError,
-} from "shared/types/api/groups";
-import {
-  makeErrorResult,
-  makeSuccessResult,
-  Result,
-} from "shared/utils/result";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
-import { ProgramItem } from "shared/types/models/programItem";
-import { getLotteryNotYetRunProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 
 export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").slice(0, 9);

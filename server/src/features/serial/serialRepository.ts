@@ -1,17 +1,17 @@
 import generator from "generate-serial-number";
-import { logger } from "server/utils/logger";
-import {
-  SerialModel,
-  SerialSchemaDb,
-} from "server/features/serial/serialSchema";
-import { Serial } from "server/types/serialTypes";
+import { MongoDbError } from "shared/types/api/errors";
+import { formatSerial } from "shared/utils/formatSerial";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
-import { formatSerial } from "shared/utils/formatSerial";
+import {
+  SerialModel,
+  SerialSchemaDb,
+} from "server/features/serial/serialSchema";
+import { Serial } from "server/types/serialTypes";
+import { logger } from "server/utils/logger";
 
 export const removeSerials = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL serials from db");

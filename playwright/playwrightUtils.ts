@@ -1,7 +1,6 @@
-import { expect, APIRequestContext, Page } from "@playwright/test";
+import { APIRequestContext, Page, expect } from "@playwright/test";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
-import { resolvePortOffset } from "scripts/portOffset";
 import {
   PopulateDbOptions,
   PostAddSerialsResponse,
@@ -19,6 +18,7 @@ import {
 } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
+import { resolvePortOffset } from "scripts/portOffset";
 
 // The per-worktree port offset shifts the server/API port so setup calls hit
 // the same local instance the browser targets. PLAYWRIGHT_BASEURL still wins

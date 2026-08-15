@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { ProgramType } from "shared/types/models/programItem";
-import { setActiveProgramTypes } from "client/views/admin/adminSlice";
-import { MultiSelectDropdown } from "client/components/MultiSelectDropdown";
-import { saveSession } from "client/utils/localStorage";
 import { config } from "shared/config";
+import { ProgramType } from "shared/types/models/programItem";
+import { MultiSelectDropdown } from "client/components/MultiSelectDropdown";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { saveSession } from "client/utils/localStorage";
+import { setActiveProgramTypes } from "client/views/admin/adminSlice";
 
 interface Props {
   id: string;

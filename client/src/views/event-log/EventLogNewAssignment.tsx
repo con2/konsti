@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { Link } from "react-router";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
-import { ProgramItem } from "shared/types/models/programItem";
-import { EventLogItem } from "shared/types/models/eventLog";
+import styled from "styled-components";
 import { config } from "shared/config";
 import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
+import { EventLogItem } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
+import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   eventLogItem: EventLogItem;

@@ -1,11 +1,11 @@
 import bcrypt from "bcryptjs";
-import { logger } from "server/utils/logger";
 import { BcryptError } from "shared/types/api/errors";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { logger } from "server/utils/logger";
 
 const saltLength = 10;
 

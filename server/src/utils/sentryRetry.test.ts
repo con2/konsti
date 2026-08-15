@@ -1,4 +1,4 @@
-import { expect, test, vi, describe } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import {
   flattenErrorMessageChain,
   retryWithDelays,

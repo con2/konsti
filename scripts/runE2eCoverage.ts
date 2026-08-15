@@ -1,8 +1,8 @@
 import {
-  spawn,
-  spawnSync,
   type ChildProcess,
   type SpawnSyncReturns,
+  spawn,
+  spawnSync,
 } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";

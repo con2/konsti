@@ -1,8 +1,8 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSelector, createSlice } from "@reduxjs/toolkit";
+import { GroupMember } from "shared/types/models/groups";
 import { GroupState, RootState } from "client/types/reduxTypes";
 import { selectProgramItems } from "client/views/all-program-items/allProgramItemsSlice";
 import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
-import { GroupMember } from "shared/types/models/groups";
 
 const initialState: GroupState = {
   groupCode: "0",

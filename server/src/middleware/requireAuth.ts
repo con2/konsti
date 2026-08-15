@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
-import { getAuthorizedUsername } from "server/utils/authHeader";
+import { NextFunction, Request, Response } from "express";
 import { UserGroup } from "shared/types/models/user";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 
 declare module "express-serve-static-core" {
   interface Request {

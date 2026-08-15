@@ -1,30 +1,30 @@
 import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { useNavigate, useNavigationType } from "react-router";
-import { Button, ButtonStyle } from "client/components/Button";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  KompassiVerifyErrorMessage,
-  submitUpdateUserEmailAddress,
-  submitVerifyKompassiLogin,
-  UpdateUserEmailAddressErrorMessage,
-} from "client/views/login/loginThunks";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { UncontrolledInput } from "client/components/UncontrolledInput";
+import styled from "styled-components";
 import {
   EMAIL_REGEX,
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { navigateToPreviousOrRoot } from "client/utils/navigation";
-import { PrivacyNotice } from "client/components/PrivacyNotice";
+import { Button, ButtonStyle } from "client/components/Button";
 import { Checkbox } from "client/components/Checkbox";
 import {
   EmailNotificationField,
   StyledEmailInput,
 } from "client/components/EmailNotificationField";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { PrivacyNotice } from "client/components/PrivacyNotice";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { navigateToPreviousOrRoot } from "client/utils/navigation";
+import {
+  KompassiVerifyErrorMessage,
+  UpdateUserEmailAddressErrorMessage,
+  submitUpdateUserEmailAddress,
+  submitVerifyKompassiLogin,
+} from "client/views/login/loginThunks";
 
 interface FinalizeRegistrationFormFields {
   username: string;

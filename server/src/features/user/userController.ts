@@ -1,21 +1,21 @@
 import { Request, Response } from "express";
-import {
-  fetchUserByUsername,
-  storeUser,
-  fetchUserBySerialOrUsername,
-  storeUserPassword,
-} from "server/features/user/userService";
-import { getAuthUsername } from "server/middleware/requireAuth";
-import { getAuthorizedUserGroup } from "server/utils/authHeader";
-import { logger } from "server/utils/logger";
-import { UserGroup } from "shared/types/models/user";
+import { PostUpdateUserEmailAddressRequestSchema } from "shared/types/api/login";
 import {
   GetUserBySerialRequest,
   PostUpdateUserPasswordRequest,
   PostUserRequest,
 } from "shared/types/api/users";
-import { PostUpdateUserEmailAddressRequestSchema } from "shared/types/api/login";
+import { UserGroup } from "shared/types/models/user";
 import { verifyUpdateUserEmailAddress } from "server/features/kompassi-login/kompassiLoginService";
+import {
+  fetchUserBySerialOrUsername,
+  fetchUserByUsername,
+  storeUser,
+  storeUserPassword,
+} from "server/features/user/userService";
+import { getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthorizedUserGroup } from "server/utils/authHeader";
+import { logger } from "server/utils/logger";
 
 export const postUser = async (
   req: Request<unknown, unknown, PostUserRequest>,

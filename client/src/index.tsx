@@ -1,19 +1,18 @@
-import { createRoot } from "react-dom/client";
+import { init } from "@sentry/react";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { ThemeProvider, StyleSheetManager } from "styled-components";
-import { init } from "@sentry/react";
-import loaderImage from "assets/loading.gif";
+import { StyleSheetManager, ThemeProvider } from "styled-components";
 import { config } from "shared/config";
-import { getLocalStorageLocale } from "client/utils/localStorage";
-import { theme } from "client/theme";
-import { GlobalStyle } from "client/globalStyle";
-import { setLocale } from "shared/utils/setLocale";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { setLocale } from "shared/utils/setLocale";
+import loaderImage from "assets/loading.gif";
+import { GlobalStyle } from "client/globalStyle";
+import { theme } from "client/theme";
+import { getLocalStorageLocale } from "client/utils/localStorage";
 import { store } from "client/utils/store";
-
 // Initialized i18next instance
 import "client/utils/i18n";
 import { initializeDayjs } from "shared/utils/initializeDayjs";

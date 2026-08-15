@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import { sortBy } from "remeda";
-import { logger } from "server/utils/logger";
-import { User } from "shared/types/models/user";
 import { config } from "shared/config";
+import { User } from "shared/types/models/user";
+import { logger } from "server/utils/logger";
 
 export const getMatchingEmails = (event: string, year: number): void => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

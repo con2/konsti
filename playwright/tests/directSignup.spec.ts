@@ -1,19 +1,19 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postSettings,
-  postTestSettings,
-  login,
-  addProgramItems,
-  clearDb,
-  testPostDirectSignup,
-  populateDb,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  clearDb,
+  login,
+  populateDb,
+  postSettings,
+  postTestSettings,
+  testPostDirectSignup,
+} from "playwright/playwrightUtils";
 
 test("Add and cancel direct signup", async ({ page, request }) => {
   await clearDb(request);

@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
-import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
@@ -10,6 +9,7 @@ import {
   MyProgramSecondaryText,
   ShowAllButton,
 } from "client/views/my-program-items/components/shared";
+import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 
 interface Props {
   favoriteProgramItems: readonly ProgramItem[];

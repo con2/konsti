@@ -1,8 +1,8 @@
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { postRegistration } from "client/services/userServices";
+import { AppThunk } from "client/types/reduxTypes";
 import { submitLogin } from "client/views/login/loginThunks";
 import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationForm";
-import { AppThunk } from "client/types/reduxTypes";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export enum RegistrationErrorMessage {
   USERNAME_TAKEN = "error.usernameTaken",

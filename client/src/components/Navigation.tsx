@@ -1,11 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { HEADER_HEIGHT } from "client/components/Header";
+import { useAppSelector } from "client/utils/hooks";
 import { LoggedInUserNavigation } from "./LoggedInUserNavigation";
 import { UserNavigation } from "./UserNavigation";
-import { useAppSelector } from "client/utils/hooks";
-import { HEADER_HEIGHT } from "client/components/Header";
 
 export const Navigation = (): ReactElement => {
   const { t } = useTranslation();

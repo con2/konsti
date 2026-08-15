@@ -1,13 +1,13 @@
-import { ReactElement, useCallback, useEffect, useRef } from "react";
 import dayjs from "dayjs";
+import { ReactElement, useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { sortBy } from "remeda";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
+import styled from "styled-components";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
+import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 
 const getTime = (createdAt: string): string => {
   const timeNow = dayjs();

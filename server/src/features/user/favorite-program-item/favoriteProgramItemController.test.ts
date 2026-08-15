@@ -1,7 +1,7 @@
 import { Server } from "node:http";
-import { expect, test, describe, beforeEach, afterEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";

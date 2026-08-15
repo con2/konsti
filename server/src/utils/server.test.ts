@@ -1,8 +1,8 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
-import { startServer, closeServer } from "server/utils/server";
+import request from "supertest";
+import { afterEach, beforeEach, expect, test } from "vitest";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

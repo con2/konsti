@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
 import { BackButton } from "client/components/BackButton";
 import { useAppSelector } from "client/utils/hooks";
 import { Admission } from "client/views/admission-ticket/Admission";

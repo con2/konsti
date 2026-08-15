@@ -1,15 +1,15 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  populateDb,
-  login,
-  addProgramItems,
-  postTestSettings,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  login,
+  populateDb,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 test("Active program type is selected from the programType query parameter", async ({
   page,

@@ -1,15 +1,15 @@
 import { Server } from "node:http";
-import { expect, test, describe, afterEach, beforeEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { testProgramItem } from "shared/tests/testProgramItem";
+import { GetResultsResponse } from "shared/types/api/results";
 import {
   AssignmentResultGroup,
   UserAssignmentResult,
 } from "shared/types/models/result";
-import { GetResultsResponse } from "shared/types/api/results";
 import { saveResult } from "server/features/results/resultsRepository";
 import { closeServer, startServer } from "server/utils/server";
 

@@ -1,7 +1,7 @@
-import { MouseEventHandler, ReactElement, ReactNode } from "react";
-import styled from "styled-components";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MouseEventHandler, ReactElement, ReactNode } from "react";
+import styled from "styled-components";
 
 interface Props {
   children?: ReactNode;

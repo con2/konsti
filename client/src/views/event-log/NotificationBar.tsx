@@ -1,14 +1,14 @@
 import { ReactElement } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
-import { AboutTab } from "client/app/AppRoutes";
+import styled from "styled-components";
 import { config } from "shared/config";
-import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
+import { AboutTab } from "client/app/AppRoutes";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
+import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 
 export const NotificationBar = (): ReactElement | null => {
   const { t } = useTranslation();

@@ -1,27 +1,27 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getTimeNow } from "client/utils/getTimeNow";
-import {
-  getLotterySignupEndTime,
-  getLotterySignupStartTime,
-  getDirectSignupStartTime,
-  getDirectSignupEndTime,
-  getLotterySignupNotStarted,
-  getLotterySignupInProgress,
-  getDirectSignupInProgress,
-  getDirectSignupEnded,
-} from "shared/utils/signupTimes";
-import {
-  getFormattedTime,
-  getFormattedInterval,
-} from "client/views/program-item/programItemUtils";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import {
+  getDirectSignupEndTime,
+  getDirectSignupEnded,
+  getDirectSignupInProgress,
+  getDirectSignupStartTime,
+  getLotterySignupEndTime,
+  getLotterySignupInProgress,
+  getLotterySignupNotStarted,
+  getLotterySignupStartTime,
+} from "shared/utils/signupTimes";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
+import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import {
+  getFormattedInterval,
+  getFormattedTime,
+} from "client/views/program-item/programItemUtils";
 
 interface Props {
   programItem: ProgramItem;

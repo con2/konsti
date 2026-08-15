@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 import { ApiError, ApiResult } from "shared/types/api/errors";
+import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
 // New event log items
 

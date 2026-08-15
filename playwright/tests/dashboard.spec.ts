@@ -1,5 +1,12 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
+import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
   populateDb,
@@ -8,13 +15,6 @@ import {
   postTestSettings,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
-import { DashboardPage } from "playwright/pages/DashboardPage";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import {
-  testProgramItem,
-  testProgramItem2,
-} from "shared/tests/testProgramItem";
 
 // The run card headings show the assignment time as Helsinki wall-clock time.
 // The shared time formatter can't be imported here (its dayjs plugin imports

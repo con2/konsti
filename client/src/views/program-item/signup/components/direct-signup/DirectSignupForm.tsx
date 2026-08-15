@@ -1,28 +1,28 @@
-import { SyntheticEvent, ReactElement, useState } from "react";
-import styled from "styled-components";
+import { ReactElement, SyntheticEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
-import {
-  PostDirectSignupErrorMessage,
-  submitPostDirectSignup,
-} from "client/views/my-program-items/myProgramItemsThunks";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { getIsInGroup } from "client/views/group/groupUtils";
-import { TextArea } from "client/components/TextArea";
-import { SignupFormButtons } from "client/views/program-item/signup/components/SignupFormButtons";
-import { Dropdown } from "client/components/Dropdown";
-import { Checkbox } from "client/components/Checkbox";
-import { InfoText, InfoTextVariant } from "client/components/InfoText";
-import { getEntryCondition } from "client/views/program-item/programItemUtils";
-import { isSignupConfirmDisabled } from "client/views/program-item/signup/components/signupFormUtils";
-import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { Checkbox } from "client/components/Checkbox";
+import { Dropdown } from "client/components/Dropdown";
+import { ErrorMessage } from "client/components/ErrorMessage";
+import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { TextArea } from "client/components/TextArea";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { getIsInGroup } from "client/views/group/groupUtils";
+import {
+  PostDirectSignupErrorMessage,
+  submitPostDirectSignup,
+} from "client/views/my-program-items/myProgramItemsThunks";
+import { getEntryCondition } from "client/views/program-item/programItemUtils";
+import { SignupFormButtons } from "client/views/program-item/signup/components/SignupFormButtons";
+import { isSignupConfirmDisabled } from "client/views/program-item/signup/components/signupFormUtils";
 
 interface Props {
   programItem: ProgramItem;

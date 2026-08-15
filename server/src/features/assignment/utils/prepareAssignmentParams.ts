@@ -1,7 +1,7 @@
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 const getValidLotterySignupsUsers = (
   users: User[],

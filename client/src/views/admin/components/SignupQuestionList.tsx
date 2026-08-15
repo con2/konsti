@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import styled from "styled-components";
 import { sortBy } from "remeda";
+import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";

@@ -1,20 +1,20 @@
-import { beforeEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
-import {
-  getLotterySignupStartTime,
-  getLotterySignupEndTime,
-  getDirectSignupStartTime,
-  getLotterySignupNotStarted,
-  getLotterySignupInProgress,
-  getDirectSignupInProgress,
-  getDirectSignupEnded,
-} from "shared/utils/signupTimes";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { config } from "shared/config";
 import { ProgramType, Tag } from "shared/types/models/programItem";
+import {
+  getDirectSignupEnded,
+  getDirectSignupInProgress,
+  getDirectSignupStartTime,
+  getLotterySignupEndTime,
+  getLotterySignupInProgress,
+  getLotterySignupNotStarted,
+  getLotterySignupStartTime,
+} from "shared/utils/signupTimes";
 
 const friday = "2023-07-28";
 const saturday = "2023-07-29";

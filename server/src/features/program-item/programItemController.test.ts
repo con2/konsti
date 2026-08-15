@@ -1,61 +1,61 @@
 import { Server } from "node:http";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { sortBy } from "remeda";
-import { expect, test, vi, afterEach, beforeEach, describe } from "vitest";
-import { startServer, closeServer } from "server/utils/server";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
+import { EventName } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/types/models/user";
-import {
-  findProgramItems,
-  saveProgramItems,
-} from "server/features/program-item/programItemRepository";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import {
-  mockPostDirectSignupRequest,
-  mockPostDirectSignupRequest2,
-  mockLotterySignups,
-  mockUser,
-} from "server/test/mock-data/mockUser";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
-import {
-  createSettings,
-  saveSignupQuestion,
-} from "server/features/settings/settingsRepository";
-import {
-  findUserDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
-import {
-  KompassiGrouping,
-  KompassiGamestyle,
-} from "server/kompassi/kompassiProgramItem";
+import { GetProgramItemsResult } from "shared/types/api/programItems";
+import { EventLogAction } from "shared/types/models/eventLog";
 import {
   Gamestyle,
   ProgramItemSignupStrategy,
   ProgramType,
   Tag,
 } from "shared/types/models/programItem";
-import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
-import { config } from "shared/config";
-import { EventName } from "shared/config/eventConfigTypes";
+import { UserGroup } from "shared/types/models/user";
+import {
+  findUserDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
+import {
+  createSettings,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
+import {
+  KompassiGamestyle,
+  KompassiGrouping,
+} from "server/kompassi/kompassiProgramItem";
 import {
   mockKompassiProgramItem,
   mockKompassiProgramItem2,
 } from "server/kompassi/test/mockKompassiProgramItem";
-import { GetProgramItemsResult } from "shared/types/api/programItems";
-import { EventLogAction } from "shared/types/models/eventLog";
+import {
+  mockLotterySignups,
+  mockPostDirectSignupRequest,
+  mockPostDirectSignupRequest2,
+  mockUser,
+} from "server/test/mock-data/mockUser";
+import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
+import { logger } from "server/utils/logger";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { login } from "server/features/user/login/loginService";
 import { PostLoginRequest } from "shared/types/api/login";
+import { login } from "server/features/user/login/loginService";
 
 export const postLogin = async (
   req: Request<unknown, unknown, PostLoginRequest>,

@@ -1,14 +1,5 @@
-import { test, expect, APIRequestContext } from "@playwright/test";
+import { APIRequestContext, expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postSettings,
-  postTestSettings,
-  login,
-  addProgramItems,
-  clearDb,
-  populateDb,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -18,6 +9,15 @@ import {
   SignupType,
   State,
 } from "shared/types/models/programItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  clearDb,
+  login,
+  populateDb,
+  postSettings,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct signup is cancelled", async ({
   page,

@@ -1,12 +1,12 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 import { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { theme } from "client/theme";
-import { getAttendeeType } from "client/utils/getAttendeeType";
 import { Popularity, ProgramType } from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { theme } from "client/theme";
+import { getAttendeeType } from "client/utils/getAttendeeType";
 
 enum PopularityLevel {
   LOW = "programItemPopularity.low",

@@ -1,10 +1,10 @@
 import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { addError, removeError } from "client/views/admin/adminSlice";
-import { store } from "client/utils/store";
 import { BackendError, BackendErrorType } from "client/types/errorTypes";
 import { fetchWithTimeout } from "client/utils/fetchWithTimeout";
 import { onPageResume } from "client/utils/pageLifecycle";
+import { store } from "client/utils/store";
+import { addError, removeError } from "client/views/admin/adminSlice";
 
 // Decides how failed requests are surfaced to the user: background requests
 // (the ones the app retries on its own) get their network error toast

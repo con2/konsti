@@ -1,41 +1,41 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
-import mongoose from "mongoose";
-import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramType } from "shared/types/models/programItem";
 import { db } from "server/db/mongodb";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { AssignmentResultStatus } from "server/types/resultTypes";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import {
+  findDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
-  mockPostDirectSignupRequest,
   mockLotterySignups,
+  mockPostDirectSignupRequest,
   mockUser,
   mockUser2,
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
-import {
-  findDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { AssignmentResultStatus } from "server/types/resultTypes";
 import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { ProgramType } from "shared/types/models/programItem";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { EmailSender } from "server/features/notifications/email";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;

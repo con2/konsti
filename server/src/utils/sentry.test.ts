@@ -1,5 +1,5 @@
+import { captureException, close, flush, init, withScope } from "@sentry/node";
 import { afterEach, describe, expect, test } from "vitest";
-import { init, captureException, flush, close, withScope } from "@sentry/node";
 import {
   createRecordingTransport,
   fakeDsn,

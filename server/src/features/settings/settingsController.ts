@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 import {
-  fetchSettings,
-  storeHidden,
-  storeSignupQuestion,
-  removeSignupQuestion,
-  updateSettings,
-} from "server/features/settings/settingsService";
-import {
   DeleteSignupQuestionRequest,
   PostHiddenRequest,
   PostSettingsRequest,
   PostSignupQuestionRequest,
 } from "shared/types/api/settings";
+import {
+  fetchSettings,
+  removeSignupQuestion,
+  storeHidden,
+  storeSignupQuestion,
+  updateSettings,
+} from "server/features/settings/settingsService";
 
 export const postHidden = async (
   req: Request<unknown, unknown, PostHiddenRequest>,

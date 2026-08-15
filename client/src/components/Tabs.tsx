@@ -1,9 +1,9 @@
-import { ReactElement } from "react";
-import { Navigate, NavLink, Route, Routes } from "react-router";
-import styled from "styled-components";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement } from "react";
+import { NavLink, Navigate, Route, Routes } from "react-router";
 import { last } from "remeda";
+import styled from "styled-components";
 
 interface TabContent {
   headerText: string;

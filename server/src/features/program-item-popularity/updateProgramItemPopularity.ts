@@ -1,23 +1,23 @@
 import dayjs from "dayjs";
 import { countBy, groupBy } from "remeda";
-import {
-  findProgramItems,
-  saveProgramItemPopularity,
-} from "server/features/program-item/programItemRepository";
+import { config } from "shared/config";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { config } from "shared/config";
-import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
-import { findUsers } from "server/features/user/userRepository";
-import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
-import { logger } from "server/utils/logger";
+import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { getPopularity } from "server/features/program-item-popularity/getPopularity";
+import {
+  findProgramItems,
+  saveProgramItemPopularity,
+} from "server/features/program-item/programItemRepository";
+import { findUsers } from "server/features/user/userRepository";
+import { logger } from "server/utils/logger";
 
 export const updateProgramItemPopularity = async (): Promise<
   Result<void, MongoDbError>

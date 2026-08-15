@@ -1,12 +1,12 @@
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
-  collectRpgLotteryParticipation,
-  dataFileExists,
   DIRECT_SIGNUP_ONLY_TEXT,
   EVENT_LABELS,
   EVENT_ORDER,
-  eventYears,
   NO_RPGS_TEXT,
+  collectRpgLotteryParticipation,
+  dataFileExists,
+  eventYears,
   pct,
   readDataFile,
   scaleNote,

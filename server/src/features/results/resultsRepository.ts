@@ -1,9 +1,6 @@
 import dayjs from "dayjs";
-import { logger } from "server/utils/logger";
-import {
-  ResultsModel,
-  ResultsSchemaDb,
-} from "server/features/results/resultsSchema";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   AssignmentResultGroup,
   UserAssignmentResult,
@@ -13,8 +10,11 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import {
+  ResultsModel,
+  ResultsSchemaDb,
+} from "server/features/results/resultsSchema";
+import { logger } from "server/utils/logger";
 
 export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL results from db");

@@ -1,16 +1,16 @@
-import { afterEach, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
-import { getGroups } from "server/features/assignment/utils/getGroups";
+import { afterEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { config } from "shared/config";
 import {
   assignmentTime,
   getUsers,
   groupCreatorGroupCode,
 } from "server/features/assignment/utils/assignmentTestUtils";
+import { getGroups } from "server/features/assignment/utils/getGroups";
 
 afterEach(() => {
   vi.resetAllMocks();

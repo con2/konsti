@@ -1,5 +1,57 @@
 import express from "express";
 import {
+  ApiDevEndpoint,
+  ApiEndpoint,
+  AuthEndpoint,
+} from "shared/constants/apiEndpoints";
+import {
+  PopulateDbOptionsSchema,
+  PostAddProgramItemsRequestSchema,
+  PostAddSerialsRequestSchema,
+  PostEmailTestRequestSchema,
+} from "shared/test-types/api/testData";
+import { PostTestSettingsRequestSchema } from "shared/test-types/api/testSettings";
+import { PostAssignmentRequestSchema } from "shared/types/api/assignment";
+import { PostEventLogIsSeenRequestSchema } from "shared/types/api/eventLog";
+import { PostFavoriteRequestSchema } from "shared/types/api/favorite";
+import {
+  GetGroupRequestSchema,
+  PostCloseGroupRequestSchema,
+  PostJoinGroupRequestSchema,
+} from "shared/types/api/groups";
+import {
+  PostKompassiLoginRedirectRequestSchema,
+  PostKompassiLoginRequestSchema,
+  PostLoginRequestSchema,
+  PostSessionRecoveryRequestSchema,
+  PostVerifyKompassiLoginRequestSchema,
+} from "shared/types/api/login";
+import {
+  DeleteDirectSignupRequestSchema,
+  DeleteLotterySignupRequestSchema,
+  PostDirectSignupRequestSchema,
+  PostLotterySignupRequestSchema,
+} from "shared/types/api/myProgramItems";
+import {
+  DeleteSignupQuestionRequestSchema,
+  PostHiddenRequestSchema,
+  PostSettingsRequestSchema,
+  PostSignupQuestionRequestSchema,
+} from "shared/types/api/settings";
+import {
+  GetUserBySerialRequestSchema,
+  PostUpdateUserPasswordRequestSchema,
+  PostUserRequestSchema,
+} from "shared/types/api/users";
+import { UserGroup } from "shared/types/models/user";
+import { postEmailTest } from "server/features/admin/emailTestController";
+import { postAssignment } from "server/features/assignment/assignmentController";
+import {
+  deleteDirectSignup,
+  postDirectSignup,
+} from "server/features/direct-signup/directSignupController";
+import { getHealthStatus } from "server/features/health/healthController";
+import {
   postKompassiLoginCallback,
   postKompassiLoginRedirect,
   postKompassiLogoutRedirect,
@@ -9,10 +61,8 @@ import {
   getProgramItems,
   postUpdateProgramItems,
 } from "server/features/program-item/programItemController";
-import { getHealthStatus } from "server/features/health/healthController";
 import { getResults } from "server/features/results/resultsController";
 import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
-import { postEmailTest } from "server/features/admin/emailTestController";
 import {
   deleteSignupQuestion,
   getSettings,
@@ -20,10 +70,6 @@ import {
   postSettings,
   postSignupQuestion,
 } from "server/features/settings/settingsController";
-import {
-  deleteDirectSignup,
-  postDirectSignup,
-} from "server/features/direct-signup/directSignupController";
 import { postEventLogItemIsSeen } from "server/features/user/event-log/eventLogController";
 import { postFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemController";
 import {
@@ -34,85 +80,39 @@ import {
   postLeaveGroup,
 } from "server/features/user/group/groupController";
 import { postLogin } from "server/features/user/login/loginController";
-import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
 import {
   deleteLotterySignup,
   postLotterySignup,
 } from "server/features/user/lottery-signup/lotterySignupController";
+import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
 import { getSignupMessages } from "server/features/user/signup-message/signupMessageController";
 import {
   getUser,
-  postUser,
   getUserBySerialOrUsername,
-  postUserPassword,
   postUpdateUserEmailAddress,
+  postUser,
+  postUserPassword,
 } from "server/features/user/userController";
-import {
-  postClearDb,
-  postAddProgramItems,
-  postPopulateDb,
-  postAddSerials,
-} from "server/test/test-data-generation/testDataController";
-import {
-  getTestSettings,
-  postTestSettings,
-} from "server/test/test-settings/testSettingsController";
+import { logApiCall } from "server/middleware/logApiCall";
+import { requireAuth } from "server/middleware/requireAuth";
+import { validateBody, validateQuery } from "server/middleware/validateRequest";
 import { postWriteCoverage } from "server/test/coverage/coverageController";
-import {
-  ApiDevEndpoint,
-  ApiEndpoint,
-  AuthEndpoint,
-} from "shared/constants/apiEndpoints";
 import {
   getKompassiLoginMockLogout,
   getKompassiLoginMockRedirect,
   getKompassiLoginMockToken,
   getKompassiLoginMockUserinfo,
 } from "server/test/kompassi-mock-service/kompassiMockService";
-import { postAssignment } from "server/features/assignment/assignmentController";
-import { validateBody, validateQuery } from "server/middleware/validateRequest";
-import { requireAuth } from "server/middleware/requireAuth";
-import { logApiCall } from "server/middleware/logApiCall";
-import { UserGroup } from "shared/types/models/user";
 import {
-  PostKompassiLoginRedirectRequestSchema,
-  PostKompassiLoginRequestSchema,
-  PostLoginRequestSchema,
-  PostSessionRecoveryRequestSchema,
-  PostVerifyKompassiLoginRequestSchema,
-} from "shared/types/api/login";
+  postAddProgramItems,
+  postAddSerials,
+  postClearDb,
+  postPopulateDb,
+} from "server/test/test-data-generation/testDataController";
 import {
-  GetUserBySerialRequestSchema,
-  PostUpdateUserPasswordRequestSchema,
-  PostUserRequestSchema,
-} from "shared/types/api/users";
-import { PostAssignmentRequestSchema } from "shared/types/api/assignment";
-import {
-  DeleteDirectSignupRequestSchema,
-  DeleteLotterySignupRequestSchema,
-  PostDirectSignupRequestSchema,
-  PostLotterySignupRequestSchema,
-} from "shared/types/api/myProgramItems";
-import { PostFavoriteRequestSchema } from "shared/types/api/favorite";
-import {
-  DeleteSignupQuestionRequestSchema,
-  PostHiddenRequestSchema,
-  PostSettingsRequestSchema,
-  PostSignupQuestionRequestSchema,
-} from "shared/types/api/settings";
-import {
-  GetGroupRequestSchema,
-  PostCloseGroupRequestSchema,
-  PostJoinGroupRequestSchema,
-} from "shared/types/api/groups";
-import { PostEventLogIsSeenRequestSchema } from "shared/types/api/eventLog";
-import {
-  PopulateDbOptionsSchema,
-  PostAddProgramItemsRequestSchema,
-  PostAddSerialsRequestSchema,
-  PostEmailTestRequestSchema,
-} from "shared/test-types/api/testData";
-import { PostTestSettingsRequestSchema } from "shared/test-types/api/testSettings";
+  getTestSettings,
+  postTestSettings,
+} from "server/test/test-settings/testSettingsController";
 
 export const apiRoutes = express.Router();
 

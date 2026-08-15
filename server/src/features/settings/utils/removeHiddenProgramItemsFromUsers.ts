@@ -1,12 +1,12 @@
+import { MongoDbError } from "shared/types/api/errors";
+import { User } from "shared/types/models/user";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import { resetDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import {
   findUsers,
   updateUsersByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
-import { MongoDbError } from "shared/types/api/errors";
-import { User } from "shared/types/models/user";
-import { Result, makeSuccessResult } from "shared/utils/result";
 
 export const removeHiddenProgramItemsFromUsers = async (
   hiddenProgramItemIds: readonly string[],

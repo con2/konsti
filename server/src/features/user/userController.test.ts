@@ -1,13 +1,13 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, describe, beforeEach } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
-import { closeServer, startServer } from "server/utils/server";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { getAuthorizedUserGroup } from "server/utils/authHeader";
 import {
   fetchProgramItems,
   updateProgramItems,
 } from "server/features/program-item/programItemService";
+import { getAuthorizedUserGroup } from "server/utils/authHeader";
 
 export const postUpdateProgramItems = async (
   _req: Request,

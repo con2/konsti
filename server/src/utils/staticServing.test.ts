@@ -1,7 +1,9 @@
 import fs from "node:fs";
+import { Server } from "node:http";
 import os from "node:os";
 import path from "node:path";
-import { Server } from "node:http";
+import { faker } from "@faker-js/faker";
+import request from "supertest";
 import {
   afterAll,
   afterEach,
@@ -11,8 +13,6 @@ import {
   expect,
   test,
 } from "vitest";
-import request from "supertest";
-import { faker } from "@faker-js/faker";
 import { closeServer, startServer } from "server/utils/server";
 
 // A directory of this suite's own rather than the real build output: other

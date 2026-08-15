@@ -1,6 +1,6 @@
-import { logger } from "server/utils/logger";
-import { AssignmentLotterySignup } from "server/types/userTypes";
 import { User } from "shared/types/models/user";
+import { AssignmentLotterySignup } from "server/types/userTypes";
+import { logger } from "server/utils/logger";
 
 export const getLotterySignups = (
   users: readonly User[],

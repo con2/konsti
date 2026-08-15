@@ -1,8 +1,9 @@
+import { PostSessionRecoveryResponse } from "shared/types/api/login";
+import { UserGroup } from "shared/types/models/user";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
-import { PostSessionRecoveryResponse } from "shared/types/api/login";
-import { UserGroup } from "shared/types/models/user";
+
 export const loginWithJwt = async (
   jwt: string,
 ): Promise<PostSessionRecoveryResponse> => {

@@ -1,14 +1,14 @@
 import { z } from "zod";
-import { ApiError, ApiResult } from "shared/types/api/errors";
-import { SignupMessage } from "shared/types/models/signupMessage";
-import { UserProgramItems } from "shared/types/models/user";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
+import { ApiError, ApiResult } from "shared/types/api/errors";
 import { EventLogItem } from "shared/types/models/eventLog";
+import { SignupMessage } from "shared/types/models/signupMessage";
+import { UserProgramItems } from "shared/types/models/user";
 
 // GET user
 

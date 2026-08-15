@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { StoredEmailSchema } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
-import { UserGroup } from "shared/types/models/user";
 import { EventLogItem } from "shared/types/models/eventLog";
+import { UserGroup } from "shared/types/models/user";
 
 // POST login
 

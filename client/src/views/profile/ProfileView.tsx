@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
+import styled from "styled-components";
+import { formatSerial } from "shared/utils/formatSerial";
+import { AppRoute } from "client/app/AppRoutes";
+import { Button, ButtonStyle } from "client/components/Button";
+import { useAppSelector } from "client/utils/hooks";
 import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 import { EmailSettingsForm } from "client/views/profile/components/EmailSettingsForm";
-import { useAppSelector } from "client/utils/hooks";
-import { Button, ButtonStyle } from "client/components/Button";
-import { AppRoute } from "client/app/AppRoutes";
-import { formatSerial } from "shared/utils/formatSerial";
 
 export const ProfileView = (): ReactElement => {
   const { t } = useTranslation();

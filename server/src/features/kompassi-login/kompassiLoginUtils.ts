@@ -1,13 +1,13 @@
-import {
-  getBaseUrl,
-  clientId,
-} from "server/features/kompassi-login/kompassiLoginService";
-import { KompassiUserinfo } from "server/features/kompassi-login/KompassiLoginTypes";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
+import { KompassiUserinfo } from "server/features/kompassi-login/KompassiLoginTypes";
+import {
+  clientId,
+  getBaseUrl,
+} from "server/features/kompassi-login/kompassiLoginService";
 
 // openid is required for the userinfo endpoint to accept the access token at
 // all; profile and email are conventional for the claims that come with it

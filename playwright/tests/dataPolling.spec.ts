@@ -1,17 +1,17 @@
-import { test, expect } from "@playwright/test";
-import {
-  login,
-  addProgramItems,
-  clearDb,
-  populateDb,
-  postTestSettings,
-} from "playwright/playwrightUtils";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import { expect, test } from "@playwright/test";
 import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
+import {
+  addProgramItems,
+  clearDb,
+  login,
+  populateDb,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
 const initialProgramItem = {

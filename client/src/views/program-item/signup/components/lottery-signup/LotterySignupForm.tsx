@@ -1,26 +1,26 @@
-import { ChangeEvent, SyntheticEvent, ReactElement, useState } from "react";
+import { ChangeEvent, ReactElement, SyntheticEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { capitalize } from "remeda";
+import styled from "styled-components";
+import { PostLotterySignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
-import {
-  PostLotterySignupErrorMessage,
-  submitPostLotterySignup,
-} from "client/views/my-program-items/myProgramItemsThunks";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Checkbox } from "client/components/Checkbox";
 import { Dropdown } from "client/components/Dropdown";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { SignupFormButtons } from "client/views/program-item/signup/components/SignupFormButtons";
+import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   DirectSignupWithProgramItem,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { PostLotterySignupRequest } from "shared/types/api/myProgramItems";
-import { InfoText, InfoTextVariant } from "client/components/InfoText";
-import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
+import {
+  PostLotterySignupErrorMessage,
+  submitPostLotterySignup,
+} from "client/views/my-program-items/myProgramItemsThunks";
 import { getEntryCondition } from "client/views/program-item/programItemUtils";
+import { SignupFormButtons } from "client/views/program-item/signup/components/SignupFormButtons";
 import { isSignupConfirmDisabled } from "client/views/program-item/signup/components/signupFormUtils";
-import { Checkbox } from "client/components/Checkbox";
 
 interface Props {
   programItem: ProgramItem;

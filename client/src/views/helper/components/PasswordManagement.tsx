@@ -1,14 +1,14 @@
-import { ReactElement, ChangeEvent, useState } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled, { css } from "styled-components";
 import { Link } from "react-router";
-import { getUserBySerialOrUsername } from "client/services/userServices";
-import { Button, ButtonStyle } from "client/components/Button";
-import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
-import { ControlledInput } from "client/components/ControlledInput";
-import { getDateAndTime } from "shared/utils/timeFormatter";
+import styled, { css } from "styled-components";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { formatSerial } from "shared/utils/formatSerial";
+import { getDateAndTime } from "shared/utils/timeFormatter";
+import { Button, ButtonStyle } from "client/components/Button";
+import { ControlledInput } from "client/components/ControlledInput";
+import { getUserBySerialOrUsername } from "client/services/userServices";
+import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();

@@ -1,13 +1,13 @@
 import { afterEach, describe, expect, test } from "vitest";
-import { clearSession, loadSession } from "client/utils/localStorage";
-import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
-import { ProgramType } from "shared/types/models/programItem";
 import {
   appUpdateReloadedBuildTimeKey,
   browserStorageEventPrefix,
   kompassiLoginStateKey,
   localStorageStateKey,
 } from "shared/constants/browserStorage";
+import { ProgramType } from "shared/types/models/programItem";
+import { clearSession, loadSession } from "client/utils/localStorage";
+import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
 
 afterEach(() => {
   localStorage.clear();

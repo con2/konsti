@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
-import { store } from "client/utils/store";
 import { useAppSelector } from "client/utils/hooks";
+import { store } from "client/utils/store";
 
 export const getTimeNow = (): Dayjs => {
   if (

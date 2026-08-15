@@ -1,13 +1,13 @@
+import { config } from "shared/config";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 import {
-  getGlobalNotificationQueueService,
   NotificationTask,
   NotificationTaskType,
+  getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { config } from "shared/config";
 
 interface ProgramItemChangeUpdate {
   username: string;

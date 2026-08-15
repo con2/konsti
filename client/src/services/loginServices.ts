@@ -1,7 +1,4 @@
-import { api } from "client/utils/api";
-import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
-import { saveKompassiLoginState } from "client/utils/sessionStorage";
 import {
   PostKompassiLoginRedirectRequest,
   PostKompassiLoginRequest,
@@ -15,6 +12,9 @@ import {
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginResponse,
 } from "shared/types/api/login";
+import { api } from "client/utils/api";
+import { saveKompassiLoginState } from "client/utils/sessionStorage";
+import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 
 export const postLogin = async (
   loginFormFields: LoginFormFields,

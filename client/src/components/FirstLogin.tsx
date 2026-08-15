@@ -2,12 +2,12 @@ import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { z } from "zod";
-import { useAppSelector } from "client/utils/hooks";
-import { isAdminOrHelper } from "client/utils/checkUserGroup";
-import { DismissibleBanner } from "client/components/DismissibleBanner";
-import { HighlightStyle } from "client/components/RaisedCard";
 import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 import { formatSerial } from "shared/utils/formatSerial";
+import { DismissibleBanner } from "client/components/DismissibleBanner";
+import { HighlightStyle } from "client/components/RaisedCard";
+import { isAdminOrHelper } from "client/utils/checkUserGroup";
+import { useAppSelector } from "client/utils/hooks";
 
 const firstLoginValue = "firstLogin";
 const FirstLoginValueSchema = z.literal(firstLoginValue);

@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import Linkify from "linkify-react";
+import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;

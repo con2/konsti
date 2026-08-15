@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 import dayjs from "dayjs";
 import { config } from "shared/config";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
 import {
   ProgramItem,
   ProgramType,
@@ -10,8 +9,9 @@ import {
   State,
 } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
-import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import { ResultsCollectionEntry } from "server/types/resultTypes";
 
 export const EVENT_LABELS: Record<string, string> = {
   ropecon: "Ropecon",

@@ -1,33 +1,33 @@
-import { expect, test, afterEach, beforeEach, vi } from "vitest";
-import mongoose from "mongoose";
-import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { AssignmentError } from "shared/types/api/errors";
+import { ProgramType } from "shared/types/models/programItem";
+import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
+import * as padgAssign from "server/features/assignment/padg/padgAssignment";
+import * as randomAssign from "server/features/assignment/random/randomAssignment";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { AssignmentResultStatus } from "server/types/resultTypes";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import * as randomAssign from "server/features/assignment/random/randomAssignment";
-import * as padgAssign from "server/features/assignment/padg/padgAssignment";
-import { AssignmentError } from "shared/types/api/errors";
-import { makeErrorResult } from "shared/utils/result";
-import { ProgramType } from "shared/types/models/programItem";
+import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { AssignmentResultStatus } from "server/types/resultTypes";
 import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { EmailSender } from "server/features/notifications/email";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;

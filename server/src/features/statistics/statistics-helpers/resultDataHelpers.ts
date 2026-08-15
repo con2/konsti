@@ -1,7 +1,7 @@
-import { logger } from "server/utils/logger";
 import { ProgramItem } from "shared/types/models/programItem";
-import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
+import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { logger } from "server/utils/logger";
 
 export const getSignupsByTime = (
   results: readonly ResultsCollectionEntry[],

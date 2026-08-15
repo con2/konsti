@@ -1,4 +1,4 @@
-import { expect, test, vi, afterEach, describe } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelService";
 import { logger } from "server/utils/logger";
 

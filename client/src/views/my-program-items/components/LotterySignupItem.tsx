@@ -1,17 +1,15 @@
-import styled from "styled-components";
+import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { ReactElement, useState } from "react";
+import styled from "styled-components";
+import { AppRoute } from "client/app/AppRoutes";
+import { PopularityInfo } from "client/components/PopularityInfo";
+import { TertiaryButton } from "client/components/TertiaryButton";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   canSignToProgramItems,
   getIsInGroup,
 } from "client/views/group/groupUtils";
-import {
-  DeleteLotterySignupErrorMessage,
-  submitDeleteLotterySignup,
-} from "client/views/my-program-items/myProgramItemsThunks";
 import {
   MyProgramButtonContainer,
   MyProgramCancelSignupFormContainer,
@@ -19,9 +17,11 @@ import {
   MyProgramGameTitle,
   MyProgramListItem,
 } from "client/views/my-program-items/components/shared";
-import { TertiaryButton } from "client/components/TertiaryButton";
-import { AppRoute } from "client/app/AppRoutes";
-import { PopularityInfo } from "client/components/PopularityInfo";
+import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  DeleteLotterySignupErrorMessage,
+  submitDeleteLotterySignup,
+} from "client/views/my-program-items/myProgramItemsThunks";
 import { CancelSignupForm } from "client/views/program-item/signup/components/CancelSignupForm";
 
 interface Props {

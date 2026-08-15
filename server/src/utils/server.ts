@@ -1,19 +1,18 @@
+import { once } from "node:events";
 import http, { Server, ServerResponse } from "node:http";
 import path from "node:path";
-import { once } from "node:events";
-import express, { Request, Response, NextFunction } from "express";
-import { setupExpressErrorHandler, flush } from "@sentry/node";
-import helmet from "helmet";
+import { flush, setupExpressErrorHandler } from "@sentry/node";
+import express, { NextFunction, Request, Response } from "express";
 import expressStaticGzip from "express-static-gzip";
+import helmet from "helmet";
 import { config } from "shared/config";
-import { logger } from "server/utils/logger";
-import { allowCORS } from "server/middleware/cors";
-import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
 import { apiRoutes } from "server/api/apiRoutes";
-import { db } from "server/db/mongodb";
-import { stopCronJobs } from "server/utils/cron";
-import { wwwRedirect } from "server/middleware/wwwRedirect";
 import { sentryRoutes } from "server/api/sentryRoutes";
+import { db } from "server/db/mongodb";
+import { allowCORS } from "server/middleware/cors";
+import { wwwRedirect } from "server/middleware/wwwRedirect";
+import { stopCronJobs } from "server/utils/cron";
+import { logger } from "server/utils/logger";
 
 interface StartServerParams {
   dbConnString: string;

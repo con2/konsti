@@ -1,22 +1,22 @@
-import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
+import { ThunkAction } from "redux-thunk";
+import {
+  EventSignupStrategy,
+  LoginProvider,
+} from "shared/config/eventConfigTypes";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { EventLogItem } from "shared/types/models/eventLog";
+import { GroupMember } from "shared/types/models/groups";
 import {
   ProgramItem,
   ProgramType,
   UserSignup,
 } from "shared/types/models/programItem";
-import { GroupMember } from "shared/types/models/groups";
-import { store, combinedReducer } from "client/utils/store";
-import { UserProgramItems, UserGroup } from "shared/types/models/user";
 import { SignupQuestion } from "shared/types/models/settings";
-import {
-  LoginProvider,
-  EventSignupStrategy,
-} from "shared/config/eventConfigTypes";
 import { SignupMessage } from "shared/types/models/signupMessage";
-import { EventLogItem } from "shared/types/models/eventLog";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { UserGroup, UserProgramItems } from "shared/types/models/user";
 import { BackendError } from "client/types/errorTypes";
+import { combinedReducer, store } from "client/utils/store";
 
 export interface AdminState {
   hiddenProgramItemIds: readonly string[];

@@ -1,11 +1,9 @@
-import { ChangeEvent, ReactElement, useEffect, useState } from "react";
-import styled from "styled-components";
-import { first, capitalize } from "remeda";
 import dayjs from "dayjs";
+import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { testTimes } from "client/test/test-components/testComponentUtils";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
+import { capitalize, first } from "remeda";
+import styled from "styled-components";
+import { config } from "shared/config";
 import {
   getDate,
   getShortDate,
@@ -13,8 +11,10 @@ import {
   getTime,
 } from "shared/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
-import { config } from "shared/config";
+import { testTimes } from "client/test/test-components/testComponentUtils";
+import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 
 export const TestTime = (): ReactElement => {
   const { t, i18n } = useTranslation();

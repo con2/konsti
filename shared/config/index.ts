@@ -1,8 +1,8 @@
 import { ClientConfig, clientConfig } from "shared/config/clientConfig";
-import { ServerConfig, serverConfig } from "shared/config/serverConfig";
-import { SentryConfig, sentryConfig } from "shared/config/sentryConfig";
 import { eventConfig } from "shared/config/eventConfig";
 import { EventConfig } from "shared/config/eventConfigTypes";
+import { SentryConfig, sentryConfig } from "shared/config/sentryConfig";
+import { ServerConfig, serverConfig } from "shared/config/serverConfig";
 
 export const config = {
   client: (): ClientConfig => clientConfig,

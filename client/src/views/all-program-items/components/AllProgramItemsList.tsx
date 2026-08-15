@@ -1,4 +1,9 @@
 import {
+  VirtualItem,
+  defaultRangeExtractor,
+  useWindowVirtualizer,
+} from "@tanstack/react-virtual";
+import {
   ReactElement,
   useEffect,
   useLayoutEffect,
@@ -6,35 +11,30 @@ import {
   useRef,
   useState,
 } from "react";
-import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { sortBy, groupBy } from "remeda";
+import { Link } from "react-router";
+import { groupBy, sortBy } from "remeda";
 import styled from "styled-components";
-import {
-  defaultRangeExtractor,
-  useWindowVirtualizer,
-  VirtualItem,
-} from "@tanstack/react-virtual";
-import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
-import { useAppSelector } from "client/utils/hooks";
+import { config } from "shared/config";
 import {
   ProgramItem,
   ProgramItemSignupStrategy,
 } from "shared/types/models/programItem";
+import { SignupQuestion } from "shared/types/models/settings";
+import { RaisedCard } from "client/components/RaisedCard";
+import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
+import { useAppSelector } from "client/utils/hooks";
+import { registerScrollToTopOverride } from "client/utils/scrollToTop";
+import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
 import { getActiveStickyHeaderIndex } from "client/views/all-program-items/programListUtils";
-import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
+import { selectGroupMembers } from "client/views/group/groupSlice";
+import { getIsInGroup } from "client/views/group/groupUtils";
 import {
   selectDirectSignups,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { RaisedCard } from "client/components/RaisedCard";
-import { getIsInGroup } from "client/views/group/groupUtils";
-import { SignupQuestion } from "shared/types/models/settings";
-import { selectGroupMembers } from "client/views/group/groupSlice";
-import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
-import { config } from "shared/config";
-import { registerScrollToTopOverride } from "client/utils/scrollToTop";
+import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 
 interface Props {
   programItems: readonly ProgramItem[];

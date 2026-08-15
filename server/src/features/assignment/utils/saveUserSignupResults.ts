@@ -1,37 +1,37 @@
 import dayjs from "dayjs";
 import { unique } from "remeda";
-import { logger } from "server/utils/logger";
-import {
-  getGlobalNotificationQueueService,
-  NotificationQueueService,
-  NotificationTask,
-  NotificationTaskType,
-} from "server/utils/notificationQueue";
+import { MongoDbError } from "shared/types/api/errors";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
+import { Settings } from "shared/types/models/settings";
+import { User } from "shared/types/models/user";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
+import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
+import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import {
-  delDirectSignups,
   delAssignmentDirectSignupsByStartTime,
+  delDirectSignups,
   findDirectSignupsByStartTime,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
-import { Result, makeSuccessResult } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
+import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
-import { User } from "shared/types/models/user";
-import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
-import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
-import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
-import { ProgramItem } from "shared/types/models/programItem";
-import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { Settings } from "shared/types/models/settings";
+import { logger } from "server/utils/logger";
+import {
+  NotificationQueueService,
+  NotificationTask,
+  NotificationTaskType,
+  getGlobalNotificationQueueService,
+} from "server/utils/notificationQueue";
 
 interface SaveUserSignupResultsParams {
   assignmentTime: string;

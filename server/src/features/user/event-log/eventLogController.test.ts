@@ -1,22 +1,22 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, describe } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
-import mongoose from "mongoose";
 import dayjs from "dayjs";
-import { startServer, closeServer } from "server/utils/server";
+import mongoose from "mongoose";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/types/models/user";
-import { mockUser } from "server/test/mock-data/mockUser";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResult,
 } from "shared/types/api/eventLog";
-import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { UserGroup } from "shared/types/models/user";
+import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import { mockUser } from "server/test/mock-data/mockUser";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

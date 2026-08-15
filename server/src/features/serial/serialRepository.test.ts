@@ -1,6 +1,6 @@
-import { expect, test, vi, afterEach, beforeEach } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { db } from "server/db/mongodb";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";

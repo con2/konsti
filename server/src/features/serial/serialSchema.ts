@@ -1,3 +1,6 @@
+// Registers the global mongoose plugins, which are applied when a model is
+// compiled below, so it has to stay above the other imports
+import "server/db/mongoosePlugins";
 import mongoose from "mongoose";
 import { z } from "zod";
 

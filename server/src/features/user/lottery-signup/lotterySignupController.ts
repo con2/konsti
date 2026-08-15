@@ -3,11 +3,11 @@ import {
   DeleteLotterySignupRequest,
   PostLotterySignupRequest,
 } from "shared/types/api/myProgramItems";
-import { getAuthUsername } from "server/middleware/requireAuth";
 import {
   removeLotterySignup,
   storeLotterySignup,
 } from "server/features/user/lottery-signup/lotterySignupService";
+import { getAuthUsername } from "server/middleware/requireAuth";
 
 export const postLotterySignup = async (
   req: Request<unknown, unknown, PostLotterySignupRequest>,

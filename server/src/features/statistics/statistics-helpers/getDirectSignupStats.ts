@@ -1,12 +1,12 @@
 import fs from "node:fs";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramItem } from "shared/types/models/programItem";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   printProgramItemSignups,
   printRpgDirectSignupFullTimes,
 } from "server/features/statistics/statistics-helpers/directSignupDataHelpers";
+import { logger } from "server/utils/logger";
 
 export const getDirectSignupStats = (event: string, year: number): void => {
   const directSignups = JSON.parse(

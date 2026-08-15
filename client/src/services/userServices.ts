@@ -1,5 +1,8 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import {
+  PostEventLogIsSeenRequest,
+  PostEventLogIsSeenResponse,
+} from "shared/types/api/eventLog";
 import {
   GetSignupMessagesResponse,
   GetUserBySerialRequest,
@@ -10,11 +13,8 @@ import {
   PostUserRequest,
   PostUserResponse,
 } from "shared/types/api/users";
+import { api } from "client/utils/api";
 import { KonstiRegistrationFormFields } from "client/views/registration/components/KonstiRegistrationForm";
-import {
-  PostEventLogIsSeenRequest,
-  PostEventLogIsSeenResponse,
-} from "shared/types/api/eventLog";
 
 export const postRegistration = async (
   registrationFormFields: KonstiRegistrationFormFields,

@@ -1,9 +1,9 @@
 import { Server } from "node:http";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
-import { expect, test, afterEach, beforeEach, describe } from "vitest";
-import { startServer, closeServer } from "server/utils/server";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 

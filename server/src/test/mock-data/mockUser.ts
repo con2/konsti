@@ -1,11 +1,11 @@
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { NewUser } from "server/types/userTypes";
 import { LotterySignup, UserGroup } from "shared/types/models/user";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { NewUser } from "server/types/userTypes";
 
 export const mockUser: NewUser = {
   kompassiId: "",

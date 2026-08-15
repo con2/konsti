@@ -1,6 +1,6 @@
-import { ReactElement, ChangeEvent } from "react";
-import { useTranslation } from "react-i18next";
 import { TFunction } from "i18next";
+import { ChangeEvent, ReactElement } from "react";
+import { useTranslation } from "react-i18next";
 import { setLocale } from "shared/utils/setLocale";
 import { Dropdown } from "client/components/Dropdown";
 

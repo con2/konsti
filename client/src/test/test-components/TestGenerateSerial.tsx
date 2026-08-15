@@ -1,10 +1,10 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 import { first } from "remeda";
+import styled from "styled-components";
+import { formatSerial } from "shared/utils/formatSerial";
 import { Button, ButtonStyle } from "client/components/Button";
 import { postAddSerials } from "client/test/test-data/testDataServices";
-import { formatSerial } from "shared/utils/formatSerial";
 
 // Dev helper for testing the registration flow: generates a valid
 // registration code without running the generate-serials script

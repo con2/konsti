@@ -1,6 +1,7 @@
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { GetSignupMessagesResponse } from "shared/types/api/users";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
+
 export const fetchSignupMessages =
   async (): Promise<GetSignupMessagesResponse> => {
     const findSettingsResult = await findOrCreateSettings();

@@ -1,26 +1,26 @@
 import { Server } from "node:http";
-import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
-import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { startServer, closeServer } from "server/utils/server";
+import request from "supertest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  PostAssignmentError,
   PostAssignmentRequest,
   PostAssignmentResponse,
-  PostAssignmentError,
 } from "shared/types/api/assignment";
 import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
+import { EmailSender } from "server/features/notifications/email";
 import {
   acquireAssignmentLock,
   findOrCreateSettings,
 } from "server/features/settings/settingsRepository";
+import { getJWT } from "server/utils/jwt";
 import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
-import { EmailSender } from "server/features/notifications/email";
+import { closeServer, startServer } from "server/utils/server";
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),

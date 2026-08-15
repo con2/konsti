@@ -1,11 +1,6 @@
+import { faker } from "@faker-js/faker";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import { faker } from "@faker-js/faker";
-import { db } from "server/db/mongodb";
-import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 import {
   testProgramItem,
@@ -16,6 +11,11 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
+import { db } from "server/db/mongodb";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));

@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
-import { NavLink } from "react-router";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router";
 import styled from "styled-components";
+import { AppRoute } from "client/app/AppRoutes";
 import { ButtonStyle } from "client/components/Button";
 import { ProgramItemButton } from "client/views/program-item/components/ProgramItemButton";
-import { AppRoute } from "client/app/AppRoutes";
 
 interface Props {
   programItemId: string;

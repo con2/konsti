@@ -27,6 +27,7 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 - Comments document how the code works now — don't describe how it used to work or what changed (that's what git history is for).
 - Don't reference other files or components by name in code comments — renames and restructuring make them stale. Describe the role instead: "exported so callers can check...", not "exported so ProgramItemEntry can check...".
 - Never use the em dash character (—) in code, UI text, comments, or docs. Use a regular hyphen (-) or restructure the sentence. CLAUDE.md files are the exception — they keep their established em dash style.
+- **Import order is automated** by `@trivago/prettier-plugin-sort-imports` (root `prettier.config.ts`): builtins, npm packages, `shared/*`, workspace aliases (`client/*`, `server/*`, `playwright/*`, `scripts/*`, `assets/*`), then relative. Don't hand-order imports and don't add an ESLint ordering rule alongside it. Side-effect imports (`import "…"` with no bindings) are pinned where they're written, because some of them must run before their dependents — keep a comment saying why when the position matters.
 
 ## Terminology
 

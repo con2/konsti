@@ -1,15 +1,15 @@
-import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   DeleteDirectSignupRequest,
   DeleteDirectSignupResponse,
+  DeleteLotterySignupRequest,
+  DeleteLotterySignupResponse,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
   PostLotterySignupRequest,
   PostLotterySignupResponse,
-  DeleteLotterySignupRequest,
-  DeleteLotterySignupResponse,
 } from "shared/types/api/myProgramItems";
+import { api } from "client/utils/api";
 
 export const postLotterySignup = async (
   requestData: PostLotterySignupRequest,

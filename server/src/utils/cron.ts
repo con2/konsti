@@ -1,9 +1,9 @@
 import { Cron } from "croner";
 import dayjs from "dayjs";
-import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
+import { MongoDbError } from "shared/types/api/errors";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
   acquireAssignmentLock,
@@ -13,7 +13,7 @@ import {
   setAssignmentLastRun,
   setProgramUpdateLastRun,
 } from "server/features/settings/settingsRepository";
-import { MongoDbError } from "shared/types/api/errors";
+import { logger } from "server/utils/logger";
 
 const cronJobs: Cron[] = [];
 

@@ -1,14 +1,14 @@
 import { Dayjs } from "dayjs";
 import { TFunction } from "i18next";
+import { config } from "shared/config";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import {
   getDateAndTime,
   getTime,
   getWeekdayAndTime,
 } from "shared/utils/timeFormatter";
-import { config } from "shared/config";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
 
 export const isAlreadyLotterySigned = (
   programItemToCheck: ProgramItem,

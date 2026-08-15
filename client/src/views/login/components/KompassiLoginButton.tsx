@@ -2,10 +2,10 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router";
 import { z } from "zod";
+import { Button, ButtonStyle } from "client/components/Button";
+import { ErrorMessage } from "client/components/ErrorMessage";
 import { postKompassiLoginRedirect } from "client/services/loginServices";
 import { LoginErrorMessage } from "client/views/login/loginThunks";
-import { ErrorMessage } from "client/components/ErrorMessage";
-import { Button, ButtonStyle } from "client/components/Button";
 
 export const KompassiLoginButton = (): ReactElement => {
   const { t } = useTranslation();

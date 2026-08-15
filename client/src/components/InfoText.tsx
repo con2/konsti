@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { ReactElement, ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactElement, ReactNode } from "react";
+import styled from "styled-components";
 
 export enum InfoTextVariant {
   INFO = "infoColor",

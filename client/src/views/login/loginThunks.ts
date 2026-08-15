@@ -1,32 +1,32 @@
 import { isDeepEqual } from "remeda";
+import { PostEventLogIsSeenRequest } from "shared/types/api/eventLog";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   postKompassiLoginCallback,
-  postVerifyKompassiLogin,
   postLogin,
   postSessionRecovery,
   postUpdateUserEmailAddress,
+  postVerifyKompassiLogin,
 } from "client/services/loginServices";
-import { saveSession } from "client/utils/localStorage";
+import { postEventLogItemIsSeen } from "client/services/userServices";
+import { BackendErrorType } from "client/types/errorTypes";
 import { AppThunk } from "client/types/reduxTypes";
+import {
+  loadGroupMembers,
+  loadProgramItems,
+  loadUser,
+} from "client/utils/loadData";
+import { saveSession } from "client/utils/localStorage";
+import { addError, removeError } from "client/views/admin/adminSlice";
+import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
+import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
 import {
   submitFinalizeLoginAsync,
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
   submitVerifyKompassiLoginAsync,
 } from "client/views/login/loginSlice";
-import {
-  loadGroupMembers,
-  loadProgramItems,
-  loadUser,
-} from "client/utils/loadData";
-import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { submitLogout } from "client/views/logout/logoutActions";
-import { addError, removeError } from "client/views/admin/adminSlice";
-import { BackendErrorType } from "client/types/errorTypes";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { LoginFormFields } from "client/views/login/components/LocalLoginForm";
-import { postEventLogItemIsSeen } from "client/services/userServices";
-import { PostEventLogIsSeenRequest } from "shared/types/api/eventLog";
 
 export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",

@@ -1,22 +1,28 @@
-import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { db } from "server/db/mongodb";
-import {
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
-  NotificationTaskType,
-} from "server/utils/notificationQueue";
-import { findUsers, saveUser } from "server/features/user/userRepository";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { UserAssignmentResult } from "shared/types/models/result";
+import { db } from "server/db/mongodb";
+import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
+import {
+  findDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import { EmailSender } from "server/features/notifications/email";
+import { EmailMessage } from "server/features/notifications/senderCommon";
 import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUsers, saveUser } from "server/features/user/userRepository";
 import {
   mockLotterySignups,
   mockPostDirectSignupRequest,
@@ -25,18 +31,12 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
-import {
-  findDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
-import { UserAssignmentResult } from "shared/types/models/result";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { EventLogAction } from "shared/types/models/eventLog";
-import { EmailSender } from "server/features/notifications/email";
-import { config } from "shared/config";
-import { EmailMessage } from "server/features/notifications/senderCommon";
+import {
+  NotificationTaskType,
+  createNotificationQueueService,
+  getGlobalNotificationQueueService,
+} from "server/utils/notificationQueue";
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),

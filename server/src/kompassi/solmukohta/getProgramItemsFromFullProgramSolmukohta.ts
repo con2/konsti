@@ -1,15 +1,15 @@
 import { first } from "remeda";
+import { config } from "shared/config";
 import {
   checkUnknownKeys,
   parseProgramItem,
 } from "server/kompassi/getProgramItemsFromKompassi";
-import { logger } from "server/utils/logger";
-import { config } from "shared/config";
 import {
-  KompassiProgramItemSchema,
-  KompassiProgramItem,
   KompassiKonstiProgramType,
+  KompassiProgramItem,
+  KompassiProgramItemSchema,
 } from "server/kompassi/kompassiProgramItem";
+import { logger } from "server/utils/logger";
 
 export const getProgramItemsFromFullProgramSolmukohta = (
   programItems: unknown[],

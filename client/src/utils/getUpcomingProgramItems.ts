@@ -1,13 +1,13 @@
 import dayjs, { Dayjs } from "dayjs";
+import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
+import { getTimeNow } from "client/utils/getTimeNow";
+import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,
 } from "client/views/my-program-items/myProgramItemsSlice";
-import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
-import { config } from "shared/config";
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],

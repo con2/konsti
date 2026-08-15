@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { loginWithJwt } from "server/features/user/session-restore/sessionRestoreService";
 import { PostSessionRecoveryRequest } from "shared/types/api/login";
+import { loginWithJwt } from "server/features/user/session-restore/sessionRestoreService";
 
 export const postSessionRestore = async (
   req: Request<unknown, unknown, PostSessionRecoveryRequest>,

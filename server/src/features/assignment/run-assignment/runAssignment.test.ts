@@ -1,58 +1,58 @@
-import { vi, expect, test, afterEach, beforeEach, describe } from "vitest";
-import mongoose from "mongoose";
-import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
-import { db } from "server/db/mongodb";
-import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
+import dayjs from "dayjs";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import {
   AssignmentAlgorithm,
   RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import {
-  findDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
-import { findResults } from "server/features/results/resultsRepository";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import {
-  mockPostDirectSignupRequest,
-  mockPostDirectSignupRequest2,
-  mockLotterySignups,
-  mockUser,
-  mockUser2,
-} from "server/test/mock-data/mockUser";
-import { ProgramType } from "shared/types/models/programItem";
-import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { makeErrorResult } from "shared/utils/result";
 import { MongoDbError, QueueError } from "shared/types/api/errors";
+import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramType } from "shared/types/models/programItem";
+import { makeErrorResult } from "shared/utils/result";
+import { db } from "server/db/mongodb";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import {
+  findDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
+import { EmailSender } from "server/features/notifications/email";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
+import { findResults } from "server/features/results/resultsRepository";
+import { saveSettings } from "server/features/settings/settingsRepository";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
-import { EventLogAction } from "shared/types/models/eventLog";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import {
+  mockLotterySignups,
+  mockPostDirectSignupRequest,
+  mockPostDirectSignupRequest2,
+  mockUser,
+  mockUser2,
+} from "server/test/mock-data/mockUser";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { AssignmentResultStatus } from "server/types/resultTypes";
+import {
+  NotificationTaskType,
   createNotificationQueueService,
   getGlobalNotificationQueueService,
-  NotificationTaskType,
 } from "server/utils/notificationQueue";
-import { EmailSender } from "server/features/notifications/email";
-import { AssignmentResultStatus } from "server/types/resultTypes";
-import { saveSettings } from "server/features/settings/settingsRepository";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;

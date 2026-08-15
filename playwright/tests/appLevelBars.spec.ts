@@ -1,5 +1,11 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
+import { config } from "shared/config";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
+import { BasePage } from "playwright/pages/BasePage";
+import { ErrorBar } from "playwright/pages/ErrorBar";
+import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   clearDb,
@@ -9,12 +15,6 @@ import {
   postTestSettings,
   reportServerBuildTime,
 } from "playwright/playwrightUtils";
-import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
-import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
-import { BasePage } from "playwright/pages/BasePage";
-import { ErrorBar } from "playwright/pages/ErrorBar";
-import { ProgramListPage } from "playwright/pages/ProgramListPage";
 
 // Layout of the bars the app stacks below the header. Each bar's own behaviour
 // is covered where that feature lives; these cover how they sit together

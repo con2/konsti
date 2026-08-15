@@ -1,8 +1,8 @@
+import { config } from "shared/config";
+import { ProgramType } from "shared/types/models/programItem";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config";
-import { ProgramType } from "shared/types/models/programItem";
 
 export const addSignupQuestions = async (): Promise<void> => {
   const {

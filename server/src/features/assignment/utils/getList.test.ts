@@ -1,13 +1,11 @@
-import { afterEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
+import { afterEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { getList } from "server/features/assignment/utils/getList";
-import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
-import { config } from "shared/config";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { Tag } from "shared/types/models/programItem";
 import {
   assignmentTime,
@@ -15,6 +13,8 @@ import {
   getUsers,
   groupCreatorGroupCode,
 } from "server/features/assignment/utils/assignmentTestUtils";
+import { getList } from "server/features/assignment/utils/getList";
+import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 
 afterEach(() => {
   vi.resetAllMocks();

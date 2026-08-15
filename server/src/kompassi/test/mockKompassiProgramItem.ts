@@ -3,15 +3,15 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import {
-  KompassiProgramItem,
+  KompassiAgeGroup,
+  KompassiBoolean,
   KompassiGamestyle,
-  KompassiLanguage,
+  KompassiGrouping,
   KompassiInclusivity,
   KompassiKonstiProgramType,
-  KompassiGrouping,
-  KompassiAgeGroup,
+  KompassiLanguage,
+  KompassiProgramItem,
   KompassiRegistration,
-  KompassiBoolean,
   KompassiYesNo,
 } from "server/kompassi/kompassiProgramItem";
 

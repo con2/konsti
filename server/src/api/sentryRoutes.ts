@@ -1,8 +1,8 @@
 import express from "express";
 import { z } from "zod";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 import { validateBody } from "server/middleware/validateRequest";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const sentryRoutes = express.Router();
 

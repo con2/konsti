@@ -1,14 +1,14 @@
 import { faker } from "@faker-js/faker";
 import { groupBy } from "remeda";
-import { logger } from "server/utils/logger";
-import { findUsers } from "server/features/user/userRepository";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { shuffleArray } from "server/utils/shuffleArray";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
+import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { logger } from "server/utils/logger";
+import { shuffleArray } from "server/utils/shuffleArray";
 
 export const createDirectSignups = async (): Promise<void> => {
   logger.info("Generate direct signup data");

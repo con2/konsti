@@ -1,6 +1,6 @@
-import { test, expect } from "@playwright/test";
-import { clearDb, login, populateDb } from "playwright/playwrightUtils";
+import { expect, test } from "@playwright/test";
 import { AboutPage } from "playwright/pages/AboutPage";
+import { clearDb, login, populateDb } from "playwright/playwrightUtils";
 
 test("About page views content logged", async ({ page, request }) => {
   await clearDb(request);

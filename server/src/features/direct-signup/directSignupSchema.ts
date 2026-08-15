@@ -1,6 +1,9 @@
+// Registers the global mongoose plugins, which are applied when a model is
+// compiled below, so it has to stay above the other imports
+import "server/db/mongoosePlugins";
+import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
-import dayjs from "dayjs";
 
 const UserSignupsSchema = z.object({
   username: z.string(),

@@ -1,7 +1,7 @@
 import {
   AssignmentAlgorithm,
-  EventName,
   EventConfig,
+  EventName,
   EventSignupStrategy,
   LoginProvider,
   RemoveLotterySignupsStrategy,

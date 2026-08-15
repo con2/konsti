@@ -16,7 +16,6 @@ const config: KnipConfig = {
   ignore: [
     ".stylelintrc.ts",
     "playwright/playwright.config.ts",
-    "client/src/markdown/prettier.config.ts",
     "server/src/test/scripts/removeInvalidProgramItems.ts",
     "server/src/types/declarations/eventassigner-js.ts",
     ".claude/hooks/*.ts",

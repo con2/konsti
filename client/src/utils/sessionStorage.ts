@@ -1,12 +1,12 @@
 import { z } from "zod";
-import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
-import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
-import { StringToJsonSchema } from "client/utils/zodUtils";
 import {
   appUpdateReloadedBuildTimeKey,
   browserStorageEventPrefix,
   kompassiLoginStateKey,
 } from "shared/constants/browserStorage";
+import { AgeGroup, Language, Tag } from "shared/types/models/programItem";
+import { StringToJsonSchema } from "client/utils/zodUtils";
+import { StartingTimeOption } from "client/views/all-program-items/programListUtils";
 
 // A const object instead of an enum because enum members can't hold the
 // computed event-specific prefix

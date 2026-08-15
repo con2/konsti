@@ -1,17 +1,17 @@
 import dayjs from "dayjs";
-import { logger } from "server/utils/logger";
-import { findUsers } from "server/features/user/userRepository";
+import { config } from "shared/config";
+import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
+import { MongoDbError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import {
   DeleteLotterySignupsParams,
   delLotterySignups,
 } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { Result, makeSuccessResult } from "shared/utils/result";
-import { MongoDbError } from "shared/types/api/errors";
-import { ProgramItem } from "shared/types/models/programItem";
-import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
-import { config } from "shared/config";
-import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
+import { findUsers } from "server/features/user/userRepository";
+import { logger } from "server/utils/logger";
 
 export const removeOverlapLotterySignups = async (
   results: readonly UserAssignmentResult[],

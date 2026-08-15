@@ -1,10 +1,10 @@
-import { validateLogin } from "server/utils/bcrypt";
 import { PostLoginResponse } from "shared/types/api/login";
-import { getJWT } from "server/utils/jwt";
+import { UserGroup } from "shared/types/models/user";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
+import { validateLogin } from "server/utils/bcrypt";
+import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
-import { UserGroup } from "shared/types/models/user";
 
 export const login = async (
   username: string,

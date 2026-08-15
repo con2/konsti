@@ -1,18 +1,18 @@
-import { expect, test, afterEach, beforeEach } from "vitest";
-import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { db } from "server/db/mongodb";
+import mongoose from "mongoose";
+import { afterEach, beforeEach, expect, test } from "vitest";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   AssignmentResultGroup,
   UserAssignmentResult,
 } from "shared/types/models/result";
+import { db } from "server/db/mongodb";
 import {
   findResults,
   saveResult,
 } from "server/features/results/resultsRepository";
-import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
-import { testProgramItem } from "shared/tests/testProgramItem";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {

@@ -1,15 +1,15 @@
-import { logger } from "server/utils/logger";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
+import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
+import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import {
   createAdminUser,
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
 import { cleanupDatabase } from "server/utils/cleanupDatabase";
-import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
+import { logger } from "server/utils/logger";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";

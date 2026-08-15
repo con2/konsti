@@ -1,7 +1,5 @@
-import { z } from "zod";
 import { sortBy } from "remeda";
-import { eventNameToKompassiEventName } from "server/kompassi/getProgramItemsFromKompassi";
-import { logger } from "server/utils/logger";
+import { z } from "zod";
 import { config } from "shared/config";
 import { KompassiError } from "shared/types/api/errors";
 import {
@@ -9,6 +7,8 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { eventNameToKompassiEventName } from "server/kompassi/getProgramItemsFromKompassi";
+import { logger } from "server/utils/logger";
 
 // Minimal schema for the raw full-program response: the full program item
 // schema uses catch() defaults which would fabricate annotation values on

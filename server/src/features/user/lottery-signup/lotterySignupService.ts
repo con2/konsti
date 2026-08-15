@@ -1,24 +1,24 @@
 import dayjs from "dayjs";
 import {
-  PostLotterySignupResponse,
   DeleteLotterySignupResponse,
+  PostLotterySignupResponse,
 } from "shared/types/api/myProgramItems";
-import {
-  delLotterySignups,
-  saveLotterySignup,
-} from "server/features/user/lottery-signup/lotterySignupRepository";
-import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { hasSignupEnded } from "server/features/user/userUtils";
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import { SignupType, State } from "shared/types/models/programItem";
+import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import {
   getLotterySignupEndTime,
   getLotterySignupStartTime,
 } from "shared/utils/signupTimes";
-import { logger } from "server/utils/logger";
-import { findUser } from "server/features/user/userRepository";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { SignupType, State } from "shared/types/models/programItem";
-import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
+import {
+  delLotterySignups,
+  saveLotterySignup,
+} from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser } from "server/features/user/userRepository";
+import { hasSignupEnded } from "server/features/user/userUtils";
+import { logger } from "server/utils/logger";
 
 const validPriorities = new Set([1, 2, 3]);
 

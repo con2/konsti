@@ -1,14 +1,14 @@
 import { ReactElement, useState } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
-import { ProgramItemDetails } from "client/views/program-item/body/components/ProgramItemDetails";
 import { UserGroup } from "shared/types/models/user";
-import { AdminActionCard } from "client/views/program-item/body/components/AdminActionCard";
-import { useAppSelector } from "client/utils/hooks";
 import { ExpandButton } from "client/components/ExpandButton";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";
+import { useAppSelector } from "client/utils/hooks";
 import { programItemCardEndMargin } from "client/views/my-program-items/components/shared";
+import { AdminActionCard } from "client/views/program-item/body/components/AdminActionCard";
+import { ProgramItemDetails } from "client/views/program-item/body/components/ProgramItemDetails";
 
 interface Props {
   programItem: ProgramItem;

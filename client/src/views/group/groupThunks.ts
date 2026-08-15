@@ -1,10 +1,15 @@
 import { isDeepEqual } from "remeda";
 import {
-  postCreateGroup,
+  PostCloseGroupRequest,
+  PostJoinGroupRequest,
+} from "shared/types/api/groups";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import {
   getGroup,
+  postCloseGroup,
+  postCreateGroup,
   postJoinGroup,
   postLeaveGroup,
-  postCloseGroup,
 } from "client/services/groupServices";
 import { AppThunk } from "client/types/reduxTypes";
 import {
@@ -12,11 +17,6 @@ import {
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
 } from "client/views/group/groupSlice";
-import {
-  PostCloseGroupRequest,
-  PostJoinGroupRequest,
-} from "shared/types/api/groups";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunks";
 
 export enum PostCreateGroupErrorMessage {

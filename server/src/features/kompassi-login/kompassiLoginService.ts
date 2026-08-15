@@ -1,3 +1,28 @@
+import { AuthEndpoint } from "shared/constants/apiEndpoints";
+import { EMAIL_REGEX } from "shared/constants/validation";
+import { KompassiLoginError, MongoDbError } from "shared/types/api/errors";
+import {
+  PostKompassiLoginResponse,
+  PostUpdateUserEmailAddressResponse,
+  PostVerifyKompassiLoginResponse,
+} from "shared/types/api/login";
+import { UserGroup } from "shared/types/models/user";
+import {
+  Result,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/result";
+import {
+  KompassiTokens,
+  KompassiTokensSchema,
+  KompassiUserinfo,
+  KompassiUserinfoSchema,
+} from "server/features/kompassi-login/KompassiLoginTypes";
+import {
+  addKompassiIdSuffix,
+  deriveKonstiUsername,
+  redactTokenValues,
+} from "server/features/kompassi-login/kompassiLoginUtils";
 import {
   findUser,
   findUserByKompassiId,
@@ -8,31 +33,6 @@ import {
 import { createSerial } from "server/features/user/userUtils";
 import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
-import { AuthEndpoint } from "shared/constants/apiEndpoints";
-import { EMAIL_REGEX } from "shared/constants/validation";
-import { KompassiLoginError, MongoDbError } from "shared/types/api/errors";
-import {
-  PostKompassiLoginResponse,
-  PostVerifyKompassiLoginResponse,
-  PostUpdateUserEmailAddressResponse,
-} from "shared/types/api/login";
-import { UserGroup } from "shared/types/models/user";
-import {
-  Result,
-  makeErrorResult,
-  makeSuccessResult,
-} from "shared/utils/result";
-import {
-  KompassiUserinfo,
-  KompassiUserinfoSchema,
-  KompassiTokens,
-  KompassiTokensSchema,
-} from "server/features/kompassi-login/KompassiLoginTypes";
-import {
-  addKompassiIdSuffix,
-  deriveKonstiUsername,
-  redactTokenValues,
-} from "server/features/kompassi-login/kompassiLoginUtils";
 
 export const getBaseUrl = (): string => {
   if (process.env.SETTINGS === "ci") {

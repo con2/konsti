@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { getAuthUsername } from "server/middleware/requireAuth";
 import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
@@ -8,6 +7,7 @@ import {
   removeDirectSignup,
   storeDirectSignup,
 } from "server/features/direct-signup/directSignupService";
+import { getAuthUsername } from "server/middleware/requireAuth";
 
 export const postDirectSignup = async (
   req: Request<unknown, unknown, PostDirectSignupRequest>,

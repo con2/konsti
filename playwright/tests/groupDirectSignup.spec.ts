@@ -1,18 +1,18 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
-import {
-  postSettings,
-  postTestSettings,
-  login,
-  addProgramItems,
-  populateDb,
-} from "playwright/playwrightUtils";
+import { config } from "shared/config";
+import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
 import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { config } from "shared/config";
-import { Tag } from "shared/types/models/programItem";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  addProgramItems,
+  login,
+  populateDb,
+  postSettings,
+  postTestSettings,
+} from "playwright/playwrightUtils";
 
 test("Group member signing up to a 'signup always open' program item stays in the group", async ({
   page,
