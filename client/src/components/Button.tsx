@@ -50,7 +50,7 @@ const disabledButton = css`
 const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.18) 0 3px 5px;
+  box-shadow: ${(props) => props.theme.shadowButton};
   font-size: ${(props) => props.theme.fontSizeSmall};
   white-space: nowrap;
 

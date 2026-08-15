@@ -48,7 +48,7 @@ const StyledButton = styled(Button)`
 `;
 
 const SerialCode = styled.div`
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizeLarge};
   color: ${(props) => props.theme.textError};
   width: fit-content;
   pointer-events: auto;

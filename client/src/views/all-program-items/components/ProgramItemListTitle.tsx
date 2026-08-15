@@ -27,16 +27,14 @@ const ProgramItemListTitleContainer = styled.div`
   z-index: 2;
   margin: 20px 0 20px 0;
   padding: 8px;
-  background: #fafafa;
-  color: rgb(61, 61, 61);
+  background: ${(props) => props.theme.backgroundCard};
+  color: ${(props) => props.theme.textLighter};
   border-radius: 4px;
   position: sticky;
   top: 0;
   box-shadow: ${(props) => props.theme.shadowHigher};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: -${MOBILE_MARGIN}px;
-    margin-right: -${MOBILE_MARGIN}px;
     border-radius: 0;
   }
 

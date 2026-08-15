@@ -55,7 +55,7 @@ const StyledCard = styled(RaisedCard)`
   margin-top: 12px;
   margin-bottom: 12px;
 
-  @media (min-width: ${(props) => props.theme.breakpointDesktop}) {
+  @media (min-width: ${(props) => props.theme.breakpointDesktopMin}) {
     width: 400px;
     padding-left: 24px;
     padding-right: 24px;

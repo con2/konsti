@@ -1,5 +1,7 @@
-export const addOpacity = (rgb: string, opacity: string): string => {
+import { Opacity, RgbColor, RgbaColor } from "client/types/styleTypes";
+
+export const addOpacity = (rgb: RgbColor, opacity: Opacity): RgbaColor => {
   const formattedRgb = rgb.replace("rgb", "").replace("(", "").replace(")", "");
-  const rgba = `rgba(${formattedRgb}, ${opacity})`;
+  const rgba: RgbaColor = `rgba(${formattedRgb}, ${opacity})`;
   return rgba;
 };

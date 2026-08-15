@@ -88,7 +88,7 @@ const ProgramItemListShortDescription = styled.p`
 
 const Container = styled.div`
   display: grid;
-  background: #fafafa;
+  background: ${(props) => props.theme.backgroundCard};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 0;

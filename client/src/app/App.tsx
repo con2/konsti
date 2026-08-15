@@ -154,11 +154,6 @@ const TestValueContainer = styled.div`
 `;
 
 const AppContainer = styled.div`
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: ${MOBILE_MARGIN}px;
-    margin-right: ${MOBILE_MARGIN}px;
-  }
-
   @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
     margin-left: ${MOBILE_MARGIN}px;
     margin-right: ${MOBILE_MARGIN}px;

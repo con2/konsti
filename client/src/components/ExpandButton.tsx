@@ -39,7 +39,7 @@ export const ExpandButton = ({
 
 const ArrowIcon = styled(FontAwesomeIcon)`
   margin: 0 8px 4px 0;
-  font-size: 16px;
+  font-size: ${(props) => props.theme.iconSizeSmall};
 `;
 
 const ButtonContainer = styled.div`

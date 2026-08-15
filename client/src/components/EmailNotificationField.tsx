@@ -49,7 +49,7 @@ export const StyledEmailInput = styled(UncontrolledInput)`
   ${(props) =>
     props.disabled &&
     `
-      background-color: ${props.theme.backgroundDisabled || "#f5f5f5"};
+      background-color: ${props.theme.backgroundDisabled};
       cursor: not-allowed;
       opacity: 0.6;
     `};

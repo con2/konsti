@@ -382,7 +382,7 @@ const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+  @media (min-width: ${(props) => props.theme.breakpointPhoneMin}) {
     max-width: 40%;
   }
 `;
