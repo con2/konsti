@@ -1,5 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import {
+  PASSWORD_LENGTH_MAX,
+  PASSWORD_LENGTH_MIN,
+} from "shared/constants/validation";
 import { LoginPage } from "playwright/pages/LoginPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
 import { login, populateDb, postSettings } from "playwright/playwrightUtils";
@@ -36,8 +40,20 @@ test("Update email notification address and password from profile", async ({
   await page.reload();
   await expect(profilePage.emailInput).toHaveValue("test1@example.com");
 
-  // Change password
+  // Change password. The field starts masked and the eye icon toggles it
   await profilePage.newPasswordInput.fill("newpassword");
+  await expect(profilePage.newPasswordInput).toHaveAttribute(
+    "type",
+    "password",
+  );
+  await profilePage.showPasswordToggle.click();
+  await expect(profilePage.newPasswordInput).toHaveAttribute("type", "text");
+  await profilePage.hidePasswordToggle.click();
+  await expect(profilePage.newPasswordInput).toHaveAttribute(
+    "type",
+    "password",
+  );
+
   await profilePage.savePassword();
   await expect(profilePage.main).toContainText(
     "Password changed successfully.",
@@ -53,7 +69,7 @@ test("Update email notification address and password from profile", async ({
   await expect(loginPage.navigation.logoutLink).toBeVisible();
 });
 
-test("Show validation errors for email notification address", async ({
+test("Show validation errors for email notification address and password", async ({
   page,
   request,
 }) => {
@@ -78,6 +94,27 @@ test("Show validation errors for email notification address", async ({
 
   await profilePage.saveEmail();
   await expect(profilePage.main).toContainText("Invalid email format");
+
+  // A password below the minimum length is rejected before it reaches the
+  // server, so the success message must not appear
+  await profilePage.newPasswordInput.fill("a".repeat(PASSWORD_LENGTH_MIN - 1));
+  await profilePage.savePassword();
+  await expect(profilePage.main).toContainText(
+    `Too short, at least ${String(PASSWORD_LENGTH_MIN)} characters required`,
+  );
+  await expect(profilePage.main).not.toContainText(
+    "Password changed successfully.",
+  );
+
+  // Same for one above the maximum length
+  await profilePage.newPasswordInput.fill("a".repeat(PASSWORD_LENGTH_MAX + 1));
+  await profilePage.savePassword();
+  await expect(profilePage.main).toContainText(
+    `Too long, at most ${String(PASSWORD_LENGTH_MAX)} characters allowed`,
+  );
+  await expect(profilePage.main).not.toContainText(
+    "Password changed successfully.",
+  );
 });
 
 test("Decline email notifications from profile", async ({ page, request }) => {
