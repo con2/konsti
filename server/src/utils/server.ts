@@ -42,13 +42,20 @@ export const startServer = async ({
     ...config.server().allowedCorsOrigins,
   ];
 
+  // Only the deployed profiles sit behind a TLS ingress. Everywhere else the
+  // app is served over plain http, and upgrading subresource requests there
+  // breaks the page outright: WebKit applies the upgrade to loopback origins
+  // too (Chromium exempts them), so every chunk fails the TLS handshake and
+  // nothing renders
+  const servedOverTls =
+    process.env.SETTINGS === "production" || process.env.SETTINGS === "staging";
+
   app.use(
     helmet({
       contentSecurityPolicy: {
         directives: {
           "connect-src": cspConnectSrc,
-          // Don't upgrade http to https when running CI playwright tests
-          ...(process.env.SETTINGS === "ci" && {
+          ...(!servedOverTls && {
             upgradeInsecureRequests: null,
           }),
         },
