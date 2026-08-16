@@ -128,12 +128,12 @@ export default defineConfig(({ mode, command }) => {
     },
 
     plugins: [
-      // Must track the dev server rather than the build mode: left to itself
-      // the plugin turns development on whenever the mode is literally named
-      // "development", so `build:dev` emitted jsxDEV calls into a bundle that
-      // carries React's production jsx-dev-runtime, where jsxDEV is undefined,
-      // and every Markdown page threw on render
-      mdx({ development: command === "serve" }),
+      // Must follow the same signal Vite resolves isProduction from, not the
+      // mode name the plugin defaults to: development emits jsxDEV, which only
+      // exists in React's development jsx-dev-runtime. Keying on the mode made
+      // `build:dev` ship jsxDEV calls against the production runtime, where it
+      // is undefined, and every Markdown page threw on render
+      mdx({ development: process.env.NODE_ENV !== "production" }),
       svgr({
         include: "**/*.svg",
         svgrOptions: {

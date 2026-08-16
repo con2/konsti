@@ -46,6 +46,8 @@ export default defineConfig([
     "**/coverage/**",
     "**/front/**",
     "**/build/**",
+    // Linting this needs its relative imports switched to aliases, which Vite
+    // resolves differently for the config file itself - see the workspace notes
     "client/vite.config.ts",
   ]),
 

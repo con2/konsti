@@ -27,6 +27,7 @@ const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
 
 const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [dataLoaded, setDataLoaded] = useState<boolean>(false);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
   useEffect(() => {
@@ -48,6 +49,9 @@ const App = (): ReactElement => {
           fetchQueued = false;
           succeeded = await loadData();
           setLoading(false);
+          if (succeeded) {
+            setDataLoaded(true);
+          }
           // A successful load satisfies triggers that arrived while it ran;
           // a failed one reruns for them (e.g. its requests failed right
           // before connectivity returned). fetchQueued is set while loadData
@@ -97,19 +101,23 @@ const App = (): ReactElement => {
     };
   }, []);
 
-  // Only once the first data load is done and the browser reports spare time,
-  // so warming the split view chunks never competes with the requests that put
-  // content on screen. Re-runs when the role changes, because signing in as
-  // admin/helper makes chunks reachable that weren't before
+  // Warm the split view chunks once a data load has actually succeeded and the
+  // browser reports spare time. Gating on success rather than on `loading`
+  // matters twice over: a failed load flips `loading` too, so these requests
+  // would pile onto a connection that is already struggling, and a failed
+  // dynamic import is cached by the browser for the session - the later real
+  // navigation would then reject instantly and force a full page reload even
+  // though connectivity had recovered. Re-runs when the role changes, because
+  // signing in as admin/helper makes chunks reachable that weren't before
   useEffect(() => {
-    if (loading) {
+    if (!dataLoaded) {
       return;
     }
 
     return whenIdle(() => {
       prefetchLazyViews(userGroup);
     });
-  }, [loading, userGroup]);
+  }, [dataLoaded, userGroup]);
 
   getIconLibrary();
 

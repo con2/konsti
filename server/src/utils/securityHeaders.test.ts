@@ -10,8 +10,10 @@ import { closeServer, startServer } from "server/utils/server";
 // WebKit applies the upgrade to loopback origins too (Chromium exempts them),
 // so the whole bundle fails the TLS handshake and the page renders blank
 
-let server: Server;
+let server: Server | undefined;
 
+// Returns the header rather than defaulting a missing one to "", which would
+// let a CSP that disappeared entirely satisfy every negative assertion below
 const getCspFor = async (settings: string): Promise<string> => {
   vi.stubEnv("SETTINGS", settings);
   server = await startServer({
@@ -19,11 +21,18 @@ const getCspFor = async (settings: string): Promise<string> => {
     dbName: faker.string.alphanumeric(10),
   });
   const response = await request(server).get(ApiEndpoint.HEALTH);
-  return response.headers["content-security-policy"] ?? "";
+  expect(response.status).toEqual(200);
+
+  const csp = response.headers["content-security-policy"];
+  expect(csp).toBeDefined();
+  return csp;
 };
 
 afterEach(async () => {
-  await closeServer(server);
+  if (server) {
+    await closeServer(server);
+    server = undefined;
+  }
   vi.unstubAllEnvs();
 });
 
