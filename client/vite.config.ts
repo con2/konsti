@@ -15,6 +15,7 @@ import {
 import { resolvePortOffset } from "../scripts/portOffset";
 import { sentryConfig } from "../shared/config/sentryConfig";
 import { coverageCollector } from "./coverageCollectorPlugin";
+import { preloadBootChunks } from "./preloadBootChunksPlugin";
 
 const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
   production: "konsti-frontend-prod",
@@ -101,7 +102,7 @@ export default defineConfig(({ mode, command }) => {
           // app change also re-downloads React and everything else bundled
           // alongside it. React and Sentry get their own chunks because they
           // are the two largest and update on their own schedule
-          advancedChunks: {
+          codeSplitting: {
             groups: [
               {
                 name: "react",
@@ -166,6 +167,9 @@ export default defineConfig(({ mode, command }) => {
           extension: [".ts", ".tsx"],
         }),
       env.COVERAGE === "true" && coverageCollector(),
+      // The root component is dynamically imported but always rendered, so its
+      // chunks are preloaded rather than discovered after the entry has run
+      preloadBootChunks(["client/src/app/App.tsx"]),
       // Must come after all other plugins. Injects debug IDs into the emitted
       // bundle, uploads the source maps to Sentry, then deletes the .map files
       // so they are never shipped
