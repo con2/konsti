@@ -13,7 +13,7 @@ import {
   getPhaseGapInProgress,
 } from "shared/utils/signupTimes";
 import { formatProgramItemDuration } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { Tags } from "client/components/Tags";

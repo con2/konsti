@@ -5,7 +5,7 @@ import { capitalize, groupBy, sortBy } from "remeda";
 import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { ControlledInput } from "client/components/ControlledInput";
 import { useAppSelector } from "client/utils/hooks";
 import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";

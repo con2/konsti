@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

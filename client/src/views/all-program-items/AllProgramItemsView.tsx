@@ -14,8 +14,8 @@ import {
   Tag,
 } from "shared/types/models/programItem";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
-import { AppRoute } from "client/app/AppRoutes";
 import { usePreviousLocation } from "client/app/HistoryContext";
+import { AppRoute } from "client/app/routes";
 import { Loading } from "client/components/Loading";
 import { ScrollToTopButton } from "client/components/ScrollToTopButton";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";

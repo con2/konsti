@@ -8,7 +8,7 @@ import { config } from "shared/config";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { UserGroup } from "shared/types/models/user";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { ExpandButton } from "client/components/ExpandButton";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { useAppSelector } from "client/utils/hooks";

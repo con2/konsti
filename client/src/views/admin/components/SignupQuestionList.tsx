@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 
 interface Props {
   signupQuestions: readonly SignupQuestion[];

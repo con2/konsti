@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { LanguageSelector } from "client/components/LanguageSelector";
 import KonstiLogo from "client/components/icons/konsti.svg";
 import { useTimeNow } from "client/utils/getTimeNow";

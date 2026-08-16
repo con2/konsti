@@ -1,6 +1,6 @@
 import { ReactElement, useEffect } from "react";
 import { Navigate } from "react-router";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { useAppDispatch } from "client/utils/hooks";
 import { submitLogout } from "client/views/logout/logoutActions";
 

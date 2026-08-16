@@ -7,7 +7,7 @@ import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 
 interface Props {
   eventLogItem: EventLogItem;

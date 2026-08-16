@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import styled from "styled-components";
 import { LoginProvider } from "shared/config/eventConfigTypes";
-import { AppRoute, ProgramTab } from "client/app/AppRoutes";
+import { AppRoute, ProgramTab } from "client/app/routes";
 import { useAppSelector } from "client/utils/hooks";
 
 export const UserNavigation = (props: {

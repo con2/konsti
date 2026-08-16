@@ -5,7 +5,7 @@ import { NavLink } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { isAdmin, isAdminOrHelper, isUser } from "client/utils/checkUserGroup";
 import { useAppSelector } from "client/utils/hooks";
 

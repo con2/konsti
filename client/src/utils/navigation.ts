@@ -1,5 +1,5 @@
 import { NavigateFunction, NavigationType } from "react-router";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 
 export const navigateToPreviousOrRoot = async (
   navigationType: NavigationType,
