@@ -1,0 +1,65 @@
+import { ComponentType } from "react";
+import { UserGroup } from "shared/types/models/user";
+import { isAdmin, isAdminOrHelper } from "client/utils/checkUserGroup";
+import { lazyWithRetry } from "client/utils/lazyWithRetry";
+
+// The views kept out of the main bundle: the About tabs carry the bulk of the
+// Markdown content, and the admin and helper tools are reachable by a handful
+// of users. They render inside the Suspense boundary that wraps the routes.
+//
+// The prefetch list at the bottom must stay in step with these - a view split
+// without a matching entry keeps its loading spinner on every visit
+
+type ViewImport = () => Promise<{ default: ComponentType }>;
+
+const importAboutView: ViewImport = async () => ({
+  default: (await import("client/views/about/AboutView")).AboutView,
+});
+const importFaqView: ViewImport = async () => ({
+  default: (await import("client/views/about/FaqView")).FaqView,
+});
+const importInstructionsView: ViewImport = async () => ({
+  default: (await import("client/views/about/InstructionsView"))
+    .InstructionsView,
+});
+const importAdminView: ViewImport = async () => ({
+  default: (await import("client/views/admin/AdminView")).AdminView,
+});
+const importHelperView: ViewImport = async () => ({
+  default: (await import("client/views/helper/HelperView")).HelperView,
+});
+
+export const AboutView = lazyWithRetry(importAboutView);
+export const FaqView = lazyWithRetry(importFaqView);
+export const InstructionsView = lazyWithRetry(importInstructionsView);
+export const AdminView = lazyWithRetry(importAdminView);
+export const HelperView = lazyWithRetry(importHelperView);
+
+const prefetchView = async (importView: ViewImport): Promise<void> => {
+  try {
+    await importView();
+  } catch {
+    // A failed prefetch is not worth reporting: opening the view fetches the
+    // chunk again, with the retry handling that applies there
+  }
+};
+
+// Warms the chunks above so opening one of these views doesn't wait on a
+// download. The caller decides when, because this must not compete with the
+// requests that put content on screen. The staff tools are fetched only for
+// the roles that can reach them, to keep the transfer off everyone else's
+// connection
+export const prefetchLazyViews = (userGroup: UserGroup): void => {
+  const imports = [importAboutView, importFaqView, importInstructionsView];
+
+  if (isAdminOrHelper(userGroup)) {
+    imports.push(importHelperView);
+  }
+  if (isAdmin(userGroup)) {
+    imports.push(importAdminView);
+  }
+
+  for (const importView of imports) {
+    void prefetchView(importView);
+  }
+};
