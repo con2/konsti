@@ -193,11 +193,6 @@ export const AllProgramItemsView = (): ReactElement => {
           (programItem) => !getProgramItemValidity(programItem).allValuesValid,
         )
       : visibleProgramItems;
-    // timeNow is intentionally not a dependency: the visible set is recomputed
-    // when the underlying data changes and reads the current time at that
-    // point. The instant itself is a new value every render, so listing it
-    // would invalidate this memo continuously
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     filteredProgramItems,
     hideFullItems,
@@ -205,6 +200,7 @@ export const AllProgramItemsView = (): ReactElement => {
     selectedTags,
     showOnlyInvalidProgramItems,
     fullProgramItemIds,
+    timeNow,
   ]);
 
   // Render the (expensive) list at lower priority so changing a filter keeps
@@ -214,10 +210,16 @@ export const AllProgramItemsView = (): ReactElement => {
 
   // While the deferred list is still catching up from an empty state (initial
   // load, or returning from a no-results filter) keep showing Loading, so the
-  // stale empty value doesn't render a premature "no program items" message
+  // stale empty value doesn't render a premature "no program items" message.
+  // Only when there is something to catch up to: the visible set is recomputed
+  // on every clock tick, and an empty one replaced by another empty one would
+  // otherwise flash the spinner over a legitimate no-results message
   const isListPending = programItemsToShow !== deferredProgramItems;
   const showLoading =
-    loading || (isListPending && deferredProgramItems.length === 0);
+    loading ||
+    (isListPending &&
+      deferredProgramItems.length === 0 &&
+      programItemsToShow.length > 0);
 
   // If the user just came back from a program item page, briefly highlight that
   // item in the list. Captured once on mount, before the previous location is

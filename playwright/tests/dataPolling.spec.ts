@@ -104,8 +104,14 @@ test("Periodic data poll hides signup when direct signup ends", async ({
   });
   await expect(firstProgramItem.signUpButton).toBeVisible();
 
-  // ...and the periodic poll picks up the change without navigation
+  // ...and the periodic poll picks up the change without navigation. A program
+  // item whose direct sign-up has ended is no longer upcoming, so it drops out
+  // of the default starting time filter entirely
   await page.clock.fastForward("01:01");
+  await expect(programList.items).toHaveCount(0);
+
+  // It is still listed under All, now without any sign-up controls
+  await programList.selectStartingTime("All");
   await expect(firstProgramItem.signUpButton).toBeHidden();
   await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
 });

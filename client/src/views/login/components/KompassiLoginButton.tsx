@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/react";
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router";
@@ -45,12 +46,17 @@ export const KompassiLoginButton = (): ReactElement => {
           redirecting.current = true;
           try {
             await postKompassiLoginRedirect();
-          } finally {
-            // Only reached when no redirect happened, i.e. the request failed
-            // or storage refused the write: the success path never resolves
-            // because the page is unloading
-            redirecting.current = false;
+          } catch (error) {
+            // The request wrapper reports its own failures, so getting here
+            // means storage refused to keep the login state. Nothing else
+            // would notice: the click just appears to do nothing
+            captureException(error);
           }
+          // Only reached when no redirect happened: the success path never
+          // resolves, because the page is unloading. A `finally` would say
+          // this better, but the React Compiler declines any function
+          // containing one
+          redirecting.current = false;
         }}
       >
         {t("loginView.kompassiLogin")}
