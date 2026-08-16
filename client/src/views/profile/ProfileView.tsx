@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { formatSerial } from "shared/utils/formatSerial";
 import { AppRoute } from "client/app/routes";
 import { Button, ButtonStyle } from "client/components/Button";
+import { PasswordChangeForm } from "client/components/PasswordChangeForm";
 import { useAppSelector } from "client/utils/hooks";
-import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 import { EmailSettingsForm } from "client/views/profile/components/EmailSettingsForm";
 
 export const ProfileView = (): ReactElement => {
@@ -39,7 +39,7 @@ export const ProfileView = (): ReactElement => {
         </StyledButton>
       </UserInfoContainer>
       <EmailSettingsForm email={email} />
-      <ChangeUserSettingsForm
+      <PasswordChangeForm
         isLocalLogin={isLocalLogin}
         usernameToUpdate={username}
       />

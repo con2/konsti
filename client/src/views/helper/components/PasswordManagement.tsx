@@ -7,8 +7,8 @@ import { formatSerial } from "shared/utils/formatSerial";
 import { getDateAndTime } from "shared/utils/timeFormatter";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ControlledInput } from "client/components/ControlledInput";
+import { PasswordChangeForm } from "client/components/PasswordChangeForm";
 import { getUserBySerialOrUsername } from "client/services/userServices";
-import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
@@ -96,7 +96,7 @@ export const PasswordManagement = (): ReactElement => {
       {userFoundMessage}
 
       {changePasswordInputVisible && (
-        <ChangeUserSettingsForm
+        <PasswordChangeForm
           usernameToUpdate={usernameToUpdate}
           isLocalLogin={true}
         />
