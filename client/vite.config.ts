@@ -128,7 +128,12 @@ export default defineConfig(({ mode, command }) => {
     },
 
     plugins: [
-      mdx(),
+      // Must track the dev server rather than the build mode: left to itself
+      // the plugin turns development on whenever the mode is literally named
+      // "development", so `build:dev` emitted jsxDEV calls into a bundle that
+      // carries React's production jsx-dev-runtime, where jsxDEV is undefined,
+      // and every Markdown page threw on render
+      mdx({ development: command === "serve" }),
       svgr({
         include: "**/*.svg",
         svgrOptions: {
