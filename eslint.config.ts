@@ -251,6 +251,17 @@ export default defineConfig([
       // eslint-plugin-react-hooks
       ...eslintPluginReactHooks.configs.recommended.rules,
 
+      // @eslint-community/eslint-plugin-eslint-comments
+      // Suppressing either of these makes the React Compiler quietly decline
+      // to optimize the whole surrounding component, with nothing in the build
+      // output saying so. A component that genuinely can't be compiled should
+      // say it out loud with a "use no memo" directive instead
+      "@eslint-community/eslint-comments/no-restricted-disable": [
+        "error",
+        "react-hooks/exhaustive-deps",
+        "react-hooks/rules-of-hooks",
+      ],
+
       // @typescript-eslint
       "@typescript-eslint/no-misused-promises": [
         "error",

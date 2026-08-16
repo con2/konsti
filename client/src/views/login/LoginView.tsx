@@ -37,6 +37,7 @@ export const LoginView = (): ReactElement => {
     if (prevLocation?.pathname === "/program/list") {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       navigate(AppRoute.ROOT);
+      return;
     }
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     navigateToPreviousOrRoot(navigationType, navigate);

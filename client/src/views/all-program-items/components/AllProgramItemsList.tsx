@@ -19,6 +19,7 @@ import { config } from "shared/config";
 import {
   ProgramItem,
   ProgramItemSignupStrategy,
+  UserSignup,
 } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -58,6 +59,10 @@ type VirtualRow =
 const HEADER_ESTIMATED_HEIGHT = 92;
 const ITEM_ESTIMATED_HEIGHT = 350;
 
+// One shared value for every program item nobody has signed up to, so those
+// rows keep getting the same reference and the memoized row can bail out
+const NO_SIGNUPS: UserSignup[] = [];
+
 // The window scroll offset and measured row sizes when the list unmounts, so
 // returning to it (e.g. via the browser back button after viewing a program
 // item) restores the exact scroll position — the clicked card comes back where
@@ -71,6 +76,13 @@ export const AllProgramItemsList = ({
   programItems,
   highlightedProgramItemId,
 }: Props): ReactElement => {
+  // Opted out of the React Compiler: the virtualizer hook returns one instance
+  // that stays referentially stable while its measurements mutate inside it, so
+  // the row offsets and total size read from it during render are external
+  // mutable state the compiler cannot see change. Memoized, rows keep the
+  // offsets they were first rendered with and end up overlapping each other
+  "use no memo";
+
   const { t, i18n } = useTranslation();
 
   const signups = useAppSelector(
@@ -93,33 +105,42 @@ export const AllProgramItemsList = ({
   );
 
   // Index sign-ups by program item id so each row is an O(1) lookup instead of
-  // scanning the full sign-ups array (which made the list render O(n^2))
-  const signupsByProgramItemId = new Map(
-    signups.map((signup) => [signup.programItemId, signup.users]),
+  // scanning the full sign-ups array (which made the list render O(n^2)).
+  // Memoized by hand because the opt-out above also stops the compiler from
+  // memoizing anything else here, and this component re-renders on every clock
+  // tick and every scroll-driven virtualizer update
+  const signupsByProgramItemId = useMemo(
+    () =>
+      new Map(signups.map((signup) => [signup.programItemId, signup.users])),
+    [signups],
   );
 
   // Index the first public sign-up question per program item id
-  const publicSignupQuestionByProgramItemId = new Map<string, SignupQuestion>();
-  for (const signupQuestion of signupQuestions) {
-    if (
-      !signupQuestion.private &&
-      !publicSignupQuestionByProgramItemId.has(signupQuestion.programItemId)
-    ) {
-      publicSignupQuestionByProgramItemId.set(
-        signupQuestion.programItemId,
-        signupQuestion,
-      );
+  const publicSignupQuestionByProgramItemId = useMemo(() => {
+    const byProgramItemId = new Map<string, SignupQuestion>();
+    for (const signupQuestion of signupQuestions) {
+      if (
+        !signupQuestion.private &&
+        !byProgramItemId.has(signupQuestion.programItemId)
+      ) {
+        byProgramItemId.set(signupQuestion.programItemId, signupQuestion);
+      }
     }
-  }
+    return byProgramItemId;
+  }, [signupQuestions]);
 
-  const ownOrGroupCreatorLotterySignups = getLotterySignups({
-    lotterySignups,
-    isGroupCreator,
-    groupMembers,
-    isInGroup,
-    showAllProgramItems: true,
-    timeNow,
-  });
+  const ownOrGroupCreatorLotterySignups = useMemo(
+    () =>
+      getLotterySignups({
+        lotterySignups,
+        isGroupCreator,
+        groupMembers,
+        isInGroup,
+        showAllProgramItems: true,
+        timeNow,
+      }),
+    [lotterySignups, isGroupCreator, groupMembers, isInGroup, timeNow],
+  );
 
   // Flatten the grouped list once per program-item set (stable across scroll and
   // language changes so it stays out of the scroll render path)
@@ -394,7 +415,7 @@ export const AllProgramItemsList = ({
                   programItem={row.programItem}
                   signups={
                     signupsByProgramItemId.get(row.programItem.programItemId) ??
-                    []
+                    NO_SIGNUPS
                   }
                   signupStrategy={
                     row.programItem.signupStrategy ??

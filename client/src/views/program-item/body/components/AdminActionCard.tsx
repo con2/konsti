@@ -127,6 +127,25 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
     setSubmitting(false);
   };
 
+  // Each select option is edited through two inputs, one per language, so an
+  // edit merges into whatever the other language already put there. The inputs
+  // can be filled in any order, and an option is only valid with both languages
+  // set, so the entries up to the edited one are filled in rather than left as
+  // holes the server would reject
+  const updateSelectOption = (
+    index: number,
+    option: Partial<SignupQuestionSelectOption>,
+  ): void => {
+    setSelectOptions((previousOptions) => {
+      const updatedOptions = [...previousOptions];
+      while (updatedOptions.length <= index) {
+        updatedOptions.push({ optionFi: "", optionEn: "" });
+      }
+      updatedOptions[index] = { ...updatedOptions[index], ...option };
+      return updatedOptions;
+    });
+  };
+
   const addSignupQuestion = async (): Promise<void> => {
     setSubmitting(true);
 
@@ -240,95 +259,47 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
               <InputsContainer>
                 <span>{t("signupQuestion.inFinnish")}</span>
                 <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[0] = {
-                      ...newState[0],
-                      optionFi: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
+                  onChange={(event) =>
+                    updateSelectOption(0, { optionFi: event.target.value })
+                  }
                 />
                 <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[1] = {
-                      ...newState[1],
-                      optionFi: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
-                />{" "}
-                <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[2] = {
-                      ...newState[2],
-                      optionFi: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
+                  onChange={(event) =>
+                    updateSelectOption(1, { optionFi: event.target.value })
+                  }
                 />
                 <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[3] = {
-                      ...newState[3],
-                      optionFi: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
+                  onChange={(event) =>
+                    updateSelectOption(2, { optionFi: event.target.value })
+                  }
+                />
+                <UncontrolledInput
+                  onChange={(event) =>
+                    updateSelectOption(3, { optionFi: event.target.value })
+                  }
                 />
               </InputsContainer>
               <InputsContainer>
                 <span>{t("signupQuestion.inEnglish")}</span>
                 <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[0] = {
-                      ...newState[0],
-                      optionEn: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
+                  onChange={(event) =>
+                    updateSelectOption(0, { optionEn: event.target.value })
+                  }
                 />
                 <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[1] = {
-                      ...newState[1],
-                      optionEn: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
-                />{" "}
-                <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[2] = {
-                      ...newState[2],
-                      optionEn: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
+                  onChange={(event) =>
+                    updateSelectOption(1, { optionEn: event.target.value })
+                  }
                 />
                 <UncontrolledInput
-                  onChange={(event) => {
-                    const newState = selectOptions;
-                    // eslint-disable-next-line react-hooks/immutability
-                    newState[3] = {
-                      ...newState[3],
-                      optionEn: event.target.value,
-                    };
-                    setSelectOptions(newState);
-                  }}
+                  onChange={(event) =>
+                    updateSelectOption(2, { optionEn: event.target.value })
+                  }
+                />
+                <UncontrolledInput
+                  onChange={(event) =>
+                    updateSelectOption(3, { optionEn: event.target.value })
+                  }
                 />
               </InputsContainer>
             </>

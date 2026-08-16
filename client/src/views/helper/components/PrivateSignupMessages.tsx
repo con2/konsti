@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { capitalize, groupBy, sortBy } from "remeda";
@@ -15,9 +15,6 @@ export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredProgramItems, setFilteredProgramItems] = useState<
-    readonly ProgramItem[]
-  >([]);
 
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,
@@ -27,6 +24,34 @@ export const PrivateSignupMessages = (): ReactElement => {
   );
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
   const programTypeForTexts = useAppSelector(selectProgramTypeForTexts);
+
+  const privateSignupMessages = signupMessages.filter(
+    (signupMessage) => signupMessage.private,
+  );
+
+  // Hoisted out of the filter: lowercasing is locale-aware and would otherwise
+  // run once per program item per message
+  const cleanedSearchTerm = searchTerm.toLocaleLowerCase();
+
+  const filteredProgramItems: readonly ProgramItem[] =
+    searchTerm.length === 0
+      ? programItems
+      : programItems.filter(
+          (programItem) =>
+            programItem.title
+              .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+              .toLocaleLowerCase()
+              .includes(cleanedSearchTerm) ||
+            privateSignupMessages.some(
+              (signupMessage) =>
+                // Id equality first: it rejects almost every message outright,
+                // and the name match below is the expensive half
+                signupMessage.programItemId === programItem.programItemId &&
+                signupMessage.username
+                  .toLocaleLowerCase()
+                  .includes(cleanedSearchTerm),
+            ),
+        );
 
   const privateSignupQuestions = signupQuestions.filter(
     (signupQuestion) => signupQuestion.private,
@@ -53,42 +78,10 @@ export const PrivateSignupMessages = (): ReactElement => {
     (signupQuestion) => signupQuestion.programItem.startTime,
   );
 
-  const privateSignupMessages = signupMessages.filter(
-    (signupMessage) => signupMessage.private,
-  );
-
   const groupedSignupMessages = groupBy(
     privateSignupMessages,
     (signupQuestion) => signupQuestion.programItemId,
   );
-
-  useEffect(() => {
-    if (searchTerm.length === 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setFilteredProgramItems(programItems);
-      return;
-    }
-
-    const programItemsFilteredBySearchTerm = programItems.filter(
-      (programItem) => {
-        return (
-          programItem.title
-            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-            .toLocaleLowerCase()
-            .includes(searchTerm.toLocaleLowerCase()) ||
-          privateSignupMessages.find(
-            (signupMessage) =>
-              signupMessage.username
-                .toLocaleLowerCase()
-                .includes(searchTerm.toLocaleLowerCase()) &&
-              signupMessage.programItemId === programItem.programItemId,
-          )
-        );
-      },
-    );
-
-    setFilteredProgramItems(programItemsFilteredBySearchTerm);
-  }, [searchTerm, programItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
