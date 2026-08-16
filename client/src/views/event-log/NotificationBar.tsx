@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
-import { AboutTab } from "client/app/AppRoutes";
+import { AboutTab } from "client/app/routes";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

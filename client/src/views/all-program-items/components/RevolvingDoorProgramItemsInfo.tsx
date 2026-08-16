@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { sortBy } from "remeda";
 import styled from "styled-components";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { InfoText } from "client/components/InfoText";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";

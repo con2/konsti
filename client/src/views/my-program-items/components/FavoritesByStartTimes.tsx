@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { capitalize, groupBy } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { updateFavorite } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

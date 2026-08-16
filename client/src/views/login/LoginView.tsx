@@ -7,8 +7,8 @@ import {
   useNavigationType,
 } from "react-router";
 import { LoginProvider } from "shared/config/eventConfigTypes";
-import { AppRoute } from "client/app/AppRoutes";
 import { usePreviousLocation } from "client/app/HistoryContext";
+import { AppRoute } from "client/app/routes";
 import { InfoText } from "client/components/InfoText";
 import { useAppSelector } from "client/utils/hooks";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";

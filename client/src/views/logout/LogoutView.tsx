@@ -1,7 +1,7 @@
 import { ReactElement, useEffect } from "react";
 import { Navigate } from "react-router";
 import { UserGroup } from "shared/types/models/user";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { Loading } from "client/components/Loading";
 import { postKompassiLogoutRedirect } from "client/services/loginServices";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { formatSerial } from "shared/utils/formatSerial";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppSelector } from "client/utils/hooks";
 import { ChangeUserSettingsForm } from "client/views/helper/components/ChangeUserSettingsForm";

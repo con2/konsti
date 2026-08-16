@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { config } from "shared/config";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { joinWithConjunction } from "client/utils/joinWithConjunction";

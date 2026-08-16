@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { sortBy } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { AppRoute } from "client/app/AppRoutes";
+import { AppRoute } from "client/app/routes";
 
 interface Props {
   hiddenProgramItems: readonly ProgramItem[];

@@ -12,6 +12,7 @@ import {
   HelperView,
   InstructionsView,
 } from "client/app/lazyViews";
+import { AboutTab, AppRoute, ProfileTab, ProgramTab } from "client/app/routes";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
 import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
 import { Tabs } from "client/components/Tabs";
@@ -29,40 +30,6 @@ import { MyProgramItemsView } from "client/views/my-program-items/MyProgramItems
 import { ProfileView } from "client/views/profile/ProfileView";
 import { ProgramItemView } from "client/views/program-item/ProgramItemView";
 import { RegistrationView } from "client/views/registration/RegistrationView";
-
-export enum AppRoute {
-  ROOT = "/",
-  PROGRAM = "/program",
-  PROGRAM_ITEM = "/program/item",
-  HELPER = "/helper",
-  ADMIN = "/admin",
-  ADMIN_LOGIN = "/admin/login",
-  PROFILE = "/profile",
-  REGISTRATION = "/registration",
-  LOGIN = "/login",
-  LOGOUT = "/logout",
-  ABOUT = "/about",
-  DASHBOARD = "/dashboard",
-  NOTIFICATIONS = "/notifications",
-  KOMPASSI_LOGOUT_CALLBACK = "/kompassi-logout-callback",
-  ANY = "/*",
-}
-
-export enum ProgramTab {
-  MY_PROGRAM = "/program/myprogram",
-  PROGRAM_LIST = "/program/list",
-}
-
-export enum AboutTab {
-  HELP = "/about/help",
-  FAQ = "/about/faq",
-  ABOUT = "/about/about",
-}
-
-export enum ProfileTab {
-  PROFILE = "/profile/profile",
-  GROUP = "/profile/group",
-}
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
