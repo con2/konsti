@@ -12,6 +12,8 @@
     "src/**/*",
     "../shared/**/*",
     "vitest.config.ts",
-    "coverageCollectorPlugin.ts"
+    "coverageCollectorPlugin.ts",
+    "preloadBootChunksPlugin.ts",
+    "preloadBootChunksPlugin.test.ts"
   ]
 }
