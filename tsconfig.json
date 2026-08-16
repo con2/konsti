@@ -29,6 +29,10 @@
   },
   "include": [
     "*.ts",
+    // Build tooling belongs here rather than in the client project: it runs on
+    // Node and imports from scripts/, while the client project is pinned to a
+    // browser-era lib to catch unsupported APIs
+    "client/vite.config.ts",
     "playwright/**/*.ts",
     "scripts/**/*.ts",
     ".claude/hooks/**/*.ts"
