@@ -332,11 +332,24 @@ export default defineConfig([
       react: {
         version: "detect",
       },
+      // Settings are scoped by `files` like rules are, so the resolver
+      // configured for ts/tsx does not reach Markdown on its own
+      "import-x/resolver": {
+        typescript: true,
+      },
     },
 
     rules: {
       // eslint
       "no-undef": "off",
+
+      // eslint-plugin-import-x
+      // Markdown is outside tsc's reach, so a moved module or a name that no
+      // longer exists would otherwise surface only when the bundler fails.
+      // `named` is what catches moving an export to another module, which is
+      // the more likely half: the old module usually still exists
+      "import-x/no-unresolved": ["error", { ignore: [".gif$", ".svg$"] }],
+      "import-x/named": "error",
 
       // eslint-plugin-react
       "react/jsx-filename-extension": "off",
