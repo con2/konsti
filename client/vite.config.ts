@@ -8,12 +8,15 @@ import { defineConfig, loadEnv } from "vite";
 import { compression } from "vite-plugin-compression2";
 import istanbul from "vite-plugin-istanbul";
 import svgr from "vite-plugin-svgr";
+/* eslint-disable @typescript-eslint/no-restricted-imports -- Vite loads this
+   file before any alias resolution exists, so these must stay relative */
 import {
   clientCoverageExclude,
   clientCoverageInclude,
 } from "../scripts/coverageGlobs";
 import { resolvePortOffset } from "../scripts/portOffset";
 import { sentryConfig } from "../shared/config/sentryConfig";
+/* eslint-enable @typescript-eslint/no-restricted-imports */
 import { coverageCollector } from "./coverageCollectorPlugin";
 import { preloadBootChunks } from "./preloadBootChunksPlugin";
 
@@ -34,10 +37,13 @@ const readSentryAuthToken = (dir: string): string | undefined => {
   if (!existsSync(file)) {
     return undefined;
   }
-  const match = readFileSync(file, "utf8").match(
-    /^\s*SENTRY_AUTH_TOKEN\s*=\s*(.*)$/m,
+  const match = /^\s*SENTRY_AUTH_TOKEN\s*=\s*(.*)$/m.exec(
+    readFileSync(file, "utf8"),
   );
-  return match?.[1]?.trim().replace(/^["']|["']$/g, "") || undefined;
+  // || rather than ?? on purpose: a token that is present but blank counts as
+  // no token at all
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  return match?.[1]?.trim().replaceAll(/^["']|["']$/g, "") || undefined;
 };
 
 export default defineConfig(({ mode, command }) => {
@@ -74,8 +80,8 @@ export default defineConfig(({ mode, command }) => {
   // back to 0, the earliest possible time, so any build the E2E suite fakes
   // counts as newer; the banner stays off otherwise because those servers
   // report no build time at all
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const appBuildTime =
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     process.env.APP_BUILD_TIME ||
     (mode === "development" || mode === "ci" ? "0" : "");
   const enableSentryUpload =
@@ -173,7 +179,9 @@ export default defineConfig(({ mode, command }) => {
           project: sentryProject,
           authToken: sentryAuthToken,
           // The raw build-arg rather than the appVersion placeholder, so
-          // dev-mode uploads don't create a release named after the fallback
+          // dev-mode uploads don't create a release named after the fallback.
+          // || rather than ?? so an empty build-arg is treated as unset too
+          // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
           release: { name: process.env.APP_VERSION || undefined },
           telemetry: false,
           sourcemaps: {
