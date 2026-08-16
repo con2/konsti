@@ -17,7 +17,7 @@ import { getDirectSignupEndTime } from "shared/utils/signupTimes";
 import { RaisedCard } from "client/components/RaisedCard";
 import { theme } from "client/theme";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
-import { useTimeNow } from "client/utils/getTimeNow";
+import { useTimeNow } from "client/utils/useTimeNow";
 import {
   DirectSignupWithProgramItem,
   LotterySignupWithProgramItem,

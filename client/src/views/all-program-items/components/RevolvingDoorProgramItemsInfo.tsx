@@ -6,8 +6,8 @@ import { sortBy } from "remeda";
 import styled from "styled-components";
 import { AppRoute } from "client/app/routes";
 import { InfoText } from "client/components/InfoText";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import {
   selectActiveProgramItems,
   selectHiddenProgramItems,
@@ -25,7 +25,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
     hiddenProgramItems.map((p) => p.programItemId),
   );
 
-  const timeNow = getTimeNow();
+  const timeNow = useTimeNow();
   const runningRevolvingDoorProgramItems = sortBy(
     activeProgramItems.filter((programItem) => {
       return (

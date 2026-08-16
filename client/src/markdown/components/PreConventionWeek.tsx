@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { useTimeNow } from "client/utils/getTimeNow";
 import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
+import { useTimeNow } from "client/utils/useTimeNow";
 
 interface Props {
   children: ReactNode;

@@ -1,3 +1,8 @@
+// Opted out of React Compiler: with it on, this list keeps showing stale
+// lottery results after an assignment run (lotterySignup specs 209/300 fail on
+// every browser). The underlying Rules-of-React violation in here has not been
+// found yet - opting the file out is a stopgap, not the fix
+"use no memo";
 import {
   VirtualItem,
   defaultRangeExtractor,
@@ -25,6 +30,7 @@ import { RaisedCard } from "client/components/RaisedCard";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { useAppSelector } from "client/utils/hooks";
 import { registerScrollToTopOverride } from "client/utils/scrollToTop";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
 import { ProgramItemListTitle } from "client/views/all-program-items/components/ProgramItemListTitle";
 import { getActiveStickyHeaderIndex } from "client/views/all-program-items/programListUtils";
@@ -82,6 +88,7 @@ export const AllProgramItemsList = ({
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const username = useAppSelector((state) => state.login.username);
+  const timeNow = useTimeNow();
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const isInGroup = getIsInGroup(groupCode);
@@ -116,6 +123,7 @@ export const AllProgramItemsList = ({
     groupMembers,
     isInGroup,
     showAllProgramItems: true,
+    timeNow,
   });
 
   // Flatten the grouped list once per program-item set (stable across scroll and

@@ -15,8 +15,8 @@ import {
   getLotterySignupStartTime,
 } from "shared/utils/signupTimes";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import {
   getFormattedInterval,
@@ -48,7 +48,7 @@ export const SignupHelpText = ({
       <span> {t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
     ) : null;
 
-  const timeNow = getTimeNow();
+  const timeNow = useTimeNow();
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
   const lotterySignupEndTime = getLotterySignupEndTime(programItem);

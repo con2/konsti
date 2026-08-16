@@ -6,8 +6,8 @@ import { ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import {
   canSignToProgramItems,
@@ -105,7 +105,7 @@ export const ProgramItemLotterySignup = ({
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
-  const timeNow = getTimeNow();
+  const timeNow = useTimeNow();
   const lotterySignupOpen = timeNow.isSameOrAfter(lotterySignupStartTime);
 
   if (!loggedIn) {

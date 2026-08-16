@@ -20,8 +20,8 @@ import { Tags } from "client/components/Tags";
 import { UpdateFavoriteOpts, updateFavorite } from "client/utils/favorite";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { getProgramTypeSelectOptions } from "client/utils/getProgramTypeSelectOptions";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectFavoriteProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
 import { ProgramItemHeadSignupInfo } from "client/views/program-item/head/components/ProgramItemHeadSignupInfo";
 
@@ -68,7 +68,7 @@ export const ProgramItemHead = ({
       favoriteProgramItem.programItemId === programItem.programItemId,
   );
 
-  const timeNow = getTimeNow();
+  const timeNow = useTimeNow();
 
   const lotterySignupInProgress = getLotterySignupInProgress(
     programItem,

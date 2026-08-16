@@ -27,6 +27,7 @@ import {
   getSavedStartingTime,
   getSavedTags,
 } from "client/utils/sessionStorage";
+import { useTimeNow } from "client/utils/useTimeNow";
 import {
   selectActiveProgramItems,
   selectHiddenProgramItems,
@@ -60,6 +61,7 @@ export const AllProgramItemsView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const previousLocation = usePreviousLocation();
 
+  const timeNow = useTimeNow();
   const activeProgramItems = useAppSelector(selectActiveProgramItems);
   const hiddenProgramItems = useAppSelector(selectHiddenProgramItems);
   const signups = useAppSelector(
@@ -184,12 +186,18 @@ export const AllProgramItemsView = (): ReactElement => {
       selectedTags,
       hideFullItems,
       fullProgramItemIds,
+      timeNow,
     );
     return showOnlyInvalidProgramItems
       ? visibleProgramItems.filter(
           (programItem) => !getProgramItemValidity(programItem).allValuesValid,
         )
       : visibleProgramItems;
+    // timeNow is intentionally not a dependency: the visible set is recomputed
+    // when the underlying data changes and reads the current time at that
+    // point. The instant itself is a new value every render, so listing it
+    // would invalidate this memo continuously
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     filteredProgramItems,
     hideFullItems,

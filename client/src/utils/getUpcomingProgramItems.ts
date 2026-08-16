@@ -2,7 +2,6 @@ import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
 import {
   DirectSignupWithProgramItem,
@@ -11,9 +10,8 @@ import {
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],
+  timeNow: Dayjs,
 ): readonly ProgramItem[] => {
-  const timeNow = getTimeNow();
-
   const upcomingProgramItems = programItems.filter((programItem) => {
     const directSignupEndTime = getDirectSignupEndTime(programItem);
     return directSignupEndTime.isSameOrAfter(timeNow);
@@ -33,9 +31,8 @@ export const isMainEventProgramVisible = (timeNow: Dayjs): boolean => {
 
 const getUpcomingLotterySignups = (
   lotterySignups: readonly LotterySignupWithProgramItem[],
+  timeNow: Dayjs,
 ): readonly LotterySignupWithProgramItem[] => {
-  const timeNow = getTimeNow();
-
   const { startTimesByParentIds } = config.event();
 
   const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
@@ -67,6 +64,7 @@ interface GetLotterySignupsParams {
   groupMembers: readonly GroupMemberWithLotteryProgramItem[];
   isInGroup: boolean;
   showAllProgramItems: boolean;
+  timeNow: Dayjs;
 }
 
 export const getLotterySignups = ({
@@ -75,12 +73,13 @@ export const getLotterySignups = ({
   groupMembers,
   isInGroup,
   showAllProgramItems,
+  timeNow,
 }: GetLotterySignupsParams): readonly LotterySignupWithProgramItem[] => {
   // Show own lottery sign-ups if group creator or not in group
   if (isGroupCreator || !isInGroup) {
     return showAllProgramItems
       ? lotterySignups
-      : getUpcomingLotterySignups(lotterySignups);
+      : getUpcomingLotterySignups(lotterySignups, timeNow);
   }
 
   // Show group creator lottery sign-ups if in group and not group creator
@@ -91,14 +90,13 @@ export const getLotterySignups = ({
 
   return showAllProgramItems
     ? groupCreator.lotterySignups
-    : getUpcomingLotterySignups(groupCreator.lotterySignups);
+    : getUpcomingLotterySignups(groupCreator.lotterySignups, timeNow);
 };
 
 export const getUpcomingDirectSignups = (
   directSignups: readonly DirectSignupWithProgramItem[],
+  timeNow: Dayjs,
 ): readonly DirectSignupWithProgramItem[] => {
-  const timeNow = getTimeNow();
-
   const upcomingProgramItems = directSignups.filter((directSignup) =>
     dayjs(directSignup.programItem.startTime).add(1, "hours").isAfter(timeNow),
   );
@@ -108,9 +106,8 @@ export const getUpcomingDirectSignups = (
 
 export const getUpcomingFavorites = (
   favoriteProgramItems: readonly ProgramItem[],
+  timeNow: Dayjs,
 ): readonly ProgramItem[] => {
-  const timeNow = getTimeNow();
-
   const { startTimesByParentIds } = config.event();
 
   const upcomingProgramItems = favoriteProgramItems.filter(

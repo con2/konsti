@@ -8,8 +8,8 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   DeleteDirectSignupErrorMessage,
@@ -78,7 +78,7 @@ export const ProgramItemDirectSignup = ({
   };
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
-  const timeNow = getTimeNow();
+  const timeNow = useTimeNow();
 
   const programItemFullMessage = (
     <ProgramItemStatusMessage data-testid="program-item-full">

@@ -6,6 +6,7 @@ import { BackButton } from "client/components/BackButton";
 import { Loading } from "client/components/Loading";
 import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import {
@@ -36,6 +37,7 @@ export const ProgramItemView = (): ReactElement => {
   const groupMembers = useAppSelector(selectGroupMembers);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
+  const timeNow = useTimeNow();
 
   const ownOrGroupCreatorLotterySignups = getLotterySignups({
     lotterySignups,
@@ -43,6 +45,7 @@ export const ProgramItemView = (): ReactElement => {
     groupMembers,
     isInGroup,
     showAllProgramItems: true,
+    timeNow,
   });
 
   // Open the program item page at the top, regardless of where the user was

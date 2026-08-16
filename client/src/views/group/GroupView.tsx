@@ -7,10 +7,10 @@ import { config } from "shared/config";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
-import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { joinWithConjunction } from "client/utils/joinWithConjunction";
 import { loadGroupMembers } from "client/utils/loadData";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
@@ -43,7 +43,7 @@ export const GroupView = (): ReactElement => {
   );
 
   const isInGroup = getIsInGroup(groupCode);
-  const timeNow = getTimeNow();
+  const timeNow = useTimeNow();
   const directSignupsAfterNow = filteredActiveDirectSignups.filter(
     (directSignup) =>
       timeNow.isBefore(dayjs(directSignup.programItem.startTime)),
