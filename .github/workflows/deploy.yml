@@ -66,12 +66,12 @@ jobs:
         uses: actions/cache@v6
         with:
           path: bin/skaffold
-          key: ${{ runner.os }}-skaffold-v2.18.2
+          key: ${{ runner.os }}-skaffold-v2.24.0
       - name: Download skaffold
         if: steps.cache-skaffold.outputs.cache-hit != 'true'
         run: |
           mkdir -p bin
-          curl -Lo bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.18.2/skaffold-linux-amd64
+          curl -Lo bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.24.0/skaffold-linux-amd64
           chmod +x bin/skaffold
       - name: Cache kubectl
         id: cache-kubectl
