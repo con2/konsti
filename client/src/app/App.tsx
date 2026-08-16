@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { config } from "shared/config";
 import { AppRoutes } from "client/app/AppRoutes";
 import { HistoryProvider } from "client/app/HistoryContext";
+import { prefetchLazyViews } from "client/app/lazyViews";
 import { AdminMessageBanner } from "client/components/AdminMessageBanner";
 import { Announcement } from "client/components/Announcement";
 import { AppUpdateBanner } from "client/components/AppUpdateBanner";
@@ -14,9 +15,11 @@ import { Loading } from "client/components/Loading";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
 import { TestTime } from "client/test/test-components/TestTime";
+import { useAppSelector } from "client/utils/hooks";
 import { getIconLibrary } from "client/utils/icons";
 import { loadData } from "client/utils/loadData";
 import { onPageResume } from "client/utils/pageLifecycle";
+import { whenIdle } from "client/utils/whenIdle";
 import { NotificationBar } from "client/views/event-log/NotificationBar";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
@@ -24,6 +27,7 @@ const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
 
 const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
 
   useEffect(() => {
     // Refresh triggers can fire together (e.g. an overdue interval tick, the
@@ -92,6 +96,20 @@ const App = (): ReactElement => {
       offPageResume();
     };
   }, []);
+
+  // Only once the first data load is done and the browser reports spare time,
+  // so warming the split view chunks never competes with the requests that put
+  // content on screen. Re-runs when the role changes, because signing in as
+  // admin/helper makes chunks reachable that weren't before
+  useEffect(() => {
+    if (loading) {
+      return;
+    }
+
+    return whenIdle(() => {
+      prefetchLazyViews(userGroup);
+    });
+  }, [loading, userGroup]);
 
   getIconLibrary();
 
