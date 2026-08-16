@@ -1,13 +1,3 @@
-// Opted out of React Compiler. The virtualizer instance is stable across
-// renders while its measurements mutate inside it, so reading getVirtualItems
-// and getTotalSize during render is a read of external mutable state: the
-// compiler caches the result against the instance identity, which never
-// changes. Rows then keep the transform they had when the memo was last
-// invalidated. Changing a filter re-renders with a new `rows` array and hides
-// it, but expanding a row in place changes nothing React can see, so the rows
-// below keep their old offsets and overlap it - a sign-up form's Confirm
-// button ends up underneath the next row and cannot be clicked
-"use no memo";
 import {
   VirtualItem,
   defaultRangeExtractor,
