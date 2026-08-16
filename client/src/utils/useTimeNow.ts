@@ -1,9 +1,3 @@
-// Opted out of React Compiler. The real-clock branch below has nothing React
-// can key a cache on, so the compiler stores dayjs() in a memo slot guarded
-// only by the first-render sentinel: every component instance would keep the
-// instant it first rendered with, for its whole lifetime. Mocked time is keyed
-// on testTime and stays correct, which is why no test catches this
-"use no memo";
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
 import { useAppSelector } from "client/utils/hooks";

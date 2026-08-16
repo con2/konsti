@@ -1,9 +1,8 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import mdx from "@mdx-js/rollup";
-import babel from "@rolldown/plugin-babel";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
-import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react";
 import browserslistToEsbuild from "browserslist-to-esbuild";
 import { defineConfig, loadEnv } from "vite";
 import { compression } from "vite-plugin-compression2";
@@ -142,14 +141,6 @@ export default defineConfig(({ mode, command }) => {
         },
       }),
       react(),
-      // React Compiler is a separate babel pass: this plugin transforms JSX
-      // with Oxc and takes no babel options of its own. The compiler rewrites
-      // code so heavily that istanbul coverage positions no longer match the
-      // original source, so it is dropped when serving the instrumented build
-      // for the E2E coverage flow (COVERAGE=true, see the istanbul plugin
-      // below)
-      env.COVERAGE !== "true" &&
-        babel({ presets: [reactCompilerPreset({ target: "19" })] }),
       compression({
         algorithms: ["gzip", "brotliCompress"],
         include: /\.(js|html|svg)$/,
