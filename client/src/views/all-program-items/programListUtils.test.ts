@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -142,6 +143,9 @@ describe("getTagFilteredProgramItems", () => {
 });
 
 describe("getVisibleProgramItems", () => {
+  // The phase filter is disabled below, so any fixed time works here
+  const timeNow = dayjs("2026-07-24T12:00:00.000Z");
+
   beforeEach(() => {
     // Make the main event program visible so the time-based phase filter is a
     // no-op, isolating the tag/fullness filters under test
@@ -161,6 +165,7 @@ describe("getVisibleProgramItems", () => {
         [],
         true,
         new Set(["full"]),
+        timeNow,
       ),
     ).toEqual([open]);
   });
@@ -175,6 +180,7 @@ describe("getVisibleProgramItems", () => {
         [],
         false,
         new Set(["full"]),
+        timeNow,
       ),
     ).toEqual([full, open]);
   });
@@ -197,6 +203,7 @@ describe("getVisibleProgramItems", () => {
         [ProgramType.LARP],
         false,
         new Set<string>(),
+        timeNow,
       ),
     ).toEqual([larp]);
   });

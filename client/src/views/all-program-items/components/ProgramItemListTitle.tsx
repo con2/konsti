@@ -3,7 +3,7 @@ import { ReactElement, useRef } from "react";
 import { capitalize } from "remeda";
 import styled from "styled-components";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { getTimeNow } from "client/utils/getTimeNow";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { getFormattedTime } from "client/views/program-item/programItemUtils";
 
 interface Props {
@@ -17,7 +17,7 @@ export const ProgramItemListTitle = ({ startTime }: Props): ReactElement => {
     <ProgramItemListTitleContainer key={startTime} ref={intersectionRef}>
       {/* Include the date outside event week so the weekday isn't ambiguous */}
       <StyledHeader>
-        {capitalize(getFormattedTime(dayjs(startTime), getTimeNow()))}
+        {capitalize(getFormattedTime(dayjs(startTime), useTimeNow()))}
       </StyledHeader>
     </ProgramItemListTitleContainer>
   );

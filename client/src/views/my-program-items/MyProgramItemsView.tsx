@@ -16,6 +16,7 @@ import {
   SessionStorageValue,
   getSavedShowAllProgramItems,
 } from "client/utils/sessionStorage";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectGroupMembers } from "client/views/group/groupSlice";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import { MyDirectSignupsList } from "client/views/my-program-items/components/MyDirectSignupsList";
@@ -37,6 +38,7 @@ export const MyProgramItemsView = (): ReactElement => {
   const groupMembers = useAppSelector(selectGroupMembers);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const timeNow = useTimeNow();
   const isInGroup = getIsInGroup(groupCode);
 
   const isGroupMember = groupMembers.length > 0;
@@ -83,7 +85,7 @@ export const MyProgramItemsView = (): ReactElement => {
         favoriteProgramItems={
           showAllProgramItems
             ? favoriteProgramItems
-            : getUpcomingFavorites(favoriteProgramItems)
+            : getUpcomingFavorites(favoriteProgramItems, timeNow)
         }
         showAllProgramItems={showAllProgramItems}
         setShowAllProgramItems={setShowAllProgramItems}
@@ -92,7 +94,7 @@ export const MyProgramItemsView = (): ReactElement => {
         directSignups={
           showAllProgramItems
             ? directSignups
-            : getUpcomingDirectSignups(directSignups)
+            : getUpcomingDirectSignups(directSignups, timeNow)
         }
         showAllProgramItems={showAllProgramItems}
         setShowAllProgramItems={setShowAllProgramItems}
@@ -105,6 +107,7 @@ export const MyProgramItemsView = (): ReactElement => {
             showAllProgramItems,
             isInGroup,
             groupMembers,
+            timeNow,
           })}
           isGroupCreator={isGroupCreator}
           isGroupMember={isGroupMember}

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { getDateAndTime } from "shared/utils/timeFormatter";
-import { getTimeNow } from "client/utils/getTimeNow";
+import { useTimeNow } from "client/utils/useTimeNow";
 
 export const FinnishTime = (): ReactNode => {
-  return getDateAndTime(getTimeNow().toISOString());
+  return getDateAndTime(useTimeNow().toISOString());
 };

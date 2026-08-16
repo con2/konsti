@@ -1,3 +1,4 @@
+import { Dayjs } from "dayjs";
 import {
   AgeGroup,
   Language,
@@ -5,7 +6,6 @@ import {
   Tag,
 } from "shared/types/models/programItem";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
-import { getTimeNow } from "client/utils/getTimeNow";
 import {
   getUpcomingProgramItems,
   isMainEventProgramVisible,
@@ -23,6 +23,7 @@ export const getVisibleProgramItems = (
   selectedTags: readonly string[],
   hideFull: boolean,
   fullProgramItemIds: ReadonlySet<string>,
+  timeNow: Dayjs,
 ): readonly ProgramItem[] => {
   const tagFilteredProgramItems = getTagFilteredProgramItems(
     programItems,
@@ -38,16 +39,16 @@ export const getVisibleProgramItems = (
   // Before the main event program is visible, only show pre-convention week program.
   // After it is visible, pre-convention week program is in the past so it drops out of
   // the upcoming list on its own
-  const phaseFilteredProgramItems = isMainEventProgramVisible(getTimeNow())
+  const phaseFilteredProgramItems = isMainEventProgramVisible(timeNow)
     ? fullnessFiltered
     : fullnessFiltered.filter((programItem) =>
         isPreConventionWeekProgramItem(programItem),
       );
 
   if (selectedView === StartingTimeOption.UPCOMING) {
-    return getUpcomingProgramItems(phaseFilteredProgramItems);
+    return getUpcomingProgramItems(phaseFilteredProgramItems, timeNow);
   } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
-    return getUpcomingProgramItems(phaseFilteredProgramItems).filter(
+    return getUpcomingProgramItems(phaseFilteredProgramItems, timeNow).filter(
       (programItem) => programItem.revolvingDoor,
     );
   }

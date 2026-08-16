@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText, InfoTextVariant } from "client/components/InfoText";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";
-import { getTimeNow } from "client/utils/getTimeNow";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { getFormattedInterval } from "client/views/program-item/programItemUtils";
 
 const NBSP = "\u{A0}";
@@ -17,6 +17,7 @@ interface Props {
 
 export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
   const { t } = useTranslation();
+  const timeNow = useTimeNow();
 
   const formatTime = (): string => {
     const hours = Math.floor(programItem.mins / 60);
@@ -28,7 +29,7 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
     const interval = getFormattedInterval(
       dayjs(programItem.startTime),
       dayjs(programItem.endTime),
-      getTimeNow(),
+      timeNow,
     );
 
     return `${capitalize(interval)} (${hours}${NBSP}${t("hours")}${minutesDuration})`;
