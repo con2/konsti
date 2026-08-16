@@ -20,6 +20,16 @@ export class ProfilePage extends BasePage {
     return this.page.getByPlaceholder("New password");
   }
 
+  // The eye icon beside the password field. Its label names the action it
+  // performs, so only the "Show" variant exists while the password is masked
+  get showPasswordToggle(): Locator {
+    return this.page.getByRole("img", { name: "Show password" });
+  }
+
+  get hidePasswordToggle(): Locator {
+    return this.page.getByRole("img", { name: "Hide password" });
+  }
+
   // Reused by the Kompassi profile completion form
   get usernameInput(): Locator {
     return this.page.getByTestId("login-form-input-username");

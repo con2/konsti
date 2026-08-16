@@ -358,3 +358,30 @@ test("Failed session refresh after email change shows the form error", async ({
   await profilePage.saveEmail();
   await expect(profilePage.main).toContainText("Error updating email address");
 });
+
+test("Failed password change shows the form error", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.goto("/");
+
+  const profilePage = new ProfilePage(page);
+  await profilePage.navigation.gotoProfile();
+
+  // The password itself passes client-side validation, so the form reaches
+  // the API — a failure there must be reported in place of success
+  await page.route(`**${ApiEndpoint.USERS_PASSWORD}`, async (route) => {
+    await route.abort();
+  });
+
+  await profilePage.newPasswordInput.fill("newpassword");
+  await profilePage.savePassword();
+  await expect(profilePage.main).toContainText("Error changing password.");
+  await expect(profilePage.main).not.toContainText(
+    "Password changed successfully.",
+  );
+});
