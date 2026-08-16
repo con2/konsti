@@ -39,9 +39,32 @@ const prefetchView = async (importView: ViewImport): Promise<void> => {
   try {
     await importView();
   } catch {
-    // A failed prefetch is not worth reporting: opening the view fetches the
-    // chunk again, with the retry handling that applies there
+    // Nothing useful to do here, but note the cost: the browser caches a
+    // failed dynamic import for the rest of the session, so this chunk is now
+    // poisoned and opening the view will reject instantly and reload the page
+    // rather than refetch. That is why the caller only prefetches after a data
+    // load has succeeded and the connection looks usable
   }
+};
+
+// Some attendees are on metered or barely-working mobile data, where warming
+// chunks they may never open is a bad trade
+const connectionIsTooPoor = (): boolean => {
+  const connection = (
+    navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    }
+  ).connection;
+
+  if (!connection) {
+    return false;
+  }
+
+  return (
+    connection.saveData === true ||
+    connection.effectiveType === "slow-2g" ||
+    connection.effectiveType === "2g"
+  );
 };
 
 // Warms the chunks above so opening one of these views doesn't wait on a
@@ -50,6 +73,10 @@ const prefetchView = async (importView: ViewImport): Promise<void> => {
 // the roles that can reach them, to keep the transfer off everyone else's
 // connection
 export const prefetchLazyViews = (userGroup: UserGroup): void => {
+  if (connectionIsTooPoor()) {
+    return;
+  }
+
   const imports = [importAboutView, importFaqView, importInstructionsView];
 
   if (isAdminOrHelper(userGroup)) {

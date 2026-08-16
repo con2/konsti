@@ -46,9 +46,15 @@ export const preloadBootChunks = (modulePaths: string[]): Plugin => {
           if (into.has(fileName)) {
             return;
           }
-          into.add(fileName);
+          // chunk.imports can hold entries that are not chunks in this bundle
+          // (an external URL, for one), and those must not become preload
+          // links, so only add a name once it resolves to a chunk
           const chunk = chunks.find((output) => output.fileName === fileName);
-          for (const imported of chunk?.imports ?? []) {
+          if (!chunk) {
+            return;
+          }
+          into.add(fileName);
+          for (const imported of chunk.imports) {
             collect(imported, into);
           }
         };
@@ -61,19 +67,22 @@ export const preloadBootChunks = (modulePaths: string[]): Plugin => {
 
         const toPreload = new Set<string>();
         for (const modulePath of modulePaths) {
-          const needle = toPosix(modulePath);
-          const chunk = chunks.find((output) =>
+          // Leading separator so a path cannot match the tail of an unrelated
+          // directory, e.g. other-client/src/app/App.tsx for src/app/App.tsx
+          const needle = `/${toPosix(modulePath).replace(/^\//, "")}`;
+          const matches = chunks.filter((output) =>
             output.moduleIds.some((id) => toPosix(id).endsWith(needle)),
           );
-          if (!chunk) {
+          if (matches.length !== 1) {
             // Loud rather than silent: a moved or renamed module would
-            // otherwise quietly drop the preload and nothing would notice
+            // otherwise quietly drop the preload, and an ambiguous one would
+            // preload whichever chunk happened to come first
             // eslint-disable-next-line no-restricted-syntax -- Fail the build
             throw new Error(
-              `preloadBootChunks: no chunk contains "${modulePath}"`,
+              `preloadBootChunks: expected exactly one chunk containing "${modulePath}", found ${matches.length}`,
             );
           }
-          collect(chunk.fileName, toPreload);
+          collect(matches[0].fileName, toPreload);
         }
 
         return [...toPreload]
