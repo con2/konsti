@@ -15,7 +15,7 @@ interface Props {
   isLocalLogin: boolean;
 }
 
-export const ChangeUserSettingsForm = ({
+export const PasswordChangeForm = ({
   usernameToUpdate,
   isLocalLogin,
 }: Props): ReactElement | null => {
