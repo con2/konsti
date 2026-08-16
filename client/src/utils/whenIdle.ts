@@ -1,7 +1,7 @@
-// Defers low-priority work until the browser reports spare time. Safari only
-// added requestIdleCallback in 16.4 and older versions are still in the
-// supported range, so there the work goes on a timer instead: it gives no
-// guarantee the main thread is free, but it still keeps the work off the
+// Defers low-priority work until the browser reports spare time. No shipping
+// Safari or iOS version implements requestIdleCallback, so the timer branch is
+// the path every Apple device takes rather than a legacy edge case: it gives
+// no guarantee the main thread is free, but it still keeps the work off the
 // critical path. Returns a cancel function
 const FALLBACK_DELAY_MS = 2000;
 
