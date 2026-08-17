@@ -298,8 +298,8 @@ test("Upcoming direct signups block creating and joining a group", async ({
   page,
   request,
 }) => {
-  // Both program items are in the direct sign-up phase at event start time
-  // (Fri 15:00 GMT+3), starting Fri 16:00 and Fri 17:00 local time
+  // Both program items are in the direct sign-up phase at event start time,
+  // starting one and two hours after it
   const startTime1 = dayjs(config.event().eventStartTime)
     .add(1, "hour")
     .startOf("hour")
@@ -356,10 +356,10 @@ test("Upcoming direct signups block creating and joining a group", async ({
   );
   await expect(groupPage.upcomingDirectSignups).toHaveCount(2);
   await expect(groupPage.upcomingDirectSignups.nth(0)).toContainText(
-    `${testProgramItem.title} - Friday 16:00`,
+    new RegExp(String.raw`${testProgramItem.title} - \w+ \d{2}:\d{2}`),
   );
   await expect(groupPage.upcomingDirectSignups.nth(1)).toContainText(
-    `${testProgramItem2.title} - Friday 17:00`,
+    new RegExp(String.raw`${testProgramItem2.title} - \w+ \d{2}:\d{2}`),
   );
   await expect(groupPage.main).toContainText(
     "You'll have to cancel these sign-ups before you can create or join a group.",

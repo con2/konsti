@@ -92,19 +92,29 @@ test("Program list filters narrow the list and persist over reload", async ({
     "Revolving door program item",
   );
 
-  // The revolving door view shows only revolving door items
-  await programList.selectStartingTime("Revolving door");
-  await expect(items).toHaveCount(1);
+  const { enableRevolvingDoor } = config.event();
 
-  // The info panel is shown; no revolving door item is running yet
-  await expect(programList.main).toContainText("You can join a revolving door");
-  await expect(programList.main).toContainText("No running revolving door");
+  if (enableRevolvingDoor) {
+    // The revolving door view shows only revolving door items
+    await programList.selectStartingTime("Revolving door");
+    await expect(items).toHaveCount(1);
+
+    // The info panel is shown; no revolving door item is running yet
+    await expect(programList.main).toContainText(
+      "You can join a revolving door",
+    );
+    await expect(programList.main).toContainText("No running revolving door");
+  }
 
   // All filter selections persist over a reload
   await page.reload();
   await expect(programList.programTypeFilter).toContainText("Tabletop RPG");
   await expect(programList.hideFullItemsCheckbox).toBeChecked();
-  await expect(programList.startingTimeOption("Revolving door")).toBeChecked();
+  if (enableRevolvingDoor) {
+    await expect(
+      programList.startingTimeOption("Revolving door"),
+    ).toBeChecked();
+  }
   await expect(programList.searchInput).toHaveValue("Revolving");
   await expect(items).toHaveCount(1);
 

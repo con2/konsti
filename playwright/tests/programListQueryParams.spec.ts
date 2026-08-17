@@ -2,7 +2,6 @@ import { expect, test } from "@playwright/test";
 import dayjs from "dayjs";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -10,6 +9,14 @@ import {
   populateDb,
   postTestSettings,
 } from "playwright/playwrightUtils";
+
+// The query param can only select a program type the event has
+const [firstProgramType, secondProgramType] = config.event().activeProgramTypes;
+
+test.skip(
+  !secondProgramType,
+  "Event has a single program type, so there is nothing to narrow the list to",
+);
 
 test("Active program type is selected from the programType query parameter", async ({
   page,
@@ -21,7 +28,7 @@ test("Active program type is selected from the programType query parameter", asy
       ...testProgramItem,
       programItemId: "rpg-item",
       title: "Aardvark Adventure",
-      programType: ProgramType.TABLETOP_RPG,
+      programType: firstProgramType,
       startTime: dayjs(config.event().eventStartTime)
         .add(1, "hour")
         .startOf("hour")
@@ -31,7 +38,7 @@ test("Active program type is selected from the programType query parameter", asy
       ...testProgramItem,
       programItemId: "larp-item",
       title: "Zebra Zone",
-      programType: ProgramType.LARP,
+      programType: secondProgramType,
       startTime: dayjs(config.event().eventStartTime)
         .add(2, "hour")
         .startOf("hour")
@@ -48,9 +55,13 @@ test("Active program type is selected from the programType query parameter", asy
   await page.goto("/program/list");
   await expect(items).toHaveCount(2);
 
-  // The query param selects Larp as the active program type
-  await page.goto("/program/list?programType=larp");
-  await expect(programList.programTypeFilter).toContainText("Larp");
+  // The query param selects the second program type as the active one
+  await page.goto(
+    `/program/list?programType=${secondProgramType.toLowerCase()}`,
+  );
+  await expect(programList.programTypeFilter).not.toContainText(
+    "All program types",
+  );
 
   // The list now only shows items of the selected program type
   await expect(items).toHaveCount(1);

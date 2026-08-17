@@ -17,24 +17,33 @@ import {
 } from "playwright/playwrightUtils";
 
 // Program times show the weekday only during event week; further out the
-// weekday alone is ambiguous, so the full date must be included
+// weekday alone is ambiguous, so the full date must be included. The times are
+// asserted by shape rather than value: the event decides which weekday and hour
+// the program items land on
+const fullDatePattern = /^\w{3} \d{1,2}\.\d{1,2}\.\d{4} \d{2}:\d{2}$/;
+const weekdayPattern = /^\w+ \d{2}:\d{2}$/;
+
 const programType = config.event().twoPhaseSignupProgramTypes[0];
+const eventStart = dayjs(config.event().eventStartTime);
+// Offsets from the event start keep both program items on the same weekdays
+// whatever timezone the test runs in
+const preWeekStart = eventStart.subtract(4, "days");
+const mainEventStart = eventStart.add(3, "hours");
+
 const preWeekProgramItem = {
   ...testProgramItem,
   title: "Pre-week program",
   tags: [Tag.PRE_CONVENTION_WEEK],
   programType,
-  // Mon 20.7. 18:00–22:00 GMT+3
-  startTime: "2026-07-20T15:00:00.000Z",
-  endTime: "2026-07-20T19:00:00.000Z",
+  startTime: preWeekStart.toISOString(),
+  endTime: preWeekStart.add(4, "hours").toISOString(),
 };
 const mainEventProgramItem = {
   ...testProgramItem2,
   title: "Main event program",
   programType,
-  // Fri 24.7. 18:00–22:00 GMT+3
-  startTime: "2026-07-24T15:00:00.000Z",
-  endTime: "2026-07-24T19:00:00.000Z",
+  startTime: mainEventStart.toISOString(),
+  endTime: mainEventStart.add(4, "hours").toISOString(),
 };
 
 const seed = async (request: APIRequestContext): Promise<void> => {
@@ -58,19 +67,16 @@ test("Before event week, program times include the full date", async ({
 
   const programList = new ProgramListPage(page);
   await programList.gotoAllProgram();
-  await programList.selectProgramType("Tabletop RPG");
   await programList.selectStartingTime("All");
 
-  await expect(programList.timeHeadings.first()).toHaveText(
-    "Mon 20.7.2026 18:00",
-  );
+  const heading = programList.timeHeadings.first();
+  await expect(heading).toHaveText(fullDatePattern);
+  const headingText = await heading.textContent();
 
   await programList.itemByTitle("Pre-week program").title.click();
 
   const programItem = new ProgramItemPage(page);
-  await expect(programItem.timeRow).toContainText(
-    "Mon 20.7.2026 18:00 – 22:00",
-  );
+  await expect(programItem.timeRow).toContainText(`${headingText} – `);
 });
 
 test("During event week, program times show the weekday without a date", async ({
@@ -86,13 +92,16 @@ test("During event week, program times show the weekday without a date", async (
 
   const programList = new ProgramListPage(page);
   await programList.gotoAllProgram();
-  await programList.selectProgramType("Tabletop RPG");
 
-  await expect(programList.timeHeadings.first()).toHaveText("Friday 18:00");
+  const heading = programList.timeHeadings.first();
+  await expect(heading).toHaveText(weekdayPattern);
+  const headingText = await heading.textContent();
 
   await programList.itemByTitle("Main event program").title.click();
 
   const programItem = new ProgramItemPage(page);
-  await expect(programItem.timeRow).toContainText("Friday 18:00 – 22:00");
-  await expect(programItem.timeRow).not.toContainText("2026");
+  await expect(programItem.timeRow).toContainText(`${headingText} – `);
+  await expect(programItem.timeRow).not.toContainText(
+    mainEventStart.format("YYYY"),
+  );
 });

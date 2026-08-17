@@ -71,6 +71,8 @@ test("Program items missing required info show error messages", async ({
       ...testProgramItem,
       programItemId: "not-starting-on-even-hour",
       title: "Not Starting On Even Hour",
+      // Only lottery sign-up program items have to start on the hour
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: dayjs(config.event().eventStartTime)
         .add(6, "hour")
         .startOf("hour")
@@ -84,7 +86,7 @@ test("Program items missing required info show error messages", async ({
   const programList = new ProgramListPage(page);
 
   // The invalid query param lists every item missing required info
-  await page.goto("/program/list?programType=tabletoprpg&invalid");
+  await page.goto("/program/list?invalid");
   await expect(programList.items).toHaveCount(5);
 
   // Each invalid item shows the error message for its missing info
@@ -113,7 +115,7 @@ test("Program items missing required info show error messages", async ({
   );
 
   // The valid item shows no error messages
-  await page.goto("/program/list?programType=tabletoprpg");
+  await page.goto("/program/list");
   await expect(programList.items).toHaveCount(6);
   await expect(
     programList.itemByTitle("Valid Program Item").errorMessages,

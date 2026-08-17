@@ -63,7 +63,6 @@ test("Group member signing up to a 'signup always open' program item stays in th
   // Member direct signs up to the always open program item
   await groupPage.navigation.gotoProgram();
   await programList.gotoAllProgram();
-  await programList.selectProgramType("Tabletop RPG");
   // Pre-convention week program is not in the upcoming list during the main event
   await programList.selectStartingTime("All");
   await programList.waitForItems();
@@ -132,7 +131,6 @@ test("Group member direct signing up to a normal program item is removed from th
   // Member direct signs up to the normal program item
   await groupPage.navigation.gotoProgram();
   await programList.gotoAllProgram();
-  await programList.selectProgramType("Tabletop RPG");
   await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
   await firstProgramItem.signUp();

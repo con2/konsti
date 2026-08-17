@@ -15,6 +15,11 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
+test.skip(
+  !config.event().mainEventProgramVisibleTime,
+  "Event shows all program from the start, so there is no program phase to test",
+);
+
 const programType = config.event().twoPhaseSignupProgramTypes[0];
 // Pre-convention week program takes place before the main event starts
 const preWeekProgramItem = {

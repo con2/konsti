@@ -45,8 +45,14 @@ test("Switch language between English and Finnish", async ({
   await expect(aboutPage.heading("Osallistujille")).toBeVisible();
 
   // Expand the help question: the desk names come from the HelpDesks component
+  // and are per-event, so match the Finnish word for a desk rather than a name
   await page.getByRole("button", { name: /Mistä saan apua/ }).click();
-  await expect(aboutPage.main).toContainText("Larp- ja Roolipelitiski");
+  await expect(
+    aboutPage.main
+      .getByRole("listitem")
+      .filter({ hasText: /tiski$/ })
+      .first(),
+  ).toBeVisible();
 
   // And back to English
   await languageSelector.selectOption("en");

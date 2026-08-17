@@ -16,6 +16,12 @@ import {
   reportServerBuildTime,
 } from "playwright/playwrightUtils";
 
+// Program item starts an hour into the event so it is upcoming at the event
+// start time the tests run at
+const programItemStartTime = dayjs(config.event().eventStartTime)
+  .add(1, "hour")
+  .toISOString();
+
 // Layout of the bars the app stacks below the header. Each bar's own behaviour
 // is covered where that feature lives; these cover how they sit together
 
@@ -92,8 +98,8 @@ test("App level bars line up with each other", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: "2026-07-24T15:00:00.000Z",
-      endTime: "2026-07-24T19:00:00.000Z",
+      startTime: programItemStartTime,
+      endTime: dayjs(programItemStartTime).add(4, "hours").toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

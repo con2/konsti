@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import dayjs from "dayjs";
 import { config } from "shared/config";
 import {
   testProgramItem,
@@ -14,19 +15,27 @@ import {
 } from "playwright/playwrightUtils";
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
+// Both program items start an hour into the event so they are upcoming at the
+// event start time the tests run at
+const programItemStartTime = dayjs(config.event().eventStartTime)
+  .add(1, "hour")
+  .toISOString();
+const programItemEndTime = dayjs(programItemStartTime)
+  .add(4, "hours")
+  .toISOString();
 const initialProgramItem = {
   ...testProgramItem,
   title: "Initial program",
   programType,
-  startTime: "2026-07-24T15:00:00.000Z",
-  endTime: "2026-07-24T19:00:00.000Z",
+  startTime: programItemStartTime,
+  endTime: programItemEndTime,
 };
 const addedProgramItem = {
   ...testProgramItem2,
   title: "Added program",
   programType,
-  startTime: "2026-07-24T15:00:00.000Z",
-  endTime: "2026-07-24T19:00:00.000Z",
+  startTime: programItemStartTime,
+  endTime: programItemEndTime,
 };
 
 test("Periodic data poll picks up new program items without navigation", async ({
@@ -72,12 +81,12 @@ test("Periodic data poll hides signup when direct signup ends", async ({
 }) => {
   await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
-  const startTime = "2026-07-24T13:00:00.000Z";
+  const startTime = programItemStartTime;
   await addProgramItems(request, [
     {
       ...testProgramItem,
       startTime,
-      endTime: "2026-07-24T17:00:00.000Z",
+      endTime: programItemEndTime,
     },
   ]);
   await postTestSettings(request, {
@@ -100,7 +109,7 @@ test("Periodic data poll hides signup when direct signup ends", async ({
 
   // Move time past the program item's start on the background...
   await postTestSettings(request, {
-    testTime: "2026-07-24T14:00:00.000Z",
+    testTime: dayjs(startTime).add(1, "hour").toISOString(),
   });
   await expect(firstProgramItem.signUpButton).toBeVisible();
 

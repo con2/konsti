@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -349,14 +348,14 @@ test("Show no signup button before direct signup opens", async ({
     users: true,
     admin: true,
   });
-  // Rolling direct sign-up for 'other' program items opens 4 hours before the
-  // program item starts, so at event start this item's sign-up is not open yet
+  // Rolling direct sign-up opens 4 hours before the program item starts, so at
+  // event start this item's sign-up is not open yet
   await addProgramItems(request, [
     {
       ...testProgramItem,
       programItemId: "other-program-item",
       title: "Other test item",
-      programType: ProgramType.OTHER,
+      programType: config.event().rollingDirectSignupProgramTypes[0],
       startTime: dayjs(config.event().eventStartTime)
         .add(6, "hours")
         .startOf("hour")

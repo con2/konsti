@@ -1,10 +1,11 @@
 import { expect, test } from "@playwright/test";
+import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
 import { ErrorBar } from "playwright/pages/ErrorBar";
 import { LoginPage } from "playwright/pages/LoginPage";
 import { Navigation } from "playwright/pages/Navigation";
-import { login, populateDb } from "playwright/playwrightUtils";
+import { login, populateDb, postSettings } from "playwright/playwrightUtils";
 
 test("Logout clears the session", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
@@ -127,6 +128,8 @@ test("Signing back in clears the session expired notice", async ({
   request,
 }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
+  // Signing back in uses the local login form
+  await postSettings(request, { loginProvider: LoginProvider.LOCAL });
 
   const foreignJwt =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwidXNlckdyb3VwIjoidXNlciJ9.not-a-valid-signature";
