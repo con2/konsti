@@ -1,4 +1,5 @@
 import { Page, expect, test } from "@playwright/test";
+import dayjs from "dayjs";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
@@ -11,6 +12,12 @@ import {
   postTestSettings,
   reportServerBuildTime,
 } from "playwright/playwrightUtils";
+
+// Program item starts an hour into the event so it is upcoming at the event
+// start time the tests run at
+const programItemStartTime = dayjs(config.event().eventStartTime)
+  .add(1, "hour")
+  .toISOString();
 
 // A marker attribute on the document detects reloads independently of the
 // mocked clock (which replaces the performance API): a real reload wipes it,
@@ -176,8 +183,8 @@ test("A later build gets a transparent reload of its own", async ({
     {
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: "2026-07-24T15:00:00.000Z",
-      endTime: "2026-07-24T19:00:00.000Z",
+      startTime: programItemStartTime,
+      endTime: dayjs(programItemStartTime).add(4, "hours").toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });
@@ -255,8 +262,8 @@ test("Update reloads transparently on the first navigation, but only once per bu
     {
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: "2026-07-24T15:00:00.000Z",
-      endTime: "2026-07-24T19:00:00.000Z",
+      startTime: programItemStartTime,
+      endTime: dayjs(programItemStartTime).add(4, "hours").toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

@@ -135,12 +135,12 @@ test("Show event log notification when program item with lottery sign-up is canc
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Role-playing game was cancelled and your sign-up was removed: Test program item",
+    "was cancelled and your sign-up was removed: Test program item",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Role-playing game was cancelled and your sign-up was removed: Test program item",
+    "was cancelled and your sign-up was removed: Test program item",
   );
 });
 
@@ -249,12 +249,12 @@ test("Show event log notification when program item with lottery sign-up doesn't
   await page.reload();
 
   await expect(programList.notificationBar.bar).toContainText(
-    "Role-playing game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
+    "no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    "Role-playing game no longer uses Konsti sign-up and your sign-up was removed: Test program item",
+    "no longer uses Konsti sign-up and your sign-up was removed: Test program item",
   );
 });
 

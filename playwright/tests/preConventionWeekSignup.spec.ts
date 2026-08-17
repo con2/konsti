@@ -14,6 +14,11 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
+test.skip(
+  !config.event().preConventionWeekSignupStartTime,
+  "Event has no pre-convention week program",
+);
+
 test("Pre-convention week program item uses direct signup even with lottery program type", async ({
   page,
   request,

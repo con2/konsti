@@ -11,6 +11,8 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
+test.skip(!config.event().enableTagDropdown, "Event has no tag filter");
+
 test("Multiple tag filters combine with AND logic and persist over reload", async ({
   page,
   request,

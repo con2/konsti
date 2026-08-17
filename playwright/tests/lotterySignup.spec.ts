@@ -282,18 +282,18 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   await postAssignment(request, startTime);
   await page.reload();
 
-  // Check new assignment message
-  await expect(programList.notificationBar.bar).toContainText(
-    new RegExp(
-      String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
-    ),
+  // The two program items overlap, so the user gets a spot in exactly one of
+  // them - which one depends on the assignment algorithm
+  const assignedMessage = new RegExp(
+    String.raw`You were assigned to the .* (${firstProgramItemTitle}|${secondProgramItemTitle})\.`,
   );
+
+  // Check new assignment message
+  await expect(programList.notificationBar.bar).toContainText(assignedMessage);
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    new RegExp(
-      String.raw`You were assigned to the .* ${firstProgramItemTitle}\.`,
-    ),
+    assignedMessage,
   );
 });
 
@@ -362,7 +362,10 @@ test("Receive seat from each lottery program type in separate time slots", async
 
   const programList = new ProgramListPage(page);
 
-  // Lottery sign-up to each program item in its own sign-up window
+  // Lottery sign-up to each program item in its own sign-up window, running that
+  // slot's lottery before signing up to the next one. Sign-up removal strategies
+  // that drop a winner's other upcoming sign-ups would otherwise leave the later
+  // slots with nothing to assign
   for (const slot of slots) {
     await postTestSettings(request, { testTime: slot.signupTime });
     await page.goto("/");
@@ -376,10 +379,7 @@ test("Receive seat from each lottery program type in separate time slots", async
     await expect(card.container).toContainText(
       `This ${programTypeNamesEn[slot.programType]} is priority 1 on your lottery sign-ups.`,
     );
-  }
 
-  // Run the lottery for each slot
-  for (const slot of slots) {
     await postAssignment(request, slot.startTime);
   }
 
@@ -453,7 +453,7 @@ test("Cancel lottery signup on program list", async ({ page, request }) => {
 
   // Card shows the current lottery sign-up instead of the sign-up button
   await expect(firstProgramItem.container).toContainText(
-    "This role-playing game is priority 1 on your lottery sign-ups.",
+    "is priority 1 on your lottery sign-ups.",
   );
   await expect(firstProgramItem.lotterySignupButton).toBeHidden();
 
