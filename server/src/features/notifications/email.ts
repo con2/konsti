@@ -21,7 +21,11 @@ export class EmailSender {
     if (this.transport) {
       return this.transport;
     }
-    if (process.env.SETTINGS === "production") {
+    if (process.env.NODE_ENV === "test") {
+      // Tests only assert on the messages handed to the transport, so keep them off
+      // the network: the shared test-account service goes down and fails the suite
+      this.transport = createTransport({ jsonTransport: true });
+    } else if (process.env.SETTINGS === "production") {
       this.transport = createTransport({
         host: config.server().emailSMTPHost,
         port: config.server().emailSMTPPort,

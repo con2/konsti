@@ -1,5 +1,5 @@
 import { EventEmitter } from "node:events";
-import { vi } from "vitest";
+import { beforeEach, vi } from "vitest";
 import { config } from "shared/config";
 import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
@@ -32,10 +32,18 @@ Object.defineProperty(globalThis, "__MONGO_URI__", {
   configurable: true,
 });
 
-vi.spyOn(config, "event").mockReturnValue({
-  ...config.event(),
-  eventStartTime: "2023-07-28T12:00:00Z", // Fri 15:00 GMT+3
-  directSignupAlwaysOpenIds: ["1234"],
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
-});
+const stubEventConfig = (): void => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    eventStartTime: "2023-07-28T12:00:00Z", // Fri 15:00 GMT+3
+    directSignupAlwaysOpenIds: ["1234"],
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
+  });
+};
+
+// Stub once here so test files reading the event config while they are imported get the
+// test values, and again before each test because files resetting or restoring their own
+// mocks would otherwise drop the stub and fall back to the live event config
+stubEventConfig();
+beforeEach(stubEventConfig);
