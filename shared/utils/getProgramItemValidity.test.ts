@@ -87,6 +87,11 @@ test("program item with minAttendance bigger than maxAttendance is invalid", () 
 });
 
 test("lottery program item not starting at even hour is invalid", () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [testProgramItem.programType],
+  });
+
   const validity = getProgramItemValidity({
     ...testProgramItem,
     startTime: "2019-07-26T14:30:00.000Z",
@@ -144,6 +149,41 @@ test("lottery program item can start at half hour when parent start time is at e
 
   expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
   expect(validity.allValuesValid).toBe(true);
+});
+
+test("lottery program item can start at half hour when parent start time is at half hour", () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, "2019-07-26T14:30:00.000Z"],
+    ]),
+  });
+
+  const validity = getProgramItemValidity({
+    ...testProgramItem,
+    startTime: "2019-07-26T14:30:00.000Z",
+  });
+
+  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
+  expect(validity.allValuesValid).toBe(true);
+});
+
+test("lottery program item starting at half hour is invalid when parentId has no configured start time", () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [testProgramItem.programType],
+    startTimesByParentIds: new Map([
+      ["other-parent", "2019-07-26T14:00:00.000Z"],
+    ]),
+  });
+
+  const validity = getProgramItemValidity({
+    ...testProgramItem,
+    startTime: "2019-07-26T14:30:00.000Z",
+  });
+
+  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(true);
+  expect(validity.allValuesValid).toBe(false);
 });
 
 test("minAttendance bigger than maxAttendance is not flagged when maxAttendance is 0", () => {
