@@ -1,0 +1,1276 @@
+[
+  {
+    "slug": "ahmija",
+    "title": "Ahmija",
+    "description": "Tavallinen baari-ilta keskellä syksyä. Matkaan sattuneiden juomien kanssa joukko ystäviä talsii tihkusateessa kuppilasta toiseen.\r\n\r\nKuin tyhjästä ilmestyy rekka, joka törmäyttää koko poppoon taikamaailmaan ja huomaatte olevanne keskellä Gelgenbeckin basiliskipeijaisia! Hilpeää tunnelmaa latistaa ennustus, jonka mukaan muinainen pahuus on palannut maailmaan.\r\n\r\nPelisysteeminä Mörk Borg isekai-twistillä. Erittäin huumoripainotteisessa pelissä graafisia kuvauksia väkivallasta. Valmishahmoja käyttävä peli soveltuu hyvin aloittelijoille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["multiple", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "ahmija",
+        "title": "Ahmija – 1. pelautus",
+        "startTime": "2026-09-04T18:30:00+03:00",
+        "endTime": "2026-09-04T20:30:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "1. pelautus",
+          "internal:freeformLocation": "Ropepöytä 4"
+        }
+      },
+      {
+        "slug": "ahmija-2",
+        "title": "Ahmija – 2. pelautus",
+        "startTime": "2026-09-05T12:00:00+03:00",
+        "endTime": "2026-09-05T14:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "2. pelautus",
+          "internal:freeformLocation": "Ropepöytä 6"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "brindlewood-bay-grannies-on-the-loose",
+    "title": "Brindlewood Bay: Grannies on the Loose",
+    "description": "Play as grannies, meddle in the town's affairs and solve a murder!\r\n\r\nCollaborative storytelling game about cozy murder mysteries with a touch of cosmic/eldritch horror. You play a group of elderly women who belong to a murder mystery book club who meddle in the town's affairs and solve murders.\r\n\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "brindlewood-bay-grannies-on-the-loose",
+        "title": "Brindlewood Bay: Grannies on the Loose",
+        "startTime": "2026-09-06T12:00:00+03:00",
+        "endTime": "2026-09-06T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 4" }
+      }
+    ]
+  },
+  {
+    "slug": "cbrpnk-pirkanmanse-2126",
+    "title": "CBR+PNK: Pirkanmanse 2126",
+    "description": "Kun tulviva Itämeri nielaisi alleen rannikkokaupungit, Tampereesta tuli Suomen ensimmäinen miljoonataajama. Kaupunki kasvoi räjähdysmäisesti, ja puuttuvan maapinta-alan korvasivat rikkaat kohoamalla tähtiin ylellisiin torneihinsa. Tähtipiirtäjät kannattelevat kohotettuja kulkuväyliä ja kansia, jotka estävät auringonvalon alempiin kerroksiin. Syvällä maan alla kulkee massiiviset tunneliverkostot, joita pitkin moottoriajoneuvot pääsevät kulkemaan ympäri maakuntaa. Tässä rapistuneessa hyvinvointivaltiossa joukkomme kokeneita kyberpunkkareita saavat välittäjältään keikan, joka muuttaa heidän elämänsä ikiajoiksi - halusivat he sitä tai eivät.\r\n\r\nCBR+PNK-pelissä pelataan kyberpunkkareita—palkkasotureita, rikollisia tai aktivisteja, jotka elävät veitsenterällä ja operoivat varjoissa rosoisessa, ultraväkivaltaisessa maailmassa. Jokaisessa pelissä  kyberpunkkarit suorittavat VIIMEISTÄ KEIKKAANSA, jonka jälkeen he voivat eläköityä, paeta tai ehkä jopa kirjoittaa tarinansa tähtiin.\r\n\r\nForged in the Dark -pelien kulku toteutuu tarinavetoisesti, mutta selkeästi pelimekaniikat huomioiden. Pitkäkestoiset suunnittelut korvataan takaumilla, tarinankerronta on tasaisemmin jakautunut koko pelipöydän kesken ja jokainen nopanheitto muuttaa tarinaa jollain tavalla.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "cbrpnk-pirkanmanse-2126",
+        "title": "CBR+PNK: Pirkanmanse 2126",
+        "startTime": "2026-09-06T12:00:00+03:00",
+        "endTime": "2026-09-06T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 3" }
+      }
+    ]
+  },
+  {
+    "slug": "ffxiv-ttrpg-kristallivarkaat",
+    "title": "FFXIV TTRPG: Kristallivarkaat",
+    "description": "Ryhmä 30 tason seikkailijoita on palkattu etsimään Amajina ja pojat -mineraalikonsernin kadonneita vankkureita, jotka kuljettivat kristallilähetystä.\r\n\r\nTule tutustumaan Final Fantasy XIV:n pöytäroolipeliin. Kyseessä on suoraviivainen seikkailu, joka sisältää hieman tutkimista ja taistelua. Seikkailu on pelin starter-setistä. Alkuperäisen MMORPG:n tunteminen ei ole välttämätöntä, mutta parantaa kokemusta.\r\n\r\nKoska kaikki pelimekaaninen tulee suoraan ammatin mukaan, pelissä ei ole valmiita hahmoja vaan pelaaja voi valita jonkun seuraavista ammateista: paladin. warrior, dark knight, white mage, scholar, astrologian, monk, dragoon, ninja, bard, machinist, black mage tai summoner.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "ffxiv-ttrpg-kristallivarkaat",
+        "title": "FFXIV TTRPG: Kristallivarkaat",
+        "startTime": "2026-09-04T17:00:00+03:00",
+        "endTime": "2026-09-04T21:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+      }
+    ]
+  },
+  {
+    "slug": "heijastin-paja",
+    "title": "Heijastin paja",
+    "description": "Heijastin pajassa tehdään avaimenperä tai laukkukoru. Silitettävällä heijastin kalvoilla paksulle huovalle ja korun osilla.\r\nPaja on tasoltaan vasta-alkajille tai kokeneemmille askartelijoille. Heijastin pajaan otetaan 25 hkl jotka jonottaa ennen ohjelman alkamista. Pajaan pääsee myöhemminkin jos paikkoja vapautuu sitä mukaan kun, joku saa korunsa valmiiksi.\r\n\r\nHeijastin paja on ilmainen. Ohjausta pajassa saa myös englanniksi.\r\n\r\nHuomio! Tähän ennakkoilmoittaudutaan Konstin kautta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-workshop"],
+      "room": ["opus-1-2"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["workshop"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {
+      "ropecon:isRevolvingDoor": true,
+      "konsti:maxAttendance": 25
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "heijastin-paja",
+        "title": "Heijastin paja",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T11:30:00+03:00",
+        "lengthMinutes": 90,
+        "location": "Opus 1-2",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "ropecon:isRevolvingDoor": true,
+          "konsti:maxAttendance": 25
+        }
+      }
+    ]
+  },
+  {
+    "slug": "hex-ferrum",
+    "title": "Hex Ferrum",
+    "description": "Uuden Hex Ferrum -roolipelin pelisessio, joka pelataan Quickstart-säännöillä. Seikkailu on tummasävyinen, mystiikkaa ja paranormaaleja voimia käsittelevä sekä moraalisia valintoja painottava. Peliin voi osallistua enimmillään 7 pelaajaa pelinjohtajan lisäksi. Hex Ferrumin Kickstarter-kampanja käynnistyy syyskuussa, ja sen aikana tuodaan julkaistavaksi sekä Player´s Rulebook että Game Master´s Rulebook. Hex Ferrum tarjoaa syvän pelikokemuksen, erittäin monipuolisen hahmonkehityksen sekä laajan Vidoq-maailman. Sääntökirjoissa on yhteensä 850 sivua ja 550 kuvaa, hahmotyyppejä on 50 ja kehittyviä skillejä 300. Quickstart on ladattavissa pelin verkkosivuilta: www.hexferrum.com",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "hex-ferrum",
+        "title": "Hex Ferrum",
+        "startTime": "2026-09-05T16:30:00+03:00",
+        "endTime": "2026-09-05T20:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 3" }
+      }
+    ]
+  },
+  {
+    "slug": "hylatyn-talon-somehaaste",
+    "title": "Hylätyn talon somehaaste",
+    "description": "Joukko yliluonnollisia kykyjä omaavia teinejä lähtee tekemään vaarallista somehaastetta autiotaloon. \r\nPeli on aloittelijaystävällinen ja sitä pelataan helpolla sääntösysteemillä, joka on muokattu Hunter the Reckoning -pelin sääntöjä helpottaen. ",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["multiple", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "hylatyn-talon-somehaaste",
+        "title": "Hylätyn talon somehaaste – 1. pelautus",
+        "startTime": "2026-09-04T19:00:00+03:00",
+        "endTime": "2026-09-04T21:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "1. pelautus",
+          "internal:freeformLocation": "Ropepöytä 3"
+        }
+      },
+      {
+        "slug": "hylatyn-talon-somehaaste-2",
+        "title": "Hylätyn talon somehaaste – 2. pelautus",
+        "startTime": "2026-09-06T11:30:00+03:00",
+        "endTime": "2026-09-06T13:30:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "2. pelautus",
+          "internal:freeformLocation": "Ropepöytä 1"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "jalometsan-murhamysteeri",
+    "title": "Jalometsän murhamysteeri",
+    "description": "Joukko Hilpeät Hupisamoojat Oy:n esiintyjiä saapuu Jalometsän kylään keikalle nimettömän kirjeen kutsusta. Paikan päällä kuitenkin selviää, että heitä ei ole kutsuttu vain esiintymään. Jalometsässä on nimittäin tapahtunut mysteerisiä murhia ja nyt kylän pormestari pyytää esiintyjiä selvittämään tapausta.\r\n\r\n“Onnea tutkintaan sekä illan esiintymiseen.” \r\n\r\nPeli on aloittelijaystävällinen ja tarjolla on valmishahmot.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "jalometsan-murhamysteeri",
+        "title": "Jalometsän murhamysteeri",
+        "startTime": "2026-09-05T12:00:00+03:00",
+        "endTime": "2026-09-05T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 1" }
+      }
+    ]
+  },
+  {
+    "slug": "kadonneen-tornin-paluu",
+    "title": "Dragon Age: Kadonneen tornin paluu",
+    "description": "Eletään levottomia aikoja Fereldenin kuningaskunnassa.\r\n\r\nEtelässä liikkuu jälleen outoja huhuja pimeyden olennoista, ja Grey Wardens, muinainen järjestö joka taistelee niitä vastaan, kokoaa rivejään.\r\n\r\nOlette Grey Warden -kokelaita matkalla\r\nensimmäiseen oikeaan tehtäväänne. Se on\r\nyksinkertainen: matkustaa syrjäiseen Greenthornin laaksoon, tavata Orlesialainen seurue ja saattaa heidät turvallisesti\r\neteenpäin.\r\n\r\nHelppo homma, eikö?\r\n\r\nSata vuotta sitten yksi ritari kuoli laaksossa, jotta kuningatar voisi paeta. Greenthornissa\r\nmenneisyys ei kuitenkaan lepää rauhassa.\r\n\r\nJokin valvoo yhä, eikä se ole valmis luopumaan velvollisuudestaan.\r\n\r\n—\r\n\r\nJos Ferelden, Grey Warden, Orlais sun\r\nmuut kuulostavat tällä hetkellä lähinnä sekavalta fantasiaenglannilta, ei hätää, ennen oneshottia käydään kaikki oleellinen läpi.\r\n\r\nTietenkin Dragon Age -videopelien tai muun kyseisen settingin tuntemuksesta on toki hyötyä, mutta tärkeintä on kiinnostus synkkään fantasiaan, mysteereihin ja yhteiseen tarinankerrontaan.\r\n\r\nGM on itsekin vielä varsin tuore pelinvetäjä, joten pieni hapuilu kuuluu asiaan. Tämä oneshot sopii parhaiten pelaajille, joilla on ainakin vähän aiempaa kokemusta pöytäroolipeleistä.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": { "konsti:maxAttendance": 4 },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kadonneen-tornin-paluu",
+        "title": "Dragon Age: Kadonneen tornin paluu",
+        "startTime": "2026-09-05T15:00:00+03:00",
+        "endTime": "2026-09-05T20:00:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Ropepöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:maxAttendance": 4,
+          "internal:freeformLocation": "Ropepöytä 6"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kirpputori-lauantai",
+    "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "room": ["sopraano"],
+      "konsti": ["fleamarket"],
+      "scheduled": ["multiple", "one-or-more"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kirpputori-lauantai-0930",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 09:30–10:00",
+        "startTime": "2026-09-05T09:30:00+03:00",
+        "endTime": "2026-09-05T10:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 09:30–10:00",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1000",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 10:00–10:30",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T10:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 10:00–10:30",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1030",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 10:30–11:00",
+        "startTime": "2026-09-05T10:30:00+03:00",
+        "endTime": "2026-09-05T11:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 10:30–11:00",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1100",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 11:00–11:30",
+        "startTime": "2026-09-05T11:00:00+03:00",
+        "endTime": "2026-09-05T11:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 11:00–11:30",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1130",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 11:30–12:00",
+        "startTime": "2026-09-05T11:30:00+03:00",
+        "endTime": "2026-09-05T12:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 11:30–12:00",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1200",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 12:00–12:30",
+        "startTime": "2026-09-05T12:00:00+03:00",
+        "endTime": "2026-09-05T12:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 12:00–12:30",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1230",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 12:30–13:00",
+        "startTime": "2026-09-05T12:30:00+03:00",
+        "endTime": "2026-09-05T13:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 12:30–13:00",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1300",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 13:00–13:30",
+        "startTime": "2026-09-05T13:00:00+03:00",
+        "endTime": "2026-09-05T13:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 13:00–13:30",
+          "konsti:maxAttendance": 130
+        }
+      },
+      {
+        "slug": "kirpputori-lauantai-1330",
+        "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14 – Saapuminen klo 13:30–14:00",
+        "startTime": "2026-09-05T13:30:00+03:00",
+        "endTime": "2026-09-05T14:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 13:30–14:00",
+          "konsti:maxAttendance": 130
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kirpputori-perjantai-alkuilta",
+    "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "room": ["sopraano"],
+      "konsti": ["fleamarket"],
+      "scheduled": ["multiple", "one-or-more"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1600",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 16:00–16:30",
+        "startTime": "2026-09-04T16:00:00+03:00",
+        "endTime": "2026-09-04T16:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 16:00–16:30",
+          "konsti:maxAttendance": 90
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1630",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 16:30–17:00",
+        "startTime": "2026-09-04T16:30:00+03:00",
+        "endTime": "2026-09-04T17:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 16:30–17:00",
+          "konsti:maxAttendance": 90
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1700",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 17:00–17:30",
+        "startTime": "2026-09-04T17:00:00+03:00",
+        "endTime": "2026-09-04T17:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 17:00–17:30",
+          "konsti:maxAttendance": 90
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1730",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 17:30–18:00",
+        "startTime": "2026-09-04T17:30:00+03:00",
+        "endTime": "2026-09-04T18:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 17:30–18:00",
+          "konsti:maxAttendance": 90
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1800",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 18:00–18:30",
+        "startTime": "2026-09-04T18:00:00+03:00",
+        "endTime": "2026-09-04T18:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 18:00–18:30",
+          "konsti:maxAttendance": 90
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-alkuilta-1830",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19 – Saapuminen klo 18:30–19:00",
+        "startTime": "2026-09-04T18:30:00+03:00",
+        "endTime": "2026-09-04T19:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 18:30–19:00",
+          "konsti:maxAttendance": 90
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kirpputori-perjantai-loppuilta",
+    "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "room": ["sopraano"],
+      "konsti": ["fleamarket"],
+      "scheduled": ["multiple", "one-or-more"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kirpputori-perjantai-loppuilta-1900",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 19:00–19:30",
+        "startTime": "2026-09-04T19:00:00+03:00",
+        "endTime": "2026-09-04T19:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 19:00–19:30",
+          "konsti:maxAttendance": 120
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-1930",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 19:30–20:00",
+        "startTime": "2026-09-04T19:30:00+03:00",
+        "endTime": "2026-09-04T20:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 19:30–20:00",
+          "konsti:maxAttendance": 120
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2000",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 20:00–20:30",
+        "startTime": "2026-09-04T20:00:00+03:00",
+        "endTime": "2026-09-04T20:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 20:00–20:30",
+          "konsti:maxAttendance": 120
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2030",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 20:30–21:00",
+        "startTime": "2026-09-04T20:30:00+03:00",
+        "endTime": "2026-09-04T21:00:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 20:30–21:00",
+          "konsti:maxAttendance": 120
+        }
+      },
+      {
+        "slug": "kirpputori-perjantai-loppuilta-2100",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 21:00–21:30",
+        "startTime": "2026-09-04T21:00:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 30,
+        "location": "",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "Saapuminen klo 21:00–21:30",
+          "konsti:maxAttendance": 45
+        }
+      }
+    ]
+  },
+  {
+    "slug": "kitsune-maskipaja",
+    "title": "Kitsune-maskipaja",
+    "description": "Kutsuuko mystinen kitsune-maski sinua?\r\nOletko nähnyt muiden käyttävän näyttäviä kitsune-maskeja? Tule tekemään itsellesi sinun näköisesi kitsune-maski kissamaskin pohjaan. Pajasta löytyy kaikki tarvittavat tarvikkeet ja opastus.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "room": ["programtent1"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["workshop"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "kitsune-maskipaja",
+        "title": "Kitsune-maskipaja",
+        "startTime": "2026-09-04T20:30:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Program tent 1",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "korttisuojan-koristelu-tyopajaphotocard-deco-workshop",
+    "title": "Korttisuojan koristelu työpaja/Photocard deco workshop",
+    "description": "Tule koristelemaan lempihahmollesi, elämäsi kirkkaimmalle tähdelle, omistettu kuvakorttisuoja! Korttisuojaan voit laittaa kuvakortin suosikistasi, oli kyseessä sitten k-pop-idoli, lempianimehahmosi tai vaikka Shrek. Korttisuojiin mahtuvat niin kuvakortit (kuten k-pop tai j-pop) kuin erilaiset keräilykortit (kuten Pokémon-kortit). Tarjoamme korttisuojat ja tarvikkeet niiden koristeluun. Työpajaan mahtuu 20 henkilöä.\r\n\r\nHuomio! Tähän ennakkoilmoittaudutaan Konstin kautta. \r\n\r\nCome decorate a photocard case for your favourite character, the brightest star of your life! The card cases will fit photocards (such as k-pop or j-pop idols) and most trading cards (such as Pokémon). The photocard cases and supplies for decorating will be provided. Instructions for photocard decorating will be also in English. Maximum number of participants is 20.\r\n\r\nNotice! This workshop uses advance registration through Konsti.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-workshop"],
+      "room": ["opus-1-2"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["workshop"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 20
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "korttisuojan-koristelu-tyopajaphotocard-deco-workshop",
+        "title": "Korttisuojan koristelu työpaja/Photocard deco workshop",
+        "startTime": "2026-09-06T11:45:00+03:00",
+        "endTime": "2026-09-06T12:45:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Opus 1-2",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 20
+        }
+      }
+    ]
+  },
+  {
+    "slug": "lancer-the-prophet-predicament",
+    "title": "Lancer: The Prophet Predicament",
+    "description": "In a system far from the core worlds of the Union, a warlord who styles himself as a prophet has risen in power with alarming speed. His ability to precisely predict the future, which he has leveraged to become the de facto ruler of the system, has Union scientists concerned that he has gained access to some kind of forbidden technology. And meanwhile, his posturing against ideals of a free and just universe has Union diplomats concerned of the next steps of his conquest. Swift and covert action must be taken, and you are chosen for the task. \r\n\r\nLancer is is a tabletop roleplaying game set in a distant future where humanity has spread to the stars. Union, the galactic hegemon, struggles to right the wrongs of its violent, imperial past and bring a golden age to the galaxy. The players are lancers, elite mech pilots who are called upon to fight in the conflicts of this tumultuous time. The game features detailed character customization and in-depth tactical combat. The scenario is intended for players with any level of experience who have an open mind to learning new game mechanics.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "lancer-the-prophet-predicament",
+        "title": "Lancer: The Prophet Predicament",
+        "startTime": "2026-09-05T11:00:00+03:00",
+        "endTime": "2026-09-05T15:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 2" }
+      }
+    ]
+  },
+  {
+    "slug": "luotijuna-kuolonmaille",
+    "title": "Luotijuna Kuolonmaille",
+    "description": "Doskvolin rautatieasemalla sähkö rätisee ja metalli kirskuu, kun luotijuna ampaisee kohti kaupunginmuurin takaisia Kuolonmaita. Kiskoilla lurjusten tehtävänä on varastaa juonikkaan aatelisen omistama astrolabi, jolla voi lukea tähtitaivaan epäluonnollisia liikkeitä.\r\n\r\nLuvassa on kevyttä toimintaseikkailua valmishahmoilla Dishonored- ja Thief-pelisarjojen tyyliin. Aloittelijoille sopiva peli perustuu Blades in the Darkin sääntöihin ja maailmaan.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "luotijuna-kuolonmaille",
+        "title": "Luotijuna Kuolonmaille",
+        "startTime": "2026-09-05T12:00:00+03:00",
+        "endTime": "2026-09-05T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+      }
+    ]
+  },
+  {
+    "slug": "mestari-pelakuun-kartano",
+    "title": "Mestari Pelakuun kartano",
+    "description": "On kaunis syyspäivä. Louhenlyhdyn kaupunki avautuu eteenne hälisevänä ja pulppuilevana, täynnä iloista vilskettä. Arkisen pinnan alla on kuitenkin tapahtumassa suuria, sillä Vastaanottajien varaskilta on liikekannalla. Killan johtaja on saanut käsiinsä mittaamattoman arvokkaan taikaesineen, joka on sekä väkevä että vaarallinen. \r\n\r\nRyhmänne on päättänyt pysäyttää killan suunnitelmat ja varastaa esineen takaisin. Olette kuulleet, että se on kätkettynä jossakin Huvilapuistikon vauraista kartanoista, ja tiedätte, mistä hankkia lisätietoja. Olette varautuneet vartijoihin ja hälytysjärjestelmiin, mutta sitä outojen taikaesineiden ja arvoitusten paljoutta, jonka tulette kohtaamaan, ette osaa edes kuvitella.\r\n\r\n\"Mestari Pelakuun kartano\" on Legendoja ja lohikäärmeitä -seikkailu kolmostason valmishahmoilla. Sen keskiössä on tutkiminen, arvoitusten ratkaisu ja vihjeiden etsiminen, mutta mahdollisuuksia taisteluunkin löytyy. Teemoiltaan se on melko kevyt, eikä käsittele erityisen raskaita aiheita. Vaikka hahmot ovat jo kolmostasolla, sopii peli myös aloittelevammille seikkailijoille.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "mestari-pelakuun-kartano",
+        "title": "Mestari Pelakuun kartano",
+        "startTime": "2026-09-05T15:30:00+03:00",
+        "endTime": "2026-09-05T20:30:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Ropepöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 2" }
+      }
+    ]
+  },
+  {
+    "slug": "mita-tapahtui-hermekselle-mta-ja-ensimmainen-komennus-ff7",
+    "title": "Ensimmäinen komennus (FF7)",
+    "description": "MtA-peli:\r\nKun velhokoulu Doissetepin priimus Hermes kutsui sinut 20v syntymäpäivilleen, olit yllättynyt ja ilahtunut. Ettehän te olleet erityisen läheisiä, ettekä edes samasta tuvasta (Ettekä välttämättä saman vuoden opiskelijoitakaan). Vaikka kouluajoista ei olekaan kulunut kuin muutama vuosi, sinun on vaikea edes muistaa, kuka tuo Hermes oikein oli. Juhlista ei kuitenkaan kannata kieltäytyä, sillä ne järjestetään Lontoon keskustassa Hermeksen yksityisasunnossa, suuressa kattohuoneistossa. Hermes on ilmeisesti varsin varakas. Niinpä saavut kutsussa olleeseen osoitteeseen lauantaina klo 18 vain huomataksesi, että paikalla on kutsuvieraat, mutta ei päivänsankaria. Mitä ihmettä on tapahtunut Hermekselle ja itse asiassa, kuka hän oikein edes on?\r\n\r\nPeli on aloittelijoille suunnattu matalan kynnyksen peli, joka sijoittuu World of Darkness pelimaailmaan. WoD on meidän maailmamme kaltainen sillä erotuksella, että yliluonnolliset olennot ja tapahtumat ovat siellä tosia, joskin yliluonnollinen maailma pysyy piilossa tavallisilta ihmisiltä. Pelissä pelataan maageja, siis ihmisiä, jotka osaavat taikoa. Pelaajahahmot ovat käyneet Doissetepin, velhokoulun, ja saaneet siellä opetusta taikuuden teoriaan. Loitsut siis onnistuvat näiltä hahmoilta. Jos pidät Harry Potterin velhomaailmasta, pidät varmasti tästäkin. \r\n\r\nFF7-peli:\r\nOlet saanut koulutuksesi suoritettua ja saanut ensimmäisen tehtäväsi Turkseissa, Shin-ran erityisyksikössä, joka on erikoistunut muun muassa tiedon keräämiseen. Tiedät kyllä, että Turksit tekevät melkein mitä tahansa yhtiön hyväksi, eikä se kaikki aina ole laillista (no, paitsi teille). Olet eliittiä ja ylpeä siitä. Uusien työtovereidesi kanssa odotat innokkaana, millaiselle komennukselle teidät kutsutaan. \r\n\r\nPeli on aloittelijoille ja Final Fantasy 7:n maailman faneille suunnattu matalan kynnyksen peli. Peilmaailman tietämys ei varsinaisesti ole pakollista, mutta pelissä tulee vilahtamaan tuttuja nimiä ja paikkoja ja maailmanhistorian tapahtumia, jotka voivat olla vieraita, jos FF7:n maailma ei ole lainkaan tuttu. Hahmot ovat Shin-ran työntekijöitä ja peli sijoittuu aikaan noin 5v ennen FF7:n tapahtumia. ",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "mita-tapahtui-hermekselle-mta-ja-ensimmainen-komennus-ff7",
+        "title": "Ensimmäinen komennus (FF7)",
+        "startTime": "2026-09-06T11:30:00+03:00",
+        "endTime": "2026-09-06T15:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+      }
+    ]
+  },
+  {
+    "slug": "mork-borg-the-rotblack-sludge",
+    "title": "Mörk Borg: The Rotblack Sludge",
+    "description": "On kaunis päivä kuolevassa maailmassa! Taivas on harmaa, linnut laulavat tulevasta tuhosta ja sinä olet kosteassa, kuluneessa tyrmässä odottamassa teloitusta rikoksestasi, joka on... onko sillä oikeastaan väliä? Kaikki toivo ei kuitenkaan ole menetetty. Varjokuninkaan Näkijä tekee tarjouksen, johon kannattaa tarttua; pelasta kidnapattu kruununprinssi Aldon ja olet ansainnut vapautesi. Aldonia epäillään pidettävän paikassa, jonne kukaan täysijärkinen ei menisi: Kirotussa Luolassa!\r\n\r\nMörk Borg on maailmanloppuun sijoittuja fantasiapeli, jonka synkkiä teemoja ovat inspiroineet hevimusiikki, toistuvat hahmokuolemat ja doom metal soittolistat. Peli sisältää väkivaltaa, mustaa huumoria, kuolemaa ja kauhua. Mekaniikaltaan Mörk Borg on simppeli ja aloittelijaystävällinen, joten peli soveltuu hyvin niillekin, joille maailma ei ole ennestään tuttu!\r\n\r\nIt is a beautiful day in this dying world! The sky is grey, the birds sing songs of doom and here you are, in a damp, decrepit cell waiting your execution for... does it really matter? However, not all hope is lost. The Shadow King's Seer gives you an offer you'd do well to accept, return the kidnapped crown prince Aldon and freedom will yours. It is believed that Aldon is being held in a place no sane person would venture to, The Accursed Den!\r\n\r\nMörk Borg is an apocalyptic fantasy role-playing game that features dark themes inspired by heavy metal music, frequent character death and a doom metal playlists. The game features violence, dark humor, death and horror. The mechanics of the game are simple and beginner friendly, so the game is suitable for people who are not yet familiar with the world of Mörk Borg!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "mork-borg-the-rotblack-sludge",
+        "title": "Mörk Borg: The Rotblack Sludge",
+        "startTime": "2026-09-05T12:30:00+03:00",
+        "endTime": "2026-09-05T16:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 4" }
+      }
+    ]
+  },
+  {
+    "slug": "operaatio-maa",
+    "title": "Operaatio: Maa",
+    "description": "12 vuotta on kulunut siitä kun keisari Gavin julisti sodan vastauksena Solomanien valtioliiton provokaatioille. Vaikka sota alkoi Solomanien etulyöntiasemasta, imperiumi on kääntänyt sodan kulun ja sen joukot ovat vapauttaneet planeettakunnan toisensa jälkeen.\r\n\r\nVegan hallintoalueen vapautus ja Solomanien suurlaivaston kukistaminen ovat tuoneet sodan päätöksen lähemmäs kuin koskaan.\r\nÄäneen sanomaton seuraava kohde on kaikkien mielessä: Terra. Solomanien valtioliiton keskus ja ihmiskunnan alkukoti.\r\n\r\nTe olette imperiumin avaruusjalkaväkeä. Imperiumin parhaimmistoa, joiden punaiset taisteluhaarniskat herättävät imperiumin kansalaisissa ihailua ja vihollisissa kauhua. Mikään tehtävä ei ole teille liian vaikea, oli kyseessä sitten rynnäkkö vihollisalukseen tai sillanpääaseman raivaaminen vihamieliselle planeetalle. Vai ylittääkö tuleva operaatio jopa teidänkin rajanne?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "operaatio-maa",
+        "title": "Operaatio: Maa",
+        "startTime": "2026-09-05T16:30:00+03:00",
+        "endTime": "2026-09-05T20:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+      }
+    ]
+  },
+  {
+    "slug": "pako-linna-noctiferuksesta",
+    "title": "Pako linna Noctiferuksesta",
+    "description": "Noctiferiuksen linna kohoaa korkealla vuoren huipulla, ja se on yhtä aikaa lumoava kuin vaarallinenkin. Sen julma itsevaltias kaappaa kansalaisia juuri ennen kuunpimennyksiä, eikä heistä enää kuulla mitään. Nyt neljä hahmoa ovat vangittuina linnan arvoituksellisissa syvyyksissä, ja seuraava pimennys lähestyy. Tie vapauteen on löydettävä ennen kuin neljä kohtaloa sinetöityy. Mutta varokaa: kaunis linna on noiduttu, ja koettelee armotta vankiensa rohkeutta, nokkeluutta ja halua selviytyä…\r\n\r\nSeikkailu on aloittelijaystävällinen pöytäroolipeli neljälle pelaajalle, käyttäen virtaviivaistettua Dungeons & Dragons 5e -systeemillä. Kaiken tarvittavan saa pelin ajaksi, eikä omia varusteita tarvita. Hahmoja on tarjolla enemmän kuin pelaajia, joten valinnanvaraa riittää. Kesto on noin 2,5 tuntia, ja pidämme lyhyen 10 minuutin tauon jossain välissä.\r\n\r\nEt tarvitse lainkaan kokemusta pöytäroolipeleistä: löydätkö sisältäsi urheutta pakotien etsimiseen petollisen lumoavasta vankilasta?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["multiple", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "pako-linna-noctiferuksesta",
+        "title": "Pako linna Noctiferuksesta – 1. pelautus",
+        "startTime": "2026-09-04T18:00:00+03:00",
+        "endTime": "2026-09-04T20:30:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Ropepöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "1. pelautus",
+          "internal:freeformLocation": "Ropepöytä 2"
+        }
+      },
+      {
+        "slug": "pako-linna-noctiferuksesta-2",
+        "title": "Pako linna Noctiferuksesta – 2. pelautus",
+        "startTime": "2026-09-06T13:30:00+03:00",
+        "endTime": "2026-09-06T16:00:00+03:00",
+        "lengthMinutes": 150,
+        "location": "Duetto 1 (Ropepöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "2. pelautus",
+          "internal:freeformLocation": "Ropepöytä 2"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "pathfinder-society-questeja",
+    "title": "Pathfinder Society -Questejä",
+    "description": "Polunnäyttäjien seikkailijakilta lähettää jäseniään suorittamaan tehtäviä ympäri Golarionin fantasiamaailmaa, aina pitäen mielessä järjestön tunnuslauseen: \"Tutki, raportoi ja tee yhteistyötä!\"\r\n\r\nNämä parituntiset valmisseikkailut ovat osa maailmanlaajuista Pathfinder Society -seikkailukampanjaa, joihin voi liittyä kuka tahansa kokemuksesta riippumatta. Voit käyttää joko omaa tason 1 - 4 Pathfinder Society -hahmoa, tai pelijohtajalta löytyviä valmishahmoja.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05", "2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["multiple", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "pathfinder-society-questeja",
+        "title": "Pathfinder Society -Questejä – 1. pelautus",
+        "startTime": "2026-09-05T17:00:00+03:00",
+        "endTime": "2026-09-05T20:00:00+03:00",
+        "lengthMinutes": 180,
+        "location": "Duetto 1 (Ropepöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "1. pelautus",
+          "internal:freeformLocation": "Ropepöytä 4"
+        }
+      },
+      {
+        "slug": "pathfinder-society-questeja-2",
+        "title": "Pathfinder Society -Questejä – 2. pelautus",
+        "startTime": "2026-09-06T11:00:00+03:00",
+        "endTime": "2026-09-06T13:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "2. pelautus",
+          "internal:freeformLocation": "Ropepöytä 2"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "porrocon-workshop",
+    "title": "Pörröcon Workshop",
+    "description": "Pörröisessä työpajassa voit ommella haluamasi malliset korvat tai hännän, tai tuunata eläinmaskin! Pajaan voi tulla myös työstämään aiemmin aloitettua projektia.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-workshop"],
+      "room": ["programtent2"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["workshop"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "porrocon-workshop",
+        "title": "Pörröcon Workshop",
+        "startTime": "2026-09-05T16:00:00+03:00",
+        "endTime": "2026-09-05T17:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Program tent 2",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "saravidigal-paja-apothecarydiaries-kasveja",
+    "title": "Sara Vidigalin paja: Apothecary Diaries kasveja",
+    "description": "Sara Vidigal pitää työpajan, jossa pääset oppimaan, miten maalata vesiväreillä The Apothecary Diaries -sarjasta tuttuja myrkyllisiä kasveja. Kaikki pajassa tarvittavat välineet löytyvät paikan päältä.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "room": ["opus-1-2"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg", "lang-eng"],
+      "program-type": ["guestofhonor"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "saravidigal-paja-apothecarydiaries-kasveja",
+        "title": "Sara Vidigalin paja: Apothecary Diaries kasveja",
+        "startTime": "2026-09-05T15:30:00+03:00",
+        "endTime": "2026-09-05T17:00:00+03:00",
+        "lengthMinutes": 90,
+        "location": "Opus 1-2",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  },
+  {
+    "slug": "stalker-aurinkokivi",
+    "title": "STALKER - Aurinkokivi",
+    "description": "Stalker-roolipeli on suomalainen NOPATON tieteisroolipeli, joka perustuu Arkady ja Boris Strugatskin samannimiseen romaaniin. Tuntemattoman sivilisaation vierailu Maapallolla on jättänyt jälkeensä kuusi vyöhykettä, missä luonnonlait ovat seonneet ja elämä vääristynyt tunnistamattomiin muotoihin. Stalkerit ovat nykyajan seikkailijoita ja rikollisia, jotka etsivät Vyöhykkeiltä tuon sivilisaation artifakteja ja myyvät niitä parhaiten tarjoavalle.   \r\n\r\nAurinkokivi on yksi tällainen artifakti. Välittäjä lupaa maksaa siitä ikinä pyydätte, joten näette varmaan mihin tämä on menossa. Ja hei, mikä voisi mennä vikaan?\r\n\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "stalker-aurinkokivi",
+        "title": "STALKER - Aurinkokivi",
+        "startTime": "2026-09-04T17:00:00+03:00",
+        "endTime": "2026-09-04T21:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 6" }
+      }
+    ]
+  },
+  {
+    "slug": "star-crossed-usernames",
+    "title": "Star-crossed Usernames",
+    "description": "Haikea tunnelmointi erilaisten ulkopuolisten nettikaveripiiristä, ja yhteisen kämäisen virtuaaliympäristön noususta ja mahdollisesta tuhosta. Pelissä voidaan tehdä puhelimella tai yhteisellä tabletilla hahmojen kuvapäivityksiä.\r\n\r\nA wistful mood piece about a group of outcast online friends, and the rise and potential fall of their shared low-grade virtual chat room. The game can include creating characters' image posts on phone or shared tablet",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["multiple", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "star-crossed-usernames",
+        "title": "Star-crossed Usernames – 1. pelautus",
+        "startTime": "2026-09-04T19:00:00+03:00",
+        "endTime": "2026-09-04T21:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "1. pelautus",
+          "internal:freeformLocation": "Ropepöytä 1"
+        }
+      },
+      {
+        "slug": "star-crossed-usernames-2",
+        "title": "Star-crossed Usernames – 2. pelautus",
+        "startTime": "2026-09-06T14:00:00+03:00",
+        "endTime": "2026-09-06T16:00:00+03:00",
+        "lengthMinutes": 120,
+        "location": "Duetto 1 (Ropepöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:subtitle": "2. pelautus",
+          "internal:freeformLocation": "Ropepöytä 1"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "tahti-toiveeni-tayttaisitko",
+    "title": "Tähti toiveeni täyttäisitkö",
+    "description": "Eräänä yönä joukko tähtiä, jotka eivät vielä ole valmiita tutkimaan maailmaa, putoaa taivaalta joutuen kuolevaisen hahmoon sodan repimään maahan. Vastentahtoiset tähdet ovat sidotut uuteen muotoonsa kykenemättöminä palaamaan kotiinsa, jolleivat he mitä pikimmin selvitä, mikä voima kiskoi heidät taivaalta ja kumoa sen vaikutusta. Vaara vaanii kuitenkin joka nurkan takana: tähdillä on kyky täyttää toiveita, ja vaikuttaa sille, että joku, tai jotkut, ovat saaneet tiedon joukkion tahattomasta saapumisesta ja haluavat käyttää heitä omien tarkoitusperiensä täyttämiseen. Alkaa kilpajuoksu aikaa ja pahaa vastaan; kykenevätkö yötaivaan sankarimme palaamaan kotiin? Ja minkä hinnan he ovat valmiita maksamaan täyttämättömästä toiveesta?\r\n\r\nTämä tarinavetoinen roolipeli on suunnattu ensisijaisesti pelaajille, joilla D&D 5e on ainakin perustasolla tuttu: kaikkea ei tarvitse tietää eikä muistaa, vetäjä neuvoo kyllä tarvittaessa! Syvällinen tuntemus ei ole tarpeen, sillä valmishahmojen joukosta löytyy myös helpompia pelattavia. Pelissä on todennäköisesti hiukan taistelua, mutta väkivallalla ei mässäillä; lisäksi myös luovat ja tyhmältä tuntuvat ratkaisut ovat hyvin tervetulleita!\r\nPeli pelataan 5-tason hahmoilla, ja pelaajat voivat halutessaan tuoda mukanaan myös omansa (PHB 2014 hahmo- ja alaluokat, featit ja multiclass ok, kaikki viralliset pelaajalajit ok).\r\nPeliä ohjaa usean vuoden kokemuksella varustettu innokas vetäjä, jonka vahvuuksia ovat tarinankerronta, improvisaatio ja eläytyminen. Tervetuloa heittämään noppia!\r\n____\r\nOne night, a group of stars that are not yet ready to explore the world below, fall from the skies to a war-torn land, and into mortal forms. The reluctant stars are bound to their new forms, unable to return to their home, unless they soon uncover the power that pulled them from the sky and undo it. However, there is danger lurking behind every corner: stars have the ability to fulfill wishes, and it seems that someone has learned of the group's accidental arrival and wish to use it to further their own ends. It's a race against time and evil; can our night sky heroes return home? And what price are they willing to pay for a wish unfulfilled?\r\n\r\nThis story-driven one-shot is geared towards those who already are at least somewhat familiar with D&D5e: you don't need to know nor remember everything, the DM will help out when necessary! There's no need for in-depth knowledge, as there are some easier characters available. There is likely to be some fighting, but there will be no gore; also, creative and so-called stupid ideas are more than welcome!\r\nThe adventure will be played at 5th level, and the players can bring their own characters (PHB 2014 classes and sub-classes, feats and multiclassing ok, all official player races ok).\r\nThe eager DM is equipped with nearly a decade of experience, and their strengths lie in storytelling, improvisation, and getting into character. Welcome to roll the dice!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "tahti-toiveeni-tayttaisitko",
+        "title": "Tähti toiveeni täyttäisitkö",
+        "startTime": "2026-09-05T16:30:00+03:00",
+        "endTime": "2026-09-05T20:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 1" }
+      }
+    ]
+  },
+  {
+    "slug": "tarot-korttipaja",
+    "title": "Tarot-korttipaja",
+    "description": "Tule ideoimaan ja toteuttamaan itsellesi oma tarot-kortti! Jokainen tarot-kortti perustuu ikivanhaan symboliikkaan ja niiden kuvat kertovat tarinaa elämästä, ihmissuhteista, työstä, taloudesta ja kodista. Tässä työpajassa käymme läpi myös tarot-korttien perusmerkitykset, joista voit valita itsellesi toteutettavaksi tässä hetkessä merkityksellisen kortin, tai vaikka vetää pakasta itsellesi päivän kortin. Työpajassa pääset tutustumaan opastetusti linopainantaan grafiikan tekniikkana. Et tarvitse aiempaa kokemusta, työpaja sopii kaikentasoisille! Saat kaikki tarvittavat materiaalit.Työpajaan mahtuu mukaan 15 henkilöä. \r\n\r\nHuomio! Tähän ennakkoilmoittaudutaan Konstin kautta.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-workshop"],
+      "room": ["opus-1-2"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["workshop"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 15
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "tarot-korttipaja",
+        "title": "Tarot-korttipaja",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T11:45:00+03:00",
+        "lengthMinutes": 105,
+        "location": "Opus 1-2",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 15
+        }
+      }
+    ]
+  },
+  {
+    "slug": "uppoava-torni-the-sinking-tower",
+    "title": "Uppoava torni (The Sinking Tower)",
+    "description": "20 vuoden välein Kamandurin torni nousee aalloista, mutta vain muutamaksi tunniksi. Tornin huipulla loistaa vihreä valo, jonka sanotaan olevan lumottu smaragdi. Sen luokse päästäkseen on kuitenkin ensin selvitettävä tornin arvoitukset ja kohdattava sen vartijat. Selviävätkö seikkailijat huipulle vai vaipuvatko he aaltoihin tornin mukana?\r\n\r\nEvery 20 years the tower of Kamandur rises from the waves, but only for a few hours. Atop the tower shines a green light, rumoured to be an enchanted emerald. To reach it, one must first solve the riddles of the tower and encounter its guardians. Will the adventurers reach the top or will they sink into the waves with the tower?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "uppoava-torni-the-sinking-tower",
+        "title": "Uppoava torni (The Sinking Tower)",
+        "startTime": "2026-09-05T12:00:00+03:00",
+        "endTime": "2026-09-05T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 3" }
+      }
+    ]
+  },
+  {
+    "slug": "vampire-the-masquerade",
+    "title": "Vampire the Masquerade: Ruhtinaanpyydys",
+    "description": "Pelissä pelaat vampyyrihahmoa, joka on kutsuttu (ja tarvittaessa noudettu) kaupungin vampyyriruhtinaan eteen selittämään viimeisimpiä some-päivityksiään. Viattomia varmasti, vaikka joku voisikin tulkita niiden rikkovan Camarillan ikiaikaisia sääntöjä vampyyriyhteisön salaisuuksien paljastamisesta. Ja se on vasta alku tämän yön ongelmille. Vampiren maailman tuntemus ei ole pakollista.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-rpg"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["tabletoprpg"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["rpg-game"],
+      "guidegrouping": ["rpg"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "vampire-the-masquerade",
+        "title": "Vampire the Masquerade: Ruhtinaanpyydys",
+        "startTime": "2026-09-06T12:00:00+03:00",
+        "endTime": "2026-09-06T16:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Ropepöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 6" }
+      }
+    ]
+  },
+  {
+    "slug": "viuhkapaja",
+    "title": "Viuhkapaja",
+    "description": "Kesä on kuuma, liity siis seuraan askartelemaan omaan tyyliisi sopiva viuhka!\r\nViuhkat ovat olleet olennainen osa japanilaisten pukeutumista jo satojen vuosien ajan, ja ne ovat juurtuneet syvälle japanilaiseen kulttuuriin. Löydätkin meiltä taiteiltavaksi sekä kokoon taittuvia sensu-viuhkoja että litteitä uchiwa-viuhkoja. Löytyykö sinun viuhkastasi kirsikankukkia ja kurkia,vai jotakin ihan muuta?",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "room": ["programtent1"],
+      "state": ["accepted"],
+      "konsti": ["workshop"],
+      "scheduled": ["one", "one-or-more"],
+      "guide-tags": ["konsti-adv-reg"],
+      "program-type": ["workshop"],
+      "guidegrouping": ["smallroomsandtents"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "viuhkapaja",
+        "title": "Viuhkapaja",
+        "startTime": "2026-09-05T18:30:00+03:00",
+        "endTime": "2026-09-05T19:30:00+03:00",
+        "lengthMinutes": 60,
+        "location": "Program tent 1",
+        "isCancelled": false,
+        "cachedAnnotations": {}
+      }
+    ]
+  }
+]

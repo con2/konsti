@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import {
   AssignmentAlgorithm,
   EventConfig,
@@ -8,71 +7,47 @@ import {
   RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
 import { ProgramType, SignupType } from "shared/types/models/programItem";
-import { SignupQuestionType } from "shared/types/models/settings";
 
 // Event days
-const friday = "2026-07-24";
-const saturday = "2026-07-25";
-const sunday = "2026-07-26";
+const friday = "2026-09-04";
+const saturday = "2026-09-05";
 
 export const eventConfig: EventConfig = {
   // Event info
-  eventName: EventName.ROPECON,
+  eventName: EventName.TRACON,
   eventYear: "2026",
 
   // Event settings
-  enableRevolvingDoor: true,
-  enableTagDropdown: true,
-  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+  enableRevolvingDoor: false,
+  enableTagDropdown: false,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
   enableGroups: true,
-  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
-  programGuideUrlFi: "https://ropecon.fi/opas",
-  programGuideUrlEn: "https://ropecon.fi/en/guide",
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
+  programGuideUrlFi: "https://tracon.fi/opas",
+  programGuideUrlEn: "https://tracon.fi/opas",
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
     ProgramType.WORKSHOP,
-    ProgramType.TOURNAMENT,
-    ProgramType.OTHER_GAMING,
-    ProgramType.OTHER,
+    ProgramType.FLEAMARKET,
   ],
 
-  twoPhaseSignupProgramTypes: [
+  twoPhaseSignupProgramTypes: [ProgramType.FLEAMARKET],
+
+  // Event start at 15:00 GMT+3 but lottery sign-ups start at 08:00 GMT+3
+  eventStartTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+  preConventionWeekSignupStartTime: null,
+  mainEventProgramVisibleTime: null,
+
+  directSignupWindows: {},
+
+  rollingDirectSignupProgramTypes: [
     ProgramType.TABLETOP_RPG,
-    ProgramType.LARP,
     ProgramType.WORKSHOP,
-    ProgramType.OTHER_GAMING,
   ],
-
-  eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
-  preConventionWeekSignupStartTime: "2026-07-13T17:00:00Z", // Mon 13.7. 20:00 GMT+3
-  mainEventProgramVisibleTime: "2026-07-23T15:00:00Z", // Thu 23.7. 18:00 GMT+3
-
-  directSignupWindows: {
-    tournament: [
-      // Friday
-      {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
-      },
-      // Saturday
-      {
-        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
-      },
-      // Sunday
-      {
-        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
-      },
-    ],
-  },
-
-  rollingDirectSignupProgramTypes: [ProgramType.OTHER],
   enableRollingDirectSignupPreviousDay: true,
 
-  hideParticipantListProgramTypes: [],
+  hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 
   // These program items have their sign-up always open even if sign-up mode is set to lottery
   directSignupAlwaysOpenIds: [],
@@ -89,76 +64,7 @@ export const eventConfig: EventConfig = {
   // Don't import these program items from Kompassi - this is program item id, not schedule item
   ignoreProgramItemsIds: [],
 
-  signupQuestions: [
-    {
-      programItemId: "hamarankavijat-roolipeli", // Hämäränkävijät-roolipeli – 1. pelautus (5 - 8-vuotiaille)
-      questionFi: "Peliin ilmoitetun lapsen ikä",
-      questionEn: "The age of the child signed up for the game",
-      private: true,
-      type: SignupQuestionType.TEXT,
-      selectOptions: [],
-    },
-    {
-      programItemId: "hamarankavijat-roolipeli-2", // Hämäränkävijät-roolipeli – 2. pelautus (5 - 8-vuotiaille)
-      questionFi: "Peliin ilmoitetun lapsen ikä",
-      questionEn: "The age of the child signed up for the game",
-      private: true,
-      type: SignupQuestionType.TEXT,
-      selectOptions: [],
-    },
-    {
-      programItemId: "hamarankavijat-roolipeli-3", // Hämäränkävijät-roolipeli – 3. pelautus (7 - 12-vuotiaille)
-      questionFi: "Peliin ilmoitetun lapsen ikä",
-      questionEn: "The age of the child signed up for the game",
-      private: true,
-      type: SignupQuestionType.TEXT,
-      selectOptions: [],
-    },
-    {
-      programItemId: "pikamaalauskilpailu-speed-painting-contest",
-      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
-      questionEn: "I want my miniature to be primed",
-      private: false,
-      type: SignupQuestionType.SELECT,
-      selectOptions: [
-        { optionFi: "Musta", optionEn: "Black" },
-        { optionFi: "Valkoinen", optionEn: "White" },
-      ],
-    },
-    {
-      programItemId: "pikamaalauskilpailu-speed-painting-contest-2",
-      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
-      questionEn: "I want my miniature to be primed",
-      private: false,
-      type: SignupQuestionType.SELECT,
-      selectOptions: [
-        { optionFi: "Musta", optionEn: "Black" },
-        { optionFi: "Valkoinen", optionEn: "White" },
-      ],
-    },
-    {
-      programItemId: "pikamaalauskilpailu-speed-painting-contest-3",
-      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
-      questionEn: "I want my miniature to be primed",
-      private: false,
-      type: SignupQuestionType.SELECT,
-      selectOptions: [
-        { optionFi: "Musta", optionEn: "Black" },
-        { optionFi: "Valkoinen", optionEn: "White" },
-      ],
-    },
-    {
-      programItemId: "pikamaalauskilpailu-speed-painting-contest-4",
-      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
-      questionEn: "I want my miniature to be primed",
-      private: false,
-      type: SignupQuestionType.SELECT,
-      selectOptions: [
-        { optionFi: "Musta", optionEn: "Black" },
-        { optionFi: "Valkoinen", optionEn: "White" },
-      ],
-    },
-  ],
+  signupQuestions: [],
 
   tournamentSignupQuestion: null,
 
@@ -175,15 +81,28 @@ export const eventConfig: EventConfig = {
   phaseGap: 15, // minutes
 
   // Use fixed time to open all lottery sign-ups for the whole event
-  fixedLotterySignupTime: null,
+  fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
 
   // Program items with parentId use startTime configured here
-  startTimesByParentIds: new Map(),
+  startTimesByParentIds: new Map([
+    [
+      "kirpputori-perjantai-alkuilta",
+      `${friday}T13:00:00Z`, // Fri 16:00 GMT+3
+    ],
+    [
+      "kirpputori-perjantai-loppuilta",
+      `${friday}T16:00:00Z`, // Fri 19:00 GMT+3
+    ],
+    [
+      "kirpputori-lauantai",
+      `${saturday}T06:30:00Z`, // Sat 09:30 GMT+3
+    ],
+  ]),
 
   // What sign-up type is set if sign-up type is missing
-  defaultSignupType: SignupType.MISSING,
+  defaultSignupType: SignupType.KONSTI,
 
   // Default DB values
   defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
-  defaultLoginProvider: LoginProvider.LOCAL_KOMPASSI,
+  defaultLoginProvider: LoginProvider.KOMPASSI,
 };

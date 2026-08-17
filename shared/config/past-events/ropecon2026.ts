@@ -1,0 +1,190 @@
+import dayjs from "dayjs";
+import {
+  AssignmentAlgorithm,
+  EventConfig,
+  EventName,
+  EventSignupStrategy,
+  LoginProvider,
+  RemoveLotterySignupsStrategy,
+} from "shared/config/eventConfigTypes";
+import { ProgramType, SignupType } from "shared/types/models/programItem";
+import { SignupQuestionType } from "shared/types/models/settings";
+
+// Event days
+const friday = "2026-07-24";
+const saturday = "2026-07-25";
+const sunday = "2026-07-26";
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const eventConfig: Partial<EventConfig> = {
+  // Event info
+  eventName: EventName.ROPECON,
+  eventYear: "2026",
+
+  // Event settings
+  enableRevolvingDoor: true,
+  enableTagDropdown: true,
+  assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG,
+  enableGroups: true,
+  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
+  programGuideUrlFi: "https://ropecon.fi/opas",
+  programGuideUrlEn: "https://ropecon.fi/en/guide",
+
+  activeProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.WORKSHOP,
+    ProgramType.TOURNAMENT,
+    ProgramType.OTHER_GAMING,
+    ProgramType.OTHER,
+  ],
+
+  twoPhaseSignupProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.WORKSHOP,
+    ProgramType.OTHER_GAMING,
+  ],
+
+  eventStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+  preConventionWeekSignupStartTime: "2026-07-13T17:00:00Z", // Mon 13.7. 20:00 GMT+3
+  mainEventProgramVisibleTime: "2026-07-23T15:00:00Z", // Thu 23.7. 18:00 GMT+3
+
+  directSignupWindows: {
+    tournament: [
+      // Friday
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
+      // Saturday
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
+      // Sunday
+      {
+        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
+    ],
+  },
+
+  rollingDirectSignupProgramTypes: [ProgramType.OTHER],
+  enableRollingDirectSignupPreviousDay: true,
+
+  hideParticipantListProgramTypes: [],
+
+  // These program items have their sign-up always open even if sign-up mode is set to lottery
+  directSignupAlwaysOpenIds: [],
+
+  // Add these to Konsti under 'other' program type
+  addToKonstiOther: [],
+
+  // These program items have hand picked revolving door status
+  addRevolvingDoorIds: [],
+
+  // These program items are imported to Konsti but don't have Konsti sign-up
+  noKonstiSignupIds: [],
+
+  // Don't import these program items from Kompassi - this is program item id, not schedule item
+  ignoreProgramItemsIds: [],
+
+  signupQuestions: [
+    {
+      programItemId: "hamarankavijat-roolipeli", // Hämäränkävijät-roolipeli – 1. pelautus (5 - 8-vuotiaille)
+      questionFi: "Peliin ilmoitetun lapsen ikä",
+      questionEn: "The age of the child signed up for the game",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      programItemId: "hamarankavijat-roolipeli-2", // Hämäränkävijät-roolipeli – 2. pelautus (5 - 8-vuotiaille)
+      questionFi: "Peliin ilmoitetun lapsen ikä",
+      questionEn: "The age of the child signed up for the game",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      programItemId: "hamarankavijat-roolipeli-3", // Hämäränkävijät-roolipeli – 3. pelautus (7 - 12-vuotiaille)
+      questionFi: "Peliin ilmoitetun lapsen ikä",
+      questionEn: "The age of the child signed up for the game",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-2",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-3",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+    {
+      programItemId: "pikamaalauskilpailu-speed-painting-contest-4",
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+      ],
+    },
+  ],
+
+  tournamentSignupQuestion: null,
+
+  tournamentSignupQuestionExcludeIds: [],
+
+  customDetailsProgramItems: {},
+
+  // Require checkbox to be checked before signing up
+  entryConditions: [],
+
+  // Two phase sign-up settings
+  preSignupStart: 60 * 4, // minutes
+  directSignupPhaseStart: 60 * 2, // minutes
+  phaseGap: 15, // minutes
+
+  // Use fixed time to open all lottery sign-ups for the whole event
+  fixedLotterySignupTime: null,
+
+  // Program items with parentId use startTime configured here
+  startTimesByParentIds: new Map(),
+
+  // What sign-up type is set if sign-up type is missing
+  defaultSignupType: SignupType.MISSING,
+
+  // Default DB values
+  defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.LOCAL_KOMPASSI,
+};

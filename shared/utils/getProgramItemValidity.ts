@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import { config } from "shared/config";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
 
 interface ProgramItemValidity {
   isValidMinAttendanceValue: boolean;
@@ -18,7 +17,7 @@ interface ProgramItemValidity {
 export const getProgramItemValidity = (
   programItem: ProgramItem,
 ): ProgramItemValidity => {
-  const { noKonstiSignupIds } = config.event();
+  const { noKonstiSignupIds, startTimesByParentIds } = config.event();
 
   const usesKonstiSignup =
     programItem.signupType === SignupType.KONSTI &&
@@ -36,12 +35,13 @@ export const getProgramItemValidity = (
   const signupTypeMissing = programItem.signupType === SignupType.MISSING;
 
   // Lottery batches sign-ups by start time, so lottery items must start at an
-  // even hour. Checked against the parent-resolved start time: a parent
-  // override to an even hour makes the item valid
+  // even hour. Items with a configured parent start time are exempt: the whole
+  // batch is run as one lottery at that admin-configured time
   const lotteryItemNotStartingOnEvenHour =
     usesKonstiSignup &&
     isLotterySignupProgramItem(programItem) &&
-    dayjs(getProgramItemStartTime(programItem)).minute() !== 0;
+    !startTimesByParentIds.has(programItem.parentId) &&
+    dayjs(programItem.startTime).minute() !== 0;
 
   const allValuesValid =
     isValidMinAttendanceValue &&

@@ -1,13 +1,16 @@
 import dayjs from "dayjs";
 import { config } from "shared/config";
 
-const { eventStartTime, phaseGap } = config.event();
+const { eventStartTime, phaseGap, preConventionWeekSignupStartTime } =
+  config.event();
 
 export const testTimes = [
   // Before event
   dayjs(eventStartTime).subtract(3, "weeks").toISOString(),
   dayjs(eventStartTime).subtract(2, "weeks").toISOString(),
-  dayjs(config.event().preConventionWeekSignupStartTime).toISOString(),
+  ...(preConventionWeekSignupStartTime
+    ? [dayjs(preConventionWeekSignupStartTime).toISOString()]
+    : []),
   dayjs(eventStartTime).subtract(1, "weeks").toISOString(),
   // Friday
   dayjs(eventStartTime).subtract(5, "hours").toISOString(),
