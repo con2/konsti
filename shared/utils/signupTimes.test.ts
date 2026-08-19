@@ -460,6 +460,83 @@ describe("Direct signup with rolling signup", () => {
   });
 });
 
+// The "open the previous evening at a fixed hour" path has to land on the same
+// wall-clock hour whether the previous day was 23, 24 or 25 hours long
+describe("Signup times across DST transitions", () => {
+  const testWorkshop = {
+    ...testProgramItem,
+    programType: ProgramType.WORKSHOP,
+  };
+
+  beforeEach(() => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      eventStartTime: "2026-03-01T12:00:00Z",
+      fixedLotterySignupTime: null,
+      enableRollingDirectSignupPreviousDay: true,
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+      rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP],
+    });
+  });
+
+  test("lottery signup opens at 22:00 the evening before a spring-forward day", () => {
+    // Mon 30.3. 05:00 GMT+3, the day after clocks jumped forward
+    const programItem = {
+      ...testProgramItem,
+      startTime: "2026-03-30T02:00:00.000Z",
+    };
+    const signupStartTime = getLotterySignupStartTime(programItem);
+    // Sun 29.3. 22:00 GMT+3, on a day that was only 23 hours long
+    expect(signupStartTime.toISOString()).toEqual("2026-03-29T19:00:00.000Z");
+  });
+
+  test("lottery signup opens at 22:00 the evening before a fall-back day", () => {
+    // Mon 26.10. 05:00 GMT+2, the day after clocks fell back
+    const programItem = {
+      ...testProgramItem,
+      startTime: "2026-10-26T03:00:00.000Z",
+    };
+    const signupStartTime = getLotterySignupStartTime(programItem);
+    // Sun 25.10. 22:00 GMT+2, on a day that was 25 hours long
+    expect(signupStartTime.toISOString()).toEqual("2026-10-25T20:00:00.000Z");
+  });
+
+  test("rolling signup opens at 18:00 the evening before a spring-forward day", () => {
+    // Mon 30.3. 09:00 GMT+3
+    const programItem = {
+      ...testWorkshop,
+      startTime: "2026-03-30T06:00:00.000Z",
+    };
+    const signupStartTime = getDirectSignupStartTime(programItem);
+    // Sun 29.3. 18:00 GMT+3
+    expect(signupStartTime.toISOString()).toEqual("2026-03-29T15:00:00.000Z");
+  });
+
+  // The day before a spring-forward is only 23 hours long, so stepping back a
+  // fixed 24 hours from just after midnight lands on the day before the one meant
+  test("rolling signup opens the previous evening for a just-after-midnight start", () => {
+    // Mon 30.3. 00:30 GMT+3
+    const programItem = {
+      ...testWorkshop,
+      startTime: "2026-03-29T21:30:00.000Z",
+    };
+    const signupStartTime = getDirectSignupStartTime(programItem);
+    // Sun 29.3. 18:00 GMT+3, not Sat 28.3.
+    expect(signupStartTime.toISOString()).toEqual("2026-03-29T15:00:00.000Z");
+  });
+
+  test("rolling signup opens at 18:00 the evening before a fall-back day", () => {
+    // Mon 26.10. 09:00 GMT+2
+    const programItem = {
+      ...testWorkshop,
+      startTime: "2026-10-26T07:00:00.000Z",
+    };
+    const signupStartTime = getDirectSignupStartTime(programItem);
+    // Sun 25.10. 18:00 GMT+2
+    expect(signupStartTime.toISOString()).toEqual("2026-10-25T16:00:00.000Z");
+  });
+});
+
 describe("Relative lottery signup state", () => {
   const startTime = `${saturday}T12:00:00.000Z`;
   const programItem = { ...testProgramItem, startTime };
