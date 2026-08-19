@@ -15,12 +15,31 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string => {
   return parentStartTime ?? programItem.startTime;
 };
 
-// Open the whole batch at a fixed hour the previous evening. startOf("day") zeroes the
-// minutes/seconds so an item starting at e.g. 09:15 opens at 22:00, not 22:15
+// Open the whole batch at a fixed hour the previous evening. The wanted instant is
+// built from the previous calendar day and the hour, so an item starting at e.g.
+// 09:15 opens at 22:00, not 22:15.
+//
+// Taking the date and rebuilding, rather than chaining day arithmetic onto the
+// passed instant, is what keeps this right across a DST change: setting the hour on
+// a dayjs.tz() value uses the UTC offset it was created with, which lands an hour
+// off - early in autumn, and for first-come-first-served sign-ups that hands out
+// spots before anyone expects them
 const openAtFixedHourPreviousEvening = (
   timezoneStartTime: Dayjs,
   hour: number,
-): Dayjs => timezoneStartTime.subtract(1, "day").startOf("day").hour(hour);
+): Dayjs => {
+  // Subtracting from the zoned instant keeps its wall-clock time, so this is the
+  // previous calendar day even when that day is 23 or 25 hours long
+  // eslint-disable-next-line no-restricted-syntax -- Formatted in the event timezone, which is the guarantee the rule protects
+  const previousDay = timezoneStartTime.subtract(1, "day").format("YYYY-MM-DD");
+
+  // Parsed back as a wall-clock time in the event timezone, which is what resolves
+  // the correct UTC offset for that particular day
+  return dayjs.tz(
+    `${previousDay} ${String(hour).padStart(2, "0")}:00`,
+    TIMEZONE,
+  );
+};
 
 export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
   const { eventStartTime, preSignupStart, fixedLotterySignupTime } =

@@ -25,7 +25,7 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
 ## Utilities (`shared/utils`)
 
 - **`result.ts`** — the `Result<T, E>` tagged union and its constructors (see below).
-- **`signupTimes.ts`** — lottery/direct sign-up window calculations (`getLotterySignupStartTime`/`…EndTime`, `getDirectSignupStartTime`/`…EndTime`, in-progress/ended predicates). Applies the parent start-time override (see below).
+- **`signupTimes.ts`** — lottery/direct sign-up window calculations (`getLotterySignupStartTime`/`…EndTime`, `getDirectSignupStartTime`/`…EndTime`, in-progress/ended predicates). Applies the parent start-time override (see below). The "open the previous evening at a fixed hour" path resolves the previous day's date and rebuilds the instant as a wall-clock time in the event timezone: a `dayjs.tz()` value keeps the UTC offset it was built with, so chaining day arithmetic onto it lands an hour off across a DST transition — early in autumn, which for first-come-first-served sign-ups opens a window before anyone expects it. `signupTimes.test.ts` pins both transitions.
 - **`timeFormatter.ts`** — dayjs-based display formatting; everything is forced to the `Europe/Helsinki` timezone.
 - **`initializeDayjs.ts`** — dayjs plugin/locale setup and the `TIMEZONE` constant; call this in any new test setup that touches time.
 - **`isLotterySignupProgramItem.ts`** — predicate: does an item use two-phase (lottery) sign-up?
