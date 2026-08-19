@@ -4,6 +4,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
+import { getIsoDate } from "shared/utils/timeFormatter";
 
 // Resolve a program item's effective start time, applying the parent override that batches
 // several items into a single lottery run
@@ -30,8 +31,7 @@ const openAtFixedHourPreviousEvening = (
 ): Dayjs => {
   // Subtracting from the zoned instant keeps its wall-clock time, so this is the
   // previous calendar day even when that day is 23 or 25 hours long
-  // eslint-disable-next-line no-restricted-syntax -- Formatted in the event timezone, which is the guarantee the rule protects
-  const previousDay = timezoneStartTime.subtract(1, "day").format("YYYY-MM-DD");
+  const previousDay = getIsoDate(timezoneStartTime.subtract(1, "day"));
 
   // Parsed back as a wall-clock time in the event timezone, which is what resolves
   // the correct UTC offset for that particular day
