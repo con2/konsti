@@ -1,11 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
-
-export enum InfoTextVariant {
-  INFO = "infoColor",
-  WARNING = "warningColor",
-}
+import { InfoTextVariant } from "client/components/componentStyles";
 
 interface Props {
   children: ReactNode;

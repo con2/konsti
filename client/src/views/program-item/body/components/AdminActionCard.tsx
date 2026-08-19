@@ -10,12 +10,13 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import loaderImage from "assets/loading.gif";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Checkbox } from "client/components/Checkbox";
 import { ControlledInput } from "client/components/ControlledInput";
 import { Dropdown } from "client/components/Dropdown";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import {

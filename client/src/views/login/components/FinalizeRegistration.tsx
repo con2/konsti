@@ -8,15 +8,14 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { Checkbox } from "client/components/Checkbox";
-import {
-  EmailNotificationField,
-  StyledEmailInput,
-} from "client/components/EmailNotificationField";
+import { EmailInput } from "client/components/EmailInput";
+import { EmailNotificationField } from "client/components/EmailNotificationField";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { PrivacyNotice } from "client/components/PrivacyNotice";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { navigateToPreviousOrRoot } from "client/utils/navigation";
 import {
@@ -159,7 +158,7 @@ export const FinalizeRegistration = (
               enabled={emailNotificationsEnabled}
               onEnabledChange={handleEmailNotificationChange}
             >
-              <StyledEmailInput
+              <EmailInput
                 id="email"
                 {...register("email", {
                   required: emailNotificationsEnabled

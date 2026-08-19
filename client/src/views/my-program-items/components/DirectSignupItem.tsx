@@ -6,9 +6,10 @@ import styled from "styled-components";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
-import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { InfoText } from "client/components/InfoText";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { TertiaryButton } from "client/components/TertiaryButton";
+import { InfoTextVariant } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   MyProgramButtonContainerMobile,

@@ -9,11 +9,12 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { Checkbox } from "client/components/Checkbox";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { PrivacyNotice } from "client/components/PrivacyNotice";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch } from "client/utils/hooks";
 import {
   RegistrationErrorMessage,

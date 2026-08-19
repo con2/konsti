@@ -7,10 +7,11 @@ import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Checkbox } from "client/components/Checkbox";
 import { Dropdown, Option } from "client/components/Dropdown";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import {

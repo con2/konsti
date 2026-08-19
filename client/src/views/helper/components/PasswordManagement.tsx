@@ -5,9 +5,10 @@ import styled, { css } from "styled-components";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { formatSerial } from "shared/utils/formatSerial";
 import { getDateAndTime } from "shared/utils/timeFormatter";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ControlledInput } from "client/components/ControlledInput";
 import { PasswordChangeForm } from "client/components/PasswordChangeForm";
+import { ButtonStyle } from "client/components/componentStyles";
 import { getUserBySerialOrUsername } from "client/services/userServices";
 
 export const PasswordManagement = (): ReactElement => {

@@ -1,10 +1,11 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { ControlledInput } from "client/components/ControlledInput";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch } from "client/utils/hooks";
 import {
   PostCreateGroupErrorMessage,

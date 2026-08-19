@@ -1,8 +1,9 @@
 import { ReactElement, SyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { ButtonStyle } from "client/components/componentStyles";
 import { programItemContentMargin } from "client/views/my-program-items/components/shared";
 
 interface Props {

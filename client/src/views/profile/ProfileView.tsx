@@ -4,8 +4,9 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { formatSerial } from "shared/utils/formatSerial";
 import { AppRoute } from "client/app/routes";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { PasswordChangeForm } from "client/components/PasswordChangeForm";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppSelector } from "client/utils/hooks";
 import { EmailSettingsForm } from "client/views/profile/components/EmailSettingsForm";
 

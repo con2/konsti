@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
+import { ButtonStyle } from "client/components/componentStyles";
 
 interface Props {
   buttonStyle?: ButtonStyle;

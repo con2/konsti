@@ -6,8 +6,9 @@ import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
 } from "shared/constants/validation";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ControlledInput } from "client/components/ControlledInput";
+import { ButtonStyle } from "client/components/componentStyles";
 import { updateUserPassword } from "client/services/userServices";
 
 interface Props {
