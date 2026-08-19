@@ -11,8 +11,9 @@ import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramI
 import { Checkbox } from "client/components/Checkbox";
 import { Dropdown } from "client/components/Dropdown";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { InfoText, InfoTextVariant } from "client/components/InfoText";
+import { InfoText } from "client/components/InfoText";
 import { TextArea } from "client/components/TextArea";
+import { InfoTextVariant } from "client/components/componentStyles";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { getIsInGroup } from "client/views/group/groupUtils";

@@ -1,8 +1,9 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LoginProvider } from "shared/config/eventConfigTypes";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppSelector } from "client/utils/hooks";
 import { loadSettings, loadSignupMessages } from "client/utils/loadData";
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";

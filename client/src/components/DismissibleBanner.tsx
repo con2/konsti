@@ -2,11 +2,11 @@ import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, ReactNode } from "react";
 import styled from "styled-components";
+import { RaisedCard } from "client/components/RaisedCard";
 import {
   HighlightStyle,
-  RaisedCard,
   getHighlightColor,
-} from "client/components/RaisedCard";
+} from "client/components/componentStyles";
 
 interface Props {
   children: ReactNode;

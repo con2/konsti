@@ -1,10 +1,6 @@
 import { MouseEventHandler, ReactElement, ReactNode } from "react";
 import styled, { css } from "styled-components";
-
-export enum ButtonStyle {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-}
+import { ButtonStyle } from "client/components/componentStyles";
 
 interface Props {
   children?: ReactNode;

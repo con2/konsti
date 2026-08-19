@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
-import { HighlightStyle } from "client/components/RaisedCard";
+import { ButtonStyle, HighlightStyle } from "client/components/componentStyles";
 import { useAppSelector } from "client/utils/hooks";
 import {
   getAppUpdateReloadedBuildTime,

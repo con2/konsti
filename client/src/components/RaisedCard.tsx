@@ -1,20 +1,9 @@
 import { ReactElement, ReactNode } from "react";
-import styled, { DefaultTheme } from "styled-components";
-
-export enum HighlightStyle {
-  INFO = "info",
-  WARN = "warn",
-}
-
-// The one place a highlight style maps to a colour, so a card's border and
-// anything drawn beside it can't drift apart
-export const getHighlightColor = (
-  theme: DefaultTheme,
-  highlightStyle?: HighlightStyle,
-): string =>
-  highlightStyle === HighlightStyle.WARN
-    ? theme.borderCardWarnHighlight
-    : theme.borderCardHighlight;
+import styled from "styled-components";
+import {
+  HighlightStyle,
+  getHighlightColor,
+} from "client/components/componentStyles";
 
 interface Props {
   children: ReactNode;

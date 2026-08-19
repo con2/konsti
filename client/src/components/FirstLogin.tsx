@@ -5,7 +5,7 @@ import { z } from "zod";
 import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 import { formatSerial } from "shared/utils/formatSerial";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
-import { HighlightStyle } from "client/components/RaisedCard";
+import { HighlightStyle } from "client/components/componentStyles";
 import { isAdminOrHelper } from "client/utils/checkUserGroup";
 import { useAppSelector } from "client/utils/hooks";
 

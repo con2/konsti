@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
-import { HighlightStyle } from "client/components/RaisedCard";
+import { HighlightStyle } from "client/components/componentStyles";
 import { useAppSelector } from "client/utils/hooks";
 import {
   getDismissedAdminMessage,

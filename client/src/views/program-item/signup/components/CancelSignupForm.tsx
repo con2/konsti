@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { ButtonStyle } from "client/components/componentStyles";
 
 interface Props {
   onCancelForm: () => void;

@@ -17,6 +17,7 @@ import eslintPluginPromise from "eslint-plugin-promise";
 import eslintPluginReact from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginReactHooksAddon from "eslint-plugin-react-hooks-addons";
+import eslintPluginReactRefresh from "eslint-plugin-react-refresh";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import { defineConfig, globalIgnores, includeIgnoreFile } from "eslint/config";
 import globals from "globals";
@@ -213,6 +214,9 @@ export default defineConfig([
       eslintPluginReactHooksAddon.configs.recommended,
       ...fixupConfigRules(eslintPluginJsxA11y.flatConfigs.recommended),
       eslintPluginCompat.configs["flat/recommended"],
+      // The 'vite' variant allows constant exports alongside components, which
+      // @vitejs/plugin-react handles without falling back to a full reload
+      eslintPluginReactRefresh.configs.vite,
     ],
 
     plugins: {

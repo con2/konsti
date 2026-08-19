@@ -3,9 +3,10 @@ import { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 

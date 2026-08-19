@@ -1,13 +1,6 @@
-import {
-  ReactElement,
-  ReactNode,
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { ReactElement, ReactNode, useState } from "react";
 import { Location, useLocation } from "react-router";
-
-const HistoryContext = createContext<Location | null>(null);
+import { HistoryContext } from "client/app/historyContext";
 
 interface Props {
   children: ReactNode;
@@ -34,8 +27,4 @@ export const HistoryProvider = ({ children }: Props): ReactElement => {
       {children}
     </HistoryContext.Provider>
   );
-};
-
-export const usePreviousLocation = (): Location | null => {
-  return useContext(HistoryContext);
 };

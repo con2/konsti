@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
 import { AppRoutes } from "client/app/AppRoutes";
-import { HistoryProvider } from "client/app/HistoryContext";
+import { HistoryProvider } from "client/app/HistoryProvider";
 import { prefetchLazyViews } from "client/app/lazyViews";
 import { AdminMessageBanner } from "client/components/AdminMessageBanner";
 import { Announcement } from "client/components/Announcement";

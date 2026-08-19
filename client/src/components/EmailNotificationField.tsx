@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { RadioButton } from "client/components/RadioButton";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
-import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 interface Props {
   enabled: boolean;
@@ -42,15 +41,4 @@ export const EmailNotificationField = ({
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const StyledEmailInput = styled(UncontrolledInput)`
-  width: min(250px, 100%);
-  ${(props) =>
-    props.disabled &&
-    `
-      background-color: ${props.theme.backgroundDisabled};
-      cursor: not-allowed;
-      opacity: 0.6;
-    `};
 `;

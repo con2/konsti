@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { first } from "remeda";
 import styled from "styled-components";
 import { formatSerial } from "shared/utils/formatSerial";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
+import { ButtonStyle } from "client/components/componentStyles";
 import { postAddSerials } from "client/test/test-data/testDataServices";
 
 // Dev helper for testing the registration flow: generates a valid

@@ -3,8 +3,9 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router";
 import { z } from "zod";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { ButtonStyle } from "client/components/componentStyles";
 import { postKompassiLoginRedirect } from "client/services/loginServices";
 import { LoginErrorMessage } from "client/views/login/loginThunks";
 

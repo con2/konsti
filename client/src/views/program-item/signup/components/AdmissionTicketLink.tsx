@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import styled from "styled-components";
 import { AppRoute } from "client/app/routes";
-import { ButtonStyle } from "client/components/Button";
+import { ButtonStyle } from "client/components/componentStyles";
 import { ProgramItemButton } from "client/views/program-item/components/ProgramItemButton";
 
 interface Props {

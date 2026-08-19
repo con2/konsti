@@ -2,11 +2,10 @@ import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { EMAIL_REGEX } from "shared/constants/validation";
-import { Button, ButtonStyle } from "client/components/Button";
-import {
-  EmailNotificationField,
-  StyledEmailInput,
-} from "client/components/EmailNotificationField";
+import { Button } from "client/components/Button";
+import { EmailInput } from "client/components/EmailInput";
+import { EmailNotificationField } from "client/components/EmailNotificationField";
+import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch } from "client/utils/hooks";
 import { submitUpdateUserEmailAddress } from "client/views/login/loginThunks";
 
@@ -81,7 +80,7 @@ export const EmailSettingsForm = ({ email }: Props): ReactElement => {
         enabled={emailNotificationsEnabled}
         onEnabledChange={handleEmailNotificationChange}
       >
-        <StyledEmailInput
+        <EmailInput
           id="email"
           value={changeEmailInput}
           type={"email"}

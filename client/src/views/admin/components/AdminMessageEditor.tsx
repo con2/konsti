@@ -2,9 +2,10 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ADMIN_MESSAGE_LENGTH_MAX } from "shared/constants/validation";
-import { Button, ButtonStyle } from "client/components/Button";
+import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { TextArea } from "client/components/TextArea";
+import { ButtonStyle } from "client/components/componentStyles";
 
 interface Props {
   adminMessageFi: string;
