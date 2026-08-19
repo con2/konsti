@@ -27,6 +27,27 @@ const filetypesGlob = "**/*.{ts,tsx}";
 
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
+// Restricted syntax that applies everywhere. The .format() restriction is added
+// on top of this in the default config, and left out for the modules below
+const restrictedSyntax = [
+  {
+    selector: "ThrowStatement", // We don't throw errors!
+    message: "Return Result<T,Err> instead of throwing errors",
+  },
+  {
+    selector: "CallExpression[callee.name='useDispatch']",
+    message: "Please use useAppDispatch()",
+  },
+  {
+    selector: "CallExpression[callee.name='useSelector']",
+    message: "Please use useAppSelector()",
+  },
+];
+
+// The only module allowed to call .format(): it resolves the event timezone before
+// formatting, which is the guarantee the restriction exists to protect
+const timeFormattingModules = ["shared/utils/timeFormatter.ts"];
+
 export default defineConfig([
   eslint.configs.recommended,
   typescriptEslint.configs.strictTypeChecked,
@@ -98,22 +119,11 @@ export default defineConfig([
       "object-shorthand": "error",
       "no-restricted-syntax": [
         "error",
-        {
-          selector: "ThrowStatement", // We don't throw errors!
-          message: "Return Result<T,Err> instead of throwing errors",
-        },
+        ...restrictedSyntax,
         {
           selector:
             "MemberExpression[property.name='format'][object.type='CallExpression']",
           message: "Import from timeFormatter.ts or use dayjs().toISOString",
-        },
-        {
-          selector: "CallExpression[callee.name='useDispatch']",
-          message: "Please use useAppDispatch()",
-        },
-        {
-          selector: "CallExpression[callee.name='useSelector']",
-          message: "Please use useAppSelector()",
         },
       ],
       "no-else-return": "error",
@@ -302,6 +312,18 @@ export default defineConfig([
 
       // @typescript-eslint
       "@typescript-eslint/no-unnecessary-type-arguments": "off", // Doesn't work with API types <Response,Request>
+    },
+  },
+
+  // ** Time formatting modules (shared/utils) **
+  {
+    files: timeFormattingModules,
+
+    rules: {
+      // Without the .format() restriction this module exists to encapsulate.
+      // Scoping it here rather than disabling the rule inline keeps the other
+      // restrictions in force in the file
+      "no-restricted-syntax": ["error", ...restrictedSyntax],
     },
   },
 

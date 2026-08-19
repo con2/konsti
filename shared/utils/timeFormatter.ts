@@ -1,9 +1,13 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 // dayjs.format() is only called here to make sure all client times use correct timezone
 
-/* eslint-disable no-restricted-syntax -- We want to call format() here */
+// Machine-readable date of an instant the caller has already put in the event
+// timezone, for rebuilding an instant at a given wall-clock time on that day.
+// The only formatter that must not re-apply .tz(): re-resolving the offset would
+// move the date to the previous one across a DST change
+export const getIsoDate = (time: Dayjs): string => time.format("YYYY-MM-DD");
 
 export const getWeekdayAndTime = (time: string): string => {
   const timeFormat = "dddd HH:mm";
@@ -66,5 +70,3 @@ export const formattedCurrentTime = (currentTime: Date): string => {
   const timeFormat = "HH:mm:ss";
   return dayjs(currentTime).tz(TIMEZONE).format(timeFormat);
 };
-
-/* eslint-enable no-restricted-syntax */

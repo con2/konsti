@@ -75,5 +75,5 @@ When adding new code that writes `signedToStartTime`, follow this split. When ad
 ## Conventions
 
 - Use enums/`as const` for closed sets (program types, sign-up types, user groups); use the `Result` tagged union for fallible operations.
-- All time formatting must go through `timeFormatter.ts` / dayjs with the `Europe/Helsinki` timezone — never rely on the host's local timezone.
+- All time formatting must go through `timeFormatter.ts` / dayjs with the `Europe/Helsinki` timezone — never rely on the host's local timezone. A `no-restricted-syntax` rule in the root `eslint.config.ts` enforces this by confining `.format()` to `timeFormatter.ts`, as a file-scoped override rather than an inline `eslint-disable` comment, so that file keeps the rule's other restrictions.
 - No database migrations: events run on fresh, short-lived DBs, so enum/shape changes here need no migration or compatibility shim (see [root CLAUDE.md](../CLAUDE.md)).
