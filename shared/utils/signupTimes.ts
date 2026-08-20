@@ -200,7 +200,11 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Date => {
       ),
   );
 
-  return matchingSignupWindow?.signupWindowStart ?? new Date(eventStartTime);
+  // Copied, not handed out: the config's own Date would otherwise be mutable by
+  // any caller, permanently shifting the sign-up window for the whole process
+  return matchingSignupWindow
+    ? toPlainDate(matchingSignupWindow.signupWindowStart)
+    : new Date(eventStartTime);
 };
 
 export const getDirectSignupEndTime = (programItem: ProgramItem): Date => {
