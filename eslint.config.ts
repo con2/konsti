@@ -48,10 +48,6 @@ const restrictedImportPaths = [
     importNames: ["default"],
     message: "Please use named imports, e.g. { useEffect }",
   },
-  {
-    name: "dayjs",
-    message: "dayjs is no longer a dependency, use date-fns and @date-fns/tz",
-  },
 ];
 
 // date-fns formats in whatever timezone the host is in, which for a program time
