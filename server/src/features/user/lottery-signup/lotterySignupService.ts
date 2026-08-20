@@ -1,4 +1,4 @@
-import { isBefore, isEqual } from "date-fns";
+import { isEqual } from "date-fns";
 import {
   DeleteLotterySignupResponse,
   PostLotterySignupResponse,
@@ -9,6 +9,7 @@ import {
   getLotterySignupEndTime,
   getLotterySignupStartTime,
 } from "shared/utils/signupTimes";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
@@ -107,7 +108,7 @@ export const storeLotterySignup = async ({
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
-  if (isBefore(timeNow, lotterySignupStartTime)) {
+  if (!isSameOrAfter(timeNow, lotterySignupStartTime)) {
     const message = `Signup for program item ${programItemId} not open yet, opens ${lotterySignupStartTime.toISOString()}`;
     logger.warn(message);
     return {

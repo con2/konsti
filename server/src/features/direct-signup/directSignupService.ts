@@ -1,4 +1,3 @@
-import { isBefore } from "date-fns";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
@@ -14,6 +13,7 @@ import {
   getDirectSignupEndTime,
   getDirectSignupStartTime,
 } from "shared/utils/signupTimes";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
   delDirectSignup,
@@ -108,7 +108,7 @@ export const storeDirectSignup = async (
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
-  if (isBefore(timeNow, directSignupStartTime)) {
+  if (!isSameOrAfter(timeNow, directSignupStartTime)) {
     const message = `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`;
     logger.warn(message);
     return {

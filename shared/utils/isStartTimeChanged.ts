@@ -13,8 +13,16 @@ export const isStartTimeChanged = (
   const comparedStartTime =
     startTimesByParentIds.get(parentId) ?? programItemStartTime;
 
-  return !isSameMinute(
+  // Reported as unchanged when either time is unparseable, rather than as
+  // changed: a "changed" sign-up is subtracted from the lottery's remaining
+  // capacity, so failing the other way would silently withhold spots
+  return !isSameMinuteOrUnparseable(
     new Date(signedToStartTime),
     new Date(comparedStartTime),
   );
 };
+
+const isSameMinuteOrUnparseable = (time: Date, compared: Date): boolean =>
+  Number.isNaN(time.getTime()) ||
+  Number.isNaN(compared.getTime()) ||
+  isSameMinute(time, compared);
