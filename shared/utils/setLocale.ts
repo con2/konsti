@@ -25,13 +25,9 @@ export const localeFor = (locale: string): Locale =>
 // knows which one is active, so the choice is held here instead of threaded
 // through every call site
 let currentLocale: Locale = enUS;
-let currentLocaleCode = "en";
 
 export const setLocale = (locale: string): void => {
   currentLocale = localeFor(locale);
-  currentLocaleCode = locale;
 };
 
 export const getCurrentLocale = (): Locale => currentLocale;
-
-export const getCurrentLocaleCode = (): string => currentLocaleCode;
