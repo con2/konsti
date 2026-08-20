@@ -6,17 +6,16 @@ import { enUS } from "date-fns/locale/en-US";
 import { fi } from "date-fns/locale/fi";
 
 // date-fns's abbreviated Finnish weekdays are "torst." / "kesk.", where the UI
-// has always shown the two-letter forms. English needs the abbreviated width as
-// it is ("Thu"), so this cannot be solved by picking a different format token
-const FI_SHORT_WEEKDAYS = ["su", "ma", "ti", "ke", "to", "pe", "la"];
-
+// has always shown the two-letter forms - which is date-fns's "short" width, so
+// this remaps rather than hard-coding the names. English needs the abbreviated
+// width as it is ("Thu"), so it cannot be solved by picking a different token
 const finnish: Locale = {
   ...fi,
   localize: {
     ...fi.localize,
     day: (value: Day, options?: LocalizeFnOptions): string =>
       options?.width === "abbreviated"
-        ? FI_SHORT_WEEKDAYS[value]
+        ? fi.localize.day(value, { ...options, width: "short" })
         : fi.localize.day(value, options),
   },
 };
