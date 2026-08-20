@@ -1,5 +1,5 @@
+import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
-import { faker } from "@faker-js/faker";
 import mongoose from "mongoose";
 
 interface StartTestServerReturn {
@@ -13,7 +13,7 @@ export const startTestServer = async (
   const server = await module.startServer({
     dbConnString,
 
-    dbName: faker.string.alphanumeric(10),
+    dbName: randomUUID(),
   });
 
   return { server };

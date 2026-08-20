@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { randomUUID } from "node:crypto";
 import { subHours } from "date-fns";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
@@ -57,7 +57,7 @@ const getPastLotterySignupEvents = ({
   const eventLogItems: EventLogItem[] = [];
   for (let i = 0; i < pastFailureLotterySignups; i++) {
     eventLogItems.push({
-      eventLogItemId: faker.string.alphanumeric(10),
+      eventLogItemId: randomUUID(),
       action: EventLogAction.NO_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,
@@ -71,7 +71,7 @@ const getPastLotterySignupEvents = ({
 
   for (let i = 0; i < pastSuccessLotterySignups; i++) {
     eventLogItems.push({
-      eventLogItemId: faker.string.alphanumeric(10),
+      eventLogItemId: randomUUID(),
       action: EventLogAction.NEW_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,

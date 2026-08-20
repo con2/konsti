@@ -1,5 +1,5 @@
+import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
-import { faker } from "@faker-js/faker";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -37,7 +37,7 @@ let server: Server;
 beforeEach(async () => {
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
-    dbName: faker.string.alphanumeric(10),
+    dbName: randomUUID(),
   });
   vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
     createNotificationQueueService(new EmailSender(), 1, true),

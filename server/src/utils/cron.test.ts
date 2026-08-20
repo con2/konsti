@@ -1,5 +1,5 @@
+import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
-import { faker } from "@faker-js/faker";
 import { addSeconds, subMinutes, subSeconds } from "date-fns";
 import {
   afterEach,
@@ -83,7 +83,7 @@ beforeEach(async () => {
 
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
-    dbName: faker.string.alphanumeric(10),
+    dbName: randomUUID(),
   });
   await createSettings();
   await saveTestSettings({ testTime: timeNow });

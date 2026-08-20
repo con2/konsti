@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { randomUUID } from "node:crypto";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test } from "vitest";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
@@ -16,7 +16,7 @@ import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
-  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
+  await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
 });
 
 afterEach(async () => {
