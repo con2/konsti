@@ -1,4 +1,3 @@
-import { isBefore } from "date-fns";
 import { partition, uniqueBy } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -11,6 +10,7 @@ import { FavoriteProgramItemId, LotterySignup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { getLotterySignupEndTime } from "shared/utils/signupTimes";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
@@ -75,7 +75,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
         const keep =
           cancellationAction === undefined ||
           (foundProgramItem !== undefined &&
-            !isBefore(
+            isSameOrAfter(
               timeNowResult.value,
               getLotterySignupEndTime(foundProgramItem),
             ));
