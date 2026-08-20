@@ -1,7 +1,9 @@
+import { TZDate } from "@date-fns/tz";
 import { getMinutes } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { TIMEZONE } from "shared/utils/timezone";
 
 interface ProgramItemValidity {
   isValidMinAttendanceValue: boolean;
@@ -36,12 +38,16 @@ export const getProgramItemValidity = (
 
   // Lottery batches sign-ups by start time, so lottery items must start at an
   // even hour. Items with a configured parent start time are exempt: the whole
-  // batch is run as one lottery at that admin-configured time
+  // batch is run as one lottery at that admin-configured time.
+  //
+  // Read in the event timezone, not the viewer's: an even Helsinki hour is 30 or
+  // 45 minutes past in a zone with a half-hour offset, which would mark every
+  // lottery item invalid and hide its sign-up controls for those attendees
   const lotteryItemNotStartingOnEvenHour =
     usesKonstiSignup &&
     isLotterySignupProgramItem(programItem) &&
     !startTimesByParentIds.has(programItem.parentId) &&
-    getMinutes(new Date(programItem.startTime)) !== 0;
+    getMinutes(new TZDate(programItem.startTime, TIMEZONE)) !== 0;
 
   const allValuesValid =
     isValidMinAttendanceValue &&
