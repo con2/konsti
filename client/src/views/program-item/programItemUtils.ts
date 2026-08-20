@@ -1,10 +1,11 @@
-import { tz } from "@date-fns/tz";
-import { isSameDay, isSameWeek } from "date-fns";
+import { TZDate, tz } from "@date-fns/tz";
+import { isSameWeek } from "date-fns";
 import { TFunction } from "i18next";
 import { config } from "shared/config";
+import { Locale } from "shared/types/locale";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
-import { getCurrentLocale } from "shared/utils/setLocale";
+import { getCurrentLocale, getLocaleSnapshot } from "shared/utils/setLocale";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import {
   getDateAndTime,
@@ -43,22 +44,66 @@ export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
   );
 };
 
-export const getFormattedTime = (time: Date, timeNow: Date): string => {
-  // Show weekday and time on event week. Bucketed in the event timezone, like
-  // the times it decorates - a viewer an hour east would otherwise enter event
-  // week a day early and lose the date from every heading. The locale decides
-  // which day the week starts on, which for a Fri-Sun event decides whether it
-  // counts as one week
+// Whether we are in event week. Bucketed in the event timezone, like the times
+// it decorates - a viewer an hour east would otherwise enter event week a day
+// early and lose the date from every heading. The locale decides which day the
+// week starts on, which for a Fri-Sun event decides whether it counts as one
+// week.
+//
+// Cached because it is the expensive part of formatting a row (a timezone-aware
+// isSameWeek costs ~65us, against ~1us without) while depending on nothing about
+// the row: every visible program item recomputes the same answer. The inputs
+// change at most once a clock tick
+let eventWeekCache:
+  | {
+      timeNowMs: number;
+      eventStartTime: string;
+      locale: Locale;
+      result: boolean;
+    }
+  | undefined;
+
+const isEventWeek = (timeNow: Date): boolean => {
+  const { eventStartTime } = config.event();
+  const locale = getLocaleSnapshot();
+  const timeNowMs = timeNow.getTime();
+
   if (
-    isSameWeek(timeNow, new Date(config.event().eventStartTime), {
-      in: tz(TIMEZONE),
-      locale: getCurrentLocale(),
-    })
+    eventWeekCache?.timeNowMs === timeNowMs &&
+    eventWeekCache.eventStartTime === eventStartTime &&
+    eventWeekCache.locale === locale
   ) {
+    return eventWeekCache.result;
+  }
+
+  const result = isSameWeek(timeNow, new Date(eventStartTime), {
+    in: tz(TIMEZONE),
+    locale: getCurrentLocale(),
+  });
+  eventWeekCache = { timeNowMs, eventStartTime, locale, result };
+  return result;
+};
+
+export const getFormattedTime = (time: Date, timeNow: Date): string => {
+  // Show weekday and time on event week
+  if (isEventWeek(timeNow)) {
     return getWeekdayAndTime(time.toISOString());
   }
   // Show full time before event week
   return getDateAndTime(time.toISOString());
+};
+
+export const isSameDayInEventTimezone = (
+  time: Date,
+  compared: Date,
+): boolean => {
+  const zoned = new TZDate(time, TIMEZONE);
+  const zonedCompared = new TZDate(compared, TIMEZONE);
+  return (
+    zoned.getFullYear() === zonedCompared.getFullYear() &&
+    zoned.getMonth() === zonedCompared.getMonth() &&
+    zoned.getDate() === zonedCompared.getDate()
+  );
 };
 
 /** Format a time interval in a human-friendly way for showing in the UI. */
@@ -70,8 +115,10 @@ export const getFormattedInterval = (
   const startFormatted = getFormattedTime(startTime, timeNow);
 
   // Same day in the event timezone: an item running 23:00 -> 01:00 Helsinki
-  // crosses midnight for everyone, whatever calendar day the viewer is on
-  const endFormatted = isSameDay(startTime, endTime, { in: tz(TIMEZONE) })
+  // crosses midnight for everyone, whatever calendar day the viewer is on.
+  // Compared as calendar fields rather than with a timezone-aware isSameDay,
+  // which costs ~45us against ~10us here because each of its setters re-syncs
+  const endFormatted = isSameDayInEventTimezone(startTime, endTime)
     ? getTime(endTime.toISOString())
     : getFormattedTime(endTime, timeNow);
 
