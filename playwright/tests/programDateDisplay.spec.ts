@@ -1,11 +1,13 @@
+import { TZDate } from "@date-fns/tz";
 import { APIRequestContext, expect, test } from "@playwright/test";
-import { addHours, format, subDays, subWeeks } from "date-fns";
+import { addHours, subDays, subWeeks } from "date-fns";
 import { config } from "shared/config";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { Tag } from "shared/types/models/programItem";
+import { TIMEZONE } from "shared/utils/timezone";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
@@ -103,6 +105,6 @@ test("During event week, program times show the weekday without a date", async (
   const programItem = new ProgramItemPage(page);
   await expect(programItem.timeRow).toContainText(`${headingText} – `);
   await expect(programItem.timeRow).not.toContainText(
-    format(mainEventStart, "yyyy"),
+    String(new TZDate(mainEventStart, TIMEZONE).getFullYear()),
   );
 });

@@ -27,8 +27,6 @@ const filetypesGlob = "**/*.{ts,tsx}";
 
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
-// Restricted syntax that applies everywhere. The .format() restriction is added
-// on top of this in the default config, and left out for the modules below
 const restrictedSyntax = [
   {
     selector: "ThrowStatement", // We don't throw errors!
@@ -44,9 +42,32 @@ const restrictedSyntax = [
   },
 ];
 
-// The only module allowed to call .format(): it resolves the event timezone before
-// formatting, which is the guarantee the restriction exists to protect
-const timeFormattingModules = ["shared/utils/timeFormatter.ts"];
+const restrictedImportPaths = [
+  {
+    name: "react",
+    importNames: ["default"],
+    message: "Please use named imports, e.g. { useEffect }",
+  },
+  {
+    name: "dayjs",
+    message: "dayjs is no longer a dependency, use date-fns and @date-fns/tz",
+  },
+];
+
+// date-fns formats in whatever timezone the host is in, which for a program time
+// is never what we mean. Confined to the modules that apply the event timezone
+// and the active locale before formatting
+const restrictedFormatImport = {
+  name: "date-fns",
+  importNames: ["format", "formatDistance", "formatRelative"],
+  message:
+    "Import from shared/utils/timeFormatter or shared/utils/relativeTime",
+};
+
+const timeFormattingModules = [
+  "shared/utils/timeFormatter.ts",
+  "shared/utils/relativeTime.ts",
+];
 
 export default defineConfig([
   eslint.configs.recommended,
@@ -117,15 +138,7 @@ export default defineConfig([
       "no-param-reassign": "error",
       "no-console": "error",
       "object-shorthand": "error",
-      "no-restricted-syntax": [
-        "error",
-        ...restrictedSyntax,
-        {
-          selector:
-            "MemberExpression[property.name='format'][object.type='CallExpression']",
-          message: "Import from timeFormatter.ts or use toISOString()",
-        },
-      ],
+      "no-restricted-syntax": ["error", ...restrictedSyntax],
       "no-else-return": "error",
       curly: "error",
       "no-implicit-coercion": ["error", { boolean: false }],
@@ -186,18 +199,7 @@ export default defineConfig([
       "@typescript-eslint/no-restricted-imports": [
         "error",
         {
-          paths: [
-            {
-              name: "react",
-              importNames: ["default"],
-              message: "Please use named imports, e.g. { useEffect }",
-            },
-            {
-              name: "dayjs",
-              message:
-                "dayjs is no longer a dependency, use date-fns and @date-fns/tz",
-            },
-          ],
+          paths: [...restrictedImportPaths, restrictedFormatImport],
           patterns: [
             {
               group: ["../*"],
@@ -325,10 +327,21 @@ export default defineConfig([
     files: timeFormattingModules,
 
     rules: {
-      // Without the .format() restriction this module exists to encapsulate.
-      // Scoping it here rather than disabling the rule inline keeps the other
-      // restrictions in force in the file
-      "no-restricted-syntax": ["error", ...restrictedSyntax],
+      // Without the date-fns formatting restriction these modules exist to
+      // encapsulate. Scoping it here rather than disabling the rule inline keeps
+      // the other restrictions in force in the files
+      "@typescript-eslint/no-restricted-imports": [
+        "error",
+        {
+          paths: restrictedImportPaths,
+          patterns: [
+            {
+              group: ["../*"],
+              message: "Relative import (../) not allowed, use absolute import",
+            },
+          ],
+        },
+      ],
     },
   },
 
