@@ -3,6 +3,9 @@ import { expect, test } from "vitest";
 import { formatRelativeTime } from "shared/utils/relativeTime";
 import { setLocale } from "shared/utils/setLocale";
 
+// The event log stamps each entry with a relative time for its first four hours,
+// so these strings are user visible. date-fns produces them, and pinning them
+// here catches a locale update rewording what attendees see
 const timeNow = new Date("2019-07-26T17:00:00Z");
 
 type Unit =
@@ -33,79 +36,79 @@ const relativeTimeFuture = (number: number, key: Unit): string => {
 test("Format EN relative times correctly", () => {
   setLocale("en");
 
-  expect(relativeTimePast(1, "second")).toEqual("a few seconds ago");
-  expect(relativeTimePast(2, "seconds")).toEqual("a few seconds ago");
+  expect(relativeTimePast(1, "second")).toEqual("less than a minute ago");
+  expect(relativeTimePast(2, "seconds")).toEqual("less than a minute ago");
 
-  expect(relativeTimePast(1, "minute")).toEqual("a minute ago");
+  expect(relativeTimePast(1, "minute")).toEqual("1 minute ago");
   expect(relativeTimePast(2, "minutes")).toEqual("2 minutes ago");
 
-  expect(relativeTimePast(1, "hour")).toEqual("an hour ago");
-  expect(relativeTimePast(2, "hours")).toEqual("2 hours ago");
+  expect(relativeTimePast(1, "hour")).toEqual("about 1 hour ago");
+  expect(relativeTimePast(2, "hours")).toEqual("about 2 hours ago");
 
-  expect(relativeTimePast(1, "day")).toEqual("a day ago");
+  expect(relativeTimePast(1, "day")).toEqual("1 day ago");
   expect(relativeTimePast(2, "days")).toEqual("2 days ago");
 
-  expect(relativeTimePast(1, "month")).toEqual("a month ago");
+  expect(relativeTimePast(1, "month")).toEqual("about 1 month ago");
   expect(relativeTimePast(2, "months")).toEqual("2 months ago");
 
-  expect(relativeTimePast(1, "year")).toEqual("a year ago");
-  expect(relativeTimePast(2, "years")).toEqual("2 years ago");
+  expect(relativeTimePast(1, "year")).toEqual("about 1 year ago");
+  expect(relativeTimePast(2, "years")).toEqual("about 2 years ago");
 
-  expect(relativeTimeFuture(1, "second")).toEqual("in a few seconds");
-  expect(relativeTimeFuture(2, "seconds")).toEqual("in a few seconds");
+  expect(relativeTimeFuture(1, "second")).toEqual("in less than a minute");
+  expect(relativeTimeFuture(2, "seconds")).toEqual("in less than a minute");
 
-  expect(relativeTimeFuture(1, "minute")).toEqual("in a minute");
+  expect(relativeTimeFuture(1, "minute")).toEqual("in 1 minute");
   expect(relativeTimeFuture(2, "minutes")).toEqual("in 2 minutes");
 
-  expect(relativeTimeFuture(1, "hour")).toEqual("in an hour");
-  expect(relativeTimeFuture(2, "hours")).toEqual("in 2 hours");
+  expect(relativeTimeFuture(1, "hour")).toEqual("in about 1 hour");
+  expect(relativeTimeFuture(2, "hours")).toEqual("in about 2 hours");
 
-  expect(relativeTimeFuture(1, "day")).toEqual("in a day");
+  expect(relativeTimeFuture(1, "day")).toEqual("in 1 day");
   expect(relativeTimeFuture(2, "days")).toEqual("in 2 days");
 
-  expect(relativeTimeFuture(1, "month")).toEqual("in a month");
+  expect(relativeTimeFuture(1, "month")).toEqual("in about 1 month");
   expect(relativeTimeFuture(2, "months")).toEqual("in 2 months");
 
-  expect(relativeTimeFuture(1, "year")).toEqual("in a year");
-  expect(relativeTimeFuture(2, "years")).toEqual("in 2 years");
+  expect(relativeTimeFuture(1, "year")).toEqual("in about 1 year");
+  expect(relativeTimeFuture(2, "years")).toEqual("in about 2 years");
 });
 
 test("Format FI relative times correctly", () => {
   setLocale("fi");
 
-  expect(relativeTimePast(1, "second")).toEqual("muutama sekunti sitten");
-  expect(relativeTimePast(2, "seconds")).toEqual("muutama sekunti sitten");
+  expect(relativeTimePast(1, "second")).toEqual("alle minuutti sitten");
+  expect(relativeTimePast(2, "seconds")).toEqual("alle minuutti sitten");
 
   expect(relativeTimePast(1, "minute")).toEqual("minuutti sitten");
   expect(relativeTimePast(2, "minutes")).toEqual("2 minuuttia sitten");
 
-  expect(relativeTimePast(1, "hour")).toEqual("tunti sitten");
-  expect(relativeTimePast(2, "hours")).toEqual("2 tuntia sitten");
+  expect(relativeTimePast(1, "hour")).toEqual("noin tunti sitten");
+  expect(relativeTimePast(2, "hours")).toEqual("noin 2 tuntia sitten");
 
   expect(relativeTimePast(1, "day")).toEqual("päivä sitten");
   expect(relativeTimePast(2, "days")).toEqual("2 päivää sitten");
 
-  expect(relativeTimePast(1, "month")).toEqual("kuukausi sitten");
+  expect(relativeTimePast(1, "month")).toEqual("noin kuukausi sitten");
   expect(relativeTimePast(2, "months")).toEqual("2 kuukautta sitten");
 
-  expect(relativeTimePast(1, "year")).toEqual("vuosi sitten");
-  expect(relativeTimePast(2, "years")).toEqual("2 vuotta sitten");
+  expect(relativeTimePast(1, "year")).toEqual("noin vuosi sitten");
+  expect(relativeTimePast(2, "years")).toEqual("noin 2 vuotta sitten");
 
-  expect(relativeTimeFuture(1, "second")).toEqual("muutaman sekunnin päästä");
-  expect(relativeTimeFuture(2, "seconds")).toEqual("muutaman sekunnin päästä");
+  expect(relativeTimeFuture(1, "second")).toEqual("alle minuutin kuluttua");
+  expect(relativeTimeFuture(2, "seconds")).toEqual("alle minuutin kuluttua");
 
-  expect(relativeTimeFuture(1, "minute")).toEqual("minuutin päästä");
-  expect(relativeTimeFuture(2, "minutes")).toEqual("2 minuutin päästä");
+  expect(relativeTimeFuture(1, "minute")).toEqual("minuutin kuluttua");
+  expect(relativeTimeFuture(2, "minutes")).toEqual("2 minuutin kuluttua");
 
-  expect(relativeTimeFuture(1, "hour")).toEqual("tunnin päästä");
-  expect(relativeTimeFuture(2, "hours")).toEqual("2 tunnin päästä");
+  expect(relativeTimeFuture(1, "hour")).toEqual("noin tunnin kuluttua");
+  expect(relativeTimeFuture(2, "hours")).toEqual("noin 2 tunnin kuluttua");
 
-  expect(relativeTimeFuture(1, "day")).toEqual("päivän päästä");
-  expect(relativeTimeFuture(2, "days")).toEqual("2 päivän päästä");
+  expect(relativeTimeFuture(1, "day")).toEqual("päivän kuluttua");
+  expect(relativeTimeFuture(2, "days")).toEqual("2 päivän kuluttua");
 
-  expect(relativeTimeFuture(1, "month")).toEqual("kuukauden päästä");
-  expect(relativeTimeFuture(2, "months")).toEqual("2 kuukauden päästä");
+  expect(relativeTimeFuture(1, "month")).toEqual("noin kuukauden kuluttua");
+  expect(relativeTimeFuture(2, "months")).toEqual("2 kuukauden kuluttua");
 
-  expect(relativeTimeFuture(1, "year")).toEqual("vuoden päästä");
-  expect(relativeTimeFuture(2, "years")).toEqual("2 vuoden päästä");
+  expect(relativeTimeFuture(1, "year")).toEqual("noin vuoden kuluttua");
+  expect(relativeTimeFuture(2, "years")).toEqual("noin 2 vuoden kuluttua");
 });
