@@ -14,7 +14,7 @@ const config: Config = {
   ],
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
-  // Side-effect imports register mongoose plugins, i18next and dayjs locales,
+  // Side-effect imports register mongoose plugins and i18next,
   // so they have to keep their position relative to their dependents
   importOrderSideEffects: false,
 

@@ -1,6 +1,8 @@
+import { TZDate } from "@date-fns/tz";
 import { getMinutes } from "date-fns";
 import { ProgramType } from "shared/types/models/programItem";
 import { getTime } from "shared/utils/timeFormatter";
+import { TIMEZONE } from "shared/utils/timezone";
 import { db } from "server/db/mongodb";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -15,7 +17,7 @@ const checkStartTimes = async (): Promise<void> => {
   );
 
   for (const rpg of rpgs) {
-    const startMinute = getMinutes(new Date(rpg.startTime));
+    const startMinute = getMinutes(new TZDate(rpg.startTime, TIMEZONE));
     if (startMinute !== 0) {
       logger.info(`${getTime(rpg.startTime)} - ${rpg.title}`);
     }
