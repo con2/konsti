@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { randomUUID } from "node:crypto";
 import { addHours, subMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
@@ -54,7 +54,7 @@ vi.mock<object>(
 );
 
 beforeEach(async () => {
-  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
+  await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
 
   const queueService = createNotificationQueueService(
     new EmailSender(),

@@ -1,5 +1,5 @@
+import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
-import { faker } from "@faker-js/faker";
 import { addHours, subMinutes } from "date-fns";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -24,7 +24,7 @@ let server: Server;
 beforeEach(async () => {
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
-    dbName: faker.string.alphanumeric(10),
+    dbName: randomUUID(),
   });
 });
 

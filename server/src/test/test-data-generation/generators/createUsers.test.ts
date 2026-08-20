@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { faker } from "@faker-js/faker";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
@@ -10,7 +11,7 @@ import {
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
-  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
+  await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
 });
 
 afterEach(async () => {

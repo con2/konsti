@@ -7,9 +7,9 @@ import { vi } from "vitest";
 // none of it pinned the assertions run against different input every time, so
 // they fail a small percentage of runs and cannot be reproduced locally.
 //
-// Call this inside a test, after the per-test database name has been drawn from
-// faker - seeding before that would hand every test in the file the same
-// database. `vi.restoreAllMocks` in afterEach puts Math.random back.
+// Anything that has to stay unique per test must not come from faker, or seeding
+// makes every test draw the same value - which is why the database names use
+// randomUUID(). `vi.restoreAllMocks` in afterEach puts Math.random back.
 export const seedRandomness = (seed = 1): void => {
   faker.seed(seed);
 

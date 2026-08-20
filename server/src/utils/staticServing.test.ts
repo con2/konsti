@@ -1,8 +1,8 @@
+import { randomUUID } from "node:crypto";
 import fs from "node:fs";
 import { Server } from "node:http";
 import os from "node:os";
 import path from "node:path";
-import { faker } from "@faker-js/faker";
 import request from "supertest";
 import {
   afterAll,
@@ -58,7 +58,7 @@ let server: Server;
 beforeEach(async () => {
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
-    dbName: faker.string.alphanumeric(10),
+    dbName: randomUUID(),
     staticFilesPath: staticPath,
   });
 });
@@ -116,7 +116,7 @@ describe("static file serving", () => {
     await closeServer(server);
     server = await startServer({
       dbConnString: globalThis.__MONGO_URI__,
-      dbName: faker.string.alphanumeric(10),
+      dbName: randomUUID(),
       staticFilesPath: nestedStaticPath,
     });
 
