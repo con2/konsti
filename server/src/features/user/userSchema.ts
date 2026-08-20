@@ -1,7 +1,6 @@
 // Registers the global mongoose plugins, which are applied when a model is
 // compiled below, so it has to stay above the other imports
 import "server/db/mongoosePlugins";
-import dayjs from "dayjs";
 import mongoose, { ObjectId } from "mongoose";
 import mongooseLeanVirtuals from "mongoose-lean-virtuals";
 import { z } from "zod";
@@ -12,7 +11,7 @@ import { UserGroup } from "shared/types/models/user";
 const LotterySignupSchemaDb = z.object({
   programItemId: z.string(),
   priority: z.number(),
-  signedToStartTime: z.date().transform((date) => dayjs(date).toISOString()),
+  signedToStartTime: z.date().transform((date) => date.toISOString()),
 });
 
 const EventLogItemSchemaDb = z.object({
@@ -20,8 +19,8 @@ const EventLogItemSchemaDb = z.object({
   action: z.enum(EventLogAction),
   isSeen: z.boolean(),
   programItemId: z.string(),
-  programItemStartTime: z.date().transform((date) => dayjs(date).toISOString()),
-  createdAt: z.date().transform((date) => dayjs(date).toISOString()),
+  programItemStartTime: z.date().transform((date) => date.toISOString()),
+  createdAt: z.date().transform((date) => date.toISOString()),
 });
 
 export const UserSchemaDb = z
@@ -36,7 +35,7 @@ export const UserSchemaDb = z
     isGroupCreator: z.boolean(),
     favoriteProgramItemIds: z.array(z.string()),
     lotterySignups: z.array(LotterySignupSchemaDb),
-    createdAt: z.date().transform((date) => dayjs(date).toISOString()),
+    createdAt: z.date().transform((date) => date.toISOString()),
     eventLogItems: z.array(EventLogItemSchemaDb),
     email: StoredEmailSchema,
     emailNotificationPermitAsked: z.boolean(),

@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { countBy, groupBy } from "remeda";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
@@ -7,6 +6,7 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
@@ -55,7 +55,7 @@ export const updateProgramItemPopularity = async (): Promise<
       const parentStartTime = config
         .event()
         .startTimesByParentIds.get(programItem.parentId);
-      return dayjs(parentStartTime ?? programItem.startTime).toISOString();
+      return new Date(parentStartTime ?? programItem.startTime).toISOString();
     },
   );
 
@@ -64,7 +64,7 @@ export const updateProgramItemPopularity = async (): Promise<
     return timeNowResult;
   }
   const futureStartTimes = Object.keys(programItemsByStartTimes).filter(
-    (startTime) => dayjs(startTime).isSameOrAfter(timeNowResult.value),
+    (startTime) => isSameOrAfter(new Date(startTime), timeNowResult.value),
   );
 
   // TODO: Only update popularity for startTimes where lottery sign-up is open

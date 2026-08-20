@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { differenceInMinutes, differenceInSeconds } from "date-fns";
 import { sortBy } from "remeda";
 import { config } from "shared/config";
 import {
@@ -40,19 +40,19 @@ export const printRpgDirectSignupFullTimes = (
       config.event().eventStartTime,
     );
 
-    const programItemFullTime = dayjs(rpgDirectSignup.updatedAt);
+    const programItemFullTime = new Date(rpgDirectSignup.updatedAt);
 
-    const totalMinutes = programItemFullTime.diff(
+    const totalMinutes = differenceInMinutes(
+      programItemFullTime,
       directSignupStartTime,
-      "minutes",
     );
 
     const attendance = `${rpgDirectSignup.userSignups.length}/${programItem.maxAttendance}`;
 
     if (totalMinutes <= 1) {
-      const seconds = programItemFullTime.diff(
+      const seconds = differenceInSeconds(
+        programItemFullTime,
         directSignupStartTime,
-        "seconds",
       );
       logger.info(`${seconds}s (${attendance}) - ${programItem.title}`);
       continue;

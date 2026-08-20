@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addMinutes, subHours } from "date-fns";
 import { afterEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
@@ -22,9 +22,10 @@ test("should not produce negative max or min greater than max when existing sign
     maxAttendance: 2,
   };
 
-  const changedStartTime = dayjs(testProgramItem.startTime)
-    .subtract(1, "hour")
-    .toISOString();
+  const changedStartTime = subHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
 
   const directSignups: DirectSignupsForProgramItem[] = [
     {
@@ -78,9 +79,10 @@ test("should return as many events as program items", () => {
 });
 
 test("should return events for program items using parent startTime via 'startTimesByParentIds'", () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),

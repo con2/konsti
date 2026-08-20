@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
@@ -99,7 +100,7 @@ export const ProgramItemDirectSignup = ({
     !alreadySignedToProgramItem &&
     !programItemIsFull &&
     !directSignupForTimeslot;
-  const signupOpen = timeNow.isSameOrAfter(directSignupStartTime);
+  const signupOpen = isSameOrAfter(timeNow, directSignupStartTime);
 
   // The only state with nothing to render: the user could sign up, but
   // sign-up has not opened yet. Render nothing rather than an empty element

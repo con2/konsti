@@ -1,4 +1,3 @@
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { genLotterySignups } from "server/features/statistics/doc-generators/genLotterySignups";
 import { genLotteryWinsPerUser } from "server/features/statistics/doc-generators/genLotteryWinsPerUser";
 import { genRpgCounts } from "server/features/statistics/doc-generators/genRpgCounts";
@@ -11,7 +10,6 @@ import {
 } from "server/features/statistics/doc-generators/statsUtils";
 
 const generateDocs = (): void => {
-  initializeDayjs();
   const unknown = unknownEventDirs();
   if (unknown.length > 0) {
     // eslint-disable-next-line no-restricted-syntax -- Stats doc generation script

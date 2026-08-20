@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour, subHours } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -19,13 +19,13 @@ import {
 } from "playwright/playwrightUtils";
 
 test("Add lottery signup", async ({ page, request }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -73,13 +73,13 @@ test("Add lottery signup", async ({ page, request }) => {
 });
 
 test("Receive spot in lottery signup", async ({ page, request }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(4, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 4),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, {
     clean: true,
@@ -140,13 +140,13 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
 });
 
 test("Did not receive spot in lottery signup", async ({ page, request }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(4, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 4),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, {
     clean: true,
@@ -210,13 +210,13 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(4, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 4),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   const firstProgramItemTitle = "first program item";
   const secondProgramItemTitle = "second program item";
@@ -323,14 +323,15 @@ test("Receive seat from each lottery program type in separate time slots", async
   const slots = [4, 6, 8].map((hoursFromEventStart, index) => {
     const programType =
       twoPhaseSignupProgramTypes[index % twoPhaseSignupProgramTypes.length];
-    const startTime = dayjs(eventStartTime)
-      .add(hoursFromEventStart, "hour")
-      .toISOString();
+    const startTime = addHours(
+      new Date(eventStartTime),
+      hoursFromEventStart,
+    ).toISOString();
     return {
       programType,
       title: `Lottery slot ${hoursFromEventStart}h ${programTypeNamesEn[programType]}`,
       startTime,
-      signupTime: dayjs(startTime).subtract(4, "hour").toISOString(),
+      signupTime: subHours(new Date(startTime), 4).toISOString(),
     };
   });
 
@@ -344,7 +345,7 @@ test("Receive seat from each lottery program type in separate time slots", async
       title: slot.title,
       programType: slot.programType,
       startTime: slot.startTime,
-      endTime: dayjs(slot.startTime).add(1, "hour").toISOString(),
+      endTime: addHours(new Date(slot.startTime), 1).toISOString(),
       // Keep items short so consecutive slots don't overlap: with the OVERLAP
       // removal strategy a longer win would drop the later lottery sign-ups
       mins: 60,
@@ -415,13 +416,13 @@ test("Receive seat from each lottery program type in separate time slots", async
 });
 
 test("Cancel lottery signup on program list", async ({ page, request }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -471,13 +472,13 @@ test("Show limit message when three lottery signups in time slot", async ({
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   const titles = [
     "Lottery item Alpha",

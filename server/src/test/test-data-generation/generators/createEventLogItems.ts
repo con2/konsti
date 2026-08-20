@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { subHours, subMinutes } from "date-fns";
 import { first, groupBy, sample } from "remeda";
 import { config } from "shared/config";
 import { NewEventLogItem } from "shared/types/api/eventLog";
@@ -32,7 +32,7 @@ export const createEventLogItems = async (): Promise<void> => {
 
   for (const user of users) {
     const signupsBySlot = groupBy(user.lotterySignups, (lotterySignup) =>
-      dayjs(lotterySignup.signedToStartTime).toISOString(),
+      new Date(lotterySignup.signedToStartTime).toISOString(),
     );
     const slots = Object.entries(signupsBySlot).slice(0, createdAtTimes.length);
 
@@ -101,9 +101,9 @@ export const createEventLogItems = async (): Promise<void> => {
 };
 
 const createdAtTimes = [
-  dayjs().subtract(2, "minutes"),
-  dayjs().subtract(50, "minutes"),
-  dayjs().subtract(2, "hours"),
-  dayjs().subtract(5, "hours"),
-  dayjs().subtract(8, "hours"),
+  subMinutes(new Date(), 2),
+  subMinutes(new Date(), 50),
+  subHours(new Date(), 2),
+  subHours(new Date(), 5),
+  subHours(new Date(), 8),
 ];

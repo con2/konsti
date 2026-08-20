@@ -1,3 +1,4 @@
+import { isBefore } from "date-fns";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
@@ -107,7 +108,7 @@ export const storeDirectSignup = async (
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
-  if (timeNow.isBefore(directSignupStartTime)) {
+  if (isBefore(timeNow, directSignupStartTime)) {
     const message = `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`;
     logger.warn(message);
     return {

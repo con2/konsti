@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { differenceInMinutes } from "date-fns";
 import { capitalize, first } from "remeda";
 import { config } from "shared/config";
 import {
@@ -45,19 +45,19 @@ export const kompassiProgramItemMapper = (
           scheduleItem.location ||
           capitalize(programItem.cachedDimensions.room[0]) ||
           "",
-        startTime: dayjs(scheduleItem.startTime).toISOString(),
+        startTime: new Date(scheduleItem.startTime).toISOString(),
         mins:
           scheduleItem.lengthMinutes ||
-          dayjs(scheduleItem.endTime).diff(
-            dayjs(scheduleItem.startTime),
-            "minute",
+          differenceInMinutes(
+            new Date(scheduleItem.endTime),
+            new Date(scheduleItem.startTime),
           ),
         tags: mapTags(programItem),
         ageGroups: mapAgeGroups(programItem),
         genres: [],
         styles: mapGamestyles(programItem.cachedDimensions["game-style"]),
         languages: mapLanguages(programItem),
-        endTime: dayjs(scheduleItem.endTime).toISOString(),
+        endTime: new Date(scheduleItem.endTime).toISOString(),
         people: programItem.cachedHosts,
         minAttendance:
           programItem.cachedAnnotations["konsti:minAttendance"] || 1,

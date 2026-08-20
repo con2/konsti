@@ -1,4 +1,3 @@
-import { Dayjs } from "dayjs";
 import {
   AgeGroup,
   Language,
@@ -23,7 +22,7 @@ export const getVisibleProgramItems = (
   selectedTags: readonly string[],
   hideFull: boolean,
   fullProgramItemIds: ReadonlySet<string>,
-  timeNow: Dayjs,
+  timeNow: Date,
 ): readonly ProgramItem[] => {
   const tagFilteredProgramItems = getTagFilteredProgramItems(
     programItems,

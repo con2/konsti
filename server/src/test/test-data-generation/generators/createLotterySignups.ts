@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { groupBy, sample } from "remeda";
 import { config } from "shared/config";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
@@ -53,7 +52,7 @@ const getRandomLotterySignup = (
     );
 
   const startTimes = activeProgramItems.map((activeProgramItem) =>
-    dayjs(activeProgramItem.startTime).toISOString(),
+    new Date(activeProgramItem.startTime).toISOString(),
   );
   const uniqueTimes = [...new Set(startTimes)];
   // Three first times are direct sign-up only
@@ -64,8 +63,8 @@ const getRandomLotterySignup = (
     logger.debug(`Generate lottery signups for time ${startTime}`);
     const programItemsForTime = activeProgramItems.filter(
       (activeProgramItem) =>
-        dayjs(activeProgramItem.startTime).toISOString() ===
-        dayjs(startTime).toISOString(),
+        new Date(activeProgramItem.startTime).toISOString() ===
+        new Date(startTime).toISOString(),
     );
 
     const numberOfSignups = Math.min(programItemsForTime.length, 3);

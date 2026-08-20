@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -77,7 +76,7 @@ export const findResults = async (): Promise<
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findResults DB value: assignmentTime: ${dayjs(assignmentResult.assignmentTime).toISOString()}`,
+            `Error validating findResults DB value: assignmentTime: ${new Date(assignmentResult.assignmentTime).toISOString()}`,
             { cause: result.error },
           ),
         );

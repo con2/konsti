@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -80,9 +80,10 @@ test("Assignment with valid data should return success with random algorithm", a
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
-  const assignmentTime = dayjs(eventStartTime)
-    .add(firstLotterySignupSlot, "hours")
-    .toISOString();
+  const assignmentTime = addHours(
+    new Date(eventStartTime),
+    firstLotterySignupSlot,
+  ).toISOString();
 
   // FIRST RUN
 
@@ -159,9 +160,10 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   // This should remain because of different startTime
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
-    signedToStartTime: dayjs(testProgramItem.startTime)
-      .subtract(1, "hours")
-      .toISOString(),
+    signedToStartTime: subHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString(),
   });
 
   // This should be removed becase of same startTime
@@ -202,9 +204,10 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   expect(assignmentSignup?.userSignups).toMatchObject([
     {
       username: mockUser.username,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        1,
+      ).toISOString(),
       message: "",
       priority: 0,
     },
@@ -234,7 +237,7 @@ test("Assignment with no attendees should return error with random algorithm", a
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
-  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = addHours(new Date(eventStartTime), 2).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -249,9 +252,10 @@ test("Assignment with no attendees should return error with random algorithm", a
 });
 
 test("Should assign user with 'startTimesByParentIds' program item", async () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
@@ -298,9 +302,10 @@ test("Should assign user with 'startTimesByParentIds' program item", async () =>
 });
 
 test("Should assign group with 'startTimesByParentIds' program item", async () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),

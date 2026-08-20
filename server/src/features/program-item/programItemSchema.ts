@@ -1,7 +1,6 @@
 // Registers the global mongoose plugins, which are applied when a model is
 // compiled below, so it has to stay above the other imports
 import "server/db/mongoosePlugins";
-import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
 import {
@@ -25,14 +24,14 @@ export const ProgramItemSchemaDb = z
     title: z.string(),
     description: z.string(),
     location: z.string(),
-    startTime: z.date().transform((date) => dayjs(date).toISOString()),
+    startTime: z.date().transform((date) => date.toISOString()),
     mins: z.number(),
     tags: z.array(z.enum(Tag)),
     ageGroups: z.array(z.enum(AgeGroup)),
     genres: z.array(z.enum(Genre)),
     styles: z.array(z.enum(Gamestyle)),
     languages: z.array(z.enum(Language)),
-    endTime: z.date().transform((date) => dayjs(date).toISOString()),
+    endTime: z.date().transform((date) => date.toISOString()),
     people: z.string(),
     minAttendance: z.number(),
     maxAttendance: z.number(),

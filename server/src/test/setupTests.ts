@@ -3,10 +3,7 @@ import { beforeEach, vi } from "vitest";
 import { config } from "shared/config";
 import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { mongoDbPort } from "server/test/globalSetup";
-
-initializeDayjs();
 
 // Increase the max listeners limit to prevent MongoDB connection warnings during tests
 EventEmitter.defaultMaxListeners = 30;

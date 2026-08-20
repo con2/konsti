@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isBefore } from "date-fns";
 import { partition, uniqueBy } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -75,7 +75,8 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
         const keep =
           cancellationAction === undefined ||
           (foundProgramItem !== undefined &&
-            !timeNowResult.value.isBefore(
+            !isBefore(
+              timeNowResult.value,
               getLotterySignupEndTime(foundProgramItem),
             ));
 
@@ -221,7 +222,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
           username: user.username,
           programItemId: lotterySignup.programItemId,
           programItemStartTime: lotterySignup.signedToStartTime,
-          createdAt: dayjs().toISOString(),
+          createdAt: new Date().toISOString(),
           action,
         };
       },
@@ -235,8 +236,8 @@ const notifyUsersWithLotterySignupOrFavorite = async (
         return {
           username: user.username,
           programItemId: favorite,
-          programItemStartTime: dayjs().toISOString(),
-          createdAt: dayjs().toISOString(),
+          programItemStartTime: new Date().toISOString(),
+          createdAt: new Date().toISOString(),
           action: EventLogAction.PROGRAM_ITEM_DELETED,
         };
       },

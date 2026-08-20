@@ -1,3 +1,4 @@
+import { addMinutes, startOfMinute } from "date-fns";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
 import { Result, makeSuccessResult } from "shared/utils/result";
@@ -14,10 +15,10 @@ export const getDynamicStartTime = async (): Promise<
     return timeNowResult;
   }
 
-  const dynamicStartTime = timeNowResult.value
-    .startOf("minute")
-    .add(directSignupPhaseStart, "minutes")
-    .toISOString();
+  const dynamicStartTime = addMinutes(
+    startOfMinute(timeNowResult.value),
+    directSignupPhaseStart,
+  ).toISOString();
 
   logger.info(`Using dynamic start time: ${dynamicStartTime}`);
 

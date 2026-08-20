@@ -1,9 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
-import dayjs from "dayjs";
+import { addHours, addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { db } from "server/db/mongodb";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
@@ -28,21 +27,23 @@ const updatePastEventProgramItems = async (): Promise<void> => {
 
   await saveProgramItems(
     programItems.map((programItem) => {
-      const timeDifference = dayjs(programItem.startTime).diff(
-        dayjs(oldStartTime),
-        "hour",
-        true,
-      );
+      // Fractional hours on purpose, so an item starting on a half hour keeps its
+      // offset from the event start instead of being rounded onto the hour
+      const timeDifference =
+        (new Date(programItem.startTime).getTime() -
+          new Date(oldStartTime).getTime()) /
+        (60 * 60 * 1000);
 
       return {
         ...programItem,
-        startTime: dayjs(eventStartTime)
-          .add(timeDifference, "hours")
-          .toISOString(),
-        endTime: dayjs(eventStartTime)
-          .add(timeDifference, "hours")
-          .add(programItem.mins, "minutes")
-          .toISOString(),
+        startTime: addHours(
+          new Date(eventStartTime),
+          timeDifference,
+        ).toISOString(),
+        endTime: addMinutes(
+          addHours(new Date(eventStartTime), timeDifference),
+          programItem.mins,
+        ).toISOString(),
         parentId: programItem.parentId || programItem.programItemId,
       };
     }),
@@ -50,7 +51,6 @@ const updatePastEventProgramItems = async (): Promise<void> => {
 };
 
 const loadPastEventDataToDb = async (): Promise<void> => {
-  initializeDayjs();
   await db.connectToDb();
   await updatePastEventProgramItems();
 

@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import { isAfter, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
@@ -259,13 +259,13 @@ export const enrichProgramItems = async (
 const getSignupStrategyForProgramItem = (
   programItem: ProgramItem,
   settings: Settings,
-  currentTime: Dayjs,
+  currentTime: Date,
 ): ProgramItemSignupStrategy => {
   const parentStartTime = config
     .event()
     .startTimesByParentIds.get(programItem.parentId);
 
-  const start = dayjs(parentStartTime ?? programItem.startTime);
+  const start = new Date(parentStartTime ?? programItem.startTime);
   const { directSignupPhaseStart } = config.event();
 
   // lottery
@@ -290,8 +290,9 @@ const getSignupStrategyForProgramItem = (
     return ProgramItemSignupStrategy.DIRECT;
   }
 
-  const isAfterDirectSignupStarted = currentTime.isAfter(
-    start.subtract(directSignupPhaseStart, "minutes"),
+  const isAfterDirectSignupStarted = isAfter(
+    currentTime,
+    subMinutes(start, directSignupPhaseStart),
   );
   if (isAfterDirectSignupStarted) {
     return ProgramItemSignupStrategy.DIRECT;
@@ -375,7 +376,7 @@ const notifyUsersWithDirectSignups = async (
         username: userSignup.username,
         programItemId,
         programItemStartTime: userSignup.signedToStartTime,
-        createdAt: dayjs().toISOString(),
+        createdAt: new Date().toISOString(),
         action,
       }));
     },

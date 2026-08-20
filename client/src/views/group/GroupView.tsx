@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isBefore } from "date-fns";
 import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
@@ -46,7 +46,7 @@ export const GroupView = (): ReactElement => {
   const timeNow = useTimeNow();
   const directSignupsAfterNow = filteredActiveDirectSignups.filter(
     (directSignup) =>
-      timeNow.isBefore(dayjs(directSignup.programItem.startTime)),
+      isBefore(timeNow, new Date(directSignup.programItem.startTime)),
   );
   const hasUpcomingDirectSignups = directSignupsAfterNow.length > 0;
 

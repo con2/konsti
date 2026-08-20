@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { SignupType } from "shared/types/models/programItem";
@@ -21,30 +21,27 @@ test("Program items missing required info show error messages", async ({
       ...testProgramItem,
       programItemId: "valid-item",
       title: "Valid Program Item",
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
       programItemId: "min-attendance-missing",
       title: "Min Attendance Missing",
       minAttendance: 0,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(2, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 2),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
       programItemId: "max-attendance-missing",
       title: "Max Attendance Missing",
       maxAttendance: 0,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(3, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 3),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
@@ -52,20 +49,18 @@ test("Program items missing required info show error messages", async ({
       title: "Min Bigger Than Max",
       minAttendance: 5,
       maxAttendance: 4,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(4, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 4),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
       programItemId: "signup-type-missing",
       title: "Signup Type Missing",
       signupType: SignupType.MISSING,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(5, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 5),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
@@ -73,11 +68,10 @@ test("Program items missing required info show error messages", async ({
       title: "Not Starting On Even Hour",
       // Only lottery sign-up program items have to start on the hour
       programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: dayjs(config.event().eventStartTime)
-        .add(6, "hour")
-        .startOf("hour")
-        .add(30, "minute")
-        .toISOString(),
+      startTime: addMinutes(
+        startOfHour(addHours(new Date(config.event().eventStartTime), 6)),
+        30,
+      ).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

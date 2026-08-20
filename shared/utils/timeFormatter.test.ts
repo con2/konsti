@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, test } from "vitest";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { setLocale } from "shared/utils/setLocale";
 import {
   formatProgramItemDuration,
@@ -26,10 +25,6 @@ const OCTOBER_DST_BEFORE = "2026-10-25T00:59:00Z"; // Sun 03:59, last minute of 
 const OCTOBER_DST_AFTER = "2026-10-25T01:00:00Z"; // Sun 03:00, clocks fell back
 const MIDNIGHT = "2026-02-10T22:00:00Z"; // Wed 00:00 local, previous day in UTC
 const YEAR_END = "2026-12-31T21:59:30Z"; // Thu 23:59:30 local
-
-beforeAll(() => {
-  initializeDayjs();
-});
 
 describe("Locale independent formatting", () => {
   beforeAll(() => {

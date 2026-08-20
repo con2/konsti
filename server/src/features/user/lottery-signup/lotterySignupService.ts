@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isBefore, isEqual } from "date-fns";
 import {
   DeleteLotterySignupResponse,
   PostLotterySignupResponse,
@@ -107,7 +107,7 @@ export const storeLotterySignup = async ({
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
-  if (timeNow.isBefore(lotterySignupStartTime)) {
+  if (isBefore(timeNow, lotterySignupStartTime)) {
     const message = `Signup for program item ${programItemId} not open yet, opens ${lotterySignupStartTime.toISOString()}`;
     logger.warn(message);
     return {
@@ -158,8 +158,9 @@ export const storeLotterySignup = async ({
 
   const priorityReserved = user.lotterySignups.some(
     (lotterySignup) =>
-      dayjs(lotterySignup.signedToStartTime).isSame(
-        dayjs(programItem.startTime),
+      isEqual(
+        new Date(lotterySignup.signedToStartTime),
+        new Date(programItem.startTime),
       ) && lotterySignup.priority === priority,
   );
 

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -18,13 +18,13 @@ test("Group member signing up to a 'signup always open' program item stays in th
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -88,13 +88,13 @@ test("Group member direct signing up to a normal program item is removed from th
   request,
 }) => {
   // Program item is in the direct sign-up phase at event start time
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

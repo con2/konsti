@@ -1,8 +1,9 @@
-import dayjs, { Dayjs } from "dayjs";
+import { addHours, isBefore } from "date-fns";
 import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
 import styled from "styled-components";
+import { formatRelativeTime } from "shared/utils/relativeTime";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -10,16 +11,17 @@ import { useRealTimeNow } from "client/utils/useTimeNow";
 import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 
-const getTime = (createdAt: string, timeNow: Dayjs): string => {
-  const relativeTimePeriod = dayjs(createdAt).add(4, "hours");
+const getTime = (createdAt: string, timeNow: Date): string => {
+  const created = new Date(createdAt);
+  const relativeTimePeriod = addHours(created, 4);
 
-  const useRelativeTime = timeNow.isBefore(relativeTimePeriod);
+  const useRelativeTime = isBefore(timeNow, relativeTimePeriod);
   if (useRelativeTime) {
     // The clock only advances once a minute, so an item that arrived since the
     // last tick is stamped after it. Reading such an item as "in a few seconds"
     // would be nonsense, so measure those from their own timestamp
-    const reference = timeNow.isBefore(createdAt) ? dayjs(createdAt) : timeNow;
-    return reference.to(createdAt);
+    const reference = isBefore(timeNow, created) ? created : timeNow;
+    return formatRelativeTime(reference, created);
   }
   return getWeekdayAndTime(createdAt);
 };

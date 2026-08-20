@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, format, subDays, subWeeks } from "date-fns";
 import { config } from "shared/config";
 import {
   testProgramItem,
@@ -24,11 +24,11 @@ const fullDatePattern = /^\w{3} \d{1,2}\.\d{1,2}\.\d{4} \d{2}:\d{2}$/;
 const weekdayPattern = /^\w+ \d{2}:\d{2}$/;
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
-const eventStart = dayjs(config.event().eventStartTime);
+const eventStart = new Date(config.event().eventStartTime);
 // Offsets from the event start keep both program items on the same weekdays
 // whatever timezone the test runs in
-const preWeekStart = eventStart.subtract(4, "days");
-const mainEventStart = eventStart.add(3, "hours");
+const preWeekStart = subDays(eventStart, 4);
+const mainEventStart = addHours(eventStart, 3);
 
 const preWeekProgramItem = {
   ...testProgramItem,
@@ -36,14 +36,14 @@ const preWeekProgramItem = {
   tags: [Tag.PRE_CONVENTION_WEEK],
   programType,
   startTime: preWeekStart.toISOString(),
-  endTime: preWeekStart.add(4, "hours").toISOString(),
+  endTime: addHours(preWeekStart, 4).toISOString(),
 };
 const mainEventProgramItem = {
   ...testProgramItem2,
   title: "Main event program",
   programType,
   startTime: mainEventStart.toISOString(),
-  endTime: mainEventStart.add(4, "hours").toISOString(),
+  endTime: addHours(mainEventStart, 4).toISOString(),
 };
 
 const seed = async (request: APIRequestContext): Promise<void> => {
@@ -58,9 +58,10 @@ test("Before event week, program times include the full date", async ({
 }) => {
   await seed(request);
   await postTestSettings(request, {
-    testTime: dayjs(config.event().eventStartTime)
-      .subtract(3, "weeks")
-      .toISOString(),
+    testTime: subWeeks(
+      new Date(config.event().eventStartTime),
+      3,
+    ).toISOString(),
   });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
@@ -102,6 +103,6 @@ test("During event week, program times show the weekday without a date", async (
   const programItem = new ProgramItemPage(page);
   await expect(programItem.timeRow).toContainText(`${headingText} – `);
   await expect(programItem.timeRow).not.toContainText(
-    mainEventStart.format("YYYY"),
+    format(mainEventStart, "yyyy"),
   );
 });

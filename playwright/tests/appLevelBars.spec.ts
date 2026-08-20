@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
@@ -18,9 +18,10 @@ import {
 
 // Program item starts an hour into the event so it is upcoming at the event
 // start time the tests run at
-const programItemStartTime = dayjs(config.event().eventStartTime)
-  .add(1, "hour")
-  .toISOString();
+const programItemStartTime = addHours(
+  new Date(config.event().eventStartTime),
+  1,
+).toISOString();
 
 // Layout of the bars the app stacks below the header. Each bar's own behaviour
 // is covered where that feature lives; these cover how they sit together
@@ -37,10 +38,9 @@ test("Update banner and admin message stack instead of overlapping when scrolled
 }) => {
   await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
   // Enough items that the page scrolls, so the sticky bars actually pin
   await addProgramItems(
     request,
@@ -99,7 +99,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
     {
       ...testProgramItem,
       startTime: programItemStartTime,
-      endTime: dayjs(programItemStartTime).add(4, "hours").toISOString(),
+      endTime: addHours(new Date(programItemStartTime), 4).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

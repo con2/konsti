@@ -1,6 +1,6 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addMinutes, subHours, subMinutes } from "date-fns";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -207,10 +207,11 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   });
 
   test("should join group and remove lottery signups whose lottery has not yet run", async () => {
-    const pastStartTime = dayjs(testProgramItem.startTime).toISOString();
-    const upcomingStartTime = dayjs(testProgramItem.startTime)
-      .add(config.event().directSignupPhaseStart + 1, "minute")
-      .toISOString();
+    const pastStartTime = new Date(testProgramItem.startTime).toISOString();
+    const upcomingStartTime = addMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart + 1,
+    ).toISOString();
 
     await saveTestSettings({
       testTime: pastStartTime,
@@ -313,13 +314,15 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const { directSignupPhaseStart } = config.event();
 
     // 'parentStartTime' is before lottery, 'ownStartTime' in after lottery
-    const timeNow = dayjs(testProgramItem.startTime).toISOString();
-    const parentStartTime = dayjs(testProgramItem.startTime)
-      .add(directSignupPhaseStart + 1, "minute")
-      .toISOString();
-    const ownStartTime = dayjs(testProgramItem.startTime)
-      .add(directSignupPhaseStart - 1, "minute")
-      .toISOString();
+    const timeNow = new Date(testProgramItem.startTime).toISOString();
+    const parentStartTime = addMinutes(
+      new Date(testProgramItem.startTime),
+      directSignupPhaseStart + 1,
+    ).toISOString();
+    const ownStartTime = addMinutes(
+      new Date(testProgramItem.startTime),
+      directSignupPhaseStart - 1,
+    ).toISOString();
 
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -366,11 +369,9 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   });
 
   test("should join group and not remove upcoming lottery signup with parent startTime in past", async () => {
-    const timeNow = dayjs(testProgramItem.startTime).toISOString();
-    const parentStartTime = dayjs(timeNow)
-      .subtract(30, "minutes")
-      .toISOString();
-    const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+    const timeNow = new Date(testProgramItem.startTime).toISOString();
+    const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
+    const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
 
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -428,9 +429,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     });
 
     await saveTestSettings({
-      testTime: dayjs(testProgramItem.startTime)
-        .subtract(2, "hours")
-        .toISOString(),
+      testTime: subHours(new Date(testProgramItem.startTime), 2).toISOString(),
     });
 
     await saveProgramItems([testProgramItem]);

@@ -1,13 +1,10 @@
 import { Command } from "commander";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { getDirectSignupStats } from "server/features/statistics/statistics-helpers/getDirectSignupStats";
 import { getProgramItemStats } from "./statistics-helpers/getProgramItemStats";
 import { getResultsStats } from "./statistics-helpers/getResultsStats";
 import { getUserStats } from "./statistics-helpers/getUserStats";
 
 const getStatistics = (): void => {
-  initializeDayjs();
-
   const commander = new Command();
 
   commander

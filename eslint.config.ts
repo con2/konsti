@@ -123,7 +123,7 @@ export default defineConfig([
         {
           selector:
             "MemberExpression[property.name='format'][object.type='CallExpression']",
-          message: "Import from timeFormatter.ts or use dayjs().toISOString",
+          message: "Import from timeFormatter.ts or use toISOString()",
         },
       ],
       "no-else-return": "error",
@@ -191,6 +191,11 @@ export default defineConfig([
               name: "react",
               importNames: ["default"],
               message: "Please use named imports, e.g. { useEffect }",
+            },
+            {
+              name: "dayjs",
+              message:
+                "dayjs is no longer a dependency, use date-fns and @date-fns/tz",
             },
           ],
           patterns: [

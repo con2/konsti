@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addHours } from "date-fns";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
@@ -57,7 +57,7 @@ describe("isStartTimeChanged without parent start time override", () => {
 
   test("returns true when signedToStartTime differs from the program item start time", () => {
     const result = isStartTimeChanged(
-      dayjs("2023-07-29T15:00:00.000Z").add(1, "hour").toISOString(),
+      addHours(new Date("2023-07-29T15:00:00.000Z"), 1).toISOString(),
       "2023-07-29T15:00:00.000Z",
       parentId,
     );

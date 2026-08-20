@@ -1,6 +1,5 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { getIconLibrary } from "client/utils/icons";
 
 // Icons
@@ -19,5 +18,3 @@ i18next.use(initReactI18next).init({
     escapeValue: false,
   },
 });
-
-initializeDayjs();

@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { subHours } from "date-fns";
 import { expect, test } from "vitest";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
@@ -113,9 +113,7 @@ test("should still give the first-time bonus when a member's only NEW_ASSIGNMENT
 
 test("should strip the first-time bonus for a genuine previous direct signup at an earlier start time", () => {
   const [user] = getUsers({ count: 1 });
-  const earlierStartTime = dayjs(assignmentTime)
-    .subtract(2, "hours")
-    .toISOString();
+  const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
 
   const directSignups: DirectSignupsForProgramItem[] = [
     {
@@ -145,9 +143,7 @@ test("should strip the first-time bonus for a genuine previous direct signup at 
 
 test("should add the additional first-time bonus for a member with a previous failed lottery signup", () => {
   const [baseUser] = getUsers({ count: 1 });
-  const earlierStartTime = dayjs(assignmentTime)
-    .subtract(2, "hours")
-    .toISOString();
+  const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const user = {
     ...baseUser,
     eventLogItems: [
@@ -178,9 +174,7 @@ test("should add the additional first-time bonus for a member with a previous fa
 
 test("should still give the first-time bonus when exactly half of the group has a previous signup", () => {
   const users = getUsers({ count: 2 });
-  const earlierStartTime = dayjs(assignmentTime)
-    .subtract(2, "hours")
-    .toISOString();
+  const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const directSignups: DirectSignupsForProgramItem[] = [
     {
       programItemId: testProgramItem.programItemId,
@@ -209,9 +203,7 @@ test("should still give the first-time bonus when exactly half of the group has 
 
 test("should give no bonus when more than half of the group has a previous signup", () => {
   const users = getUsers({ count: 2 });
-  const earlierStartTime = dayjs(assignmentTime)
-    .subtract(2, "hours")
-    .toISOString();
+  const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const directSignups: DirectSignupsForProgramItem[] = [
     {
       programItemId: testProgramItem.programItemId,
@@ -265,9 +257,7 @@ test("should not add the additional first-time bonus for a NO_ASSIGNMENT from th
 
 test("should strip the first-time bonus for a member previously assigned to a moved item now back in the lottery", () => {
   const [baseUser] = getUsers({ count: 1 });
-  const earlierStartTime = dayjs(assignmentTime)
-    .subtract(2, "hours")
-    .toISOString();
+  const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const user = {
     ...baseUser,
     eventLogItems: [

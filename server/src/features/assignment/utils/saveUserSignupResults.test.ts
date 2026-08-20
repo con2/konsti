@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -125,9 +125,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
 });
 
 test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTimesByParentIds' program item", async () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),

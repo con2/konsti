@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addMinutes, subHours } from "date-fns";
 import { afterEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import {
@@ -19,9 +19,7 @@ afterEach(() => {
 test("excludes lottery signups for items whose lottery already ran (different start time)", () => {
   // A leftover sign-up for an item that already ran is kept on the user but must not
   // become a preference in a later lottery for a different start time
-  const pastStartTime = dayjs(assignmentTime)
-    .subtract(2, "hours")
-    .toISOString();
+  const pastStartTime = subHours(new Date(assignmentTime), 2).toISOString();
 
   const user = {
     ...getUsers({ count: 1 })[0],
@@ -71,9 +69,10 @@ test("should return as many groups as user groups", () => {
 });
 
 test("should return groups for program items using parent startTime via 'startTimesByParentIds'", () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),

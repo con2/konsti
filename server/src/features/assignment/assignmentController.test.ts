@@ -1,6 +1,5 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -74,7 +73,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
 
   test("should return 200 with admin authorization", async () => {
     const data: PostAssignmentRequest = {
-      assignmentTime: dayjs().toISOString(),
+      assignmentTime: new Date().toISOString(),
     };
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
@@ -89,7 +88,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     await acquireAssignmentLock();
 
     const data: PostAssignmentRequest = {
-      assignmentTime: dayjs().toISOString(),
+      assignmentTime: new Date().toISOString(),
     };
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
@@ -108,7 +107,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     await findOrCreateSettings();
 
     const data: PostAssignmentRequest = {
-      assignmentTime: dayjs().toISOString(),
+      assignmentTime: new Date().toISOString(),
     };
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
@@ -124,7 +123,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     await findOrCreateSettings();
 
     const data: PostAssignmentRequest = {
-      assignmentTime: dayjs().toISOString(),
+      assignmentTime: new Date().toISOString(),
     };
     const firstResponse = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)

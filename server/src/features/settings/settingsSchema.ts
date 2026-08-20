@@ -1,7 +1,6 @@
 // Registers the global mongoose plugins, which are applied when a model is
 // compiled below, so it has to stay above the other imports
 import "server/db/mongoosePlugins";
-import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
 import { config } from "shared/config";
@@ -20,13 +19,9 @@ export const SettingsSchemaDb = z
     adminMessageEn: z.string(),
     signupQuestions: z.array(SignupQuestionSchema),
     signupStrategy: z.enum(EventSignupStrategy),
-    programUpdateLastRun: z
-      .date()
-      .transform((date) => dayjs(date).toISOString()),
-    assignmentLastRun: z.date().transform((date) => dayjs(date).toISOString()),
-    latestServerStartTime: z
-      .date()
-      .transform((date) => dayjs(date).toISOString()),
+    programUpdateLastRun: z.date().transform((date) => date.toISOString()),
+    assignmentLastRun: z.date().transform((date) => date.toISOString()),
+    latestServerStartTime: z.date().transform((date) => date.toISOString()),
     loginProvider: z.enum(LoginProvider),
     emailNotificationTrigger: z.array(z.enum(EmailNotificationTrigger)),
   })

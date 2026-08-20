@@ -1,15 +1,14 @@
 // Registers the global mongoose plugins, which are applied when a model is
 // compiled below, so it has to stay above the other imports
 import "server/db/mongoosePlugins";
-import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
 
 const UserSignupsSchema = z.object({
   username: z.string(),
   priority: z.number(),
-  signedToStartTime: z.date().transform((date) => dayjs(date).toISOString()),
-  signupTime: z.date().transform((date) => dayjs(date).toISOString()),
+  signedToStartTime: z.date().transform((date) => date.toISOString()),
+  signupTime: z.date().transform((date) => date.toISOString()),
   message: z.string(),
 });
 

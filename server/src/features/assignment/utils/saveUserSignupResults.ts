@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
@@ -89,7 +88,7 @@ export const saveUserSignupResults = async ({
       directSignupProgramItemId: result.assignmentSignup.programItemId,
       // assignmentTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
       signedToStartTime: assignmentTime,
-      signupTime: dayjs().toISOString(),
+      signupTime: new Date().toISOString(),
       // Sign-ups received from assignment don't have sign-up messages
       message: "",
       priority: result.assignmentSignup.priority,
@@ -175,7 +174,7 @@ const addAssignmentNotifications = async ({
       username: result.username,
       programItemId: result.assignmentSignup.programItemId,
       programItemStartTime: assignmentTime,
-      createdAt: dayjs().toISOString(),
+      createdAt: new Date().toISOString(),
       action: EventLogAction.NEW_ASSIGNMENT,
     })),
   );
@@ -260,7 +259,7 @@ const addAssignmentNotifications = async ({
           username: noAssignmentLotterySignupUsername,
           programItemId: "",
           programItemStartTime: assignmentTime,
-          createdAt: dayjs().toISOString(),
+          createdAt: new Date().toISOString(),
           action: EventLogAction.NO_ASSIGNMENT,
         }),
       ),

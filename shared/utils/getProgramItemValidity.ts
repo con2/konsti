@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { getMinutes } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
@@ -41,7 +41,7 @@ export const getProgramItemValidity = (
     usesKonstiSignup &&
     isLotterySignupProgramItem(programItem) &&
     !startTimesByParentIds.has(programItem.parentId) &&
-    dayjs(programItem.startTime).minute() !== 0;
+    getMinutes(new Date(programItem.startTime)) !== 0;
 
   const allValuesValid =
     isValidMinAttendanceValue &&

@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { subMinutes, subSeconds } from "date-fns";
 import { MongoDbError } from "shared/types/api/errors";
 import { PostSettingsRequest } from "shared/types/api/settings";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
@@ -312,7 +312,7 @@ export const setProgramUpdateLastRun = async (
       {
         ...settingsFilter,
         programUpdateLastRun: {
-          $lt: dayjs(programUpdateNextRun).subtract(30, "seconds").toDate(),
+          $lt: subSeconds(new Date(programUpdateNextRun), 30),
         },
       },
       {
@@ -347,7 +347,7 @@ export const ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES = 5;
 export const acquireAssignmentLock = async (): Promise<
   Result<string, MongoDbError>
 > => {
-  const lockStartTime = dayjs().toISOString();
+  const lockStartTime = new Date().toISOString();
   try {
     // Acquire if the lock is free (null) or stale (acquired longer ago than the timeout)
     const response = await SettingsModel.findOneAndUpdate(
@@ -357,9 +357,10 @@ export const acquireAssignmentLock = async (): Promise<
           { assignmentInProgressStartTime: null },
           {
             assignmentInProgressStartTime: {
-              $lt: dayjs(lockStartTime)
-                .subtract(ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES, "minutes")
-                .toDate(),
+              $lt: subMinutes(
+                new Date(lockStartTime),
+                ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
+              ),
             },
           },
         ],
@@ -398,7 +399,7 @@ export const releaseAssignmentLock = async (
     await SettingsModel.findOneAndUpdate(
       {
         ...settingsFilter,
-        assignmentInProgressStartTime: dayjs(lockToken).toDate(),
+        assignmentInProgressStartTime: new Date(lockToken),
       },
       {
         assignmentInProgressStartTime: null,

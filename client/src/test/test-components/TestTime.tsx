@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize, first } from "remeda";
@@ -54,7 +53,7 @@ export const TestTime = (): ReactElement => {
     // Show which times are pre-convention week and which are main event
     if (mainEventProgramVisibleTime) {
       const phase = t(
-        isMainEventProgramVisible(dayjs(time))
+        isMainEventProgramVisible(new Date(time))
           ? "testTime.mainEvent"
           : "testTime.preWeek",
       );
@@ -72,7 +71,9 @@ export const TestTime = (): ReactElement => {
           <div onBlur={() => setDropdownVisible(false)}>
             <Dropdown
               options={dropdownItems}
-              selectedValue={dayjs(testTime).toISOString()}
+              // No mocked time set means no selection, rather than the dropdown
+              // silently pointing at the current time
+              selectedValue={testTime ? new Date(testTime).toISOString() : ""}
               onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
                 await setTestTime(event.target.value);
               }}
@@ -88,7 +89,7 @@ export const TestTime = (): ReactElement => {
             {testTime && mainEventProgramVisibleTime && (
               <PhaseIndicator>
                 {t(
-                  isMainEventProgramVisible(dayjs(testTime))
+                  isMainEventProgramVisible(new Date(testTime))
                     ? "testTime.mainEvent"
                     : "testTime.preWeek",
                 )}

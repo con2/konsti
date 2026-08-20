@@ -1,4 +1,3 @@
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { db } from "server/db/mongodb";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
@@ -6,7 +5,6 @@ import { findOrCreateSettings } from "server/features/settings/settingsRepositor
 import { logger } from "server/utils/logger";
 
 const loadKompassiDataToDb = async (): Promise<void> => {
-  initializeDayjs();
   await db.connectToDb();
   await updateProgramItems();
 

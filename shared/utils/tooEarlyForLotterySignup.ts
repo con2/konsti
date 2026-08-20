@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addHours, isBefore } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
@@ -17,9 +17,9 @@ export const tooEarlyForLotterySignup = (programItem: ProgramItem): boolean => {
   //   Start time 18:00 -> lottery 14:00-16:00 -> lottery with shorter duration 15:00-16:00 (see signupTimes.ts)
   //   Start time 19:00 -> lottery 15:00-17:00 -> show normally
 
-  const noLotterySignupBefore = dayjs(eventStartTime).add(3, "hours");
+  const noLotterySignupBefore = addHours(new Date(eventStartTime), 3);
 
-  if (dayjs(startTime).isBefore(noLotterySignupBefore)) {
+  if (isBefore(new Date(startTime), noLotterySignupBefore)) {
     return true;
   }
 

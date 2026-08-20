@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, subMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -212,9 +212,10 @@ test("should remove direct signups when program item is deleted and add notifica
 
 test("should remove lottery signups but keep favorites when program item is cancelled before lottery and add notification", async () => {
   await saveTestSettings({
-    testTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().directSignupPhaseStart + 1, "minutes")
-      .toISOString(),
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart + 1,
+    ).toISOString(),
   });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -374,7 +375,7 @@ test("should send email when program item start time changes", async () => {
   await saveProgramItems([
     {
       ...testProgramItem,
-      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
     },
   ]);
 
@@ -388,9 +389,10 @@ test("should send email when program item start time changes", async () => {
 
 test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore before lottery and add notification", async () => {
   await saveTestSettings({
-    testTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().directSignupPhaseStart + 1, "minutes")
-      .toISOString(),
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart + 1,
+    ).toISOString(),
   });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -622,9 +624,10 @@ test("should not add any notification when programType is changed to non-lottery
 
 test("should preserve lottery signup when program item is cancelled after its lottery has run but not add notification because the user didn't get a spot", async () => {
   await saveTestSettings({
-    testTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().directSignupPhaseStart - 1, "minutes")
-      .toISOString(),
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart - 1,
+    ).toISOString(),
   });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -648,9 +651,10 @@ test("should preserve lottery signup when program item is cancelled after its lo
 
 test("should preserve lottery signup when signupType is changed away from Konsti after its lottery has run but not add notification because the user didn't get a spot", async () => {
   await saveTestSettings({
-    testTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().directSignupPhaseStart - 1, "minutes")
-      .toISOString(),
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart - 1,
+    ).toISOString(),
   });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -674,9 +678,10 @@ test("should preserve lottery signup when signupType is changed away from Konsti
 
 test("should remove lottery signup but keep favorites when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
   await saveTestSettings({
-    testTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().directSignupPhaseStart + 1, "minutes")
-      .toISOString(),
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart + 1,
+    ).toISOString(),
   });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -731,9 +736,10 @@ test("should remove lottery signup but keep favorites when programType is change
 
 test("should preserve lottery signup when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {
   await saveTestSettings({
-    testTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().directSignupPhaseStart - 1, "minutes")
-      .toISOString(),
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart - 1,
+    ).toISOString(),
   });
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -766,13 +772,14 @@ test("should add event notification if user has lottery signup and program item 
   await saveProgramItems([
     {
       ...testProgramItem,
-      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
     },
     {
       ...testProgramItem2,
-      startTime: dayjs(testProgramItem2.startTime)
-        .add(2, "hours")
-        .toISOString(),
+      startTime: addHours(
+        new Date(testProgramItem2.startTime),
+        2,
+      ).toISOString(),
     },
   ]);
 
@@ -784,16 +791,18 @@ test("should add event notification if user has lottery signup and program item 
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
-        programItemStartTime: dayjs(testProgramItem.startTime)
-          .add(1, "hour")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
-        programItemStartTime: dayjs(testProgramItem2.startTime)
-          .add(2, "hours")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem2.startTime),
+          2,
+        ).toISOString(),
       }),
     ]),
   );
@@ -808,18 +817,20 @@ test("should add event notification if user has lottery signup and program item 
         username: mockUser.username,
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
-        programItemStartTime: dayjs(testProgramItem.startTime)
-          .add(1, "hour")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
         username: mockUser.username,
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
-        programItemStartTime: dayjs(testProgramItem2.startTime)
-          .add(2, "hours")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem2.startTime),
+          2,
+        ).toISOString(),
       }),
     ]),
   );
@@ -834,11 +845,14 @@ test("should add event notification if user has direct signup and program item s
   await saveProgramItems([
     {
       ...testProgramItem,
-      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
     },
     {
       ...testProgramItem2,
-      startTime: dayjs(testProgramItem2.startTime).add(2, "hour").toISOString(),
+      startTime: addHours(
+        new Date(testProgramItem2.startTime),
+        2,
+      ).toISOString(),
     },
   ]);
 
@@ -849,16 +863,18 @@ test("should add event notification if user has direct signup and program item s
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
-        programItemStartTime: dayjs(testProgramItem.startTime)
-          .add(1, "hour")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
         action: EventLogAction.PROGRAM_ITEM_MOVED,
-        programItemStartTime: dayjs(testProgramItem2.startTime)
-          .add(2, "hours")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem2.startTime),
+          2,
+        ).toISOString(),
       }),
     ]),
   );
@@ -873,18 +889,20 @@ test("should add event notification if user has direct signup and program item s
         username: mockUser.username,
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
-        programItemStartTime: dayjs(testProgramItem.startTime)
-          .add(1, "hour")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
         username: mockUser.username,
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
-        programItemStartTime: dayjs(testProgramItem2.startTime)
-          .add(2, "hours")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem2.startTime),
+          2,
+        ).toISOString(),
       }),
     ]),
   );

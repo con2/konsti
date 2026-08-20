@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addDays, addHours, addMinutes } from "date-fns";
 import { sample } from "remeda";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
@@ -24,13 +24,13 @@ import { logger } from "server/utils/logger";
 const PROGRAM_ITEM_ID_MAX = 10000000;
 
 const startTimes = [
-  dayjs(config.event().eventStartTime).toISOString(),
-  dayjs(config.event().eventStartTime).add(1, "hours").toISOString(),
-  dayjs(config.event().eventStartTime).add(2, "hours").toISOString(),
-  dayjs(config.event().eventStartTime).add(3, "hours").toISOString(),
-  dayjs(config.event().eventStartTime).add(4, "hours").toISOString(),
-  dayjs(config.event().eventStartTime).add(1, "days").toISOString(),
-  dayjs(config.event().eventStartTime).add(2, "days").toISOString(),
+  new Date(config.event().eventStartTime).toISOString(),
+  addHours(new Date(config.event().eventStartTime), 1).toISOString(),
+  addHours(new Date(config.event().eventStartTime), 2).toISOString(),
+  addHours(new Date(config.event().eventStartTime), 3).toISOString(),
+  addHours(new Date(config.event().eventStartTime), 4).toISOString(),
+  addDays(new Date(config.event().eventStartTime), 1).toISOString(),
+  addDays(new Date(config.event().eventStartTime), 2).toISOString(),
 ];
 
 const getMinAttendees = (programType: KompassiKonstiProgramType): number => {
@@ -107,8 +107,8 @@ export const createProgramItems = async (
             {
               slug,
               title,
-              startTime: dayjs(startTime).toISOString(),
-              endTime: dayjs(startTime).add(length, "minutes").toISOString(),
+              startTime: new Date(startTime).toISOString(),
+              endTime: addMinutes(new Date(startTime), length).toISOString(),
               lengthMinutes: length,
               location: "Ropetaverna",
               isCancelled: false,

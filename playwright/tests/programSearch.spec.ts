@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -20,19 +20,17 @@ test("Search filters the program list and shows the empty state", async ({
       ...testProgramItem,
       programItemId: "search-item-1",
       title: "Aardvark Adventure",
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
       programItemId: "search-item-2",
       title: "Zebra Zone",
-      startTime: dayjs(config.event().eventStartTime)
-        .add(2, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 2),
+      ).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });
@@ -72,10 +70,9 @@ test("The empty state is not shown while the program list loads its items", asyn
       ...testProgramItem,
       programItemId: "load-item-1",
       title: "Aardvark Adventure",
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

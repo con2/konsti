@@ -1,7 +1,8 @@
-import dayjs, { Dayjs } from "dayjs";
+import { addHours, isAfter } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getDirectSignupEndTime } from "shared/utils/signupTimes";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
 import {
   DirectSignupWithProgramItem,
@@ -10,28 +11,28 @@ import {
 
 export const getUpcomingProgramItems = (
   programItems: readonly ProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): readonly ProgramItem[] => {
   const upcomingProgramItems = programItems.filter((programItem) => {
     const directSignupEndTime = getDirectSignupEndTime(programItem);
-    return directSignupEndTime.isSameOrAfter(timeNow);
+    return isSameOrAfter(directSignupEndTime, timeNow);
   });
 
   return upcomingProgramItems;
 };
 
 // Before this time only pre-convention week program is shown in the program list
-export const isMainEventProgramVisible = (timeNow: Dayjs): boolean => {
+export const isMainEventProgramVisible = (timeNow: Date): boolean => {
   const { mainEventProgramVisibleTime } = config.event();
   return (
     !mainEventProgramVisibleTime ||
-    timeNow.isSameOrAfter(dayjs(mainEventProgramVisibleTime))
+    isSameOrAfter(timeNow, new Date(mainEventProgramVisibleTime))
   );
 };
 
 const getUpcomingLotterySignups = (
   lotterySignups: readonly LotterySignupWithProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): readonly LotterySignupWithProgramItem[] => {
   const { startTimesByParentIds } = config.event();
 
@@ -40,9 +41,13 @@ const getUpcomingLotterySignups = (
       lotterySignup.programItem.parentId,
     );
 
-    return dayjs(parentStartTime ?? lotterySignup.programItem.startTime)
-      .add(1, "hours")
-      .isAfter(timeNow);
+    return isAfter(
+      addHours(
+        new Date(parentStartTime ?? lotterySignup.programItem.startTime),
+        1,
+      ),
+      timeNow,
+    );
   });
 
   return upcomingLotterySignups;
@@ -64,7 +69,7 @@ interface GetLotterySignupsParams {
   groupMembers: readonly GroupMemberWithLotteryProgramItem[];
   isInGroup: boolean;
   showAllProgramItems: boolean;
-  timeNow: Dayjs;
+  timeNow: Date;
 }
 
 export const getLotterySignups = ({
@@ -95,10 +100,10 @@ export const getLotterySignups = ({
 
 export const getUpcomingDirectSignups = (
   directSignups: readonly DirectSignupWithProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): readonly DirectSignupWithProgramItem[] => {
   const upcomingProgramItems = directSignups.filter((directSignup) =>
-    dayjs(directSignup.programItem.startTime).add(1, "hours").isAfter(timeNow),
+    isAfter(addHours(new Date(directSignup.programItem.startTime), 1), timeNow),
   );
 
   return upcomingProgramItems;
@@ -106,7 +111,7 @@ export const getUpcomingDirectSignups = (
 
 export const getUpcomingFavorites = (
   favoriteProgramItems: readonly ProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): readonly ProgramItem[] => {
   const { startTimesByParentIds } = config.event();
 
@@ -116,9 +121,10 @@ export const getUpcomingFavorites = (
         favoriteProgramItem.parentId,
       );
 
-      return dayjs(parentStartTime ?? favoriteProgramItem.startTime)
-        .add(1, "hours")
-        .isAfter(timeNow);
+      return isAfter(
+        addHours(new Date(parentStartTime ?? favoriteProgramItem.startTime), 1),
+        timeNow,
+      );
     },
   );
 

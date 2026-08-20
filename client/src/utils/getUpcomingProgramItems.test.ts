@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addHours, addMinutes, subMinutes } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -57,7 +57,7 @@ describe("isMainEventProgramVisible", () => {
       ...config.event(),
       mainEventProgramVisibleTime,
     });
-    const timeNow = dayjs(mainEventProgramVisibleTime).subtract(1, "minute");
+    const timeNow = subMinutes(new Date(mainEventProgramVisibleTime), 1);
     expect(isMainEventProgramVisible(timeNow)).toEqual(false);
   });
 
@@ -66,7 +66,7 @@ describe("isMainEventProgramVisible", () => {
       ...config.event(),
       mainEventProgramVisibleTime,
     });
-    const timeNow = dayjs(mainEventProgramVisibleTime);
+    const timeNow = new Date(mainEventProgramVisibleTime);
     expect(isMainEventProgramVisible(timeNow)).toEqual(true);
   });
 
@@ -75,7 +75,7 @@ describe("isMainEventProgramVisible", () => {
       ...config.event(),
       mainEventProgramVisibleTime: null,
     });
-    expect(isMainEventProgramVisible(dayjs("2020-01-01T00:00:00Z"))).toEqual(
+    expect(isMainEventProgramVisible(new Date("2020-01-01T00:00:00Z"))).toEqual(
       true,
     );
   });
@@ -87,20 +87,20 @@ describe("getUpcomingProgramItems", () => {
   // Direct sign-up ends when the program item starts, so the start time is the
   // boundary the whole program list hangs on
   test("keeps a program item whose direct sign-up is still open", () => {
-    const timeNow = dayjs(startTime).subtract(1, "minute");
+    const timeNow = subMinutes(new Date(startTime), 1);
     expect(getUpcomingProgramItems([programItem], timeNow)).toEqual([
       programItem,
     ]);
   });
 
   test("keeps a program item exactly at its direct sign-up end time", () => {
-    expect(getUpcomingProgramItems([programItem], dayjs(startTime))).toEqual([
-      programItem,
-    ]);
+    expect(getUpcomingProgramItems([programItem], new Date(startTime))).toEqual(
+      [programItem],
+    );
   });
 
   test("drops a program item whose direct sign-up has ended", () => {
-    const timeNow = dayjs(startTime).add(1, "minute");
+    const timeNow = addMinutes(new Date(startTime), 1);
     expect(getUpcomingProgramItems([programItem], timeNow)).toEqual([]);
   });
 });
@@ -111,14 +111,14 @@ describe("getUpcomingDirectSignups", () => {
   // Direct sign-ups stay listed for an hour after the program item starts, so
   // an attendee can still find the one they are currently attending
   test("keeps a sign-up until an hour past the start time", () => {
-    const timeNow = dayjs(startTime).add(59, "minutes");
+    const timeNow = addMinutes(new Date(startTime), 59);
     expect(getUpcomingDirectSignups([directSignup], timeNow)).toEqual([
       directSignup,
     ]);
   });
 
   test("drops a sign-up an hour past the start time", () => {
-    const timeNow = dayjs(startTime).add(1, "hour");
+    const timeNow = addHours(new Date(startTime), 1);
     expect(getUpcomingDirectSignups([directSignup], timeNow)).toEqual([]);
   });
 });
@@ -126,7 +126,7 @@ describe("getUpcomingDirectSignups", () => {
 describe("getUpcomingFavorites", () => {
   test("keeps a favorite until an hour past the start time", () => {
     const programItem = programItemAt("favorite");
-    const timeNow = dayjs(startTime).add(59, "minutes");
+    const timeNow = addMinutes(new Date(startTime), 59);
     expect(getUpcomingFavorites([programItem], timeNow)).toEqual([programItem]);
   });
 
@@ -136,14 +136,14 @@ describe("getUpcomingFavorites", () => {
     const parentId = "parent";
     const programItem = programItemAt("child", {
       parentId,
-      startTime: dayjs(startTime).add(5, "hours").toISOString(),
+      startTime: addHours(new Date(startTime), 5).toISOString(),
     });
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       startTimesByParentIds: new Map([[parentId, startTime]]),
     });
 
-    const timeNow = dayjs(startTime).add(1, "hour");
+    const timeNow = addHours(new Date(startTime), 1);
     expect(getUpcomingFavorites([programItem], timeNow)).toEqual([]);
   });
 });
@@ -159,7 +159,7 @@ describe("getLotterySignups", () => {
       lotterySignups: creatorSignups,
     } as unknown as GroupMemberWithLotteryProgramItem,
   ];
-  const timeNow = dayjs(startTime);
+  const timeNow = new Date(startTime);
 
   test("shows own sign-ups when not in a group", () => {
     expect(
@@ -208,7 +208,7 @@ describe("getLotterySignups", () => {
       isGroupCreator: false,
       groupMembers: [],
       isInGroup: false,
-      timeNow: dayjs(startTime).add(2, "hours"),
+      timeNow: addHours(new Date(startTime), 2),
     };
 
     expect(getLotterySignups({ ...params, showAllProgramItems: true })).toEqual(

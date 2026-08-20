@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, subDays } from "date-fns";
 import { config } from "shared/config";
 import {
   testProgramItem,
@@ -18,6 +18,12 @@ import {
 test.skip(
   !config.event().mainEventProgramVisibleTime,
   "Event shows all program from the start, so there is no program phase to test",
+);
+
+// Every test here is skipped above when this is unset, so the fallback is never
+// the value actually used
+const mainEventProgramVisibleTime = new Date(
+  config.event().mainEventProgramVisibleTime ?? 0,
 );
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
@@ -50,9 +56,7 @@ test("Before main event program is visible, only pre-convention week program is 
 }) => {
   await seed(request);
   await postTestSettings(request, {
-    testTime: dayjs(config.event().mainEventProgramVisibleTime)
-      .subtract(1, "day")
-      .toISOString(),
+    testTime: subDays(mainEventProgramVisibleTime, 1).toISOString(),
   });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
@@ -76,9 +80,7 @@ test("After main event program is visible, main event program is shown and pre-c
 }) => {
   await seed(request);
   await postTestSettings(request, {
-    testTime: dayjs(config.event().mainEventProgramVisibleTime)
-      .add(1, "hour")
-      .toISOString(),
+    testTime: addHours(mainEventProgramVisibleTime, 1).toISOString(),
   });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");

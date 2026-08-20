@@ -1,6 +1,6 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addSeconds, subMinutes, subSeconds } from "date-fns";
 import {
   afterEach,
   beforeAll,
@@ -98,9 +98,10 @@ afterEach(async () => {
 
 describe("Progam update cronjob", () => {
   test("should run program update and set programUpdateLastRun time", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobFinished, "seconds")
-      .toISOString();
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobFinished,
+    ).toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
     await autoUpdateProgramItems();
@@ -117,9 +118,10 @@ describe("Progam update cronjob", () => {
   });
 
   test("should log error if program update fails", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobFinished, "seconds")
-      .toISOString();
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobFinished,
+    ).toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValueOnce(
       makeErrorResult(KompassiError.UNKNOWN_ERROR),
@@ -138,9 +140,10 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not start update if program update is already running", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobRunning, "seconds")
-      .toISOString();
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobRunning,
+    ).toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
     await autoUpdateProgramItems();
@@ -157,9 +160,10 @@ describe("Progam update cronjob", () => {
   });
 
   test("if cronjob is run twice, should run program update only once", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobFinished, "seconds")
-      .toISOString();
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobFinished,
+    ).toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
     await Promise.all([autoUpdateProgramItems(), autoUpdateProgramItems()]);
@@ -179,7 +183,7 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not run program update if newer server instance is started", async () => {
-    const newerTime = dayjs(timeNow).add(1, "seconds").toISOString();
+    const newerTime = addSeconds(new Date(timeNow), 1).toISOString();
     await saveSettings({ latestServerStartTime: newerTime });
 
     await autoUpdateProgramItems();
@@ -198,7 +202,7 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not run program update and log error if stored server start time is older than this instance", async () => {
-    const olderTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
+    const olderTime = subSeconds(new Date(timeNow), 1).toISOString();
     await saveSettings({ latestServerStartTime: olderTime });
 
     await autoUpdateProgramItems();
@@ -216,9 +220,10 @@ describe("Progam update cronjob", () => {
 
 describe("Assignment cronjob", () => {
   test("should run assignment and set assignmentLastRun time", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobFinished, "seconds")
-      .toISOString();
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobFinished,
+    ).toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
     await autoAssignAttendees();
@@ -252,9 +257,7 @@ describe("Assignment cronjob", () => {
     // A previous run acquired the lock but never released it (the process crashed). The lock is
     // older than the stale timeout, so the next run can reclaim it
     vi.setSystemTime(
-      dayjs(timeNow)
-        .subtract(ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES + 1, "minutes")
-        .toDate(),
+      subMinutes(new Date(timeNow), ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES + 1),
     );
     await acquireAssignmentLock();
     vi.setSystemTime(timeNow);
@@ -270,9 +273,10 @@ describe("Assignment cronjob", () => {
   });
 
   test("if cronjob is run twice, should run assignment only once", async () => {
-    const oldTime = dayjs(timeNow)
-      .subtract(previousJobFinished, "seconds")
-      .toISOString();
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobFinished,
+    ).toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
     await Promise.all([autoAssignAttendees(), autoAssignAttendees()]);
@@ -292,7 +296,7 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment if newer server instance is started", async () => {
-    const newerTime = dayjs(timeNow).add(1, "seconds").toISOString();
+    const newerTime = addSeconds(new Date(timeNow), 1).toISOString();
     await saveSettings({ latestServerStartTime: newerTime });
 
     await autoAssignAttendees();
@@ -311,7 +315,7 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment and log error if stored server start time is older than this instance", async () => {
-    const olderTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
+    const olderTime = subSeconds(new Date(timeNow), 1).toISOString();
     await saveSettings({ latestServerStartTime: olderTime });
 
     await autoAssignAttendees();

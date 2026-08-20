@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -24,10 +24,9 @@ test("Show event log notification when program item with direct signup is moved"
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
   ]);
 
@@ -57,10 +56,9 @@ test("Show event log notification when program item with direct signup is moved"
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(2, "hours")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 2),
+      ).toISOString(),
     },
   ]);
 

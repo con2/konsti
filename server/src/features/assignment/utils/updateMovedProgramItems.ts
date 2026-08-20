@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -23,8 +22,8 @@ export const updateMovedProgramItems = async (
     return currentProgramItems.find((currentProgramItem) => {
       return (
         updatedProgramItem.programItemId === currentProgramItem.programItemId &&
-        dayjs(updatedProgramItem.startTime).toISOString() !==
-          dayjs(currentProgramItem.startTime).toISOString()
+        new Date(updatedProgramItem.startTime).toISOString() !==
+          new Date(currentProgramItem.startTime).toISOString()
       );
     });
   });
@@ -122,7 +121,7 @@ const removeMovedLotterySignupsAndNotify = async (
         username: user.username,
         programItemId,
         programItemStartTime: movedProgramItem.startTime,
-        createdAt: dayjs().toISOString(),
+        createdAt: new Date().toISOString(),
         action: EventLogAction.PROGRAM_ITEM_MOVED,
       };
     });
@@ -175,7 +174,7 @@ const notifyUsersWithDirectSignups = async (
         username: userSignup.username,
         programItemId: directSignup.programItemId,
         programItemStartTime: movedProgramItem.startTime,
-        createdAt: dayjs().toISOString(),
+        createdAt: new Date().toISOString(),
         action: EventLogAction.PROGRAM_ITEM_MOVED,
       };
     });

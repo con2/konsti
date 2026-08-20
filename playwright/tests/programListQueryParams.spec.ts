@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -29,20 +29,18 @@ test("Active program type is selected from the programType query parameter", asy
       programItemId: "rpg-item",
       title: "Aardvark Adventure",
       programType: firstProgramType,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
       programItemId: "larp-item",
       title: "Zebra Zone",
       programType: secondProgramType,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(2, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 2),
+      ).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });
@@ -82,10 +80,9 @@ test("The invalid query parameter lists only program items missing required info
       title: "Valid Program Item",
       minAttendance: 2,
       maxAttendance: 4,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
     {
       ...testProgramItem,
@@ -94,10 +91,9 @@ test("The invalid query parameter lists only program items missing required info
       // Missing max attendance makes a Konsti sign-up item invalid
       minAttendance: 2,
       maxAttendance: 0,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(2, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 2),
+      ).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

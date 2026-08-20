@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { config } from "shared/config";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { MongoDbError } from "shared/types/api/errors";
@@ -64,7 +63,7 @@ export const storeAssignment = async (
     const assignResults = assignResultsResult.value;
 
     // Record the last successful run time
-    await setAssignmentLastRun(dayjs().toISOString());
+    await setAssignmentLastRun(new Date().toISOString());
 
     return {
       message: "Assignment success",

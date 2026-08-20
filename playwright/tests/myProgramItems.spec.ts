@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -12,13 +12,13 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
-const startTime = dayjs(config.event().eventStartTime)
-  .add(3, "hour")
-  .startOf("hour")
-  .toISOString();
-const endTime = dayjs(startTime)
-  .add(testProgramItem.mins, "minutes")
-  .toISOString();
+const startTime = startOfHour(
+  addHours(new Date(config.event().eventStartTime), 3),
+).toISOString();
+const endTime = addMinutes(
+  new Date(startTime),
+  testProgramItem.mins,
+).toISOString();
 
 test("Cancel lottery signup on My Program page", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });

@@ -1,5 +1,5 @@
 import { APIRequestContext, Page, expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -17,10 +17,9 @@ const openSeededProgramList = async (
   request: APIRequestContext,
 ): Promise<ProgramListPage> => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
   await addProgramItems(
     request,
     Array.from({ length: 40 }, (_, index) => ({
