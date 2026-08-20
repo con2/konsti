@@ -7,7 +7,10 @@ import { TIMEZONE } from "shared/utils/timezone";
 // date-fns formatting is only called here to make sure all client times use the
 // correct timezone and the active locale
 
-type Time = Date | string | number;
+// No number: a bare number is a valid argument to date-fns format but is almost
+// always a duration rather than an instant, and renders as a plausible wrong
+// clock time (120 becomes "02:00") instead of failing
+type Time = Date | string;
 
 const formatInEventTimezone = (time: Time, pattern: string): string =>
   format(time, pattern, { in: tz(TIMEZONE), locale: getCurrentLocale() });
