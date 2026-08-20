@@ -1,6 +1,7 @@
 import { addMinutes, subMinutes } from "date-fns";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { EventConfig } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
   testProgramItem2,
@@ -20,39 +21,45 @@ const friday = "2023-07-28";
 const saturday = "2023-07-29";
 const sunday = "2023-07-30";
 
+// The base every test runs against. Built once from the real config rather than
+// spread from config.event() inside the mock: config.event is already a spy by
+// then, so that would spread whatever the previous test mocked and let overrides
+// accrete across describes in file order. Describes needing more spread this
+const baseEventConfig: EventConfig = {
+  ...config.event(),
+  eventStartTime: `${friday}T12:00:00Z`,
+  fixedLotterySignupTime: null,
+  enableRollingDirectSignupPreviousDay: true,
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+  directSignupWindows: {
+    larp: [
+      // Friday
+      {
+        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+      },
+      // Saturday morning / day
+      {
+        signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+      },
+      // Saturday evening
+      {
+        signupWindowStart: new Date(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
+        signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+      },
+      // Sunday
+      {
+        signupWindowStart: new Date(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
+        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+      },
+    ],
+  },
+  rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP],
+};
+
 beforeEach(() => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    eventStartTime: `${friday}T12:00:00Z`,
-    fixedLotterySignupTime: null,
-    enableRollingDirectSignupPreviousDay: true,
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    directSignupWindows: {
-      larp: [
-        // Friday
-        {
-          signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-          signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
-        },
-        // Saturday morning / day
-        {
-          signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-          signupWindowClose: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        },
-        // Saturday evening
-        {
-          signupWindowStart: new Date(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
-          signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
-        },
-        // Sunday
-        {
-          signupWindowStart: new Date(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
-          signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
-        },
-      ],
-    },
-    rollingDirectSignupProgramTypes: [ProgramType.WORKSHOP],
-  });
+  vi.spyOn(config, "event").mockReturnValue(baseEventConfig);
 });
 
 describe("Lottery signup", () => {
@@ -204,7 +211,7 @@ describe("Pre-convention week direct signup", () => {
 
   beforeEach(() => {
     vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
+      ...baseEventConfig,
       preConventionWeekSignupStartTime,
     });
   });
@@ -245,7 +252,7 @@ describe("Parent start time override via 'startTimesByParentIds'", () => {
 
   beforeEach(() => {
     vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
+      ...baseEventConfig,
       startTimesByParentIds: new Map([
         [testProgramItem.parentId, parentStartTime],
       ]),
@@ -275,7 +282,7 @@ describe("Parent start time override via 'startTimesByParentIds'", () => {
 
   test("falls back to own start time when parentId has no override", () => {
     vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
+      ...baseEventConfig,
       startTimesByParentIds: new Map(),
     });
     const programItem = { ...testProgramItem, startTime: ownStartTime };
@@ -453,7 +460,7 @@ describe("Signup times across DST transitions", () => {
 
   beforeEach(() => {
     vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
+      ...baseEventConfig,
       eventStartTime: "2026-03-01T12:00:00Z",
       fixedLotterySignupTime: null,
       enableRollingDirectSignupPreviousDay: true,
