@@ -6,6 +6,7 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { getTime } from "shared/utils/timeFormatter";
 import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
@@ -15,17 +16,6 @@ import {
   postTestSettings,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
-
-// The run card headings show the assignment time as Helsinki wall-clock time.
-// The shared time formatter cannot be imported here (its imports do not
-// resolve under Playwright's ESM loader), so the expected time is
-// computed with Intl instead
-const helsinkiTime = (time: string): string =>
-  new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Helsinki",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date(time));
 
 test("Show empty state when the lottery hasn't been run", async ({
   page,
@@ -153,10 +143,10 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
   await dashboard.goto();
 
   await expect(dashboard.assignmentRuns).toHaveCount(2);
-  await expect(dashboard.runHeading(0)).toContainText(
-    helsinkiTime(laterStartTime),
-  );
+
+  // Headings show the assignment time in the event timezone, latest run first
+  await expect(dashboard.runHeading(0)).toContainText(getTime(laterStartTime));
   await expect(dashboard.runHeading(1)).toContainText(
-    helsinkiTime(earlierStartTime),
+    getTime(earlierStartTime),
   );
 });
