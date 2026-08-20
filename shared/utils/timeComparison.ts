@@ -1,13 +1,18 @@
 import { isAfter, isBefore, startOfMinute } from "date-fns";
 
-// Comparisons that read awkwardly as negations at the call site, and the two
-// bounded-range checks whose exact edge behaviour matters
+// Comparisons date-fns has no direct equivalent for, and the two bounded-range
+// checks whose exact edge behaviour matters.
+//
+// Compared as timestamps rather than as !isBefore / !isAfter: a negated
+// comparison is true whenever either side is an invalid date, so a single
+// unparseable time would turn every sign-up gate from closed to open. NaN
+// compares false against everything, which keeps them closed
 
 export const isSameOrAfter = (time: Date, compared: Date): boolean =>
-  !isBefore(time, compared);
+  time.getTime() >= compared.getTime();
 
 export const isSameOrBefore = (time: Date, compared: Date): boolean =>
-  !isAfter(time, compared);
+  time.getTime() <= compared.getTime();
 
 // Whole-minute comparison including the start and excluding the end, so a
 // program item starting exactly at a sign-up window's close belongs to the next
@@ -17,10 +22,10 @@ export const isWithinMinutes = (
   start: Date,
   end: Date,
 ): boolean => {
-  const minute = startOfMinute(time);
+  const minute = startOfMinute(time).getTime();
   return (
-    !isBefore(minute, startOfMinute(start)) &&
-    isBefore(minute, startOfMinute(end))
+    minute >= startOfMinute(start).getTime() &&
+    minute < startOfMinute(end).getTime()
   );
 };
 
