@@ -51,11 +51,37 @@ const restrictedImportPaths = [
 ];
 
 // date-fns formats in whatever timezone the host is in, which for a program time
-// is never what we mean. Confined to the modules that apply the event timezone
-// and the active locale before formatting
+// is never what we mean. Confined to the module that applies the event timezone
+// and the active locale before formatting.
+//
+// Every alias has to be named: formatDate IS format (same function object), and
+// the rest default to the host timezone and en-US just as readily
 const restrictedFormatImport = {
   name: "date-fns",
-  importNames: ["format", "formatDistance", "formatRelative"],
+  importNames: [
+    "format",
+    "formatDate",
+    "lightFormat",
+    "formatDistance",
+    "formatDistanceStrict",
+    "formatDistanceToNow",
+    "formatDistanceToNowStrict",
+    "formatDuration",
+    "formatRelative",
+    "intlFormat",
+  ],
+  message: "Import from shared/utils/timeFormatter",
+};
+
+// The same functions are reachable one per module, which sidesteps a rule that
+// only names the "date-fns" specifier
+const restrictedFormatImportPattern = {
+  group: [
+    "date-fns/format",
+    "date-fns/format*",
+    "date-fns/lightFormat",
+    "date-fns/intlFormat",
+  ],
   message: "Import from shared/utils/timeFormatter",
 };
 
@@ -193,6 +219,7 @@ export default defineConfig([
         {
           paths: [...restrictedImportPaths, restrictedFormatImport],
           patterns: [
+            restrictedFormatImportPattern,
             {
               group: ["../*"],
               message: "Relative import (../) not allowed, use absolute import",
