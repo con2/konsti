@@ -76,7 +76,11 @@ export const findResults = async (): Promise<
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findResults DB value: assignmentTime: ${new Date(assignmentResult.assignmentTime).toISOString()}`,
+            // Logged raw rather than formatted: this document just failed
+            // validation, so its assignmentTime may not be a usable date and
+            // formatting it would throw, turning one skipped row into a failed
+            // query for every result
+            `Error validating findResults DB value: assignmentTime: ${JSON.stringify(assignmentResult.assignmentTime)}`,
             { cause: result.error },
           ),
         );
