@@ -29,9 +29,29 @@ export const localeFor = (locale: string): Locale =>
 // knows which one is active, so the choice is held here instead of threaded
 // through every call site
 let currentLocale: Locale = enUS;
+let currentLocaleCode = "en";
+const listeners = new Set<() => void>();
 
 export const setLocale = (locale: string): void => {
+  if (locale === currentLocaleCode) {
+    return;
+  }
   currentLocale = localeFor(locale);
+  currentLocaleCode = locale;
+  for (const listener of listeners) {
+    listener();
+  }
 };
 
 export const getCurrentLocale = (): Locale => currentLocale;
+
+// The subscribe half of a store, so a UI reading the formatters can re-render
+// when the language changes. Everything they produce depends on this module
+// state, which is invisible to a rendering framework unless it is published
+export const subscribeToLocale = (listener: () => void): (() => void) => {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+};
+
+// Must keep returning the same value until the language changes
+export const getLocaleSnapshot = (): string => currentLocaleCode;
