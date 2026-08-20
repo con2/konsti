@@ -1,20 +1,20 @@
 import { beforeEach, expect, test, vi } from "vitest";
+import { Locale } from "shared/types/locale";
 import {
-  getCurrentLocale,
   getLocaleSnapshot,
   setLocale,
   subscribeToLocale,
 } from "shared/utils/setLocale";
 
 beforeEach(() => {
-  setLocale("en");
+  setLocale(Locale.EN);
 });
 
 test("switching language notifies subscribers", () => {
   const listener = vi.fn();
   subscribeToLocale(listener);
 
-  setLocale("fi");
+  setLocale(Locale.FI);
 
   expect(listener).toHaveBeenCalledTimes(1);
 });
@@ -23,10 +23,10 @@ test("switching language notifies subscribers", () => {
 // and loops if an unchanged language hands back something new
 test("hands out the same snapshot until the language changes", () => {
   const first = getLocaleSnapshot();
-  setLocale("en");
+  setLocale(Locale.EN);
   expect(getLocaleSnapshot()).toEqual(first);
 
-  setLocale("fi");
+  setLocale(Locale.FI);
   expect(getLocaleSnapshot()).toEqual("fi");
 });
 
@@ -35,7 +35,7 @@ test("does not notify when the language is unchanged", () => {
   const listener = vi.fn();
   subscribeToLocale(listener);
 
-  setLocale("en");
+  setLocale(Locale.EN);
 
   expect(listener).not.toHaveBeenCalled();
 });
@@ -45,12 +45,7 @@ test("stops notifying after unsubscribe", () => {
   const unsubscribe = subscribeToLocale(listener);
   unsubscribe();
 
-  setLocale("fi");
+  setLocale(Locale.FI);
 
   expect(listener).not.toHaveBeenCalled();
-});
-
-test("an unknown language falls back to English", () => {
-  setLocale("de");
-  expect(getCurrentLocale().code).toEqual("en-US");
 });

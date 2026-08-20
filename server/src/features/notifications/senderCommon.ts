@@ -1,3 +1,4 @@
+import { Locale } from "shared/types/locale";
 import { getDateAndTimeWithLocale } from "shared/utils/timeFormatter";
 import { NotificationTask } from "server/utils/notificationQueue";
 
@@ -27,11 +28,11 @@ export function getRejectedEmailTemplate(
 ): EmailTemplate {
   const lotteryStartTimeFi = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "fi",
+    Locale.FI,
   );
   const lotteryStartTimeEn = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "en",
+    Locale.EN,
   );
 
   const bodyFi = `Hei ${notification.username}!
@@ -52,11 +53,11 @@ export function getAcceptedEmailTemplate(
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "fi",
+    Locale.FI,
   );
   const programStartTimeEn = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "en",
+    Locale.EN,
   );
 
   const bodyFi = `Hei ${notification.username}!
@@ -76,11 +77,11 @@ export function getProgramItemCancelledEmailTemplate(
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "fi",
+    Locale.FI,
   );
   const programStartTimeEn = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "en",
+    Locale.EN,
   );
 
   const bodyFi = `Hei ${notification.username}!
@@ -100,11 +101,11 @@ export function getProgramItemDeletedEmailTemplate(
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "fi",
+    Locale.FI,
   );
   const programStartTimeEn = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "en",
+    Locale.EN,
   );
 
   const bodyFi = `Hei ${notification.username}!
@@ -154,11 +155,11 @@ export function getProgramItemTimeChangedEmailTemplate(
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "fi",
+    Locale.FI,
   );
   const programStartTimeEn = getDateAndTimeWithLocale(
     notification.programItemStartTime,
-    "en",
+    Locale.EN,
   );
 
   const bodyFi = `Hei ${notification.username}!

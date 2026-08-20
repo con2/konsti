@@ -111,7 +111,7 @@ export const saveDismissedAdminMessage = (adminMessage: string): void => {
 const languageKey = "i18nextLng";
 const LanguageValueSchema = z.enum(Locale);
 
-export const getLocalStorageLocale = (): string => {
+export const getLocalStorageLocale = (): Locale => {
   const serializedValue = localStorage.getItem(languageKey);
 
   const result = LanguageValueSchema.safeParse(serializedValue);

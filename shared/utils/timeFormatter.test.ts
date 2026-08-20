@@ -1,5 +1,6 @@
 import { add } from "date-fns";
 import { beforeAll, describe, expect, test } from "vitest";
+import { Locale } from "shared/types/locale";
 import { setLocale } from "shared/utils/setLocale";
 import {
   formatProgramItemDuration,
@@ -30,7 +31,7 @@ const YEAR_END = "2026-12-31T21:59:30Z"; // Thu 23:59:30 local
 
 describe("Locale independent formatting", () => {
   beforeAll(() => {
-    setLocale("en");
+    setLocale(Locale.EN);
   });
 
   test.each([
@@ -89,7 +90,7 @@ describe("Locale independent formatting", () => {
 
 describe("EN locale formatting", () => {
   beforeAll(() => {
-    setLocale("en");
+    setLocale(Locale.EN);
   });
 
   test.each([
@@ -134,7 +135,7 @@ describe("EN locale formatting", () => {
 
 describe("FI locale formatting", () => {
   beforeAll(() => {
-    setLocale("fi");
+    setLocale(Locale.FI);
   });
 
   test.each([
@@ -181,14 +182,14 @@ describe("FI locale formatting", () => {
 // to stay correct while the global locale says otherwise
 describe("getDateAndTimeWithLocale", () => {
   beforeAll(() => {
-    setLocale("en");
+    setLocale(Locale.EN);
   });
 
   test.each([
-    [WINTER, "fi" as const, "to 15.1.2026 12:30"],
-    [SUMMER, "fi" as const, "ke 15.7.2026 13:30"],
-    [WINTER, "en" as const, "Thu 15.1.2026 12:30"],
-    [SUMMER, "en" as const, "Wed 15.7.2026 13:30"],
+    [WINTER, Locale.FI, "to 15.1.2026 12:30"],
+    [SUMMER, Locale.FI, "ke 15.7.2026 13:30"],
+    [WINTER, Locale.EN, "Thu 15.1.2026 12:30"],
+    [SUMMER, Locale.EN, "Wed 15.7.2026 13:30"],
   ])("(%s, %s) is %s", (time, locale, expected) => {
     expect(getDateAndTimeWithLocale(time, locale)).toEqual(expected);
   });
@@ -226,7 +227,7 @@ describe("Relative time", () => {
   };
 
   test("Format EN relative times correctly", () => {
-    setLocale("en");
+    setLocale(Locale.EN);
 
     expect(relativeTimePast(1, "second")).toEqual("less than a minute ago");
     expect(relativeTimePast(2, "seconds")).toEqual("less than a minute ago");
@@ -266,7 +267,7 @@ describe("Relative time", () => {
   });
 
   test("Format FI relative times correctly", () => {
-    setLocale("fi");
+    setLocale(Locale.FI);
 
     expect(relativeTimePast(1, "second")).toEqual("alle minuutti sitten");
     expect(relativeTimePast(2, "seconds")).toEqual("alle minuutti sitten");

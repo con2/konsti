@@ -1,5 +1,6 @@
 import { tz } from "@date-fns/tz";
 import { format, formatDistance } from "date-fns";
+import { Locale } from "shared/types/locale";
 import { getCurrentLocale, localeFor } from "shared/utils/setLocale";
 import { TIMEZONE } from "shared/utils/timezone";
 
@@ -32,10 +33,7 @@ export const getTimezone = (time: Time): string =>
 export const getDateAndTime = (time: Time): string =>
   formatInEventTimezone(time, "ccc d.M.yyyy HH:mm");
 
-export const getDateAndTimeWithLocale = (
-  time: Time,
-  locale: "fi" | "en",
-): string =>
+export const getDateAndTimeWithLocale = (time: Time, locale: Locale): string =>
   format(time, "ccc d.M.yyyy HH:mm", {
     in: tz(TIMEZONE),
     locale: localeFor(locale),
