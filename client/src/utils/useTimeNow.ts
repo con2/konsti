@@ -21,6 +21,16 @@ export const useRealTimeNow = (): Dayjs => {
   );
 };
 
+// Whether the mocked test time replaces the real clock. Exported so the rule can
+// be tested without rendering: the whole app's sense of time depends on it, and
+// the empty-testTime case is the one that fails quietly - dayjs("") is an invalid
+// date, which makes every time comparison false instead of failing loudly
+export const shouldUseTestTime = (testTime: string | null): boolean =>
+  config.client().loadedSettings !== "production" &&
+  config.client().showTestValues &&
+  testTime !== null &&
+  testTime !== "";
+
 // The current time, mocked time included. A hook rather than a plain getter so
 // a component re-renders as the clock advances and when a data poll brings in a
 // new mocked time. Pass the value down to pure helpers instead of letting them
@@ -34,12 +44,5 @@ export const useTimeNow = (): Dayjs => {
     [testTime, i18n.language],
   );
 
-  return config.client().loadedSettings !== "production" &&
-    config.client().showTestValues &&
-    // Fall back to the real time while no mocked time is set: dayjs("") is an
-    // invalid date, which silently makes every time comparison false instead
-    // of failing loudly
-    testTime
-    ? mockedTimeNow
-    : realTimeNow;
+  return shouldUseTestTime(testTime) ? mockedTimeNow : realTimeNow;
 };
