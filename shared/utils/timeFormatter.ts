@@ -41,7 +41,8 @@ export const getDateAndTimeWithLocale = (
   });
 
 // Deliberately the viewer's own timezone rather than the event's: these answer
-// "what time is it where you are", next to the Finnish time in the same text
+// "what time is it where you are", next to the Finnish time in the same text.
+// Only the timezone is local - the weekday still follows the UI language
 export const getLocalDateAndTime = (time: Time): string =>
   format(time, "ccc d.M.yyyy HH:mm", { locale: getCurrentLocale() });
 
