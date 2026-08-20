@@ -12,6 +12,7 @@ import { ErrorBar } from "client/components/ErrorBar";
 import { FirstLogin } from "client/components/FirstLogin";
 import { HEADER_HEIGHT, Header } from "client/components/Header";
 import { Loading } from "client/components/Loading";
+import { ViewErrorBoundary } from "client/components/ViewErrorBoundary";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestGenerateSerial } from "client/test/test-components/TestGenerateSerial";
 import { TestTime } from "client/test/test-components/TestTime";
@@ -82,12 +83,15 @@ const App = (): ReactElement => {
             </StickyBars>
             {showAnnouncement && <Announcement />}
             <AppContainer>
-              {/* Boundary for the lazily loaded views, placed here rather than
-                  around the whole app so navigating to one keeps the header and
-                  bars on screen instead of blanking the page */}
-              <Suspense fallback={<Loading />}>
-                <AppRoutes />
-              </Suspense>
+              {/* Boundaries for the lazily loaded views, placed here rather
+                  than around the whole app so a slow chunk or a render error in
+                  one keeps the header and bars on screen instead of blanking
+                  the page */}
+              <ViewErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <AppRoutes />
+                </Suspense>
+              </ViewErrorBoundary>
             </AppContainer>
           </HistoryProvider>
         </BrowserRouter>

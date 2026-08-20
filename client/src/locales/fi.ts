@@ -164,6 +164,12 @@ export const translationFI = {
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
   },
+  viewError: {
+    title: "Jokin meni pieleen",
+    description:
+      "Tätä sivua ei voitu näyttää. Muu Konsti toimii edelleen, joten voit siirtyä muualle tai yrittää uudelleen.",
+    retry: "Yritä uudelleen",
+  },
   agreePrivacyNotice:
     "Annan suostumukseni henkilötietojeni käsittelyyn oheisen tietosuojaselosteen mukaisesti",
   showPrivacyNotice: "Näytä tietosuojaseloste",

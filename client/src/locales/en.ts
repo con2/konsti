@@ -165,6 +165,12 @@ export const translationEN = {
     invalidUserGroup: "Invalid user group",
     unknown: "Unknown error",
   },
+  viewError: {
+    title: "Something went wrong",
+    description:
+      "This page could not be shown. The rest of Konsti still works, so you can navigate elsewhere or try again.",
+    retry: "Try again",
+  },
   agreePrivacyNotice:
     "I consent to the processing of my personal data in accordance with the attached Privacy Notice",
   showPrivacyNotice: "View Privacy Notice",
