@@ -31,85 +31,85 @@ const eventConfig: Partial<EventConfig> = {
     larp: [
       // Friday
       {
-        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+        signupWindowStart: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+        signupWindowClose: `${friday}T21:00:00Z`, // Fri 24:00 GMT+3
       },
       // Saturday morning / day
       {
-        signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowStart: `${friday}T15:00:00Z`, // Fri 18:00 GMT+3
+        signupWindowClose: `${saturday}T15:00:00Z`, // Sat 18:00 GMT+3
       },
       // Saturday evening
       {
-        signupWindowStart: new Date(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
-        signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+        signupWindowStart: `${saturday}T08:00:00Z`, // Sat 11:00 GMT+3
+        signupWindowClose: `${saturday}T21:00:00Z`, // Sat 24:00 GMT+3
       },
       // Sunday
       {
-        signupWindowStart: new Date(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: `${saturday}T12:00:00Z`, // Sat 15:00 GMT+3
+        signupWindowClose: `${sunday}T21:00:00Z`, // Sun 24:00 GMT+3
       },
     ],
 
     tournament: [
       // Friday
       {
-        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+        signupWindowStart: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+        signupWindowClose: `${friday}T21:00:00Z`, // Fri 24:00 GMT+3
       },
       // Saturday
       {
-        signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+        signupWindowStart: `${friday}T15:00:00Z`, // Fri 18:00 GMT+3
+        signupWindowClose: `${saturday}T21:00:00Z`, // Sat 24:00 GMT+3
       },
       // Sunday
       {
-        signupWindowStart: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: `${saturday}T15:00:00Z`, // Sat 18:00 GMT+3
+        signupWindowClose: `${sunday}T21:00:00Z`, // Sun 24:00 GMT+3
       },
     ],
 
     workshop: [
       // Friday
       {
-        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+        signupWindowStart: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+        signupWindowClose: `${friday}T21:00:00Z`, // Fri 24:00 GMT+3
       },
       // Saturday morning / day
       {
-        signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: new Date(`${saturday}T11:00:00Z`), // Sat 14:00 GMT+3
+        signupWindowStart: `${friday}T15:00:00Z`, // Fri 18:00 GMT+3
+        signupWindowClose: `${saturday}T11:00:00Z`, // Sat 14:00 GMT+3
       },
       // Saturday day / evening
       {
-        signupWindowStart: new Date(`${saturday}T06:00:00Z`), // Sat 09:00 GMT+3
-        signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+        signupWindowStart: `${saturday}T06:00:00Z`, // Sat 09:00 GMT+3
+        signupWindowClose: `${saturday}T21:00:00Z`, // Sat 24:00 GMT+3
       },
       // Saturday evening / sunday morning
       {
-        signupWindowStart: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T11:00:00Z`), // Sun 14:00 GMT+3
+        signupWindowStart: `${saturday}T15:00:00Z`, // Sat 18:00 GMT+3
+        signupWindowClose: `${sunday}T11:00:00Z`, // Sun 14:00 GMT+3
       },
       // Sunday
       {
-        signupWindowStart: new Date(`${sunday}T06:00:00Z`), // Sun 09:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: `${sunday}T06:00:00Z`, // Sun 09:00 GMT+3
+        signupWindowClose: `${sunday}T21:00:00Z`, // Sun 24:00 GMT+3
       },
     ],
 
     experiencePoint: [
       // Whole event Fri - Sun
       {
-        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+        signupWindowClose: `${sunday}T21:00:00Z`, // Sun 24:00 GMT+3
       },
     ],
 
     other: [
       // Whole event Fri - Sun
       {
-        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+        signupWindowClose: `${sunday}T21:00:00Z`, // Sun 24:00 GMT+3
       },
     ],
   },

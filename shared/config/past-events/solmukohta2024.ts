@@ -23,20 +23,20 @@ const eventConfig: Partial<EventConfig> = {
   directSignupWindows: {
     larp: [
       {
-        signupWindowStart: new Date("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
-        signupWindowClose: new Date("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
+        signupWindowStart: "2024-04-04T17:00:00Z", // One week before, Thu 20:00 GMT+3
+        signupWindowClose: "2024-04-14T21:00:00Z", // Event end, Sun 24:00 GMT+3
       },
     ],
     workshop: [
       {
-        signupWindowStart: new Date("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
-        signupWindowClose: new Date("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
+        signupWindowStart: "2024-04-04T17:00:00Z", // One week before, Thu 20:00 GMT+3
+        signupWindowClose: "2024-04-14T21:00:00Z", // Event end, Sun 24:00 GMT+3
       },
     ],
     roundtableDiscussion: [
       {
-        signupWindowStart: new Date("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
-        signupWindowClose: new Date("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
+        signupWindowStart: "2024-04-04T17:00:00Z", // One week before, Thu 20:00 GMT+3
+        signupWindowClose: "2024-04-14T21:00:00Z", // Event end, Sun 24:00 GMT+3
       },
     ],
   },
