@@ -54,4 +54,9 @@ export class AdminPage extends BasePage {
   async selectSignupStrategy(label: string): Promise<void> {
     await this.signupStrategySelect.selectOption({ label });
   }
+
+  // Throws while rendering, so the view error boundary catches it
+  async triggerViewError(): Promise<void> {
+    await this.page.getByRole("button", { name: "Trigger view error" }).click();
+  }
 }

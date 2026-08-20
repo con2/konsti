@@ -96,6 +96,7 @@ export const AdminView = (): ReactElement => {
   const assignmentTimeDropdownValues = getDropdownOptions();
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+  const [triggerRenderError, setTriggerRenderError] = useState<boolean>(false);
   const [messageStyle, setMessageStyle] = useState<string>("");
   const [selectedAssignmentTime, setSelectedAssignmentTime] = useState<string>(
     assignmentTimeDropdownValues[0]?.value ?? "",
@@ -237,6 +238,14 @@ export const AdminView = (): ReactElement => {
     setSubmitting(false);
   };
 
+  // Renders the view error boundary, which only catches errors thrown during
+  // render - the Sentry client test above throws in a click handler, which
+  // boundaries structurally cannot catch
+  if (triggerRenderError) {
+    // eslint-disable-next-line no-restricted-syntax -- Deliberately triggers the boundary
+    throw new Error("Admin test: view error boundary");
+  }
+
   return (
     <div>
       <ButtonGroup>
@@ -344,6 +353,18 @@ export const AdminView = (): ReactElement => {
           }}
         >
           {t("admin.sentryBackendTest")}
+        </Button>
+      </ButtonGroup>
+
+      <h3>{t("admin.errorBoundaryTesting")}</h3>
+      <ButtonGroup>
+        <Button
+          buttonStyle={ButtonStyle.PRIMARY}
+          onClick={() => {
+            setTriggerRenderError(true);
+          }}
+        >
+          {t("admin.errorBoundaryTest")}
         </Button>
       </ButtonGroup>
 

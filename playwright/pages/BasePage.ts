@@ -37,6 +37,11 @@ export class BasePage {
     return this.page.getByTestId(BasePage.adminMessageBannerTestId);
   }
 
+  // Shown in place of a routed view that threw while rendering
+  get viewError(): Locator {
+    return this.page.getByTestId("view-error");
+  }
+
   // The registration code notice shown below the header on a user's first login
   get firstLoginNotice(): Locator {
     return this.page.getByTestId(BasePage.firstLoginNoticeTestId);
