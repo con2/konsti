@@ -3,8 +3,10 @@ import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
 import styled from "styled-components";
-import { formatRelativeTime } from "shared/utils/relativeTime";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
+import {
+  formatRelativeTime,
+  getWeekdayAndTime,
+} from "shared/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { useRealTimeNow } from "client/utils/useTimeNow";

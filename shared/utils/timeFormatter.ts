@@ -1,9 +1,10 @@
 import { tz } from "@date-fns/tz";
-import { format } from "date-fns";
+import { format, formatDistance } from "date-fns";
 import { getCurrentLocale, localeFor } from "shared/utils/setLocale";
 import { TIMEZONE } from "shared/utils/timezone";
 
-// format() is only called here to make sure all client times use correct timezone
+// date-fns formatting is only called here to make sure all client times use the
+// correct timezone and the active locale
 
 type Time = Date | string | number;
 
@@ -61,3 +62,7 @@ export const formatProgramItemDuration = (mins: number): string => {
 
 export const formattedCurrentTime = (currentTime: Date): string =>
   formatInEventTimezone(currentTime, "HH:mm:ss");
+
+// Describes `to` relative to `from`, e.g. "2 minutes ago" or "in an hour"
+export const formatRelativeTime = (from: Date, to: Date): string =>
+  formatDistance(to, from, { addSuffix: true, locale: getCurrentLocale() });

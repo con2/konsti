@@ -56,14 +56,10 @@ const restrictedImportPaths = [
 const restrictedFormatImport = {
   name: "date-fns",
   importNames: ["format", "formatDistance", "formatRelative"],
-  message:
-    "Import from shared/utils/timeFormatter or shared/utils/relativeTime",
+  message: "Import from shared/utils/timeFormatter",
 };
 
-const timeFormattingModules = [
-  "shared/utils/timeFormatter.ts",
-  "shared/utils/relativeTime.ts",
-];
+const timeFormattingModules = ["shared/utils/timeFormatter.ts"];
 
 export default defineConfig([
   eslint.configs.recommended,
