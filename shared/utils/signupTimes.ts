@@ -19,6 +19,7 @@ import {
   isWithinMinutes,
 } from "shared/utils/timeComparison";
 import { TIMEZONE } from "shared/utils/timezone";
+import { atWallClockHourInEventTimezone } from "shared/utils/zonedTime";
 
 // A TZDate serialises to its own offset ("...+03:00") rather than to UTC, and these
 // values are stored and compared as ISO strings elsewhere, so the timezone stays an
@@ -41,28 +42,18 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string => {
 //
 // Both steps run in the event timezone: stepping back a day keeps the wall-clock
 // time even when that day is 23 or 25 hours long, and naming the hour explicitly
-// resolves whichever UTC offset that day happens to have.
-//
-// `hour` must stay outside the hour the autumn transition repeats (03:00-03:59
-// Helsinki): a wall-clock time that happens twice resolves against the host's
-// offset, so a UTC server and a Finnish browser would disagree by an hour. The
-// callers pass 22 and 18
+// resolves whichever UTC offset that day happens to have
 const openAtFixedHourPreviousEvening = (
   timezoneStartTime: Date,
   hour: number,
 ): Date => {
   const previousDay = subDays(new TZDate(timezoneStartTime, TIMEZONE), 1);
 
-  return toPlainDate(
-    new TZDate(
-      previousDay.getFullYear(),
-      previousDay.getMonth(),
-      previousDay.getDate(),
-      hour,
-      0,
-      0,
-      TIMEZONE,
-    ),
+  return atWallClockHourInEventTimezone(
+    previousDay.getFullYear(),
+    previousDay.getMonth(),
+    previousDay.getDate(),
+    hour,
   );
 };
 
