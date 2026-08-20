@@ -41,7 +41,12 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string => {
 //
 // Both steps run in the event timezone: stepping back a day keeps the wall-clock
 // time even when that day is 23 or 25 hours long, and naming the hour explicitly
-// resolves whichever UTC offset that day happens to have
+// resolves whichever UTC offset that day happens to have.
+//
+// `hour` must stay outside the hour the autumn transition repeats (03:00-03:59
+// Helsinki): a wall-clock time that happens twice resolves against the host's
+// offset, so a UTC server and a Finnish browser would disagree by an hour. The
+// callers pass 22 and 18
 const openAtFixedHourPreviousEvening = (
   timezoneStartTime: Date,
   hour: number,
