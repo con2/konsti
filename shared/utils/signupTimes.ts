@@ -191,16 +191,12 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Date => {
     (signupWindow) =>
       isWithinMinutes(
         new Date(programItem.startTime),
-        signupWindow.signupWindowStart,
-        signupWindow.signupWindowClose,
+        new Date(signupWindow.signupWindowStart),
+        new Date(signupWindow.signupWindowClose),
       ),
   );
 
-  // Copied, not handed out: the config's own Date would otherwise be mutable by
-  // any caller, permanently shifting the sign-up window for the whole process
-  return matchingSignupWindow
-    ? toPlainDate(matchingSignupWindow.signupWindowStart)
-    : new Date(eventStartTime);
+  return new Date(matchingSignupWindow?.signupWindowStart ?? eventStartTime);
 };
 
 export const getDirectSignupEndTime = (programItem: ProgramItem): Date => {

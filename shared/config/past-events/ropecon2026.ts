@@ -53,18 +53,18 @@ const eventConfig: Partial<EventConfig> = {
     tournament: [
       // Friday
       {
-        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+        signupWindowStart: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+        signupWindowClose: `${friday}T21:00:00Z`, // Fri 24:00 GMT+3
       },
       // Saturday
       {
-        signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+        signupWindowStart: `${friday}T15:00:00Z`, // Fri 18:00 GMT+3
+        signupWindowClose: `${saturday}T21:00:00Z`, // Sat 24:00 GMT+3
       },
       // Sunday
       {
-        signupWindowStart: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: `${saturday}T15:00:00Z`, // Sat 18:00 GMT+3
+        signupWindowClose: `${sunday}T21:00:00Z`, // Sun 24:00 GMT+3
       },
     ],
   },

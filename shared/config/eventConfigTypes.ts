@@ -35,8 +35,8 @@ export enum EventName {
 type ArrMin1<T> = [T, ...T[]];
 
 interface SignupWindow {
-  signupWindowStart: Date;
-  signupWindowClose: Date;
+  signupWindowStart: string;
+  signupWindowClose: string;
 }
 
 export enum EntryConditionText {
