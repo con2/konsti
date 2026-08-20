@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { randomUUID } from "node:crypto";
 import { addHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
@@ -22,6 +22,7 @@ import { saveProgramItems } from "server/features/program-item/programItemReposi
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
+import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import {
@@ -47,13 +48,14 @@ vi.mock<object>(
 );
 
 beforeEach(async () => {
-  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
+  await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
   vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
     createNotificationQueueService(new EmailSender(), 1, true),
   );
 });
 
 afterEach(async () => {
+  vi.restoreAllMocks();
   await mongoose.disconnect();
 });
 
@@ -63,6 +65,8 @@ test("Assignment with valid data should return success with random+padg algorith
   const numberOfGroups = 5;
   const newProgramItemsCount = 10;
   const testUsersCount = 0;
+
+  seedRandomness();
 
   await generateTestData(
     newUsersCount,
@@ -143,6 +147,8 @@ test("Assignment with no attendees should return error with random+padg algorith
   const numberOfGroups = 0;
   const newProgramItemsCount = 1;
   const testUsersCount = 0;
+
+  seedRandomness();
 
   await generateTestData(
     newUsersCount,

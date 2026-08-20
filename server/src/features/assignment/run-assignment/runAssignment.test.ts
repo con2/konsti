@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import { randomUUID } from "node:crypto";
 import { addHours, addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
@@ -46,6 +46,7 @@ import {
   mockUser,
   mockUser2,
 } from "server/test/mock-data/mockUser";
+import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import {
@@ -97,7 +98,7 @@ beforeEach(async () => {
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
     removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
   });
-  await db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10));
+  await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
 });
 
 afterEach(async () => {
@@ -113,6 +114,8 @@ describe("Assignment with valid data", () => {
     const numberOfGroups = 10;
     const newProgramItemsCount = 10;
     const testUsersCount = 0;
+
+    seedRandomness();
 
     await generateTestData(
       newUsersCount,
@@ -872,6 +875,8 @@ test("Assignment with no program items should return error", async () => {
   const numberOfGroups = 0;
   const newProgramItemsCount = 0;
   const testUsersCount = 0;
+
+  seedRandomness();
 
   await generateTestData(
     newUsersCount,
