@@ -659,6 +659,8 @@ export const translationEN = {
     sentryTesting: "Sentry testing",
     sentryClientTest: "Client test",
     sentryBackendTest: "Backend test",
+    errorBoundaryTesting: "Error boundary testing",
+    errorBoundaryTest: "Trigger view error",
     signupStrategy: "Sign-up strategy",
     loginProvider: "Login provider",
     emailNotificationTriggers: "Email notification triggers",

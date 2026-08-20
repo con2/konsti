@@ -661,6 +661,8 @@ export const translationFI = {
     sentryTesting: "Sentryn testaus",
     sentryClientTest: "Client-testi",
     sentryBackendTest: "Backend-testi",
+    errorBoundaryTesting: "Virherajan testaus",
+    errorBoundaryTest: "Aiheuta näkymävirhe",
     signupStrategy: "Ilmoittautumistapa",
     loginProvider: "Kirjautumistapa",
     emailNotificationTriggers: "Sähköposti-ilmoitusten lähetys",

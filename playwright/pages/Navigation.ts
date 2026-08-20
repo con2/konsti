@@ -5,8 +5,13 @@ import { localStorageStateKey } from "shared/constants/browserStorage";
 export class Navigation {
   constructor(private readonly page: Page) {}
 
+  // The drawer trigger, part of the header and so outside the routed views
+  get icon(): Locator {
+    return this.page.getByTestId("navigation-icon");
+  }
+
   async open(): Promise<void> {
-    await this.page.getByTestId("navigation-icon").click();
+    await this.icon.click();
   }
 
   async gotoLoginPage(): Promise<void> {
