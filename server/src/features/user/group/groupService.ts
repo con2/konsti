@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import dayjs, { Dayjs } from "dayjs";
+import { isBefore } from "date-fns";
 import { MongoDbError } from "shared/types/api/errors";
 import {
   GetGroupResponse,
@@ -42,7 +42,7 @@ export const generateGroupCode = (): string => {
 const checkUpcomingDirectSignups = async (
   username: string,
   programItems: ProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): Promise<PostCreateGroupError | PostJoinGroupError | null> => {
   const userDirectSignupsResult = await findUserDirectSignups(username);
   if (!userDirectSignupsResult.ok) {
@@ -70,7 +70,7 @@ const checkUpcomingDirectSignups = async (
   );
 
   const userHasUpcomingDirectSignups = userDirectSignupProgramItems.some(
-    (programItem) => timeNow.isBefore(dayjs(programItem.startTime)),
+    (programItem) => isBefore(timeNow, new Date(programItem.startTime)),
   );
   if (userHasUpcomingDirectSignups) {
     return {

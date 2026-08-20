@@ -1,4 +1,3 @@
-import { Dayjs } from "dayjs";
 import {
   AgeGroup,
   Language,
@@ -36,8 +35,8 @@ export enum EventName {
 type ArrMin1<T> = [T, ...T[]];
 
 interface SignupWindow {
-  signupWindowStart: Dayjs;
-  signupWindowClose: Dayjs;
+  signupWindowStart: Date;
+  signupWindowClose: Date;
 }
 
 export enum EntryConditionText {

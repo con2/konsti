@@ -1,6 +1,5 @@
 import { Server } from "node:http";
 import { config } from "shared/config";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { EmailSender } from "server/features/notifications/email";
 import { startCronJobs } from "server/utils/cron";
 import { logger } from "server/utils/logger";
@@ -11,8 +10,6 @@ import {
 } from "./utils/notificationQueue";
 
 const startApp = async (): Promise<void> => {
-  initializeDayjs();
-
   let server: Server;
   try {
     server = await startServer({

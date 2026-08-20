@@ -1,6 +1,6 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, subMinutes } from "date-fns";
 import { sortBy } from "remeda";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
@@ -165,11 +165,12 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const { eventStartTime, directSignupPhaseStart } = config.event();
 
     // Own start time is after the lottery cutoff (event start + 3h) so lottery applies
-    const ownStartTime = dayjs(eventStartTime).add(8, "hours").toISOString();
+    const ownStartTime = addHours(new Date(eventStartTime), 8).toISOString();
     // Now is before the direct sign-up phase starts for the own start time
-    const timeNow = dayjs(ownStartTime)
-      .subtract(directSignupPhaseStart + 60, "minutes")
-      .toISOString();
+    const timeNow = subMinutes(
+      new Date(ownStartTime),
+      directSignupPhaseStart + 60,
+    ).toISOString();
 
     await saveTestSettings({ testTime: timeNow });
     await createSettings();
@@ -187,9 +188,9 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   test("should resolve signup strategy from parent start time override", async () => {
     const { eventStartTime, directSignupPhaseStart } = config.event();
 
-    const ownStartTime = dayjs(eventStartTime).add(8, "hours").toISOString();
+    const ownStartTime = addHours(new Date(eventStartTime), 8).toISOString();
     // Parent start time is earlier than own start time so its direct sign-up phase has started
-    const parentStartTime = dayjs(eventStartTime).add(5, "hours").toISOString();
+    const parentStartTime = addHours(new Date(eventStartTime), 5).toISOString();
 
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -199,9 +200,10 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     });
 
     // Now is before the own direct sign-up phase start, but after the parent-derived one
-    const timeNow = dayjs(parentStartTime)
-      .subtract(directSignupPhaseStart - 60, "minutes")
-      .toISOString();
+    const timeNow = subMinutes(
+      new Date(parentStartTime),
+      directSignupPhaseStart - 60,
+    ).toISOString();
 
     await saveTestSettings({ testTime: timeNow });
     await createSettings();
@@ -350,9 +352,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
   test("should update changed program item details", async () => {
     const newDescription = "new description";
-    const newStartTime = dayjs(testProgramItem.startTime)
-      .add(1, "hours")
-      .toISOString();
+    const newStartTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       ok: true,
@@ -380,16 +383,17 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const programItems = unsafelyUnwrap(await findProgramItems());
 
     expect(programItems).toHaveLength(1);
-    expect(dayjs(programItems[0].startTime).toISOString()).toEqual(
+    expect(new Date(programItems[0].startTime).toISOString()).toEqual(
       newStartTime,
     );
     expect(programItems[0].description).toEqual(newDescription);
   });
 
   test("should remove lottery signups but not direct signups or favorite program items if program item start time changes", async () => {
-    const newStartTime = dayjs(testProgramItem.startTime)
-      .add(1, "hours")
-      .toISOString();
+    const newStartTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       ok: true,

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import {
   EventSignupStrategy,
@@ -160,10 +160,9 @@ test("Admin sees signup questions listed", async ({ page, request }) => {
       ...testProgramItem,
       programItemId: "admin-question-item",
       title: "Admin Question Item",
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
   ]);
   await postSettings(request, {
@@ -193,10 +192,9 @@ test("Admin sees signup questions listed", async ({ page, request }) => {
 });
 
 test("Admin can trigger an assignment run", async ({ page, request }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(4, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 4),
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -234,7 +232,7 @@ test("Hide program item", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime).toISOString(),
+      startTime: new Date(config.event().eventStartTime).toISOString(),
     },
   ]);
   await postTestSettings(request, {

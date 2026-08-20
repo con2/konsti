@@ -1,6 +1,5 @@
 import { config } from "shared/config";
 import { PopulateDbOptions } from "shared/test-types/api/testData";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { db } from "server/db/mongodb";
 import { removeDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { removeProgramItems } from "server/features/program-item/programItemRepository";
@@ -32,8 +31,6 @@ export const runGenerators = async (
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Generator: Data creation not allowed in production");
   }
-
-  initializeDayjs();
 
   // Generator settings
   const enableGroups = config.event().enableGroups;

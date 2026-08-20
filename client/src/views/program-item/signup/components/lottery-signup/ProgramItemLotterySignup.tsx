@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
+import { isSameOrAfter } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { ButtonStyle } from "client/components/componentStyles";
@@ -106,7 +107,7 @@ export const ProgramItemLotterySignup = ({
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
   const timeNow = useTimeNow();
-  const lotterySignupOpen = timeNow.isSameOrAfter(lotterySignupStartTime);
+  const lotterySignupOpen = isSameOrAfter(timeNow, lotterySignupStartTime);
 
   if (!loggedIn) {
     return <LoginToSignupLink />;

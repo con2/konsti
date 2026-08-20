@@ -1,10 +1,11 @@
-import dayjs from "dayjs";
+import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { isBetweenExclusive } from "shared/utils/timeComparison";
 import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import {
   DeleteLotterySignupsParams,
@@ -67,9 +68,10 @@ export const removeOverlapLotterySignups = async (
           if (!foundProgramItem) {
             return false;
           }
-          const startsDuring = dayjs(foundProgramItem.startTime).isBetween(
-            dayjs(assignmentSignupProgramItem.startTime).add(1, "minutes"),
-            dayjs(assignmentSignupProgramItem.endTime),
+          const startsDuring = isBetweenExclusive(
+            new Date(foundProgramItem.startTime),
+            addMinutes(new Date(assignmentSignupProgramItem.startTime), 1),
+            new Date(assignmentSignupProgramItem.endTime),
           );
           return startsDuring;
         },
@@ -96,7 +98,7 @@ export const removeOverlapLotterySignups = async (
         getUpcomingLotterySignupProgramItemIds(
           signedUser.lotterySignups,
           programItems,
-          dayjs(assignmentTime),
+          new Date(assignmentTime),
         );
 
       // Only update users with upcoming lottery sign-ups

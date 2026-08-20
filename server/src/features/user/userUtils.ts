@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs";
+import { isAfter } from "date-fns";
 import { MongoDbError } from "shared/types/api/errors";
 import { Result } from "shared/utils/result";
 import { saveSerials } from "server/features/serial/serialRepository";
@@ -6,15 +6,15 @@ import { Serial } from "server/types/serialTypes";
 import { logger } from "server/utils/logger";
 
 interface HasSignupEndedParams {
-  signupEndTime: Dayjs;
-  timeNow: Dayjs;
+  signupEndTime: Date;
+  timeNow: Date;
 }
 
 export const hasSignupEnded = ({
   signupEndTime,
   timeNow,
 }: HasSignupEndedParams): boolean => {
-  if (timeNow.isAfter(signupEndTime)) {
+  if (isAfter(timeNow, signupEndTime)) {
     logger.warn(
       `Invalid signup time: timeNow: ${timeNow.toISOString()}, signupEndTime: ${signupEndTime.toISOString()}`,
     );

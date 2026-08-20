@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour, subHours } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -388,7 +388,7 @@ test("Show event log notification when program item with lottery sign-up is dele
 
   // Advance time past lottery sign-up end so lottery is considered "run"
   await postTestSettings(request, {
-    testTime: dayjs(startTime).subtract(1, "hour").toISOString(),
+    testTime: subHours(new Date(startTime), 1).toISOString(),
   });
 
   // Delete program item on background (empty import removes it from DB)
@@ -567,12 +567,14 @@ const initDb = async (request: APIRequestContext): Promise<void> => {
 };
 
 const getStartTime = (type: "lottery" | "direct"): string => {
-  return dayjs(config.event().eventStartTime)
-    .add(type === "direct" ? 1 : 3, "hour") // -> direct sign-up
-    .startOf("hour")
-    .toISOString();
+  return startOfHour(
+    addHours(
+      new Date(config.event().eventStartTime),
+      type === "direct" ? 1 : 3, // -> direct sign-up
+    ),
+  ).toISOString();
 };
 
 const getEndTime = (startTime: string): string => {
-  return dayjs(startTime).add(testProgramItem.mins, "minutes").toISOString();
+  return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();
 };

@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, addMinutes, subMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -41,14 +41,16 @@ test("should remove overlapping lottery signups from user", async () => {
   });
 
   const programItemRemovedId = "program-item-removed-id";
-  const startTimeRemoved = dayjs(testProgramItem.startTime)
-    .add(testProgramItem.mins - 1, "minutes")
-    .toISOString();
+  const startTimeRemoved = addMinutes(
+    new Date(testProgramItem.startTime),
+    testProgramItem.mins - 1,
+  ).toISOString();
 
   const programItemNotRemovedId = "program-item-not-removed-id";
-  const startTimeNotRemoved = dayjs(testProgramItem.startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTimeNotRemoved = addMinutes(
+    new Date(testProgramItem.startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await saveProgramItems([
     testProgramItem,
@@ -180,7 +182,7 @@ test("should remove overlapping lottery signups from user", async () => {
 });
 
 test("should remove all upcoming lottery signups from user", async () => {
-  const timeNow = dayjs(testProgramItem.startTime).toISOString();
+  const timeNow = new Date(testProgramItem.startTime).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
@@ -188,18 +190,19 @@ test("should remove all upcoming lottery signups from user", async () => {
   });
 
   const resultProgramItemId = "result-program-item-id";
-  const resultProgramItemStartTime = dayjs(timeNow).toISOString();
+  const resultProgramItemStartTime = new Date(timeNow).toISOString();
 
   const pastProgramItemId = "past-program-item-id";
-  const pastProgramItemStartTime = dayjs(timeNow)
-    .subtract(1, "minute")
-    .toISOString();
+  const pastProgramItemStartTime = subMinutes(
+    new Date(timeNow),
+    1,
+  ).toISOString();
 
   const upcomingProgramItemId = "upcoming-program-item-id";
-  const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+  const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
 
   const upcomingProgramItemId2 = "upcoming-program-item-id-2";
-  const upcomingStartTime2 = dayjs(timeNow).add(10, "hours").toISOString();
+  const upcomingStartTime2 = addHours(new Date(timeNow), 10).toISOString();
 
   await saveProgramItems([
     {
@@ -317,7 +320,7 @@ test("should remove all upcoming lottery signups from user", async () => {
 });
 
 test("should not remove upcoming lottery signups when strategy is NONE", async () => {
-  const timeNow = dayjs(testProgramItem.startTime).toISOString();
+  const timeNow = new Date(testProgramItem.startTime).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
@@ -325,10 +328,10 @@ test("should not remove upcoming lottery signups when strategy is NONE", async (
   });
 
   const resultProgramItemId = "result-program-item-id";
-  const resultProgramItemStartTime = dayjs(timeNow).toISOString();
+  const resultProgramItemStartTime = new Date(timeNow).toISOString();
 
   const upcomingProgramItemId = "upcoming-program-item-id";
-  const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+  const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
 
   await saveProgramItems([
     {
@@ -394,8 +397,8 @@ test("should not remove upcoming lottery signups when strategy is NONE", async (
 });
 
 test("should not remove upcoming lottery signup with past parent startTime", async () => {
-  const timeNow = dayjs(testProgramItem.startTime).toISOString();
-  const parentStartTime = dayjs(timeNow).subtract(30, "minutes").toISOString();
+  const timeNow = new Date(testProgramItem.startTime).toISOString();
+  const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
@@ -406,10 +409,10 @@ test("should not remove upcoming lottery signup with past parent startTime", asy
   });
 
   const resultProgramItemId = "lottery-result-program-item-id";
-  const resultProgramItemStartTime = dayjs(timeNow).toISOString();
+  const resultProgramItemStartTime = new Date(timeNow).toISOString();
 
   const upcomingProgramItemId = "upcoming-program-item-id";
-  const upcomingStartTime = dayjs(timeNow).add(1, "minute").toISOString();
+  const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
 
   await saveProgramItems([
     {

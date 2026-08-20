@@ -1,5 +1,5 @@
 import { Cron } from "croner";
-import dayjs from "dayjs";
+import { isAfter } from "date-fns";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
 import { Result, makeSuccessResult } from "shared/utils/result";
@@ -22,7 +22,7 @@ let instanceStartTime = "";
 export const setLatestServerStartTime = async (): Promise<
   Result<void, MongoDbError>
 > => {
-  instanceStartTime = dayjs().toISOString();
+  instanceStartTime = new Date().toISOString();
 
   logger.info(`Set latestServerStartTime ${instanceStartTime}`);
   const settingsResult = await saveSettings({
@@ -115,7 +115,7 @@ const isLatestServerInstance = async (): Promise<boolean> => {
     return true;
   }
 
-  if (dayjs(dbLatestStartTime).isAfter(instanceStartTime)) {
+  if (isAfter(new Date(dbLatestStartTime), new Date(instanceStartTime))) {
     // TODO: Expected during deploys, change to info level once stopping cronjobs is verified to work
     logger.error(
       new Error(
@@ -143,7 +143,7 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
 
   logger.info("Check if auto update already running...");
   const programUpdateLastRunResult = await setProgramUpdateLastRun(
-    dayjs().toISOString(),
+    new Date().toISOString(),
   );
   if (!programUpdateLastRunResult.ok) {
     if (programUpdateLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
@@ -212,7 +212,7 @@ export const autoAssignAttendees = async (): Promise<void> => {
     }
 
     // Record the last successful run time
-    await setAssignmentLastRun(dayjs().toISOString());
+    await setAssignmentLastRun(new Date().toISOString());
 
     logger.info("***** Automatic attendee assignment completed");
   } finally {
@@ -221,8 +221,10 @@ export const autoAssignAttendees = async (): Promise<void> => {
 };
 
 const protectCallback = (job: Cron): void => {
-  const timeNow = dayjs().toISOString();
-  const startTime = dayjs(job.currentRun()).toISOString();
+  const timeNow = new Date().toISOString();
+  // No current run means the blocking call already finished between the block
+  // and this log line
+  const startTime = job.currentRun()?.toISOString() ?? "unknown";
   logger.error(
     new Error(
       `Cronjob ${job.name} at ${timeNow} was blocked by call started at ${startTime}`,

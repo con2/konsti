@@ -1,6 +1,5 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
 import mongoose from "mongoose";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
@@ -100,8 +99,8 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
       {
         username: mockUser.username,
         programItemId: "123",
-        programItemStartTime: dayjs().toISOString(),
-        createdAt: dayjs().toISOString(),
+        programItemStartTime: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
         action: EventLogAction.NEW_ASSIGNMENT,
       },
     ]);

@@ -1,6 +1,6 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, addSeconds, subHours, subMinutes } from "date-fns";
 import request, { Test } from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -55,9 +55,10 @@ beforeEach(async () => {
   // Sign-up start defaults to 'eventStartTime' if before
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
-    eventStartTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().preSignupStart, "minutes")
-      .toISOString(),
+    eventStartTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().preSignupStart,
+    ).toISOString(),
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   });
   server = await startServer({
@@ -136,7 +137,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when program item is not found", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
+      subHours(new Date(testProgramItem.startTime), 1).toISOString(),
     );
     await saveUser(mockUser);
 
@@ -265,7 +266,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return error when signup is not yet open", async () => {
     // This test time should land to phaseGap
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).subtract(2, "hours").toISOString(),
+      subHours(new Date(testProgramItem.startTime), 2).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -292,7 +293,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when signup is closed", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).add(1, "second").toISOString(),
+      addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -397,15 +398,17 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should store parent start time as signedToStartTime when program item has parent start time override", async () => {
     // Direct sign-ups store the parent-resolved start time so lottery re-runs can
     // clean them up by matching the shared parent time
-    const parentStartTime = dayjs(testProgramItem.startTime)
-      .add(1, "hour")
-      .toISOString();
+    const parentStartTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
 
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
-      eventStartTime: dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
+      eventStartTime: subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
       startTimesByParentIds: new Map([
         [testProgramItem.parentId, parentStartTime],
@@ -414,7 +417,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // Sign-up is open: after the parent-derived direct sign-up start, before own end time
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).subtract(30, "minutes").toISOString(),
+      subMinutes(new Date(testProgramItem.startTime), 30).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -443,7 +446,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     // signedToStartTime is the parent start time, not the program item own start time
     expect(
-      dayjs(modifiedSignups[0].userSignups[0].signedToStartTime).toISOString(),
+      new Date(
+        modifiedSignups[0].userSignups[0].signedToStartTime,
+      ).toISOString(),
     ).toEqual(parentStartTime);
   });
 
@@ -691,7 +696,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when program item is not found", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
+      subHours(new Date(testProgramItem.startTime), 1).toISOString(),
     );
     await saveUser(mockUser);
 

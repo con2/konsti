@@ -1,6 +1,6 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, subMinutes } from "date-fns";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import {
@@ -99,9 +99,10 @@ test("Should only update program item popularity of upcoming program items", asy
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   });
 
-  const timeNow = dayjs(testProgramItem.startTime)
-    .add(1, "hours")
-    .toISOString();
+  const timeNow = addHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
   vi.setSystemTime(timeNow);
 
   await saveProgramItems([
@@ -109,7 +110,7 @@ test("Should only update program item popularity of upcoming program items", asy
     {
       ...testProgramItem2,
       minAttendance: 1,
-      startTime: dayjs(testProgramItem.startTime).add(2, "hours").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 2).toISOString(),
     },
   ]);
   await saveUser(mockUser);
@@ -133,9 +134,10 @@ test("Should only update program item popularity of upcoming program items", asy
       {
         programItemId: testProgramItem2.programItemId,
         priority: 1,
-        signedToStartTime: dayjs(testProgramItem.startTime)
-          .add(2, "hours")
-          .toISOString(),
+        signedToStartTime: addHours(
+          new Date(testProgramItem.startTime),
+          2,
+        ).toISOString(),
       },
     ],
     username: mockUser2.username,
@@ -175,11 +177,12 @@ test("Should only update program item popularity of upcoming program items", asy
 });
 
 test("Should update popularity of upcoming program item with parent", async () => {
-  const timeNow = dayjs(testProgramItem.startTime)
-    .add(1, "hours")
-    .toISOString();
-  const parentStartTime = dayjs(timeNow).add(1, "hour").toISOString();
-  const upcomingStartTime = dayjs(timeNow).add(2, "hours").toISOString();
+  const timeNow = addHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+  const parentStartTime = addHours(new Date(timeNow), 1).toISOString();
+  const upcomingStartTime = addHours(new Date(timeNow), 2).toISOString();
 
   vi.setSystemTime(timeNow);
   vi.spyOn(config, "event").mockReturnValue({
@@ -234,11 +237,12 @@ test("Should update popularity of upcoming program item with parent", async () =
 });
 
 test("Should not update upcoming program item popularity if parent starTime in past", async () => {
-  const timeNow = dayjs(testProgramItem.startTime)
-    .add(1, "hours")
-    .toISOString();
-  const parentStartTime = dayjs(timeNow).subtract(30, "minutes").toISOString();
-  const upcomingStartTime = dayjs(timeNow).add(2, "hours").toISOString();
+  const timeNow = addHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+  const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
+  const upcomingStartTime = addHours(new Date(timeNow), 2).toISOString();
 
   vi.setSystemTime(timeNow);
   vi.spyOn(config, "event").mockReturnValue({

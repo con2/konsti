@@ -52,7 +52,7 @@ beforeEach(() => {
   });
 });
 
-// The elapsed time is a dayjs diff against the sign-up opening, reported in
+// The elapsed time is measured against the sign-up opening, reported in
 // seconds under a minute and as h/min above it
 test.each([
   ["2023-07-29T13:00:45.000Z", "45s (2/4) - Test RPG"],

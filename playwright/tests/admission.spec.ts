@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -17,10 +17,9 @@ test("Admission ticket reflects whether the user has signed up", async ({
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

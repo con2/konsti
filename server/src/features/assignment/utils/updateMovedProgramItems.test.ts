@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test } from "vitest";
 import {
@@ -52,7 +52,7 @@ test("should remove lottery signups for moved program items from users", async (
   await ProgramItemModel.updateOne(
     { programItemId: testProgramItem.programItemId },
     {
-      startTime: dayjs(testProgramItem.startTime).add(1, "hours").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
     },
   );
 
@@ -84,13 +84,16 @@ test("should notify a user about a moved lottery signup and a moved direct signu
   await ProgramItemModel.updateOne(
     { programItemId: testProgramItem.programItemId },
     {
-      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
     },
   );
   await ProgramItemModel.updateOne(
     { programItemId: testProgramItem2.programItemId },
     {
-      startTime: dayjs(testProgramItem2.startTime).add(1, "hour").toISOString(),
+      startTime: addHours(
+        new Date(testProgramItem2.startTime),
+        1,
+      ).toISOString(),
     },
   );
 
@@ -107,15 +110,17 @@ test("should notify a user about a moved lottery signup and a moved direct signu
     expect.arrayContaining([
       expect.objectContaining({
         programItemId: testProgramItem.programItemId,
-        programItemStartTime: dayjs(testProgramItem.startTime)
-          .add(1, "hour")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
       }),
       expect.objectContaining({
         programItemId: testProgramItem2.programItemId,
-        programItemStartTime: dayjs(testProgramItem2.startTime)
-          .add(1, "hour")
-          .toISOString(),
+        programItemStartTime: addHours(
+          new Date(testProgramItem2.startTime),
+          1,
+        ).toISOString(),
       }),
     ]),
   );
@@ -135,7 +140,7 @@ test("should notify a user only once for a moved item they have both a lottery a
   await ProgramItemModel.updateOne(
     { programItemId: testProgramItem.programItemId },
     {
-      startTime: dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
     },
   );
 
@@ -151,6 +156,6 @@ test("should notify a user only once for a moved item they have both a lottery a
   expect(movedEvents).toHaveLength(1);
   expect(movedEvents?.[0].programItemId).toEqual(testProgramItem.programItemId);
   expect(movedEvents?.[0].programItemStartTime).toEqual(
-    dayjs(testProgramItem.startTime).add(1, "hour").toISOString(),
+    addHours(new Date(testProgramItem.startTime), 1).toISOString(),
   );
 });

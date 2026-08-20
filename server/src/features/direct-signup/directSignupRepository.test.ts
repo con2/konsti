@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -193,9 +193,10 @@ test("should not delete multiple times if delete called multiple times", async (
 test("should find direct signups for a parent-batched item by its parent start time", async () => {
   // The item is batched under a parent whose start time drives the lottery, so its own
   // start time differs from the assignment time
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),

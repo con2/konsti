@@ -10,7 +10,7 @@ const CLOCK_TICK_MS = 60 * 1000;
 // value on, so a component keeps whichever instant it first rendered with.
 // Ticking also keeps the value stable in between, so consumers can list it as
 // a dependency like any other value. Kept as epoch milliseconds rather than a
-// Dayjs so that an unchanged instant compares equal instead of merely equivalent
+// Date object so that an unchanged instant compares equal instead of merely equivalent
 let timeNowMs = Date.now();
 const listeners = new Set<() => void>();
 let clockTimer: ReturnType<typeof setTimeout> | undefined;

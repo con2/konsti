@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isAfter, isBefore } from "date-fns";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
@@ -31,8 +31,8 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
       return (
         programItem.revolvingDoor &&
         !hiddenProgramItemsIds.has(programItem.programItemId) &&
-        dayjs(programItem.startTime).isBefore(timeNow) &&
-        dayjs(programItem.endTime).isAfter(timeNow)
+        isBefore(new Date(programItem.startTime), timeNow) &&
+        isAfter(new Date(programItem.endTime), timeNow)
       );
     }),
     (programItem) => programItem.title,

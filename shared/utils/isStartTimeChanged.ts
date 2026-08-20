@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isSameMinute } from "date-fns";
 import { config } from "shared/config";
 
 export const isStartTimeChanged = (
@@ -8,17 +8,13 @@ export const isStartTimeChanged = (
 ): boolean => {
   const { startTimesByParentIds } = config.event();
 
-  const startTimeChanged = !dayjs(signedToStartTime).isSame(
-    dayjs(programItemStartTime),
-    "minute",
+  // A configured parent start time replaces the item's own here: the whole batch
+  // is signed to that one time
+  const comparedStartTime =
+    startTimesByParentIds.get(parentId) ?? programItemStartTime;
+
+  return !isSameMinute(
+    new Date(signedToStartTime),
+    new Date(comparedStartTime),
   );
-
-  const parentIdMatch = startTimesByParentIds.has(parentId);
-
-  const parentStartTimeChanged = !dayjs(signedToStartTime).isSame(
-    dayjs(startTimesByParentIds.get(parentId)),
-    "minute",
-  );
-
-  return parentIdMatch ? parentStartTimeChanged : startTimeChanged;
 };

@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isSameMinute } from "date-fns";
 import { config } from "shared/config";
 
 export const isStartTimeMatch = (
@@ -8,17 +8,20 @@ export const isStartTimeMatch = (
 ): boolean => {
   const { startTimesByParentIds } = config.event();
 
-  const startTimeMatch = dayjs(startTime).isSame(dayjs(timeToMatch), "minute");
+  const startTimeMatch = isSameMinute(
+    new Date(startTime),
+    new Date(timeToMatch),
+  );
 
   if (!parentId) {
     return startTimeMatch;
   }
 
-  const parentIdMatch = startTimesByParentIds.has(parentId);
+  const parentStartTime = startTimesByParentIds.get(parentId);
 
-  const parentStartTimeMatch = dayjs(
-    startTimesByParentIds.get(parentId),
-  ).isSame(timeToMatch, "minute");
-
-  return parentIdMatch ? parentStartTimeMatch : startTimeMatch;
+  // A parent start time batches several items into one lottery, so it is what
+  // the sign-up was made against
+  return parentStartTime === undefined
+    ? startTimeMatch
+    : isSameMinute(new Date(parentStartTime), new Date(timeToMatch));
 };

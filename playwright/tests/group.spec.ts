@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -22,13 +22,13 @@ test("Can create and join a group and receive a shared lottery result", async ({
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -183,13 +183,13 @@ test("Group member cannot lottery signup but group creator can", async ({
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -238,13 +238,13 @@ test("Show error when group is bigger than the program item's maximum attendance
   page,
   request,
 }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(3, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 3),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -300,14 +300,12 @@ test("Upcoming direct signups block creating and joining a group", async ({
 }) => {
   // Both program items are in the direct sign-up phase at event start time,
   // starting one and two hours after it
-  const startTime1 = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
-  const startTime2 = dayjs(config.event().eventStartTime)
-    .add(2, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime1 = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
+  const startTime2 = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 2),
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -315,17 +313,19 @@ test("Upcoming direct signups block creating and joining a group", async ({
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: startTime1,
-      endTime: dayjs(startTime1)
-        .add(testProgramItem.mins, "minutes")
-        .toISOString(),
+      endTime: addMinutes(
+        new Date(startTime1),
+        testProgramItem.mins,
+      ).toISOString(),
     },
     {
       ...testProgramItem2,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: startTime2,
-      endTime: dayjs(startTime2)
-        .add(testProgramItem2.mins, "minutes")
-        .toISOString(),
+      endTime: addMinutes(
+        new Date(startTime2),
+        testProgramItem2.mins,
+      ).toISOString(),
     },
   ]);
   await postSettings(request, {
@@ -371,7 +371,7 @@ test("Upcoming direct signups block creating and joining a group", async ({
 
   // Once the program items have started, they no longer block group actions
   await postTestSettings(request, {
-    testTime: dayjs(startTime2).add(1, "minute").toISOString(),
+    testTime: addMinutes(new Date(startTime2), 1).toISOString(),
   });
   await page.reload();
 

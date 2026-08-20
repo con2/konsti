@@ -1,10 +1,29 @@
-import dayjs, { Dayjs } from "dayjs";
+import { TZDate } from "@date-fns/tz";
+import {
+  addHours,
+  addMinutes,
+  getHours,
+  isAfter,
+  isBefore,
+  subDays,
+  subHours,
+  subMinutes,
+} from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
-import { getIsoDate } from "shared/utils/timeFormatter";
+import {
+  isSameOrAfter,
+  isSameOrBefore,
+  isWithinMinutes,
+} from "shared/utils/timeComparison";
+import { TIMEZONE } from "shared/utils/timezone";
+
+// A TZDate serialises to its own offset ("...+03:00") rather than to UTC, and these
+// values are stored and compared as ISO strings elsewhere, so the timezone stays an
+// internal detail of the arithmetic and never escapes in a return value
+const toPlainDate = (time: Date): Date => new Date(time);
 
 // Resolve a program item's effective start time, applying the parent override that batches
 // several items into a single lottery run
@@ -20,28 +39,29 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string => {
 // built from the previous calendar day and the hour, so an item starting at e.g.
 // 09:15 opens at 22:00, not 22:15.
 //
-// Taking the date and rebuilding, rather than chaining day arithmetic onto the
-// passed instant, is what keeps this right across a DST change: setting the hour on
-// a dayjs.tz() value uses the UTC offset it was created with, which lands an hour
-// off - early in autumn, and for first-come-first-served sign-ups that hands out
-// spots before anyone expects them
+// Both steps run in the event timezone: stepping back a day keeps the wall-clock
+// time even when that day is 23 or 25 hours long, and naming the hour explicitly
+// resolves whichever UTC offset that day happens to have
 const openAtFixedHourPreviousEvening = (
-  timezoneStartTime: Dayjs,
+  timezoneStartTime: Date,
   hour: number,
-): Dayjs => {
-  // Subtracting from the zoned instant keeps its wall-clock time, so this is the
-  // previous calendar day even when that day is 23 or 25 hours long
-  const previousDay = getIsoDate(timezoneStartTime.subtract(1, "day"));
+): Date => {
+  const previousDay = subDays(new TZDate(timezoneStartTime, TIMEZONE), 1);
 
-  // Parsed back as a wall-clock time in the event timezone, which is what resolves
-  // the correct UTC offset for that particular day
-  return dayjs.tz(
-    `${previousDay} ${String(hour).padStart(2, "0")}:00`,
-    TIMEZONE,
+  return toPlainDate(
+    new TZDate(
+      previousDay.getFullYear(),
+      previousDay.getMonth(),
+      previousDay.getDate(),
+      hour,
+      0,
+      0,
+      TIMEZONE,
+    ),
   );
 };
 
-export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
+export const getLotterySignupStartTime = (programItem: ProgramItem): Date => {
   const { eventStartTime, preSignupStart, fixedLotterySignupTime } =
     config.event();
 
@@ -49,46 +69,46 @@ export const getLotterySignupStartTime = (programItem: ProgramItem): Dayjs => {
 
   // Set timezone because hour comparison and setting hour value
   const timezoneStartTime = fixedLotterySignupTime
-    ? dayjs(fixedLotterySignupTime).tz(TIMEZONE)
-    : dayjs(startTime).tz(TIMEZONE).subtract(preSignupStart, "minutes");
+    ? new TZDate(fixedLotterySignupTime, TIMEZONE)
+    : subMinutes(new TZDate(startTime, TIMEZONE), preSignupStart);
 
   // If lottery sign-up starts before event start time, use event start time
-  if (timezoneStartTime.isBefore(dayjs(eventStartTime))) {
-    return dayjs(eventStartTime);
+  if (isBefore(timezoneStartTime, new Date(eventStartTime))) {
+    return new Date(eventStartTime);
   }
 
-  const startTimeIsTooEarly = timezoneStartTime.hour() <= 6;
+  const startTimeIsTooEarly = getHours(timezoneStartTime) <= 6;
 
   if (startTimeIsTooEarly) {
     return openAtFixedHourPreviousEvening(timezoneStartTime, 22);
   }
 
-  return timezoneStartTime;
+  return toPlainDate(timezoneStartTime);
 };
 
-export const getLotterySignupEndTime = (programItem: ProgramItem): Dayjs => {
+export const getLotterySignupEndTime = (programItem: ProgramItem): Date => {
   const { directSignupPhaseStart } = config.event();
   const startTime = getProgramItemStartTime(programItem);
-  return dayjs(startTime).subtract(directSignupPhaseStart, "minutes");
+  return subMinutes(new Date(startTime), directSignupPhaseStart);
 };
 
 export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
   eventStartTime: string,
-): Dayjs => {
+): Date => {
   // Sign-up starts 4 hours before program item start time
-  const rollingStartTime = dayjs(programItem.startTime).subtract(4, "hours");
+  const rollingStartTime = subHours(new Date(programItem.startTime), 4);
 
   // Earliest start time is event start time
-  if (rollingStartTime.isBefore(dayjs(eventStartTime))) {
-    return dayjs(eventStartTime);
+  if (isBefore(rollingStartTime, new Date(eventStartTime))) {
+    return new Date(eventStartTime);
   }
 
   // If program item starts before 12:00, sign-up starts 18:00 previous day
   if (config.event().enableRollingDirectSignupPreviousDay) {
     // Set timezone because hour comparison and setting hour value
-    const timezoneStartTime = dayjs(programItem.startTime).tz(TIMEZONE);
-    const startTimeIsTooEarly = timezoneStartTime.hour() < 12;
+    const timezoneStartTime = new TZDate(programItem.startTime, TIMEZONE);
+    const startTimeIsTooEarly = getHours(timezoneStartTime) < 12;
     if (startTimeIsTooEarly) {
       return openAtFixedHourPreviousEvening(timezoneStartTime, 18);
     }
@@ -97,7 +117,7 @@ export const getRollingDirectSignupStartTime = (
   return rollingStartTime;
 };
 
-export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
+export const getDirectSignupStartTime = (programItem: ProgramItem): Date => {
   const {
     eventStartTime,
     preConventionWeekSignupStartTime,
@@ -116,10 +136,10 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
       preConventionWeekSignupStartTime &&
       isPreConventionWeekProgramItem(programItem)
     ) {
-      return dayjs(preConventionWeekSignupStartTime);
+      return new Date(preConventionWeekSignupStartTime);
     }
 
-    return dayjs(eventStartTime);
+    return new Date(eventStartTime);
   }
 
   // ** TWO PHASE SIGN-UPS **
@@ -127,9 +147,9 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
   // 'twoPhaseSignupProgramTypes' sign-up times are configured with 'directSignupPhaseStart'
   if (twoPhaseSignupProgramTypes.includes(programItem.programType)) {
     const startTime = getProgramItemStartTime(programItem);
-    const directSignupStart = dayjs(startTime).subtract(
+    const directSignupStart = subMinutes(
+      new Date(startTime),
       directSignupPhaseStart,
-      "minutes",
     );
 
     // If event starts at 15:00, 'directSignupPhaseStart' is 2h and 'phaseGap' is 15min
@@ -137,18 +157,18 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     //   Start time 16:00 -> sign-up start 14:00 -> fix to 15:00
     //   Start time 17:00 -> sign-up start 15:15 -> fix to 15:00
     //   Start time 18:00 -> sign-up start 16:15 -> this is fine
-    const signupsBeforeThisStartAtEventStart = dayjs(eventStartTime).add(
+    const signupsBeforeThisStartAtEventStart = addHours(
+      new Date(eventStartTime),
       1,
-      "hour",
     );
 
-    if (dayjs(directSignupStart).isBefore(signupsBeforeThisStartAtEventStart)) {
-      return dayjs(eventStartTime);
+    if (isBefore(directSignupStart, signupsBeforeThisStartAtEventStart)) {
+      return new Date(eventStartTime);
     }
 
-    const directSignupStartWithPhaseGap = directSignupStart.add(
+    const directSignupStartWithPhaseGap = addMinutes(
+      directSignupStart,
       phaseGap,
-      "minutes",
     );
 
     return directSignupStartWithPhaseGap;
@@ -168,49 +188,48 @@ export const getDirectSignupStartTime = (programItem: ProgramItem): Dayjs => {
     : undefined;
 
   if (!signupWindowsForProgramType) {
-    return dayjs(eventStartTime);
+    return new Date(eventStartTime);
   }
 
   const matchingSignupWindow = signupWindowsForProgramType.find(
     (signupWindow) =>
-      dayjs(programItem.startTime).isBetween(
+      isWithinMinutes(
+        new Date(programItem.startTime),
         signupWindow.signupWindowStart,
         signupWindow.signupWindowClose,
-        "minutes",
-        "[)", // Include windowStart, exclude windowClose
       ),
   );
 
-  return matchingSignupWindow?.signupWindowStart ?? dayjs(eventStartTime);
+  return matchingSignupWindow?.signupWindowStart ?? new Date(eventStartTime);
 };
 
-export const getDirectSignupEndTime = (programItem: ProgramItem): Dayjs => {
-  return dayjs(programItem.startTime);
+export const getDirectSignupEndTime = (programItem: ProgramItem): Date => {
+  return new Date(programItem.startTime);
 };
 
 export const getLotterySignupNotStarted = (
   programItem: ProgramItem,
-  timeNow: Dayjs,
+  timeNow: Date,
 ): boolean => {
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
-  return timeNow.isBefore(lotterySignupStartTime);
+  return isBefore(timeNow, lotterySignupStartTime);
 };
 
 export const getLotterySignupInProgress = (
   programItem: ProgramItem,
-  timeNow: Dayjs,
+  timeNow: Date,
 ): boolean => {
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
   const lotterySignupEndTime = getLotterySignupEndTime(programItem);
   return (
-    timeNow.isSameOrAfter(lotterySignupStartTime) &&
-    timeNow.isSameOrBefore(lotterySignupEndTime)
+    isSameOrAfter(timeNow, lotterySignupStartTime) &&
+    isSameOrBefore(timeNow, lotterySignupEndTime)
   );
 };
 
 export const getPhaseGapInProgress = (
   programItem: ProgramItem,
-  timeNow: Dayjs,
+  timeNow: Date,
 ): boolean => {
   const { phaseGap } = config.event();
   const directSignupStartTime = getDirectSignupStartTime(programItem);
@@ -218,33 +237,33 @@ export const getPhaseGapInProgress = (
   // Delay showing lottery results immediately since lottery is still running
   const DELAY_SHOW_AFTER_LOTTERY = 1;
 
-  const phaseGapStart = directSignupStartTime.subtract(
+  const phaseGapStart = subMinutes(
+    directSignupStartTime,
     phaseGap - DELAY_SHOW_AFTER_LOTTERY,
-    "minutes",
   );
 
   return (
-    timeNow.isSameOrAfter(phaseGapStart) &&
-    timeNow.isBefore(directSignupStartTime)
+    isSameOrAfter(timeNow, phaseGapStart) &&
+    isBefore(timeNow, directSignupStartTime)
   );
 };
 
 export const getDirectSignupInProgress = (
   programItem: ProgramItem,
-  timeNow: Dayjs,
+  timeNow: Date,
 ): boolean => {
   const directSignupStartTime = getDirectSignupStartTime(programItem);
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   return (
-    timeNow.isSameOrAfter(directSignupStartTime) &&
-    timeNow.isSameOrBefore(directSignupEndTime)
+    isSameOrAfter(timeNow, directSignupStartTime) &&
+    isSameOrBefore(timeNow, directSignupEndTime)
   );
 };
 
 export const getDirectSignupEnded = (
   programItem: ProgramItem,
-  timeNow: Dayjs,
+  timeNow: Date,
 ): boolean => {
   const directSignupEndTime = getDirectSignupEndTime(programItem);
-  return timeNow.isAfter(directSignupEndTime);
+  return isAfter(timeNow, directSignupEndTime);
 };

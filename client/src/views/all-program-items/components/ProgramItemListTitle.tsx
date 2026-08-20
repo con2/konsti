@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { ReactElement, useRef } from "react";
 import { capitalize } from "remeda";
 import styled from "styled-components";
@@ -17,7 +16,7 @@ export const ProgramItemListTitle = ({ startTime }: Props): ReactElement => {
     <ProgramItemListTitleContainer key={startTime} ref={intersectionRef}>
       {/* Include the date outside event week so the weekday isn't ambiguous */}
       <StyledHeader>
-        {capitalize(getFormattedTime(dayjs(startTime), useTimeNow()))}
+        {capitalize(getFormattedTime(new Date(startTime), useTimeNow()))}
       </StyledHeader>
     </ProgramItemListTitleContainer>
   );

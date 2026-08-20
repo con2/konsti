@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isSameMinute } from "date-fns";
 import { partition } from "remeda";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
@@ -19,7 +19,7 @@ export const getAssignmentBonus = (
   // change outcomes): ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at the
   // current assignmentTime, but keep genuine first-come-first-served direct sign-ups
   const isCurrentAssignment = (startTime: string): boolean =>
-    dayjs(startTime).isSame(dayjs(assignmentTime), "minute");
+    isSameMinute(new Date(startTime), new Date(assignmentTime));
 
   // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =

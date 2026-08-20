@@ -15,12 +15,10 @@ import { getLocalStorageLocale } from "client/utils/localStorage";
 import { store } from "client/utils/store";
 // Initialized i18next instance
 import "client/utils/i18n";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { lazyWithRetry } from "client/utils/lazyWithRetry";
 import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
 
 resetStaleEventStorage();
-initializeDayjs();
 setLocale(getLocalStorageLocale());
 
 // The app manages scroll itself on navigation (views reset to the top on

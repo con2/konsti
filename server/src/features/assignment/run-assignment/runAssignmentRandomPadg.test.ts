@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -73,9 +73,10 @@ test("Assignment with valid data should return success with random+padg algorith
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const assignmentTime = dayjs(eventStartTime)
-    .add(firstLotterySignupSlot, "hours")
-    .toISOString();
+  const assignmentTime = addHours(
+    new Date(eventStartTime),
+    firstLotterySignupSlot,
+  ).toISOString();
 
   // FIRST RUN
 
@@ -152,7 +153,7 @@ test("Assignment with no attendees should return error with random+padg algorith
   );
 
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = addHours(new Date(eventStartTime), 2).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({

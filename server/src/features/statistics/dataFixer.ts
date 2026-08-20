@@ -1,5 +1,4 @@
 import { Command } from "commander";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { getMatchingEmails } from "server/features/statistics/matchingEmails";
 import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
 import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
@@ -8,8 +7,6 @@ import { formatJson } from "./fixer-helpers/formatJson";
 import { wildFix } from "./fixer-helpers/wildFix";
 
 const fixData = (): void => {
-  initializeDayjs();
-
   const commander = new Command();
 
   commander

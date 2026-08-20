@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addHours, addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -126,9 +126,10 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { eventStartTime } = config.event();
     const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-    const assignmentTime = dayjs(eventStartTime)
-      .add(firstLotterySignupSlot, "hours")
-      .toISOString();
+    const assignmentTime = addHours(
+      new Date(eventStartTime),
+      firstLotterySignupSlot,
+    ).toISOString();
 
     // FIRST RUN
 
@@ -163,9 +164,10 @@ describe("Assignment with valid data", () => {
 
     // One hour after the first slot: attendees assigned in the first run are still in
     // their 3h program items, so their overlapping lottery sign-ups have been removed
-    const startTime2 = dayjs(eventStartTime)
-      .add(firstLotterySignupSlot + 1, "hours")
-      .toISOString();
+    const startTime2 = addHours(
+      new Date(eventStartTime),
+      firstLotterySignupSlot + 1,
+    ).toISOString();
 
     const assignResults2Result = await runAssignment({
       assignmentAlgorithm,
@@ -515,9 +517,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // ProgramItem2: 15:00 lottery sign-up -> replaces ProgramItem1
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
-    const assignmentTime = dayjs(testProgramItem.startTime)
-      .add(1, "hours")
-      .toISOString();
+    const assignmentTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
 
     await saveProgramItems([
       { ...testProgramItem },
@@ -589,9 +592,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // User2, programItem2: 15:00 lottery sign-up -> doesn't affect user1 sign-up
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
-    const assignmentTime = dayjs(testProgramItem.startTime)
-      .add(1, "hours")
-      .toISOString();
+    const assignmentTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
 
     await saveProgramItems([
       { ...testProgramItem },
@@ -707,18 +711,20 @@ describe("Assignment with first time bonus", () => {
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       username: mockUser.username,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        1,
+      ).toISOString(),
     });
 
     // Non-lottery sign-up (tournament) should not affect the bonus
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: tournamentProgramItemId,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        1,
+      ).toISOString(),
       signupTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -728,9 +734,10 @@ describe("Assignment with first time bonus", () => {
     await saveDirectSignup({
       username: mockUser2.username,
       directSignupProgramItemId: directSignupAlwaysOpenId,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(2, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        2,
+      ).toISOString(),
       signupTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -768,9 +775,10 @@ describe("Assignment with first time bonus", () => {
     );
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
       username: mockUser.username,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        1,
+      ).toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -780,9 +788,10 @@ describe("Assignment with first time bonus", () => {
     );
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(1, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        1,
+      ).toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -792,9 +801,10 @@ describe("Assignment with first time bonus", () => {
     );
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      signedToStartTime: dayjs(testProgramItem.startTime)
-        .subtract(2, "hours")
-        .toISOString(),
+      signedToStartTime: subHours(
+        new Date(testProgramItem.startTime),
+        2,
+      ).toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -815,7 +825,7 @@ describe("Assignment with first time bonus", () => {
         username: mockUser2.username,
         programItemId: testProgramItem.programItemId,
         programItemStartTime: testProgramItem.startTime,
-        createdAt: dayjs().toISOString(),
+        createdAt: new Date().toISOString(),
         action: EventLogAction.NO_ASSIGNMENT,
       },
     ]);
@@ -873,7 +883,7 @@ test("Assignment with no program items should return error", async () => {
 
   const { eventStartTime } = config.event();
   const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-  const assignmentTime = dayjs(eventStartTime).add(2, "hours").toISOString();
+  const assignmentTime = addHours(new Date(eventStartTime), 2).toISOString();
 
   const assignResults = unsafelyUnwrap(
     await runAssignment({
@@ -927,9 +937,10 @@ test("Should write a snapshot of the lottery groups to the results collection", 
 });
 
 test("Program item with parent startTime from 'startTimesByParentIds' should not be picked for assignment on program item's own start time", async () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
@@ -973,9 +984,7 @@ test("Should keep a past lottery signup but not let it affect an upcoming lotter
   // Item whose lottery already ran (earlier start time)
   const pastProgramItem = {
     ...testProgramItem2,
-    startTime: dayjs(testProgramItem.startTime)
-      .subtract(2, "hours")
-      .toISOString(),
+    startTime: subHours(new Date(testProgramItem.startTime), 2).toISOString(),
   };
   // Item the upcoming lottery is for
   const currentProgramItem = {

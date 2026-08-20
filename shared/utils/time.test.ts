@@ -1,21 +1,33 @@
-import dayjs, { ManipulateType } from "dayjs";
-import { beforeAll, expect, test, vi } from "vitest";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { add } from "date-fns";
+import { expect, test } from "vitest";
+import { formatRelativeTime } from "shared/utils/relativeTime";
 import { setLocale } from "shared/utils/setLocale";
 
-const timeNow = "2019-07-26T17:00:00Z";
+const timeNow = new Date("2019-07-26T17:00:00Z");
 
-beforeAll(() => {
-  vi.setSystemTime(timeNow);
-  initializeDayjs();
-});
+type Unit =
+  | "second"
+  | "seconds"
+  | "minute"
+  | "minutes"
+  | "hour"
+  | "hours"
+  | "day"
+  | "days"
+  | "month"
+  | "months"
+  | "year"
+  | "years";
 
-const relativeTimePast = (number: number, key: ManipulateType): string => {
-  return dayjs().from(dayjs(timeNow).add(number, key));
+const shifted = (number: number, key: Unit): Date =>
+  add(timeNow, { [key.endsWith("s") ? key : `${key}s`]: number });
+
+const relativeTimePast = (number: number, key: Unit): string => {
+  return formatRelativeTime(shifted(number, key), timeNow);
 };
 
-const relativeTimeFuture = (number: number, key: ManipulateType): string => {
-  return dayjs().to(dayjs(timeNow).add(number, key));
+const relativeTimeFuture = (number: number, key: Unit): string => {
+  return formatRelativeTime(timeNow, shifted(number, key));
 };
 
 test("Format EN relative times correctly", () => {

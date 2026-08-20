@@ -1,3 +1,4 @@
+import { isAfter } from "date-fns";
 import { ReactElement, memo } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css, keyframes } from "styled-components";
@@ -110,7 +111,8 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
     allValuesValid,
   } = getProgramItemValidity(programItem);
 
-  const isDirectSignupOver = timeNow.isAfter(
+  const isDirectSignupOver = isAfter(
+    timeNow,
     getDirectSignupEndTime(programItem),
   );
 

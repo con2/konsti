@@ -1,60 +1,52 @@
-import dayjs, { Dayjs } from "dayjs";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { tz } from "@date-fns/tz";
+import { format } from "date-fns";
+import { getCurrentLocale, localeFor } from "shared/utils/setLocale";
+import { TIMEZONE } from "shared/utils/timezone";
 
-// dayjs.format() is only called here to make sure all client times use correct timezone
+// format() is only called here to make sure all client times use correct timezone
 
-// Machine-readable date of an instant the caller has already put in the event
-// timezone, for rebuilding an instant at a given wall-clock time on that day.
-// The only formatter that must not re-apply .tz(): re-resolving the offset would
-// move the date to the previous one across a DST change
-export const getIsoDate = (time: Dayjs): string => time.format("YYYY-MM-DD");
+type Time = Date | string | number;
 
-export const getWeekdayAndTime = (time: string): string => {
-  const timeFormat = "dddd HH:mm";
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+const formatInEventTimezone = (time: Time, pattern: string): string =>
+  format(time, pattern, { in: tz(TIMEZONE), locale: getCurrentLocale() });
 
-export const getDate = (time: string): string => {
-  const timeFormat = "D.M.YYYY";
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+export const getWeekdayAndTime = (time: Time): string =>
+  formatInEventTimezone(time, "cccc HH:mm");
 
-export const getShortDate = (time: string): string => {
-  const timeFormat = "ddd D.M.";
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+export const getDate = (time: Time): string =>
+  formatInEventTimezone(time, "d.M.yyyy");
 
-export const getTime = (time: string): string => {
-  const timeFormat = "HH:mm";
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+export const getShortDate = (time: Time): string =>
+  formatInEventTimezone(time, "ccc d.M.");
 
-export const getShortWeekdayAndTime = (time: string): string => {
-  const timeFormat = "ddd HH:mm";
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+export const getTime = (time: Time): string =>
+  formatInEventTimezone(time, "HH:mm");
 
-export const timezoneFormat = "z";
+export const getShortWeekdayAndTime = (time: Time): string =>
+  formatInEventTimezone(time, "ccc HH:mm");
 
-export const getTimezone = (time: string): string => {
-  const timeFormat = timezoneFormat;
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+export const getTimezone = (time: Time): string =>
+  formatInEventTimezone(time, "zzz");
 
-export const dateAndTimeFormat = "ddd D.M.YYYY HH:mm";
-
-export const getDateAndTime = (time: string): string => {
-  const timeFormat = dateAndTimeFormat;
-  return dayjs(time).tz(TIMEZONE).format(timeFormat);
-};
+export const getDateAndTime = (time: Time): string =>
+  formatInEventTimezone(time, "ccc d.M.yyyy HH:mm");
 
 export const getDateAndTimeWithLocale = (
-  time: string,
+  time: Time,
   locale: "fi" | "en",
-): string => {
-  const timeFormat = dateAndTimeFormat;
-  return dayjs(time).tz(TIMEZONE).locale(locale).format(timeFormat);
-};
+): string =>
+  format(time, "ccc d.M.yyyy HH:mm", {
+    in: tz(TIMEZONE),
+    locale: localeFor(locale),
+  });
+
+// Deliberately the viewer's own timezone rather than the event's: these answer
+// "what time is it where you are", next to the Finnish time in the same text
+export const getLocalDateAndTime = (time: Time): string =>
+  format(time, "ccc d.M.yyyy HH:mm", { locale: getCurrentLocale() });
+
+export const getLocalTimezone = (time: Time): string =>
+  format(time, "zzz", { locale: getCurrentLocale() });
 
 export const formatProgramItemDuration = (mins: number): string => {
   const hours = Math.floor(mins / 60);
@@ -66,7 +58,5 @@ export const formatProgramItemDuration = (mins: number): string => {
   return `${hoursStr} ${minutesStr}`;
 };
 
-export const formattedCurrentTime = (currentTime: Date): string => {
-  const timeFormat = "HH:mm:ss";
-  return dayjs(currentTime).tz(TIMEZONE).format(timeFormat);
-};
+export const formattedCurrentTime = (currentTime: Date): string =>
+  formatInEventTimezone(currentTime, "HH:mm:ss");

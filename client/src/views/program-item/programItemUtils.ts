@@ -1,8 +1,9 @@
-import { Dayjs } from "dayjs";
+import { isSameDay, isSameWeek } from "date-fns";
 import { TFunction } from "i18next";
 import { config } from "shared/config";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
+import { getCurrentLocale } from "shared/utils/setLocale";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import {
   getDateAndTime,
@@ -40,9 +41,14 @@ export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
   );
 };
 
-export const getFormattedTime = (time: Dayjs, timeNow: Dayjs): string => {
-  // Show weekday and time on event week
-  if (timeNow.isSame(config.event().eventStartTime, "week")) {
+export const getFormattedTime = (time: Date, timeNow: Date): string => {
+  // Show weekday and time on event week. The locale decides which day the week
+  // starts on, which for a Fri-Sun event decides whether it counts as one week
+  if (
+    isSameWeek(timeNow, new Date(config.event().eventStartTime), {
+      locale: getCurrentLocale(),
+    })
+  ) {
     return getWeekdayAndTime(time.toISOString());
   }
   // Show full time before event week
@@ -51,13 +57,13 @@ export const getFormattedTime = (time: Dayjs, timeNow: Dayjs): string => {
 
 /** Format a time interval in a human-friendly way for showing in the UI. */
 export const getFormattedInterval = (
-  startTime: Dayjs,
-  endTime: Dayjs,
-  timeNow: Dayjs,
+  startTime: Date,
+  endTime: Date,
+  timeNow: Date,
 ): string => {
   const startFormatted = getFormattedTime(startTime, timeNow);
 
-  const endFormatted = startTime.isSame(endTime, "day")
+  const endFormatted = isSameDay(startTime, endTime)
     ? getTime(endTime.toISOString())
     : getFormattedTime(endTime, timeNow);
 

@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import {
   AssignmentAlgorithm,
   EventConfig,
@@ -54,18 +53,18 @@ const eventConfig: Partial<EventConfig> = {
     tournament: [
       // Friday
       {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
-        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
+        signupWindowStart: new Date(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: new Date(`${friday}T21:00:00Z`), // Fri 24:00 GMT+3
       },
       // Saturday
       {
-        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
-        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
+        signupWindowStart: new Date(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+        signupWindowClose: new Date(`${saturday}T21:00:00Z`), // Sat 24:00 GMT+3
       },
       // Sunday
       {
-        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
+        signupWindowStart: new Date(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+        signupWindowClose: new Date(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
       },
     ],
   },

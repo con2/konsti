@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, addMinutes, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -17,8 +17,8 @@ import {
 } from "playwright/playwrightUtils";
 
 // The run card headings show the assignment time as Helsinki wall-clock time.
-// The shared time formatter can't be imported here (its dayjs plugin imports
-// don't resolve under Playwright's ESM loader), so the expected time is
+// The shared time formatter cannot be imported here (its imports do not
+// resolve under Playwright's ESM loader), so the expected time is
 // computed with Intl instead
 const helsinkiTime = (time: string): string =>
   new Intl.DateTimeFormat("en-GB", {
@@ -41,13 +41,13 @@ test("Show empty state when the lottery hasn't been run", async ({
 });
 
 test("Show lottery results without login", async ({ page, request }) => {
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(4, "hour")
-    .startOf("hour")
-    .toISOString();
-  const endTime = dayjs(startTime)
-    .add(testProgramItem.mins, "minutes")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 4),
+  ).toISOString();
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -88,14 +88,12 @@ test("Show lottery results without login", async ({ page, request }) => {
 });
 
 test("Sort assignment runs latest first", async ({ page, request }) => {
-  const earlierStartTime = dayjs(config.event().eventStartTime)
-    .add(4, "hour")
-    .startOf("hour")
-    .toISOString();
-  const laterStartTime = dayjs(config.event().eventStartTime)
-    .add(5, "hour")
-    .startOf("hour")
-    .toISOString();
+  const earlierStartTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 4),
+  ).toISOString();
+  const laterStartTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 5),
+  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -103,9 +101,10 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: earlierStartTime,
-      endTime: dayjs(earlierStartTime)
-        .add(testProgramItem.mins, "minutes")
-        .toISOString(),
+      endTime: addMinutes(
+        new Date(earlierStartTime),
+        testProgramItem.mins,
+      ).toISOString(),
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -113,9 +112,10 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
       ...testProgramItem2,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: laterStartTime,
-      endTime: dayjs(laterStartTime)
-        .add(testProgramItem2.mins, "minutes")
-        .toISOString(),
+      endTime: addMinutes(
+        new Date(laterStartTime),
+        testProgramItem2.mins,
+      ).toISOString(),
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -127,7 +127,10 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
   // One hour into the event both items' lottery sign-up windows are open -
   // the later item's window hasn't opened yet at the event start
   await postTestSettings(request, {
-    testTime: dayjs(config.event().eventStartTime).add(1, "hour").toISOString(),
+    testTime: addHours(
+      new Date(config.event().eventStartTime),
+      1,
+    ).toISOString(),
   });
 
   // Separate users per time slot so the first run's overlap cleanup can't

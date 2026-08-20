@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { subHours } from "date-fns";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 import { LotterySignup, User, UserGroup } from "shared/types/models/user";
@@ -25,9 +25,10 @@ export const getPreviousDirectSignup = ({
       {
         username,
         priority,
-        signedToStartTime: dayjs(parentStartTime ?? assignmentTime)
-          .subtract(1, "hours")
-          .toISOString(),
+        signedToStartTime: subHours(
+          new Date(parentStartTime ?? assignmentTime),
+          1,
+        ).toISOString(),
         signupTime: assignmentTime,
         message: "",
       },
@@ -60,10 +61,11 @@ const getPastLotterySignupEvents = ({
       action: EventLogAction.NO_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,
-      programItemStartTime: dayjs(assignmentTime)
-        .subtract(i + 1, "hours")
-        .toISOString(),
-      createdAt: dayjs(assignmentTime).subtract(1, "hours").toISOString(),
+      programItemStartTime: subHours(
+        new Date(assignmentTime),
+        i + 1,
+      ).toISOString(),
+      createdAt: subHours(new Date(assignmentTime), 1).toISOString(),
     });
   }
 
@@ -73,10 +75,11 @@ const getPastLotterySignupEvents = ({
       action: EventLogAction.NEW_ASSIGNMENT,
       isSeen: false,
       programItemId: testProgramItem.programItemId,
-      programItemStartTime: dayjs(assignmentTime)
-        .subtract(i + 1, "hours")
-        .toISOString(),
-      createdAt: dayjs(assignmentTime).subtract(1, "hours").toISOString(),
+      programItemStartTime: subHours(
+        new Date(assignmentTime),
+        i + 1,
+      ).toISOString(),
+      createdAt: subHours(new Date(assignmentTime), 1).toISOString(),
     });
   }
 
@@ -108,7 +111,7 @@ export const getUsers = ({
       serial: `12${i}`,
       groupCode: groupCreatorGroupCode,
       favoriteProgramItemIds: [],
-      createdAt: dayjs(assignmentTime).subtract(4, "hours").toISOString(),
+      createdAt: subHours(new Date(assignmentTime), 4).toISOString(),
       email: "",
       emailNotificationPermitAsked: false,
     };

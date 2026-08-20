@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import {
   AssignmentAlgorithm,
   EventConfig,
@@ -24,20 +23,20 @@ const eventConfig: Partial<EventConfig> = {
   directSignupWindows: {
     larp: [
       {
-        signupWindowStart: dayjs("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
-        signupWindowClose: dayjs("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
+        signupWindowStart: new Date("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
+        signupWindowClose: new Date("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
       },
     ],
     workshop: [
       {
-        signupWindowStart: dayjs("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
-        signupWindowClose: dayjs("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
+        signupWindowStart: new Date("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
+        signupWindowClose: new Date("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
       },
     ],
     roundtableDiscussion: [
       {
-        signupWindowStart: dayjs("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
-        signupWindowClose: dayjs("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
+        signupWindowStart: new Date("2024-04-04T17:00:00Z"), // One week before, Thu 20:00 GMT+3
+        signupWindowClose: new Date("2024-04-14T21:00:00Z"), // Event end, Sun 24:00 GMT+3
       },
     ],
   },

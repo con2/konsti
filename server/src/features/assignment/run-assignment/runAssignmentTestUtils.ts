@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { isEqual } from "date-fns";
 import { expect } from "vitest";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -102,8 +102,9 @@ export const verifyUserSignups = async (): Promise<
       const matchingCreatorLotterySignup = groupCreator.lotterySignups.some(
         (creatorLotterySignup) =>
           creatorLotterySignup.programItemId === programItemId &&
-          dayjs(creatorLotterySignup.signedToStartTime).isSame(
-            userSignup.signedToStartTime,
+          isEqual(
+            new Date(creatorLotterySignup.signedToStartTime),
+            new Date(userSignup.signedToStartTime),
           ),
       );
 

@@ -430,6 +430,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@date-fns/tz@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@date-fns/tz@npm:1.5.0"
+  checksum: 10c0/4ef25eedd55924938fa81b23b949a3425201597e2007f5323db54d50fc19283eca5e2a7963c3d82c99b3adf273e9ea9bc7adfd1c9076e15badd99c593a984ffa
+  languageName: node
+  linkType: hard
+
 "@double-great/stylelint-a11y@npm:3.4.15":
   version: 3.4.15
   resolution: "@double-great/stylelint-a11y@npm:3.4.15"
@@ -4691,10 +4698,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.11.21":
-  version: 1.11.21
-  resolution: "dayjs@npm:1.11.21"
-  checksum: 10c0/bd97dfdc4bfea3c66268635690313828b386faa040fbc1f829ff42a2bd748b72c9d9b3c8f9616ce9e61fcb78923f1461a462c969c54b1084458ae1b715898fb0
+"date-fns@npm:4.4.0":
+  version: 4.4.0
+  resolution: "date-fns@npm:4.4.0"
+  checksum: 10c0/988f0a13db183f5dfc85c36bbb6847a9c135a9225888bbea4005876ec15539a8613c21a07370a4e7ea543918d5a1cafb423c528b42cdbbde5fdfddb178126b21
   languageName: node
   linkType: hard
 
@@ -7762,6 +7769,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "konsti-monorepo@workspace:."
   dependencies:
+    "@date-fns/tz": "npm:1.5.0"
     "@eslint-community/eslint-plugin-eslint-comments": "npm:4.7.2"
     "@eslint/compat": "npm:2.1.0"
     "@eslint/config-inspector": "npm:3.0.4"
@@ -7778,7 +7786,7 @@ __metadata:
     "@vitest/eslint-plugin": "npm:1.6.20"
     "@yarnpkg/types": "npm:4.0.1"
     c8: "npm:11.0.0"
-    dayjs: "npm:1.11.21"
+    date-fns: "npm:4.4.0"
     eslint: "npm:10.5.0"
     eslint-config-prettier: "npm:10.1.8"
     eslint-import-resolver-typescript: "npm:4.4.5"

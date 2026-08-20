@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "remeda";
@@ -28,8 +27,8 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
 
     // Include the date outside event week so the weekday isn't ambiguous
     const interval = getFormattedInterval(
-      dayjs(programItem.startTime),
-      dayjs(programItem.endTime),
+      new Date(programItem.startTime),
+      new Date(programItem.endTime),
       timeNow,
     );
 

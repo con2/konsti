@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import dayjs from "dayjs";
+import { TZDate } from "@date-fns/tz";
 import { config } from "shared/config";
 import {
   ProgramItem,
@@ -9,7 +9,7 @@ import {
   State,
 } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
-import { TIMEZONE } from "shared/utils/initializeDayjs";
+import { TIMEZONE } from "shared/utils/timezone";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 
@@ -40,14 +40,14 @@ interface DayHourBucket {
 }
 
 export const bucketByHour = (time: string): DayHourBucket => {
-  const local = dayjs(time).tz(TIMEZONE);
-  const day = `${local.year()}-${String(local.month() + 1).padStart(2, "0")}-${String(local.date()).padStart(2, "0")}`;
-  return { day, hour: local.hour() };
+  const local = new TZDate(time, TIMEZONE);
+  const day = `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, "0")}-${String(local.getDate()).padStart(2, "0")}`;
+  return { day, hour: local.getHours() };
 };
 
 export const dayOfWeek = (isoDay: string): string => {
-  const d = dayjs(`${isoDay}T12:00:00Z`).tz(TIMEZONE);
-  return SHORT_WEEKDAYS[d.day()];
+  const d = new TZDate(`${isoDay}T12:00:00Z`, TIMEZONE);
+  return SHORT_WEEKDAYS[d.getDay()];
 };
 
 export const pct = (num: number, denom: number): string => {

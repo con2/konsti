@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours } from "date-fns";
 import { config } from "shared/config";
 import {
   testProgramItem,
@@ -17,12 +17,14 @@ import {
 const programType = config.event().twoPhaseSignupProgramTypes[0];
 // Both program items start an hour into the event so they are upcoming at the
 // event start time the tests run at
-const programItemStartTime = dayjs(config.event().eventStartTime)
-  .add(1, "hour")
-  .toISOString();
-const programItemEndTime = dayjs(programItemStartTime)
-  .add(4, "hours")
-  .toISOString();
+const programItemStartTime = addHours(
+  new Date(config.event().eventStartTime),
+  1,
+).toISOString();
+const programItemEndTime = addHours(
+  new Date(programItemStartTime),
+  4,
+).toISOString();
 const initialProgramItem = {
   ...testProgramItem,
   title: "Initial program",
@@ -109,7 +111,7 @@ test("Periodic data poll hides signup when direct signup ends", async ({
 
   // Move time past the program item's start on the background...
   await postTestSettings(request, {
-    testTime: dayjs(startTime).add(1, "hour").toISOString(),
+    testTime: addHours(new Date(startTime), 1).toISOString(),
   });
   await expect(firstProgramItem.signUpButton).toBeVisible();
 

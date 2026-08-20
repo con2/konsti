@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import dayjs from "dayjs";
+import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -24,10 +24,9 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
     },
   ]);
   await postTestSettings(request, {
@@ -113,10 +112,9 @@ test("Show program item full message when logged out and logged in", async ({
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -170,10 +168,9 @@ test("Show error when program item full and update participant list", async ({
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: dayjs(config.event().eventStartTime)
-        .add(1, "hour")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 1),
+      ).toISOString(),
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -230,10 +227,9 @@ test("Show no signup controls after direct signup has ended", async ({
     users: true,
     admin: true,
   });
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -251,7 +247,7 @@ test("Show no signup controls after direct signup has ended", async ({
     message: "",
   });
   await postTestSettings(request, {
-    testTime: dayjs(startTime).add(1, "hour").toISOString(),
+    testTime: addHours(new Date(startTime), 1).toISOString(),
   });
 
   const programList = new ProgramListPage(page);
@@ -294,10 +290,9 @@ test("Show timeslot conflict message instead of signup button", async ({
     users: true,
     admin: true,
   });
-  const startTime = dayjs(config.event().eventStartTime)
-    .add(1, "hour")
-    .startOf("hour")
-    .toISOString();
+  const startTime = startOfHour(
+    addHours(new Date(config.event().eventStartTime), 1),
+  ).toISOString();
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -356,10 +351,9 @@ test("Show no signup button before direct signup opens", async ({
       programItemId: "other-program-item",
       title: "Other test item",
       programType: config.event().rollingDirectSignupProgramTypes[0],
-      startTime: dayjs(config.event().eventStartTime)
-        .add(6, "hours")
-        .startOf("hour")
-        .toISOString(),
+      startTime: startOfHour(
+        addHours(new Date(config.event().eventStartTime), 6),
+      ).toISOString(),
     },
   ]);
   await postSettings(request, {

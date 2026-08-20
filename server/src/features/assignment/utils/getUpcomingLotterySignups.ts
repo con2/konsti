@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import { isBefore } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup } from "shared/types/models/user";
@@ -21,7 +21,7 @@ const getLotterySignupProgramItems = (
 export const getUpcomingLotterySignupProgramItemIds = (
   lotterySignups: readonly LotterySignup[],
   programItems: readonly ProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): string[] => {
   const lotterySignupProgramItems = getLotterySignupProgramItems(
     lotterySignups,
@@ -33,8 +33,9 @@ export const getUpcomingLotterySignupProgramItemIds = (
       const parentStartTime = config
         .event()
         .startTimesByParentIds.get(lotterySignupProgramItem.parentId);
-      return timeNow.isBefore(
-        dayjs(parentStartTime ?? lotterySignupProgramItem.startTime),
+      return isBefore(
+        timeNow,
+        new Date(parentStartTime ?? lotterySignupProgramItem.startTime),
       );
     })
     .map((programItem) => programItem.programItemId);
@@ -43,7 +44,7 @@ export const getUpcomingLotterySignupProgramItemIds = (
 export const getLotteryNotYetRunProgramItemIds = (
   lotterySignups: readonly LotterySignup[],
   programItems: readonly ProgramItem[],
-  timeNow: Dayjs,
+  timeNow: Date,
 ): string[] => {
   const lotterySignupProgramItems = getLotterySignupProgramItems(
     lotterySignups,
@@ -55,7 +56,7 @@ export const getLotteryNotYetRunProgramItemIds = (
       const lotterySignupEndTime = getLotterySignupEndTime(
         lotterySignupProgramItem,
       );
-      return timeNow.isBefore(lotterySignupEndTime);
+      return isBefore(timeNow, lotterySignupEndTime);
     })
     .map((programItem) => programItem.programItemId);
 };

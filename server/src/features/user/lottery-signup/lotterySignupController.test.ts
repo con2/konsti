@@ -1,6 +1,6 @@
 import { Server } from "node:http";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
+import { addMinutes, addSeconds, subHours, subMinutes } from "date-fns";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -31,9 +31,10 @@ beforeEach(async () => {
   // Sign-up start defaults to 'eventStartTime' if before
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
-    eventStartTime: dayjs(testProgramItem.startTime)
-      .subtract(config.event().preSignupStart, "minutes")
-      .toISOString(),
+    eventStartTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().preSignupStart,
+    ).toISOString(),
     fixedLotterySignupTime: null,
   });
   server = await startServer({
@@ -62,9 +63,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when signup is not yet open", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart + 1, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart + 1,
+      ).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -91,7 +93,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when signup is closed", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).add(1, "second").toISOString(),
+      addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -118,7 +120,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when program item is not found", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
+      subHours(new Date(testProgramItem.startTime), 1).toISOString(),
     );
     await saveUser(mockUser);
 
@@ -164,9 +166,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when program item is hidden", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -222,9 +225,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     await saveProgramItems([
       {
         ...testProgramItem,
-        startTime: dayjs(testProgramItem.startTime)
-          .add(30, "minutes")
-          .toISOString(),
+        startTime: addMinutes(
+          new Date(testProgramItem.startTime),
+          30,
+        ).toISOString(),
       },
     ]);
     await saveUser(mockUser);
@@ -252,9 +256,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when user is not found", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -279,9 +284,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error if priority already selected", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
     );
 
     const reservedPriority = 1;
@@ -337,9 +343,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when user is a non-creator group member", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -375,9 +382,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return success when user and program item are found", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -426,7 +434,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when signup is closed", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).add(1, "second").toISOString(),
+      addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
 
     await saveProgramItems([testProgramItem]);
@@ -452,7 +460,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return error when program item is not found", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
+      subHours(new Date(testProgramItem.startTime), 1).toISOString(),
     );
     await saveUser(mockUser);
 
@@ -475,9 +483,10 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
 
   test("should return success on completed delete", async () => {
     vi.setSystemTime(
-      dayjs(testProgramItem.startTime)
-        .subtract(config.event().preSignupStart + 1, "minutes")
-        .toISOString(),
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart + 1,
+      ).toISOString(),
     );
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);

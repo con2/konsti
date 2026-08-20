@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addHours } from "date-fns";
 import { config } from "shared/config";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { db } from "server/db/mongodb";
@@ -8,9 +8,10 @@ import { logger } from "server/utils/logger";
 const testAssignment = async (
   assignmentAlgorithm: AssignmentAlgorithm,
 ): Promise<void> => {
-  const assignmentTime = dayjs(config.event().eventStartTime)
-    .add(3, "hours")
-    .toISOString();
+  const assignmentTime = addHours(
+    new Date(config.event().eventStartTime),
+    3,
+  ).toISOString();
   await runAssignment({
     assignmentAlgorithm,
     assignmentTime,

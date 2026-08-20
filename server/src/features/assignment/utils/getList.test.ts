@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import { addMinutes } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
@@ -68,9 +68,10 @@ test("should return as many list items as user groups", () => {
 });
 
 test("should return list items for program items using parent startTime via 'startTimesByParentIds'", () => {
-  const parentStartTime = dayjs(testProgramItem.startTime)
-    .add(30, "minutes")
-    .toISOString();
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),

@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { z } from "zod";
 
@@ -7,7 +6,7 @@ export const TestSettingsSchemaDb = z
     testTime: z
       .date()
       .nullable()
-      .transform((date) => (date ? dayjs(date).toISOString() : date)),
+      .transform((date) => (date ? date.toISOString() : date)),
   })
   .strip();
 
