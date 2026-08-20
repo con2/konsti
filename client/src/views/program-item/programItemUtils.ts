@@ -1,3 +1,4 @@
+import { tz } from "@date-fns/tz";
 import { isSameDay, isSameWeek } from "date-fns";
 import { TFunction } from "i18next";
 import { config } from "shared/config";
@@ -10,6 +11,7 @@ import {
   getTime,
   getWeekdayAndTime,
 } from "shared/utils/timeFormatter";
+import { TIMEZONE } from "shared/utils/timezone";
 
 export const isAlreadyLotterySigned = (
   programItemToCheck: ProgramItem,
@@ -42,10 +44,14 @@ export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
 };
 
 export const getFormattedTime = (time: Date, timeNow: Date): string => {
-  // Show weekday and time on event week. The locale decides which day the week
-  // starts on, which for a Fri-Sun event decides whether it counts as one week
+  // Show weekday and time on event week. Bucketed in the event timezone, like
+  // the times it decorates - a viewer an hour east would otherwise enter event
+  // week a day early and lose the date from every heading. The locale decides
+  // which day the week starts on, which for a Fri-Sun event decides whether it
+  // counts as one week
   if (
     isSameWeek(timeNow, new Date(config.event().eventStartTime), {
+      in: tz(TIMEZONE),
       locale: getCurrentLocale(),
     })
   ) {
@@ -63,7 +69,9 @@ export const getFormattedInterval = (
 ): string => {
   const startFormatted = getFormattedTime(startTime, timeNow);
 
-  const endFormatted = isSameDay(startTime, endTime)
+  // Same day in the event timezone: an item running 23:00 -> 01:00 Helsinki
+  // crosses midnight for everyone, whatever calendar day the viewer is on
+  const endFormatted = isSameDay(startTime, endTime, { in: tz(TIMEZONE) })
     ? getTime(endTime.toISOString())
     : getFormattedTime(endTime, timeNow);
 
