@@ -8,6 +8,7 @@ import {
 } from "shared/tests/testProgramItem";
 import { ProgramType, Tag } from "shared/types/models/programItem";
 import {
+  getDirectSignupEndTime,
   getDirectSignupEnded,
   getDirectSignupInProgress,
   getDirectSignupStartTime,
@@ -15,6 +16,7 @@ import {
   getLotterySignupInProgress,
   getLotterySignupNotStarted,
   getLotterySignupStartTime,
+  getPhaseGapInProgress,
 } from "shared/utils/signupTimes";
 
 const friday = "2023-07-28";
@@ -670,5 +672,42 @@ describe("Relative direct signup state", () => {
     const timeNow = new Date(programItem.startTime);
     const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
     expect(directSignupEnded).toEqual(false);
+  });
+});
+
+// A start time that cannot be parsed makes every time derived from it invalid,
+// and an invalid date compares false against everything. Each predicate has to
+// land on the closed side of that, or the UI offers a sign-up the server will
+// reject
+describe("Signup state when the start time cannot be resolved", () => {
+  const programItem = { ...testProgramItem, startTime: "not a time" };
+  const timeNow = new Date(`${saturday}T12:00:00.000Z`);
+
+  test("Lottery signup reads as not started", () => {
+    expect(getLotterySignupStartTime(programItem).getTime()).toBeNaN();
+    expect(getLotterySignupNotStarted(programItem, timeNow)).toEqual(true);
+  });
+
+  test("Lottery signup reads as not in progress", () => {
+    expect(getLotterySignupInProgress(programItem, timeNow)).toEqual(false);
+  });
+
+  test("Direct signup reads as ended", () => {
+    expect(getDirectSignupEndTime(programItem).getTime()).toBeNaN();
+    expect(getDirectSignupEnded(programItem, timeNow)).toEqual(true);
+  });
+
+  test("Direct signup reads as not in progress", () => {
+    expect(getDirectSignupInProgress(programItem, timeNow)).toEqual(false);
+  });
+
+  test("Phase gap reads as not in progress", () => {
+    expect(getPhaseGapInProgress(programItem, timeNow)).toEqual(false);
+  });
+
+  test("An unresolvable time is never clamped to a real one", () => {
+    // The clamps would otherwise hand back the event start time, which opens
+    // sign-up for an item whose own start time is unknown
+    expect(getDirectSignupStartTime(programItem).getTime()).toBeNaN();
   });
 });

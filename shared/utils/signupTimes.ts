@@ -3,7 +3,6 @@ import {
   addHours,
   addMinutes,
   getHours,
-  isAfter,
   isBefore,
   subDays,
   subHours,
@@ -25,6 +24,12 @@ import { atWallClockHourInEventTimezone } from "shared/utils/zonedTime";
 // values are stored and compared as ISO strings elsewhere, so the timezone stays an
 // internal detail of the arithmetic and never escapes in a return value
 const toPlainDate = (time: Date): Date => new Date(time);
+
+// The clamps below ("if the computed time falls before X, use X") use isBefore
+// on purpose. An invalid time is not before anything, so it goes unclamped and
+// stays invalid, and the predicates and server gates that consume it read as
+// closed. Clamping it to a real instant instead would open sign-up for an item
+// whose start time could not be resolved
 
 // Resolve a program item's effective start time, applying the parent override that batches
 // several items into a single lottery run
@@ -208,7 +213,11 @@ export const getLotterySignupNotStarted = (
   timeNow: Date,
 ): boolean => {
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
-  return isBefore(timeNow, lotterySignupStartTime);
+  // A negated timestamp comparison rather than isBefore, which is false when
+  // either side is invalid and would report the sign-up as already open. Same
+  // direction as the server's gate, so the help text cannot invite a sign-up
+  // the server then rejects
+  return !isSameOrAfter(timeNow, lotterySignupStartTime);
 };
 
 export const getLotterySignupInProgress = (
@@ -261,5 +270,7 @@ export const getDirectSignupEnded = (
   timeNow: Date,
 ): boolean => {
   const directSignupEndTime = getDirectSignupEndTime(programItem);
-  return isAfter(timeNow, directSignupEndTime);
+  // Negated for the same reason as the lottery predicate: a time that cannot be
+  // resolved has to read as ended rather than as still open
+  return !isSameOrBefore(timeNow, directSignupEndTime);
 };
