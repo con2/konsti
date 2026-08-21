@@ -1,17 +1,14 @@
 import { isSameMinute } from "date-fns";
-import { config } from "shared/config";
+import { resolveStartTime } from "shared/utils/signupTimes";
 
 export const isStartTimeChanged = (
   signedToStartTime: string,
   programItemStartTime: string,
   parentId: string,
 ): boolean => {
-  const { startTimesByParentIds } = config.event();
-
   // A configured parent start time replaces the item's own here: the whole batch
   // is signed to that one time
-  const comparedStartTime =
-    startTimesByParentIds.get(parentId) ?? programItemStartTime;
+  const comparedStartTime = resolveStartTime(parentId, programItemStartTime);
 
   // Reported as changed when either time is unparseable, which is what the
   // negation gives: a changed sign-up is subtracted from the lottery's remaining

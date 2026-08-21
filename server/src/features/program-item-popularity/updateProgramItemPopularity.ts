@@ -6,6 +6,7 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
@@ -51,12 +52,8 @@ export const updateProgramItemPopularity = async (): Promise<
 
   const programItemsByStartTimes = groupBy(
     validLotterySignupProgramItems,
-    (programItem) => {
-      const parentStartTime = config
-        .event()
-        .startTimesByParentIds.get(programItem.parentId);
-      return new Date(parentStartTime ?? programItem.startTime).toISOString();
-    },
+    (programItem) =>
+      new Date(getProgramItemStartTime(programItem)).toISOString(),
   );
 
   const timeNowResult = await getTimeNow();

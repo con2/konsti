@@ -12,6 +12,7 @@ import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramI
 import {
   getDirectSignupEndTime,
   getDirectSignupStartTime,
+  getProgramItemStartTime,
 } from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
@@ -135,10 +136,6 @@ export const storeDirectSignup = async (
     };
   }
 
-  const parentStartTime = config
-    .event()
-    .startTimesByParentIds.get(programItem.parentId);
-
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
     username,
@@ -146,7 +143,7 @@ export const storeDirectSignup = async (
     // here rather than trusted from the request
     priority: DIRECT_SIGNUP_PRIORITY,
     // signedToStartTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
-    signedToStartTime: parentStartTime ?? programItem.startTime,
+    signedToStartTime: getProgramItemStartTime(programItem),
     signupTime: timeNow.toISOString(),
   };
 

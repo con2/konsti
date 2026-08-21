@@ -1,8 +1,10 @@
 import { isBefore } from "date-fns";
-import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup } from "shared/types/models/user";
-import { getLotterySignupEndTime } from "shared/utils/signupTimes";
+import {
+  getLotterySignupEndTime,
+  getProgramItemStartTime,
+} from "shared/utils/signupTimes";
 
 const getLotterySignupProgramItems = (
   lotterySignups: readonly LotterySignup[],
@@ -29,15 +31,12 @@ export const getUpcomingLotterySignupProgramItemIds = (
   );
 
   return lotterySignupProgramItems
-    .filter((lotterySignupProgramItem) => {
-      const parentStartTime = config
-        .event()
-        .startTimesByParentIds.get(lotterySignupProgramItem.parentId);
-      return isBefore(
+    .filter((lotterySignupProgramItem) =>
+      isBefore(
         timeNow,
-        new Date(parentStartTime ?? lotterySignupProgramItem.startTime),
-      );
-    })
+        new Date(getProgramItemStartTime(lotterySignupProgramItem)),
+      ),
+    )
     .map((programItem) => programItem.programItemId);
 };
 

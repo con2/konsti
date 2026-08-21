@@ -6,6 +6,7 @@ import { config } from "shared/config";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
@@ -79,12 +80,9 @@ export const AdminView = (): ReactElement => {
 
   const getDropdownOptions = (): Option[] => {
     const visibleProgramItems = getVisibleProgramItems();
-    const startTimes = visibleProgramItems.map((programItem) => {
-      const parentStartTime = config
-        .event()
-        .startTimesByParentIds.get(programItem.parentId);
-      return parentStartTime ?? programItem.startTime;
-    });
+    const startTimes = visibleProgramItems.map((programItem) =>
+      getProgramItemStartTime(programItem),
+    );
     const times = [...new Set(startTimes)].sort((a, b) => a.localeCompare(b));
 
     return times.map((time) => {
