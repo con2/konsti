@@ -10,9 +10,11 @@ import { ControlledInput } from "client/components/ControlledInput";
 import { PasswordChangeForm } from "client/components/PasswordChangeForm";
 import { ButtonStyle } from "client/components/componentStyles";
 import { getUserBySerialOrUsername } from "client/services/userServices";
+import { useLocale } from "client/utils/useLocale";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
+  const locale = useLocale();
 
   const [usernameToUpdate, setUsernameToUpdate] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
@@ -57,7 +59,7 @@ export const PasswordManagement = (): ReactElement => {
         {t("passwordManagement.foundUser")}: {response.username} (
         {formatSerial(response.serial)}) -{" "}
         {t("passwordManagement.userCreatedAt")}{" "}
-        {getDateAndTime(response.createdAt)}
+        {getDateAndTime(response.createdAt, locale)}
       </Message>,
     );
     setUsernameToUpdate(response.username);

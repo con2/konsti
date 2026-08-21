@@ -11,6 +11,7 @@ import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { InfoTextVariant } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useLocale } from "client/utils/useLocale";
 import {
   MyProgramButtonContainerMobile,
   MyProgramCancelSignupFormContainer,
@@ -38,6 +39,7 @@ export const DirectSignupItem = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const locale = useLocale();
 
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
@@ -92,9 +94,9 @@ export const DirectSignupItem = ({
       ) && (
         <StyledInfoText variant={InfoTextVariant.WARNING}>
           {t("myProgramView.startingTimeChanged")}{" "}
-          {getShortWeekdayAndTime(signup.signedToStartTime)}{" "}
+          {getShortWeekdayAndTime(signup.signedToStartTime, locale)}{" "}
           <FontAwesomeIcon icon="arrow-right" />{" "}
-          {getShortWeekdayAndTime(signup.programItem.startTime)}
+          {getShortWeekdayAndTime(signup.programItem.startTime, locale)}
         </StyledInfoText>
       )}
 

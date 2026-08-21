@@ -1,6 +1,5 @@
 import { useMemo, useSyncExternalStore } from "react";
 import { config } from "shared/config";
-import { getLocaleSnapshot, subscribeToLocale } from "shared/utils/setLocale";
 import { getTimeNowSnapshot, subscribeToClock } from "client/utils/clock";
 import { useAppSelector } from "client/utils/hooks";
 
@@ -9,20 +8,12 @@ import { useAppSelector } from "client/utils/hooks";
 // either, such as a timestamp the server has already written
 export const useRealTimeNow = (): Date => {
   const timeNowMs = useSyncExternalStore(subscribeToClock, getTimeNowSnapshot);
-  const locale = useSyncExternalStore(subscribeToLocale, getLocaleSnapshot);
 
-  // Tagged with the language it was read under, so the instant gets a new
-  // identity when the language changes. Consumers format it with the active
-  // locale, which lives in module state React cannot see, so a value that
-  // survived a language change would keep rendering the previous language's
-  // weekday until the next tick. Rebuilt only on those two events, so it stays
-  // referentially stable in between and can be listed as a dependency
-  const timeNow = useMemo(
-    () => ({ locale, date: new Date(timeNowMs) }),
-    [timeNowMs, locale],
-  );
-
-  return timeNow.date;
+  // Rebuilt only when the clock ticks, so it stays referentially stable in
+  // between and can be listed as a dependency. It carries no language of its
+  // own: a component formatting it passes the locale it read through the locale
+  // hook, so a switch invalidates the formatted string rather than this instant
+  return useMemo(() => new Date(timeNowMs), [timeNowMs]);
 };
 
 // Whether the mocked test time replaces the real clock. Exported so the rule can

@@ -1,5 +1,5 @@
 import { Locale } from "shared/types/locale";
-import { getDateAndTimeWithLocale } from "shared/utils/timeFormatter";
+import { getDateAndTime } from "shared/utils/timeFormatter";
 import { NotificationTask } from "server/utils/notificationQueue";
 
 export interface EmailMessage {
@@ -26,11 +26,11 @@ const SIGNATURE = "Terveisin / Sincerely Konsti";
 export function getRejectedEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
-  const lotteryStartTimeFi = getDateAndTimeWithLocale(
+  const lotteryStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
     Locale.FI,
   );
-  const lotteryStartTimeEn = getDateAndTimeWithLocale(
+  const lotteryStartTimeEn = getDateAndTime(
     notification.programItemStartTime,
     Locale.EN,
   );
@@ -51,11 +51,11 @@ export function getAcceptedEmailTemplate(
   programItemTitle: string,
   notification: NotificationTask,
 ): EmailTemplate {
-  const programStartTimeFi = getDateAndTimeWithLocale(
+  const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
     Locale.FI,
   );
-  const programStartTimeEn = getDateAndTimeWithLocale(
+  const programStartTimeEn = getDateAndTime(
     notification.programItemStartTime,
     Locale.EN,
   );
@@ -75,11 +75,11 @@ The program will start at ${programStartTimeEn}.`;
 export function getProgramItemCancelledEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
-  const programStartTimeFi = getDateAndTimeWithLocale(
+  const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
     Locale.FI,
   );
-  const programStartTimeEn = getDateAndTimeWithLocale(
+  const programStartTimeEn = getDateAndTime(
     notification.programItemStartTime,
     Locale.EN,
   );
@@ -99,11 +99,11 @@ Program was supposed to start at ${programStartTimeEn}.`;
 export function getProgramItemDeletedEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
-  const programStartTimeFi = getDateAndTimeWithLocale(
+  const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
     Locale.FI,
   );
-  const programStartTimeEn = getDateAndTimeWithLocale(
+  const programStartTimeEn = getDateAndTime(
     notification.programItemStartTime,
     Locale.EN,
   );
@@ -153,11 +153,11 @@ Your lottery sign-up for the program has been removed.`;
 export function getProgramItemTimeChangedEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
-  const programStartTimeFi = getDateAndTimeWithLocale(
+  const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
     Locale.FI,
   );
-  const programStartTimeEn = getDateAndTimeWithLocale(
+  const programStartTimeEn = getDateAndTime(
     notification.programItemStartTime,
     Locale.EN,
   );

@@ -11,6 +11,7 @@ import {
   getWeekdayAndTime,
 } from "shared/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
+import { useLocale } from "client/utils/useLocale";
 
 interface Props {
   programItem: ProgramItem;
@@ -24,11 +25,12 @@ export const Admission = ({
   username,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+  const locale = useLocale();
   const { eventName, eventYear } = config.event();
 
   const formatTime = (): string => {
     // Note that the dash should be an en dash
-    return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)}`;
+    return `${capitalize(getWeekdayAndTime(programItem.startTime, locale))}–${getTime(programItem.endTime, locale)}`;
   };
 
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -48,7 +50,7 @@ export const Admission = ({
         <Text>
           {eventName} {eventYear}
         </Text>
-        <TimeText>{formattedCurrentTime(currentTime)}</TimeText>
+        <TimeText>{formattedCurrentTime(currentTime, locale)}</TimeText>
 
         <BoldText>{programItem.title}</BoldText>
         <Text>{formatTime()}</Text>

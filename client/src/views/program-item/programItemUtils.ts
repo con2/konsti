@@ -5,7 +5,7 @@ import { config } from "shared/config";
 import { Locale } from "shared/types/locale";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
-import { getCurrentLocale, getLocaleSnapshot } from "shared/utils/setLocale";
+import { localeFor } from "shared/utils/setLocale";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import {
   getDateAndTime,
@@ -63,9 +63,8 @@ let eventWeekCache:
     }
   | undefined;
 
-const isEventWeek = (timeNow: Date): boolean => {
+const isEventWeek = (timeNow: Date, locale: Locale): boolean => {
   const { eventStartTime } = config.event();
-  const locale = getLocaleSnapshot();
   const timeNowMs = timeNow.getTime();
 
   if (
@@ -78,19 +77,23 @@ const isEventWeek = (timeNow: Date): boolean => {
 
   const result = isSameWeek(timeNow, new Date(eventStartTime), {
     in: tz(TIMEZONE),
-    locale: getCurrentLocale(),
+    locale: localeFor(locale),
   });
   eventWeekCache = { timeNowMs, eventStartTime, locale, result };
   return result;
 };
 
-export const getFormattedTime = (time: Date, timeNow: Date): string => {
+export const getFormattedTime = (
+  time: Date,
+  timeNow: Date,
+  locale: Locale,
+): string => {
   // Show weekday and time on event week
-  if (isEventWeek(timeNow)) {
-    return getWeekdayAndTime(time.toISOString());
+  if (isEventWeek(timeNow, locale)) {
+    return getWeekdayAndTime(time.toISOString(), locale);
   }
   // Show full time before event week
-  return getDateAndTime(time.toISOString());
+  return getDateAndTime(time.toISOString(), locale);
 };
 
 export const isSameDayInEventTimezone = (
@@ -111,16 +114,17 @@ export const getFormattedInterval = (
   startTime: Date,
   endTime: Date,
   timeNow: Date,
+  locale: Locale,
 ): string => {
-  const startFormatted = getFormattedTime(startTime, timeNow);
+  const startFormatted = getFormattedTime(startTime, timeNow, locale);
 
   // Same day in the event timezone: an item running 23:00 -> 01:00 Helsinki
   // crosses midnight for everyone, whatever calendar day the viewer is on.
   // Compared as calendar fields rather than with a timezone-aware isSameDay,
   // which costs ~45us against ~10us here because each of its setters re-syncs
   const endFormatted = isSameDayInEventTimezone(startTime, endTime)
-    ? getTime(endTime.toISOString())
-    : getFormattedTime(endTime, timeNow);
+    ? getTime(endTime.toISOString(), locale)
+    : getFormattedTime(endTime, timeNow, locale);
 
   // Note that the dash should be an en dash
   return `${startFormatted} – ${endFormatted}`;

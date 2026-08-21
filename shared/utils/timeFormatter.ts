@@ -12,44 +12,50 @@ import { TIMEZONE } from "shared/utils/timezone";
 // clock time (120 becomes "02:00") instead of failing
 type Time = Date | string;
 
-const formatInEventTimezone = (time: Time, pattern: string): string =>
-  format(time, pattern, { in: tz(TIMEZONE), locale: getCurrentLocale() });
+// Every formatter takes the language to render in. A component must pass the
+// one it read through the locale hook: the active language otherwise lives in
+// module state, which React cannot see, so a memoized weekday would keep
+// rendering in the language it was first formatted in. Omitting it falls back to
+// that module state, which is what non-rendering callers want
+const resolveLocale = (locale?: Locale): ReturnType<typeof getCurrentLocale> =>
+  locale === undefined ? getCurrentLocale() : localeFor(locale);
 
-export const getWeekdayAndTime = (time: Time): string =>
-  formatInEventTimezone(time, "cccc HH:mm");
+const formatInEventTimezone = (
+  time: Time,
+  pattern: string,
+  locale?: Locale,
+): string =>
+  format(time, pattern, { in: tz(TIMEZONE), locale: resolveLocale(locale) });
 
-export const getDate = (time: Time): string =>
-  formatInEventTimezone(time, "d.M.yyyy");
+export const getWeekdayAndTime = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "cccc HH:mm", locale);
 
-export const getShortDate = (time: Time): string =>
-  formatInEventTimezone(time, "ccc d.M.");
+export const getDate = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "d.M.yyyy", locale);
 
-export const getTime = (time: Time): string =>
-  formatInEventTimezone(time, "HH:mm");
+export const getShortDate = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "ccc d.M.", locale);
 
-export const getShortWeekdayAndTime = (time: Time): string =>
-  formatInEventTimezone(time, "ccc HH:mm");
+export const getTime = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "HH:mm", locale);
 
-export const getTimezone = (time: Time): string =>
-  formatInEventTimezone(time, "zzz");
+export const getShortWeekdayAndTime = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "ccc HH:mm", locale);
 
-export const getDateAndTime = (time: Time): string =>
-  formatInEventTimezone(time, "ccc d.M.yyyy HH:mm");
+export const getTimezone = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "zzz", locale);
 
-export const getDateAndTimeWithLocale = (time: Time, locale: Locale): string =>
-  format(time, "ccc d.M.yyyy HH:mm", {
-    in: tz(TIMEZONE),
-    locale: localeFor(locale),
-  });
+export const getDateAndTime = (time: Time, locale?: Locale): string =>
+  formatInEventTimezone(time, "ccc d.M.yyyy HH:mm", locale);
 
 // Deliberately the viewer's own timezone rather than the event's: these answer
 // "what time is it where you are", next to the Finnish time in the same text.
 // Only the timezone is local - the weekday still follows the UI language
-export const getLocalDateAndTime = (time: Time): string =>
-  format(time, "ccc d.M.yyyy HH:mm", { locale: getCurrentLocale() });
+export const getLocalDateAndTime = (time: Time, locale?: Locale): string =>
+  format(time, "ccc d.M.yyyy HH:mm", { locale: resolveLocale(locale) });
 
-export const getLocalTimezone = (time: Time): string =>
-  format(time, "zzz", { locale: getCurrentLocale() });
+export const getLocalTimezone = (time: Time, locale?: Locale): string =>
+  format(time, "zzz", { locale: resolveLocale(locale) });
 
 // For the generated statistics documents, which group rows by the event's wall
 // clock. Numeric, so the active language never reaches the output
@@ -71,9 +77,18 @@ export const formatProgramItemDuration = (mins: number): string => {
   return `${hoursStr} ${minutesStr}`;
 };
 
-export const formattedCurrentTime = (currentTime: Date): string =>
-  formatInEventTimezone(currentTime, "HH:mm:ss");
+export const formattedCurrentTime = (
+  currentTime: Date,
+  locale?: Locale,
+): string => formatInEventTimezone(currentTime, "HH:mm:ss", locale);
 
 // Describes `to` relative to `from`, e.g. "2 minutes ago" or "in an hour"
-export const formatRelativeTime = (from: Date, to: Date): string =>
-  formatDistance(to, from, { addSuffix: true, locale: getCurrentLocale() });
+export const formatRelativeTime = (
+  from: Date,
+  to: Date,
+  locale?: Locale,
+): string =>
+  formatDistance(to, from, {
+    addSuffix: true,
+    locale: resolveLocale(locale),
+  });

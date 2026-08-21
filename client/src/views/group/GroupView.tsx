@@ -10,6 +10,7 @@ import { AppRoute } from "client/app/routes";
 import { useAppSelector } from "client/utils/hooks";
 import { joinWithConjunction } from "client/utils/joinWithConjunction";
 import { loadGroupMembers } from "client/utils/loadData";
+import { useLocale } from "client/utils/useLocale";
 import { useTimeNow } from "client/utils/useTimeNow";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
@@ -29,6 +30,7 @@ export const GroupView = (): ReactElement => {
 
   const directSignups = useAppSelector(selectDirectSignups);
   const { t } = useTranslation();
+  const locale = useLocale();
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -77,7 +79,11 @@ export const GroupView = (): ReactElement => {
                     >
                       {directSignup.programItem.title}
                     </Link>{" "}
-                    - {getWeekdayAndTime(directSignup.programItem.startTime)}
+                    -{" "}
+                    {getWeekdayAndTime(
+                      directSignup.programItem.startTime,
+                      locale,
+                    )}
                   </li>
                 ))}
               </ListItem>

@@ -8,7 +8,6 @@ import {
   formattedCurrentTime,
   getDate,
   getDateAndTime,
-  getDateAndTimeWithLocale,
   getShortDate,
   getShortWeekdayAndTime,
   getTime,
@@ -180,7 +179,7 @@ describe("FI locale formatting", () => {
 
 // Takes the locale as an argument rather than reading the global one, so it has
 // to stay correct while the global locale says otherwise
-describe("getDateAndTimeWithLocale", () => {
+describe("getDateAndTime", () => {
   beforeAll(() => {
     setLocale(Locale.EN);
   });
@@ -191,7 +190,7 @@ describe("getDateAndTimeWithLocale", () => {
     [WINTER, Locale.EN, "Thu 15.1.2026 12:30"],
     [SUMMER, Locale.EN, "Wed 15.7.2026 13:30"],
   ])("(%s, %s) is %s", (time, locale, expected) => {
-    expect(getDateAndTimeWithLocale(time, locale)).toEqual(expected);
+    expect(getDateAndTime(time, locale)).toEqual(expected);
   });
 });
 

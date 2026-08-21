@@ -8,6 +8,7 @@ import { AppRoute } from "client/app/routes";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { updateFavorite } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useLocale } from "client/utils/useLocale";
 import {
   MyProgramButtonContainer,
   MyProgramGameTitle,
@@ -24,6 +25,7 @@ export const FavoritesByStartTimes = ({
   favoriteProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+  const locale = useLocale();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -50,7 +52,7 @@ export const FavoritesByStartTimes = ({
         ([startTime, programItems]) => (
           <Fragment key={startTime}>
             <MyProgramTime>
-              {capitalize(getWeekdayAndTime(startTime))}
+              {capitalize(getWeekdayAndTime(startTime, locale))}
             </MyProgramTime>
 
             <MyProgramList>
