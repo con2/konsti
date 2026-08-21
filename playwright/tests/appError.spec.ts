@@ -46,6 +46,9 @@ test("The app recovers once its chunk loads again", async ({ page }) => {
   // The lazy import runs again on the next load, so the button is a real retry
   await programList.main.getByRole("button", { name: /reload/i }).click();
 
+  // The positive signal first, and with room to spare: the app boots from
+  // scratch after the reload, which the WebKit container runs slowly. Asserting
+  // the fallback is gone would otherwise pass while the page is still blank
+  await expect(programList.navigation.icon).toBeVisible({ timeout: 20_000 });
   await expect(programList.appError).toBeHidden();
-  await expect(programList.navigation.icon).toBeVisible();
 });
