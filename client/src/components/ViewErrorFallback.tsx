@@ -1,5 +1,6 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router";
 import styled from "styled-components";
 import { Button } from "client/components/Button";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -14,6 +15,19 @@ interface Props {
 // translations
 export const ViewErrorFallback = (props: Props): ReactElement => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  // eslint-disable-next-line react/hook-use-state -- The route the error happened on never changes, so there is no setter to destructure
+  const [failedPathname] = useState(pathname);
+
+  // A boundary holds its failed state until something resets it, and the routes
+  // are inside this one, so without this the header links would appear to do
+  // nothing. Done here rather than by keying the boundary on the route, which
+  // would remount every route element on every navigation
+  useEffect(() => {
+    if (pathname !== failedPathname) {
+      props.resetError();
+    }
+  }, [pathname, failedPathname, props]);
 
   return (
     <RaisedCard data-testid="view-error">
