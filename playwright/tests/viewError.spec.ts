@@ -89,6 +89,10 @@ test("Retrying recovers a view whose chunk failed to load", async ({
 
   await aboutPage.main.getByRole("button", { name: /try again/i }).click();
 
+  // Same ordering and allowance as the app-level fallback: the retry reloads,
+  // so the whole app boots again before the view can render
+  await expect(aboutPage.heading("What is Konsti?")).toBeVisible({
+    timeout: 20_000,
+  });
   await expect(aboutPage.viewError).toBeHidden();
-  await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
 });
