@@ -16,8 +16,8 @@ interface Props {
 export const ViewErrorFallback = (props: Props): ReactElement => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  // eslint-disable-next-line react/hook-use-state -- The route the error happened on never changes, so there is no setter to destructure
-  const [failedPathname] = useState(pathname);
+  // The route the error happened on, captured once and never updated
+  const [failedPathname, setFailedPathname] = useState(pathname);
 
   // A boundary holds its failed state until something resets it, and the routes
   // are inside this one, so without this the header links would appear to do

@@ -44,8 +44,7 @@ export const EventLog = (): ReactElement => {
   // Snapshot taken once on mount: the effect below marks the items seen, which
   // updates the store, and the list would otherwise drop its unseen
   // highlighting while the user is still looking at it
-  // eslint-disable-next-line react/hook-use-state -- The snapshot is never updated, so there is no setter to destructure
-  const [localEventLogItems] = useState(eventLogItems);
+  const [localEventLogItems, setLocalEventLogItems] = useState(eventLogItems);
 
   const setEventsSeen = useCallback((): void => {
     for (const { eventLogItemId, isSeen } of eventLogItems) {

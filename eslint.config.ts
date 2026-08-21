@@ -212,7 +212,17 @@ export default defineConfig([
       ],
       "@typescript-eslint/no-unused-vars": [
         "error",
-        { vars: "all", args: "all", argsIgnorePattern: "^_" },
+        {
+          vars: "all",
+          args: "all",
+          argsIgnorePattern: "^_",
+          // A useState pair whose setter is never called still has to be
+          // destructured as a pair, or react/hook-use-state rejects the lone
+          // value. That rule also fixes the setter's name to setValue, so an
+          // underscore prefix is not available here and the setter form is
+          // ignored as well
+          destructuredArrayIgnorePattern: "^_|^set[A-Z]",
+        },
       ],
       "@typescript-eslint/no-restricted-imports": [
         "error",
