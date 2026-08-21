@@ -69,6 +69,11 @@ const restrictedFormatImport = {
     "formatDuration",
     "formatRelative",
     "intlFormat",
+    // Emit an offset from the host timezone rather than the event's
+    "formatISO",
+    "formatISO9075",
+    "formatRFC3339",
+    "formatRFC7231",
   ],
   message: "Import from shared/utils/timeFormatter",
 };
@@ -83,6 +88,14 @@ const restrictedFormatImportPattern = {
     "date-fns/intlFormat",
   ],
   message: "Import from shared/utils/timeFormatter",
+};
+
+// The barrel re-exports all 724 locale modules. The server runs unbundled under
+// tsx, so pulling it in costs about a second and a few hundred MB of RSS on
+// every boot and test worker
+const restrictedLocaleBarrelImport = {
+  name: "date-fns/locale",
+  message: "Import the single locale, e.g. date-fns/locale/fi",
 };
 
 const timeFormattingModules = ["shared/utils/timeFormatter.ts"];
@@ -227,7 +240,11 @@ export default defineConfig([
       "@typescript-eslint/no-restricted-imports": [
         "error",
         {
-          paths: [...restrictedImportPaths, restrictedFormatImport],
+          paths: [
+            ...restrictedImportPaths,
+            restrictedFormatImport,
+            restrictedLocaleBarrelImport,
+          ],
           patterns: [
             restrictedFormatImportPattern,
             {
