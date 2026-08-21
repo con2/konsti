@@ -3,17 +3,19 @@ import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sortBy } from "remeda";
 import styled from "styled-components";
+import { Locale } from "shared/types/locale";
 import {
   formatRelativeTime,
   getWeekdayAndTime,
 } from "shared/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useLocale } from "client/utils/useLocale";
 import { useRealTimeNow } from "client/utils/useTimeNow";
 import { EventLogEventMessage } from "client/views/event-log/EventLogEventMessage";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 
-const getTime = (createdAt: string, timeNow: Date): string => {
+const getTime = (createdAt: string, timeNow: Date, locale: Locale): string => {
   const created = new Date(createdAt);
   const relativeTimePeriod = addHours(created, 4);
 
@@ -23,13 +25,14 @@ const getTime = (createdAt: string, timeNow: Date): string => {
     // last tick is stamped after it. Reading such an item as "in a few seconds"
     // would be nonsense, so measure those from their own timestamp
     const reference = isBefore(timeNow, created) ? created : timeNow;
-    return formatRelativeTime(reference, created);
+    return formatRelativeTime(reference, created, locale);
   }
-  return getWeekdayAndTime(createdAt);
+  return getWeekdayAndTime(createdAt, locale);
 };
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
+  const locale = useLocale();
   const dispatch = useAppDispatch();
 
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
@@ -86,7 +89,7 @@ export const EventLog = (): ReactElement => {
               />
 
               <MessageCreatedAt>
-                <span>{getTime(eventLogItem.createdAt, timeNow)}</span>
+                <span>{getTime(eventLogItem.createdAt, timeNow, locale)}</span>
               </MessageCreatedAt>
             </RaisedCard>
           );

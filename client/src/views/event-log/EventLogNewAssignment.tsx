@@ -8,6 +8,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
+import { useLocale } from "client/utils/useLocale";
 
 interface Props {
   eventLogItem: EventLogItem;
@@ -20,6 +21,7 @@ export const EventLogNewAssignment = ({
   showDetails,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
+  const locale = useLocale();
 
   const foundProgramItem = programItems.find(
     (programItem) => programItem.programItemId === eventLogItem.programItemId,
@@ -55,7 +57,10 @@ export const EventLogNewAssignment = ({
             <>
               <TextRow>
                 {t("eventLog.programItemDetails", {
-                  START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
+                  START_TIME: getWeekdayAndTime(
+                    foundProgramItem.startTime,
+                    locale,
+                  ),
                   LOCATION: foundProgramItem.location,
                 })}
               </TextRow>

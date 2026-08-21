@@ -5,9 +5,11 @@ import { getDateAndTime } from "shared/utils/timeFormatter";
 import { Loading } from "client/components/Loading";
 import { RaisedCard } from "client/components/RaisedCard";
 import { getResults } from "client/services/resultsServices";
+import { useLocale } from "client/utils/useLocale";
 
 export const DashboardView = (): ReactElement => {
   const { t } = useTranslation();
+  const locale = useLocale();
 
   const [assignmentRuns, setAssignmentRuns] = useState<AssignmentRun[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -50,7 +52,7 @@ export const DashboardView = (): ReactElement => {
           key={assignmentRun.assignmentTime}
           data-testid="assignment-run"
         >
-          <h3>{getDateAndTime(assignmentRun.assignmentTime)}</h3>
+          <h3>{getDateAndTime(assignmentRun.assignmentTime, locale)}</h3>
           <p>
             {t("dashboardView.algorithm")}: {assignmentRun.algorithm}
           </p>

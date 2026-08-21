@@ -16,6 +16,7 @@ import {
 } from "shared/utils/signupTimes";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { useAppSelector } from "client/utils/hooks";
+import { useLocale } from "client/utils/useLocale";
 import { useTimeNow } from "client/utils/useTimeNow";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import {
@@ -33,6 +34,7 @@ export const SignupHelpText = ({
   usesKonstiSignup,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
+  const locale = useLocale();
 
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
@@ -89,7 +91,7 @@ export const SignupHelpText = ({
         <p>
           <FontAwesomeIcon icon={"user-plus"} />{" "}
           {t("signup.help.directSignupStartsLater")}{" "}
-          <b>{getFormattedTime(directSignupStartTime, timeNow)}</b>.
+          <b>{getFormattedTime(directSignupStartTime, timeNow, locale)}</b>.
           {groupMemberInfo}
         </p>
       );
@@ -99,7 +101,7 @@ export const SignupHelpText = ({
       <p>
         <FontAwesomeIcon icon={"user-plus"} />{" "}
         {t("signup.help.directSignupOpenNow")}{" "}
-        <b>{getFormattedTime(directSignupEndTime, timeNow)}</b>.
+        <b>{getFormattedTime(directSignupEndTime, timeNow, locale)}</b>.
         {groupMemberInfo}
       </p>
     );
@@ -117,6 +119,7 @@ export const SignupHelpText = ({
             lotterySignupStartTime,
             lotterySignupEndTime,
             timeNow,
+            locale,
           )}
         </b>
         . {t("signup.help.directSignupStarts")}{" "}
@@ -125,6 +128,7 @@ export const SignupHelpText = ({
             directSignupStartTime,
             directSignupEndTime,
             timeNow,
+            locale,
           )}
         </b>
         .
@@ -138,13 +142,14 @@ export const SignupHelpText = ({
       <p>
         <FontAwesomeIcon icon={"dice-three"} />{" "}
         {t("signup.help.lotterySignupOpen")}{" "}
-        <b>{getFormattedTime(lotterySignupEndTime, timeNow)}</b>.{" "}
+        <b>{getFormattedTime(lotterySignupEndTime, timeNow, locale)}</b>.{" "}
         {t("signup.help.directSignupStarts")}{" "}
         <b>
           {getFormattedInterval(
             directSignupStartTime,
             directSignupEndTime,
             timeNow,
+            locale,
           )}
         </b>
         .
@@ -163,6 +168,7 @@ export const SignupHelpText = ({
           directSignupStartTime,
           directSignupEndTime,
           timeNow,
+          locale,
         )}
       </b>
       .
