@@ -109,7 +109,10 @@ export const storeDirectSignup = async (
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
   if (!isSameOrAfter(timeNow, directSignupStartTime)) {
-    const message = `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`;
+    // String rather than toISOString: this branch is reached when the start time
+    // may be unparseable, and toISOString throws on that, which would turn the
+    // structured error into a 500
+    const message = `Signup for program item ${directSignupProgramItemId} not open yet, opens ${String(directSignupStartTime)}`;
     logger.warn(message);
     return {
       errorId: "signupNotOpenYet",

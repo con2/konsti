@@ -109,7 +109,9 @@ export const storeLotterySignup = async ({
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
   if (!isSameOrAfter(timeNow, lotterySignupStartTime)) {
-    const message = `Signup for program item ${programItemId} not open yet, opens ${lotterySignupStartTime.toISOString()}`;
+    // String rather than toISOString, which throws on an unparseable date - the
+    // very case this branch exists to report
+    const message = `Signup for program item ${programItemId} not open yet, opens ${String(lotterySignupStartTime)}`;
     logger.warn(message);
     return {
       errorId: "signupNotOpenYet",
