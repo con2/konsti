@@ -9,7 +9,12 @@ import { Locale } from "shared/types/locale";
 // date-fns's abbreviated Finnish weekdays are "torst." / "kesk.", where the UI
 // has always shown the two-letter forms - which is date-fns's "short" width, so
 // this remaps rather than hard-coding the names. English needs the abbreviated
-// width as it is ("Thu"), so it cannot be solved by picking a different token
+// width as it is ("Thu"), so it cannot be solved by picking a different token.
+//
+// This makes the abbreviated width unreachable in Finnish, deliberately: every
+// formatter then gets the two-letter form from the ordinary token, where picking
+// the width per call site would let a new formatter render "torst." by writing
+// the token every other formatter already uses
 const finnish: DateFnsLocale = {
   ...fi,
   localize: {

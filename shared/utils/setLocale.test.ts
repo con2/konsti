@@ -12,11 +12,13 @@ beforeEach(() => {
 
 test("switching language notifies subscribers", () => {
   const listener = vi.fn();
-  subscribeToLocale(listener);
+  const unsubscribe = subscribeToLocale(listener);
 
   setLocale(Locale.FI);
 
   expect(listener).toHaveBeenCalledTimes(1);
+
+  unsubscribe();
 });
 
 // The snapshot backs useSyncExternalStore, which re-reads it after every render

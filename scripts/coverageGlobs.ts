@@ -23,7 +23,6 @@ export const coverageExclude = [
   // statistics feature excluded above, so they can never gain coverage
   "shared/config/past-events/**",
   "shared/tests/**",
-  "shared/setupTests.ts",
 ];
 
 const isClientGlob = (glob: string): boolean => glob.startsWith("client/");
