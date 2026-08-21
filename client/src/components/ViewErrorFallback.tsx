@@ -33,10 +33,14 @@ export const ViewErrorFallback = (props: Props): ReactElement => {
     <RaisedCard data-testid="view-error">
       <Heading>{t("viewError.title")}</Heading>
       <p>{t("viewError.description")}</p>
+      {/* A reload rather than resetting the boundary, which only re-renders the
+          element that threw. A lazily loaded view keeps the rejection of its
+          import, so re-rendering it throws the same error without retrying the
+          load, and the button would appear to do nothing */}
       <Button
         buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => {
-          props.resetError();
+          location.reload();
         }}
       >
         {t("viewError.retry")}
