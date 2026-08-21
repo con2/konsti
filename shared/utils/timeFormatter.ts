@@ -51,6 +51,16 @@ export const getLocalDateAndTime = (time: Time): string =>
 export const getLocalTimezone = (time: Time): string =>
   format(time, "zzz", { locale: getCurrentLocale() });
 
+// For the generated statistics documents, which group rows by the event's wall
+// clock. Numeric, so the active language never reaches the output
+export const getIsoDate = (time: Time): string =>
+  formatInEventTimezone(time, "yyyy-MM-dd");
+
+// Those documents are written in English whatever the UI language is, so this
+// names the locale instead of taking the active one
+export const getShortWeekdayInEnglish = (time: Time): string =>
+  format(time, "ccc", { in: tz(TIMEZONE), locale: localeFor(Locale.EN) });
+
 export const formatProgramItemDuration = (mins: number): string => {
   const hours = Math.floor(mins / 60);
   const minutes = mins % 60;

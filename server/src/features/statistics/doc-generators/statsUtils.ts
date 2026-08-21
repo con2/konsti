@@ -9,6 +9,10 @@ import {
   State,
 } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
+import {
+  getIsoDate,
+  getShortWeekdayInEnglish,
+} from "shared/utils/timeFormatter";
 import { TIMEZONE } from "shared/utils/timezone";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
@@ -27,8 +31,6 @@ export const EVENT_ORDER = [
   "solmukohta",
 ];
 
-const SHORT_WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
 // Shared empty-state texts so the generated docs cannot drift apart
 export const NO_RPGS_TEXT = "No tabletop RPGs at this event.";
 export const DIRECT_SIGNUP_ONLY_TEXT =
@@ -39,16 +41,14 @@ interface DayHourBucket {
   hour: number;
 }
 
-export const bucketByHour = (time: string): DayHourBucket => {
-  const local = new TZDate(time, TIMEZONE);
-  const day = `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, "0")}-${String(local.getDate()).padStart(2, "0")}`;
-  return { day, hour: local.getHours() };
-};
+export const bucketByHour = (time: string): DayHourBucket => ({
+  day: getIsoDate(time),
+  hour: new TZDate(time, TIMEZONE).getHours(),
+});
 
-export const dayOfWeek = (isoDay: string): string => {
-  const d = new TZDate(`${isoDay}T12:00:00Z`, TIMEZONE);
-  return SHORT_WEEKDAYS[d.getDay()];
-};
+// Midday, so the day cannot roll over into its neighbour in the event timezone
+export const dayOfWeek = (isoDay: string): string =>
+  getShortWeekdayInEnglish(`${isoDay}T12:00:00Z`);
 
 export const pct = (num: number, denom: number): string => {
   if (denom === 0) return "n/a";
