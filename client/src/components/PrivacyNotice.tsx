@@ -8,6 +8,7 @@ import { lazyWithRetry } from "client/utils/lazyWithRetry";
 // The accordion only mounts its content once opened, so the notice text is
 // fetched when a registering user asks to read it rather than on every load
 const PrivacyNoticeText = lazyWithRetry(
+  "PrivacyNotice",
   async () => await import("client/markdown/PrivacyNotice.mdx"),
 );
 
