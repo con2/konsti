@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
+import { addHours } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
@@ -9,6 +9,7 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   clearDb,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -38,9 +39,7 @@ test("Update banner and admin message stack instead of overlapping when scrolled
 }) => {
   await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 1),
-  ).toISOString();
+  const startTime = hoursIntoEvent(1);
   // Enough items that the page scrolls, so the sticky bars actually pin
   await addProgramItems(
     request,

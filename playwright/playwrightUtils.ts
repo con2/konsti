@@ -1,4 +1,6 @@
 import { APIRequestContext, Page, expect } from "@playwright/test";
+import { addHours, startOfHour } from "date-fns";
+import { config } from "shared/config";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
 import {
@@ -261,3 +263,12 @@ export const reportServerBuildTime = async (
     reportedBuildTime = nextBuildTime;
   };
 };
+
+// Program item start times, built relative to the event start so a spec never
+// pins an absolute date. Truncated to a whole hour because lottery items are
+// only valid on one, and the hour is the event's own: the config pins this
+// process to that timezone
+export const hoursIntoEvent = (hours: number): string =>
+  startOfHour(
+    addHours(new Date(config.event().eventStartTime), hours),
+  ).toISOString();

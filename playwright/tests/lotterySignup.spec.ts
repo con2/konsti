@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes, startOfHour, subHours } from "date-fns";
+import { addHours, addMinutes, subHours } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -10,6 +10,7 @@ import { ProgramType } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postAssignment,
@@ -19,9 +20,7 @@ import {
 } from "playwright/playwrightUtils";
 
 test("Add lottery signup", async ({ page, request }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 3),
-  ).toISOString();
+  const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -73,9 +72,7 @@ test("Add lottery signup", async ({ page, request }) => {
 });
 
 test("Receive spot in lottery signup", async ({ page, request }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 4),
-  ).toISOString();
+  const startTime = hoursIntoEvent(4);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -140,9 +137,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
 });
 
 test("Did not receive spot in lottery signup", async ({ page, request }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 4),
-  ).toISOString();
+  const startTime = hoursIntoEvent(4);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -210,9 +205,7 @@ test("Receive spot in lottery signup, with multiple lottery program types", asyn
   page,
   request,
 }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 4),
-  ).toISOString();
+  const startTime = hoursIntoEvent(4);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -416,9 +409,7 @@ test("Receive seat from each lottery program type in separate time slots", async
 });
 
 test("Cancel lottery signup on program list", async ({ page, request }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 3),
-  ).toISOString();
+  const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -472,9 +463,7 @@ test("Show limit message when three lottery signups in time slot", async ({
   page,
   request,
 }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 3),
-  ).toISOString();
+  const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,

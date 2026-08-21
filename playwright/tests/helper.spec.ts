@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import {
   EventSignupStrategy,
@@ -11,6 +10,7 @@ import { HelperPage } from "playwright/pages/HelperPage";
 import { LoginPage } from "playwright/pages/LoginPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -85,9 +85,7 @@ test("Helper can view private signup question answers", async ({
       ...testProgramItem,
       programItemId: "helper-message-item",
       title: "Private Question Item",
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
   ]);
   await postSettings(request, {

@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import { addHours, addMinutes, startOfHour, subHours } from "date-fns";
+import { addMinutes, subHours } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -13,6 +13,7 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   clearDb,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -566,14 +567,8 @@ const initDb = async (request: APIRequestContext): Promise<void> => {
   });
 };
 
-const getStartTime = (type: "lottery" | "direct"): string => {
-  return startOfHour(
-    addHours(
-      new Date(config.event().eventStartTime),
-      type === "direct" ? 1 : 3, // -> direct sign-up
-    ),
-  ).toISOString();
-};
+const getStartTime = (type: "lottery" | "direct"): string =>
+  hoursIntoEvent(type === "direct" ? 1 : 3);
 
 const getEndTime = (startTime: string): string => {
   return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();

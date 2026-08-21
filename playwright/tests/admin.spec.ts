@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import {
   EventSignupStrategy,
@@ -13,6 +12,7 @@ import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -160,9 +160,7 @@ test("Admin sees signup questions listed", async ({ page, request }) => {
       ...testProgramItem,
       programItemId: "admin-question-item",
       title: "Admin Question Item",
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
   ]);
   await postSettings(request, {
@@ -192,9 +190,7 @@ test("Admin sees signup questions listed", async ({ page, request }) => {
 });
 
 test("Admin can trigger an assignment run", async ({ page, request }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 4),
-  ).toISOString();
+  const startTime = hoursIntoEvent(4);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

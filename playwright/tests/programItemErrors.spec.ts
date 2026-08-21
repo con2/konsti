@@ -1,11 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes, startOfHour } from "date-fns";
+import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { SignupType } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
@@ -21,27 +22,21 @@ test("Program items missing required info show error messages", async ({
       ...testProgramItem,
       programItemId: "valid-item",
       title: "Valid Program Item",
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
     {
       ...testProgramItem,
       programItemId: "min-attendance-missing",
       title: "Min Attendance Missing",
       minAttendance: 0,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 2),
-      ).toISOString(),
+      startTime: hoursIntoEvent(2),
     },
     {
       ...testProgramItem,
       programItemId: "max-attendance-missing",
       title: "Max Attendance Missing",
       maxAttendance: 0,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 3),
-      ).toISOString(),
+      startTime: hoursIntoEvent(3),
     },
     {
       ...testProgramItem,
@@ -49,18 +44,14 @@ test("Program items missing required info show error messages", async ({
       title: "Min Bigger Than Max",
       minAttendance: 5,
       maxAttendance: 4,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 4),
-      ).toISOString(),
+      startTime: hoursIntoEvent(4),
     },
     {
       ...testProgramItem,
       programItemId: "signup-type-missing",
       title: "Signup Type Missing",
       signupType: SignupType.MISSING,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 5),
-      ).toISOString(),
+      startTime: hoursIntoEvent(5),
     },
     {
       ...testProgramItem,
@@ -68,10 +59,7 @@ test("Program items missing required info show error messages", async ({
       title: "Not Starting On Even Hour",
       // Only lottery sign-up program items have to start on the hour
       programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: addMinutes(
-        startOfHour(addHours(new Date(config.event().eventStartTime), 6)),
-        30,
-      ).toISOString(),
+      startTime: addMinutes(new Date(hoursIntoEvent(6)), 30).toISOString(),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
+import { addHours } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -7,6 +7,7 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   clearDb,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -24,9 +25,7 @@ test("Add and cancel direct signup", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
   ]);
   await postTestSettings(request, {
@@ -112,9 +111,7 @@ test("Show program item full message when logged out and logged in", async ({
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -168,9 +165,7 @@ test("Show error when program item full and update participant list", async ({
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
       minAttendance: 1,
       maxAttendance: 1,
     },
@@ -227,9 +222,7 @@ test("Show no signup controls after direct signup has ended", async ({
     users: true,
     admin: true,
   });
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 1),
-  ).toISOString();
+  const startTime = hoursIntoEvent(1);
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -290,9 +283,7 @@ test("Show timeslot conflict message instead of signup button", async ({
     users: true,
     admin: true,
   });
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 1),
-  ).toISOString();
+  const startTime = hoursIntoEvent(1);
   await addProgramItems(request, [
     {
       ...testProgramItem,
@@ -351,9 +342,7 @@ test("Show no signup button before direct signup opens", async ({
       programItemId: "other-program-item",
       title: "Other test item",
       programType: config.event().rollingDirectSignupProgramTypes[0],
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 6),
-      ).toISOString(),
+      startTime: hoursIntoEvent(6),
     },
   ]);
   await postSettings(request, {
