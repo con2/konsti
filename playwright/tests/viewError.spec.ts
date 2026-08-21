@@ -1,5 +1,6 @@
 import { APIRequestContext, Page, expect, test } from "@playwright/test";
 import { config } from "shared/config";
+import { AboutPage } from "playwright/pages/AboutPage";
 import { AdminPage } from "playwright/pages/AdminPage";
 import {
   login,
@@ -53,4 +54,41 @@ test("Navigating away from a thrown view recovers", async ({
   await adminPage.navigation.gotoProgram();
 
   await expect(adminPage.viewError).toBeHidden();
+});
+
+// A lazily loaded view fails differently from one that throws while rendering:
+// React.lazy remembers the rejection, so re-rendering the same element throws it
+// again without ever re-running the import
+test("Retrying recovers a view whose chunk failed to load", async ({
+  page,
+  request,
+}) => {
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.route(
+    (url) => {
+      const file = url.pathname.split("/").pop() ?? "";
+      // "AboutView." is the dev server's module request, "AboutView-" the
+      // built chunk
+      return file.startsWith("AboutView.") || file.startsWith("AboutView-");
+    },
+    async (route) => {
+      await route.abort();
+    },
+  );
+
+  // The tab that AboutView itself backs, rather than the section's index
+  await page.goto("/about/about");
+
+  const aboutPage = new AboutPage(page);
+  await expect(aboutPage.viewError).toBeVisible();
+
+  // Stop blocking, so the import has something to succeed at
+  await page.unrouteAll();
+
+  await aboutPage.main.getByRole("button", { name: /try again/i }).click();
+
+  await expect(aboutPage.viewError).toBeHidden();
+  await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
 });
