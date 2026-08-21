@@ -112,6 +112,8 @@ Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and rando
 
 **Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, sign-up cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
 
+The fixtures and both algorithms draw from randomness (faker, `n()`, and the PADG list shuffle, all through `Math.random`), so a test asserting a fixed result count must call `seedRandomness()` from `src/test/utils/` before `generateTestData`. It seeds faker too, which is why per-test database names come from `randomUUID()` rather than faker - seeded, every test in a file would otherwise draw the same name and share one database.
+
 ## Program Item Cancellation Types
 
 A program item can effectively "go away" in four distinct ways; each has different data-cleanup semantics:
@@ -182,7 +184,7 @@ let server: Server;
 beforeEach(async () => {
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
-    dbName: faker.string.alphanumeric(10), // unique DB per test avoids cross-test pollution
+    dbName: randomUUID(), // unique DB per test avoids cross-test pollution
   });
 });
 afterEach(async () => await closeServer(server));
@@ -194,6 +196,6 @@ const response = await request(server)
   .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "username")}`);
 ```
 
-**Tests that don't start a server connect with `db.connectToDb(globalThis.__MONGO_URI__, faker.string.alphanumeric(10))`, not a bare `mongoose.connect`.** Mongoose builds a model's indexes only once per process, so a plain connect leaves every database after the first without them — and each test gets its own. The unique keys would then be missing exactly where tests seed data, so a test could insert duplicate users or a second settings document that production would reject. `startServer` already routes through the same helper, so controller tests need nothing extra.
+**Tests that don't start a server connect with `db.connectToDb(globalThis.__MONGO_URI__, randomUUID())`, not a bare `mongoose.connect`.** Mongoose builds a model's indexes only once per process, so a plain connect leaves every database after the first without them — and each test gets its own. The unique keys would then be missing exactly where tests seed data, so a test could insert duplicate users or a second settings document that production would reject. `startServer` already routes through the same helper, so controller tests need nothing extra.
 
 **Never use Mongoose Models directly in tests** — always seed and read DB state through the feature's repository functions (`saveUser`/`findUser`, `findOrCreateSettings`, `setAssignmentLastRun`, etc.). When a repository has no helper for the exact state you need, prefer an existing function (e.g. `findOrCreateSettings` creates a default row) or control inputs another way (e.g. mock the clock with `vi.setSystemTime`) instead of reaching for the Model — this keeps tests decoupled from the schema and exercises the same code paths as production. Unwrap `Result` values via `unsafelyUnwrap` from `src/test/utils/` rather than reintroducing production unwrap helpers. Cast `response.body` to the expected shape and assert directly — do **not** wrap `expect` in conditionals (`vitest/no-conditional-expect` forbids it). Avoid asserting on real email/network side effects; they aren't available in unit runs.

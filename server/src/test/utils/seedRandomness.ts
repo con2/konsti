@@ -14,11 +14,15 @@ export const seedRandomness = (seed = 1): void => {
   faker.seed(seed);
 
   // A plain linear congruential generator: the values only have to be repeatable
-  // and spread out enough to shuffle a fixture list, not to be unpredictable
-  const modulus = 2 ** 31;
+  // and spread out enough to shuffle a fixture list, not to be unpredictable.
+  //
+  // Math.imul, not `*`: the product overflows Number.MAX_SAFE_INTEGER, and the
+  // rounding that follows collapses the period to a few thousand coarsely
+  // spaced values, which is not a generator at all
+  const modulus = 2 ** 32;
   let state = seed;
   vi.spyOn(Math, "random").mockImplementation(() => {
-    state = (state * 1103515245 + 12345) % modulus;
+    state = (Math.imul(state, 1103515245) + 12345) >>> 0;
     return state / modulus;
   });
 };
