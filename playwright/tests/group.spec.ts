@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes, startOfHour } from "date-fns";
+import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -10,6 +10,7 @@ import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postAssignment,
@@ -22,9 +23,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   page,
   request,
 }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 3),
-  ).toISOString();
+  const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -183,9 +182,7 @@ test("Group member cannot lottery signup but group creator can", async ({
   page,
   request,
 }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 3),
-  ).toISOString();
+  const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -238,9 +235,7 @@ test("Show error when group is bigger than the program item's maximum attendance
   page,
   request,
 }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 3),
-  ).toISOString();
+  const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -300,12 +295,8 @@ test("Upcoming direct signups block creating and joining a group", async ({
 }) => {
   // Both program items are in the direct sign-up phase at event start time,
   // starting one and two hours after it
-  const startTime1 = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 1),
-  ).toISOString();
-  const startTime2 = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 2),
-  ).toISOString();
+  const startTime1 = hoursIntoEvent(1);
+  const startTime2 = hoursIntoEvent(2);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -10,14 +9,13 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { RegistrationPage } from "playwright/pages/RegistrationPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   populateDb,
   postSettings,
   postTestSettings,
 } from "playwright/playwrightUtils";
 
-const programItemStartTime = startOfHour(
-  addHours(new Date(config.event().eventStartTime), 1),
-).toISOString();
+const programItemStartTime = hoursIntoEvent(1);
 
 test("Admin login", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });

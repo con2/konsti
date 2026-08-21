@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -17,9 +17,7 @@ test("Admission ticket reflects whether the user has signed up", async ({
   page,
   request,
 }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 1),
-  ).toISOString();
+  const startTime = hoursIntoEvent(1);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

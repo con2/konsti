@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
@@ -17,9 +17,7 @@ test("Program list filters narrow the list and persist over reload", async ({
   request,
 }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 1),
-  ).toISOString();
+  const startTime = hoursIntoEvent(1);
   await addProgramItems(request, [
     {
       ...testProgramItem,

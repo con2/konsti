@@ -1,20 +1,19 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes, startOfHour } from "date-fns";
+import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
 } from "playwright/playwrightUtils";
 
-const startTime = startOfHour(
-  addHours(new Date(config.event().eventStartTime), 3),
-).toISOString();
+const startTime = hoursIntoEvent(3);
 const endTime = addMinutes(
   new Date(startTime),
   testProgramItem.mins,

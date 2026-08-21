@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
@@ -20,17 +20,13 @@ test("Search filters the program list and shows the empty state", async ({
       ...testProgramItem,
       programItemId: "search-item-1",
       title: "Aardvark Adventure",
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
     {
       ...testProgramItem,
       programItemId: "search-item-2",
       title: "Zebra Zone",
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 2),
-      ).toISOString(),
+      startTime: hoursIntoEvent(2),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });
@@ -70,9 +66,7 @@ test("The empty state is not shown while the program list loads its items", asyn
       ...testProgramItem,
       programItemId: "load-item-1",
       title: "Aardvark Adventure",
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });

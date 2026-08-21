@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes, startOfHour } from "date-fns";
+import { addHours, addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -10,6 +10,7 @@ import { TIMEZONE } from "shared/utils/timezone";
 import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   populateDb,
   postAssignment,
   postSettings,
@@ -40,9 +41,7 @@ test("Show empty state when the lottery hasn't been run", async ({
 });
 
 test("Show lottery results without login", async ({ page, request }) => {
-  const startTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 4),
-  ).toISOString();
+  const startTime = hoursIntoEvent(4);
   const endTime = addMinutes(
     new Date(startTime),
     testProgramItem.mins,
@@ -87,12 +86,8 @@ test("Show lottery results without login", async ({ page, request }) => {
 });
 
 test("Sort assignment runs latest first", async ({ page, request }) => {
-  const earlierStartTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 4),
-  ).toISOString();
-  const laterStartTime = startOfHour(
-    addHours(new Date(config.event().eventStartTime), 5),
-  ).toISOString();
+  const earlierStartTime = hoursIntoEvent(4);
+  const laterStartTime = hoursIntoEvent(5);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [

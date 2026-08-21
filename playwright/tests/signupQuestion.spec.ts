@@ -1,5 +1,4 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
 import { config } from "shared/config";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -12,6 +11,7 @@ import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
@@ -261,9 +261,7 @@ const seedProgramItem = async (request: APIRequestContext): Promise<void> => {
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: startOfHour(
-        addHours(new Date(config.event().eventStartTime), 1),
-      ).toISOString(),
+      startTime: hoursIntoEvent(1),
     },
   ]);
   await postTestSettings(request, { testTime: config.event().eventStartTime });
