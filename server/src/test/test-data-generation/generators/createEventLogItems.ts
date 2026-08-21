@@ -1,8 +1,8 @@
 import { subHours, subMinutes } from "date-fns";
 import { first, groupBy, sample } from "remeda";
-import { config } from "shared/config";
 import { NewEventLogItem } from "shared/types/api/eventLog";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -19,7 +19,6 @@ export const createEventLogItems = async (): Promise<void> => {
   const programItemsById = new Map(
     programItems.map((programItem) => [programItem.programItemId, programItem]),
   );
-  const { startTimesByParentIds } = config.event();
 
   const allUsers = unsafelyUnwrap(await findUsers());
 
@@ -60,9 +59,7 @@ export const createEventLogItems = async (): Promise<void> => {
         username: user.username,
         directSignupProgramItemId: wonSignup.programItemId,
         // Direct sign-ups store the parent-resolved start time
-        signedToStartTime:
-          startTimesByParentIds.get(wonProgramItem.parentId) ??
-          wonProgramItem.startTime,
+        signedToStartTime: getProgramItemStartTime(wonProgramItem),
         signupTime: wonProgramItem.startTime,
         message: "",
         priority: wonSignup.priority,

@@ -31,15 +31,25 @@ const toPlainDate = (time: Date): Date => new Date(time);
 // closed. Clamping it to a real instant instead would open sign-up for an item
 // whose start time could not be resolved
 
-// Resolve a program item's effective start time, applying the parent override that batches
-// several items into a single lottery run
-export const getProgramItemStartTime = (programItem: ProgramItem): string => {
+// Apply the parent override that batches several items into a single lottery
+// run. Takes the parts rather than a program item, for callers that hold a
+// sign-up's stored time instead of the item it points at
+export const resolveStartTime = (
+  parentId: string | undefined,
+  ownStartTime: string,
+): string => {
   const { startTimesByParentIds } = config.event();
 
-  const parentStartTime = startTimesByParentIds.get(programItem.parentId);
+  if (parentId === undefined) {
+    return ownStartTime;
+  }
 
-  return parentStartTime ?? programItem.startTime;
+  return startTimesByParentIds.get(parentId) ?? ownStartTime;
 };
+
+// Resolve a program item's effective start time
+export const getProgramItemStartTime = (programItem: ProgramItem): string =>
+  resolveStartTime(programItem.parentId, programItem.startTime);
 
 // Open the whole batch at a fixed hour the previous evening. The wanted instant is
 // built from the previous calendar day and the hour, so an item starting at e.g.
@@ -49,10 +59,11 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string => {
 // time even when that day is 23 or 25 hours long, and naming the hour explicitly
 // resolves whichever UTC offset that day happens to have
 const openAtFixedHourPreviousEvening = (
-  timezoneStartTime: Date,
+  timezoneStartTime: TZDate,
   hour: number,
 ): Date => {
-  const previousDay = subDays(new TZDate(timezoneStartTime, TIMEZONE), 1);
+  // date-fns keeps the operand's own class, so this stays in the event timezone
+  const previousDay = subDays(timezoneStartTime, 1);
 
   return atWallClockHourInEventTimezone(
     previousDay.getFullYear(),

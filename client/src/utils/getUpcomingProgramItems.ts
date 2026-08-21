@@ -1,7 +1,10 @@
 import { addHours, isAfter } from "date-fns";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getDirectSignupEndTime } from "shared/utils/signupTimes";
+import {
+  getDirectSignupEndTime,
+  getProgramItemStartTime,
+} from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { GroupMemberWithLotteryProgramItem } from "client/views/group/groupSlice";
 import {
@@ -34,18 +37,9 @@ const getUpcomingLotterySignups = (
   lotterySignups: readonly LotterySignupWithProgramItem[],
   timeNow: Date,
 ): readonly LotterySignupWithProgramItem[] => {
-  const { startTimesByParentIds } = config.event();
-
   const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
-    const parentStartTime = startTimesByParentIds.get(
-      lotterySignup.programItem.parentId,
-    );
-
     return isAfter(
-      addHours(
-        new Date(parentStartTime ?? lotterySignup.programItem.startTime),
-        1,
-      ),
+      addHours(new Date(getProgramItemStartTime(lotterySignup.programItem)), 1),
       timeNow,
     );
   });
@@ -113,16 +107,10 @@ export const getUpcomingFavorites = (
   favoriteProgramItems: readonly ProgramItem[],
   timeNow: Date,
 ): readonly ProgramItem[] => {
-  const { startTimesByParentIds } = config.event();
-
   const upcomingProgramItems = favoriteProgramItems.filter(
     (favoriteProgramItem) => {
-      const parentStartTime = startTimesByParentIds.get(
-        favoriteProgramItem.parentId,
-      );
-
       return isAfter(
-        addHours(new Date(parentStartTime ?? favoriteProgramItem.startTime), 1),
+        addHours(new Date(getProgramItemStartTime(favoriteProgramItem)), 1),
         timeNow,
       );
     },

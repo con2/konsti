@@ -17,6 +17,7 @@ import { UserGroup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { differenceBy } from "shared/utils/remedaExtend";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
@@ -261,11 +262,7 @@ const getSignupStrategyForProgramItem = (
   settings: Settings,
   currentTime: Date,
 ): ProgramItemSignupStrategy => {
-  const parentStartTime = config
-    .event()
-    .startTimesByParentIds.get(programItem.parentId);
-
-  const start = new Date(parentStartTime ?? programItem.startTime);
+  const start = new Date(getProgramItemStartTime(programItem));
   const { directSignupPhaseStart } = config.event();
 
   // lottery
