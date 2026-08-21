@@ -1,5 +1,12 @@
 import { PlaywrightTestConfig, Project, devices } from "@playwright/test";
+import { TIMEZONE } from "shared/utils/timezone";
 import { resolvePortOffset } from "scripts/portOffset";
+
+// The browser timezone set below does not reach this process, and the specs
+// build program item start times here, truncated to a wall-clock hour. In a zone
+// offset by half an hour that boundary lands on :30 in the event's zone, which
+// marks every lottery item invalid and hides its sign-up controls
+process.env.TZ = TIMEZONE;
 
 const ENABLE_CHROME = true;
 const ENABLE_FIREFOX = false;
@@ -78,6 +85,12 @@ const config: PlaywrightTestConfig = {
     trace: process.env.CI ? "on-first-retry" : "on",
     headless: true,
     ignoreHTTPSErrors: true,
+    // Without this the browser inherits the host's zone: UTC in CI, whatever the
+    // developer is in locally. The specs build fixture times from the wall clock
+    // and assert times the app renders in the event's zone, so the two only
+    // agree when they are the same zone. Pinned to the event's own, which is
+    // also what an attendee at the event sees
+    timezoneId: TIMEZONE,
   },
 };
 
