@@ -165,6 +165,12 @@ export const translationEN = {
     invalidUserGroup: "Invalid user group",
     unknown: "Unknown error",
   },
+  appError: {
+    title: "Konsti could not be loaded",
+    description:
+      "Something went wrong while starting Konsti. This is usually temporary - reloading often fixes it.",
+    reload: "Reload",
+  },
   viewError: {
     title: "Something went wrong",
     description:
