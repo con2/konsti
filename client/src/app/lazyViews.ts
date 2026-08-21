@@ -29,11 +29,14 @@ const importHelperView: ViewImport = async () => ({
   default: (await import("client/views/helper/HelperView")).HelperView,
 });
 
-export const AboutView = lazyWithRetry(importAboutView);
-export const FaqView = lazyWithRetry(importFaqView);
-export const InstructionsView = lazyWithRetry(importInstructionsView);
-export const AdminView = lazyWithRetry(importAdminView);
-export const HelperView = lazyWithRetry(importHelperView);
+export const AboutView = lazyWithRetry("AboutView", importAboutView);
+export const FaqView = lazyWithRetry("FaqView", importFaqView);
+export const InstructionsView = lazyWithRetry(
+  "InstructionsView",
+  importInstructionsView,
+);
+export const AdminView = lazyWithRetry("AdminView", importAdminView);
+export const HelperView = lazyWithRetry("HelperView", importHelperView);
 
 const prefetchView = async (importView: ViewImport): Promise<void> => {
   try {

@@ -29,7 +29,7 @@ setLocale(getLocalStorageLocale());
 history.scrollRestoration = "manual";
 
 // Root component
-const App = lazyWithRetry(async () => await import("client/app/App"));
+const App = lazyWithRetry("App", async () => await import("client/app/App"));
 
 const { enableAxe, enableWhyDidYouRender } = config.client();
 
