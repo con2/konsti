@@ -42,6 +42,11 @@ export class BasePage {
     return this.page.getByTestId("view-error");
   }
 
+  // Shown in place of the whole app when it fails before it is mounted
+  get appError(): Locator {
+    return this.page.getByTestId("app-error");
+  }
+
   // The registration code notice shown below the header on a user's first login
   get firstLoginNotice(): Locator {
     return this.page.getByTestId(BasePage.firstLoginNoticeTestId);

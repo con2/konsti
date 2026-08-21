@@ -164,6 +164,12 @@ export const translationFI = {
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
     unknown: "Tuntematon virhe",
   },
+  appError: {
+    title: "Konstia ei voitu ladata",
+    description:
+      "Konstin käynnistyksessä tapahtui virhe. Tämä on yleensä tilapäistä - sivun lataaminen uudelleen auttaa usein.",
+    reload: "Lataa uudelleen",
+  },
   viewError: {
     title: "Jokin meni pieleen",
     description:

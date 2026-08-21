@@ -1,4 +1,4 @@
-import { init } from "@sentry/react";
+import { ErrorBoundary, init } from "@sentry/react";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
@@ -9,6 +9,7 @@ import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { setLocale } from "shared/utils/setLocale";
 import loaderImage from "assets/loading.gif";
+import { AppErrorFallback } from "client/components/AppErrorFallback";
 import { GlobalStyle } from "client/globalStyle";
 import { theme } from "client/theme";
 import { getLocalStorageLocale } from "client/utils/localStorage";
@@ -113,10 +114,16 @@ const render = (): void => {
     <Provider store={store}>
       <StyleSheetManager enableVendorPrefixes={true}>
         <ThemeProvider theme={theme}>
-          <Suspense fallback={loader}>
-            <GlobalStyle />
-            <App />
-          </Suspense>
+          <GlobalStyle />
+          {/* Catches what the boundary around the routes cannot: the app failing
+              before it is mounted, most often its chunk not loading. Without
+              this, React unmounts the tree and the user is left on a blank page.
+              Inside the theme provider so the fallback can be styled */}
+          <ErrorBoundary fallback={AppErrorFallback}>
+            <Suspense fallback={loader}>
+              <App />
+            </Suspense>
+          </ErrorBoundary>
         </ThemeProvider>
       </StyleSheetManager>
     </Provider>,
