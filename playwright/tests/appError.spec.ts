@@ -21,7 +21,15 @@ const blockAppChunk = async (page: Page): Promise<() => void> => {
     },
     async (route) => {
       if (blocked) {
-        await route.abort();
+        // A failed response rather than an aborted request: WebKit caches the
+        // abort and then never re-requests the chunk, so unblocking it below
+        // would have nothing to act on. no-store keeps this one out of the
+        // cache too
+        await route.fulfill({
+          status: 503,
+          headers: { "cache-control": "no-store" },
+          body: "",
+        });
         return;
       }
       await route.fallback();
