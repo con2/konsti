@@ -52,6 +52,15 @@ export class ProgramListPage extends BasePage {
     return this.page.getByTestId("direct-signup-program-items-list");
   }
 
+  // The start-time group headings the My Program sign-ups are listed under
+  get lotterySignupTimeHeadings(): Locator {
+    return this.lotterySignupList.getByRole("heading", { level: 2 });
+  }
+
+  get directSignupTimeHeadings(): Locator {
+    return this.directSignupList.getByRole("heading", { level: 2 });
+  }
+
   get favoriteList(): Locator {
     return this.page.getByTestId("favorite-program-items-list");
   }
