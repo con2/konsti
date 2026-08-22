@@ -3,9 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { sortBy } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 interface Props {
   hiddenProgramItems: readonly ProgramItem[];
@@ -15,7 +14,7 @@ export const HiddenProgramItemsList = ({
   hiddenProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   const sortedProgramItems = sortBy(hiddenProgramItems, (hiddenProgramItem) =>
     hiddenProgramItem.title.toLowerCase(),
@@ -40,7 +39,7 @@ export const HiddenProgramItemsList = ({
             {t(`programType.${programItem.programType}`)}
             {" - "}
 
-            {getWeekdayAndTime(programItem.startTime, locale)}
+            {getWeekdayAndTime(programItem.startTime)}
           </li>
         ))}
       </ul>

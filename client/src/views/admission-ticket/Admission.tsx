@@ -5,13 +5,8 @@ import { capitalize } from "remeda";
 import styled from "styled-components";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
-import {
-  formattedCurrentTime,
-  getTime,
-  getWeekdayAndTime,
-} from "shared/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 interface Props {
   programItem: ProgramItem;
@@ -25,12 +20,13 @@ export const Admission = ({
   username,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { formattedCurrentTime, getTime, getWeekdayAndTime } =
+    useTimeFormatters();
   const { eventName, eventYear } = config.event();
 
   const formatTime = (): string => {
     // Note that the dash should be an en dash
-    return `${capitalize(getWeekdayAndTime(programItem.startTime, locale))}–${getTime(programItem.endTime, locale)}`;
+    return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)}`;
   };
 
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -50,7 +46,7 @@ export const Admission = ({
         <Text>
           {eventName} {eventYear}
         </Text>
-        <TimeText>{formattedCurrentTime(currentTime, locale)}</TimeText>
+        <TimeText>{formattedCurrentTime(currentTime)}</TimeText>
 
         <BoldText>{programItem.title}</BoldText>
         <Text>{formatTime()}</Text>

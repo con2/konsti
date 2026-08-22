@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { getLocalDateAndTime } from "shared/utils/timeFormatter";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { useTimeNow } from "client/utils/useTimeNow";
 
 export const CurrentTime = (): ReactNode => {
-  return getLocalDateAndTime(useTimeNow(), useLocale());
+  const { getLocalDateAndTime } = useTimeFormatters();
+  return getLocalDateAndTime(useTimeNow());
 };

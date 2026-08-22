@@ -4,17 +4,16 @@ import { Link } from "react-router";
 import { capitalize, groupBy, sortBy } from "remeda";
 import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
 import { ControlledInput } from "client/components/ControlledInput";
 import { useAppSelector } from "client/utils/hooks";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { selectProgramTypeForTexts } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -109,7 +108,7 @@ export const PrivateSignupMessages = (): ReactElement => {
 
           return (
             <div key={startTime}>
-              <h3>{capitalize(getWeekdayAndTime(startTime, locale))}</h3>
+              <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
               {sortedSignupQuestions.map((signupQuestionWitProgramItem) => {
                 const matchingSignupMessages =
                   groupedSignupMessages[

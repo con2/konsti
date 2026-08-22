@@ -3,22 +3,17 @@ import { useTranslation } from "react-i18next";
 import { capitalize, first } from "remeda";
 import styled from "styled-components";
 import { config } from "shared/config";
-import {
-  getDate,
-  getShortDate,
-  getShortWeekdayAndTime,
-  getTime,
-} from "shared/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
 import { testTimes } from "client/test/test-components/testComponentUtils";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 import { isMainEventProgramVisible } from "client/utils/getUpcomingProgramItems";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 export const TestTime = (): ReactElement => {
   const { t, i18n } = useTranslation();
-  const locale = useLocale();
+  const { getDate, getShortDate, getShortWeekdayAndTime, getTime } =
+    useTimeFormatters();
   const dispatch = useAppDispatch();
 
   const testTime = useAppSelector((state) => state.testSettings.testTime);
@@ -49,8 +44,8 @@ export const TestTime = (): ReactElement => {
   const dropdownItems = testTimes.map((time) => {
     const formattedDate =
       i18n.language === "fi"
-        ? `${capitalize(getShortWeekdayAndTime(time, locale))} (${getDate(time, locale)})`
-        : `${capitalize(getShortWeekdayAndTime(time, locale))} (${getDate(time, locale)})`;
+        ? `${capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`
+        : `${capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`;
 
     // Show which times are pre-convention week and which are main event
     if (mainEventProgramVisibleTime) {
@@ -85,9 +80,9 @@ export const TestTime = (): ReactElement => {
         ) : (
           // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
           <div onClick={() => setDropdownVisible(true)}>
-            {testTime && capitalize(getShortDate(testTime, locale))}
+            {testTime && capitalize(getShortDate(testTime))}
             <br />
-            {testTime && getTime(testTime, locale)}
+            {testTime && getTime(testTime)}
             {testTime && mainEventProgramVisibleTime && (
               <PhaseIndicator>
                 {t(

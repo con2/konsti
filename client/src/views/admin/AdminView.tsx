@@ -7,14 +7,13 @@ import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Checkbox } from "client/components/Checkbox";
 import { Dropdown, Option } from "client/components/Dropdown";
 import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import {
   submitAssignment,
@@ -51,7 +50,7 @@ export const AdminView = (): ReactElement => {
 
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   const lotteryProgramItems = programItems
     .filter((programItem) => programItem.signupType === SignupType.KONSTI)
@@ -88,7 +87,7 @@ export const AdminView = (): ReactElement => {
     const times = [...new Set(startTimes)].sort((a, b) => a.localeCompare(b));
 
     return times.map((time) => {
-      const formattedDate = capitalize(getWeekdayAndTime(time, locale));
+      const formattedDate = capitalize(getWeekdayAndTime(time));
       return { value: time, title: formattedDate };
     });
   };

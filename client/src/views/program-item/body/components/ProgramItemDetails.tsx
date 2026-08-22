@@ -6,9 +6,8 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText } from "client/components/InfoText";
 import { InfoTextVariant } from "client/components/componentStyles";
 import { TextWithLinks } from "client/markdown/components/TextWithLinks";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { useTimeNow } from "client/utils/useTimeNow";
-import { getFormattedInterval } from "client/views/program-item/programItemUtils";
 
 const NBSP = "\u{A0}";
 
@@ -18,7 +17,7 @@ interface Props {
 
 export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getFormattedInterval } = useTimeFormatters();
   const timeNow = useTimeNow();
 
   const formatTime = (): string => {
@@ -32,7 +31,6 @@ export const ProgramItemDetails = ({ programItem }: Props): ReactElement => {
       new Date(programItem.startTime),
       new Date(programItem.endTime),
       timeNow,
-      locale,
     );
 
     return `${capitalize(interval)} (${hours}${NBSP}${t("hours")}${minutesDuration})`;

@@ -3,12 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { capitalize, groupBy } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { updateFavorite } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import {
   MyProgramButtonContainer,
   MyProgramGameTitle,
@@ -25,7 +24,7 @@ export const FavoritesByStartTimes = ({
   favoriteProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -52,7 +51,7 @@ export const FavoritesByStartTimes = ({
         ([startTime, programItems]) => (
           <Fragment key={startTime}>
             <MyProgramTime>
-              {capitalize(getWeekdayAndTime(startTime, locale))}
+              {capitalize(getWeekdayAndTime(startTime))}
             </MyProgramTime>
 
             <MyProgramList>
