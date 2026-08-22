@@ -110,6 +110,18 @@ There is **no application-level rate limiting**. This is intentional:
 
 Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`), under `server/src/features/assignment/`. Assignment runs automatically on a cron schedule; admins can trigger manual runs as a backup. Users submit weighted preferences during sign-up windows defined per-event in `shared/config/`. The orchestrator (`run-assignment/`) cleans up invalid sign-ups before running (see below).
 
+**A program item is lotteried at most once**, for the start time it was first lotteried for
+(`lotteryRanForStartTime`, written by the assignment and left out of `saveProgramItems`' update
+object so a Kompassi import can't clear it, exactly like `popularity`). Moving an item to a later
+slot recomputes its sign-up window from the new start time, which would otherwise put it through a
+second lottery among whoever signed up after the move; instead its remaining spots go to direct
+sign-up, which is what the attendee instructions already promise. The stored value is the start
+time rather than a flag **because re-running that same start time has to keep working** - a flag
+would make the first run mark every item and the re-run skip all of them.
+
+These are two different axes and both are needed: this one is per program item and about a _moved_
+item, while the settling below is per attendee and about running the _same_ slot again.
+
 **The lottery only ever hands out spots to attendees who have none, and running the same start time twice is additive rather than a redo.** A run never revokes a spot it or an earlier run handed out. Anyone already holding a direct sign-up in _any_ program item starting at that time — from an earlier run, from direct sign-up after it, from an always-open program item, or carried in by a program item moved into that slot — is **settled**: they are kept out of the run entirely, so they aren't assigned, re-notified, or moved to a preference they rank higher, and their lottery sign-ups for that time are simply not acted on. Everyone else competes for whatever is left over, including the rest of a group when only some of its attendees hold a spot — settling is per attendee, because capacity is subtracted per spot held and excluding someone who holds none would leave spots nobody can be placed into.
 
 The conflicting state - a lottery sign-up the run will pass over - is kept from arising rather than explained away. `storeLotterySignup` rejects a sign-up made while the attendee already holds a spot at that start time (`directSignupForSlot`), and `storeDirectSignup` cancels their lottery sign-ups **for that start time only**, later ones surviving. The group rule is unchanged and deliberately narrower: only a sign-up to a program item the lottery allocates leaves or closes the group (`isLotterySignupProgramItem`). A group exists to enter those together, so taking one of their spots alone leaves it, while an always-open or direct-only sign-up settles the attendee for that start time without ending the group's other slots.

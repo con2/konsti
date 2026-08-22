@@ -20,7 +20,10 @@ import {
 import { SignupType, State } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  saveLotteryRanForStartTime,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { saveHidden } from "server/features/settings/settingsRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -165,6 +168,83 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       directSignupProgramItemId: testProgramItem2.programItemId,
       signedToStartTime: earlierStartTime,
     });
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupResult;
+    expect(body.status).toEqual("success");
+    expect(body.lotterySignups).toHaveLength(1);
+  });
+
+  test("should return error when the program item's lottery has already been run", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // Lotteried for an earlier start time and moved since: moving reopens the sign-up window
+    // these times are derived from, but no run will consider the item again.
+    // Seeded through the writer rather than saveProgramItems, which leaves this field alone
+    // on purpose so a Kompassi import can't clear it
+    await saveProgramItems([testProgramItem]);
+    await saveLotteryRanForStartTime(
+      [testProgramItem.programItemId],
+      subHours(new Date(testProgramItem.startTime), 1).toISOString(),
+    );
+    await saveUser(mockUser);
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("lotteryAlreadyRun");
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.lotterySignups).toHaveLength(0);
+  });
+
+  test("should allow lottery signup when the item was lotteried for its current start time", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // Same start time it was lotteried for, so this is a re-run of that slot rather than a
+    // second lottery, and sign-ups are still accepted
+    await saveProgramItems([testProgramItem]);
+    await saveLotteryRanForStartTime(
+      [testProgramItem.programItemId],
+      testProgramItem.startTime,
+    );
+    await saveUser(mockUser);
 
     const signup: PostLotterySignupRequest = {
       programItemId: testProgramItem.programItemId,

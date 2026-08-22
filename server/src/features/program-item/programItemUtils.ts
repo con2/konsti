@@ -14,7 +14,10 @@ import {
 } from "shared/types/models/programItem";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { UserGroup } from "shared/types/models/user";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import {
+  hasLotteryAlreadyRun,
+  isLotterySignupProgramItem,
+} from "shared/utils/isLotterySignupProgramItem";
 import { differenceBy } from "shared/utils/remedaExtend";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { getProgramItemStartTime } from "shared/utils/signupTimes";
@@ -284,6 +287,11 @@ const getSignupStrategyForProgramItem = (
   }
 
   if (tooEarlyForLotterySignup(programItem)) {
+    return ProgramItemSignupStrategy.DIRECT;
+  }
+
+  // Its lottery has been run and it has moved since; the spots left go first come, first served
+  if (hasLotteryAlreadyRun(programItem)) {
     return ProgramItemSignupStrategy.DIRECT;
   }
 

@@ -216,6 +216,8 @@ export const translationFI = {
       "Ohjelmanumerosta puuttuu vaadittuja tietoja, eikä siihen voi ilmoittautua.",
     directSignupForSlot:
       "Sinulla on jo ilmoittautuminen tähän aikaan. Peru se ensin, jos haluat osallistua tähän arvontaan.",
+    lotteryAlreadyRun:
+      "Tämän ohjelmanumeron alkamisaika muuttui arvonnan jälkeen, joten se ei osallistu enää arvontaan. Jäljellä olevat paikat täytetään ilmoittautumisjärjestyksessä.",
   },
   closingMessage:
     "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",
@@ -380,6 +382,8 @@ export const translationFI = {
     loginLinkEnding: "nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
     help: {
+      lotteryAlreadyRunInfo:
+        "Sen alkamisaika muuttui arvonnan jälkeen, joten se ei osallistu enää arvontaan.",
       signupAlwaysOpenGroupMemberInfo:
         "Voit ilmoittautua vaikka olet ryhmän jäsen.",
       directSignupStartsLater:

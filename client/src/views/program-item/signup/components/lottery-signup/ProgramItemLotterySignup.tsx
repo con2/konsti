@@ -1,6 +1,7 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
+import { hasLotteryAlreadyRun } from "shared/utils/isLotterySignupProgramItem";
 import { getLotterySignupStartTime } from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
@@ -108,10 +109,14 @@ export const ProgramItemLotterySignup = ({
     lotterySignups,
   );
 
+  // Its lottery has been run and it has moved since, so no run will consider it again
+  const lotteryAlreadyRun = hasLotteryAlreadyRun(programItem);
+
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
   const timeNow = useTimeNow();
-  const lotterySignupOpen = isSameOrAfter(timeNow, lotterySignupStartTime);
+  const lotterySignupOpen =
+    !lotteryAlreadyRun && isSameOrAfter(timeNow, lotterySignupStartTime);
 
   if (!loggedIn) {
     return <LoginToSignupLink />;

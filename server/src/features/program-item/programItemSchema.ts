@@ -44,6 +44,9 @@ export const ProgramItemSchemaDb = z
     otherAuthor: z.string(),
     accessibilityValues: z.array(z.enum(InclusivityValue)),
     signupStrategy: z.optional(z.enum(ProgramItemSignupStrategy)),
+    lotteryRanForStartTime: z.optional(
+      z.date().transform((date) => date.toISOString()),
+    ),
     otherAccessibilityInformation: z.string(),
     entryFee: z.string(),
     signupType: z.enum(SignupType),
@@ -81,6 +84,12 @@ const programItemSchema = new mongoose.Schema(
     shortDescription: { type: String, required: true },
     revolvingDoor: { type: Boolean, required: true },
     popularity: { type: String, default: Popularity.NULL },
+    // Server-owned like popularity: written by the assignment, and left out of the program
+    // item import so a Kompassi update doesn't clear it
+    lotteryRanForStartTime: {
+      type: Date,
+      get: (value: Date) => new Date(value),
+    },
     programType: { type: String, required: true },
     contentWarnings: { type: String, required: true },
     otherAuthor: { type: String, required: true },

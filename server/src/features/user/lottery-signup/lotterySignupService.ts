@@ -149,6 +149,23 @@ export const storeLotterySignup = async ({
     };
   }
 
+  // A program item is lotteried at most once. Moving it onto a later slot reopens the window
+  // these times are derived from, so without this a sign-up could be made to an item no run
+  // will ever consider again
+  if (
+    programItem.lotteryRanForStartTime !== undefined &&
+    !isSameMinute(
+      new Date(programItem.lotteryRanForStartTime),
+      new Date(getProgramItemStartTime(programItem)),
+    )
+  ) {
+    return {
+      message: `Lottery for program item ${programItemId} has already been run`,
+      status: "error",
+      errorId: "lotteryAlreadyRun",
+    };
+  }
+
   const timeNowResult = await getTimeNow();
   if (!timeNowResult.ok) {
     return {

@@ -15,6 +15,7 @@ import {
   hoursIntoEvent,
   login,
   populateDb,
+  postAssignment,
   postSettings,
   postTestSettings,
   testPostDirectSignup,
@@ -257,4 +258,51 @@ test("Keep lottery signups a moved program item landed on and say they are out o
   await expect(programList.lotterySignupList).toContainText(
     testProgramItem.title,
   );
+});
+
+test("Offer direct signup instead of a lottery for a program item moved after its lottery", async ({
+  page,
+  request,
+}) => {
+  const lotteryStartTime = hoursIntoEvent(3);
+  const movedStartTime = hoursIntoEvent(5);
+
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+
+  const programItem = {
+    ...testProgramItem,
+    programType: config.event().twoPhaseSignupProgramTypes[0],
+    startTime: lotteryStartTime,
+  };
+  await addProgramItems(request, [programItem]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+  await postAssignment(request, lotteryStartTime);
+
+  // Moved to a slot whose lottery has not run. Its lottery already happened, so the spots it
+  // has left are first come, first served rather than lotteried a second time
+  await addProgramItems(request, [
+    { ...programItem, startTime: movedStartTime },
+  ]);
+
+  await login(page, request, { username: "test2", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const movedProgramItem = programList.itemByTitle(testProgramItem.title);
+  await expect(movedProgramItem.lotterySignupButton).toBeHidden();
+  await expect(movedProgramItem.signUpButton).toBeVisible();
 });

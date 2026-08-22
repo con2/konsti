@@ -32,7 +32,9 @@ export interface PostLotterySignupError extends ApiError {
     | "hidden"
     | "invalidProgramItem"
     // The user already holds a spot at this start time, so the lottery would skip them
-    | "directSignupForSlot";
+    | "directSignupForSlot"
+    // This program item's lottery has already been run; its spots are first-come-first-served
+    | "lotteryAlreadyRun";
 }
 
 export type PostLotterySignupResponse =

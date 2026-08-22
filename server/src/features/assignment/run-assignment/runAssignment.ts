@@ -1,3 +1,4 @@
+import { isSameMinute } from "date-fns";
 import { config } from "shared/config";
 import {
   AssignmentAlgorithm,
@@ -14,7 +15,10 @@ import { removeOverlapLotterySignups } from "server/features/assignment/utils/re
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
 import { saveResults } from "server/features/assignment/utils/saveResults";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  saveLotteryRanForStartTime,
+} from "server/features/program-item/programItemRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { AssignmentResult } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
@@ -99,10 +103,23 @@ export const runAssignment = async ({
     directSignupsResult.value,
   );
 
+  // A program item is lotteried at most once. One already lotteried for a different start time
+  // has been moved since, and its remaining spots go to direct sign-up rather than through a
+  // second lottery among whoever signed up after the move. Matched on the stored time rather
+  // than a flag so re-running this same start time still includes the items it placed
+  const notYetLotteriedProgramItems = validLotterySignupProgramItems.filter(
+    (programItem) =>
+      programItem.lotteryRanForStartTime === undefined ||
+      isSameMinute(
+        new Date(programItem.lotteryRanForStartTime),
+        new Date(resolvedAssignmentTime),
+      ),
+  );
+
   const assignResultsResult = runAssignmentAlgorithm(
     assignmentAlgorithm,
     validLotterySignupsUsers,
-    validLotterySignupProgramItems,
+    notYetLotteriedProgramItems,
     resolvedAssignmentTime,
     lotteryParticipantDirectSignups,
     settledAttendeeUsernames,
@@ -111,6 +128,20 @@ export const runAssignment = async ({
     return assignResultsResult;
   }
   const assignResults = assignResultsResult.value;
+
+  // Mark every program item this run covered, whether or not it placed anyone: their lottery
+  // has happened, and an item nobody signed up for doesn't get a second one after a move
+  const lotteriedProgramItemIds = getStartingProgramItems(
+    notYetLotteriedProgramItems,
+    resolvedAssignmentTime,
+  ).map((programItem) => programItem.programItemId);
+  const saveLotteryRanResult = await saveLotteryRanForStartTime(
+    lotteriedProgramItemIds,
+    resolvedAssignmentTime,
+  );
+  if (!saveLotteryRanResult.ok) {
+    return saveLotteryRanResult;
+  }
 
   const saveResultsResult = await saveResults({
     results: assignResults.results,

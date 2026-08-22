@@ -140,6 +140,10 @@ export const ProgramItemSchema = z.object({
   otherAuthor: z.string(),
   accessibilityValues: z.array(z.enum(InclusivityValue)),
   signupStrategy: z.optional(z.enum(ProgramItemSignupStrategy)),
+  // The start time this program item's lottery was run for. A program item is lotteried at
+  // most once: moved onto a later slot, its remaining spots go to direct sign-up instead.
+  // The time rather than a flag, so re-running the same start time still includes it
+  lotteryRanForStartTime: z.optional(z.string()),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.enum(SignupType),

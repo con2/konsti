@@ -1073,6 +1073,111 @@ describe("Assignment re-run leaves settled attendees alone", () => {
     expect(programItemSignup?.count).toEqual(3);
   });
 
+  test("should not lottery a program item again after it moves to another start time", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+    const laterStartTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const firstRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+    expect(firstRun.results).toHaveLength(1);
+
+    // The item moves to a slot whose lottery has not run, and someone signs up for the
+    // spot it still has free
+    await saveProgramItems([
+      {
+        ...testProgramItem,
+        minAttendance: 1,
+        maxAttendance: 2,
+        startTime: laterStartTime,
+      },
+    ]);
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [
+        {
+          ...mockLotterySignups[0],
+          priority: 1,
+          signedToStartTime: laterStartTime,
+        },
+      ],
+    });
+
+    const secondRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: laterStartTime,
+      }),
+    );
+
+    // Its lottery already happened, so the free spot goes to direct sign-up instead
+    expect(secondRun.results).toHaveLength(0);
+
+    const signups = unsafelyUnwrap(await findDirectSignups());
+    const programItemSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(
+      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
+    ).toEqual([mockUser.username]);
+  });
+
+  test("should still lottery a program item when the same start time is run again", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // The marker records which start time was lotteried rather than a plain flag, so that
+    // an additive re-run of that same time keeps working
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const secondRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(secondRun.results).toHaveLength(1);
+    expect(secondRun.results[0].username).toEqual(mockUser2.username);
+  });
+
   test("a prior winner is not moved to a program item they rank higher", async () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
