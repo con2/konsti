@@ -642,7 +642,10 @@
       "program-type": ["workshop"],
       "guidegrouping": ["smallroomsandtents"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 24
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -653,7 +656,10 @@
         "lengthMinutes": 60,
         "location": "Program tent 1",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 24
+        }
       }
     ]
   },
@@ -790,7 +796,7 @@
   {
     "slug": "mita-tapahtui-hermekselle-mta-ja-ensimmainen-komennus-ff7",
     "title": "Ensimmäinen komennus (FF7)",
-    "description": "MtA-peli:\r\nKun velhokoulu Doissetepin priimus Hermes kutsui sinut 20v syntymäpäivilleen, olit yllättynyt ja ilahtunut. Ettehän te olleet erityisen läheisiä, ettekä edes samasta tuvasta (Ettekä välttämättä saman vuoden opiskelijoitakaan). Vaikka kouluajoista ei olekaan kulunut kuin muutama vuosi, sinun on vaikea edes muistaa, kuka tuo Hermes oikein oli. Juhlista ei kuitenkaan kannata kieltäytyä, sillä ne järjestetään Lontoon keskustassa Hermeksen yksityisasunnossa, suuressa kattohuoneistossa. Hermes on ilmeisesti varsin varakas. Niinpä saavut kutsussa olleeseen osoitteeseen lauantaina klo 18 vain huomataksesi, että paikalla on kutsuvieraat, mutta ei päivänsankaria. Mitä ihmettä on tapahtunut Hermekselle ja itse asiassa, kuka hän oikein edes on?\r\n\r\nPeli on aloittelijoille suunnattu matalan kynnyksen peli, joka sijoittuu World of Darkness pelimaailmaan. WoD on meidän maailmamme kaltainen sillä erotuksella, että yliluonnolliset olennot ja tapahtumat ovat siellä tosia, joskin yliluonnollinen maailma pysyy piilossa tavallisilta ihmisiltä. Pelissä pelataan maageja, siis ihmisiä, jotka osaavat taikoa. Pelaajahahmot ovat käyneet Doissetepin, velhokoulun, ja saaneet siellä opetusta taikuuden teoriaan. Loitsut siis onnistuvat näiltä hahmoilta. Jos pidät Harry Potterin velhomaailmasta, pidät varmasti tästäkin. \r\n\r\nFF7-peli:\r\nOlet saanut koulutuksesi suoritettua ja saanut ensimmäisen tehtäväsi Turkseissa, Shin-ran erityisyksikössä, joka on erikoistunut muun muassa tiedon keräämiseen. Tiedät kyllä, että Turksit tekevät melkein mitä tahansa yhtiön hyväksi, eikä se kaikki aina ole laillista (no, paitsi teille). Olet eliittiä ja ylpeä siitä. Uusien työtovereidesi kanssa odotat innokkaana, millaiselle komennukselle teidät kutsutaan. \r\n\r\nPeli on aloittelijoille ja Final Fantasy 7:n maailman faneille suunnattu matalan kynnyksen peli. Peilmaailman tietämys ei varsinaisesti ole pakollista, mutta pelissä tulee vilahtamaan tuttuja nimiä ja paikkoja ja maailmanhistorian tapahtumia, jotka voivat olla vieraita, jos FF7:n maailma ei ole lainkaan tuttu. Hahmot ovat Shin-ran työntekijöitä ja peli sijoittuu aikaan noin 5v ennen FF7:n tapahtumia. ",
+    "description": "Olet saanut koulutuksesi suoritettua ja saanut ensimmäisen tehtäväsi Turkseissa, Shin-ran erityisyksikössä, joka on erikoistunut muun muassa tiedon keräämiseen. Tiedät kyllä, että Turksit tekevät melkein mitä tahansa yhtiön hyväksi, eikä se kaikki aina ole laillista (no, paitsi teille). Olet eliittiä ja ylpeä siitä. Uusien työtovereidesi kanssa odotat innokkaana, millaiselle komennukselle teidät kutsutaan. \r\n\r\nPeli on aloittelijoille ja Final Fantasy 7:n maailman faneille suunnattu matalan kynnyksen peli. Peilmaailman tietämys ei varsinaisesti ole pakollista, mutta pelissä tulee vilahtamaan tuttuja nimiä ja paikkoja ja maailmanhistorian tapahtumia, jotka voivat olla vieraita, jos FF7:n maailma ei ole lainkaan tuttu. Hahmot ovat Shin-ran työntekijöitä ja peli sijoittuu aikaan noin 5v ennen FF7:n tapahtumia.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-09-06"],
@@ -990,7 +996,10 @@
       "program-type": ["workshop"],
       "guidegrouping": ["smallroomsandtents"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 20
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1001,7 +1010,10 @@
         "lengthMinutes": 105,
         "location": "Program tent 2",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 20
+        }
       }
     ]
   },
@@ -1020,7 +1032,10 @@
       "program-type": ["guestofhonor"],
       "guidegrouping": ["smallroomsandtents"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 20
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1031,7 +1046,10 @@
         "lengthMinutes": 90,
         "location": "Opus 1-2",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 20
+        }
       }
     ]
   },
@@ -1258,7 +1276,10 @@
       "program-type": ["workshop"],
       "guidegrouping": ["smallroomsandtents"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:minAttendance": 1,
+      "konsti:maxAttendance": 24
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1269,7 +1290,10 @@
         "lengthMinutes": 60,
         "location": "Program tent 1",
         "isCancelled": false,
-        "cachedAnnotations": {}
+        "cachedAnnotations": {
+          "konsti:minAttendance": 1,
+          "konsti:maxAttendance": 24
+        }
       }
     ]
   }

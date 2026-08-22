@@ -17,6 +17,8 @@ import { LotteryThermometerValues } from "./components/LotteryThermometerValues"
 import { ProfileTab } from "client/app/routes";
 import { ProgramGuide } from "./components/ProgramGuide";
 import { HelpDesks } from "./components/HelpDesks";
+import { HasHelpDesks } from "./components/HasHelpDesks";
+import { NoHelpDesks } from "./components/NoHelpDesks";
 import { PreConventionWeek } from "./components/PreConventionWeek";
 import { MainEventProgramVisibleTime } from "./components/MainEventProgramVisibleTime";
 
@@ -37,6 +39,7 @@ import { MainEventProgramVisibleTime } from "./components/MainEventProgramVisibl
 ### I need help with the Konsti app, who can I ask?
 </En>
 
+<HasHelpDesks>
 <Fi>
 Vapaaehtoisemme auttavat Konstin käytössä ja ohjelmanumeroihin ilmoittautumisessa seuraavilla tiskeillä:
 </Fi>
@@ -46,6 +49,17 @@ Our volunteers will help you with using Konsti and signing up for program items 
 </En>
 
 <HelpDesks />
+</HasHelpDesks>
+
+<NoHelpDesks>
+<Fi>
+Tapahtuman vapaaehtoiset auttavat Konstin käytössä ja ohjelmanumeroihin ilmoittautumisessa.
+</Fi>
+
+<En>
+Convention volunteers will help you with using Konsti and signing up for program items.
+</En>
+</NoHelpDesks>
 
 <Tracon>
 <Fi>
@@ -174,6 +188,7 @@ If you lost your password before signing up to any program items, you can just p
 ### I do not have a mobile device, how do I use Konsti during the event?
 </En>
 
+<HasHelpDesks>
 <Fi>
 Voit pyytää apua tiskien vapaaehtoisilta:
 </Fi>
@@ -183,6 +198,17 @@ You can ask the desk volunteers for help:
 </En>
 
 <HelpDesks />
+</HasHelpDesks>
+
+<NoHelpDesks>
+<Fi>
+Voit pyytää apua tapahtuman vapaaehtoisilta.
+</Fi>
+
+<En>
+You can ask the convention volunteers for help.
+</En>
+</NoHelpDesks>
 
 <Tracon>
 <Fi>
@@ -459,7 +485,9 @@ Tapahtuman vapaaehtoiset auttavat ohjelmanumeron tietojen päivittämisessä.
 The convention's volunteers will assist in updating the program item's information.
 </En>
 
+<HasHelpDesks>
 <HelpDesks />
+</HasHelpDesks>
 
 <Fi>
 Jos ajankohta muuttuu, aikaisemmat suorat ilmoittautumiset ohjelmanumeroon säilyvät ennallaan. Jos ohjelmanumeroon on käynnissä arvontaan ilmoittautuminen, jo tehdyt arvontailmoittautumiset perutaan.
