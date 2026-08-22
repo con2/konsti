@@ -2,7 +2,7 @@ import { z } from "zod";
 import {
   EventSignupStrategy,
   LoginProvider,
-} from "shared/config/eventConfigTypes";
+} from "shared/config/eventConfigEnums";
 import { ADMIN_MESSAGE_LENGTH_MAX } from "shared/constants/validation";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 

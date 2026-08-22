@@ -1,3 +1,12 @@
+import { z } from "zod";
+import {
+  AssignmentAlgorithm,
+  EntryConditionText,
+  EventName,
+  EventSignupStrategy,
+  LoginProvider,
+  RemoveLotterySignupsStrategy,
+} from "shared/config/eventConfigEnums";
 import {
   AgeGroup,
   Language,
@@ -5,99 +14,87 @@ import {
   SignupType,
   Tag,
 } from "shared/types/models/programItem";
-import { SignupQuestion } from "shared/types/models/settings";
+import { SignupQuestionSchema } from "shared/types/models/settings";
 
-export enum EventSignupStrategy {
-  DIRECT = "direct",
-  LOTTERY = "lottery",
-  LOTTERY_AND_DIRECT = "lottery+direct",
-}
+// Re-exported so the config's enums and its shape stay one import away
+export {
+  AssignmentAlgorithm,
+  EntryConditionText,
+  EventName,
+  EventSignupStrategy,
+  LoginProvider,
+  RemoveLotterySignupsStrategy,
+};
 
-export enum AssignmentAlgorithm {
-  PADG = "padg",
-  RANDOM = "random",
-  RANDOM_PADG = "random+padg",
-}
+const SignupWindowSchema = z.object({
+  signupWindowStart: z.iso.datetime(),
+  signupWindowClose: z.iso.datetime(),
+});
 
-export enum LoginProvider {
-  LOCAL = "local",
-  KOMPASSI = "kompassi",
-  LOCAL_KOMPASSI = "local+kompassi",
-}
+// The config's shape is declared here once and the type inferred from it, so a
+// field cannot be added to one and forgotten in the other. Times are declared as
+// ISO datetimes rather than plain strings: they are hand-written, nothing else
+// validates them, and the formatters throw on a time they cannot parse
+export const EventConfigSchema = z.object({
+  assignmentAlgorithm: z.enum(AssignmentAlgorithm),
+  enableGroups: z.boolean(),
+  eventName: z.enum(EventName),
+  eventYear: z.string(),
+  eventStartTime: z.iso.datetime(),
+  preConventionWeekSignupStartTime: z.iso.datetime().nullable(),
+  mainEventProgramVisibleTime: z.iso.datetime().nullable(),
+  directSignupPhaseStart: z.number(),
+  preSignupStart: z.number(),
+  phaseGap: z.number(),
+  // A tuple with a rest element rather than an array: a program type listed here
+  // has to have at least one window
+  directSignupWindows: z
+    .partialRecord(
+      z.enum(ProgramType),
+      z.tuple([SignupWindowSchema]).rest(SignupWindowSchema),
+    )
+    .nullable(),
+  rollingDirectSignupProgramTypes: z.array(z.enum(ProgramType)),
+  enableRollingDirectSignupPreviousDay: z.boolean(),
+  directSignupAlwaysOpenIds: z.array(z.string()),
+  twoPhaseSignupProgramTypes: z.array(z.enum(ProgramType)),
+  addToKonstiOther: z.array(z.string()),
+  noKonstiSignupIds: z.array(z.string()),
+  ignoreProgramItemsIds: z.array(z.string()),
+  signupQuestions: z.array(SignupQuestionSchema),
+  tournamentSignupQuestion: SignupQuestionSchema.omit({
+    programItemId: true,
+  }).nullable(),
+  tournamentSignupQuestionExcludeIds: z.array(z.string()),
+  addRevolvingDoorIds: z.array(z.string()),
+  hideParticipantListProgramTypes: z.array(z.enum(ProgramType)),
+  fixedLotterySignupTime: z.iso.datetime().nullable(),
+  entryConditions: z.array(
+    z.object({
+      conditionText: z.enum(EntryConditionText),
+      programItemIds: z.array(z.string()),
+    }),
+  ),
+  activeProgramTypes: z.array(z.enum(ProgramType)),
+  removeLotterySignupsStrategy: z.enum(RemoveLotterySignupsStrategy),
+  customDetailsProgramItems: z.record(
+    z.string(),
+    z
+      .object({
+        tags: z.array(z.enum(Tag)).optional(),
+        ageGroups: z.array(z.enum(AgeGroup)).optional(),
+        languages: z.array(z.enum(Language)).optional(),
+      })
+      .optional(),
+  ),
+  enableRevolvingDoor: z.boolean(),
+  programGuideUrlFi: z.string(),
+  programGuideUrlEn: z.string(),
+  startTimesByParentIds: z.map(z.string(), z.iso.datetime()),
+  defaultSignupType: z.enum(SignupType),
+  enableTagDropdown: z.boolean(),
+  defaultSignupStrategy: z.enum(EventSignupStrategy),
+  defaultLoginProvider: z.enum(LoginProvider),
+});
 
-export enum EventName {
-  ROPECON = "Ropecon",
-  HITPOINT = "Tracon Hitpoint",
-  SOLMUKOHTA = "Solmukohta",
-  TRACON = "Tracon",
-}
-
-type ArrMin1<T> = [T, ...T[]];
-
-interface SignupWindow {
-  signupWindowStart: string;
-  signupWindowClose: string;
-}
-
-export enum EntryConditionText {
-  K16 = "k16",
-  K18 = "k18",
-}
-
-export enum RemoveLotterySignupsStrategy {
-  NONE = "none",
-  OVERLAP = "overlap",
-  ALL_UPCOMING = "allUpcoming",
-}
-
-export interface EventConfig {
-  assignmentAlgorithm: AssignmentAlgorithm;
-  enableGroups: boolean;
-  eventName: EventName;
-  eventYear: string;
-  eventStartTime: string;
-  preConventionWeekSignupStartTime: string | null;
-  mainEventProgramVisibleTime: string | null;
-  directSignupPhaseStart: number;
-  preSignupStart: number;
-  phaseGap: number;
-  directSignupWindows: Partial<
-    Record<ProgramType, ArrMin1<SignupWindow>>
-  > | null;
-  rollingDirectSignupProgramTypes: ProgramType[];
-  enableRollingDirectSignupPreviousDay: boolean;
-  directSignupAlwaysOpenIds: string[];
-  twoPhaseSignupProgramTypes: ProgramType[];
-  addToKonstiOther: string[];
-  noKonstiSignupIds: string[];
-  ignoreProgramItemsIds: string[];
-  signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
-  tournamentSignupQuestionExcludeIds: string[];
-  addRevolvingDoorIds: string[];
-  hideParticipantListProgramTypes: ProgramType[];
-  fixedLotterySignupTime: string | null;
-  entryConditions: {
-    conditionText: EntryConditionText;
-    programItemIds: string[];
-  }[];
-  activeProgramTypes: ProgramType[];
-  removeLotterySignupsStrategy: RemoveLotterySignupsStrategy;
-  customDetailsProgramItems: Record<
-    string,
-    | {
-        tags?: Tag[];
-        ageGroups?: AgeGroup[];
-        languages?: Language[];
-      }
-    | undefined
-  >;
-  enableRevolvingDoor: boolean;
-  programGuideUrlFi: string;
-  programGuideUrlEn: string;
-  startTimesByParentIds: Map<string, string>;
-  defaultSignupType: SignupType;
-  enableTagDropdown: boolean;
-  defaultSignupStrategy: EventSignupStrategy;
-  defaultLoginProvider: LoginProvider;
-}
+export type EventConfig = z.infer<typeof EventConfigSchema>;
