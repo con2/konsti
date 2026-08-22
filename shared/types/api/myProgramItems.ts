@@ -30,7 +30,11 @@ export interface PostLotterySignupError extends ApiError {
     | "noKonstiSignup"
     | "groupMember"
     | "hidden"
-    | "invalidProgramItem";
+    | "invalidProgramItem"
+    // The user already holds a spot at this start time, so the lottery would skip them
+    | "directSignupForSlot"
+    // This program item's lottery has already been run; its spots are first-come-first-served
+    | "lotteryAlreadyRun";
 }
 
 export type PostLotterySignupResponse =
@@ -78,6 +82,10 @@ export interface PostDirectSignupResult extends ApiResult {
   directSignup?: DirectSignup;
   // True when a direct sign-up made the user leave or close their group
   leftGroup: boolean;
+  // The user's remaining lottery sign-ups after the ones competing for this start time were
+  // cancelled. Only set when the sign-up actually landed and the cancellation ran, so a caller
+  // that replaces its state with this can't be handed an empty list by a failed sign-up
+  lotterySignups?: readonly LotterySignup[];
 }
 
 export interface PostDirectSignupError extends ApiError {

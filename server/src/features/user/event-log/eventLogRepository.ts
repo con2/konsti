@@ -1,3 +1,4 @@
+import { addMinutes, startOfMinute } from "date-fns";
 import { AnyBulkWriteOperation } from "mongoose";
 import { unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
@@ -111,21 +112,39 @@ export const updateEventLogItemIsSeen = async (
   }
 };
 
+// Usernames are required rather than optional: an omitted argument would silently widen
+// this to every user in the database, which is never what a caller means to ask for
 export const deleteEventLogItemsByStartTime = async (
   startTime: string,
   actions: EventLogAction[],
+  usernames: readonly string[],
 ): Promise<Result<void, MongoDbError>> => {
+  if (usernames.length === 0) {
+    return makeSuccessResult();
+  }
+
+  const startOfStartTimeMinute = startOfMinute(new Date(startTime));
+
   try {
     await UserModel.updateMany(
-      {},
+      { username: { $in: usernames } },
       {
         $pull: {
           eventLogItems: {
-            programItemStartTime: startTime,
+            // Matched to the minute, the same tolerance every other start time comparison
+            // uses, so a stored time carrying seconds still matches the assignment time
+            programItemStartTime: {
+              $gte: startOfStartTimeMinute,
+              $lt: addMinutes(startOfStartTimeMinute, 1),
+            },
             action: { $in: actions },
           },
         },
       },
+      // Update validators are on globally, and they read the range operators above as a
+      // document to validate rather than as a match, failing on the missing fields. This
+      // update only removes array entries, so there is nothing to validate
+      { runValidators: false },
     );
     return makeSuccessResult();
   } catch (error) {

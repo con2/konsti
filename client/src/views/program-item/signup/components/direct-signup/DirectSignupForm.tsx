@@ -1,3 +1,4 @@
+import { isSameMinute } from "date-fns";
 import { ReactElement, SyntheticEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -8,6 +9,7 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { Checkbox } from "client/components/Checkbox";
 import { Dropdown } from "client/components/Dropdown";
 import { ErrorMessage } from "client/components/ErrorMessage";
@@ -17,6 +19,7 @@ import { InfoTextVariant } from "client/components/componentStyles";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   PostDirectSignupErrorMessage,
   submitPostDirectSignup,
@@ -60,6 +63,19 @@ export const DirectSignupForm = ({
 
   const isInGroup = getIsInGroup(groupCode);
 
+  // The lottery only gives spots to those who don't have one, so taking this spot cancels the
+  // lottery sign-ups competing for the same slot. Other start times are untouched
+  const lotterySignups = useAppSelector(selectLotterySignups);
+  const programItemStartTime = getProgramItemStartTime(programItem);
+  // Compared as instants, not strings: a configured parent start time and a program item's own
+  // carry the same moment in different forms, and the server matches these with isSameMinute
+  const lotterySignupsForSlot = lotterySignups.filter((lotterySignup) =>
+    isSameMinute(
+      new Date(getProgramItemStartTime(lotterySignup.programItem)),
+      new Date(programItemStartTime),
+    ),
+  );
+
   const handleCancel = (): void => {
     onCancelSignup();
   };
@@ -85,6 +101,19 @@ export const DirectSignupForm = ({
 
   return (
     <form>
+      {lotterySignupsForSlot.length > 0 && (
+        <InfoText variant={InfoTextVariant.WARNING}>
+          {t("signup.lotterySignupsWillBeCancelled")}{" "}
+          {/* Listed inline rather than as a <ul>: InfoText renders its children inside a
+              <p>, which a list cannot legally sit in */}
+          <CancelledLotterySignups>
+            {lotterySignupsForSlot
+              .map((lotterySignup) => lotterySignup.programItem.title)
+              .join(", ")}
+          </CancelledLotterySignups>
+        </InfoText>
+      )}
+
       {isLotterySignupProgramItem(programItem) && isInGroup && (
         <>
           {!isGroupCreator && (
@@ -199,4 +228,8 @@ const SignupQuestionContainer = styled.div`
 
 const StyledDropdown = styled(Dropdown)`
   max-width: 300px;
+`;
+
+const CancelledLotterySignups = styled.span`
+  font-weight: 600;
 `;

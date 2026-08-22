@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { setSeconds } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test } from "vitest";
 import {
@@ -153,10 +154,11 @@ test("should delete event log items for start time", async () => {
     },
   ]);
 
-  await deleteEventLogItemsByStartTime(testProgramItem.startTime, [
-    EventLogAction.NEW_ASSIGNMENT,
-    EventLogAction.NO_ASSIGNMENT,
-  ]);
+  await deleteEventLogItemsByStartTime(
+    testProgramItem.startTime,
+    [EventLogAction.NEW_ASSIGNMENT, EventLogAction.NO_ASSIGNMENT],
+    [mockUser.username],
+  );
 
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
 
@@ -177,4 +179,61 @@ test("should delete event log items for start time", async () => {
       },
     ],
   });
+});
+
+test("should only delete event log items for the named users", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+
+  await addEventLogItems(
+    [mockUser.username, mockUser2.username].map((username) => ({
+      username,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: testProgramItem.startTime,
+      createdAt: "2019-07-26T17:00:00.000Z",
+      action: EventLogAction.NEW_ASSIGNMENT,
+    })),
+  );
+
+  await deleteEventLogItemsByStartTime(
+    testProgramItem.startTime,
+    [EventLogAction.NEW_ASSIGNMENT],
+    [mockUser.username],
+  );
+
+  const deletedFrom = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(deletedFrom?.eventLogItems).toHaveLength(0);
+
+  const untouched = unsafelyUnwrap(await findUser(mockUser2.username));
+  expect(untouched?.eventLogItems).toHaveLength(1);
+});
+
+test("should delete event log items whose start time differs only in seconds", async () => {
+  await saveUser(mockUser);
+
+  // Start times reach the assignment unnormalised, so a stored time can carry seconds the
+  // assignment time doesn't. Every other start time comparison matches to the minute
+  const startTimeWithSeconds = setSeconds(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  await addEventLogItems([
+    {
+      username: mockUser.username,
+      programItemId: testProgramItem.programItemId,
+      programItemStartTime: startTimeWithSeconds,
+      createdAt: "2019-07-26T17:00:00.000Z",
+      action: EventLogAction.NEW_ASSIGNMENT,
+    },
+  ]);
+
+  await deleteEventLogItemsByStartTime(
+    testProgramItem.startTime,
+    [EventLogAction.NEW_ASSIGNMENT],
+    [mockUser.username],
+  );
+
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.eventLogItems).toHaveLength(0);
 });

@@ -158,6 +158,12 @@ export const submitPostDirectSignup = (
 
     // If sign-up success, update for user
     dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
+
+    // A direct sign-up cancels the lottery sign-ups competing for the same start time. Only
+    // after the sign-up is known to have landed: a full program item cancels nothing
+    if (signupResponse.lotterySignups) {
+      dispatch(submitPostLotterySignupAsync(signupResponse.lotterySignups));
+    }
   };
 };
 
@@ -208,6 +214,8 @@ export enum PostLotterySignupErrorMessage {
   GROUP_MEMBER = "signupError.groupMember",
   PROGRAM_ITEM_HIDDEN = "signupError.programItemHidden",
   INVALID_PROGRAM_ITEM = "signupError.invalidProgramItem",
+  DIRECT_SIGNUP_FOR_SLOT = "signupError.directSignupForSlot",
+  LOTTERY_ALREADY_RUN = "signupError.lotteryAlreadyRun",
   UNKNOWN = "signupError.generic",
 }
 
@@ -241,6 +249,10 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.PROGRAM_ITEM_HIDDEN;
         case "invalidProgramItem":
           return PostLotterySignupErrorMessage.INVALID_PROGRAM_ITEM;
+        case "directSignupForSlot":
+          return PostLotterySignupErrorMessage.DIRECT_SIGNUP_FOR_SLOT;
+        case "lotteryAlreadyRun":
+          return PostLotterySignupErrorMessage.LOTTERY_ALREADY_RUN;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:

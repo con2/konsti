@@ -24,6 +24,11 @@ export const runAssignmentAlgorithm = (
   programItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  // Attendees who already hold a spot at this start time and are therefore left out of
+  // the run. Passed in rather than derived here: only a real assignment has spots to
+  // respect, while the popularity simulation asks what a fresh lottery would do and
+  // passes an empty set so it keeps measuring demand against full capacity
+  settledAttendeeUsernames: ReadonlySet<string>,
 ): Result<AssignmentResult, AssignmentError> => {
   logger.info(
     `Received data for ${users.length} users and ${programItems.length} program items for ${assignmentTime}`,
@@ -46,12 +51,19 @@ export const runAssignmentAlgorithm = (
     });
   }
 
+  if (settledAttendeeUsernames.size > 0) {
+    logger.info(
+      `${settledAttendeeUsernames.size} attendees already have a spot for ${assignmentTime}, leaving them out of the assignment`,
+    );
+  }
+
   if (assignmentAlgorithm === AssignmentAlgorithm.PADG) {
     return runPadgAlgorithm(
       users,
       startingProgramItems,
       assignmentTime,
       lotteryParticipantDirectSignups,
+      settledAttendeeUsernames,
     );
   }
 
@@ -61,6 +73,7 @@ export const runAssignmentAlgorithm = (
       startingProgramItems,
       assignmentTime,
       lotteryParticipantDirectSignups,
+      settledAttendeeUsernames,
     );
   }
 
@@ -71,6 +84,7 @@ export const runAssignmentAlgorithm = (
       startingProgramItems,
       assignmentTime,
       lotteryParticipantDirectSignups,
+      settledAttendeeUsernames,
     );
   }
 
@@ -82,12 +96,14 @@ const runPadgAlgorithm = (
   startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  settledAttendeeUsernames: ReadonlySet<string>,
 ): Result<AssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignment(
     users,
     startingProgramItems,
     assignmentTime,
     lotteryParticipantDirectSignups,
+    settledAttendeeUsernames,
   );
   if (!padgResultResult.ok) {
     return padgResultResult;
@@ -100,12 +116,14 @@ const runRandomAlgorithm = (
   startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  settledAttendeeUsernames: ReadonlySet<string>,
 ): Result<AssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignment(
     users,
     startingProgramItems,
     assignmentTime,
     lotteryParticipantDirectSignups,
+    settledAttendeeUsernames,
   );
   if (!randomResultResult.ok) {
     return randomResultResult;
@@ -118,12 +136,14 @@ const runRandomPadgAlgorithm = (
   startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  settledAttendeeUsernames: ReadonlySet<string>,
 ): Result<AssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignment(
     users,
     startingProgramItems,
     assignmentTime,
     lotteryParticipantDirectSignups,
+    settledAttendeeUsernames,
   );
   if (!randomResultResult.ok) {
     logger.error(
@@ -144,6 +164,7 @@ const runRandomPadgAlgorithm = (
     startingProgramItems,
     assignmentTime,
     lotteryParticipantDirectSignups,
+    settledAttendeeUsernames,
   );
   if (!padgResultResult.ok) {
     logger.error(

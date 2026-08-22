@@ -10,6 +10,7 @@ import {
   canSignToProgramItems,
   getIsInGroup,
 } from "client/views/group/groupUtils";
+import { LotterySignupNotInLotteryNote } from "client/views/my-program-items/components/LotterySignupNotInLotteryNote";
 import {
   MyProgramButtonContainer,
   MyProgramCancelSignupFormContainer,
@@ -17,7 +18,10 @@ import {
   MyProgramGameTitle,
   MyProgramListItem,
 } from "client/views/my-program-items/components/shared";
-import { LotterySignupWithProgramItem } from "client/views/my-program-items/myProgramItemsSlice";
+import {
+  LotterySignupWithProgramItem,
+  selectDirectSignups,
+} from "client/views/my-program-items/myProgramItemsSlice";
 import {
   DeleteLotterySignupErrorMessage,
   submitDeleteLotterySignup,
@@ -40,6 +44,10 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
     getIsInGroup(groupCode),
     isGroupCreator,
   );
+
+  // A rescheduled program item can leave the attendee holding a spot at this sign-up's start
+  // time, which takes it out of the lottery until they cancel that spot
+  const directSignups = useAppSelector(selectDirectSignups);
 
   const [loading, setLoading] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
@@ -74,6 +82,11 @@ export const LotterySignupItem = ({ lotterySignup }: Props): ReactElement => {
           popularity={lotterySignup.programItem.popularity}
           includeMsg={false}
           programType={lotterySignup.programItem.programType}
+        />
+
+        <StyledNotInLotteryNote
+          programItem={lotterySignup.programItem}
+          directSignups={directSignups}
         />
 
         {serverError && (
@@ -136,10 +149,15 @@ const StyledTitle = styled(MyProgramGameTitle)`
 
 const StyledButtons = styled(MyProgramButtonContainer)`
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 4;
 `;
 
 const StyledErrorMessage = styled(MyProgramErrorMessage)`
+  grid-column: 1;
+  grid-row: 3;
+`;
+
+const StyledNotInLotteryNote = styled(LotterySignupNotInLotteryNote)`
   grid-column: 1;
   grid-row: 2;
 `;
@@ -148,13 +166,13 @@ const StyledCancelSignupFormContainer = styled(
   MyProgramCancelSignupFormContainer,
 )`
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 4;
 `;
 
 const StyledPopularityInfo = styled(PopularityInfo)`
   grid-column: 2;
   grid-row-start: 1;
-  grid-row-end: 4;
+  grid-row-end: 5;
   align-items: center;
   justify-content: center;
 

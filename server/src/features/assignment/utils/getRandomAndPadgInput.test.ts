@@ -27,6 +27,7 @@ test("does not duplicate a group when a non-creator member has a stray lottery s
   const { attendeeGroups, allAttendees } = getRandomAndPadgInput(
     usersWithStrayMemberSignup,
     [testProgramItem],
+    new Set(),
   );
 
   // The lottery should still see exactly one group of the three real members, with no duplicates

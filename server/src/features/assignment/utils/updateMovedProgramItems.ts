@@ -2,6 +2,8 @@ import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
+import { getLotterySignupProgramItemIdsForStartTime } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import { findDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
@@ -59,7 +61,81 @@ export const updateMovedProgramItems = async (
     return notifyUsersWithDirectSignupsResult;
   }
 
+  const notifyInertLotterySignupsResult = await notifyInertLotterySignups(
+    movedProgramItems,
+    updatedProgramItems,
+  );
+  if (!notifyInertLotterySignupsResult.ok) {
+    return notifyInertLotterySignupsResult;
+  }
+
   return makeSuccessResult();
+};
+
+// A moved program item can land on top of lottery sign-ups the attendee holding a spot in it made
+// for other items. The lottery gives spots only to those who have none, so those sign-ups now sit
+// it out. Nothing is cancelled: the attendee didn't cause this, and re-adding a lottery sign-up
+// can be impossible once the sign-up window has closed, so they are told instead and can free them
+// again by cancelling the spot
+const notifyInertLotterySignups = async (
+  movedProgramItems: readonly ProgramItem[],
+  updatedProgramItems: readonly ProgramItem[],
+): Promise<Result<void, MongoDbError>> => {
+  const movedProgramItemIds = movedProgramItems.map(
+    (programItem) => programItem.programItemId,
+  );
+
+  const directSignupsResult =
+    await findDirectSignupsByProgramItemIds(movedProgramItemIds);
+  if (!directSignupsResult.ok) {
+    return directSignupsResult;
+  }
+
+  const usersResult = await findUsers();
+  if (!usersResult.ok) {
+    return usersResult;
+  }
+
+  const eventUpdates = directSignupsResult.value.flatMap((directSignup) => {
+    const movedProgramItem = movedProgramItems.find(
+      (programItem) => programItem.programItemId === directSignup.programItemId,
+    );
+    if (!movedProgramItem) {
+      return [];
+    }
+    const newStartTime = getProgramItemStartTime(movedProgramItem);
+
+    return directSignup.userSignups.flatMap((userSignup) => {
+      const user = usersResult.value.find(
+        (found) => found.username === userSignup.username,
+      );
+      if (!user) {
+        return [];
+      }
+
+      return getLotterySignupProgramItemIdsForStartTime(
+        user.lotterySignups,
+        updatedProgramItems,
+        newStartTime,
+      ).map((programItemId) => ({
+        username: user.username,
+        programItemId,
+        programItemStartTime: newStartTime,
+        createdAt: new Date().toISOString(),
+        action: EventLogAction.LOTTERY_SIGNUP_NOT_IN_LOTTERY,
+      }));
+    });
+  });
+
+  if (eventUpdates.length === 0) {
+    return makeSuccessResult();
+  }
+
+  logger.info(
+    `${eventUpdates.length} lottery signups sit out their lottery after a moved program item took the slot`,
+  );
+
+  return await addEventLogItems(eventUpdates);
 };
 
 const removeMovedLotterySignupsAndNotify = async (

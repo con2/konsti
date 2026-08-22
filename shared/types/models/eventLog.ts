@@ -15,4 +15,5 @@ export enum EventLogAction {
   PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE = "programItemNoKonstiSignupAnymore",
   PROGRAM_ITEM_NO_LOTTERY_ANYMORE = "programItemNoLotteryAnymore",
   PROGRAM_ITEM_MOVED = "programItemMoved",
+  LOTTERY_SIGNUP_NOT_IN_LOTTERY = "lotterySignupNotInLottery",
 }

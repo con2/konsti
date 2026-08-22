@@ -80,7 +80,10 @@ export const saveProgramItems = async (
   }
 
   const bulkOps = updatedProgramItems.map((programItem) => {
-    const newProgramItem: Omit<ProgramItem, "popularity"> = {
+    const newProgramItem: Omit<
+      ProgramItem,
+      "popularity" | "lotteryRanForStartTime"
+    > = {
       programItemId: programItem.programItemId,
       parentId: programItem.parentId,
       title: programItem.title,
@@ -236,6 +239,36 @@ interface PopularityUpdate {
   programItemId: string;
   popularity: Popularity;
 }
+
+// Records which start time these program items were lotteried for. A program item is lotteried
+// at most once: if it is later moved onto a slot whose lottery has not run, it is left out of
+// that run and its remaining spots go to direct sign-up
+export const saveLotteryRanForStartTime = async (
+  programItemIds: readonly string[],
+  assignmentTime: string,
+): Promise<Result<void, MongoDbError>> => {
+  if (programItemIds.length === 0) {
+    return makeSuccessResult();
+  }
+
+  try {
+    await ProgramItemModel.updateMany(
+      { programItemId: { $in: programItemIds } },
+      { lotteryRanForStartTime: new Date(assignmentTime) },
+    );
+    logger.info(
+      `MongoDB: Marked ${programItemIds.length} program items as lotteried for ${assignmentTime}`,
+    );
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error marking program items as lotteried", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
 
 export const saveProgramItemPopularity = async (
   popularityUpdates: PopularityUpdate[],

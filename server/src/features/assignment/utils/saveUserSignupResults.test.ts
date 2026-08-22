@@ -100,6 +100,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -171,6 +172,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     assignmentTime: parentStartTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -269,6 +271,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -357,6 +360,7 @@ test("should only add one event log item with multiple lottery signups", async (
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -450,6 +454,7 @@ test("should not add event log items after assignment if signup is dropped due t
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -511,6 +516,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -615,6 +621,7 @@ test("should remove all of a winner's existing same-time direct signups, not jus
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -666,6 +673,7 @@ test("should not send notifications to users without email addresses but still c
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -759,6 +767,7 @@ test("should respect email notification permissions based on email field", async
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 
@@ -821,6 +830,7 @@ test("should handle mixed email permissions in groups", async () => {
     assignmentTime: testProgramItem.startTime,
     results,
     users,
+    settledAttendeeUsernames: new Set(),
     programItems,
   });
 

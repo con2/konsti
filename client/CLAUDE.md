@@ -72,7 +72,7 @@ i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deepl
 - Template-built keys: `t(\`programType.${type}\`)`, `t(\`attendeeTypePlural.${getAttendeeType(programType)}\`)`. The detector tracks these as wildcard skeletons (`programType.\*`).
 - Keys held as TS enum values: `enum PostLotterySignupErrorMessage { UNKNOWN = "signupError.generic", ... }`. Easy to miss with a naive grep for `t("…")`. The detector handles this by matching any string literal against the known key set.
 
-`yarn find-unused-translation-keys` reports unused keys (exits 1 if any). Wired into `yarn lint` and the CI lint job. The event-log views (`views/event-log/`) render the program-item cancellation actions described in [server/CLAUDE.md](../server/CLAUDE.md) via `eventLogActions.*` keys.
+`yarn find-unused-translation-keys` reports unused keys (exits 1 if any). Wired into `yarn lint` and the CI lint job. The event-log views (`views/event-log/`) render the program-item cancellation actions described in [server/CLAUDE.md](../server/CLAUDE.md) via `eventLogActions.*` keys. `EventLogProgramItemCancelled` also renders the one action that isn't a cancellation — a lottery sign-up sitting its lottery out because the attendee already holds a spot at that time, described in the same file's assignment section — since the message shape is the same.
 
 ## Build & Environment
 

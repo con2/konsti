@@ -1,17 +1,28 @@
-import { isEqual } from "date-fns";
+import { isEqual, isSameMinute } from "date-fns";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   DeleteLotterySignupResponse,
   PostLotterySignupResponse,
 } from "shared/types/api/myProgramItems";
-import { SignupType, State } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
+import { Result, makeSuccessResult } from "shared/utils/result";
 import {
   getLotterySignupEndTime,
   getLotterySignupStartTime,
+  getProgramItemStartTime,
 } from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import {
+  findProgramItemById,
+  findProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import {
   delLotterySignups,
@@ -22,6 +33,48 @@ import { hasSignupEnded } from "server/features/user/userUtils";
 import { logger } from "server/utils/logger";
 
 const validPriorities = new Set([1, 2, 3]);
+
+// Whether the user already holds a spot in a program item starting at the same time as this one.
+// Matched program item to program item rather than against the sign-up's stored signedToStartTime,
+// so the answer agrees with the assignment, which settles attendees by the item's current time
+const holdsSpotAtStartTime = async (
+  username: string,
+  programItem: ProgramItem,
+): Promise<Result<boolean, MongoDbError>> => {
+  const userDirectSignupsResult = await findUserDirectSignups(username);
+  if (!userDirectSignupsResult.ok) {
+    return userDirectSignupsResult;
+  }
+
+  const programItemsResult = await findProgramItems();
+  if (!programItemsResult.ok) {
+    return programItemsResult;
+  }
+
+  const startTime = getProgramItemStartTime(programItem);
+
+  // The documents hold every attendee's sign-ups, so narrow to this user's first
+  const holdsSpot = userDirectSignupsResult.value
+    .filter((directSignup) =>
+      directSignup.userSignups.some(
+        (userSignup) => userSignup.username === username,
+      ),
+    )
+    .some((directSignup) => {
+      const signedProgramItem = programItemsResult.value.find(
+        (found) => found.programItemId === directSignup.programItemId,
+      );
+      if (!signedProgramItem) {
+        return false;
+      }
+      return isSameMinute(
+        new Date(getProgramItemStartTime(signedProgramItem)),
+        new Date(startTime),
+      );
+    });
+
+  return makeSuccessResult(holdsSpot);
+};
 
 interface StoreLotterySignupParams {
   programItemId: string;
@@ -96,6 +149,23 @@ export const storeLotterySignup = async ({
     };
   }
 
+  // A program item is lotteried at most once. Moving it onto a later slot reopens the window
+  // these times are derived from, so without this a sign-up could be made to an item no run
+  // will ever consider again
+  if (
+    programItem.lotteryRanForStartTime !== undefined &&
+    !isSameMinute(
+      new Date(programItem.lotteryRanForStartTime),
+      new Date(getProgramItemStartTime(programItem)),
+    )
+  ) {
+    return {
+      message: `Lottery for program item ${programItemId} has already been run`,
+      status: "error",
+      errorId: "lotteryAlreadyRun",
+    };
+  }
+
   const timeNowResult = await getTimeNow();
   if (!timeNowResult.ok) {
     return {
@@ -156,6 +226,24 @@ export const storeLotterySignup = async ({
       message: "Group member cannot create lottery signups",
       status: "error",
       errorId: "groupMember",
+    };
+  }
+
+  // The lottery only gives spots to attendees who don't have one, so a sign-up made while
+  // already holding a spot at this start time could never be acted on
+  const holdsSpotResult = await holdsSpotAtStartTime(username, programItem);
+  if (!holdsSpotResult.ok) {
+    return {
+      message: "Error finding existing signups",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  if (holdsSpotResult.value) {
+    return {
+      message: `User already has a direct signup for the start time of program item ${programItemId}`,
+      status: "error",
+      errorId: "directSignupForSlot",
     };
   }
 

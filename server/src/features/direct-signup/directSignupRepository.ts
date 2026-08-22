@@ -2,7 +2,6 @@ import { AnyBulkWriteOperation } from "mongoose";
 import { first, groupBy, shuffle } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
   Result,
   makeErrorResult,
@@ -293,6 +292,55 @@ export const saveDirectSignup = async (
   }
 };
 
+// The attendance cap is applied by the write itself, so which sign-ups actually landed is
+// only known afterwards. Reporting the ones that didn't lets the caller treat them as not
+// placed rather than telling the attendee they got a spot that was never stored
+const findSignupsNotSaved = async (
+  signupsByProgramItems: Record<string, SignupRepositoryAddSignup[]>,
+  alreadyDropped: readonly SignupRepositoryAddSignup[],
+): Promise<Result<SignupRepositoryAddSignup[], MongoDbError>> => {
+  const savedSignupsResult = await findDirectSignupsByProgramItemIds(
+    Object.keys(signupsByProgramItems),
+  );
+  if (!savedSignupsResult.ok) {
+    return savedSignupsResult;
+  }
+
+  const savedUsernamesByProgramItemId = new Map(
+    savedSignupsResult.value.map((signup) => [
+      signup.programItemId,
+      new Set(signup.userSignups.map((userSignup) => userSignup.username)),
+    ]),
+  );
+  const alreadyDroppedKeys = new Set(
+    alreadyDropped.map(
+      (signup) => `${signup.directSignupProgramItemId}:${signup.username}`,
+    ),
+  );
+
+  const notSaved = Object.values(signupsByProgramItems)
+    .flat()
+    .filter(
+      (signup) =>
+        !alreadyDroppedKeys.has(
+          `${signup.directSignupProgramItemId}:${signup.username}`,
+        ) &&
+        !savedUsernamesByProgramItemId
+          .get(signup.directSignupProgramItemId)
+          ?.has(signup.username),
+    );
+
+  if (notSaved.length > 0) {
+    logger.error(
+      new Error(
+        `${notSaved.length} assignment signups did not fit the program item they were assigned to and were not saved`,
+      ),
+    );
+  }
+
+  return makeSuccessResult(notSaved);
+};
+
 export const saveDirectSignups = async (
   signupsRequests: SignupRepositoryAddSignup[],
   programItems: ProgramItem[],
@@ -300,6 +348,21 @@ export const saveDirectSignups = async (
   const signupsByProgramItems = groupBy(
     signupsRequests,
     (signupsRequest) => signupsRequest.directSignupProgramItemId,
+  );
+
+  // New sign-ups are appended to whoever is already in the program item, so the attendance
+  // limit has to be checked against the total rather than against this batch alone
+  const existingSignupsResult = await findDirectSignupsByProgramItemIds(
+    Object.keys(signupsByProgramItems),
+  );
+  if (!existingSignupsResult.ok) {
+    return existingSignupsResult;
+  }
+  const existingCountsByProgramItemId = new Map(
+    existingSignupsResult.value.map((signup) => [
+      signup.programItemId,
+      signup.userSignups.length,
+    ]),
   );
 
   const droppedSignups: SignupRepositoryAddSignup[] = [];
@@ -314,17 +377,23 @@ export const saveDirectSignups = async (
       return [];
     }
 
+    const existingCount = existingCountsByProgramItemId.get(programItemId) ?? 0;
+    const availableSpots = Math.max(
+      programItem.maxAttendance - existingCount,
+      0,
+    );
+
     let finalSignups: SignupRepositoryAddSignup[] = directSignups;
-    if (directSignups.length > programItem.maxAttendance) {
+    if (directSignups.length > availableSpots) {
       // This case is handled gracefully, but it's still a bug worth flagging
       logger.error(
         new Error(
-          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}, dropping ${directSignups.length - programItem.maxAttendance} signups`,
+          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, existing signups: ${existingCount}, direct signups: ${directSignups.length}, dropping ${directSignups.length - availableSpots} signups`,
         ),
       );
       const shuffledSignups = shuffle(directSignups);
-      finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
-      droppedSignups.push(...shuffledSignups.slice(programItem.maxAttendance));
+      finalSignups = shuffledSignups.slice(0, availableSpots);
+      droppedSignups.push(...shuffledSignups.slice(availableSpots));
     }
 
     return {
@@ -338,17 +407,29 @@ export const saveDirectSignups = async (
           {
             $set: {
               userSignups: {
-                $concatArrays: [
-                  { $ifNull: ["$userSignups", []] },
+                // The count above was read in a separate round-trip, so it can be stale by
+                // the time this lands - a first-come-first-served sign-up in between, or a
+                // stored document the read skipped as invalid. Capping here is what
+                // actually holds the attendance limit; whoever is already in the program
+                // item sorts first, so an incumbent is never the one dropped.
+                // Only reachable when the read and the write disagree, which a test can't
+                // stage from outside the module, so no unit test covers this cap alone
+                $slice: [
                   {
-                    $literal: finalSignups.map((signup) => ({
-                      username: signup.username,
-                      priority: signup.priority,
-                      signedToStartTime: new Date(signup.signedToStartTime),
-                      signupTime: new Date(signup.signupTime),
-                      message: signup.message,
-                    })),
+                    $concatArrays: [
+                      { $ifNull: ["$userSignups", []] },
+                      {
+                        $literal: finalSignups.map((signup) => ({
+                          username: signup.username,
+                          priority: signup.priority,
+                          signedToStartTime: new Date(signup.signedToStartTime),
+                          signupTime: new Date(signup.signupTime),
+                          message: signup.message,
+                        })),
+                      },
+                    ],
                   },
+                  programItem.maxAttendance,
                 ],
               },
             },
@@ -364,9 +445,18 @@ export const saveDirectSignups = async (
   try {
     const response = await SignupModel.bulkWrite(bulkOps);
     logger.info(`Updated signups for ${response.modifiedCount} program items`);
+
+    const notSavedResult = await findSignupsNotSaved(
+      signupsByProgramItems,
+      droppedSignups,
+    );
+    if (!notSavedResult.ok) {
+      return notSavedResult;
+    }
+
     return makeSuccessResult({
       modifiedCount: response.modifiedCount,
-      droppedSignups,
+      droppedSignups: [...droppedSignups, ...notSavedResult.value],
     });
   } catch (error) {
     logger.error(
@@ -393,15 +483,30 @@ export const delDirectSignup = async ({
         programItemId: directSignupProgramItemId,
         "userSignups.username": username,
       },
-      {
-        $pull: {
-          userSignups: {
-            username,
+      // Drop the user's sign-ups and recompute count from what is left, rather than
+      // decrementing it. count gates the sign-up endpoint's capacity check, and a
+      // decrement drifts from the array whenever it removes more than one entry
+      [
+        {
+          $set: {
+            userSignups: {
+              $filter: {
+                input: "$userSignups",
+                as: "userSignup",
+                // $literal: a username is data, and one starting with "$" would
+                // otherwise be read as a field path and match nothing
+                cond: {
+                  $ne: ["$$userSignup.username", { $literal: username }],
+                },
+              },
+            },
           },
         },
-        $inc: { count: -1 },
-      },
-      { returnDocument: "after" },
+        {
+          $set: { count: { $size: "$userSignups" } },
+        },
+      ],
+      { returnDocument: "after", updatePipeline: true },
     ).lean();
 
     if (!signup) {
@@ -470,10 +575,28 @@ export const delDirectSignups = async (
             programItemId: directSignupProgramItemId,
             "userSignups.username": username,
           },
-          update: {
-            $pull: { userSignups: { username } },
-            $inc: { count: -1 },
-          },
+          // Recompute count from the remaining array rather than decrementing, so it
+          // can't drift when the pull removes more than one entry for the user
+          update: [
+            {
+              $set: {
+                userSignups: {
+                  $filter: {
+                    input: "$userSignups",
+                    as: "userSignup",
+                    // $literal: a username is data, and one starting with "$" would
+                    // otherwise be read as a field path and match nothing
+                    cond: {
+                      $ne: ["$$userSignup.username", { $literal: username }],
+                    },
+                  },
+                },
+              },
+            },
+            {
+              $set: { count: { $size: "$userSignups" } },
+            },
+          ],
         },
       })),
     );
@@ -525,55 +648,6 @@ export const resetDirectSignupsByProgramItemIds = async (
       new Error("MongoDB: Error removing signups for program item IDs", {
         cause: error,
       }),
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-};
-
-export const delAssignmentDirectSignupsByStartTime = async (
-  assignmentTime: string,
-  programItems: ProgramItem[],
-): Promise<Result<void, MongoDbError>> => {
-  // Only remove "twoPhaseSignupProgramTypes" sign-ups and don't remove "directSignupAlwaysOpen" sign-ups
-  const doNotRemoveProgramItemIds = programItems
-    .filter((programItem) => !isLotterySignupProgramItem(programItem))
-    .map((programItem) => programItem.programItemId);
-
-  try {
-    await SignupModel.updateMany(
-      {
-        programItemId: { $nin: doNotRemoveProgramItemIds },
-      },
-      [
-        {
-          $set: {
-            userSignups: {
-              $filter: {
-                input: "$userSignups",
-                as: "userSignup",
-                cond: {
-                  $ne: [
-                    "$$userSignup.signedToStartTime",
-                    new Date(assignmentTime),
-                  ],
-                },
-              },
-            },
-          },
-        },
-        {
-          $set: { count: { $size: "$userSignups" } },
-        },
-      ],
-      { updatePipeline: true },
-    );
-    logger.info(
-      `MongoDB: Deleted old signups for assignmentTime: ${assignmentTime}`,
-    );
-    return makeSuccessResult();
-  } catch (error) {
-    logger.error(
-      new Error("MongoDB: Error removing invalid signup", { cause: error }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

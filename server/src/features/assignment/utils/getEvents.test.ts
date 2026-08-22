@@ -113,3 +113,35 @@ test("should return events for program items using parent startTime via 'startTi
     ]),
   );
 });
+
+test("should count a signup made for this same start time against capacity", () => {
+  // Not a sign-up carried in from a moved program item: this one was made for the very
+  // start time being assigned, by an earlier run of this lottery or by direct sign-up
+  // after it. The attendee holding it is kept out of the run, so its spot is taken
+  const directSignups: DirectSignupsForProgramItem[] = [
+    {
+      programItemId: testProgramItem.programItemId,
+      count: 1,
+      userSignups: [
+        {
+          username: "some username",
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+          signupTime: testProgramItem.startTime,
+          message: "",
+        },
+      ],
+    },
+  ];
+
+  const events = getEvents([testProgramItem], directSignups);
+
+  expect(events).toEqual([
+    {
+      id: testProgramItem.programItemId,
+      min: testProgramItem.minAttendance - 1,
+      max: testProgramItem.maxAttendance - 1,
+      groups: [],
+    },
+  ]);
+});

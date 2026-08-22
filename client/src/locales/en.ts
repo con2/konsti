@@ -213,6 +213,10 @@ export const translationEN = {
       "Group members cannot sign up, the group creator must sign up for the whole group.",
     invalidProgramItem:
       "This program item is missing required information and cannot be signed up to.",
+    directSignupForSlot:
+      "You already have a sign-up for this time. Cancel it first to take part in this lottery.",
+    lotteryAlreadyRun:
+      "This program item's starting time changed after its lottery, so it does not take part in another one. Its remaining spots are filled in sign-up order.",
   },
   closingMessage: "Konsti is closed and will open closer to the next event.",
   invalidProgramItemId:
@@ -324,6 +328,8 @@ export const translationEN = {
     programItemNoLotteryAnymore:
       "{{PROGRAM_TYPE}} no longer uses lottery sign-up and your lottery sign-up was removed:",
     programItemMoved: "starting time has changed to {{NEW_STARTING_TIME}}.",
+    lotterySignupNotInLottery:
+      "You already have a spot at this time, so the lottery will skip this {{PROGRAM_TYPE}}. It goes back in the lottery if you cancel the sign-up holding that spot:",
   },
   notificationBar: {
     showAll: "Show all notifications",
@@ -342,8 +348,12 @@ export const translationEN = {
       "You have already signed up to the {{PROGRAM_TYPE}}",
     cannotSignupMoreThanOneProgramItem:
       "You cannot sign up to another program item starting at the same time.",
-    signupWillBeRemoved:
-      "If you get a spot in this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be cancelled.",
+    lotterySignupsWillBeCancelled:
+      "Signing up gives you a spot at this time, so these lottery sign-ups will be cancelled:",
+    lotterySignupNotInLottery:
+      "Not in the lottery: you already have a spot at this time. Cancel that sign-up to put this back in the lottery.",
+    lotterySkippedWhenSpotHeld:
+      "The lottery only gives out spots to those who don't have one yet, so it will leave you in the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}}. Cancel that sign-up first if you would rather take part in the lottery for this one.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
     attendeesNeeded: "Needs {{COUNT}} more",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",
@@ -371,6 +381,8 @@ export const translationEN = {
     loginLinkEnding: "to see {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Sign-up question",
     help: {
+      lotteryAlreadyRunInfo:
+        "Its starting time changed after its lottery, so it does not take part in another one.",
       signupAlwaysOpenGroupMemberInfo:
         "You can sign up even though you are a group member.",
       directSignupStartsLater:
