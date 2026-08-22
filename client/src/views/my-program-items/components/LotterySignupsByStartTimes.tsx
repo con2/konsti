@@ -1,8 +1,7 @@
 import { Fragment, ReactElement } from "react";
 import { capitalize, groupBy } from "remeda";
 import { config } from "shared/config";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { LotterySignupItem } from "client/views/my-program-items/components/LotterySignupItem";
 import {
   MyProgramList,
@@ -17,7 +16,7 @@ interface Props {
 export const LotterySignupsByStartTimes = ({
   lotterySignups,
 }: Props): ReactElement => {
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   const groupedLotterySignups = groupBy(lotterySignups, (lotterySignup) => {
     const parentStartTime = config
@@ -31,7 +30,7 @@ export const LotterySignupsByStartTimes = ({
       {Object.entries(groupedLotterySignups).map(([startTime, signups]) => (
         <Fragment key={startTime}>
           <MyProgramTime>
-            {capitalize(getWeekdayAndTime(startTime, locale))}
+            {capitalize(getWeekdayAndTime(startTime))}
           </MyProgramTime>
 
           <MyProgramList>

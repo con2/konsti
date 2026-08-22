@@ -10,11 +10,11 @@ import { TIMEZONE } from "shared/utils/timezone";
 // No number: a bare number is a valid argument to date-fns format but is almost
 // always a duration rather than an instant, and renders as a plausible wrong
 // clock time (120 becomes "02:00") instead of failing
-type Time = Date | string;
+export type Time = Date | string;
 
-// Every formatter takes the language to render in. A component must pass the
-// one it read through the locale hook: the active language otherwise lives in
-// module state, which React cannot see, so a memoized weekday would keep
+// Every formatter takes the language to render in. The client never passes it
+// by hand: a hook binds these to the active language, because it otherwise lives
+// in module state that React cannot see, and a memoized weekday would keep
 // rendering in the language it was first formatted in. Omitting it falls back to
 // that module state, which is what non-rendering callers want
 const resolveLocale = (locale?: Locale): ReturnType<typeof getCurrentLocale> =>

@@ -100,6 +100,22 @@ const restrictedLocaleBarrelImport = {
 
 const timeFormattingModules = ["shared/utils/timeFormatter.ts"];
 
+// The client never formats a time with the language the formatters hold in
+// module state: React cannot see it, so a memoized weekday would keep rendering
+// in the language it was first formatted in. The hook binds them to the active
+// language instead
+const restrictedFormatterImport = {
+  name: "shared/utils/timeFormatter",
+  message: "Use the useTimeFormatters hook, which binds the active language",
+};
+
+// The hook itself, and the one client module that formats outside a component
+// and so takes the language as a parameter
+const languageBindingModules = [
+  "client/src/utils/useTimeFormatters.ts",
+  "client/src/views/program-item/programItemUtils.ts",
+];
+
 export default defineConfig([
   eslint.configs.recommended,
   typescriptEslint.configs.strictTypeChecked,
@@ -365,6 +381,33 @@ export default defineConfig([
 
       // @typescript-eslint
       "@typescript-eslint/no-unnecessary-type-arguments": "off", // Doesn't work with API types <Response,Request>
+    },
+  },
+
+  // ** Client modules that render **
+  {
+    files: ["client/**/*.{ts,tsx}"],
+    ignores: languageBindingModules,
+
+    rules: {
+      "@typescript-eslint/no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            ...restrictedImportPaths,
+            restrictedFormatImport,
+            restrictedLocaleBarrelImport,
+            restrictedFormatterImport,
+          ],
+          patterns: [
+            restrictedFormatImportPattern,
+            {
+              group: ["../*"],
+              message: "Relative import (../) not allowed, use absolute import",
+            },
+          ],
+        },
+      ],
     },
   },
 

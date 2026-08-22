@@ -2,24 +2,22 @@ import { ReactElement, useRef } from "react";
 import { capitalize } from "remeda";
 import styled from "styled-components";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { useTimeNow } from "client/utils/useTimeNow";
-import { getFormattedTime } from "client/views/program-item/programItemUtils";
 
 interface Props {
   startTime: string;
 }
 
 export const ProgramItemListTitle = ({ startTime }: Props): ReactElement => {
+  const { getFormattedTime } = useTimeFormatters();
   const intersectionRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <ProgramItemListTitleContainer key={startTime} ref={intersectionRef}>
       {/* Include the date outside event week so the weekday isn't ambiguous */}
       <StyledHeader>
-        {capitalize(
-          getFormattedTime(new Date(startTime), useTimeNow(), useLocale()),
-        )}
+        {capitalize(getFormattedTime(new Date(startTime), useTimeNow()))}
       </StyledHeader>
     </ProgramItemListTitleContainer>
   );

@@ -6,9 +6,8 @@ import { config } from "shared/config";
 import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 interface Props {
   eventLogItem: EventLogItem;
@@ -21,7 +20,7 @@ export const EventLogNewAssignment = ({
   showDetails,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   const foundProgramItem = programItems.find(
     (programItem) => programItem.programItemId === eventLogItem.programItemId,
@@ -57,10 +56,7 @@ export const EventLogNewAssignment = ({
             <>
               <TextRow>
                 {t("eventLog.programItemDetails", {
-                  START_TIME: getWeekdayAndTime(
-                    foundProgramItem.startTime,
-                    locale,
-                  ),
+                  START_TIME: getWeekdayAndTime(foundProgramItem.startTime),
                   LOCATION: foundProgramItem.location,
                 })}
               </TextRow>

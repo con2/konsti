@@ -5,9 +5,8 @@ import { sortBy } from "remeda";
 import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 interface Props {
   signupQuestions: readonly SignupQuestion[];
@@ -19,7 +18,7 @@ export const SignupQuestionList = ({
   programItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   const signupQuestionsWithProgramItems = signupQuestions.flatMap(
     (privateSignupQuestion) => {
@@ -79,9 +78,7 @@ export const SignupQuestionList = ({
               )}{" "}
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
               - {t(`programType.${foundProgramItem.programType}`)} -{" "}
-              <span>
-                {getWeekdayAndTime(foundProgramItem.startTime, locale)}
-              </span>
+              <span>{getWeekdayAndTime(foundProgramItem.startTime)}</span>
             </li>
           );
         })}

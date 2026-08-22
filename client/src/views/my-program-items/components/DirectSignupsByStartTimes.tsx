@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { capitalize } from "remeda";
-import { getWeekdayAndTime } from "shared/utils/timeFormatter";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { DirectSignupItem } from "client/views/my-program-items/components/DirectSignupItem";
 import {
   MyProgramList,
@@ -18,7 +17,7 @@ export const DirectSignupsByStartTimes = ({
   directSignups,
   startTimes,
 }: Props): ReactElement => {
-  const locale = useLocale();
+  const { getWeekdayAndTime } = useTimeFormatters();
 
   return (
     <>
@@ -26,7 +25,7 @@ export const DirectSignupsByStartTimes = ({
         return (
           <div key={startTime}>
             <MyProgramTime>
-              {capitalize(getWeekdayAndTime(startTime, locale))}
+              {capitalize(getWeekdayAndTime(startTime))}
             </MyProgramTime>
 
             <MyProgramList>

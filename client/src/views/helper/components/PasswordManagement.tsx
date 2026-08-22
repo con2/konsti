@@ -4,17 +4,16 @@ import { Link } from "react-router";
 import styled, { css } from "styled-components";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { formatSerial } from "shared/utils/formatSerial";
-import { getDateAndTime } from "shared/utils/timeFormatter";
 import { Button } from "client/components/Button";
 import { ControlledInput } from "client/components/ControlledInput";
 import { PasswordChangeForm } from "client/components/PasswordChangeForm";
 import { ButtonStyle } from "client/components/componentStyles";
 import { getUserBySerialOrUsername } from "client/services/userServices";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getDateAndTime } = useTimeFormatters();
 
   const [usernameToUpdate, setUsernameToUpdate] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
@@ -59,7 +58,7 @@ export const PasswordManagement = (): ReactElement => {
         {t("passwordManagement.foundUser")}: {response.username} (
         {formatSerial(response.serial)}) -{" "}
         {t("passwordManagement.userCreatedAt")}{" "}
-        {getDateAndTime(response.createdAt, locale)}
+        {getDateAndTime(response.createdAt)}
       </Message>,
     );
     setUsernameToUpdate(response.username);

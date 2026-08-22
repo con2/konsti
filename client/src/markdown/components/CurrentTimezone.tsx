@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { getLocalTimezone } from "shared/utils/timeFormatter";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { useTimeNow } from "client/utils/useTimeNow";
 
 export const CurrentTimezone = (): ReactNode => {
-  return getLocalTimezone(useTimeNow(), useLocale());
+  const { getLocalTimezone } = useTimeFormatters();
+  return getLocalTimezone(useTimeNow());
 };

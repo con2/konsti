@@ -1,13 +1,12 @@
 import { ReactNode } from "react";
 import { config } from "shared/config";
-import { getDateAndTime } from "shared/utils/timeFormatter";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 export const MainEventProgramVisibleTime = (): ReactNode => {
-  const locale = useLocale();
+  const { getDateAndTime } = useTimeFormatters();
   const { mainEventProgramVisibleTime } = config.event();
   if (!mainEventProgramVisibleTime) {
     return null;
   }
-  return getDateAndTime(mainEventProgramVisibleTime, locale);
+  return getDateAndTime(mainEventProgramVisibleTime);
 };

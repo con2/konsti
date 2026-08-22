@@ -4,14 +4,13 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
-import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
 import { InfoText } from "client/components/InfoText";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { InfoTextVariant } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { useLocale } from "client/utils/useLocale";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import {
   MyProgramButtonContainerMobile,
   MyProgramCancelSignupFormContainer,
@@ -39,7 +38,7 @@ export const DirectSignupItem = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const locale = useLocale();
+  const { getShortWeekdayAndTime } = useTimeFormatters();
 
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
@@ -94,9 +93,9 @@ export const DirectSignupItem = ({
       ) && (
         <StyledInfoText variant={InfoTextVariant.WARNING}>
           {t("myProgramView.startingTimeChanged")}{" "}
-          {getShortWeekdayAndTime(signup.signedToStartTime, locale)}{" "}
+          {getShortWeekdayAndTime(signup.signedToStartTime)}{" "}
           <FontAwesomeIcon icon="arrow-right" />{" "}
-          {getShortWeekdayAndTime(signup.programItem.startTime, locale)}
+          {getShortWeekdayAndTime(signup.programItem.startTime)}
         </StyledInfoText>
       )}
 

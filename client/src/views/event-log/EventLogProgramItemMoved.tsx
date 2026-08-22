@@ -2,9 +2,9 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { EventLogItem } from "shared/types/models/eventLog";
-import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
 import { AppRoute } from "client/app/routes";
 import { useAppSelector } from "client/utils/hooks";
+import { useTimeFormatters } from "client/utils/useTimeFormatters";
 
 interface Props {
   eventLogItem: EventLogItem;
@@ -13,6 +13,7 @@ export const EventLogProgramItemMoved = ({
   eventLogItem,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+  const { getShortWeekdayAndTime } = useTimeFormatters();
 
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,
