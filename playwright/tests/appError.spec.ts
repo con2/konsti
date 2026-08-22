@@ -56,7 +56,20 @@ test("Show an error instead of a blank page when the app fails to load", async (
   await expect(programList.appError).toContainText(/could not be loaded/i);
 });
 
-test("The app recovers once its chunk loads again", async ({ page }) => {
+test("The app recovers once its chunk loads again", async ({
+  page,
+  browserName,
+}) => {
+  // WebKit keeps the failed module in its map and does not re-request the chunk
+  // on the next load, whatever cache headers the failure carried - traces of the
+  // failures show one request against three page loads. That makes the recovery
+  // unobservable there rather than broken, so the assertion runs on Chromium,
+  // and the fallback itself is covered on every browser by the test above
+  test.skip(
+    browserName === "webkit",
+    "WebKit does not re-request a module that already failed",
+  );
+
   const stopBlocking = await blockAppChunk(page);
   await page.goto("/");
 
