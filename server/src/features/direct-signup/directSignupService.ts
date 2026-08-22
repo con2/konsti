@@ -7,6 +7,7 @@ import {
   PostDirectSignupResponse,
 } from "shared/types/api/myProgramItems";
 import { SignupType, State } from "shared/types/models/programItem";
+import { LotterySignup } from "shared/types/models/user";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
@@ -16,15 +17,21 @@ import {
 } from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { getLotterySignupProgramItemIdsForStartTime } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import {
   delDirectSignup,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
-import { findProgramItemById } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItemById,
+  findProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { getSignupMessage } from "server/features/program-item/programItemUtils";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { leaveOrCloseGroup } from "server/features/user/group/groupService";
+import { delLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
+import { findUser } from "server/features/user/userRepository";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import { logger } from "server/utils/logger";
 
@@ -142,7 +149,8 @@ export const storeDirectSignup = async (
     // User-made direct sign-ups are always first-come-first-served; the priority is set
     // here rather than trusted from the request
     priority: DIRECT_SIGNUP_PRIORITY,
-    // signedToStartTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
+    // signedToStartTime can be parent-resolved; direct sign-ups store the parent time so
+    // a sign-up in a batched program item is found by lookups for the batch's start time
     signedToStartTime: getProgramItemStartTime(programItem),
     signupTime: timeNow.toISOString(),
   };
@@ -176,8 +184,18 @@ export const storeDirectSignup = async (
   );
 
   if (newSignup) {
+    // The user now holds a spot at this start time, so the lottery would skip them. Cancel the
+    // lottery sign-ups competing for that slot; ones for other times are untouched
+    const remainingLotterySignups = await cancelLotterySignupsForStartTime(
+      username,
+      newSignup.signedToStartTime,
+    );
+
     // Group member direct sign-up removes them from the group, close group if group creator.
-    // The sign-up already persisted, so a group-leave failure must not fail the request —
+    // Only for program items the lottery allocates: a group exists to enter those together, so
+    // taking one of their spots alone leaves it, while an always-open or direct-only sign-up
+    // settles the attendee for that start time without affecting the group's other slots.
+    // The sign-up already persisted, so a group-leave failure must not fail the request -
     // log it and still report success; the group state self-corrects on the next poll
     let leftGroup = false;
     if (isLotterySignupProgramItem(programItem)) {
@@ -206,6 +224,7 @@ export const storeDirectSignup = async (
         message: newSignup.message,
       },
       leftGroup,
+      lotterySignups: remainingLotterySignups,
     };
   }
 
@@ -215,6 +234,67 @@ export const storeDirectSignup = async (
     allSignups,
     leftGroup: false,
   };
+};
+
+// Removes the user's lottery sign-ups competing for this start time and returns the ones left.
+// Runs after the sign-up has persisted, so a failure is logged rather than returned: the spot is
+// already the user's, and the assignment ignores the stale sign-ups either way
+const cancelLotterySignupsForStartTime = async (
+  username: string,
+  startTime: string,
+): Promise<readonly LotterySignup[] | undefined> => {
+  const userResult = await findUser(username);
+  if (!userResult.ok || !userResult.value) {
+    logger.error(
+      new Error(
+        `Error finding user ${username} to cancel lottery signups after direct signup`,
+      ),
+    );
+    // Undefined rather than empty: nothing is known about the sign-ups, and an empty list
+    // would tell the client to drop the ones it has
+    return undefined;
+  }
+  const { lotterySignups } = userResult.value;
+
+  const programItemsResult = await findProgramItems();
+  if (!programItemsResult.ok) {
+    logger.error(
+      new Error(
+        `Error finding program items to cancel lottery signups after direct signup for ${username}`,
+      ),
+    );
+    return lotterySignups;
+  }
+
+  const programItemIdsToCancel = getLotterySignupProgramItemIdsForStartTime(
+    lotterySignups,
+    programItemsResult.value,
+    startTime,
+  );
+  if (programItemIdsToCancel.length === 0) {
+    return lotterySignups;
+  }
+
+  const delLotterySignupsResult = await delLotterySignups([
+    { username, lotterySignupProgramItemIds: programItemIdsToCancel },
+  ]);
+  if (!delLotterySignupsResult.ok) {
+    logger.error(
+      new Error(
+        `Error cancelling lottery signups after direct signup for ${username}: ${delLotterySignupsResult.error}`,
+      ),
+    );
+    return lotterySignups;
+  }
+
+  logger.info(
+    `Cancelled ${programItemIdsToCancel.length} lottery signups for ${username} after direct signup`,
+  );
+
+  const cancelled = new Set(programItemIdsToCancel);
+  return lotterySignups.filter(
+    (lotterySignup) => !cancelled.has(lotterySignup.programItemId),
+  );
 };
 
 export const removeDirectSignup = async (

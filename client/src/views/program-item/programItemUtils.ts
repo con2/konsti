@@ -1,5 +1,5 @@
 import { TZDate, tz } from "@date-fns/tz";
-import { isSameWeek } from "date-fns";
+import { isSameMinute, isSameWeek } from "date-fns";
 import { TFunction } from "i18next";
 import { config } from "shared/config";
 import { Locale } from "shared/types/locale";
@@ -33,14 +33,21 @@ export const isAlreadyDirectySigned = (
 };
 
 // Find the user's existing direct sign-up that occupies the same time slot as a lottery item.
-// Direct sign-ups store the parent-resolved start time, so match against that, not the item's own
-export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
+// Resolved through each sign-up's own program item rather than its stored signedToStartTime,
+// which is never rewritten when a program item moves: the assignment settles attendees by where
+// a program item starts now, so comparing the stored time would disagree with the server exactly
+// in the rescheduling case. Compared as instants, since the two resolved times can be the same
+// moment written differently - a configured parent time carries no milliseconds
+export const getDirectSignupForSlot = <T extends { programItem: ProgramItem }>(
   directSignups: readonly T[],
   programItem: ProgramItem,
 ): T | undefined => {
   const programItemStartTime = getProgramItemStartTime(programItem);
-  return directSignups.find(
-    (signup) => signup.signedToStartTime === programItemStartTime,
+  return directSignups.find((signup) =>
+    isSameMinute(
+      new Date(getProgramItemStartTime(signup.programItem)),
+      new Date(programItemStartTime),
+    ),
   );
 };
 

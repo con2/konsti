@@ -5,7 +5,10 @@ import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   DeleteLotterySignupError,
   DeleteLotterySignupRequest,
@@ -16,11 +19,16 @@ import {
 } from "shared/types/api/myProgramItems";
 import { SignupType, State } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveHidden } from "server/features/settings/settingsRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
+import {
+  mockLotterySignups,
+  mockPostDirectSignupRequest,
+  mockUser,
+} from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
@@ -89,6 +97,92 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const body = response.body as PostLotterySignupError;
     expect(body.status).toEqual("error");
     expect(body.errorId).toEqual("signupNotOpenYet");
+  });
+
+  test("should return error when user already holds a spot at the same start time", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // testProgramItem2 starts at the same time, and the user already has a spot in it, so the
+    // lottery would skip them - the sign-up could never be acted on
+    await saveProgramItems([
+      testProgramItem,
+      { ...testProgramItem2, startTime: testProgramItem.startTime },
+    ]);
+    await saveUser(mockUser);
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+      signedToStartTime: testProgramItem.startTime,
+    });
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("directSignupForSlot");
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.lotterySignups).toHaveLength(0);
+  });
+
+  test("should allow lottery signup when the held spot is at another start time", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // The spot the user holds is an hour earlier, so it doesn't compete with this lottery
+    const earlierStartTime = subHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
+    await saveProgramItems([
+      testProgramItem,
+      { ...testProgramItem2, startTime: earlierStartTime },
+    ]);
+    await saveUser(mockUser);
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+      signedToStartTime: earlierStartTime,
+    });
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupResult;
+    expect(body.status).toEqual("success");
+    expect(body.lotterySignups).toHaveLength(1);
   });
 
   test("should return error when signup is closed", async () => {

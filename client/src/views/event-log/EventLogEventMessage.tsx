@@ -33,6 +33,7 @@ export const EventLogEventMessage = ({
     case EventLogAction.PROGRAM_ITEM_DELETED:
     case EventLogAction.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE:
     case EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE:
+    case EventLogAction.LOTTERY_SIGNUP_NOT_IN_LOTTERY:
       return <EventLogProgramItemCancelled eventLogItem={eventLogItem} />;
     case EventLogAction.PROGRAM_ITEM_MOVED:
       return <EventLogProgramItemMoved eventLogItem={eventLogItem} />;

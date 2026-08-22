@@ -48,6 +48,11 @@ export const EventLogProgramItemCancelled = ({
       "eventLogActions.programItemNoLotteryAnymore",
       { PROGRAM_TYPE: programTypeSingular },
     ),
+    [EventLogAction.LOTTERY_SIGNUP_NOT_IN_LOTTERY]: t(
+      "eventLogActions.lotterySignupNotInLottery",
+      // Genitive: the Finnish message reads "arvonta ohittaa tämän <program type>"
+      { PROGRAM_TYPE: programTypeGenetive },
+    ),
   };
 
   return (

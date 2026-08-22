@@ -35,16 +35,16 @@ export const SignupHelpText = ({
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
 
-  // Cannot use programItem.signupStrategy here since it's relative to time
-  const isLotterySignup =
-    isLotterySignupProgramItem(programItem) &&
-    !tooEarlyForLotterySignup(programItem);
-
   // Group members can sign up to always open program items without leaving the group
   const groupMemberInfo =
     isDirectSignupAlwaysOpen(programItem) && isInGroup ? (
       <span> {t("signup.help.signupAlwaysOpenGroupMemberInfo")}</span>
     ) : null;
+
+  // Cannot use programItem.signupStrategy here since it's relative to time
+  const isLotterySignup =
+    isLotterySignupProgramItem(programItem) &&
+    !tooEarlyForLotterySignup(programItem);
 
   const timeNow = useTimeNow();
 

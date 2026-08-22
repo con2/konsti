@@ -8,13 +8,9 @@ import { Checkbox } from "client/components/Checkbox";
 import { Dropdown } from "client/components/Dropdown";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
-import { InfoTextVariant } from "client/components/componentStyles";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import {
-  DirectSignupWithProgramItem,
-  selectLotterySignups,
-} from "client/views/my-program-items/myProgramItemsSlice";
+import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   PostLotterySignupErrorMessage,
   submitPostLotterySignup,
@@ -26,7 +22,6 @@ import { isSignupConfirmDisabled } from "client/views/program-item/signup/compon
 interface Props {
   programItem: ProgramItem;
   closeSignupForm: () => void;
-  directSignupForSlot?: DirectSignupWithProgramItem;
 }
 
 const OPTIONS = [1, 2, 3];
@@ -34,7 +29,6 @@ const OPTIONS = [1, 2, 3];
 export const LotterySignupForm = ({
   programItem,
   closeSignupForm,
-  directSignupForSlot,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -131,26 +125,6 @@ export const LotterySignupForm = ({
           label={entryCondition.label}
           id={entryCondition.id}
         />
-      )}
-      {directSignupForSlot && (
-        <InfoText variant={InfoTextVariant.WARNING}>
-          {t("signup.alreadySignedToProgramItem", {
-            PROGRAM_TYPE: t(
-              `programTypeIllative.${directSignupForSlot.programItem.programType}`,
-            ),
-          })}{" "}
-          <b>{directSignupForSlot.programItem.title}</b>
-          {". "}
-          {t("signup.signupWillBeRemoved", {
-            PROGRAM_TYPE_THIS: t(
-              `programTypeIllative.${programItem.programType}`,
-            ),
-            PROGRAM_TYPE_OTHER: t(
-              `programTypeIllative.${directSignupForSlot.programItem.programType}`,
-            ),
-            OTHER_PROGRAM_NAME: directSignupForSlot.programItem.title,
-          })}
-        </InfoText>
       )}
       {isGroupCreator && <InfoText>{t("signup.groupSignupInfo")}</InfoText>}
       <SignupFormButtons

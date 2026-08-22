@@ -214,6 +214,8 @@ export const translationFI = {
       "Ryhmän jäsenet eivät voi ilmoittautua, ryhmän perustaja ilmoittautuu koko ryhmän puolesta",
     invalidProgramItem:
       "Ohjelmanumerosta puuttuu vaadittuja tietoja, eikä siihen voi ilmoittautua.",
+    directSignupForSlot:
+      "Sinulla on jo ilmoittautuminen tähän aikaan. Peru se ensin, jos haluat osallistua tähän arvontaan.",
   },
   closingMessage:
     "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",
@@ -325,6 +327,8 @@ export const translationFI = {
     programItemNoLotteryAnymore:
       "{{PROGRAM_TYPE}} ei käytä enää arvontaa ja arvontailmoittautumisesi poistettiin:",
     programItemMoved: "aloitusaika on muuttunut: {{NEW_STARTING_TIME}}.",
+    lotterySignupNotInLottery:
+      "Sinulla on jo paikka tähän aikaan, joten arvonta ohittaa tämän {{PROGRAM_TYPE}}. Se palaa mukaan arvontaan, jos perut paikan antaneen ilmoittautumisen:",
   },
   notificationBar: {
     showAll: "Näytä kaikki ilmoitukset",
@@ -342,8 +346,12 @@ export const translationFI = {
     alreadySignedToProgramItem: "Olet ilmoittautunut {{PROGRAM_TYPE}}",
     cannotSignupMoreThanOneProgramItem:
       "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
-    signupWillBeRemoved:
-      "Jos pääset tähän {{PROGRAM_TYPE_THIS}} arvonnassa, ilmoittautumisesi {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} perutaan.",
+    lotterySignupsWillBeCancelled:
+      "Ilmoittautuminen antaa sinulle paikan tähän aikaan, joten nämä arvontailmoittautumiset perutaan:",
+    lotterySignupNotInLottery:
+      "Ei mukana arvonnassa: sinulla on jo paikka tähän aikaan. Peru se ilmoittautuminen, niin tämä palaa mukaan arvontaan.",
+    lotterySkippedWhenSpotHeld:
+      "Arvonta jakaa paikkoja vain niille, joilla ei vielä ole paikkaa, joten se jättää sinut {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}}. Peru se ilmoittautuminen ensin, jos haluat mieluummin osallistua tämän arvontaan.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     attendeesNeeded: "Tarvitaan {{COUNT}} lisää",
     programItemFull: "Tämä {{PROGRAM_TYPE}} on täynnä.",

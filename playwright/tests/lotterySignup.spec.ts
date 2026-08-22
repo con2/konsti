@@ -6,7 +6,7 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
+import { ProgramType, Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -16,8 +16,11 @@ import {
   postAssignment,
   postSettings,
   postTestSettings,
+  testPostDirectSignup,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
+
+const alwaysOpenTitle = "Always open item";
 
 test("Add lottery signup", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
@@ -525,4 +528,64 @@ test("Show limit message when three lottery signups in time slot", async ({
     "You can select up to three items for the time slot.",
   );
   await expect(fourthProgramItem.lotterySignupButton).toBeHidden();
+});
+
+test("Replace the lottery signup button with an explanation while a spot is held", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(3);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+    {
+      // Lottery program type with the pre-convention week tag makes 'sign-up always open',
+      // which is the only way to hold a spot at a time whose lottery hasn't run yet
+      ...testProgramItem2,
+      // A title that is not a superstring of the other item's, so looking one up by title
+      // doesn't match both
+      title: alwaysOpenTitle,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      tags: [Tag.PRE_CONVENTION_WEEK],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  // The spot the lottery has to leave alone
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem2.programItemId,
+    message: "",
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const lotteryProgramItem = programList.itemByTitle(testProgramItem.title);
+
+  await expect(lotteryProgramItem.container).toContainText(
+    "The lottery only gives out spots to those who don't have one yet",
+  );
+  await expect(lotteryProgramItem.lotterySignupButton).toBeHidden();
 });
