@@ -1,7 +1,8 @@
-import { Locator, Page, expect, test } from "@playwright/test";
+import { Page, expect, test } from "@playwright/test";
 import { config } from "shared/config";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
 import { HelperPage } from "playwright/pages/HelperPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -57,28 +58,6 @@ const fulfillApiWithHttpError = async (page: Page): Promise<() => number> => {
     await route.fulfill({ status: 503 });
   });
   return () => failures;
-};
-
-// Freeze the mocked clock so timers fire only on explicit jumps — an
-// installed clock otherwise keeps advancing in real time, and slow CI steps
-// could push a toast decision past the grace period or fire a straggler
-// timer mid-assertion. The pause target must sit safely ahead of the page's
-// mocked clock (pausing into the past throws), hence the offset
-const pauseClock = async (page: Page): Promise<void> => {
-  await page.clock.pauseAt(Date.now() + 1000);
-};
-
-// Advance the mocked clock in steps until the locator is visible: fetch
-// rejections settle on the real event loop between steps, so a single big
-// jump could run before the failure handler has scheduled its next timer
-const fastForwardUntilVisible = async (
-  page: Page,
-  locator: Locator,
-): Promise<void> => {
-  await expect(async () => {
-    await page.clock.fastForward("00:05");
-    await expect(locator).toBeVisible({ timeout: 200 });
-  }).toPass({ timeout: 30_000 });
 };
 
 test("Network error toast appears during an outage, heals on recovery, and is dismissible", async ({
