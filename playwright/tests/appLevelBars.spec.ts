@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
+import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
 import { BasePage } from "playwright/pages/BasePage";
 import { ErrorBar } from "playwright/pages/ErrorBar";
@@ -118,6 +119,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
   // than for program item cards
   const programList = new ProgramListPage(page);
   await expect(programList.firstLoginNotice).toBeVisible();
+  await pauseClock(page);
 
   // Keep advancing rather than counting ticks: the app drops an interval tick
   // that arrives while the previous load is still in flight, and the notice
@@ -131,17 +133,21 @@ test("App level bars line up with each other", async ({ page, request }) => {
     .toBe(true);
   await expect(programList.adminMessageBanner).toBeVisible();
 
-  // Break the data poll so the network error toast joins the two banners
-  await page.route("**/api/program-items**", async (route) => {
+  // Break the data poll so the network error toast joins the other bars.
+  // Every request has to fail: the client heals the toast on any successful
+  // response, so leaving one endpoint working would take the toast away
+  // again on the next poll, mid-measurement
+  await page.route("**/api/**", async (route) => {
     await route.abort();
   });
-  await page.clock.fastForward("01:01");
-  await expect
-    .poll(async () => {
-      await page.clock.fastForward("00:05");
-      return await programList.errorBar.items.first().isVisible();
-    })
-    .toBe(true);
+  // A poll interval per step: the load the banner poll above left in flight
+  // makes the app drop the first tick after it, so shorter steps would spend
+  // the whole budget waiting for the tick after that
+  await fastForwardUntilVisible(
+    page,
+    programList.errorBar.networkError,
+    "01:01",
+  );
 
   // The bars are separate components, so their dismiss icons drift apart
   // whenever one of them changes its box metrics. The testids come from the
