@@ -7,6 +7,14 @@ import { TIMEZONE } from "shared/utils/timezone";
 // date-fns formatting is only called here to make sure all client times use the
 // correct timezone and the active locale
 
+// These throw on a time they cannot parse, deliberately. Program item times are
+// validated where they enter the system - as an ISO datetime on ingest, and as a
+// Date on the way out of the database, which rejects an invalid one - so a throw
+// here means the data is already wrong. Rendering a placeholder instead would
+// show an attendee a blank where a sign-up time belongs and let the bug that
+// produced it go unnoticed, which is the silent-wrong-answer failure this module
+// exists to avoid
+
 // No number: a bare number is a valid argument to date-fns format but is almost
 // always a duration rather than an instant, and renders as a plausible wrong
 // clock time (120 becomes "02:00") instead of failing
