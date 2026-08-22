@@ -48,7 +48,7 @@ test("Switch language between English and Finnish", async ({
   // that have them, so assert the part that is there either way
   await page.getByRole("button", { name: /Mistä saan apua/ }).click();
   await expect(aboutPage.main).toContainText(
-    "Vapaaehtoisemme auttavat Konstin käytössä ja ohjelmanumeroihin ilmoittautumisessa",
+    "Konstin käytössä ja ohjelmanumeroihin ilmoittautumisessa",
   );
 
   // And back to English
