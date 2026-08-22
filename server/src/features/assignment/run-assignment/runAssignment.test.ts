@@ -20,11 +20,13 @@ import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
+  assertAssignmentInvariants,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import {
+  delDirectSignup,
   findDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
@@ -45,6 +47,7 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
   mockUser2,
+  mockUser3,
 } from "server/test/mock-data/mockUser";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -55,9 +58,10 @@ import {
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
 
-// This needs to be adjusted if test data is changed
-const expectedResultsCount = 18;
-const groupTestUsers = new Set(["group1", "group2", "group3"]);
+// Randomness is seeded per test, so the generated fixtures and the algorithm's shuffle produce
+// the same assignment every run and the count can be exact rather than a floor. It is a snapshot
+// of what this data yields, not a requirement - changing the fixtures or the algorithm moves it
+const expectedResultsCount = 31;
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -144,24 +148,11 @@ describe("Assignment with valid data", () => {
     );
 
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(
-      expectedResultsCount,
-    );
-
-    const groupResults = assignResults.results.filter((result) =>
-      groupTestUsers.has(result.username),
-    );
-
-    if (groupResults.length > 0) {
-      // eslint-disable-next-line vitest/no-conditional-expect
-      expect(groupResults.length).toEqual(groupTestUsers.size);
-    } else {
-      // eslint-disable-next-line vitest/no-conditional-expect
-      expect(groupResults.length).toEqual(0);
-    }
+    expect(assignResults.results.length).toEqual(expectedResultsCount);
 
     const updatedUsers = assignResults.results.map((result) => result.username);
     await assertUserUpdatedCorrectly(updatedUsers);
+    await assertAssignmentInvariants(assignmentTime);
 
     // SECOND RUN
 
@@ -179,36 +170,26 @@ describe("Assignment with valid data", () => {
     expect(assignResults2Result.ok).toBe(true);
     const assignResults2 = unsafelyUnwrap(assignResults2Result);
 
-    expect(assignResults2.results.length).toBeGreaterThan(0);
-
-    const groupResults2 = assignResults2.results.filter((result) =>
-      groupTestUsers.has(result.username),
-    );
-
-    if (groupResults2.length > 0) {
-      // eslint-disable-next-line vitest/no-conditional-expect
-      expect(groupResults2.length).toEqual(groupTestUsers.size);
-    } else {
-      // eslint-disable-next-line vitest/no-conditional-expect
-      expect(groupResults2.length).toEqual(0);
-    }
+    expect(assignResults2.results.length).toEqual(expectedResultsCount);
 
     const updatedUsers2 = assignResults2.results.map(
       (result) => result.username,
     );
     await assertUserUpdatedCorrectly(updatedUsers2);
+    await assertAssignmentInvariants(startTime2);
   });
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  test("should update previous non-lottery signup if user has updated result", async () => {
+  test("should keep a previous non-lottery signup and leave the user out of the lottery", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
     });
 
     // ProgramItem1: 14:00 direct sign-up LARP
-    // ProgramItem2: 14:00 lottery sign-up TABLETOP_RPG -> replaces ProgramItem1
+    // ProgramItem2: 14:00 lottery sign-up TABLETOP_RPG
+    // The LARP spot is a spot at the assignment time, so the lottery skips the user
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
     const assignmentTime = testProgramItem.startTime;
 
@@ -233,7 +214,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // User has previous direct LARP sign-up - this should be replaced by assignment result
+    // User has previous direct LARP sign-up - this is kept, and settles them
     await saveDirectSignup(mockPostDirectSignupRequest);
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -252,25 +233,22 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       }),
     );
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results).toHaveLength(1);
-    expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
-      testProgramItem2.programItemId,
-    );
+    expect(assignResults.results).toHaveLength(0);
 
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const previousLarpSignup = signupsAfterUpdate.find(
       (signup) => signup.programItemId === testProgramItem.programItemId,
     );
-    expect(previousLarpSignup?.userSignups).toHaveLength(0);
+    expect(previousLarpSignup?.userSignups).toHaveLength(1);
+    expect(previousLarpSignup?.userSignups[0].username).toEqual(
+      mockUser.username,
+    );
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.programItemId === testProgramItem2.programItemId,
     );
-    expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
-    );
+    expect(assignmentSignup?.userSignups).toHaveLength(0);
   });
 
   test("should not remove previous non-lottery signup if user doesn't have updated result", async () => {
@@ -348,7 +326,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should update 'directSignupAlwaysOpen' signup with assignment signup if user has updated result", async () => {
+  test("should keep a 'directSignupAlwaysOpen' signup and leave that user out of the lottery", async () => {
     const directSignupAlwaysOpenId = "1234";
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -358,7 +336,9 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     await saveProgramItems([
-      testProgramItem,
+      // Only mockUser2 is left in the lottery once mockUser's always-open spot settles
+      // them, so the program item has to be placeable with a single attendee
+      { ...testProgramItem, minAttendance: 1 },
       {
         ...testProgramItem2,
         startTime: testProgramItem.startTime,
@@ -393,9 +373,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // This should be removed and re-added by assignment
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    // This should be replaced by assignment
+    // An always-open spot is still a spot at this start time, so mockUser is settled by it
+    // and only mockUser2, who holds none, is left in the lottery
     await saveDirectSignup({
       ...mockPostDirectSignupRequest2,
       signedToStartTime: testProgramItem.startTime,
@@ -414,12 +393,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
 
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toEqual(2);
-    assignResults.results.map((result) => {
-      expect(result.assignmentSignup.programItemId).toEqual(
-        testProgramItem.programItemId,
-      );
-    });
+    expect(assignResults.results.length).toEqual(1);
+    expect(assignResults.results[0].username).toEqual(mockUser2.username);
+    expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
+      testProgramItem.programItemId,
+    );
 
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -430,8 +408,15 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       (signup) => signup.programItemId === directSignupAlwaysOpenId,
     );
 
-    expect(assignmentSignup?.userSignups.length).toEqual(2);
-    expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(0);
+    // mockUser keeps the always-open spot they already had, mockUser2 gets the lottery one
+    expect(assignmentSignup?.userSignups.length).toEqual(1);
+    expect(assignmentSignup?.userSignups[0].username).toEqual(
+      mockUser2.username,
+    );
+    expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(1);
+    expect(directSignupAlwaysOpenSignup?.userSignups[0].username).toEqual(
+      mockUser.username,
+    );
   });
 
   test("should not remove 'directSignupAlwaysOpen' signups if user doesn't have updated result", async () => {
@@ -515,9 +500,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
-    // ProgramItem1: 14:00 direct sign-up -> program item moved 15:00
-    // ProgramItem2: 15:00 lottery sign-up -> replaces ProgramItem1
+  test("should keep signup from moved program item and leave the user out of the lottery", async () => {
+    // ProgramItem1: 14:00 direct sign-up -> program item moved to 15:00
+    // ProgramItem2: 15:00 lottery sign-up
+    // The moved program item now runs at the assignment time and the user holds a spot in
+    // it, so the lottery leaves them alone rather than moving them to ProgramItem2
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     const assignmentTime = addHours(
@@ -544,7 +531,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // User has previous sign-up from moved program item - this should be replaced by assignment result
+    // User has previous sign-up from moved program item - this is a spot at the assignment
+    // time, so it is kept and the user sits the lottery out
     await saveDirectSignup(mockPostDirectSignupRequest);
 
     await ProgramItemModel.updateOne(
@@ -567,27 +555,22 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       }),
     );
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results).toHaveLength(1);
-    assignResults.results.map((result) => {
-      expect(result.assignmentSignup.programItemId).toEqual(
-        testProgramItem2.programItemId,
-      );
-    });
+    expect(assignResults.results).toHaveLength(0);
 
     const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
 
-    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
+    const signupFromMovedProgramItem = signupsAfterUpdate.find(
       (signup) => signup.programItemId === testProgramItem.programItemId,
     );
-    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
+    expect(signupFromMovedProgramItem?.userSignups).toHaveLength(1);
+    expect(signupFromMovedProgramItem?.userSignups[0].username).toEqual(
+      mockUser.username,
+    );
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.programItemId === testProgramItem2.programItemId,
     );
-    expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
-    );
+    expect(assignmentSignup?.userSignups).toHaveLength(0);
   });
 
   test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
@@ -866,6 +849,417 @@ describe("Assignment with first time bonus", () => {
       message: "",
       priority: 3,
     });
+  });
+});
+
+describe("Assignment re-run leaves settled attendees alone", () => {
+  test("keeps prior lottery winners and excludes them from the re-run", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveUser(mockUser3);
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    // FIRST RUN: both spots filled
+    const firstRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+    expect(firstRun.results).toHaveLength(2);
+
+    // A new hopeful appears for the now-full program item
+    await saveLotterySignups({
+      username: mockUser3.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    // SECOND RUN: prior winners are excluded and the item is full -> no new winners
+    const secondRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+    expect(secondRun.status).toEqual(AssignmentResultStatus.SUCCESS);
+    expect(secondRun.results).toHaveLength(0);
+
+    const signups = unsafelyUnwrap(await findDirectSignups());
+    const assignmentSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(assignmentSignup?.userSignups).toHaveLength(2);
+    const assignedUsernames = assignmentSignup?.userSignups.map(
+      (userSignup) => userSignup.username,
+    );
+    expect(assignedUsernames).toEqual(
+      expect.arrayContaining([mockUser.username, mockUser2.username]),
+    );
+    expect(assignedUsernames).not.toContain(mockUser3.username);
+
+    // Prior winners keep exactly one assignment, not duplicated by the re-run
+    for (const username of [mockUser.username, mockUser2.username]) {
+      const user = unsafelyUnwrap(await findUser(username));
+      const newAssignmentLogs = user?.eventLogItems.filter(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      );
+      expect(newAssignmentLogs).toHaveLength(1);
+    }
+  });
+
+  test("leaves a first-come-first-served sign-up holder out of the lottery", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
+      {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        minAttendance: 1,
+        maxAttendance: 2,
+      },
+    ]);
+    await saveUser(mockUser);
+
+    // First-come-first-served spot on testProgramItem...
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+
+    // ...but a lottery preference for testProgramItem2 at the same time
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [
+        {
+          ...mockLotterySignups[1],
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      ],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    // The spot they hold is counted against testProgramItem's capacity, so the lottery
+    // has to leave them in it - moving them would strand the spot it already subtracted
+    expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+    expect(assignResults.results).toHaveLength(0);
+
+    const signups = unsafelyUnwrap(await findDirectSignups());
+    const firstComeSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(firstComeSignup?.userSignups).toHaveLength(1);
+    expect(firstComeSignup?.userSignups[0].username).toEqual(mockUser.username);
+    const preferenceSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
+    );
+    expect(preferenceSignup?.userSignups).toHaveLength(0);
+  });
+
+  test("a spot held at this start time is subtracted from capacity exactly once", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // Two spots, one of them already taken by mockUser
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveUser(mockUser3);
+
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+
+    // Two hopefuls compete for the one spot that is left
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+    await saveLotterySignups({
+      username: mockUser3.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    // Exactly one of them gets it: the held spot is neither double-booked nor stranded
+    expect(assignResults.results).toHaveLength(1);
+
+    const signups = unsafelyUnwrap(await findDirectSignups());
+    const programItemSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(programItemSignup?.userSignups).toHaveLength(2);
+    expect(programItemSignup?.count).toEqual(2);
+    expect(
+      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
+    ).toContain(mockUser.username);
+  });
+
+  test("settles only the group attendee who holds a spot, not the whole group", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+    const groupCode = "group-with-one-placed-attendee";
+
+    // Room for the two attendees who don't hold a spot yet, on top of the one who does
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
+    ]);
+    await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+    await saveUser({ ...mockUser2, groupCode, isGroupCreator: false });
+    await saveUser({ ...mockUser3, groupCode, isGroupCreator: false });
+
+    // Only the creator holds a spot; capacity is reduced by that one spot alone, so
+    // excluding the whole group would leave two spots nobody can be placed into
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+    const placedUsernames = assignResults.results.map(
+      (result) => result.username,
+    );
+    expect(placedUsernames).not.toContain(mockUser.username);
+    expect(placedUsernames.toSorted((a, b) => a.localeCompare(b))).toEqual(
+      [mockUser2.username, mockUser3.username].toSorted((a, b) =>
+        a.localeCompare(b),
+      ),
+    );
+
+    const signups = unsafelyUnwrap(await findDirectSignups());
+    const programItemSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(programItemSignup?.userSignups).toHaveLength(3);
+    expect(programItemSignup?.count).toEqual(3);
+  });
+
+  test("a prior winner is not moved to a program item they rank higher", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // testProgramItem2 starts at the same time and stays empty, so there is somewhere for
+    // the lottery to move mockUser to if it wrongly treats them as still competing
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+      {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        minAttendance: 1,
+        maxAttendance: 1,
+      },
+    ]);
+    await saveUser(mockUser);
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
+    });
+
+    const firstRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+    expect(firstRun.results).toHaveLength(1);
+    expect(firstRun.results[0].assignmentSignup.programItemId).toEqual(
+      testProgramItem.programItemId,
+    );
+
+    // They now add the empty program item as their first preference
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
+        {
+          ...mockLotterySignups[1],
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      ],
+    });
+
+    const secondRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    // The spot they already hold settles them: the re-run doesn't reopen their preferences
+    expect(secondRun.status).toEqual(AssignmentResultStatus.SUCCESS);
+    expect(secondRun.results).toHaveLength(0);
+
+    const signups = unsafelyUnwrap(await findDirectSignups());
+    const firstItemSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem.programItemId,
+    );
+    expect(firstItemSignup?.userSignups).toHaveLength(1);
+    expect(firstItemSignup?.userSignups[0].username).toEqual(mockUser.username);
+    const secondItemSignup = signups.find(
+      (signup) => signup.programItemId === testProgramItem2.programItemId,
+    );
+    expect(secondItemSignup?.userSignups).toHaveLength(0);
+
+    // Still exactly one "you got a spot" entry, from the run that placed them
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(
+      user?.eventLogItems.filter(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      ),
+    ).toHaveLength(1);
+  });
+
+  test("does not duplicate the no-spot log on re-run", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    // mockUser fills the only spot with a first-come-first-served sign-up
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    // FIRST RUN: program item full -> mockUser2 rejected
+    unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    // SECOND RUN: nothing changed -> mockUser2 still rejected
+    unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    const user = unsafelyUnwrap(await findUser(mockUser2.username));
+    // Idempotent: still exactly one no-spot log, not one per run
+    const noAssignmentLogs = user?.eventLogItems.filter(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    );
+    expect(noAssignmentLogs).toHaveLength(1);
+  });
+
+  test("removes the no-spot log when a previously rejected user wins on re-run", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    // mockUser holds the only spot, so mockUser2's lottery sign-up can't be filled
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    // FIRST RUN: mockUser2 rejected
+    const firstRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+    expect(firstRun.results).toHaveLength(0);
+
+    const userAfterFirstRun = unsafelyUnwrap(
+      await findUser(mockUser2.username),
+    );
+    expect(
+      userAfterFirstRun?.eventLogItems.filter(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+      ),
+    ).toHaveLength(1);
+
+    // A spot frees up
+    await delDirectSignup({
+      username: mockUser.username,
+      directSignupProgramItemId: testProgramItem.programItemId,
+    });
+
+    // SECOND RUN: mockUser2 now wins the freed spot
+    const secondRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+    expect(secondRun.results).toHaveLength(1);
+    expect(secondRun.results[0].username).toEqual(mockUser2.username);
+
+    const userAfterSecondRun = unsafelyUnwrap(
+      await findUser(mockUser2.username),
+    );
+    // Stale no-spot log removed, replaced by a single assignment log
+    expect(
+      userAfterSecondRun?.eventLogItems.filter(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+      ),
+    ).toHaveLength(0);
+    expect(
+      userAfterSecondRun?.eventLogItems.filter(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      ),
+    ).toHaveLength(1);
   });
 });
 

@@ -6,6 +6,7 @@ import { User } from "shared/types/models/user";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { runPadgAssignment } from "server/features/assignment/padg/utils/runPadgAssignment";
 import { getRandomAndPadgInput } from "server/features/assignment/utils/getRandomAndPadgInput";
+import { toPercentage } from "server/features/assignment/utils/toPercentage";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   AssignmentResult,
@@ -18,6 +19,7 @@ export const padgAssignment = (
   startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  settledAttendeeUsernames: ReadonlySet<string>,
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${assignmentTime}`);
 
@@ -27,7 +29,11 @@ export const padgAssignment = (
     allAttendees,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRandomAndPadgInput(users, startingProgramItems);
+  } = getRandomAndPadgInput(
+    users,
+    startingProgramItems,
+    settledAttendeeUsernames,
+  );
 
   if (lotterySignupProgramItems.length === 0) {
     logger.debug("No lottery signups, stop!");
@@ -64,13 +70,17 @@ export const padgAssignment = (
     ),
   );
 
+  // Every attendee for this start time can already hold a spot, leaving nobody in the run
+  // while their program items still have lottery sign-ups, so neither share is assumed
+  // to have a non-zero denominator
   const message = `Padg Assignment Result - Attendees: ${
     assignmentResult.results.length
-  }/${allAttendees.length} (${Math.round(
-    (assignmentResult.results.length / allAttendees.length) * 100,
-  )}%), Program items: ${selectedUniqueProgramItems.length}/${
+  }/${allAttendees.length} (${toPercentage(
+    assignmentResult.results.length,
+    allAttendees.length,
+  )}), Program items: ${selectedUniqueProgramItems.length}/${
     lotterySignupProgramItems.length
-  } (${Math.round((selectedUniqueProgramItems.length / lotterySignupProgramItems.length) * 100)}%)`;
+  } (${toPercentage(selectedUniqueProgramItems.length, lotterySignupProgramItems.length)})`;
 
   logger.debug(message);
 

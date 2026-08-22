@@ -6,6 +6,8 @@ import {
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { getDynamicStartTime } from "server/features/assignment/utils/getDynamicStartTime";
+import { getSettledAttendeeUsernames } from "server/features/assignment/utils/getSettledAttendeeUsernames";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
@@ -87,12 +89,23 @@ export const runAssignment = async ({
     directSignupsResult.value,
   );
 
+  // Attendees who already hold a spot at this start time. Derived once and handed to both
+  // the algorithm, which leaves them out of the run, and the notification step, which uses
+  // it to tell an attendee sitting the run out apart from one the lottery could not place.
+  // Read from every program item and every direct sign-up, not just the ones the lottery
+  // allocates: holding a spot is what settles an attendee, whatever kind of spot it is
+  const settledAttendeeUsernames = getSettledAttendeeUsernames(
+    getStartingProgramItems(programItems, resolvedAssignmentTime),
+    directSignupsResult.value,
+  );
+
   const assignResultsResult = runAssignmentAlgorithm(
     assignmentAlgorithm,
     validLotterySignupsUsers,
     validLotterySignupProgramItems,
     resolvedAssignmentTime,
     lotteryParticipantDirectSignups,
+    settledAttendeeUsernames,
   );
   if (!assignResultsResult.ok) {
     return assignResultsResult;
@@ -105,6 +118,7 @@ export const runAssignment = async ({
     algorithm: assignResults.algorithm,
     message: assignResults.message,
     users: validLotterySignupsUsers,
+    settledAttendeeUsernames,
     programItems,
   });
   if (!saveResultsResult.ok) {

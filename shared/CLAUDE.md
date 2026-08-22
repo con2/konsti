@@ -71,7 +71,7 @@ A program item can have a `parentId` linking it to a parent (e.g. sub-sessions o
 **`signedToStartTime` invariant:**
 
 - **Lottery sign-ups** store the program item's **own** `startTime` in `signedToStartTime` (what time the item actually happens for the user).
-- **Direct sign-ups** store the **parent-resolved** start time (`parentStartTime ?? programItem.startTime`) in `signedToStartTime`. This is required so that when the lottery is re-run for a batch, the old direct sign-ups for that batch can be cleaned up by matching the shared parent time.
+- **Direct sign-ups** store the **parent-resolved** start time (`parentStartTime ?? programItem.startTime`) in `signedToStartTime`. This is required so that a sign-up made in a batched program item is found by lookups keyed on the batch's shared start time — the assignment reads and writes direct sign-ups by the start time the lottery ran for, not by each item's own.
 
 When adding new code that writes `signedToStartTime`, follow this split. When adding time comparisons, use the parent-resolved time for lottery-window logic and own `startTime` for per-item semantics (e.g. "has this program item started for the user").
 

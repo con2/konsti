@@ -11,6 +11,7 @@ import { RunRandomAndPadgInput } from "server/types/resultTypes";
 export const getRandomAndPadgInput = (
   users: readonly User[],
   startingProgramItems: readonly ProgramItem[],
+  settledAttendeeUsernames: ReadonlySet<string>,
 ): RunRandomAndPadgInput => {
   const lotterySignups = getLotterySignups(users);
 
@@ -39,7 +40,14 @@ export const getRandomAndPadgInput = (
   );
 
   // Combine group creators and group members
-  const allAttendees = [...groupCreators, ...groupMembers];
+  const expandedAttendees = [...groupCreators, ...groupMembers];
+
+  // Attendees who already hold a spot at this start time sit the run out. Members carry
+  // the creator's sign-ups rather than their own, so this has to happen after the group is
+  // expanded - a member is only visible as an attendee here
+  const allAttendees = expandedAttendees.filter(
+    (attendee) => !settledAttendeeUsernames.has(attendee.username),
+  );
 
   // Combine users to groups, single user is size 1 group
   const attendeeGroups = getAttendeeGroups(allAttendees);

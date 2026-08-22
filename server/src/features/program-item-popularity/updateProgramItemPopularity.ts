@@ -72,6 +72,10 @@ export const updateProgramItemPopularity = async (): Promise<
       validLotterySignupProgramItems,
       startTime,
       lotteryParticipantDirectSignups,
+      // Popularity measures demand, not who is already placed. This start time's lottery
+      // may have run already - the cron keeps simulating it until it starts - and letting
+      // the placed attendees sit it out would report a full program item as unwanted
+      new Set(),
     );
     return { result, startTime };
   });

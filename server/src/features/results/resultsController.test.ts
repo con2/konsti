@@ -64,6 +64,7 @@ describe(`GET ${ApiEndpoint.RESULTS}`, () => {
       assignmentTime,
       AssignmentAlgorithm.PADG,
       "Test assignment",
+      new Set(),
     );
 
     const response = await request(server).get(ApiEndpoint.RESULTS);

@@ -11,9 +11,9 @@ export const isStartTimeChanged = (
   const comparedStartTime = resolveStartTime(parentId, programItemStartTime);
 
   // Reported as changed when either time is unparseable, which is what the
-  // negation gives: a changed sign-up is subtracted from the lottery's remaining
-  // capacity, so this holds the seat of someone who already has one. Reporting
-  // unchanged instead would leave that seat available and overbook the item
+  // negation gives. A time that can't be read is not evidence that nothing moved,
+  // and callers act on a change, so this is the answer that gets looked at rather
+  // than silently passed over
   return !isSameMinute(
     new Date(signedToStartTime),
     new Date(comparedStartTime),

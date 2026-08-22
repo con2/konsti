@@ -10,6 +10,7 @@ import { ProgramType } from "shared/types/models/programItem";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
+  assertAssignmentInvariants,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
@@ -40,7 +41,6 @@ import {
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
-const groupTestUsers = new Set(["group1", "group2", "group3"]);
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -103,22 +103,13 @@ test("Assignment with valid data should return success with random algorithm", a
     expectedResultsCount,
   );
 
-  const groupResults = assignResults.results.filter((result) =>
-    groupTestUsers.has(result.username),
-  );
-
-  if (groupResults.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(0);
-  }
-
   const updatedUsers = assignResults.results.map((result) => result.username);
   await assertUserUpdatedCorrectly(updatedUsers);
+  await assertAssignmentInvariants(assignmentTime);
 
   // SECOND RUN
+  // Attendees placed by the first run hold a spot at this start time, so the second run
+  // leaves them alone rather than re-assigning them or duplicating their assignment
 
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
@@ -127,32 +118,48 @@ test("Assignment with valid data should return success with random algorithm", a
     }),
   );
 
-  expect(assignResults2.status).toEqual("success");
-  expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount,
+  // A run is allowed to place nobody, but it has to say so rather than reporting a
+  // failure as an empty success, which an "is anyone re-assigned" check alone accepts
+  expect(assignResults2.status).not.toEqual(AssignmentResultStatus.ERROR);
+
+  const firstRunWinners = assignResults.results.map(
+    (result) => result.username,
   );
+  const firstRunWinnerSet = new Set(firstRunWinners);
 
-  const groupResults2 = assignResults2.results.filter((result) =>
-    groupTestUsers.has(result.username),
+  // No prior winner is included in the re-run results
+  const reassignedPriorWinners = assignResults2.results.filter((result) =>
+    firstRunWinnerSet.has(result.username),
   );
+  expect(reassignedPriorWinners).toHaveLength(0);
 
-  if (groupResults2.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(0);
-  }
+  // The re-run may still place attendees the first one couldn't, so the spots as a whole
+  // do change. What must not is where a prior winner sits: same attendee, same program
+  // item, still exactly one spot each
+  const signupsAfterSecondRun = unsafelyUnwrap(await findDirectSignups());
+  const heldProgramItemsByWinner = new Map(
+    signupsAfterSecondRun.flatMap((signup) =>
+      signup.userSignups
+        .filter((userSignup) => firstRunWinnerSet.has(userSignup.username))
+        .map((userSignup) => [userSignup.username, signup.programItemId]),
+    ),
+  );
+  expect(heldProgramItemsByWinner.size).toEqual(firstRunWinnerSet.size);
+  assignResults.results.map((result) => {
+    expect(heldProgramItemsByWinner.get(result.username)).toEqual(
+      result.assignmentSignup.programItemId,
+    );
+  });
 
-  const updatedUsers2 = assignResults2.results.map((result) => result.username);
-  await assertUserUpdatedCorrectly(updatedUsers2);
+  // Prior winners still have exactly one assignment (idempotent, not duplicated)
+  await assertUserUpdatedCorrectly(firstRunWinners);
 });
 
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
   const assignmentAlgorithm = AssignmentAlgorithm.RANDOM;
 
   await saveProgramItems([
-    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+    { ...testProgramItem, minAttendance: 2, maxAttendance: 3 },
   ]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -170,7 +177,8 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     ).toISOString(),
   });
 
-  // This should be removed becase of same startTime
+  // This sign-up holds a spot at the assignment time, so it is kept and counted against
+  // the program item's capacity
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
     username: mockUser2.username,
@@ -178,7 +186,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
 
   // ** Save selected program items
 
-  // This will get assigned
+  // This will get assigned to the one spot left after the two existing sign-ups
   await saveLotterySignups({
     username: mockUser3.username,
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
@@ -212,6 +220,12 @@ test("Should adjust attendee limits if there are previous signups from moved pro
         new Date(testProgramItem.startTime),
         1,
       ).toISOString(),
+      message: "",
+      priority: 0,
+    },
+    {
+      username: mockUser2.username,
+      signedToStartTime: testProgramItem.startTime,
       message: "",
       priority: 0,
     },
