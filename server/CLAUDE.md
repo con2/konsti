@@ -141,17 +141,26 @@ lottery, a start time is lotteried once, and a program item is empty when it is 
 those before changing anything below; this section is how they are implemented, not why they hold.
 
 **Write order is criticality order.** `saveResults` owns it: `saveUserSignupResults` saves the spots
-(one `bulkWrite`, the only write anybody depends on), then `saveLotteryRanForStartTime` closes the
-start time, then the notifications and the stored snapshot, both of which log their failures instead
-of returning them. A run that returns an error therefore either wrote nothing - safe to run again -
-or wrote the spots and failed afterwards, which the sign-up check above refuses.
+(one `bulkWrite`, the only write anybody depends on) and then removes the sign-ups those spots
+replaced, then `saveLotteryRanForStartTime` closes the start time, then the notifications and the
+stored snapshot. Everything after the `bulkWrite` logs its failure instead of returning it — the
+spots are safe by then, and aborting would leave a decided start time unmarked and its winners
+unnotified. A run that returns an error therefore wrote nothing and is safe to run again.
+
+**The removal comes after the write, and only for the spots that landed.** `removeReplacedSignups`
+works from the final results rather than the proposed ones, so a sign-up is never given up for a
+replacement that then doesn't land — leaving the attendee with neither, which choice 2 calls the
+worst outcome available. It skips the program item they won, because the write puts their new spot
+where their old entry was rather than beside it: the lottery can place someone into a program item
+they already hold a spot in, and a run that appended would seat them twice. That in-place rewrite is
+also why the write counts only the newcomers against `maxAttendance` — an attendee already in the
+program item keeps their place either way, so charging them for it would drop somebody who fits.
 
 **No spot keeps its holder out of a run**, whoever gave it to them, so nothing filters attendees
 before the algorithm sees them. `getRandomAndPadgInput` expands each group and hands the whole lot
 over; `getAttendeeGroups` makes individuals groups of one so the group stays the unit throughout.
 `dropResultsThatDoNotFit` in `saveUserSignupResults` drops a whole group at a time for the same
-reason, and runs **before** anything is deleted so a sign-up is never removed for a replacement that
-doesn't land.
+reason.
 
 Protecting a lottery-placed spot from being overwritten was built and removed. It only ever applied
 to a program item rescheduled onto a slot its attendees had sign-ups for, where the attendee had
@@ -234,7 +243,7 @@ When writing `signedToStartTime` for sign-ups, store the program item's own `sta
 
   Inside a pipeline, **interpolated values need `$literal`**. A bare string is an expression: a username like `$admin` is read as a field path and matches nothing, where the same value in query language (`$pull`, `find`) is a literal. Usernames are validated for length only, so this is reachable input, not a hypothetical.
 
-- **Sign-up `count` is derived from `userSignups`, and the attendance limit is enforced by the write.** `count` gates the direct sign-up endpoint (`count: { $lt: maxAttendance }`), so drift makes a program item report itself full to real users for the rest of the event. The removal paths and the bulk assignment write recompute it in the same atomic pipeline (`$set: { count: { $size: "$userSignups" } }`) rather than adjusting it by hand — a `$pull` can remove more than one entry, so an `$inc: -1` beside it would be wrong with nothing to correct it. `saveDirectSignup`, the single user-facing sign-up, is the exception: its filter already proves the user is absent and the program item has room, so its `$inc: { count: 1 }` is exact. The assignment write also caps the array with `$slice` at `maxAttendance`, because its capacity figure comes from an earlier round-trip and a first-come-first-served sign-up can land in between.
+- **Sign-up `count` is derived from `userSignups`, and the attendance limit is enforced by the write.** `count` gates the direct sign-up endpoint (`count: { $lt: maxAttendance }`), so drift makes a program item report itself full to real users for the rest of the event. The removal paths and the bulk assignment write recompute it in the same atomic pipeline (`$set: { count: { $size: "$userSignups" } }`) rather than adjusting it by hand — a `$pull` can remove more than one entry, so an `$inc: -1` beside it would be wrong with nothing to correct it. `saveDirectSignup`, the single user-facing sign-up, is the exception: its filter already proves the user is absent and the program item has room, so its `$inc: { count: 1 }` is exact. The assignment write also caps the array with `$slice` at `maxAttendance`, because its capacity figure comes from an earlier round-trip and a first-come-first-served sign-up can land in between; it drops the attendees it is writing out of the array first, so each of them ends up with one entry rather than a second one beside their old spot.
 
 ## Database
 

@@ -59,40 +59,6 @@ export const saveUserSignupResults = async ({
     groupCodeByUsername,
   });
 
-  // A winner's own sign-ups for the hour they won give way to that spot - they can't attend
-  // both. Several are possible at one hour (an always-open program item plus a moved-in one),
-  // so remove every one of theirs rather than just the first. Compared against where each
-  // program item starts now, since a sign-up's stored time is not rewritten when one moves
-  const startTimeByProgramItemId = new Map(
-    programItems.map((programItem) => [
-      programItem.programItemId,
-      programItem.startTime,
-    ]),
-  );
-
-  const signupsToDelete = resultsToSave.flatMap((result) =>
-    directSignupsByStartTimeResult.value
-      .filter((signup) => {
-        const heldStartTime = startTimeByProgramItemId.get(
-          signup.programItemId,
-        );
-        return (
-          signup.username === result.username &&
-          heldStartTime !== undefined &&
-          isSameTime(heldStartTime, result.assignmentSignup.signedToStartTime)
-        );
-      })
-      .map((signup) => ({
-        username: signup.username,
-        directSignupProgramItemId: signup.programItemId,
-      })),
-  );
-
-  const delDirectSignupsResult = await delDirectSignups(signupsToDelete);
-  if (!delDirectSignupsResult.ok) {
-    return delDirectSignupsResult;
-  }
-
   // Save new assignment results
   const newSignups: SignupRepositoryAddSignup[] = resultsToSave.map(
     (result) => {
@@ -127,7 +93,74 @@ export const saveUserSignupResults = async ({
     );
   });
 
+  await removeReplacedSignups({
+    assignmentTime,
+    finalResults,
+    existingSignups: directSignupsByStartTimeResult.value,
+    programItems,
+  });
+
   return makeSuccessResult(finalResults);
+};
+
+interface RemoveReplacedSignupsParams {
+  assignmentTime: string;
+  finalResults: readonly UserAssignmentResult[];
+  existingSignups: readonly { username: string; programItemId: string }[];
+  programItems: readonly ProgramItem[];
+}
+
+// A winner's own sign-ups for the hour they won give way to that spot - they can't attend both.
+// Several are possible at one hour (an always-open program item plus a moved-in one), so remove
+// every one of theirs rather than just the first. Runs on the spots that actually landed, and
+// after they have: removing one for a replacement that then doesn't land would leave the
+// attendee with neither, the worst outcome available
+const removeReplacedSignups = async ({
+  assignmentTime,
+  finalResults,
+  existingSignups,
+  programItems,
+}: RemoveReplacedSignupsParams): Promise<void> => {
+  // Compared against where each program item starts now, since a sign-up's stored time is not
+  // rewritten when one moves
+  const startTimeByProgramItemId = new Map(
+    programItems.map((programItem) => [
+      programItem.programItemId,
+      programItem.startTime,
+    ]),
+  );
+
+  const signupsToDelete = finalResults.flatMap((result) =>
+    existingSignups
+      .filter((signup) => {
+        const heldStartTime = startTimeByProgramItemId.get(
+          signup.programItemId,
+        );
+        return (
+          signup.username === result.username &&
+          // The spot they won is written over their own entry, so deleting it here would take
+          // back what the lottery just gave them
+          signup.programItemId !== result.assignmentSignup.programItemId &&
+          heldStartTime !== undefined &&
+          isSameTime(heldStartTime, result.assignmentSignup.signedToStartTime)
+        );
+      })
+      .map((signup) => ({
+        username: signup.username,
+        directSignupProgramItemId: signup.programItemId,
+      })),
+  );
+
+  // The spots are saved by now, so a failure here costs nobody a place - it leaves an attendee
+  // holding a sign-up they have been lotteried out of, which an admin can remove
+  const delDirectSignupsResult = await delDirectSignups(signupsToDelete);
+  if (!delDirectSignupsResult.ok) {
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to remove ${signupsToDelete.length} sign-up(s) replaced by a lottery win: ${delDirectSignupsResult.error}`,
+      ),
+    );
+  }
 };
 
 interface DropResultsThatDoNotFitParams {

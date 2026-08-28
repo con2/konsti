@@ -1015,3 +1015,51 @@ test("should keep a spot held at another hour when a batched lottery places the 
     new Set([testProgramItem.programItemId, testProgramItem2.programItemId]),
   );
 });
+
+test("should replace a winner's own direct signup for the program item they win", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+
+  // Room for both winners, one of whom is already in the program item
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser.username,
+  });
+
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const [signup] = unsafelyUnwrap(await findDirectSignups());
+
+  // The spot they already held is rewritten, not added beside itself
+  const mockUserSignups = signup.userSignups.filter(
+    (userSignup) => userSignup.username === mockUser.username,
+  );
+  expect(mockUserSignups).toHaveLength(1);
+  expect(mockUserSignups[0].priority).toEqual(1);
+
+  // The spot they held was theirs either way, so it never counted against the other winner
+  const usernames = signup.userSignups.map((userSignup) => userSignup.username);
+  expect(usernames).toEqual(
+    expect.arrayContaining([mockUser.username, mockUser2.username]),
+  );
+  expect(signup.count).toEqual(2);
+});
