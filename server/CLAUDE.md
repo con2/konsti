@@ -215,7 +215,7 @@ Each case emits its own event log action so the user sees a case-specific messag
 
 Pre-assignment cleanup (`runAssignment.ts` → `notify: false`) calls the same function with the same preservation semantics; the `notify: false` flag only suppresses these cancellation event-log notifications. This path is a safety net — invalid sign-ups should already have been handled when the program items were updated.
 
-When writing `signedToStartTime` for sign-ups, follow the lottery-vs-direct split documented in [shared/CLAUDE.md](../shared/CLAUDE.md) (lottery stores the item's own `startTime`; direct stores the parent-resolved time).
+When writing `signedToStartTime` for sign-ups, store the program item's own `startTime` — the hour the attendee turns up — for both lottery and direct sign-ups; the parent override is about lottery timing only, see [shared/CLAUDE.md](../shared/CLAUDE.md).
 
 ## Cross-Cutting Server Patterns
 
