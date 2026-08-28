@@ -128,21 +128,11 @@ export const hasLotteryAlreadyRun = (programItem: ProgramItem): boolean =>
     programItem.lotteryRanForStartTime,
   );
 
-// No lottery will take this program item. Either it moved after its lottery, or it is marked
-// while its lottery sign-up window is still open - which no run can have written, since a run
-// happens the minute that window shuts, so the item was passed over for holding sign-ups
-export const willNotBeLotteried = (
-  programItem: ProgramItem,
-  timeNow: Date,
-): boolean => {
-  if (programItem.lotteryRanForStartTime === undefined) {
-    return false;
-  }
-  return (
-    hasLotteryAlreadyRun(programItem) ||
-    isSameOrBefore(timeNow, getLotterySignupEndTime(programItem))
-  );
-};
+// No lottery will take this program item: it was passed over for holding sign-ups, or it moved
+// onto a slot after its own lottery ran. Both are recorded, so neither answer expires
+export const willNotBeLotteried = (programItem: ProgramItem): boolean =>
+  programItem.passedOverForLottery === true ||
+  hasLotteryAlreadyRun(programItem);
 
 export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
@@ -300,7 +290,7 @@ export const getDirectSignupStarted = (
   programItem: ProgramItem,
   timeNow: Date,
 ): boolean =>
-  willNotBeLotteried(programItem, timeNow) ||
+  willNotBeLotteried(programItem) ||
   getDirectSignupPhaseStarted(programItem, timeNow);
 
 export const getPhaseGapInProgress = (
@@ -308,7 +298,7 @@ export const getPhaseGapInProgress = (
   timeNow: Date,
 ): boolean => {
   // Nothing is being decided for an item no lottery will take, whatever its own schedule says
-  if (willNotBeLotteried(programItem, timeNow)) {
+  if (willNotBeLotteried(programItem)) {
     return false;
   }
 

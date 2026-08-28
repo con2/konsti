@@ -731,7 +731,7 @@ describe("Program items no lottery will take", () => {
   const programItem = { ...testProgramItem, startTime };
 
   test("An unmarked program item still has its lottery ahead of it", () => {
-    expect(willNotBeLotteried(programItem, beforeLottery)).toEqual(false);
+    expect(willNotBeLotteried(programItem)).toEqual(false);
     expect(getDirectSignupStarted(programItem, beforeLottery)).toEqual(false);
   });
 
@@ -739,21 +739,38 @@ describe("Program items no lottery will take", () => {
     // The mark every lotteried program item carries must not open its direct sign-up early
     const lotteried = { ...programItem, lotteryRanForStartTime: startTime };
 
-    expect(willNotBeLotteried(lotteried, duringPhaseGap)).toEqual(false);
+    expect(willNotBeLotteried(lotteried)).toEqual(false);
     expect(getDirectSignupStarted(lotteried, duringPhaseGap)).toEqual(false);
     expect(getPhaseGapInProgress(lotteried, duringPhaseGap)).toEqual(true);
     expect(getDirectSignupStarted(lotteried, afterPhaseGap)).toEqual(true);
   });
 
-  test("A program item marked while its lottery signup is open was passed over", () => {
-    // No run can have written the mark yet, so it came from the program item already holding
-    // sign-ups when the programme was saved - which means its sign-up has been open
-    const passedOver = { ...programItem, lotteryRanForStartTime: startTime };
+  test("A program item recorded as passed over keeps its signup open", () => {
+    // It held sign-ups when it became a lottery program item, so its sign-up has been open -
+    // and stays open, including across the phase gap of a lottery that never runs for it
+    const passedOver = { ...programItem, passedOverForLottery: true };
 
-    expect(willNotBeLotteried(passedOver, beforeLottery)).toEqual(true);
+    expect(willNotBeLotteried(passedOver)).toEqual(true);
     expect(hasLotteryAlreadyRun(passedOver)).toEqual(false);
     expect(getDirectSignupStarted(passedOver, beforeLottery)).toEqual(true);
     expect(getDirectSignupInProgress(passedOver, beforeLottery)).toEqual(true);
+    expect(getDirectSignupStarted(passedOver, duringPhaseGap)).toEqual(true);
+    expect(getPhaseGapInProgress(passedOver, duringPhaseGap)).toEqual(false);
+    expect(getDirectSignupStarted(passedOver, afterPhaseGap)).toEqual(true);
+  });
+
+  test("An early run does not make the program items it marked look passed over", () => {
+    // A run before the sign-up window shuts writes the same mark a normal run does, and that
+    // must not read as "it already had sign-ups"
+    const lotteriedEarly = {
+      ...programItem,
+      lotteryRanForStartTime: startTime,
+    };
+
+    expect(willNotBeLotteried(lotteriedEarly)).toEqual(false);
+    expect(getDirectSignupStarted(lotteriedEarly, beforeLottery)).toEqual(
+      false,
+    );
   });
 
   test("A program item that moved after its lottery is never in another one", () => {
@@ -764,7 +781,7 @@ describe("Program items no lottery will take", () => {
       lotteryRanForStartTime: lotteryTime,
     };
 
-    expect(willNotBeLotteried(moved, afterPhaseGap)).toEqual(true);
+    expect(willNotBeLotteried(moved)).toEqual(true);
     expect(hasLotteryAlreadyRun(moved)).toEqual(true);
   });
 

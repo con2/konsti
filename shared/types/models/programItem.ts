@@ -146,6 +146,10 @@ export const ProgramItemSchema = z.object({
   // time rather than a flag, so a rescheduled item can be told from one still sitting where
   // its lottery ran
   lotteryRanForStartTime: z.optional(z.string()),
+  // No lottery will ever take this program item: it already held sign-ups when it became a
+  // lottery one, or a run reached it and found it occupied. Recorded rather than worked out
+  // from the clock, so the answer cannot change as the day goes on
+  passedOverForLottery: z.optional(z.boolean()),
   otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.enum(SignupType),

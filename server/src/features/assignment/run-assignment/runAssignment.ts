@@ -103,7 +103,9 @@ export const runAssignment = async ({
   // remaining spots go to direct sign-up rather than through a second lottery among whoever
   // signed up afterwards
   const notYetLotteriedProgramItems = startingLotteryProgramItems.filter(
-    (programItem) => programItem.lotteryRanForStartTime === undefined,
+    (programItem) =>
+      programItem.lotteryRanForStartTime === undefined &&
+      programItem.passedOverForLottery !== true,
   );
 
   if (
@@ -183,9 +185,13 @@ export const runAssignment = async ({
     message: assignResults.message,
     users: validLotterySignupsUsers,
     programItems,
-    // The ones left on direct sign-up are marked too: their lottery is over either way, and
-    // the mark is what keeps that true after their sign-ups are cancelled
+    // Every program item this run reached, so the ones it skipped are recorded too
     lotteriedProgramItemIds: notYetLotteriedProgramItems.map(
+      (programItem) => programItem.programItemId,
+    ),
+    // The occupied ones are recorded as passed over rather than lotteried, which is what they
+    // were, and what keeps their sign-up open once those sign-ups are cancelled
+    passedOverProgramItemIds: occupiedProgramItems.map(
       (programItem) => programItem.programItemId,
     ),
   });

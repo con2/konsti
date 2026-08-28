@@ -47,6 +47,7 @@ export const ProgramItemSchemaDb = z
     lotteryRanForStartTime: z.optional(
       z.date().transform((date) => date.toISOString()),
     ),
+    passedOverForLottery: z.optional(z.boolean()),
     otherAccessibilityInformation: z.string(),
     entryFee: z.string(),
     signupType: z.enum(SignupType),
@@ -90,6 +91,7 @@ const programItemSchema = new mongoose.Schema(
       type: Date,
       get: (value: Date) => new Date(value),
     },
+    passedOverForLottery: { type: Boolean },
     programType: { type: String, required: true },
     contentWarnings: { type: String, required: true },
     otherAuthor: { type: String, required: true },

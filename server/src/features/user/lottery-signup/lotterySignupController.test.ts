@@ -22,6 +22,7 @@ import { UserGroup } from "shared/types/models/user";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import {
   saveLotteryRanForStartTime,
+  savePassedOverForLottery,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { saveHidden } from "server/features/settings/settingsRepository";
@@ -230,7 +231,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(user?.lotterySignups).toHaveLength(0);
   });
 
-  test("should return error when the item is marked while its lottery sign-up is still open", async () => {
+  test("should return error when the program item was passed over for the lottery", async () => {
     vi.setSystemTime(
       subMinutes(
         new Date(testProgramItem.startTime),
@@ -238,14 +239,10 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       ).toISOString(),
     );
 
-    // A run marks the items it covered the minute their sign-up window shuts, so a mark while
-    // the window is still open cannot have come from one: the program item was passed over for
-    // holding sign-ups already, and no lottery will take it
+    // It held sign-ups when it became a lottery program item, so no lottery will take it and
+    // there is nothing to sign up for, whatever its sign-up window says
     await saveProgramItems([testProgramItem]);
-    await saveLotteryRanForStartTime(
-      [testProgramItem.programItemId],
-      testProgramItem.startTime,
-    );
+    await savePassedOverForLottery([testProgramItem.programItemId]);
     await saveUser(mockUser);
 
     const signup: PostLotterySignupRequest = {

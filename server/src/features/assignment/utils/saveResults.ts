@@ -7,7 +7,10 @@ import { Result, makeSuccessResult } from "shared/utils/result";
 import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
 import { getAssignmentResultGroups } from "server/features/assignment/utils/getAssignmentResultGroups";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
-import { saveLotteryRanForStartTime } from "server/features/program-item/programItemRepository";
+import {
+  saveLotteryRanForStartTime,
+  savePassedOverForLottery,
+} from "server/features/program-item/programItemRepository";
 import { saveResult } from "server/features/results/resultsRepository";
 import { logger } from "server/utils/logger";
 
@@ -19,6 +22,7 @@ interface SaveResultsParams {
   users: User[];
   programItems: ProgramItem[];
   lotteriedProgramItemIds: readonly string[];
+  passedOverProgramItemIds: readonly string[];
 }
 
 // The writes below run in order of how much rides on them: the spots first, then the mark that
@@ -32,6 +36,7 @@ export const saveResults = async ({
   users,
   programItems,
   lotteriedProgramItemIds,
+  passedOverProgramItemIds,
   // Returns the results that actually landed, so the caller acts on those rather than on what
   // the algorithm proposed
 }: SaveResultsParams): Promise<
@@ -43,6 +48,14 @@ export const saveResults = async ({
     logger.info(
       `Assignment ${assignmentTime}: nothing was lotteried, nothing to save`,
     );
+    // A program item the run found occupied is still recorded, so emptying it cannot put it
+    // back into a lottery
+    const passedOverResult = await savePassedOverForLottery(
+      passedOverProgramItemIds,
+    );
+    if (!passedOverResult.ok) {
+      return passedOverResult;
+    }
     return makeSuccessResult([]);
   }
 
@@ -67,6 +80,13 @@ export const saveResults = async ({
   );
   if (!saveLotteryRanResult.ok) {
     return saveLotteryRanResult;
+  }
+
+  const savePassedOverResult = await savePassedOverForLottery(
+    passedOverProgramItemIds,
+  );
+  if (!savePassedOverResult.ok) {
+    return savePassedOverResult;
   }
 
   // The spots are saved and the start time is closed at this point, so neither of the two

@@ -271,7 +271,7 @@ const getSignupStrategyForProgramItem = (
   // No lottery will take it, so the spots left go first come, first served. Checked before the
   // event-wide strategy: a lottery-only event would otherwise report LOTTERY for an item every
   // lottery sign-up path refuses, leaving it with no sign-up control at all
-  if (willNotBeLotteried(programItem, currentTime)) {
+  if (willNotBeLotteried(programItem)) {
     return ProgramItemSignupStrategy.DIRECT;
   }
 

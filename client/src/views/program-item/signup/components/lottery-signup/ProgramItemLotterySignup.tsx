@@ -113,7 +113,7 @@ export const ProgramItemLotterySignup = ({
   // No run will take this program item - it moved after its lottery, or it was passed over for
   // holding sign-ups already - so there is no lottery to sign up for
   const lotterySignupOpen =
-    !willNotBeLotteried(programItem, timeNow) &&
+    !willNotBeLotteried(programItem) &&
     isSameOrAfter(timeNow, lotterySignupStartTime);
 
   if (!loggedIn) {

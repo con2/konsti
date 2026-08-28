@@ -64,7 +64,7 @@ export const updateProgramItemPopularity = async (): Promise<
   // sign-ups already - would otherwise absorb demand for a lottery it can never enter, and be
   // left wearing a popularity figure for that lottery
   const lotteryProgramItems = validLotterySignupProgramItems.filter(
-    (programItem) => !willNotBeLotteried(programItem, timeNow),
+    (programItem) => !willNotBeLotteried(programItem),
   );
 
   const programItemsByStartTimes = groupBy(lotteryProgramItems, (programItem) =>

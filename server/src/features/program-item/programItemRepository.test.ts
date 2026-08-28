@@ -933,7 +933,7 @@ test("should mark a lottery program item that already holds signups as not takin
   const programItem = unsafelyUnwrap(
     await findProgramItemById(testProgramItem.programItemId),
   );
-  expect(programItem.lotteryRanForStartTime).toBeDefined();
+  expect(programItem.passedOverForLottery).toEqual(true);
 });
 
 test("should not mark a lottery program item nobody has signed up to", async () => {
@@ -945,7 +945,7 @@ test("should not mark a lottery program item nobody has signed up to", async () 
   const programItem = unsafelyUnwrap(
     await findProgramItemById(testProgramItem.programItemId),
   );
-  expect(programItem.lotteryRanForStartTime).toBeUndefined();
+  expect(programItem.passedOverForLottery).toBeUndefined();
 });
 
 test("should keep a program item out of the lottery after its signups are cancelled", async () => {
@@ -973,7 +973,7 @@ test("should keep a program item out of the lottery after its signups are cancel
   const programItem = unsafelyUnwrap(
     await findProgramItemById(testProgramItem.programItemId),
   );
-  expect(programItem.lotteryRanForStartTime).toBeDefined();
+  expect(programItem.passedOverForLottery).toEqual(true);
 });
 
 test("should remove lottery signups made for a program item that stops taking part in a lottery", async () => {

@@ -6,7 +6,6 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
 import {
@@ -109,7 +108,7 @@ export const saveProgramItems = async (
   const bulkOps = updatedProgramItems.map((programItem) => {
     const newProgramItem: Omit<
       ProgramItem,
-      "popularity" | "lotteryRanForStartTime"
+      "popularity" | "lotteryRanForStartTime" | "passedOverForLottery"
     > = {
       programItemId: programItem.programItemId,
       parentId: programItem.parentId,
@@ -140,16 +139,12 @@ export const saveProgramItems = async (
       state: programItem.state,
     };
 
-    // The mark is otherwise the import's to leave alone, so it is set here only for a program
-    // item this save is what turns into a passed over one
-    const lotteryRanForStartTime = passedOverProgramItemIds.has(
+    // Otherwise the import's to leave alone, so it is set here only for a program item this
+    // save is what turns into a passed over one
+    const passedOverForLottery = passedOverProgramItemIds.has(
       programItem.programItemId,
     )
-      ? {
-          lotteryRanForStartTime: new Date(
-            getProgramItemStartTime(programItem),
-          ),
-        }
+      ? { passedOverForLottery: true }
       : {};
 
     return {
@@ -159,7 +154,7 @@ export const saveProgramItems = async (
         },
         update: {
           ...newProgramItem,
-          ...lotteryRanForStartTime,
+          ...passedOverForLottery,
         },
         upsert: true,
       },
@@ -281,6 +276,34 @@ interface PopularityUpdate {
 // Records which start time these program items were lotteried for. A program item is lotteried
 // at most once: if it is later moved onto a slot whose lottery has not run, it is left out of
 // that run and its remaining spots go to direct sign-up
+// Recorded rather than worked out later: whether a lottery will take a program item must not
+// change as the clock moves past its sign-up window
+export const savePassedOverForLottery = async (
+  programItemIds: readonly string[],
+): Promise<Result<void, MongoDbError>> => {
+  if (programItemIds.length === 0) {
+    return makeSuccessResult();
+  }
+
+  try {
+    await ProgramItemModel.updateMany(
+      { programItemId: { $in: programItemIds } },
+      { passedOverForLottery: true },
+    );
+    logger.info(
+      `MongoDB: Recorded ${programItemIds.length} program items as passed over for the lottery`,
+    );
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error recording program items as passed over", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 export const saveLotteryRanForStartTime = async (
   programItemIds: readonly string[],
   assignmentTime: string,

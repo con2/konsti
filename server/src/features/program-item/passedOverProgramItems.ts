@@ -36,18 +36,22 @@ export const getPassedOverProgramItems = async (
       directSignup.userSignups.length,
     ]),
   );
-  // What is stored is what was there before this save, since the mark is left out of the import's
-  // update - a program item the database does not know about is a new one and cannot carry it
-  const markedProgramItemIds = new Set(
+  // What is stored is what was there before this save, since neither field is in the import's
+  // update - a program item the database does not know about is a new one and carries neither
+  const decidedProgramItemIds = new Set(
     currentProgramItems
-      .filter((programItem) => programItem.lotteryRanForStartTime !== undefined)
+      .filter(
+        (programItem) =>
+          programItem.lotteryRanForStartTime !== undefined ||
+          programItem.passedOverForLottery === true,
+      )
       .map((programItem) => programItem.programItemId),
   );
 
   const passedOverProgramItems = updatedProgramItems.filter(
     (programItem) =>
       isLotterySignupProgramItem(programItem) &&
-      !markedProgramItemIds.has(programItem.programItemId) &&
+      !decidedProgramItemIds.has(programItem.programItemId) &&
       (attendeeCountByProgramItemId.get(programItem.programItemId) ?? 0) > 0 &&
       // Only while its lottery is still ahead. Marking one whose sign-up window has shut
       // changes nothing anybody can see: the window alone already closes lottery sign-up, and
