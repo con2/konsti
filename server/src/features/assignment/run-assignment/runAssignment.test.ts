@@ -1263,6 +1263,55 @@ describe("The lottery for a start time runs once", () => {
     ).toEqual([EventLogAction.NO_ASSIGNMENT]);
   });
 
+  test("lotteries the empty program items when another at the same start time is skipped", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // Skipping one program item must not cost the rest of the start time its lottery. The
+    // attendee still has a sign-up naming the skipped one, and the assigner rejects its whole
+    // input over a preference it has no event for
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
+      {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        minAttendance: 1,
+        maxAttendance: 3,
+      },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 1 },
+        {
+          ...mockLotterySignups[1],
+          priority: 2,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      ],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(
+      assignResults.results.map(
+        (result) => result.assignmentSignup.programItemId,
+      ),
+    ).toEqual([testProgramItem2.programItemId]);
+  });
+
   test("keeps a skipped program item on direct sign-up once its sign-ups are cancelled", async () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 

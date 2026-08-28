@@ -34,10 +34,15 @@ export const getList = ({
             lotterySignupProgramItem.programItemId ===
             lotterySignup.programItemId,
         );
+        // A sign-up naming a program item this run is not allocating has no event to map
+        // to, and the assigner rejects the whole input over a single such preference
+        if (!programItem) {
+          return false;
+        }
         return isStartTimeMatch(
           lotterySignup.signedToStartTime,
           assignmentTime,
-          programItem?.parentId,
+          programItem.parentId,
         );
       })
       .map((lotterySignup) => {

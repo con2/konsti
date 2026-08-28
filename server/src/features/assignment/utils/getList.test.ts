@@ -111,6 +111,49 @@ test("should return list items for program items using parent startTime via 'sta
   ]);
 });
 
+// A sign-up naming a program item the run is not allocating - skipped for holding sign-ups,
+// or lotteried already - has no event for the assigner to map it to, and one such preference
+// makes it reject the whole input
+test("leaves out lottery signups for program items not in the run", () => {
+  const users = getUsers({ count: 1 });
+
+  const list = getList({
+    attendeeGroups: [users],
+    assignmentTime,
+    lotteryParticipantDirectSignups: [],
+    lotterySignupProgramItems: [testProgramItem2],
+  });
+
+  expect(list).toEqual([]);
+});
+
+test("leaves out a batched program item not in the run, whose own start time still matches", () => {
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  // Without the program item there is no parent to resolve, so an unguarded lookup compares
+  // the raw times and keeps a preference the assigner cannot place
+  const users = getUsers({ count: 1 });
+
+  const list = getList({
+    attendeeGroups: [users],
+    assignmentTime: testProgramItem.startTime,
+    lotteryParticipantDirectSignups: [],
+    lotterySignupProgramItems: [],
+  });
+
+  expect(list).toEqual([]);
+});
+
 describe("should give first time bonus", () => {
   // Non-lottery direct sign-ups are filtered earlier so having them is the same as not having previous direct sign-ups
   test("for single user when there are no direct signups from previous lotteries", () => {
@@ -230,13 +273,16 @@ describe("should give first time bonus", () => {
       count: 1,
       pastLotterySignupUsers: 1,
       pastSuccessLotterySignups: 1,
+      // The program item they were placed in before is gone, so that placement was not
+      // theirs to keep and must not cost them the first time bonus
+      pastAssignmentProgramItemId: "cancelled-program-item",
     });
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
       assignmentTime,
       lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [], // Empty array = cancelled
+      lotterySignupProgramItems: [testProgramItem],
     });
 
     expect(list).toEqual([
@@ -350,13 +396,14 @@ describe("should give first time bonus", () => {
       count: 4,
       pastLotterySignupUsers: 3,
       pastSuccessLotterySignups: 1,
+      pastAssignmentProgramItemId: "cancelled-program-item",
     });
     const attendeeGroups = [users];
     const list = getList({
       attendeeGroups,
       assignmentTime,
       lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [],
+      lotterySignupProgramItems: [testProgramItem],
     });
 
     expect(list).toEqual([
