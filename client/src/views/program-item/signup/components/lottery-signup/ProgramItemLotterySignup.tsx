@@ -2,10 +2,9 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
-  getLotterySignupStartTime,
+  getLotterySignupInProgress,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
-import { isSameOrAfter } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { ButtonStyle } from "client/components/componentStyles";
@@ -107,14 +106,13 @@ export const ProgramItemLotterySignup = ({
     lotterySignups,
   );
 
-  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
-
   const timeNow = useTimeNow();
   // No run will take this program item - it moved after its lottery, or it was passed over for
-  // holding sign-ups already - so there is no lottery to sign up for
+  // holding sign-ups already - so there is no lottery to sign up for. Asked through the window
+  // predicate rather than the start time alone, so the button goes once the window shuts
   const lotterySignupOpen =
     !willNotBeLotteried(programItem) &&
-    isSameOrAfter(timeNow, lotterySignupStartTime);
+    getLotterySignupInProgress(programItem, timeNow);
 
   if (!loggedIn) {
     return <LoginToSignupLink />;
