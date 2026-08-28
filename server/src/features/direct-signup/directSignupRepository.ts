@@ -1,5 +1,5 @@
 import { AnyBulkWriteOperation } from "mongoose";
-import { first, groupBy, shuffle } from "remeda";
+import { first, groupBy, partition, shuffle } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
@@ -382,10 +382,10 @@ export const saveDirectSignups = async (
   if (!existingSignupsResult.ok) {
     return existingSignupsResult;
   }
-  const existingCountsByProgramItemId = new Map(
+  const existingUsernamesByProgramItemId = new Map(
     existingSignupsResult.value.map((signup) => [
       signup.programItemId,
-      signup.userSignups.length,
+      signup.userSignups.map((userSignup) => userSignup.username),
     ]),
   );
 
@@ -401,23 +401,35 @@ export const saveDirectSignups = async (
       return [];
     }
 
-    const existingCount = existingCountsByProgramItemId.get(programItemId) ?? 0;
+    const existingUsernames =
+      existingUsernamesByProgramItemId.get(programItemId) ?? [];
+    const existingCount = existingUsernames.length;
+
+    // Someone already in the program item is rewritten in place below rather than added beside
+    // themselves, so their spot is theirs either way and only the newcomers compete for room
+    const alreadyIn = new Set(existingUsernames);
+    const [rewritten, newcomers] = partition(directSignups, (signup) =>
+      alreadyIn.has(signup.username),
+    );
     const availableSpots = Math.max(
       programItem.maxAttendance - existingCount,
       0,
     );
 
     let finalSignups: SignupRepositoryAddSignup[] = directSignups;
-    if (directSignups.length > availableSpots) {
+    if (newcomers.length > availableSpots) {
       // This case is handled gracefully, but it's still a bug worth flagging
       logger.error(
         new Error(
-          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, existing signups: ${existingCount}, direct signups: ${directSignups.length}, dropping ${directSignups.length - availableSpots} signups`,
+          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, existing signups: ${existingCount}, direct signups: ${directSignups.length}, dropping ${newcomers.length - availableSpots} signups`,
         ),
       );
-      const shuffledSignups = shuffle(directSignups);
-      finalSignups = shuffledSignups.slice(0, availableSpots);
-      droppedSignups.push(...shuffledSignups.slice(availableSpots));
+      const shuffledNewcomers = shuffle(newcomers);
+      finalSignups = [
+        ...rewritten,
+        ...shuffledNewcomers.slice(0, availableSpots),
+      ];
+      droppedSignups.push(...shuffledNewcomers.slice(availableSpots));
     }
 
     // Nothing left to append, so the update below could only ever remove: its $slice caps the
@@ -448,7 +460,28 @@ export const saveDirectSignups = async (
                 $slice: [
                   {
                     $concatArrays: [
-                      { $ifNull: ["$userSignups", []] },
+                      // An attendee being written keeps one entry, the new one: the lottery
+                      // can place someone into a program item they already hold a spot in,
+                      // and appending beside their old entry would seat them twice
+                      {
+                        $filter: {
+                          input: { $ifNull: ["$userSignups", []] },
+                          cond: {
+                            $not: [
+                              {
+                                $in: [
+                                  "$$this.username",
+                                  {
+                                    $literal: finalSignups.map(
+                                      (signup) => signup.username,
+                                    ),
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        },
+                      },
                       {
                         $literal: finalSignups.map((signup) => ({
                           username: signup.username,
