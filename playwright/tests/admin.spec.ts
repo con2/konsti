@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { subMinutes } from "date-fns";
 import { config } from "shared/config";
 import {
   EventSignupStrategy,
@@ -246,7 +247,14 @@ test("Admin can trigger an assignment run", async ({ page, request }) => {
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  // A run is offered only inside the starting time's own window, which opens the minute its
+  // lottery sign-up closes
+  await postTestSettings(request, {
+    testTime: subMinutes(
+      new Date(startTime),
+      config.event().directSignupPhaseStart,
+    ).toISOString(),
+  });
   await login(page, request, { username: "admin", password: "test" });
 
   const adminPage = new AdminPage(page);
