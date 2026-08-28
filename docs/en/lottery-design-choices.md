@@ -148,10 +148,11 @@ Three things enforce the rule, at three different scopes:
   through another lottery. Storing the time rather than a flag is what lets `hasLotteryAlreadyRun`
   tell a **rescheduled** item - one whose lottery ran for a slot it no longer starts at - from one
   sitting where it was lotteried. The program item page uses that to say why it offers only direct
-  sign-up, and `storeLotterySignup` uses it to refuse a late lottery sign-up. The mark survives
-  programme imports: `saveProgramItems` leaves it out of its update object, the same way it leaves
-  out `popularity` - the one exception being a save that is itself what makes the mark true
-  (choice 8).
+  sign-up, and `storeLotterySignup` uses it to refuse a late lottery sign-up. A program item no
+  lottery will ever take carries `passedOverForLottery` instead: the two are different facts and
+  are stored as such, so neither has to be guessed at from the clock. Both survive programme
+  imports, left out of `saveProgramItems`' update object the way `popularity` is - the one
+  exception being a save that is itself what passes a program item over (choice 8).
 - **The spots, per program item.** A program item about to be lotteried that already holds a
   lottery-placed sign-up is evidence that a run got past its critical write and stopped before
   marking it. That item is skipped and logged, and the rest of the start time is lotteried as
@@ -203,10 +204,12 @@ notified, the same way they are for a program item whose program type leaves the
 lottery run keeps its own version of the check as the backstop for a programme Konsti has not
 imported yet.
 
-**The mark is what makes it stick.** Re-reading the decision from whoever holds a spot right now
-would put the program item back into a lottery the moment the last sign-up was cancelled, which is
-the same flip-flop the run avoids. It is only made while the program item's lottery is still ahead
-of it: marking one whose sign-up window has already shut changes nothing anyone can see.
+**Recording it is what makes it stick.** Re-reading the decision from whoever holds a spot right
+now would put the program item back into a lottery the moment the last sign-up was cancelled, which
+is the same flip-flop the run avoids. Working it out from the clock is no better: the answer would
+change on its own as the day went past the program item's sign-up window, and its direct sign-up -
+open all along - would shut again for the length of a phase gap belonging to a lottery that never
+ran. So `passedOverForLottery` is written down, and nothing reads it back out of the time.
 
 One case this cannot distinguish: a program item whose direct sign-up was open but drew nobody looks
 exactly like one whose sign-up never opened, and gets its lottery. That is the harmless direction -
