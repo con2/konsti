@@ -1,5 +1,6 @@
 import { shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
+import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { Event } from "server/types/assignmentTypes";
 
@@ -14,10 +15,17 @@ export const getEvents = (
           signup.programItemId === lotterySignupProgramItem.programItemId,
       );
 
-      // Every existing sign-up is subtracted, whoever made it. A real lottery run only sees
-      // empty program items, so this is zero there; it earns its keep in the popularity
-      // simulation, which measures demand against whatever is left
-      const currentSignups = programItemSignup?.userSignups.length ?? 0;
+      // Only spots held for another hour, in a program item that has since moved onto this
+      // one: their holders are settled there and the lottery cannot use those places. A spot
+      // held for this hour is not subtracted, because holding one does not keep its holder out
+      // of the lottery for it - counting both would have them competing against themselves
+      const currentSignups =
+        programItemSignup?.userSignups.filter((userSignup) =>
+          isStartTimeChanged(
+            userSignup.signedToStartTime,
+            lotterySignupProgramItem.startTime,
+          ),
+        ).length ?? 0;
 
       // Capacity can't go negative: a program item whose attendance limit was lowered
       // below the number of attendees already in it offers no spots rather than negative ones
