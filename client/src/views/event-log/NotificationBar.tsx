@@ -25,7 +25,7 @@ export const NotificationBar = (): ReactElement | null => {
   const notificationList = unseenEvents.map((unseenEvent) => {
     return (
       <DismissibleBanner
-        key={`${unseenEvent.action}-${unseenEvent.createdAt}`}
+        key={unseenEvent.eventLogItemId}
         data-testid="notification-bar"
         icon="bell"
         highlightStyle={HighlightStyle.INFO}
