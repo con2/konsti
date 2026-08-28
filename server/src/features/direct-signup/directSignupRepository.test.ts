@@ -10,7 +10,7 @@ import {
   delDirectSignups,
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
-  findDirectSignupsByStartTime,
+  findDirectSignupsByStartTimes,
   saveDirectSignup,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
@@ -190,9 +190,9 @@ test("should not delete multiple times if delete called multiple times", async (
   expect(signupsAfterSave[0].userSignups).toHaveLength(0);
 });
 
-test("should find direct signups for a parent-batched item by its parent start time", async () => {
+test("should find a parent-batched item's signups by its own start time", async () => {
   // The item is batched under a parent whose start time drives the lottery, so its own
-  // start time differs from the assignment time
+  // The parent batches the lottery, but a spot is held for the hour its program item runs at
   const parentStartTime = addMinutes(
     new Date(testProgramItem.startTime),
     30,
@@ -210,8 +210,19 @@ test("should find direct signups for a parent-batched item by its parent start t
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   const programItems = unsafelyUnwrap(await findProgramItems());
+
+  // Looked up by the batch's lottery time, the spot is not there
+  expect(
+    unsafelyUnwrap(
+      await findDirectSignupsByStartTimes([parentStartTime], programItems),
+    ),
+  ).toHaveLength(0);
+
   const signups = unsafelyUnwrap(
-    await findDirectSignupsByStartTime(parentStartTime, programItems),
+    await findDirectSignupsByStartTimes(
+      [testProgramItem.startTime],
+      programItems,
+    ),
   );
 
   expect(signups).toHaveLength(1);

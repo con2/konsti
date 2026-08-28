@@ -1,4 +1,5 @@
-import { countBy, groupBy } from "remeda";
+import { isSameMinute } from "date-fns";
+import { countBy, groupBy, unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
@@ -6,7 +7,7 @@ import { User } from "shared/types/models/user";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import {
   delDirectSignups,
-  findDirectSignupsByStartTime,
+  findDirectSignupsByStartTimes,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
@@ -32,8 +33,14 @@ export const saveUserSignupResults = async ({
 }: SaveUserSignupResultsParams): Promise<
   Result<readonly UserAssignmentResult[], MongoDbError>
 > => {
-  const directSignupsByStartTimeResult = await findDirectSignupsByStartTime(
-    assignmentTime,
+  // The hours the lottery placed people at, which for a batched program item are not the hour
+  // its lottery ran: a won spot only displaces what the attendee holds at that same hour
+  const wonStartTimes = unique(
+    results.map((result) => result.assignmentSignup.signedToStartTime),
+  );
+
+  const directSignupsByStartTimeResult = await findDirectSignupsByStartTimes(
+    wonStartTimes,
     programItems,
   );
   if (!directSignupsByStartTimeResult.ok) {
@@ -52,13 +59,32 @@ export const saveUserSignupResults = async ({
     groupCodeByUsername,
   });
 
-  // A winner's own sign-ups for this start time give way to the spot the lottery gave them -
-  // they can't attend both. A spot an earlier lottery handed out is never here, since holding
-  // one settles the attendee. Several are possible at one start time (an always-open program
-  // item plus a moved-in one), so remove every one of theirs rather than just the first
+  // A winner's own sign-ups for the hour they won give way to that spot - they can't attend
+  // both. Several are possible at one hour (an always-open program item plus a moved-in one),
+  // so remove every one of theirs rather than just the first. Compared against where each
+  // program item starts now, since a sign-up's stored time is not rewritten when one moves
+  const startTimeByProgramItemId = new Map(
+    programItems.map((programItem) => [
+      programItem.programItemId,
+      programItem.startTime,
+    ]),
+  );
+
   const signupsToDelete = resultsToSave.flatMap((result) =>
     directSignupsByStartTimeResult.value
-      .filter((signup) => signup.username === result.username)
+      .filter((signup) => {
+        const heldStartTime = startTimeByProgramItemId.get(
+          signup.programItemId,
+        );
+        return (
+          signup.username === result.username &&
+          heldStartTime !== undefined &&
+          isSameMinute(
+            new Date(heldStartTime),
+            new Date(result.assignmentSignup.signedToStartTime),
+          )
+        );
+      })
       .map((signup) => ({
         username: signup.username,
         directSignupProgramItemId: signup.programItemId,

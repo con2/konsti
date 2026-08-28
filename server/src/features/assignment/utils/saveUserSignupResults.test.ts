@@ -939,3 +939,79 @@ test("should store the won slot's own start time on a batched program item's sig
     new Date(testProgramItem.startTime).toISOString(),
   );
 });
+
+// The parent batches the lottery, so a run for it places attendees at several different hours.
+// A spot only gives way to one they cannot attend alongside it
+test("should keep a spot held at another hour when a batched lottery places the attendee", async () => {
+  // The batch is lotteried at its own configured time, distinct from either sub-session's hour
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    -30,
+  ).toISOString();
+  const laterStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    60,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    // Same batch, so one lottery covers both, but it runs an hour later
+    {
+      ...testProgramItem2,
+      parentId: testProgramItem.parentId,
+      startTime: laterStartTime,
+    },
+  ]);
+
+  // They already hold a spot in the later sub-session
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+    signedToStartTime: laterStartTime,
+  });
+
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: parentStartTime,
+      results: [
+        {
+          username: mockUser.username,
+          assignmentSignup: {
+            programItemId: testProgramItem.programItemId,
+            priority: 1,
+            signedToStartTime: testProgramItem.startTime,
+          },
+        },
+      ],
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const heldProgramItemIds = signups
+    .filter((signup) =>
+      signup.userSignups.some(
+        (userSignup) => userSignup.username === mockUser.username,
+      ),
+    )
+    .map((signup) => signup.programItemId);
+
+  // The won spot is added and the one at the other hour is left alone
+  expect(new Set(heldProgramItemIds)).toEqual(
+    new Set([testProgramItem.programItemId, testProgramItem2.programItemId]),
+  );
+});

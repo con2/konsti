@@ -1,3 +1,4 @@
+import { isSameMinute } from "date-fns";
 import { AnyBulkWriteOperation } from "mongoose";
 import { first, groupBy, shuffle } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
@@ -18,7 +19,6 @@ import {
   UserDirectSignup,
 } from "server/features/direct-signup/directSignupTypes";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 
 export const removeDirectSignups = async (): Promise<
@@ -119,13 +119,17 @@ interface FindDirectSignupsByStartTimeResponse extends UserDirectSignup {
   programItemId: string;
 }
 
-export const findDirectSignupsByStartTime = async (
-  startTime: string,
+// Matched on each program item's own start time: a spot is held for the hour its attendee turns
+// up, and the parent override only says when a batch is lotteried
+export const findDirectSignupsByStartTimes = async (
+  startTimes: readonly string[],
   programItems: ProgramItem[],
 ): Promise<Result<FindDirectSignupsByStartTimeResponse[], MongoDbError>> => {
   const programItemsIds = programItems
     .filter((programItem) =>
-      isStartTimeMatch(programItem.startTime, startTime, programItem.parentId),
+      startTimes.some((startTime) =>
+        isSameMinute(new Date(programItem.startTime), new Date(startTime)),
+      ),
     )
     .map((programItem) => programItem.programItemId);
 
@@ -134,14 +138,14 @@ export const findDirectSignupsByStartTime = async (
       programItemId: { $in: programItemsIds },
     }).lean();
 
-    logger.debug(`MongoDB: Found signups for time ${startTime}`);
+    logger.debug(`MongoDB: Found signups for times ${startTimes.join(", ")}`);
 
     const signups = response.flatMap((signup) => {
       const result = DirectSignupSchemaDb.safeParse(signup);
       if (!result.success) {
         logger.error(
           new Error(
-            `Error validating findDirectSignupsByStartTime DB value: programItemId: ${signup.programItemId}`,
+            `Error validating findDirectSignupsByStartTimes DB value: programItemId: ${signup.programItemId}`,
             { cause: result.error },
           ),
         );
@@ -161,9 +165,12 @@ export const findDirectSignupsByStartTime = async (
     return makeSuccessResult(formattedResponse);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error finding signups for time ${startTime}`, {
-        cause: error,
-      }),
+      new Error(
+        `MongoDB: Error finding signups for times ${startTimes.join(", ")}`,
+        {
+          cause: error,
+        },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
