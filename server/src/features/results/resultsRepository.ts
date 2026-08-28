@@ -1,3 +1,4 @@
+import { startOfMinute } from "date-fns";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -28,6 +29,9 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   }
 };
 
+// A start time is lotteried once, so this writes one document per start time and nothing
+// merges into it. The collection is dumped and kept once the event is over, so it is the only
+// lasting account of what the lottery did
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
   groups: readonly AssignmentResultGroup[],
@@ -35,10 +39,20 @@ export const saveResult = async (
   algorithm: AssignmentAlgorithm,
   message: string,
 ): Promise<Result<void, MongoDbError>> => {
+  // Matched to the minute like every other start time comparison, so the document is found
+  // again by a lookup whose time carries seconds
+  const assignmentTimeMinute = startOfMinute(new Date(assignmentTime));
+
   try {
     await ResultsModel.replaceOne(
-      { assignmentTime },
-      { assignmentTime, results: signupResultData, groups, algorithm, message },
+      { assignmentTime: assignmentTimeMinute },
+      {
+        assignmentTime: assignmentTimeMinute,
+        results: signupResultData,
+        groups,
+        algorithm,
+        message,
+      },
       { upsert: true },
     );
     logger.debug(

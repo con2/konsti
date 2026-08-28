@@ -14,6 +14,7 @@ export interface UserLotterySignups {
 export enum AssignmentResultStatus {
   SUCCESS = "success",
   NO_STARTING_PROGRAM_ITEMS = "noStartingProgramItems",
+  ALREADY_LOTTERIED = "alreadyLotteried",
   NO_LOTTERY_SIGNUPS = "noLotterySignups",
   ERROR = "error",
 }
