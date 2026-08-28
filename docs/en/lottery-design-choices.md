@@ -53,8 +53,8 @@ it. They cannot attend both, and the lottery result is the newer decision.
 This is what makes choice 1 possible: a group member who signed up to something else at that hour
 still takes part with their group, and lands with them.
 
-"That start time" is the hour the attendee turns up, which for a batched program item is not the
-hour its lottery ran - see choice 11, which the code does not yet follow here.
+"That start time" is the hour the attendee turns up, not the hour the lottery ran: for a batched
+program item those differ, and a spot at an hour they can still attend is left alone (choice 11).
 
 ## 4. Holding a direct sign-up does not keep you out of the lottery
 
@@ -271,10 +271,6 @@ The two are separate because they answer to different things. The batch time is 
 device for running one lottery over several slots; the attendee's schedule is not part of it, and
 they have no reason to expect a spot they hold at 10:00 to behave as though it were at 09:00.
 
-**The code does not follow this yet.** Direct sign-ups are stored against the parent-resolved time
-(`signedToStartTime` in `storeDirectSignup` and in the assignment's own writes), and held spots are
-matched by it (`findDirectSignupsByStartTime` via `isStartTimeMatch`), with the program item page
-mirroring that server behaviour. The visible consequence is that a lottery for 10:00 does not
-replace a spot held in a program item batched at 09:00, so an attendee can be left holding two
-things at once. Written down here as the intended rule so the gap is a known deviation rather than
-an accident; closing it means changing what a direct sign-up stores and how it is looked up.
+The parent-resolved time was stored once, so that a re-run could find the previous lottery's
+sign-ups by start time and clear them before running again. The lottery runs once now (choice 7),
+so nothing needs that and a sign-up records the hour it is actually held for.
