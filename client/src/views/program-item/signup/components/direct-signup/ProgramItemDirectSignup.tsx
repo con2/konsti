@@ -19,7 +19,10 @@ import { ProgramItemButton } from "client/views/program-item/components/ProgramI
 import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
 import { ProgramItemCancelSignupForm } from "client/views/program-item/components/ProgramItemCancelSignupForm";
 import { ProgramItemStatusMessage } from "client/views/program-item/components/ProgramItemStatusMessage";
-import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
+import {
+  getDirectSignupForSlot,
+  isAlreadyDirectySigned,
+} from "client/views/program-item/programItemUtils";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
 import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
@@ -48,8 +51,9 @@ export const ProgramItemDirectSignup = ({
   const [serverError, setServerError] =
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
-  const directSignupForTimeslot = directSignups.find(
-    (signup) => signup.programItem.startTime === programItem.startTime,
+  const directSignupForTimeslot = getDirectSignupForSlot(
+    directSignups,
+    programItem,
   );
 
   const signupQuestion = signupQuestions.find(
