@@ -21,54 +21,43 @@ import {
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 
-// A lottery is not run once its program items have started taking direct sign-ups: it would
-// compete with the first-come queue and move attendees out of spots they picked themselves.
-// Checked here rather than inside the run because only a manual run can be late - the cron
-// derives the start time it targets from the current time
-const findProgramItemsTakingDirectSignups = async (
+// A manual run has to land in the gap between the lottery and its direct sign-up phase: before
+// it, attendees are still entering the lottery and the run would decide the start time behind
+// them; after it, the run competes with the first-come queue and moves attendees out of spots
+// they picked themselves. Checked here rather than inside the run because only a manual run can
+// be off the mark - the cron derives the start time it targets from the current time
+interface RunWindow {
+  stillTakingLotterySignups: ProgramItem[];
+  alreadyTakingDirectSignups: ProgramItem[];
+}
+
+const findRunWindow = async (
   assignmentTime: string,
-): Promise<Result<ProgramItem[], MongoDbError>> => {
+): Promise<Result<RunWindow, MongoDbError>> => {
   const timeNowResult = await getTimeNow();
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
+  const timeNow = timeNowResult.value;
 
   const programItemsResult = await findProgramItems();
   if (!programItemsResult.ok) {
     return programItemsResult;
   }
 
-  return makeSuccessResult(
-    getStartingProgramItems(programItemsResult.value, assignmentTime)
-      .filter((programItem) => isLotterySignupProgramItem(programItem))
-      .filter((programItem) =>
-        getDirectSignupPhaseStarted(programItem, timeNowResult.value),
-      ),
-  );
-};
+  const startingProgramItems = getStartingProgramItems(
+    programItemsResult.value,
+    assignmentTime,
+  ).filter((programItem) => isLotterySignupProgramItem(programItem));
 
-// A lottery is not run before its sign-up window shuts either: attendees can still be entering
-// it, and the run would decide the start time behind them
-const findProgramItemsStillTakingLotterySignups = async (
-  assignmentTime: string,
-): Promise<Result<ProgramItem[], MongoDbError>> => {
-  const timeNowResult = await getTimeNow();
-  if (!timeNowResult.ok) {
-    return timeNowResult;
-  }
-
-  const programItemsResult = await findProgramItems();
-  if (!programItemsResult.ok) {
-    return programItemsResult;
-  }
-
-  return makeSuccessResult(
-    getStartingProgramItems(programItemsResult.value, assignmentTime)
-      .filter((programItem) => isLotterySignupProgramItem(programItem))
-      .filter((programItem) =>
-        isBefore(timeNowResult.value, getLotterySignupEndTime(programItem)),
-      ),
-  );
+  return makeSuccessResult({
+    stillTakingLotterySignups: startingProgramItems.filter((programItem) =>
+      isBefore(timeNow, getLotterySignupEndTime(programItem)),
+    ),
+    alreadyTakingDirectSignups: startingProgramItems.filter((programItem) =>
+      getDirectSignupPhaseStarted(programItem, timeNow),
+    ),
+  });
 };
 
 export const storeAssignment = async (
@@ -86,31 +75,20 @@ export const storeAssignment = async (
     };
   }
 
-  const lateProgramItemsResult =
-    await findProgramItemsTakingDirectSignups(assignmentTime);
-  if (!lateProgramItemsResult.ok) {
+  const runWindowResult = await findRunWindow(assignmentTime);
+  if (!runWindowResult.ok) {
     return {
       message: "Assignment failed",
       status: "error",
       errorId: "unknown",
     };
   }
-  const lateProgramItems = lateProgramItemsResult.value;
+  const { stillTakingLotterySignups, alreadyTakingDirectSignups } =
+    runWindowResult.value;
 
-  const earlyProgramItemsResult =
-    await findProgramItemsStillTakingLotterySignups(assignmentTime);
-  if (!earlyProgramItemsResult.ok) {
-    return {
-      message: "Assignment failed",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-  const earlyProgramItems = earlyProgramItemsResult.value;
-
-  if (earlyProgramItems.length > 0) {
+  if (stillTakingLotterySignups.length > 0) {
     logger.warn(
-      `Lottery signup still open for ${earlyProgramItems.length} program items starting at ${assignmentTime}, skip manual assignment`,
+      `Lottery signup still open for ${stillTakingLotterySignups.length} program items starting at ${assignmentTime}, skip manual assignment`,
     );
     return {
       message:
@@ -120,9 +98,9 @@ export const storeAssignment = async (
     };
   }
 
-  if (lateProgramItems.length > 0) {
+  if (alreadyTakingDirectSignups.length > 0) {
     logger.warn(
-      `Direct signup already open for ${lateProgramItems.length} program items starting at ${assignmentTime}, skip manual assignment`,
+      `Direct signup already open for ${alreadyTakingDirectSignups.length} program items starting at ${assignmentTime}, skip manual assignment`,
     );
     return {
       message:
