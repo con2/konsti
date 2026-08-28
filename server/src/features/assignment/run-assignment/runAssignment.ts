@@ -192,13 +192,18 @@ export const runAssignment = async ({
   if (!saveResultsResult.ok) {
     return saveResultsResult;
   }
+  // Only the attendees who actually got a spot. Acting on the algorithm's proposal instead
+  // would strip the lottery sign-ups of someone a dropped result left with nothing, and those
+  // cannot be re-added once the sign-up window has closed
+  const savedResults = saveResultsResult.value;
+
   if (
-    assignResults.results.length > 0 &&
+    savedResults.length > 0 &&
     config.event().removeLotterySignupsStrategy !==
       RemoveLotterySignupsStrategy.NONE
   ) {
     const removeOverlapSignupsResult = await removeOverlapLotterySignups(
-      assignResults.results,
+      savedResults,
       validLotterySignupProgramItems,
       resolvedAssignmentTime,
     );
@@ -207,5 +212,5 @@ export const runAssignment = async ({
     }
   }
 
-  return makeSuccessResult(assignResults);
+  return makeSuccessResult({ ...assignResults, results: savedResults });
 };

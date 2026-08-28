@@ -32,14 +32,18 @@ export const saveResults = async ({
   users,
   programItems,
   lotteriedProgramItemIds,
-}: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
+  // Returns the results that actually landed, so the caller acts on those rather than on what
+  // the algorithm proposed
+}: SaveResultsParams): Promise<
+  Result<readonly UserAssignmentResult[], MongoDbError>
+> => {
   // The lottery runs on a timer, so most runs find nothing to lottery: no spots to save, no
   // start time to close, and no record worth writing
   if (lotteriedProgramItemIds.length === 0) {
     logger.info(
       `Assignment ${assignmentTime}: nothing was lotteried, nothing to save`,
     );
-    return makeSuccessResult();
+    return makeSuccessResult([]);
   }
 
   logger.info(`Save user signup results for assignment time ${assignmentTime}`);
@@ -83,7 +87,7 @@ export const saveResults = async ({
     programItems,
   });
 
-  return makeSuccessResult();
+  return makeSuccessResult(finalResults);
 };
 
 interface StoreResultsSnapshotParams {
