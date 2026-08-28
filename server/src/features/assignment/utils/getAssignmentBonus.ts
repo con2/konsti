@@ -2,7 +2,7 @@ import { partition } from "remeda";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, State } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { isSameTime } from "shared/utils/timeComparison";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
@@ -11,6 +11,7 @@ export const getAssignmentBonus = (
   attendeeGroup: User[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
   lotterySignupProgramItems: readonly ProgramItem[],
+  allProgramItems: readonly ProgramItem[],
   assignmentTime: string,
 ): number => {
   /** First time bonus */
@@ -29,6 +30,16 @@ export const getAssignmentBonus = (
       isSameTime(startTime, currentStartTime),
     );
 
+  // A placement the attendee never got to attend is not one they spent: cancelling their own
+  // sign-up costs the bonus, the program item being cancelled does not. Asked of the whole
+  // programme, since a placement at any other start time is still a placement - only one that
+  // was deleted or cancelled stops counting
+  const stillRunningProgramItemIds = new Set(
+    allProgramItems
+      .filter((programItem) => programItem.state === State.ACCEPTED)
+      .map((programItem) => programItem.programItemId),
+  );
+
   // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
@@ -46,15 +57,12 @@ export const getAssignmentBonus = (
           );
         },
       );
-      // A placement the attendee never got to attend is not one they spent: cancelling their
-      // own sign-up costs the bonus, the program item being cancelled does not
       const newAssignmentEvent = groupMember.eventLogItems.find(
         (eventLogItem) => {
           const previousAssignment =
             eventLogItem.action === EventLogAction.NEW_ASSIGNMENT;
-          const programItemExists = lotterySignupProgramItems.some(
-            (programItem) =>
-              programItem.programItemId === eventLogItem.programItemId,
+          const programItemExists = stillRunningProgramItemIds.has(
+            eventLogItem.programItemId,
           );
           return (
             previousAssignment &&

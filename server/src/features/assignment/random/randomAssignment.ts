@@ -19,6 +19,7 @@ export const randomAssignment = (
   startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  allProgramItems: readonly ProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${assignmentTime}`);
 
@@ -52,6 +53,7 @@ export const randomAssignment = (
     attendeeGroups,
     assignmentTime,
     lotteryParticipantDirectSignups,
+    allProgramItems,
   );
   logger.debug("Random assignment: completed");
   if (!assignmentResultResult.ok) {

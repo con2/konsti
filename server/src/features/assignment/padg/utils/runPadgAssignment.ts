@@ -50,6 +50,7 @@ export const runPadgAssignment = (
   attendeeGroups: readonly User[][],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  allProgramItems: readonly ProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
   const groups = getGroups(
     attendeeGroups,
@@ -65,6 +66,7 @@ export const runPadgAssignment = (
     assignmentTime,
     lotteryParticipantDirectSignups,
     lotterySignupProgramItems,
+    allProgramItems,
   });
 
   logger.debug("PADG assignment: start");

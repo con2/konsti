@@ -93,6 +93,7 @@ export const updateProgramItemPopularity = async (): Promise<
       lotteryProgramItems,
       startTime,
       lotteryParticipantDirectSignups,
+      programItemsResult.value,
     );
     return { result, startTime };
   });

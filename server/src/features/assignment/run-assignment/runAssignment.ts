@@ -196,6 +196,7 @@ export const runAssignment = async ({
     emptyProgramItems,
     resolvedAssignmentTime,
     lotteryParticipantDirectSignups,
+    programItems,
   );
   if (!assignResultsResult.ok) {
     return assignResultsResult;

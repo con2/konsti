@@ -30,6 +30,7 @@ test("should return empty array if user has no lottery signups", () => {
     assignmentTime,
     lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
+    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([]);
@@ -43,6 +44,7 @@ test("should return as many list items as user groups", () => {
     assignmentTime,
     lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
+    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([
@@ -87,6 +89,7 @@ test("should return list items for program items using parent startTime via 'sta
     assignmentTime: parentStartTime,
     lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
+    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([
@@ -122,6 +125,7 @@ test("leaves out lottery signups for program items not in the run", () => {
     assignmentTime,
     lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem2],
+    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([]);
@@ -149,6 +153,7 @@ test("leaves out a batched program item not in the run, whose own start time sti
     assignmentTime: testProgramItem.startTime,
     lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [],
+    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([]);
@@ -164,6 +169,7 @@ describe("should give first time bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -186,6 +192,7 @@ describe("should give first time bonus", () => {
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -221,6 +228,7 @@ describe("should give first time bonus", () => {
         [testProgramItem, testProgramItem2],
       ),
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -256,6 +264,7 @@ describe("should give first time bonus", () => {
         [testProgramItem, preConventionWeekProgramItem],
       ),
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -283,6 +292,7 @@ describe("should give first time bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -305,6 +315,7 @@ describe("should give first time bonus", () => {
         getPreviousDirectSignup({ username: "foobar user" }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -328,6 +339,7 @@ describe("should give first time bonus", () => {
         getPreviousDirectSignup({ username: users[0].username }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -352,6 +364,7 @@ describe("should give first time bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -379,6 +392,7 @@ describe("should give first time bonus", () => {
         getPreviousDirectSignup({ username: users[1].username }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -404,6 +418,7 @@ describe("should give first time bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -430,6 +445,7 @@ describe("should NOT give first time bonus", () => {
         }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -461,6 +477,7 @@ describe("should NOT give first time bonus", () => {
         }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -487,6 +504,7 @@ describe("should give additional bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -511,6 +529,7 @@ describe("should give additional bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -535,6 +554,7 @@ describe("should give additional bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -567,6 +587,7 @@ describe("should NOT give additional bonus", () => {
         }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -592,6 +613,7 @@ describe("should NOT give additional bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -616,6 +638,7 @@ describe("should NOT give additional bonus", () => {
         }),
       ],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -641,6 +664,7 @@ describe("should NOT give additional bonus", () => {
       assignmentTime,
       lotteryParticipantDirectSignups: [],
       lotterySignupProgramItems: [testProgramItem],
+      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
     expect(list).toEqual([
@@ -695,6 +719,7 @@ test("treats this run's own win as current for a batched program item", () => {
       [testProgramItem],
     ),
     lotterySignupProgramItems: [testProgramItem],
+    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   // Recognised as this run's own, so it does not spend the first time bonus
