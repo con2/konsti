@@ -17,9 +17,17 @@ export const getAssignmentBonus = (
 
   // A run must not count results for its own start time as "previous", which would strip the
   // bonus and change outcomes: ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at
-  // the current assignmentTime, but keep genuine first-come-first-served direct sign-ups
+  // the current assignmentTime, but keep genuine first-come-first-served direct sign-ups.
+  // Both are recorded against the hour the attendee turns up, so a batched run - whose own
+  // time is the parent's - is recognised by the hours of the program items it covers
+  const currentStartTimes = [
+    assignmentTime,
+    ...lotterySignupProgramItems.map((programItem) => programItem.startTime),
+  ];
   const isCurrentAssignment = (startTime: string): boolean =>
-    isSameMinute(new Date(startTime), new Date(assignmentTime));
+    currentStartTimes.some((currentStartTime) =>
+      isSameMinute(new Date(startTime), new Date(currentStartTime)),
+    );
 
   // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =

@@ -653,3 +653,57 @@ describe("should NOT give additional bonus", () => {
     ]);
   });
 });
+
+// A batched run's own time is the parent's, while the sign-ups it wrote record the hour each
+// attendee turns up - so "is this from the run happening now" has to know the hours the run
+// covers, not just the time it is keyed on
+test("treats this run's own win as current for a batched program item", () => {
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    -30,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  const users = getUsers({ count: 1 });
+
+  const list = getList({
+    attendeeGroups: [users],
+    assignmentTime: parentStartTime,
+    // The spot this very run just gave them, recorded against the program item's own hour
+    lotteryParticipantDirectSignups: getLotteryParticipantDirectSignups(
+      [
+        {
+          programItemId: testProgramItem.programItemId,
+          count: 1,
+          userSignups: [
+            {
+              username: users[0].username,
+              priority: 1,
+              signedToStartTime: testProgramItem.startTime,
+              signupTime: testProgramItem.startTime,
+              message: "",
+            },
+          ],
+        },
+      ],
+      [testProgramItem],
+    ),
+    lotterySignupProgramItems: [testProgramItem],
+  });
+
+  // Recognised as this run's own, so it does not spend the first time bonus
+  expect(list).toEqual([
+    {
+      event: testProgramItem.programItemId,
+      gain: 1 + firstSignupBonus,
+      id: groupCreatorGroupCode,
+      size: 1,
+    },
+  ]);
+});
