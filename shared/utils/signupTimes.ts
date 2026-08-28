@@ -4,6 +4,7 @@ import {
   addMinutes,
   getHours,
   isBefore,
+  isSameMinute,
   subDays,
   subHours,
   subMinutes,
@@ -32,9 +33,9 @@ const toPlainDate = (time: Date): Date => new Date(time);
 // whose start time could not be resolved
 
 // Apply the parent override that batches several items into a single lottery
-// run. Takes the parts rather than a program item, for callers that hold a
-// sign-up's stored time instead of the item it points at
-export const resolveStartTime = (
+// run. Takes the parts rather than a program item, for the helpers below that
+// hold a stored time instead of the item it points at
+const resolveStartTime = (
   parentId: string | undefined,
   ownStartTime: string,
 ): string => {
@@ -103,6 +104,19 @@ export const getLotterySignupEndTime = (programItem: ProgramItem): Date => {
   const startTime = getProgramItemStartTime(programItem);
   return subMinutes(new Date(startTime), directSignupPhaseStart);
 };
+
+// Whether a program item runs at a given time, once the parent override is applied. Compared to
+// the minute because the two can be the same moment written differently - a configured parent
+// time carries no milliseconds
+export const isSameStartTime = (
+  programItemStartTime: string,
+  parentId: string | undefined,
+  comparedTime: string,
+): boolean =>
+  isSameMinute(
+    new Date(resolveStartTime(parentId, programItemStartTime)),
+    new Date(comparedTime),
+  );
 
 export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,

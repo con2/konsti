@@ -1,21 +1,12 @@
-import { isSameMinute } from "date-fns";
-import { resolveStartTime } from "shared/utils/signupTimes";
+import { isSameStartTime } from "shared/utils/signupTimes";
 
 export const isStartTimeChanged = (
   signedToStartTime: string,
   programItemStartTime: string,
   parentId: string,
-): boolean => {
-  // A configured parent start time replaces the item's own here: the whole batch
-  // is signed to that one time
-  const comparedStartTime = resolveStartTime(parentId, programItemStartTime);
-
+): boolean =>
   // Reported as changed when either time is unparseable, which is what the
-  // negation gives: a changed sign-up is subtracted from the lottery's remaining
-  // capacity, so this holds the seat of someone who already has one. Reporting
-  // unchanged instead would leave that seat available and overbook the item
-  return !isSameMinute(
-    new Date(signedToStartTime),
-    new Date(comparedStartTime),
-  );
-};
+  // negation gives. A time that can't be read is not evidence that nothing moved,
+  // and callers act on a change, so this is the answer that gets looked at rather
+  // than silently passed over
+  !isSameStartTime(programItemStartTime, parentId, signedToStartTime);

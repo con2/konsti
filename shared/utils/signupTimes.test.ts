@@ -17,6 +17,7 @@ import {
   getLotterySignupNotStarted,
   getLotterySignupStartTime,
   getPhaseGapInProgress,
+  isSameStartTime,
 } from "shared/utils/signupTimes";
 
 const friday = "2023-07-28";
@@ -709,5 +710,60 @@ describe("Signup state when the start time cannot be resolved", () => {
     // The clamps would otherwise hand back the event start time, which opens
     // sign-up for an item whose own start time is unknown
     expect(getDirectSignupStartTime(programItem).getTime()).toBeNaN();
+  });
+});
+
+// The single comparison behind isStartTimeChanged, isStartTimeMatch and the lottery mark, so
+// the parent override is applied the same way wherever "does this run at that time" is asked
+describe("isSameStartTime", () => {
+  const parentId = "test-parent-id";
+  const ownStartTime = `${friday}T14:00:00.000Z`;
+  const parentStartTime = `${friday}T12:00:00.000Z`;
+
+  test("compares the own start time when there is no parent", () => {
+    expect(isSameStartTime(ownStartTime, undefined, ownStartTime)).toEqual(
+      true,
+    );
+    expect(isSameStartTime(ownStartTime, undefined, parentStartTime)).toEqual(
+      false,
+    );
+  });
+
+  test("compares the parent start time when the parent has an override", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      startTimesByParentIds: new Map([[parentId, parentStartTime]]),
+    });
+
+    expect(isSameStartTime(ownStartTime, parentId, parentStartTime)).toEqual(
+      true,
+    );
+    expect(isSameStartTime(ownStartTime, parentId, ownStartTime)).toEqual(
+      false,
+    );
+  });
+
+  test("falls back to the own start time when the parent has no override", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      startTimesByParentIds: new Map(),
+    });
+
+    expect(isSameStartTime(ownStartTime, parentId, ownStartTime)).toEqual(true);
+  });
+
+  test("ignores sub-minute differences, since a configured time carries no milliseconds", () => {
+    expect(
+      isSameStartTime(ownStartTime, undefined, `${friday}T14:00:30.000Z`),
+    ).toEqual(true);
+  });
+
+  test("is false when either time cannot be read", () => {
+    expect(isSameStartTime("not a time", undefined, ownStartTime)).toEqual(
+      false,
+    );
+    expect(isSameStartTime(ownStartTime, undefined, "not a time")).toEqual(
+      false,
+    );
   });
 });
