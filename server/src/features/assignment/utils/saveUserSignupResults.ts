@@ -76,9 +76,9 @@ export const saveUserSignupResults = async ({
       return {
         username: result.username,
         directSignupProgramItemId: result.assignmentSignup.programItemId,
-        // assignmentTime can be parent-resolved; direct sign-ups store the parent time so a
-        // sign-up in a batched program item is found by lookups for the batch's start time
-        signedToStartTime: assignmentTime,
+        // The hour of the slot they won, which for a batched program item is not the hour its
+        // lottery ran: a spot belongs to when the attendee turns up
+        signedToStartTime: result.assignmentSignup.signedToStartTime,
         signupTime: new Date().toISOString(),
         // Sign-ups received from assignment don't have sign-up messages
         message: "",

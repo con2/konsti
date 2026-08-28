@@ -440,9 +440,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     ]);
   });
 
-  test("should store parent start time as signedToStartTime when program item has parent start time override", async () => {
-    // Direct sign-ups store the parent-resolved start time so the lottery can
-    // clean them up by matching the shared parent time
+  test("should store the own start time as signedToStartTime when program item has parent start time override", async () => {
+    // The parent batches a lottery, and a spot belongs to the hour the attendee turns up
     const parentStartTime = addHours(
       new Date(testProgramItem.startTime),
       1,
@@ -489,12 +488,11 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       await findUserDirectSignups(mockUser.username),
     );
 
-    // signedToStartTime is the parent start time, not the program item own start time
     expect(
       new Date(
         modifiedSignups[0].userSignups[0].signedToStartTime,
       ).toISOString(),
-    ).toEqual(parentStartTime);
+    ).toEqual(new Date(testProgramItem.startTime).toISOString());
   });
 
   test("should not sign too many attendees to program item", async () => {

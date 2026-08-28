@@ -13,7 +13,6 @@ import {
   getDirectSignupEndTime,
   getDirectSignupStartTime,
   getDirectSignupStarted,
-  getProgramItemStartTime,
 } from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
@@ -142,9 +141,9 @@ export const storeDirectSignup = async (
     // User-made direct sign-ups are always first-come-first-served; the priority is set
     // here rather than trusted from the request
     priority: DIRECT_SIGNUP_PRIORITY,
-    // signedToStartTime can be parent-resolved; direct sign-ups store the parent time so
-    // a sign-up in a batched program item is found by lookups for the batch's start time
-    signedToStartTime: getProgramItemStartTime(programItem),
+    // A spot belongs to the hour the attendee turns up, which for a batched program item is
+    // not the hour its lottery runs at
+    signedToStartTime: programItem.startTime,
     signupTime: timeNow.toISOString(),
   };
 
