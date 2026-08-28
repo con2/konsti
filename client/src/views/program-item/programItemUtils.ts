@@ -6,7 +6,10 @@ import { Locale } from "shared/types/locale";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { localeFor } from "shared/utils/setLocale";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
+import {
+  getProgramItemStartTime,
+  isSameStartTime,
+} from "shared/utils/signupTimes";
 import {
   getDateAndTime,
   getTime,
@@ -32,28 +35,26 @@ export const isAlreadyDirectySigned = (
   );
 };
 
-// Find the user's existing direct sign-up that occupies the same time slot as a lottery item.
-// Direct sign-ups store the parent-resolved start time, so match against that, not the item's own
-export const getDirectSignupForSlot = <T extends { signedToStartTime: string }>(
+// Matched through each sign-up's own program item rather than its stored signedToStartTime,
+// which is never rewritten when a program item moves - the server settles attendees by where a
+// program item starts now
+export const getDirectSignupForSlot = <T extends { programItem: ProgramItem }>(
   directSignups: readonly T[],
   programItem: ProgramItem,
 ): T | undefined => {
   const programItemStartTime = getProgramItemStartTime(programItem);
-  return directSignups.find(
-    (signup) => signup.signedToStartTime === programItemStartTime,
+  return directSignups.find((signup) =>
+    isSameStartTime(
+      signup.programItem.startTime,
+      signup.programItem.parentId,
+      programItemStartTime,
+    ),
   );
 };
 
-// Whether we are in event week. Bucketed in the event timezone, like the times
-// it decorates - a viewer an hour east would otherwise enter event week a day
-// early and lose the date from every heading. The locale decides which day the
-// week starts on, which for a Fri-Sun event decides whether it counts as one
-// week.
-//
-// Cached because it is the expensive part of formatting a row (a timezone-aware
-// isSameWeek costs ~65us, against ~1us without) while depending on nothing about
-// the row: every visible program item recomputes the same answer. The inputs
-// change at most once a clock tick
+// Bucketed in the event timezone so a viewer further east doesn't enter event week a day early.
+// Cached because every visible row asks the same question and the timezone-aware isSameWeek is
+// the expensive part of formatting one
 let eventWeekCache:
   | {
       timeNowMs: number;
