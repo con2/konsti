@@ -1,15 +1,11 @@
 import { TZDate, tz } from "@date-fns/tz";
-import { isSameWeek } from "date-fns";
+import { isSameMinute, isSameWeek } from "date-fns";
 import { TFunction } from "i18next";
 import { config } from "shared/config";
 import { Locale } from "shared/types/locale";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { localeFor } from "shared/utils/setLocale";
-import {
-  getProgramItemStartTime,
-  isSameStartTime,
-} from "shared/utils/signupTimes";
 import {
   getDateAndTime,
   getTime,
@@ -36,21 +32,18 @@ export const isAlreadyDirectySigned = (
 };
 
 // Matched through each sign-up's own program item rather than its stored signedToStartTime,
-// which is never rewritten when a program item moves - the server settles attendees by where a
-// program item starts now
+// which is never rewritten when a program item moves. Both sides are the hour the attendee
+// would turn up, so a batched program item's parent time does not come into it
 export const getDirectSignupForSlot = <T extends { programItem: ProgramItem }>(
   directSignups: readonly T[],
   programItem: ProgramItem,
-): T | undefined => {
-  const programItemStartTime = getProgramItemStartTime(programItem);
-  return directSignups.find((signup) =>
-    isSameStartTime(
-      signup.programItem.startTime,
-      signup.programItem.parentId,
-      programItemStartTime,
+): T | undefined =>
+  directSignups.find((signup) =>
+    isSameMinute(
+      new Date(signup.programItem.startTime),
+      new Date(programItem.startTime),
     ),
   );
-};
 
 // Bucketed in the event timezone so a viewer further east doesn't enter event week a day early.
 // Cached because every visible row asks the same question and the timezone-aware isSameWeek is

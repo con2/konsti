@@ -46,9 +46,9 @@ test("returns undefined when no direct signup occupies the slot", () => {
   ).toBeUndefined();
 });
 
-test("matches through the parent-resolved start time", () => {
-  // The lottery item is batched under a parent whose start time drives the lottery, so the
-  // slot it occupies is the parent's time rather than the item's own
+// The parent batches a lottery; it says nothing about when an attendee turns up, so a spot in a
+// batched program item occupies its own hour
+test("ignores the parent start time when matching a slot", () => {
   const parentStartTime = "2019-07-26T18:00:00.000Z";
 
   vi.spyOn(config, "event").mockReturnValue({
@@ -58,8 +58,31 @@ test("matches through the parent-resolved start time", () => {
     ]),
   });
 
+  // The held spot resolves to the same lottery as testProgramItem, but runs at another hour
   const directSignups = [
     { programItem: { ...testProgramItem2, startTime: parentStartTime } },
+  ];
+
+  expect(
+    getDirectSignupForSlot(directSignups, testProgramItem),
+  ).toBeUndefined();
+});
+
+test("matches a batched program item held at the same hour", () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, "2019-07-26T18:00:00.000Z"],
+    ]),
+  });
+
+  const directSignups = [
+    {
+      programItem: {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+      },
+    },
   ];
 
   expect(getDirectSignupForSlot(directSignups, testProgramItem)).toEqual(
@@ -68,22 +91,13 @@ test("matches through the parent-resolved start time", () => {
 });
 
 test("matches the same instant written with and without milliseconds", () => {
-  // A configured parent start time is hand-written without milliseconds, while a program
-  // item's own start time reaches the client from toISOString - the same moment, two strings
-  const parentStartTime = "2019-07-26T18:00:00Z";
-
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
-
   const directSignups = [
     {
       programItem: {
         ...testProgramItem2,
-        startTime: "2019-07-26T18:00:00.000Z",
+        startTime: new Date(testProgramItem.startTime)
+          .toISOString()
+          .replace(".000Z", "Z"),
       },
     },
   ];

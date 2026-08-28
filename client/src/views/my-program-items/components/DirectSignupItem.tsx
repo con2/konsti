@@ -89,7 +89,6 @@ export const DirectSignupItem = ({
       {isStartTimeChanged(
         signup.signedToStartTime,
         signup.programItem.startTime,
-        signup.programItem.parentId,
       ) && (
         <StyledInfoText variant={InfoTextVariant.WARNING}>
           {t("myProgramView.startingTimeChanged")}{" "}

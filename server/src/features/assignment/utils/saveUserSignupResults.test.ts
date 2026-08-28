@@ -885,3 +885,57 @@ test("should handle mixed email permissions in groups", async () => {
     "Konsti-arvonnan tulos / Results for Konsti lottery sign-up",
   );
 });
+
+// The parent batches the lottery; the spot itself belongs to the hour its attendee turns up
+test("should store the won slot's own start time on a batched program item's signup", async () => {
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: mockUser.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      // The run is keyed on the batch's time, which the stored sign-up must not take
+      assignmentTime: parentStartTime,
+      results,
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const userSignup = signups
+    .flatMap((signup) => signup.userSignups)
+    .find((signup) => signup.username === mockUser.username);
+
+  expect(new Date(userSignup?.signedToStartTime ?? "").toISOString()).toEqual(
+    new Date(testProgramItem.startTime).toISOString(),
+  );
+});
