@@ -1,10 +1,14 @@
+import { isBefore } from "date-fns";
 import { config } from "shared/config";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getDirectSignupPhaseStarted } from "shared/utils/signupTimes";
+import {
+  getDirectSignupPhaseStarted,
+  getLotterySignupEndTime,
+} from "shared/utils/signupTimes";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
@@ -43,6 +47,30 @@ const findProgramItemsTakingDirectSignups = async (
   );
 };
 
+// A lottery is not run before its sign-up window shuts either: attendees can still be entering
+// it, and the run would decide the start time behind them
+const findProgramItemsStillTakingLotterySignups = async (
+  assignmentTime: string,
+): Promise<Result<ProgramItem[], MongoDbError>> => {
+  const timeNowResult = await getTimeNow();
+  if (!timeNowResult.ok) {
+    return timeNowResult;
+  }
+
+  const programItemsResult = await findProgramItems();
+  if (!programItemsResult.ok) {
+    return programItemsResult;
+  }
+
+  return makeSuccessResult(
+    getStartingProgramItems(programItemsResult.value, assignmentTime)
+      .filter((programItem) => isLotterySignupProgramItem(programItem))
+      .filter((programItem) =>
+        isBefore(timeNowResult.value, getLotterySignupEndTime(programItem)),
+      ),
+  );
+};
+
 export const storeAssignment = async (
   assignmentTime: string,
 ): Promise<PostAssignmentResponse> => {
@@ -68,6 +96,29 @@ export const storeAssignment = async (
     };
   }
   const lateProgramItems = lateProgramItemsResult.value;
+
+  const earlyProgramItemsResult =
+    await findProgramItemsStillTakingLotterySignups(assignmentTime);
+  if (!earlyProgramItemsResult.ok) {
+    return {
+      message: "Assignment failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const earlyProgramItems = earlyProgramItemsResult.value;
+
+  if (earlyProgramItems.length > 0) {
+    logger.warn(
+      `Lottery signup still open for ${earlyProgramItems.length} program items starting at ${assignmentTime}, skip manual assignment`,
+    );
+    return {
+      message:
+        "Lottery sign-up for this starting time is still open, so its lottery cannot be run yet",
+      status: "error",
+      errorId: "lotterySignupStillOpen",
+    };
+  }
 
   if (lateProgramItems.length > 0) {
     logger.warn(

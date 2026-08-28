@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
-import { addHours, subHours } from "date-fns";
+import { addHours, addMinutes, subHours } from "date-fns";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -151,15 +151,38 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     expect(programItems[0].lotteryRanForStartTime).toBeUndefined();
   });
 
+  test("should refuse a manual assignment while lottery signup for that starting time is open", async () => {
+    // Attendees can still be entering the lottery, so a run now decides the starting time
+    // behind them - and would record its program items as already dealt with
+    const startTime = addHours(new Date(), 3).toISOString();
+    await saveProgramItems([{ ...testProgramItem, startTime }]);
+
+    const data: PostAssignmentRequest = { assignmentTime: startTime };
+    const response = await request(server)
+      .post(ApiEndpoint.ASSIGNMENT)
+      .send(data)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(200);
+    const body = response.body as PostAssignmentError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("lotterySignupStillOpen");
+
+    const programItems = unsafelyUnwrap(await findProgramItems());
+    expect(programItems[0].lotteryRanForStartTime).toBeUndefined();
+    expect(programItems[0].passedOverForLottery).toBeUndefined();
+  });
+
   test("should allow a manual assignment while the lottery for that starting time is still due", async () => {
     // The gap between a lottery and its direct signup phase is the window for re-running one
-    // that failed, so a run inside it is not late
-    await saveProgramItems([
-      { ...testProgramItem, startTime: addHours(new Date(), 3).toISOString() },
-    ]);
+    // that failed: with directSignupPhaseStart at 2h, an item starting in 1h55m had its
+    // lottery five minutes ago and opens direct sign-up in ten, so a run now is neither
+    // early nor late
+    const startTime = addMinutes(new Date(), 115).toISOString();
+    await saveProgramItems([{ ...testProgramItem, startTime }]);
 
     const data: PostAssignmentRequest = {
-      assignmentTime: addHours(new Date(), 3).toISOString(),
+      assignmentTime: startTime,
     };
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
