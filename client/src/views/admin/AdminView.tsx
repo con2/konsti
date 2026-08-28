@@ -121,7 +121,12 @@ export const AdminView = (): ReactElement => {
   const [chosenAssignmentTime, setChosenAssignmentTime] = useState<
     string | null
   >(null);
-  const selectedAssignmentTime = chosenAssignmentTime ?? nextAssignmentTime;
+  // Dropped once the programme no longer offers it, so the select cannot show one starting
+  // time while the button posts another
+  const selectedAssignmentTime =
+    chosenAssignmentTime !== null && startTimes.includes(chosenAssignmentTime)
+      ? chosenAssignmentTime
+      : nextAssignmentTime;
   const [testEmail, setTestEmail] = useState<string>("");
   const [testProgramId, setTestProgramId] = useState<string>("");
   // Transient (not persisted): when on, test buttons for disabled triggers are blocked
