@@ -189,6 +189,47 @@ test("Admin sees signup questions listed", async ({ page, request }) => {
   ).toBeVisible();
 });
 
+test("Preselect the next starting time whose lottery can still be run", async ({
+  page,
+  request,
+}) => {
+  // The first slot's direct signup is already open at event start, so its lottery can no
+  // longer be run. During an event most of the list is behind that line, which is why the
+  // earliest starting time is a poor default
+  const pastStartTime = hoursIntoEvent(1);
+  const nextStartTime = hoursIntoEvent(4);
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(
+    request,
+    [pastStartTime, nextStartTime].map((startTime, index) => ({
+      ...testProgramItem,
+      programItemId: `lottery-time-item-${index}`,
+      parentId: `lottery-time-item-${index}`,
+      title: `Lottery time item ${index}`,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+    })),
+  );
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await login(page, request, { username: "admin", password: "test" });
+
+  const adminPage = new AdminPage(page);
+
+  await page.goto("/");
+  await adminPage.open();
+
+  await expect(adminPage.assignmentTimeSelect).toHaveValue(nextStartTime);
+
+  // The starting time that has gone by is still there to be picked deliberately
+  await expect(
+    adminPage.assignmentTimeSelect.locator(`option[value="${pastStartTime}"]`),
+  ).toHaveCount(1);
+});
+
 test("Admin can trigger an assignment run", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
 
