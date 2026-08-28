@@ -1,8 +1,8 @@
 import { first, groupBy, shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
+import { isSameStartTime } from "shared/utils/signupTimes";
 import { Group } from "server/types/assignmentTypes";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 
 export const getGroups = (
@@ -33,10 +33,10 @@ export const getGroups = (
           return false;
         }
 
-        return isStartTimeMatch(
-          lotterySignup.signedToStartTime,
-          assignmentTime,
+        return isSameStartTime(
+          programItem.startTime,
           programItem.parentId,
+          assignmentTime,
         );
       },
     );

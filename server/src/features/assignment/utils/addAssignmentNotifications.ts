@@ -13,7 +13,6 @@ import { getStartingProgramItems } from "server/features/assignment/utils/getSta
 import { findDirectSignupsByStartTimes } from "server/features/direct-signup/directSignupRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 import {
   NotificationQueueService,
@@ -67,18 +66,13 @@ export const addAssignmentNotifications = async ({
   // did consider them and really did not place them
   const lotterySignups = getLotterySignups([...groupCreators, ...groupMembers]);
 
-  const lotterySignupsForStartingTime = lotterySignups.filter(
-    (lotterySignup) => {
-      const programItem = startingProgramItems.find(
-        (startingProgramItem) =>
-          startingProgramItem.programItemId === lotterySignup.programItemId,
-      );
-      return isStartTimeMatch(
-        lotterySignup.signedToStartTime,
-        assignmentTime,
-        programItem?.parentId,
-      );
-    },
+  // A sign-up naming a program item that does not start at this time was not part of this run,
+  // so its holder is neither placed nor rejected by it
+  const startingProgramItemIds = new Set(
+    startingProgramItems.map((programItem) => programItem.programItemId),
+  );
+  const lotterySignupsForStartingTime = lotterySignups.filter((lotterySignup) =>
+    startingProgramItemIds.has(lotterySignup.programItemId),
   );
 
   const lotterySignupUsernames = unique(

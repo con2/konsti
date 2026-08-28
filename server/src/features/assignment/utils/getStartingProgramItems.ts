@@ -1,5 +1,5 @@
 import { ProgramItem } from "shared/types/models/programItem";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
+import { isSameStartTime } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 
 export const getStartingProgramItems = (
@@ -9,10 +9,10 @@ export const getStartingProgramItems = (
   logger.debug("Get starting program items");
 
   const startingProgramItems = programItems.filter((programItem) => {
-    return isStartTimeMatch(
+    return isSameStartTime(
       programItem.startTime,
-      startTime,
       programItem.parentId,
+      startTime,
     );
   });
 

@@ -1,10 +1,10 @@
 import { first } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
+import { isSameStartTime } from "shared/utils/signupTimes";
 import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ListItem } from "server/types/assignmentTypes";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 
 interface GetListParams {
@@ -39,10 +39,10 @@ export const getList = ({
         if (!programItem) {
           return false;
         }
-        return isStartTimeMatch(
-          lotterySignup.signedToStartTime,
-          assignmentTime,
+        return isSameStartTime(
+          programItem.startTime,
           programItem.parentId,
+          assignmentTime,
         );
       })
       .map((lotterySignup) => {
