@@ -327,15 +327,32 @@ const findSignupsNotSaved = async (
 
   const notSaved = Object.values(signupsByProgramItems)
     .flat()
-    .filter(
-      (signup) =>
-        !alreadyDroppedKeys.has(
+    .filter((signup) => {
+      if (
+        alreadyDroppedKeys.has(
           `${signup.directSignupProgramItemId}:${signup.username}`,
-        ) &&
-        !savedUsernamesByProgramItemId
-          .get(signup.directSignupProgramItemId)
-          ?.has(signup.username),
-    );
+        )
+      ) {
+        return false;
+      }
+
+      const savedUsernames = savedUsernamesByProgramItemId.get(
+        signup.directSignupProgramItemId,
+      );
+      if (!savedUsernames) {
+        // The read skipped the whole document, so this says nothing about whether the write
+        // landed - and the write is what created it. Reporting them dropped would tell
+        // attendees holding a spot that they got none, which choice 5 makes permanent
+        logger.error(
+          new Error(
+            `Could not verify the assignment signups saved to program item ${signup.directSignupProgramItemId}, treating them as saved`,
+          ),
+        );
+        return false;
+      }
+
+      return !savedUsernames.has(signup.username);
+    });
 
   if (notSaved.length > 0) {
     logger.error(
