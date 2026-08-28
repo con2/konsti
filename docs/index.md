@@ -3,6 +3,7 @@
 ## English
 
 - [Terminology](terminology.md) — Canonical glossary of domain terms
+- [Lottery Design Choices](en/lottery-design-choices.md) - The rules the lottery is built around, and what follows from them
 - [Datafiles Guide](en/datafiles-guide.md) — How to read and use the database dump files for statistics
 - [Statistics](statistics.md) — Aggregated statistics derived from past-event database dumps
 - [Adding New Domains](en/adding-new-domains.md) — Steps for adding a new konsti.example.com domain

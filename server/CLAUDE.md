@@ -110,9 +110,86 @@ There is **no application-level rate limiting**. This is intentional:
 
 Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and random (`eventassigner-random`), under `server/src/features/assignment/`. Assignment runs automatically on a cron schedule; admins can trigger manual runs as a backup. Users submit weighted preferences during sign-up windows defined per-event in `shared/config/`. The orchestrator (`run-assignment/`) cleans up invalid sign-ups before running (see below).
 
+**The lottery for a start time runs once**, enforced at three scopes:
+
+- Per program item, `runAssignment` filters out anything carrying `lotteryRanForStartTime` - the
+  start time a program item was lotteried for, written by the assignment and left out of
+  `saveProgramItems`' update object so a Kompassi import can't clear it, exactly like `popularity`.
+  When every starting item is marked the run returns `ALREADY_LOTTERIED` without touching anything.
+  The stored value is a time rather than a flag so `hasLotteryAlreadyRun` can tell a **rescheduled**
+  item from one still sitting where it was lotteried, which is what the program item page and
+  `storeLotterySignup` key on.
+- Per program item, `runAssignment` also skips anything that already holds sign-ups, and marks it
+  anyway so cancelling them can't put it back. `partition` splits those only to log which way it
+  broke: a lottery-placed sign-up means a run got past its critical write and stopped before
+  marking it, a first-come one means the item has been taking direct sign-ups by another route.
+  Both are skips rather than run-level failures, so one slipped program item costs its own lottery
+  and not the whole hour's. `getPassedOverProgramItems` normally gets to the second case first
+  (see below), leaving this as the backstop.
+- Per run, `storeAssignment` refuses once direct sign-up has opened for the start time requested
+  (`directSignupAlreadyOpen`). It lives there rather than in `runAssignment` because only a manual
+  run can be late - the cron derives its start time from the current time - and because every item
+  in a run shares a start time, making lateness a property of the run. Note this re-adds the guard
+  reverted in July 2026; the reason for that revert was that the re-run logic was about to be
+  reworked, which is what this is.
+
+**The rules the lottery is built around are written down in
+[`docs/en/lottery-design-choices.md`](../docs/en/lottery-design-choices.md)** - a group lands in one
+program item or none, direct sign-ups are never deleted automatically without cause, a lottery win
+overwrites a previous direct sign-up, holding a direct sign-up doesn't keep an attendee out of the
+lottery, a start time is lotteried once, and a program item is empty when it is lotteried. Read
+those before changing anything below; this section is how they are implemented, not why they hold.
+
+**Write order is criticality order.** `saveResults` owns it: `saveUserSignupResults` saves the spots
+(one `bulkWrite`, the only write anybody depends on), then `saveLotteryRanForStartTime` closes the
+start time, then the notifications and the stored snapshot, both of which log their failures instead
+of returning them. A run that returns an error therefore either wrote nothing - safe to run again -
+or wrote the spots and failed afterwards, which the sign-up check above refuses.
+
+**No spot keeps its holder out of a run**, whoever gave it to them, so nothing filters attendees
+before the algorithm sees them. `getRandomAndPadgInput` expands each group and hands the whole lot
+over; `getAttendeeGroups` makes individuals groups of one so the group stays the unit throughout.
+`dropResultsThatDoNotFit` in `saveUserSignupResults` drops a whole group at a time for the same
+reason, and runs **before** anything is deleted so a sign-up is never removed for a replacement that
+doesn't land.
+
+Protecting a lottery-placed spot from being overwritten was built and removed. It only ever applied
+to a program item rescheduled onto a slot its attendees had sign-ups for, where the attendee had
+never ranked the two against each other - and it withdrew an entire group whenever one member still
+held such a spot, since competing a member short would split the group.
+
+Taking part also means hearing the outcome: an attendee the lottery doesn't place gets the usual "no
+spot" message even while holding a sign-up of their own at that start time. That reads oddly at
+first, but it is accurate - the lottery considered them and didn't place them - and for a group
+member it is the only signal that their group missed out, since they entered through the creator's
+sign-ups.
+
+An attendee may hold a direct sign-up and a lottery sign-up for the same start time, in either
+order: neither `storeLotterySignup` nor `storeDirectSignup` cancels the other. If the run places
+them, the spot they win replaces the one they held; if not, what they signed up for themselves
+stands. `LotterySignupForm` says so before they confirm.
+
+One route is left open on purpose: rescheduling a program item someone holds a spot in onto a slot
+they have lottery sign-ups for. `updateMovedProgramItems` cancels the moved item's own lottery
+sign-ups and notifies, but leaves the ones it landed on alone - the attendee didn't cause the move,
+and re-adding a lottery sign-up is impossible once the sign-up window has closed. The run then
+treats that spot like any other.
+
+One consequence worth knowing: because the lottery never revisits a start time, a program item left
+below `minAttendance` by cancellations stays there, and lowering `maxAttendance` below the number of
+attendees already in it leaves it over its new limit. Neither self-corrects, and re-running is not
+the remedy - the ops answer to a lottery that went wrong, once its direct sign-up phase has opened,
+is the admin message plus direct sign-up. The clock gate above is what holds admins to that.
+
+**The assignment's event log is append-only** - see "an event log item is never deleted, and what it says never changes" in [`docs/en/lottery-design-choices.md`](../docs/en/lottery-design-choices.md). Nothing here removes or rewrites an item, and nothing needs to: `addAssignmentNotifications` runs after the spots are saved for a start time that is decided exactly once, so each attendee hears about that start time once. That is why there is no de-duplication of rejections and no follow-up notice explaining a second message - both existed while re-runs did, and went with them.
+
 **Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, sign-up cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
 
 The fixtures and both algorithms draw from randomness (faker, `n()`, and the PADG list shuffle, all through `Math.random`), so a test asserting a fixed result count must call `seedRandomness()` from `src/test/utils/` before `generateTestData`. It seeds faker too, which is why per-test database names come from `randomUUID()` rather than faker - seeded, every test in a file would otherwise draw the same name and share one database.
+
+## Program Item Changes That Take It Out Of The Lottery
+
+`saveProgramItems` calls `getPassedOverProgramItems` **before** its bulk write. A lottery program item that already holds direct sign-ups is not going to be lotteried (see "a program item is empty when it is lotteried" in [`docs/en/lottery-design-choices.md`](../docs/en/lottery-design-choices.md)), so `lotteryRanForStartTime` is folded into that same `updateOne` — the item is never stored as a lottery item without the mark, so there is no window in which it can be offered as one. `removePassedOverLotterySignups` then cancels any lottery sign-ups it carries with `PROGRAM_ITEM_NO_LOTTERY_ANYMORE`; those can only come from an earlier spell as a lottery program item, since the marked item never accepted one. Marking rather than re-reading the sign-up count is what keeps the decision after those sign-ups are cancelled; it only happens while the item's own lottery is still ahead, since marking one whose sign-up window has shut changes nothing observable. Reached only through a program item becoming a lottery one after taking sign-ups as something else — direct sign-up for a lottery program item opens after its lottery, so it cannot happen the ordinary way. Such an item keeps direct sign-up open from that moment (choice 10), rather than closing it against the two-phase schedule it has just landed on.
 
 ## Program Item Cancellation Types
 
@@ -132,7 +209,7 @@ Cleanup rules (admin-import path, `notify: true`):
 | SignupType change  | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep            |
 | ProgramType change | Preserve if lottery already ran, otherwise remove + notify | Keep (no notify) | Keep            |
 
-Lottery sign-up cleanup lives in `removeCancelledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `timeNow >= getLotterySignupEndTime(programItem)`. Direct sign-up cleanup lives in `handleCancelledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct sign-ups for programType-only changes because the item still exists and still uses Konsti sign-up (direct sign-up remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct sign-up for the same item, so there's no double notification.
+Lottery sign-up cleanup lives in `removeCancelledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `timeNow >= getLotterySignupEndTime(programItem)`. **Because those sign-ups are preserved, the assignment has to exclude cancelled program items itself** - `isAssignableProgramItem` in `prepareAssignmentParams` requires `State.ACCEPTED`, without which a re-run would place attendees into a program item that isn't happening. Direct sign-up cleanup lives in `handleCancelledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct sign-ups for programType-only changes because the item still exists and still uses Konsti sign-up (direct sign-up remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct sign-up for the same item, so there's no double notification.
 
 Each case emits its own event log action so the user sees a case-specific message: **Cancelled** uses `PROGRAM_ITEM_CANCELLED`, **Deleted** uses `PROGRAM_ITEM_DELETED`, **SignupType change** uses `PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE`, and **ProgramType change** uses `PROGRAM_ITEM_NO_LOTTERY_ANYMORE` (enum in `shared/types/models/eventLog.ts`, rendered client-side by the matching `EventLogProgramItem*` components and `eventLogActions.*` locale keys). The lottery path picks the action via the `getCancellationAction` classifier; the direct-signup path routes each bucket through `notifyUsersWithDirectSignups` with the matching action.
 
@@ -149,6 +226,15 @@ When writing `signedToStartTime` for sign-ups, follow the lottery-vs-direct spli
 - **Email notifications:** queued through `utils/notificationQueue.ts` (a `fastq` queue) and sent via `nodemailer`.
 - **Security & static serving:** `helmet` for headers; the SPA in `server/front/` is served with `express-static-gzip` (brotli/gzip). Cache policy: files served from the bundle's `assets/` directory get a one-year immutable `Cache-Control`, everything else (`index.html`, `robots.txt`, the SPA fallback) gets `no-cache`. Clients therefore revalidate the HTML on every load but keep old chunks cached across deploys, so a stale page still finds its matching chunks instead of fetching deleted files. The rule keys on the directory rather than the shape of the filename because a name alone is ambiguous - an ordinary hyphenated name is indistinguishable from a hashed one - and the directory is matched relative to the served root, so an `assets` directory somewhere above it can't widen the rule.
 - **Mongoose conventions:** global plugins in `db/mongoosePlugins.ts` (lean getters/virtuals via `mongoose-lean-getters`/`mongoose-lean-virtuals`, `toJSON` transforms that strip `_id`/`__v`). Mongoose applies global plugins at model-compile time, so **every file calling `mongoose.model()` imports `server/db/mongoosePlugins` for its side effect as its first import** — a model compiled before that module runs silently loses the plugins, and DB reads/writes then fail in ways that look unrelated. Add that import to any new schema file rather than relying on some other module having pulled it in first. Connection lifecycle in `db/mongodb.ts`. Dates are `Date`, handled with date-fns (see [shared/CLAUDE.md](../shared/CLAUDE.md)).
+
+  Two update-shape rules worth knowing. Both raise a real error, but every repository wraps its query in `try`/`catch` and returns an error `Result`, so what you actually observe is a write that didn't happen and one log line — not a stack trace:
+
+  - **A `$pull` whose condition uses query operators needs `{ runValidators: false }`.** `mongoose.set("runValidators", true)` is global, and update validators read the operator object (`{$gte, $lt}`) as a document to validate, rejecting it for the fields it doesn't contain. A `$pull` only removes array entries, so there is nothing to validate.
+  - **Aggregation pipeline updates need `{ updatePipeline: true }` outside `bulkWrite`.** `bulkWrite` accepts an array `update` as a pipeline natively; `findOneAndUpdate`/`updateMany` throw `Cannot pass an array to query updates unless the 'updatePipeline' option is set` without it.
+
+  Inside a pipeline, **interpolated values need `$literal`**. A bare string is an expression: a username like `$admin` is read as a field path and matches nothing, where the same value in query language (`$pull`, `find`) is a literal. Usernames are validated for length only, so this is reachable input, not a hypothetical.
+
+- **Sign-up `count` is derived from `userSignups`, and the attendance limit is enforced by the write.** `count` gates the direct sign-up endpoint (`count: { $lt: maxAttendance }`), so drift makes a program item report itself full to real users for the rest of the event. The removal paths and the bulk assignment write recompute it in the same atomic pipeline (`$set: { count: { $size: "$userSignups" } }`) rather than adjusting it by hand — a `$pull` can remove more than one entry, so an `$inc: -1` beside it would be wrong with nothing to correct it. `saveDirectSignup`, the single user-facing sign-up, is the exception: its filter already proves the user is absent and the program item has room, so its `$inc: { count: 1 }` is exact. The assignment write also caps the array with `$slice` at `maxAttendance`, because its capacity figure comes from an earlier round-trip and a first-come-first-served sign-up can land in between.
 
 ## Database
 
