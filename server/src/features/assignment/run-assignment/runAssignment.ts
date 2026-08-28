@@ -7,6 +7,7 @@ import {
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { hasLotteryAlreadyRun } from "shared/utils/signupTimes";
 import { getDynamicStartTime } from "server/features/assignment/utils/getDynamicStartTime";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
@@ -15,7 +16,10 @@ import { removeOverlapLotterySignups } from "server/features/assignment/utils/re
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
 import { saveResults } from "server/features/assignment/utils/saveResults";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  savePassedOverForLottery,
+} from "server/features/program-item/programItemRepository";
 import { findUsers } from "server/features/user/userRepository";
 import {
   AssignmentResult,
@@ -108,13 +112,33 @@ export const runAssignment = async ({
       programItem.passedOverForLottery !== true,
   );
 
+  // A start time goes through one lottery, so one program item already carrying the mark closes
+  // it for all of them: anything that arrived afterwards - newly imported, or moved onto this
+  // slot - joins it on direct sign-up rather than reopening the hour among whoever signed up
+  // since. Recorded as passed over so that stays true once their sign-ups change
+  const lotteriedHere = startingLotteryProgramItems.some(
+    (programItem) =>
+      programItem.lotteryRanForStartTime !== undefined &&
+      // Marked for a slot it no longer starts at means it was lotteried elsewhere and moved
+      // onto this one, which says nothing about whether this start time has had its lottery
+      !hasLotteryAlreadyRun(programItem),
+  );
+
   if (
     startingLotteryProgramItems.length > 0 &&
-    notYetLotteriedProgramItems.length === 0
+    (lotteriedHere || notYetLotteriedProgramItems.length === 0)
   ) {
     logger.info(
-      `Every program item starting at ${resolvedAssignmentTime} has already been lotteried, stop`,
+      `Start time ${resolvedAssignmentTime} has already been lotteried, stop`,
     );
+    const passedOverResult = await savePassedOverForLottery(
+      notYetLotteriedProgramItems.map(
+        (programItem) => programItem.programItemId,
+      ),
+    );
+    if (!passedOverResult.ok) {
+      return passedOverResult;
+    }
     return makeSuccessResult({
       results: [],
       message: `${assignmentAlgorithm} Assignment Result - Lottery has already been run for this start time`,

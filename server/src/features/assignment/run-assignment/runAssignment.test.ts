@@ -31,7 +31,10 @@ import {
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { EmailSender } from "server/features/notifications/email";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItemById,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { findResults } from "server/features/results/resultsRepository";
 import { saveSettings } from "server/features/settings/settingsRepository";
@@ -1345,6 +1348,66 @@ describe("The lottery for a start time runs once", () => {
     expect(
       user?.eventLogItems.map((eventLogItem) => eventLogItem.action),
     ).toEqual([]);
+  });
+
+  test("does not reopen a lotteried start time for a program item added afterwards", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // A start time goes through one lottery. A program item imported after it has run joins the
+    // hour on direct sign-up rather than starting a second lottery among whoever signed up since
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
+    ]);
+    await saveUser(mockUser);
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    // A second program item turns up at the same hour, and somebody enters its lottery
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
+      {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        minAttendance: 1,
+        maxAttendance: 3,
+      },
+    ]);
+    await saveUser(mockUser2);
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [
+        {
+          ...mockLotterySignups[1],
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      ],
+    });
+
+    const secondRun = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(secondRun.status).toEqual(AssignmentResultStatus.ALREADY_LOTTERIED);
+    expect(secondRun.results).toHaveLength(0);
+
+    // The newcomer is recorded, so emptying it cannot put it into a lottery later either
+    const programItem = unsafelyUnwrap(
+      await findProgramItemById(testProgramItem2.programItemId),
+    );
+    expect(programItem.passedOverForLottery).toEqual(true);
   });
 
   test("keeps a skipped program item on direct sign-up once its sign-ups are cancelled", async () => {
