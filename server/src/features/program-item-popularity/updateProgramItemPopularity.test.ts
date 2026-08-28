@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
-import { addHours, subMinutes } from "date-fns";
+import { addHours, subHours, subMinutes } from "date-fns";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import {
@@ -34,7 +34,11 @@ afterEach(async () => {
 });
 
 test("Should update program item popularity", async () => {
-  vi.setSystemTime(testProgramItem.startTime);
+  // Inside the lottery sign-up window: popularity measures demand for the lottery, so it is
+  // only simulated while that is still ahead
+  vi.setSystemTime(
+    subHours(new Date(testProgramItem.startTime), 3).toISOString(),
+  );
 
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -110,7 +114,7 @@ test("Should only update program item popularity of upcoming program items", asy
     {
       ...testProgramItem2,
       minAttendance: 1,
-      startTime: addHours(new Date(testProgramItem.startTime), 2).toISOString(),
+      startTime: addHours(new Date(testProgramItem.startTime), 4).toISOString(),
     },
   ]);
   await saveUser(mockUser);
@@ -136,7 +140,7 @@ test("Should only update program item popularity of upcoming program items", asy
         priority: 1,
         signedToStartTime: addHours(
           new Date(testProgramItem.startTime),
-          2,
+          4,
         ).toISOString(),
       },
     ],
@@ -181,8 +185,8 @@ test("Should update popularity of upcoming program item with parent", async () =
     new Date(testProgramItem.startTime),
     1,
   ).toISOString();
-  const parentStartTime = addHours(new Date(timeNow), 1).toISOString();
-  const upcomingStartTime = addHours(new Date(timeNow), 2).toISOString();
+  const parentStartTime = addHours(new Date(timeNow), 3).toISOString();
+  const upcomingStartTime = addHours(new Date(timeNow), 4).toISOString();
 
   vi.setSystemTime(timeNow);
   vi.spyOn(config, "event").mockReturnValue({
@@ -286,6 +290,43 @@ test("Should not update upcoming program item popularity if parent starTime in p
 
   const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
 
+  expect(updatedProgramItems).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        programItemId: testProgramItem.programItemId,
+        popularity: Popularity.NULL,
+      }),
+    ]),
+  );
+});
+
+test("Should not update popularity once the lottery sign-up has closed", async () => {
+  // Between the lottery running and the program item starting, the figures popularity is
+  // derived from no longer mean demand: capacity is reduced by the spots just handed out
+  // while every attendee still competes for what is left. A start time is never simulated
+  // again once it has passed, so a value written here would be the one kept for good
+  const timeNow = subMinutes(
+    new Date(testProgramItem.startTime),
+    60,
+  ).toISOString();
+  vi.setSystemTime(timeNow);
+
+  await saveProgramItems([{ ...testProgramItem, minAttendance: 1 }]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    lotterySignups: [
+      {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    ],
+    username: mockUser.username,
+  });
+
+  await updateProgramItemPopularity();
+
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
   expect(updatedProgramItems).toEqual(
     expect.arrayContaining([
       expect.objectContaining({
