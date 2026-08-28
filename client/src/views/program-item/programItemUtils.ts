@@ -1,11 +1,12 @@
 import { TZDate, tz } from "@date-fns/tz";
-import { isSameMinute, isSameWeek } from "date-fns";
+import { isSameWeek } from "date-fns";
 import { TFunction } from "i18next";
 import { config } from "shared/config";
 import { Locale } from "shared/types/locale";
 import { ProgramItem, Tag } from "shared/types/models/programItem";
 import { DirectSignup, LotterySignup } from "shared/types/models/user";
 import { localeFor } from "shared/utils/setLocale";
+import { isSameTime } from "shared/utils/timeComparison";
 import {
   getDateAndTime,
   getTime,
@@ -39,10 +40,7 @@ export const getDirectSignupForSlot = <T extends { programItem: ProgramItem }>(
   programItem: ProgramItem,
 ): T | undefined =>
   directSignups.find((signup) =>
-    isSameMinute(
-      new Date(signup.programItem.startTime),
-      new Date(programItem.startTime),
-    ),
+    isSameTime(signup.programItem.startTime, programItem.startTime),
   );
 
 // Bucketed in the event timezone so a viewer further east doesn't enter event week a day early.

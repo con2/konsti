@@ -1,10 +1,10 @@
-import { isSameMinute } from "date-fns";
 import { countBy, groupBy, unique } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { User } from "shared/types/models/user";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { isSameTime } from "shared/utils/timeComparison";
 import {
   delDirectSignups,
   findDirectSignupsByStartTimes,
@@ -79,10 +79,7 @@ export const saveUserSignupResults = async ({
         return (
           signup.username === result.username &&
           heldStartTime !== undefined &&
-          isSameMinute(
-            new Date(heldStartTime),
-            new Date(result.assignmentSignup.signedToStartTime),
-          )
+          isSameTime(heldStartTime, result.assignmentSignup.signedToStartTime)
         );
       })
       .map((signup) => ({

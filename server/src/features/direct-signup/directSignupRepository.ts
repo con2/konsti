@@ -1,4 +1,3 @@
-import { isSameMinute } from "date-fns";
 import { AnyBulkWriteOperation } from "mongoose";
 import { first, groupBy, shuffle } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
@@ -8,6 +7,7 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { isSameTime } from "shared/utils/timeComparison";
 import {
   DirectSignupSchemaDb,
   SignupModel,
@@ -128,7 +128,7 @@ export const findDirectSignupsByStartTimes = async (
   const programItemsIds = programItems
     .filter((programItem) =>
       startTimes.some((startTime) =>
-        isSameMinute(new Date(programItem.startTime), new Date(startTime)),
+        isSameTime(programItem.startTime, startTime),
       ),
     )
     .map((programItem) => programItem.programItemId);

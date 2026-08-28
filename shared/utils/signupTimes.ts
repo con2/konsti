@@ -4,7 +4,6 @@ import {
   addMinutes,
   getHours,
   isBefore,
-  isSameMinute,
   subDays,
   subHours,
   subMinutes,
@@ -16,6 +15,7 @@ import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeek
 import {
   isSameOrAfter,
   isSameOrBefore,
+  isSameTime,
   isWithinMinutes,
 } from "shared/utils/timeComparison";
 import { TIMEZONE } from "shared/utils/timezone";
@@ -113,10 +113,7 @@ export const isSameStartTime = (
   parentId: string | undefined,
   comparedTime: string,
 ): boolean =>
-  isSameMinute(
-    new Date(resolveStartTime(parentId, programItemStartTime)),
-    new Date(comparedTime),
-  );
+  isSameTime(resolveStartTime(parentId, programItemStartTime), comparedTime);
 
 // Marked for a slot it no longer starts at: its lottery ran and a reschedule moved it, so it
 // does not go into another one

@@ -1,10 +1,10 @@
-import { isSameMinute } from "date-fns";
 import { partition } from "remeda";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
+import { isSameTime } from "shared/utils/timeComparison";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const getAssignmentBonus = (
@@ -26,7 +26,7 @@ export const getAssignmentBonus = (
   ];
   const isCurrentAssignment = (startTime: string): boolean =>
     currentStartTimes.some((currentStartTime) =>
-      isSameMinute(new Date(startTime), new Date(currentStartTime)),
+      isSameTime(startTime, currentStartTime),
     );
 
   // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
