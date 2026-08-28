@@ -1410,6 +1410,42 @@ describe("The lottery for a start time runs once", () => {
     expect(programItem.passedOverForLottery).toEqual(true);
   });
 
+  test("writes no results record when every program item was skipped", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+
+    // A run that put nothing through a lottery decided nothing, and a record for it would read
+    // as a lottery that ran - the attendees still hear the outcome
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    });
+    await saveLotterySignups({
+      username: mockUser2.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(unsafelyUnwrap(await findResults())).toHaveLength(0);
+
+    // They took part, so they still hear that they got nothing
+    const user2 = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(
+      user2?.eventLogItems.map((eventLogItem) => eventLogItem.action),
+    ).toEqual([EventLogAction.NO_ASSIGNMENT]);
+  });
+
   test("keeps a skipped program item on direct sign-up once its sign-ups are cancelled", async () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 

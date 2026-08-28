@@ -42,20 +42,14 @@ export const saveResults = async ({
 }: SaveResultsParams): Promise<
   Result<readonly UserAssignmentResult[], MongoDbError>
 > => {
-  // The lottery runs on a timer, so most runs find nothing to lottery: no spots to save, no
-  // start time to close, and no record worth writing
-  if (lotteriedProgramItemIds.length === 0) {
+  // The lottery runs on a timer, so most runs reach a start time with nothing to do at all
+  if (
+    lotteriedProgramItemIds.length === 0 &&
+    passedOverProgramItemIds.length === 0
+  ) {
     logger.info(
       `Assignment ${assignmentTime}: nothing was lotteried, nothing to save`,
     );
-    // A program item the run found occupied is still recorded, so emptying it cannot put it
-    // back into a lottery
-    const passedOverResult = await savePassedOverForLottery(
-      passedOverProgramItemIds,
-    );
-    if (!passedOverResult.ok) {
-      return passedOverResult;
-    }
     return makeSuccessResult([]);
   }
 
@@ -71,9 +65,9 @@ export const saveResults = async ({
   }
   const finalResults = saveUserSignupResultsResult.value;
 
-  // Mark every program item this run covered, placed or not: their lottery has happened. Written
-  // only once the spots exist, because nothing clears the mark - marking before a failed save
-  // would strand them out of the lottery with nobody placed
+  // The program items that went through the lottery, placed or not: their lottery has happened.
+  // Written only once the spots exist, because nothing clears the mark - marking before a
+  // failed save would strand them out of the lottery with nobody placed
   const saveLotteryRanResult = await saveLotteryRanForStartTime(
     lotteriedProgramItemIds,
     assignmentTime,
@@ -98,14 +92,18 @@ export const saveResults = async ({
     programItems,
   });
 
-  await storeResultsSnapshot({
-    results: finalResults,
-    assignmentTime,
-    algorithm,
-    message,
-    users,
-    programItems,
-  });
+  // Recorded only when a program item actually went through a lottery. A run that skipped
+  // every one of them decided nothing, and a record for it would read as a lottery that ran
+  if (lotteriedProgramItemIds.length > 0) {
+    await storeResultsSnapshot({
+      results: finalResults,
+      assignmentTime,
+      algorithm,
+      message,
+      users,
+      programItems,
+    });
+  }
 
   return makeSuccessResult(finalResults);
 };

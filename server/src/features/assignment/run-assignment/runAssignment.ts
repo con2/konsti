@@ -209,8 +209,7 @@ export const runAssignment = async ({
     message: assignResults.message,
     users: validLotterySignupsUsers,
     programItems,
-    // Every program item this run reached, so the ones it skipped are recorded too
-    lotteriedProgramItemIds: notYetLotteriedProgramItems.map(
+    lotteriedProgramItemIds: emptyProgramItems.map(
       (programItem) => programItem.programItemId,
     ),
     // The occupied ones are recorded as passed over rather than lotteried, which is what they
