@@ -105,6 +105,16 @@ export const saveProgramItems = async (
     passedOverProgramItems.map((programItem) => programItem.programItemId),
   );
 
+  // Done before the decision is stored, so a failure here leaves the program item undecided and
+  // the next import tries again. Recording it first and failing after would strand the sign-ups
+  // for good: the item would be filtered out as already decided every time from then on
+  const removeLotterySignupsResult = await removePassedOverLotterySignups(
+    passedOverProgramItems,
+  );
+  if (!removeLotterySignupsResult.ok) {
+    return removeLotterySignupsResult;
+  }
+
   const bulkOps = updatedProgramItems.map((programItem) => {
     const newProgramItem: Omit<
       ProgramItem,
@@ -203,9 +213,7 @@ export const saveProgramItems = async (
     }
   }
 
-  // The mark itself went in with the write above; what is left is telling the attendees who
-  // signed up to a lottery that is not going to take this program item
-  return await removePassedOverLotterySignups(passedOverProgramItems);
+  return makeSuccessResult();
 };
 
 export const findProgramItems = async (): Promise<
