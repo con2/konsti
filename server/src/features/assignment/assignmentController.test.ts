@@ -1,8 +1,10 @@
 import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
+import { addHours, subHours } from "date-fns";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   PostAssignmentError,
   PostAssignmentRequest,
@@ -11,9 +13,14 @@ import {
 import { UserGroup } from "shared/types/models/user";
 import { EmailSender } from "server/features/notifications/email";
 import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
+import {
   acquireAssignmentLock,
   findOrCreateSettings,
 } from "server/features/settings/settingsRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { getJWT } from "server/utils/jwt";
 import {
   createNotificationQueueService,
@@ -117,6 +124,50 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentResponse;
     expect(body.status).toEqual("success");
+  });
+
+  test("should refuse a manual assignment once direct signup for that starting time is open", async () => {
+    // A lottery run after the direct signup phase opens competes with the first-come queue
+    // and moves attendees out of spots they picked themselves
+    await saveProgramItems([
+      { ...testProgramItem, startTime: subHours(new Date(), 1).toISOString() },
+    ]);
+
+    const data: PostAssignmentRequest = {
+      assignmentTime: subHours(new Date(), 1).toISOString(),
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.ASSIGNMENT)
+      .send(data)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(200);
+    const body = response.body as PostAssignmentError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("directSignupAlreadyOpen");
+
+    // Nothing was lotteried, so the program item can still take direct signups
+    const programItems = unsafelyUnwrap(await findProgramItems());
+    expect(programItems[0].lotteryRanForStartTime).toBeUndefined();
+  });
+
+  test("should allow a manual assignment while the lottery for that starting time is still due", async () => {
+    // The gap between a lottery and its direct signup phase is the window for re-running one
+    // that failed, so a run inside it is not late
+    await saveProgramItems([
+      { ...testProgramItem, startTime: addHours(new Date(), 3).toISOString() },
+    ]);
+
+    const data: PostAssignmentRequest = {
+      assignmentTime: addHours(new Date(), 3).toISOString(),
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.ASSIGNMENT)
+      .send(data)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(200);
+    expect((response.body as PostAssignmentResponse).status).toEqual("success");
   });
 
   test("should release the lock after a run so a subsequent run is not blocked", async () => {

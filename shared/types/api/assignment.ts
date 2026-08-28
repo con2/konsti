@@ -17,7 +17,7 @@ interface PostAssignmentResult extends ApiResult {
 }
 
 export interface PostAssignmentError extends ApiError {
-  errorId: "unknown" | "assignmentInProgress";
+  errorId: "unknown" | "assignmentInProgress" | "directSignupAlreadyOpen";
 }
 
 export type PostAssignmentResponse = PostAssignmentResult | PostAssignmentError;

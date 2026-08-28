@@ -1,7 +1,14 @@
 import { config } from "shared/config";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import { MongoDbError } from "shared/types/api/errors";
+import { ProgramItem } from "shared/types/models/programItem";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { Result, makeSuccessResult } from "shared/utils/result";
+import { getDirectSignupPhaseStarted } from "shared/utils/signupTimes";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   acquireAssignmentLock,
   findOrCreateSettings,
@@ -9,6 +16,32 @@ import {
   setAssignmentLastRun,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
+
+// A lottery is not run once its program items have started taking direct sign-ups: it would
+// compete with the first-come queue and move attendees out of spots they picked themselves.
+// Checked here rather than inside the run because only a manual run can be late - the cron
+// derives the start time it targets from the current time
+const findProgramItemsTakingDirectSignups = async (
+  assignmentTime: string,
+): Promise<Result<ProgramItem[], MongoDbError>> => {
+  const timeNowResult = await getTimeNow();
+  if (!timeNowResult.ok) {
+    return timeNowResult;
+  }
+
+  const programItemsResult = await findProgramItems();
+  if (!programItemsResult.ok) {
+    return programItemsResult;
+  }
+
+  return makeSuccessResult(
+    getStartingProgramItems(programItemsResult.value, assignmentTime)
+      .filter((programItem) => isLotterySignupProgramItem(programItem))
+      .filter((programItem) =>
+        getDirectSignupPhaseStarted(programItem, timeNowResult.value),
+      ),
+  );
+};
 
 export const storeAssignment = async (
   assignmentTime: string,
@@ -22,6 +55,29 @@ export const storeAssignment = async (
       message: "Assignment failed",
       status: "error",
       errorId: "unknown",
+    };
+  }
+
+  const lateProgramItemsResult =
+    await findProgramItemsTakingDirectSignups(assignmentTime);
+  if (!lateProgramItemsResult.ok) {
+    return {
+      message: "Assignment failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const lateProgramItems = lateProgramItemsResult.value;
+
+  if (lateProgramItems.length > 0) {
+    logger.warn(
+      `Direct signup already open for ${lateProgramItems.length} program items starting at ${assignmentTime}, skip manual assignment`,
+    );
+    return {
+      message:
+        "Direct signup for this starting time is already open, so its lottery can no longer be run",
+      status: "error",
+      errorId: "directSignupAlreadyOpen",
     };
   }
 
