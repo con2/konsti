@@ -1,5 +1,5 @@
 import { APIRequestContext, Page, expect } from "@playwright/test";
-import { addHours, startOfHour } from "date-fns";
+import { addHours, startOfHour, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
@@ -7,6 +7,7 @@ import {
   PopulateDbOptions,
   PostAddSerialsResponse,
 } from "shared/test-types/api/testData";
+import { GetTestSettingsResponse } from "shared/test-types/api/testSettings";
 import { TestSettings } from "shared/test-types/models/testSettings";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import {
@@ -206,10 +207,37 @@ export const testPostLotterySignup = async (
   expect(response.status()).toBe(200);
 };
 
+const getTestTime = async (
+  request: APIRequestContext,
+): Promise<string | null> => {
+  const url = `${baseUrl}${ApiDevEndpoint.TEST_SETTINGS}`;
+  const response = await request.get(url);
+  expect(response.status()).toBe(200);
+  const body = (await response.json()) as GetTestSettingsResponse;
+  expect(body.status).toBe("success");
+  if (body.status !== "success") {
+    // Unreachable after the expect above; narrows the union for the return type
+    // eslint-disable-next-line no-restricted-syntax
+    throw new Error("Could not read the test settings");
+  }
+  return body.testSettings.testTime;
+};
+
+// The server runs a lottery only inside its own window - once lottery sign-up for that starting
+// time closes, before direct sign-up opens - so the clock goes to the moment it closes for the
+// run and back afterwards, leaving the test on whatever time it set for itself
 export const postAssignment = async (
   request: APIRequestContext,
   assignmentTime: string,
 ): Promise<void> => {
+  const testTimeBefore = await getTestTime(request);
+  await postTestSettings(request, {
+    testTime: subMinutes(
+      new Date(assignmentTime),
+      config.event().directSignupPhaseStart,
+    ).toISOString(),
+  });
+
   const loginResponse = await postLogin(request, {
     username: "admin",
     password: "test",
@@ -222,6 +250,8 @@ export const postAssignment = async (
   expect(response.status()).toBe(200);
   const body = (await response.json()) as PostAssignmentResponse;
   expect(body.status).toBe("success");
+
+  await postTestSettings(request, { testTime: testTimeBefore });
 };
 
 // The app update banner reports an update when the server's build time is
