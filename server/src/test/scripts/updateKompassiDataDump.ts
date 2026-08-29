@@ -16,9 +16,17 @@ const isPlainObject = (val: unknown): val is Record<string, unknown> => {
   );
 };
 
-const deepSortArrays = (value: unknown): unknown => {
+// Kompassi returns annotation keys in arbitrary order, so sort them to keep the dump stable
+const sortAnnotationKeys = (value: unknown): unknown => {
+  if (!isPlainObject(value)) {
+    return value;
+  }
+  return Object.fromEntries(sortBy(Object.entries(value), ([key]) => key));
+};
+
+const deepSort = (value: unknown): unknown => {
   if (Array.isArray(value)) {
-    const sorted = value.map((element) => deepSortArrays(element));
+    const sorted = value.map((element) => deepSort(element));
     return sortBy(sorted, (val) =>
       typeof val === "number" || typeof val === "string" ? val : String(val),
     );
@@ -26,7 +34,10 @@ const deepSortArrays = (value: unknown): unknown => {
 
   if (isPlainObject(value)) {
     return Object.fromEntries(
-      Object.entries(value).map(([key, val]) => [key, deepSortArrays(val)]),
+      Object.entries(value).map(([key, val]) => [
+        key,
+        deepSort(key === "cachedAnnotations" ? sortAnnotationKeys(val) : val),
+      ]),
     );
   }
 
@@ -38,7 +49,7 @@ const updateKompassiDataDump = async (): Promise<void> => {
 
   const kompassiProgramItems = unsafelyUnwrap(await getProgramFromServer());
 
-  const sortedKompassiProgramItems = deepSortArrays(
+  const sortedKompassiProgramItems = deepSort(
     kompassiProgramItems,
   ) as KompassiProgramItem[];
 
