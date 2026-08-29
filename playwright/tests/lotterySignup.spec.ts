@@ -6,7 +6,8 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { ProgramType } from "shared/types/models/programItem";
+import { ProgramType, Tag } from "shared/types/models/programItem";
+import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -16,8 +17,11 @@ import {
   postAssignment,
   postSettings,
   postTestSettings,
+  testPostDirectSignup,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
+
+const alwaysOpenTitle = "Always open item";
 
 test("Add lottery signup", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
@@ -526,4 +530,130 @@ test("Show limit message when three lottery signups in time slot", async ({
     "You can select up to three items for the time slot.",
   );
   await expect(fourthProgramItem.lotterySignupButton).toBeHidden();
+});
+
+// Once a start time has been lotteried, nothing at it takes lottery sign-ups any more, so the
+// spot being held has to come from a program item outside the lottery
+test("Offer lottery signup even while a spot at the same time is held", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(3);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+    {
+      // Lottery program type with the pre-convention week tag makes 'sign-up always open',
+      // which is the only way to hold a spot at a time whose lottery hasn't run yet
+      ...testProgramItem2,
+      title: alwaysOpenTitle,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      tags: [Tag.PRE_CONVENTION_WEEK],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem2.programItemId,
+    message: "",
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  // A spot they took themselves doesn't keep them out of the lottery - if it places them,
+  // what they win replaces the spot they hold
+  const lotteryProgramItem = programList.itemByTitle(testProgramItem.title);
+  await expect(lotteryProgramItem.lotterySignupButton).toBeVisible();
+  await expect(lotteryProgramItem.container).not.toContainText(
+    "The lottery only gives out spots to those who don't have one yet",
+  );
+});
+
+test("Offer direct signup instead of a lottery for a program item that already has signups", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(4);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+
+  // Sign-up always open, so it can take a spot before any lottery has run
+  const alwaysOpenProgramItem = {
+    ...testProgramItem,
+    programType: config.event().twoPhaseSignupProgramTypes[0],
+    tags: [Tag.PRE_CONVENTION_WEEK],
+    startTime,
+    endTime,
+  };
+  await addProgramItems(request, [alwaysOpenProgramItem]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await testPostDirectSignup(request, "test2", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+
+  // Dropping the tag turns it into a lottery program item, but it already has a spot taken by
+  // another rule - so it stays on direct signup rather than being lotteried for the rest
+  await addProgramItems(request, [{ ...alwaysOpenProgramItem, tags: [] }]);
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const programItem = programList.itemByTitle(testProgramItem.title);
+  await expect(programItem.lotterySignupButton).toBeHidden();
+  await expect(programItem.container).toContainText(
+    "It already has sign-ups, so it does not take part in the lottery.",
+  );
+  // Its sign-up has been open all along, and does not shut now that the two-phase schedule it
+  // has just landed on says sign-up is still hours away
+  await expect(programItem.signUpButton).toBeVisible();
+  await expect(programItem.container).toContainText("Sign-up closes");
+  await expect(programItem.container).not.toContainText("Sign-up opens");
+
+  // Ends on the program item's own page so a headed run leaves this state on screen
+  await programItem.title.click();
+
+  const programItemPage = new ProgramItemPage(page);
+  await expect(programItemPage.main).toContainText(
+    "It already has sign-ups, so it does not take part in the lottery.",
+  );
+  await expect(programItemPage.main).toContainText("Sign-up closes");
 });

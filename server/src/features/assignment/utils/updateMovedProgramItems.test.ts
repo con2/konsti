@@ -159,3 +159,45 @@ test("should notify a user only once for a moved item they have both a lottery a
     addHours(new Date(testProgramItem.startTime), 1).toISOString(),
   );
 });
+
+test("should keep lottery signups for other program items when one moves onto their slot", async () => {
+  // The user holds a spot in testProgramItem and has a lottery sign-up for testProgramItem2 an
+  // hour later. Moving the held item onto that hour puts the two at the same time, and the
+  // lottery will decide between them - so the sign-up stays, since cancelling it cannot be
+  // undone once the lottery sign-up window closes
+  const lotteryStartTime = addHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+
+  await saveProgramItems([
+    testProgramItem,
+    { ...testProgramItem2, startTime: lotteryStartTime },
+  ]);
+  await saveUser(mockUser);
+  await saveDirectSignup({ ...mockPostDirectSignupRequest, priority: 1 });
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: testProgramItem2.programItemId,
+        priority: 1,
+        signedToStartTime: lotteryStartTime,
+      },
+    ],
+  });
+
+  const currentProgramItems = unsafelyUnwrap(await findProgramItems());
+  await updateMovedProgramItems(
+    [
+      { ...testProgramItem, startTime: lotteryStartTime },
+      { ...testProgramItem2, startTime: lotteryStartTime },
+    ],
+    currentProgramItems,
+  );
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups.map((signup) => signup.programItemId)).toEqual([
+    testProgramItem2.programItemId,
+  ]);
+});

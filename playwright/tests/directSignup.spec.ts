@@ -1,8 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { addHours } from "date-fns";
+import { addHours, addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -13,7 +17,10 @@ import {
   postSettings,
   postTestSettings,
   testPostDirectSignup,
+  testPostLotterySignup,
 } from "playwright/playwrightUtils";
+
+const alwaysOpenTitle = "Always open item";
 
 test("Add and cancel direct signup", async ({ page, request }) => {
   await clearDb(request);
@@ -362,4 +369,72 @@ test("Show no signup button before direct signup opens", async ({
   await expect(programItem.container).toContainText("Sign-up opens");
   await expect(programItem.signUpButton).toBeHidden();
   await expect(programItem.container).not.toContainText("Sign-up closes");
+});
+
+test("Direct signup keeps the lottery signups for the same time", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(3);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+    {
+      // 'Sign-up always open', so its direct sign-up is open while the lottery for this
+      // start time still hasn't run
+      ...testProgramItem2,
+      // A title that is not a superstring of the other item's, so looking one up by title
+      // doesn't match both
+      title: alwaysOpenTitle,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      tags: [Tag.PRE_CONVENTION_WEEK],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  // A lottery sign-up for the same start time as the spot about to be taken
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  // Pre-convention week program is not in the upcoming list during the main event
+  await programList.selectStartingTime("All");
+  await programList.waitForItems();
+
+  const alwaysOpenProgramItem = programList.itemByTitle(alwaysOpenTitle);
+  await alwaysOpenProgramItem.signUp();
+  await alwaysOpenProgramItem.confirm();
+
+  // Holding a spot doesn't withdraw the attendee from the lottery for that time: the sign-up
+  // stands, and if the lottery places them the spot they win replaces this one
+  await programList.gotoMyProgram();
+  await expect(programList.directSignupList).toContainText(alwaysOpenTitle);
+  await expect(programList.lotterySignupList).toContainText(
+    testProgramItem.title,
+  );
 });
