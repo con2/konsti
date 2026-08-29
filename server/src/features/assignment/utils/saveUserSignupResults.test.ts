@@ -73,6 +73,8 @@ interface SaveAndNotifyParams {
   results: readonly UserAssignmentResult[];
   users: User[];
   programItems: ProgramItem[];
+  // A run lotteries the program items starting at its time, so it defaults to those rather
+  // than to everything a case seeds
 }
 
 // A run saves the spots and then tells the attendees, so the cases below drive both steps
@@ -220,6 +222,16 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
 
+  // The hour the attendee turns up, not the parent hour the run was scheduled at
+  const newAssignmentItems =
+    usersWithAssignEventLogItem[0].eventLogItems.filter(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    );
+  expect(newAssignmentItems).toHaveLength(1);
+  expect(newAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+
   const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
     return user.eventLogItems.find(
       (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
@@ -228,6 +240,17 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
+
+  // One starting time in the batch, so the rejection names that hour and records no span
+  const noAssignmentItems =
+    usersWithNoAssignEventLogItem[0].eventLogItems.filter(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    );
+  expect(noAssignmentItems).toHaveLength(1);
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lotteriedUntil).toBeUndefined();
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const notificationQueueService = getGlobalNotificationQueueService()!;
@@ -1065,14 +1088,17 @@ test("should replace a winner's own direct signup for the program item they win"
   expect(signup.count).toEqual(2);
 });
 
-test("should record the whole span a batched lottery covered on its rejections", async () => {
-  // Two hours lotteried as one batch, the way a fleamarket day is: the rejection has to name
-  // the span rather than the parent hour the run was scheduled at, which no item starts at
+// Two consecutive half hour slots lotteried as one batch, the way a fleamarket day is, with
+// the run scheduled at a parent hour neither of them starts at
+const saveBatchedProgramItems = async (): Promise<{
+  parentStartTime: string;
+  firstProgramItem: ProgramItem;
+  laterProgramItem: ProgramItem;
+}> => {
   const parentStartTime = subHours(
     new Date(testProgramItem.startTime),
     1,
   ).toISOString();
-  // Consecutive half hour slots, the shape a fleamarket batch actually has
   const firstProgramItem = {
     ...testProgramItem,
     endTime: addMinutes(new Date(testProgramItem.startTime), 30).toISOString(),
@@ -1102,6 +1128,12 @@ test("should record the whole span a batched lottery covered on its rejections",
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
+  return { parentStartTime, firstProgramItem, laterProgramItem };
+};
+
+test("should record the whole span a batched lottery covered on its rejections", async () => {
+  const { parentStartTime, laterProgramItem } = await saveBatchedProgramItems();
+
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
@@ -1125,6 +1157,26 @@ test("should record the whole span a batched lottery covered on its rejections",
   );
   expect(noAssignmentItems[0].lotteriedUntil).toEqual(laterProgramItem.endTime);
   expect(noAssignmentItems[0].programType).toEqual(testProgramItem.programType);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  notificationQueueService.getQueue().resume();
+  await notificationQueueService.getQueue().drained();
+  const sentMessages = notificationQueueService.getSender().getSentEmails();
+  expect(sentMessages).toHaveLength(1);
+  const [rejectedMessage] = sentMessages;
+
+  // The same span and program type the event log names, worded as a range because the far end
+  // is an end time rather than a start
+  expect(rejectedMessage.text).toEqual(`Hei ${mockUser.username}!
+Roolipelit välillä pe 26.7.2019 17:00 - pe 26.7.2019 18:00 arvottiin.
+Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
+
+Hi ${mockUser.username}!
+Role-playing games between Fri 26.7.2019 17:00 and Fri 26.7.2019 18:00 were lotteried.
+Unfortunately you did not get a spot in the lottery sign-up.
+
+Terveisin / Sincerely Konsti`);
 });
 
 test("should not record a span when the lottery covered a single starting time", async () => {
@@ -1156,4 +1208,36 @@ test("should not record a span when the lottery covered a single starting time",
   );
   expect(noAssignmentItems[0].lotteriedUntil).toBeUndefined();
   expect(noAssignmentItems[0].programType).toBeUndefined();
+});
+
+test("should span a rejection over the batch, whichever slots were lotteried", async () => {
+  // The later slot was passed over for holding sign-ups, so only the first went through a
+  // lottery - but both were part of the batch the attendee entered, so both are in the span
+  const { parentStartTime, firstProgramItem, laterProgramItem } =
+    await saveBatchedProgramItems();
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: parentStartTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  const noAssignmentItems = userAfterSave.eventLogItems.filter(
+    (item) => item.action === EventLogAction.NO_ASSIGNMENT,
+  );
+  expect(noAssignmentItems).toHaveLength(1);
+
+  // The parent hour is when the run was scheduled, and no slot the attendee saw starts then
+  expect(noAssignmentItems[0].programItemStartTime).not.toEqual(
+    parentStartTime,
+  );
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    firstProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lotteriedUntil).toEqual(laterProgramItem.endTime);
 });

@@ -64,8 +64,8 @@ const eventLogItemSchema = new mongoose.Schema(
       get: (value: Date) => new Date(value),
       required: true,
     },
-    // No getter on these two: they are absent on every event log item but a batched lottery's
-    // rejection, and a getter would turn that absence into an Invalid Date
+    // No getter: absent on every event log item but a batched lottery's rejection, and a getter
+    // would turn that absence into an Invalid Date on the toObject/toJSON path
     lotteriedUntil: { type: Date },
     programType: { type: String },
     isSeen: { type: Boolean, required: true },

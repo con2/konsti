@@ -26,33 +26,37 @@ const SIGNATURE = "Terveisin / Sincerely Konsti";
 export function getRejectedEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
-  const lotteryStartTimeFi = getDateAndTime(
-    notification.programItemStartTime,
-    Locale.FI,
-  );
-  const lotteryStartTimeEn = getDateAndTime(
-    notification.programItemStartTime,
-    Locale.EN,
-  );
-
-  // One lottery can cover a span of starting times at once, and naming only the first would
-  // point at a single hour out of the several the attendee competed across
-  const untilFi = notification.lotteriedUntil
-    ? ` - ${getDateAndTime(notification.lotteriedUntil, Locale.FI)}`
-    : "";
-  const untilEn = notification.lotteriedUntil
-    ? ` - ${getDateAndTime(notification.lotteriedUntil, Locale.EN)}`
-    : "";
+  // One lottery can cover several starting times at once, and naming only the first would point
+  // at one hour out of the several the attendee was competing across. Both ends carry their date,
+  // since a span can end on a later day and a bare clock time would read as running backwards
+  const { lotteriedUntil } = notification;
+  const lotteriedLine = (locale: Locale): string => {
+    const from = getDateAndTime(notification.programItemStartTime, locale);
+    if (!lotteriedUntil) {
+      return locale === Locale.FI
+        ? `Paikat ${from} alkaviin ohjelmanumeroihin arvottiin.`
+        : `Spots for program items starting at ${from} were randomized.`;
+    }
+    const until = getDateAndTime(lotteriedUntil, locale);
+    // The far end is when the last program item ends, so neither text says one starts there
+    return locale === Locale.FI
+      ? `Paikat välillä ${from} - ${until} olleisiin ohjelmanumeroihin arvottiin.`
+      : `Spots for program items between ${from} and ${until} were randomized.`;
+  };
 
   const bodyFi = `Hei ${notification.username}!
-Paikat ${lotteryStartTimeFi}${untilFi} alkaviin ohjelmanumeroihin arvottiin.
+${lotteriedLine(Locale.FI)}
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
-Spots for program items starting at ${lotteryStartTimeEn}${untilEn} were randomized.
+${lotteriedLine(Locale.EN)}
 Unfortunately you did not get a spot in the lottery sign-up.`;
   return {
     subject: SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+    text: `${bodyFi}
+
+${bodyEn}
+
+${SIGNATURE}`,
   };
 }
 

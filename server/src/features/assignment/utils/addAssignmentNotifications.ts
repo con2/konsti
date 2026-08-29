@@ -6,6 +6,8 @@ import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { Settings } from "shared/types/models/settings";
 import { User } from "shared/types/models/user";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { isSameTime } from "shared/utils/timeComparison";
 import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
 import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
 import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
@@ -51,11 +53,13 @@ export const addAssignmentNotifications = async ({
     );
   }
 
-  // Get users who didn't get a spot in lottery
+  // Get users who didn't get a spot in lottery. The lottery program items at this starting
+  // time, whatever the run went on to do with each of them: this one set decides both who is
+  // rejected and what the rejection names, so a rejected attendee's slot is always inside it
   const startingProgramItems = getStartingProgramItems(
     programItems,
     assignmentTime,
-  );
+  ).filter((programItem) => isLotterySignupProgramItem(programItem));
   const groupCreators = getGroupCreators(users, startingProgramItems);
   const groupMembers = getGroupMembersWithCreatorLotterySignups(
     groupCreators,
@@ -122,11 +126,6 @@ export const addAssignmentNotifications = async ({
       )
     : [];
 
-  // A batched lottery decides several starting times at once, so a rejection names the span it
-  // took in rather than the hour the run was scheduled at - that is the parent's, and no program
-  // item the attendee saw starts then. First start to last end is the range the titles show
-  const lotteriedSpan = getLotteriedSpan(startingProgramItems, assignmentTime);
-
   // Add NEW_ASSIGNMENT to user event logs
   const newAssignmentEventLogItemsResult = await addEventLogItems(
     finalResults.map((result) => ({
@@ -166,12 +165,19 @@ export const addAssignmentNotifications = async ({
 
   // Add NO_ASSIGNMENT to user event logs
   if (rejectedUsernames.length > 0) {
+    // A batched lottery decides several starting times at once, so a rejection names the span
+    // it took in rather than the hour the run was scheduled at, which for a batch is the
+    // parent's
+    const lotteriedSpan = getLotteriedSpan(
+      startingProgramItems,
+      assignmentTime,
+    );
+
     const noAssignmentEventLogItemsResult = await addEventLogItems(
       rejectedUsernames.map((rejectedUsername) => ({
         username: rejectedUsername,
         programItemId: "",
-        programItemStartTime: lotteriedSpan.firstStartTime,
-        ...lotteriedSpan.range,
+        ...lotteriedSpan,
         createdAt: new Date().toISOString(),
         action: EventLogAction.NO_ASSIGNMENT,
       })),
@@ -197,8 +203,7 @@ export const addAssignmentNotifications = async ({
           type: NotificationTaskType.SEND_EMAIL_REJECTED,
           username: rejectedUsername,
           programItemId: "",
-          programItemStartTime: lotteriedSpan.firstStartTime,
-          lotteriedUntil: lotteriedSpan.range?.lotteriedUntil,
+          ...lotteriedSpan,
         })),
         emailKind: EmailNotificationTrigger.REJECTED,
       });
@@ -241,40 +246,58 @@ const queueAssignmentEmails = ({
   }
 };
 
-interface LotteriedSpan {
-  firstStartTime: string;
-  // Spread into the event log item, so a run covering one starting time carries neither field
-  range?: { lotteriedUntil: string; programType: ProgramType };
-}
+// Spread into the event log item and the email task, so the two span fields are either both
+// written or both absent
+type LotteriedSpan =
+  | { programItemStartTime: string }
+  | {
+      programItemStartTime: string;
+      lotteriedUntil: string;
+      programType: ProgramType;
+    };
 
+// Measured over the program items handed to it rather than over the run's own hour, which for
+// a batch is the parent's and matches nothing the attendee saw
 const getLotteriedSpan = (
-  startingProgramItems: readonly ProgramItem[],
+  spanProgramItems: readonly ProgramItem[],
   assignmentTime: string,
 ): LotteriedSpan => {
-  const firstProgramItem = firstBy(startingProgramItems, (programItem) =>
+  const firstProgramItem = firstBy(spanProgramItems, (programItem) =>
     new Date(programItem.startTime).getTime(),
   );
+  // A run with no lottery program items at this starting time rejects nobody, so it never asks
+  // for a span - the run's own hour is a fallback nothing reaches
   if (!firstProgramItem) {
-    return { firstStartTime: assignmentTime };
+    return { programItemStartTime: assignmentTime };
   }
 
-  const coversOneStartTime =
-    unique(startingProgramItems.map((programItem) => programItem.startTime))
-      .length === 1;
+  // To the minute, like every other start time comparison, so one instant written two ways
+  // cannot read as a span
+  const coversOneStartTime = spanProgramItems.every((programItem) =>
+    isSameTime(programItem.startTime, firstProgramItem.startTime),
+  );
   if (coversOneStartTime) {
-    return { firstStartTime: firstProgramItem.startTime };
+    return { programItemStartTime: firstProgramItem.startTime };
   }
 
-  const lastProgramItem = firstBy(startingProgramItems, [
-    (programItem) => new Date(programItem.endTime).getTime(),
-    "desc",
-  ]);
+  // One program type names the whole span, so a run mixing them names none of them
+  const coversOneProgramType = spanProgramItems.every(
+    (programItem) => programItem.programType === firstProgramItem.programType,
+  );
+  if (!coversOneProgramType) {
+    return { programItemStartTime: firstProgramItem.startTime };
+  }
+
+  // Seeded with the first program item so the list is non-empty by construction, which is what
+  // makes the result a program item rather than a maybe
+  const lastProgramItem = firstBy(
+    [firstProgramItem, ...spanProgramItems],
+    [(programItem) => new Date(programItem.endTime).getTime(), "desc"],
+  );
 
   return {
-    firstStartTime: firstProgramItem.startTime,
-    range: lastProgramItem && {
-      lotteriedUntil: lastProgramItem.endTime,
-      programType: firstProgramItem.programType,
-    },
+    programItemStartTime: firstProgramItem.startTime,
+    lotteriedUntil: lastProgramItem.endTime,
+    programType: firstProgramItem.programType,
   };
 };

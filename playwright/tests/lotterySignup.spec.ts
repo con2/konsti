@@ -7,6 +7,7 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { ProgramType, Tag } from "shared/types/models/programItem";
+import { getTime } from "shared/utils/timeFormatter";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
@@ -667,10 +668,17 @@ test("Did not receive spot in a lottery covering several starting times", async 
   const [parentId, parentStartTime] = [
     ...config.event().startTimesByParentIds,
   ][0];
-  const secondStartTime = addMinutes(
+  // Both slots start after the parent hour, so the span the message names cannot be mistaken
+  // for the hour the run was scheduled at
+  const firstStartTime = addMinutes(
     new Date(parentStartTime),
     30,
   ).toISOString();
+  const secondStartTime = addMinutes(
+    new Date(parentStartTime),
+    60,
+  ).toISOString();
+  const lastEndTime = addMinutes(new Date(parentStartTime), 90).toISOString();
 
   await populateDb(request, { clean: true, admin: true, users: true });
   await addProgramItems(request, [
@@ -678,7 +686,7 @@ test("Did not receive spot in a lottery covering several starting times", async 
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       parentId,
-      startTime: parentStartTime,
+      startTime: firstStartTime,
       endTime: secondStartTime,
       // Adjust min/max so user cannot get the spot
       minAttendance: 2,
@@ -689,7 +697,7 @@ test("Did not receive spot in a lottery covering several starting times", async 
       programType: config.event().twoPhaseSignupProgramTypes[0],
       parentId,
       startTime: secondStartTime,
-      endTime: addMinutes(new Date(parentStartTime), 60).toISOString(),
+      endTime: lastEndTime,
       minAttendance: 2,
       maxAttendance: 2,
     },
@@ -708,6 +716,7 @@ test("Did not receive spot in a lottery covering several starting times", async 
 
   const programList = new ProgramListPage(page);
   await programList.gotoAllProgram();
+  await programList.waitForItems();
   const firstProgramItem = programList.firstItem();
 
   await firstProgramItem.lotterySignup();
@@ -717,12 +726,13 @@ test("Did not receive spot in a lottery covering several starting times", async 
   await page.reload();
 
   // The span the batch covered, first start to last end, not the parent hour
+  const expectedRejection = `Flea market times between ${getTime(firstStartTime)}–${getTime(lastEndTime)} were lotteried and you didn't get a spot.`;
   await expect(programList.notificationBar.bar).toContainText(
-    /Flea market times between .*-.* were lotteried and you didn't get a spot./,
+    expectedRejection,
   );
 
   await programList.notificationBar.showAllNotifications();
   await expect(programList.notificationBar.eventLogItem).toContainText(
-    /Flea market times between .*-.* were lotteried and you didn't get a spot./,
+    expectedRejection,
   );
 });

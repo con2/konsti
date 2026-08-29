@@ -6,9 +6,8 @@ export interface EventLogItem {
   isSeen: boolean;
   programItemId: string;
   programItemStartTime: string;
-  // The span one lottery covered, set only when it took in more than one starting time. The
-  // message then names the whole range instead of the hour the run was scheduled at, which for
-  // a batch is the parent's and matches nothing the attendee sees
+  // The span one lottery covered, both set or neither, and only when it took in more than one
+  // starting time
   lotteriedUntil?: string;
   programType?: ProgramType;
   createdAt: string;

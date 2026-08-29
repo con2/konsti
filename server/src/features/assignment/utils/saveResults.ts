@@ -22,7 +22,7 @@ interface SaveResultsParams {
   users: User[];
   programItems: ProgramItem[];
   lotteriedProgramItems: readonly ProgramItem[];
-  passedOverProgramItemIds: readonly string[];
+  passedOverProgramItems: readonly ProgramItem[];
 }
 
 // The writes below run in order of how much rides on them: the spots first, then the mark that
@@ -36,7 +36,7 @@ export const saveResults = async ({
   users,
   programItems,
   lotteriedProgramItems,
-  passedOverProgramItemIds,
+  passedOverProgramItems,
   // Returns the results that actually landed, so the caller acts on those rather than on what
   // the algorithm proposed
 }: SaveResultsParams): Promise<
@@ -45,7 +45,7 @@ export const saveResults = async ({
   // The lottery runs on a timer, so most runs reach a start time with nothing to do at all
   if (
     lotteriedProgramItems.length === 0 &&
-    passedOverProgramItemIds.length === 0
+    passedOverProgramItems.length === 0
   ) {
     logger.info(
       `Assignment ${assignmentTime}: nothing was lotteried, nothing to save`,
@@ -82,7 +82,7 @@ export const saveResults = async ({
   }
 
   const savePassedOverResult = await savePassedOverForLottery(
-    passedOverProgramItemIds,
+    passedOverProgramItems.map((programItem) => programItem.programItemId),
   );
   if (!savePassedOverResult.ok) {
     logger.error(

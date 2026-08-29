@@ -213,9 +213,7 @@ export const runAssignment = async ({
     lotteriedProgramItems: emptyProgramItems,
     // The occupied ones are recorded as passed over rather than lotteried, which is what they
     // were, and what keeps their sign-up open once those sign-ups are cancelled
-    passedOverProgramItemIds: occupiedProgramItems.map(
-      (programItem) => programItem.programItemId,
-    ),
+    passedOverProgramItems: occupiedProgramItems,
   });
   if (!saveResultsResult.ok) {
     return saveResultsResult;
