@@ -110,6 +110,74 @@
     ]
   },
   {
+    "slug": "biblioclash-kirjaston-mysteerit-pelitestitapahtuma",
+    "title": "Biblioclash: Kirjaston mysteerit | pelitestitapahtuma",
+    "description": "Tule testaamaan Biblioclashia, taianomaista suomalaista pakanrakennuspeliä!\r\nAstu maagin rooliin ja taistele muita maageja vastaan mystisessä kirjastossa käyttäen voimakkaita loitsuja ja muinaisia artifakteja. Biblioclash menestyi Kickstarterissa vuonna 2025 ja nyt sinulla on mahdollisuus kokeilla peliä, tutustua kehittäjiin ja antaa palautetta kehityksessä olevista uusista mekaniikoista. Koe maaginen kaksintaistelu ja näe, mitä Biblioclashin maailma pitää sisällään!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-05", "2026-09-06"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "program-type": ["cardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "biblioclash-kirjaston-mysteerit-pelitestitapahtuma",
+        "title": "Biblioclash: Kirjaston mysteerit | pelitestitapahtuma – perjantai",
+        "startTime": "2026-09-04T16:30:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Demopöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 3",
+          "internal:subtitle": "perjantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "biblioclash-kirjaston-mysteerit-pelitestitapahtuma-2",
+        "title": "Biblioclash: Kirjaston mysteerit | pelitestitapahtuma – lauantai",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 690,
+        "location": "Duetto 1 (Demopöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 3",
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "biblioclash-kirjaston-mysteerit-pelitestitapahtuma-3",
+        "title": "Biblioclash: Kirjaston mysteerit | pelitestitapahtuma – sunnuntai",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1 (Demopöytä 3)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 3",
+          "internal:subtitle": "sunnuntai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
     "slug": "brindlewood-bay-grannies-on-the-loose",
     "title": "Brindlewood Bay: Grannies on the Loose",
     "description": "Play as grannies, meddle in the town's affairs and solve a murder!\r\n\r\nCollaborative storytelling game about cozy murder mysteries with a touch of cosmic/eldritch horror. You play a group of elderly women who belong to a murder mystery book club who meddle in the town's affairs and solve murders.\r\n\r\n",
@@ -1629,7 +1697,10 @@
       "program-type": ["cardgame"],
       "guidegrouping": ["games"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1642,7 +1713,9 @@
         "isCancelled": false,
         "cachedAnnotations": {
           "internal:freeformLocation": "Demopöytä 5",
-          "internal:subtitle": "perjantai"
+          "internal:subtitle": "perjantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
         }
       },
       {
@@ -1655,7 +1728,9 @@
         "isCancelled": false,
         "cachedAnnotations": {
           "internal:freeformLocation": "Demopöytä 5",
-          "internal:subtitle": "lauantai"
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
         }
       },
       {
@@ -1668,7 +1743,9 @@
         "isCancelled": false,
         "cachedAnnotations": {
           "internal:freeformLocation": "Demopöytä 5",
-          "internal:subtitle": "sunnuntai"
+          "internal:subtitle": "sunnuntai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
         }
       }
     ]

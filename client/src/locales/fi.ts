@@ -405,6 +405,8 @@ export const translationFI = {
         "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Ilmoittautuminen pelitiskillä.",
       missing: "Puuttuva tieto: ilmoittautumistapa",
     },
+    revolvingDoorNoKonstiSignup:
+      "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Mukaan voi tulla koska tahansa, jos on tilaa.",
     cancelled: "Tämä {{PROGRAM_TYPE}} on peruttu.",
     cancelledTitleText: "PERUTTU",
   },
