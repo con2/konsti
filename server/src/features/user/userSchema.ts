@@ -6,6 +6,7 @@ import mongooseLeanVirtuals from "mongoose-lean-virtuals";
 import { z } from "zod";
 import { StoredEmailSchema } from "shared/constants/validation";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramType } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
 
 const LotterySignupSchemaDb = z.object({
@@ -20,6 +21,8 @@ const EventLogItemSchemaDb = z.object({
   isSeen: z.boolean(),
   programItemId: z.string(),
   programItemStartTime: z.date().transform((date) => date.toISOString()),
+  lotteriedUntil: z.optional(z.date().transform((date) => date.toISOString())),
+  programType: z.optional(z.enum(ProgramType)),
   createdAt: z.date().transform((date) => date.toISOString()),
 });
 
@@ -61,6 +64,10 @@ const eventLogItemSchema = new mongoose.Schema(
       get: (value: Date) => new Date(value),
       required: true,
     },
+    // No getter on these two: they are absent on every event log item but a batched lottery's
+    // rejection, and a getter would turn that absence into an Invalid Date
+    lotteriedUntil: { type: Date },
+    programType: { type: String },
     isSeen: { type: Boolean, required: true },
     createdAt: { type: Date, get: (value: Date) => new Date(value) },
   },

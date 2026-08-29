@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { addMinutes } from "date-fns";
+import { addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -259,12 +259,13 @@ The program will start at Fri 26.7.2019 17:00.
 Terveisin / Sincerely Konsti`;
   const expectedAcceptedSubject =
     "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
+  // The hour the attendee's program item starts, not the parent hour the run was scheduled at
   const expectedRejectedBody = `Hei ${mockUser2.username}!
-Paikat pe 26.7.2019 17:30 alkaviin ohjelmanumeroihin arvottiin.
+Paikat pe 26.7.2019 17:00 alkaviin ohjelmanumeroihin arvottiin.
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
 
 Hi Test User 2!
-Spots for program items starting at Fri 26.7.2019 17:30 were randomized.
+Spots for program items starting at Fri 26.7.2019 17:00 were randomized.
 Unfortunately you did not get a spot in the lottery sign-up.
 
 Terveisin / Sincerely Konsti`;
@@ -1062,4 +1063,97 @@ test("should replace a winner's own direct signup for the program item they win"
     expect.arrayContaining([mockUser.username, mockUser2.username]),
   );
   expect(signup.count).toEqual(2);
+});
+
+test("should record the whole span a batched lottery covered on its rejections", async () => {
+  // Two hours lotteried as one batch, the way a fleamarket day is: the rejection has to name
+  // the span rather than the parent hour the run was scheduled at, which no item starts at
+  const parentStartTime = subHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+  // Consecutive half hour slots, the shape a fleamarket batch actually has
+  const firstProgramItem = {
+    ...testProgramItem,
+    endTime: addMinutes(new Date(testProgramItem.startTime), 30).toISOString(),
+  };
+  const laterProgramItem = {
+    ...testProgramItem2,
+    programType: testProgramItem.programType,
+    parentId: testProgramItem.parentId,
+    startTime: addMinutes(
+      new Date(testProgramItem.startTime),
+      30,
+    ).toISOString(),
+    endTime: addMinutes(new Date(testProgramItem.startTime), 60).toISOString(),
+  };
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([firstProgramItem, laterProgramItem]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  // Nobody is placed, so the one lottery participant is rejected
+  await saveAndNotify({
+    assignmentTime: parentStartTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  const noAssignmentItems = userAfterSave.eventLogItems.filter(
+    (item) => item.action === EventLogAction.NO_ASSIGNMENT,
+  );
+  expect(noAssignmentItems).toHaveLength(1);
+
+  // First start to last end, which is the range the batch's titles show
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lotteriedUntil).toEqual(laterProgramItem.endTime);
+  expect(noAssignmentItems[0].programType).toEqual(testProgramItem.programType);
+});
+
+test("should not record a span when the lottery covered a single starting time", async () => {
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  const noAssignmentItems = userAfterSave.eventLogItems.filter(
+    (item) => item.action === EventLogAction.NO_ASSIGNMENT,
+  );
+  expect(noAssignmentItems).toHaveLength(1);
+
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lotteriedUntil).toBeUndefined();
+  expect(noAssignmentItems[0].programType).toBeUndefined();
 });

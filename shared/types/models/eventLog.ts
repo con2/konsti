@@ -1,9 +1,16 @@
+import { ProgramType } from "shared/types/models/programItem";
+
 export interface EventLogItem {
   eventLogItemId: string;
   action: EventLogAction;
   isSeen: boolean;
   programItemId: string;
   programItemStartTime: string;
+  // The span one lottery covered, set only when it took in more than one starting time. The
+  // message then names the whole range instead of the hour the run was scheduled at, which for
+  // a batch is the parent's and matches nothing the attendee sees
+  lotteriedUntil?: string;
+  programType?: ProgramType;
   createdAt: string;
 }
 

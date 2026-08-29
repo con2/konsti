@@ -23,6 +23,8 @@ export interface NotificationTask {
   username: string;
   programItemId: string;
   programItemStartTime: string;
+  // End of the span a batched lottery covered, so the rejection can name the whole range
+  lotteriedUntil?: string;
   programItemTitle?: string;
 }
 

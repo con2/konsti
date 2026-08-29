@@ -657,3 +657,72 @@ test("Offer direct signup instead of a lottery for a program item that already h
   );
   await expect(programItemPage.main).toContainText("Sign-up closes");
 });
+
+test("Did not receive spot in a lottery covering several starting times", async ({
+  page,
+  request,
+}) => {
+  // A batched lottery decides several starting times in one run, so its rejection names the
+  // whole span instead of the parent hour the run was scheduled at
+  const [parentId, parentStartTime] = [
+    ...config.event().startTimesByParentIds,
+  ][0];
+  const secondStartTime = addMinutes(
+    new Date(parentStartTime),
+    30,
+  ).toISOString();
+
+  await populateDb(request, { clean: true, admin: true, users: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      parentId,
+      startTime: parentStartTime,
+      endTime: secondStartTime,
+      // Adjust min/max so user cannot get the spot
+      minAttendance: 2,
+      maxAttendance: 2,
+    },
+    {
+      ...testProgramItem2,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      parentId,
+      startTime: secondStartTime,
+      endTime: addMinutes(new Date(parentStartTime), 60).toISOString(),
+      minAttendance: 2,
+      maxAttendance: 2,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  // Inside the batch's lottery signup window, which is derived from the parent start time
+  await postTestSettings(request, {
+    testTime: subHours(new Date(parentStartTime), 3).toISOString(),
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  const firstProgramItem = programList.firstItem();
+
+  await firstProgramItem.lotterySignup();
+  await firstProgramItem.confirmLotterySignup();
+
+  await postAssignment(request, parentStartTime);
+  await page.reload();
+
+  // The span the batch covered, first start to last end, not the parent hour
+  await expect(programList.notificationBar.bar).toContainText(
+    /Flea market times between .*-.* were lotteried and you didn't get a spot./,
+  );
+
+  await programList.notificationBar.showAllNotifications();
+  await expect(programList.notificationBar.eventLogItem).toContainText(
+    /Flea market times between .*-.* were lotteried and you didn't get a spot./,
+  );
+});

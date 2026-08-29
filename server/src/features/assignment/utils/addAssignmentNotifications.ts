@@ -1,8 +1,8 @@
-import { unique } from "remeda";
+import { firstBy, unique } from "remeda";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { Settings } from "shared/types/models/settings";
 import { User } from "shared/types/models/user";
@@ -122,12 +122,17 @@ export const addAssignmentNotifications = async ({
       )
     : [];
 
+  // A batched lottery decides several starting times at once, so a rejection names the span it
+  // took in rather than the hour the run was scheduled at - that is the parent's, and no program
+  // item the attendee saw starts then. First start to last end is the range the titles show
+  const lotteriedSpan = getLotteriedSpan(startingProgramItems, assignmentTime);
+
   // Add NEW_ASSIGNMENT to user event logs
   const newAssignmentEventLogItemsResult = await addEventLogItems(
     finalResults.map((result) => ({
       username: result.username,
       programItemId: result.assignmentSignup.programItemId,
-      programItemStartTime: assignmentTime,
+      programItemStartTime: result.assignmentSignup.signedToStartTime,
       createdAt: new Date().toISOString(),
       action: EventLogAction.NEW_ASSIGNMENT,
     })),
@@ -165,7 +170,8 @@ export const addAssignmentNotifications = async ({
       rejectedUsernames.map((rejectedUsername) => ({
         username: rejectedUsername,
         programItemId: "",
-        programItemStartTime: assignmentTime,
+        programItemStartTime: lotteriedSpan.firstStartTime,
+        ...lotteriedSpan.range,
         createdAt: new Date().toISOString(),
         action: EventLogAction.NO_ASSIGNMENT,
       })),
@@ -191,7 +197,8 @@ export const addAssignmentNotifications = async ({
           type: NotificationTaskType.SEND_EMAIL_REJECTED,
           username: rejectedUsername,
           programItemId: "",
-          programItemStartTime: assignmentTime,
+          programItemStartTime: lotteriedSpan.firstStartTime,
+          lotteriedUntil: lotteriedSpan.range?.lotteriedUntil,
         })),
         emailKind: EmailNotificationTrigger.REJECTED,
       });
@@ -232,4 +239,42 @@ const queueAssignmentEmails = ({
       ),
     );
   }
+};
+
+interface LotteriedSpan {
+  firstStartTime: string;
+  // Spread into the event log item, so a run covering one starting time carries neither field
+  range?: { lotteriedUntil: string; programType: ProgramType };
+}
+
+const getLotteriedSpan = (
+  startingProgramItems: readonly ProgramItem[],
+  assignmentTime: string,
+): LotteriedSpan => {
+  const firstProgramItem = firstBy(startingProgramItems, (programItem) =>
+    new Date(programItem.startTime).getTime(),
+  );
+  if (!firstProgramItem) {
+    return { firstStartTime: assignmentTime };
+  }
+
+  const coversOneStartTime =
+    unique(startingProgramItems.map((programItem) => programItem.startTime))
+      .length === 1;
+  if (coversOneStartTime) {
+    return { firstStartTime: firstProgramItem.startTime };
+  }
+
+  const lastProgramItem = firstBy(startingProgramItems, [
+    (programItem) => new Date(programItem.endTime).getTime(),
+    "desc",
+  ]);
+
+  return {
+    firstStartTime: firstProgramItem.startTime,
+    range: lastProgramItem && {
+      lotteriedUntil: lastProgramItem.endTime,
+      programType: firstProgramItem.programType,
+    },
+  };
 };

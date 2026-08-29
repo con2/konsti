@@ -35,11 +35,20 @@ export function getRejectedEmailTemplate(
     Locale.EN,
   );
 
+  // One lottery can cover a span of starting times at once, and naming only the first would
+  // point at a single hour out of the several the attendee competed across
+  const untilFi = notification.lotteriedUntil
+    ? ` - ${getDateAndTime(notification.lotteriedUntil, Locale.FI)}`
+    : "";
+  const untilEn = notification.lotteriedUntil
+    ? ` - ${getDateAndTime(notification.lotteriedUntil, Locale.EN)}`
+    : "";
+
   const bodyFi = `Hei ${notification.username}!
-Paikat ${lotteryStartTimeFi} alkaviin ohjelmanumeroihin arvottiin.
+Paikat ${lotteryStartTimeFi}${untilFi} alkaviin ohjelmanumeroihin arvottiin.
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.`;
   const bodyEn = `Hi ${notification.username}!
-Spots for program items starting at ${lotteryStartTimeEn} were randomized.
+Spots for program items starting at ${lotteryStartTimeEn}${untilEn} were randomized.
 Unfortunately you did not get a spot in the lottery sign-up.`;
   return {
     subject: SUBJECT,
