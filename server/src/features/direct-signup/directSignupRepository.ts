@@ -515,12 +515,20 @@ export const saveDirectSignups = async (
       droppedSignups,
     );
     if (!notSavedResult.ok) {
-      return notSavedResult;
+      // The write has landed by now, so failing the caller here would abort a lottery run that
+      // has already placed people. The unverified ones read as saved, like a skipped document
+      logger.error(
+        new Error(
+          `Could not verify which assignment signups were saved, treating them as saved: ${notSavedResult.error}`,
+        ),
+      );
     }
 
     return makeSuccessResult({
       modifiedCount: response.modifiedCount,
-      droppedSignups: [...droppedSignups, ...notSavedResult.value],
+      droppedSignups: notSavedResult.ok
+        ? [...droppedSignups, ...notSavedResult.value]
+        : droppedSignups,
     });
   } catch (error) {
     logger.error(

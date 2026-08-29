@@ -73,18 +73,27 @@ export const saveResults = async ({
     assignmentTime,
   );
   if (!saveLotteryRanResult.ok) {
-    return saveLotteryRanResult;
+    // The spots are saved, so returning here would cost the winners their notifications over
+    // a mark that only bookkeeping needs
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to mark the lotteried program items: ${saveLotteryRanResult.error}`,
+      ),
+    );
   }
 
   const savePassedOverResult = await savePassedOverForLottery(
     passedOverProgramItemIds,
   );
   if (!savePassedOverResult.ok) {
-    return savePassedOverResult;
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to record the passed over program items: ${savePassedOverResult.error}`,
+      ),
+    );
   }
 
-  // The spots are saved and the start time is closed at this point, so neither of the two
-  // steps below can fail the run - they log and carry on
+  // The spots are saved at this point, so nothing below can fail the run - it logs and carries on
   await addAssignmentNotifications({
     assignmentTime,
     finalResults,
