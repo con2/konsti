@@ -1,3 +1,6 @@
+import { getProgramTypePluralNames } from "shared/constants/programTypeNames";
+import { Locale } from "shared/types/locale";
+
 export const translationEN = {
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   appDescriptionPreConventionWeek:
@@ -470,16 +473,7 @@ export const translationEN = {
   },
   programTypePlural: {
     all: "program items",
-    tabletopRPG: "role-playing games",
-    larp: "larps",
-    tournament: "tournaments",
-    workshop: "workshops",
-    experiencePoint: "games",
-    other: "program items",
-    roundtableDiscussion: "roundtable discussions",
-    fleaMarket: "flea market times",
-    otherGaming: "other gaming",
-    boardgame: "board games",
+    ...getProgramTypePluralNames(Locale.EN),
   },
   programTypeGenetive: {
     all: "Program item",

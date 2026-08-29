@@ -1,7 +1,7 @@
 import { capitalize } from "remeda";
+import { getProgramTypePluralName } from "shared/constants/programTypeNames";
 import { Locale } from "shared/types/locale";
 import { getDateAndTime } from "shared/utils/timeFormatter";
-import { getProgramTypePluralName } from "server/features/notifications/programTypeNames";
 import { NotificationTask } from "server/utils/notificationQueue";
 
 export interface EmailMessage {

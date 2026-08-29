@@ -1,3 +1,6 @@
+import { getProgramTypePluralNames } from "shared/constants/programTypeNames";
+import { Locale } from "shared/types/locale";
+
 export const translationFI = {
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   appDescriptionPreConventionWeek: "{{EVENT_NAME}} {{EVENT_YEAR}} – Etkoviikko",
@@ -472,16 +475,7 @@ export const translationFI = {
   },
   programTypePlural: {
     all: "ohjelmanumerot",
-    tabletopRPG: "roolipelit",
-    larp: "larpit",
-    tournament: "turnaukset",
-    workshop: "työpajat",
-    experiencePoint: "pelit",
-    other: "ohjelmanumerot",
-    roundtableDiscussion: "keskustelupiirit",
-    fleaMarket: "kirpputoriajat",
-    otherGaming: "muu pelaaminen",
-    boardgame: "lautapelit",
+    ...getProgramTypePluralNames(Locale.FI),
   },
   programTypeGenetive: {
     all: "Ohjelmanumeron",
