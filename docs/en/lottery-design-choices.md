@@ -81,9 +81,19 @@ cannot fix.
 The rule is about the message, so `isSeen` falls outside it - marking a notification read changes
 nothing the item says, and has no counterpart in the inbox to disagree with.
 
-This holds for every event log item, not only the lottery's. The lottery needs no de-duplication or
-follow-up notices to satisfy it: it decides each start time once (choice 7), so it tells each
-attendee about that start time once.
+This holds for every event log item, not only the lottery's. A start time is normally decided once
+(choice 7), so each attendee hears about it once and there is nothing to de-duplicate.
+
+**The retry is the exception, and it is not fully honoured.** An attempt that saved its spots and
+failed before marking them may be run again, and the second attempt cannot tell who the first one
+already turned down. A winner is safe: their spot is on disk, so the run reads it back and stays
+quiet. A rejection leaves nothing to read - a lottery sign-up that lost looks exactly like one still
+waiting - so everyone the first attempt rejected gets a second `NO_ASSIGNMENT` item and a second
+email, both permanent under this choice.
+
+Closing that means giving the loser side something durable to check, which the event log already is:
+skip an attendee who already carries a `NO_ASSIGNMENT` for this start time. Until it does, the
+duplicate rejection is the known price of being able to retry at all.
 
 One consequence worth knowing: `getAssignmentBonus` reads a `NEW_ASSIGNMENT` item as "has been
 assigned before", so an attendee who took a spot and later cancelled it doesn't get the first-time
