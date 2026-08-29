@@ -96,9 +96,8 @@ export const AdminView = (): ReactElement => {
     title: capitalize(getWeekdayAndTime(time)),
   }));
 
-  // A lottery can only be run until its program items start taking direct sign-ups, and the
-  // server refuses a run that is late. Both sides ask the same predicate, so the default is a
-  // time the server will accept - during an event most of the list is behind that line. Past
+  // The server refuses a run once its program items start taking direct sign-ups, so the default
+  // skips the starting times already past that line - during an event most of the list is. Past
   // times stay in the list rather than being hidden, to be picked deliberately
   const upcomingStartTimes = new Set(
     visibleProgramItems

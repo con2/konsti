@@ -817,8 +817,8 @@ describe("Program items no lottery will take", () => {
   });
 });
 
-// The single comparison behind isStartTimeChanged, isStartTimeMatch and the lottery mark, so
-// the parent override is applied the same way wherever "does this run at that time" is asked
+// The single comparison behind the lottery mark and the run's start time filtering, so the
+// parent override is applied the same way wherever "does this run at that time" is asked
 describe("isSameStartTime", () => {
   const parentId = "test-parent-id";
   const ownStartTime = `${friday}T14:00:00.000Z`;

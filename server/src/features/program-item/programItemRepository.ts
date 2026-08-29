@@ -281,9 +281,6 @@ interface PopularityUpdate {
   popularity: Popularity;
 }
 
-// Records which start time these program items were lotteried for. A program item is lotteried
-// at most once: if it is later moved onto a slot whose lottery has not run, it is left out of
-// that run and its remaining spots go to direct sign-up
 // Recorded rather than worked out later: whether a lottery will take a program item must not
 // change as the clock moves past its sign-up window
 export const savePassedOverForLottery = async (
@@ -312,6 +309,8 @@ export const savePassedOverForLottery = async (
   }
 };
 
+// The start time these program items were lotteried for. A time rather than a flag, so one moved
+// onto another slot afterwards can be told from one still sitting where it was lotteried
 export const saveLotteryRanForStartTime = async (
   programItemIds: readonly string[],
   assignmentTime: string,

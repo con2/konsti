@@ -176,15 +176,9 @@ export const storeDirectSignup = async (
   );
 
   if (newSignup) {
-    // Lottery sign-ups for this start time are deliberately left alone: holding a spot doesn't
-    // keep an attendee out of the lottery, and a spot they win replaces this one
-    //
-    // Group member direct sign-up removes them from the group, close group if group creator.
-    // Only for program items the lottery allocates: a group exists to enter those together, so
-    // taking one of their spots alone leaves it, while an always-open or direct-only sign-up
-    // settles the attendee for that start time without affecting the group's other slots.
-    // The sign-up already persisted, so a group-leave failure must not fail the request -
-    // log it and still report success; the group state self-corrects on the next poll
+    // Leaving the group only for a program item the lottery allocates: a group exists to enter
+    // those together, so taking one of their spots alone leaves it. The sign-up already
+    // persisted, so a group-leave failure is logged rather than failing the request
     let leftGroup = false;
     if (isLotterySignupProgramItem(programItem)) {
       const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);
