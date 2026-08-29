@@ -102,10 +102,12 @@ export const addAssignmentNotifications = async ({
     ...startingProgramItemIds,
   ]);
   if (!placedByLotteryResult.ok) {
-    // Without it a rejection cannot be told from a placement, and a wrong one is permanent
+    // The rejections still go out, keyed on this run's own results alone: silence for everyone
+    // who lost is a certain harm, where telling a retry's already-placed attendee they got
+    // nothing is a rare one, and only this hour's second attempt can produce it
     logger.error(
       new Error(
-        `Assignment ${assignmentTime}: failed to read the spots already placed, skip queueing rejections`,
+        `Assignment ${assignmentTime}: failed to read the spots already placed, rejecting on this run's results alone`,
       ),
     );
   }
@@ -126,13 +128,11 @@ export const addAssignmentNotifications = async ({
     finalResults.map((result) => result.username),
   );
 
-  const rejectedUsernames = placedByLotteryResult.ok
-    ? lotterySignupUsernames.filter(
-        (lotterySignupUsername) =>
-          !placedNowUsernames.has(lotterySignupUsername) &&
-          !placedByLotteryUsernames.has(lotterySignupUsername),
-      )
-    : [];
+  const rejectedUsernames = lotterySignupUsernames.filter(
+    (lotterySignupUsername) =>
+      !placedNowUsernames.has(lotterySignupUsername) &&
+      !placedByLotteryUsernames.has(lotterySignupUsername),
+  );
 
   // Add NEW_ASSIGNMENT to user event logs
   const newAssignmentEventLogItemsResult = await addEventLogItems(

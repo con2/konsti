@@ -7,15 +7,18 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { User } from "shared/types/models/user";
+import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
 import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import {
   findDirectSignups,
+  findDirectSignupsByProgramItemIds,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { EmailSender } from "server/features/notifications/email";
@@ -40,6 +43,21 @@ import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
+
+// Kept as the real implementation, so only the case that needs a failed read replaces it.
+// vi.fn(impl) survives the resetAllMocks below, which restores the implementation it was given
+vi.mock(
+  import("server/features/direct-signup/directSignupRepository"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      findDirectSignupsByProgramItemIds: vi.fn(
+        actual.findDirectSignupsByProgramItemIds,
+      ),
+    };
+  },
+);
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -1240,4 +1258,34 @@ test("should span a rejection over the batch, whichever slots were lotteried", a
     firstProgramItem.startTime,
   );
   expect(noAssignmentItems[0].lotteriedUntil).toEqual(laterProgramItem.endTime);
+});
+
+test("should still tell the losers when the placed spots cannot be read", async () => {
+  // Suppressing a rejection needs that read; without it, silence for everyone who lost is a
+  // certain harm where a wrong rejection is a rare one
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  vi.mocked(findDirectSignupsByProgramItemIds).mockResolvedValueOnce(
+    makeErrorResult(MongoDbError.UNKNOWN_ERROR),
+  );
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  expect(
+    userAfterSave.eventLogItems.map((eventLogItem) => eventLogItem.action),
+  ).toContain(EventLogAction.NO_ASSIGNMENT);
 });
