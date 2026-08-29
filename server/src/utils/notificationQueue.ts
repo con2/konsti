@@ -1,5 +1,6 @@
 import { queueAsPromised, promise as queuePromise } from "fastq";
 import { QueueError } from "shared/types/api/errors";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,
   makeErrorResult,
@@ -23,8 +24,9 @@ export interface NotificationTask {
   username: string;
   programItemId: string;
   programItemStartTime: string;
-  // End of the span a batched lottery covered, so the rejection can name the whole range
+  // The span a batched lottery covered and what it lotteried, so the rejection can name both
   lotteriedUntil?: string;
+  programType?: ProgramType;
   programItemTitle?: string;
 }
 

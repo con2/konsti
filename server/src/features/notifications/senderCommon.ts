@@ -1,5 +1,7 @@
+import { capitalize } from "remeda";
 import { Locale } from "shared/types/locale";
 import { getDateAndTime } from "shared/utils/timeFormatter";
+import { getProgramTypePluralName } from "server/features/notifications/programTypeNames";
 import { NotificationTask } from "server/utils/notificationQueue";
 
 export interface EmailMessage {
@@ -29,19 +31,20 @@ export function getRejectedEmailTemplate(
   // One lottery can cover several starting times at once, and naming only the first would point
   // at one hour out of the several the attendee was competing across. Both ends carry their date,
   // since a span can end on a later day and a bare clock time would read as running backwards
-  const { lotteriedUntil } = notification;
+  const { lotteriedUntil, programType } = notification;
   const lotteriedLine = (locale: Locale): string => {
     const from = getDateAndTime(notification.programItemStartTime, locale);
-    if (!lotteriedUntil) {
+    if (!lotteriedUntil || !programType) {
       return locale === Locale.FI
         ? `Paikat ${from} alkaviin ohjelmanumeroihin arvottiin.`
         : `Spots for program items starting at ${from} were randomized.`;
     }
+    // Named the way the event log names it, so the inbox and the log tell one story
+    const names = capitalize(getProgramTypePluralName(programType, locale));
     const until = getDateAndTime(lotteriedUntil, locale);
-    // The far end is when the last program item ends, so neither text says one starts there
     return locale === Locale.FI
-      ? `Paikat välillä ${from} - ${until} olleisiin ohjelmanumeroihin arvottiin.`
-      : `Spots for program items between ${from} and ${until} were randomized.`;
+      ? `${names} välillä ${from} - ${until} arvottiin.`
+      : `${names} between ${from} and ${until} were lotteried.`;
   };
 
   const bodyFi = `Hei ${notification.username}!
@@ -52,11 +55,7 @@ ${lotteriedLine(Locale.EN)}
 Unfortunately you did not get a spot in the lottery sign-up.`;
   return {
     subject: SUBJECT,
-    text: `${bodyFi}
-
-${bodyEn}
-
-${SIGNATURE}`,
+    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
   };
 }
 
