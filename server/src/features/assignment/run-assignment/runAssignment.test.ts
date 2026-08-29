@@ -2321,3 +2321,64 @@ test("Should mark a batched program item with its own start time, not the parent
   // It has not moved, so nothing should read it as lotteried somewhere else
   expect(hasLotteryAlreadyRun(programItem)).toEqual(false);
 });
+
+test("Should cancel and notify the lottery signups of a program item added to a lotteried start time", async () => {
+  // The mark this branch writes is what puts a program item beyond a later import's reach, so
+  // the run has to clear its lottery sign-ups itself or nothing ever will
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+  });
+
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 1 }]);
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
+      assignmentTime: testProgramItem.startTime,
+    }),
+  );
+
+  // A program item arrives on the same starting time afterwards and takes a lottery sign-up
+  const addedProgramItem = {
+    ...testProgramItem2,
+    startTime: testProgramItem.startTime,
+    programType: testProgramItem.programType,
+  };
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 1 },
+    addedProgramItem,
+  ]);
+  await saveLotterySignups({
+    username: mockUser2.username,
+    lotterySignups: [
+      {
+        programItemId: addedProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: addedProgramItem.startTime,
+      },
+    ],
+  });
+
+  const secondRun = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
+      assignmentTime: testProgramItem.startTime,
+    }),
+  );
+  expect(secondRun.status).toEqual(AssignmentResultStatus.ALREADY_LOTTERIED);
+
+  const secondUser = unsafelyUnwrap(await findUser(mockUser2.username));
+
+  // The sign-up is gone rather than left waiting on a lottery that will never come
+  expect(secondUser?.lotterySignups).toEqual([]);
+  expect(
+    secondUser?.eventLogItems.map((eventLogItem) => eventLogItem.action),
+  ).toContain(EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE);
+});

@@ -16,6 +16,7 @@ import { removeOverlapLotterySignups } from "server/features/assignment/utils/re
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
 import { saveResults } from "server/features/assignment/utils/saveResults";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import { removePassedOverLotterySignups } from "server/features/program-item/passedOverProgramItems";
 import {
   findProgramItems,
   savePassedOverForLottery,
@@ -131,6 +132,16 @@ export const runAssignment = async ({
     logger.info(
       `Start time ${resolvedAssignmentTime} has already been lotteried, stop`,
     );
+    // Cancelled before the mark, not after: the mark is what puts these program items beyond
+    // a later import's reach, so sealing them in first would strand their lottery sign-ups
+    // with nothing to honour them and nobody told
+    const removeResult = await removePassedOverLotterySignups(
+      notYetLotteriedProgramItems,
+    );
+    if (!removeResult.ok) {
+      return removeResult;
+    }
+
     const passedOverResult = await savePassedOverForLottery(
       notYetLotteriedProgramItems.map(
         (programItem) => programItem.programItemId,
