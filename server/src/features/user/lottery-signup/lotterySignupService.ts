@@ -8,6 +8,7 @@ import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import {
   getLotterySignupEndTime,
   getLotterySignupStartTime,
+  willNotBeLotteried,
 } from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
@@ -105,6 +106,18 @@ export const storeLotterySignup = async ({
     };
   }
   const timeNow = timeNowResult.value;
+
+  // A program item is lotteried at most once, and one already holding sign-ups is not lotteried
+  // at all. Either way the sign-up window these times are derived from can still be open - a
+  // move reopens it, and a program item passed over is marked while it is - so without this a
+  // sign-up could be made to a lottery that will not happen
+  if (willNotBeLotteried(programItem, timeNow)) {
+    return {
+      message: `Program item ${programItemId} does not take part in a lottery`,
+      status: "error",
+      errorId: "lotteryAlreadyRun",
+    };
+  }
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 

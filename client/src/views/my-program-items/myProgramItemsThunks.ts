@@ -208,6 +208,7 @@ export enum PostLotterySignupErrorMessage {
   GROUP_MEMBER = "signupError.groupMember",
   PROGRAM_ITEM_HIDDEN = "signupError.programItemHidden",
   INVALID_PROGRAM_ITEM = "signupError.invalidProgramItem",
+  LOTTERY_ALREADY_RUN = "signupError.lotteryAlreadyRun",
   UNKNOWN = "signupError.generic",
 }
 
@@ -241,6 +242,8 @@ export const submitPostLotterySignup = (
           return PostLotterySignupErrorMessage.PROGRAM_ITEM_HIDDEN;
         case "invalidProgramItem":
           return PostLotterySignupErrorMessage.INVALID_PROGRAM_ITEM;
+        case "lotteryAlreadyRun":
+          return PostLotterySignupErrorMessage.LOTTERY_ALREADY_RUN;
         case "unknown":
           return PostLotterySignupErrorMessage.UNKNOWN;
         default:

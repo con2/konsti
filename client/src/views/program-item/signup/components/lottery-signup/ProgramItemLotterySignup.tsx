@@ -1,7 +1,10 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getLotterySignupStartTime } from "shared/utils/signupTimes";
+import {
+  getLotterySignupStartTime,
+  willNotBeLotteried,
+} from "shared/utils/signupTimes";
 import { isSameOrAfter } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
@@ -107,7 +110,11 @@ export const ProgramItemLotterySignup = ({
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
 
   const timeNow = useTimeNow();
-  const lotterySignupOpen = isSameOrAfter(timeNow, lotterySignupStartTime);
+  // No run will take this program item - it moved after its lottery, or it was passed over for
+  // holding sign-ups already - so there is no lottery to sign up for
+  const lotterySignupOpen =
+    !willNotBeLotteried(programItem, timeNow) &&
+    isSameOrAfter(timeNow, lotterySignupStartTime);
 
   if (!loggedIn) {
     return <LoginToSignupLink />;

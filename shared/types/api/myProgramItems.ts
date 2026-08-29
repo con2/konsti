@@ -30,7 +30,9 @@ export interface PostLotterySignupError extends ApiError {
     | "noKonstiSignup"
     | "groupMember"
     | "hidden"
-    | "invalidProgramItem";
+    | "invalidProgramItem"
+    // This program item's lottery has already been run; its spots are first-come-first-served
+    | "lotteryAlreadyRun";
 }
 
 export type PostLotterySignupResponse =

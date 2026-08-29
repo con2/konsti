@@ -13,6 +13,8 @@ import {
   getLotterySignupInProgress,
   getLotterySignupNotStarted,
   getLotterySignupStartTime,
+  hasLotteryAlreadyRun,
+  willNotBeLotteried,
 } from "shared/utils/signupTimes";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { useAppSelector } from "client/utils/hooks";
@@ -35,11 +37,6 @@ export const SignupHelpText = ({
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
 
-  // Cannot use programItem.signupStrategy here since it's relative to time
-  const isLotterySignup =
-    isLotterySignupProgramItem(programItem) &&
-    !tooEarlyForLotterySignup(programItem);
-
   // Group members can sign up to always open program items without leaving the group
   const groupMemberInfo =
     isDirectSignupAlwaysOpen(programItem) && isInGroup ? (
@@ -47,6 +44,28 @@ export const SignupHelpText = ({
     ) : null;
 
   const timeNow = useTimeNow();
+
+  // Said out loud either way: an attendee seeing a future program item offer only direct
+  // sign-up has no other way to know why. The two causes read differently - one is about the
+  // starting time changing, the other about the program item having sign-ups already
+  const noLotteryAhead = willNotBeLotteried(programItem, timeNow);
+
+  const noLotteryInfo = noLotteryAhead ? (
+    <span>
+      {" "}
+      {t(
+        hasLotteryAlreadyRun(programItem)
+          ? "signup.help.lotteryAlreadyRunInfo"
+          : "signup.help.notInLotteryInfo",
+      )}
+    </span>
+  ) : null;
+
+  // Cannot use programItem.signupStrategy here since it's relative to time
+  const isLotterySignup =
+    isLotterySignupProgramItem(programItem) &&
+    !tooEarlyForLotterySignup(programItem) &&
+    !noLotteryAhead;
 
   const lotterySignupStartTime = getLotterySignupStartTime(programItem);
   const lotterySignupEndTime = getLotterySignupEndTime(programItem);
@@ -93,6 +112,7 @@ export const SignupHelpText = ({
           <FontAwesomeIcon icon={"user-plus"} />{" "}
           {t("signup.help.directSignupStartsLater")}{" "}
           <b>{getFormattedTime(directSignupStartTime, timeNow)}</b>.
+          {noLotteryInfo}
           {groupMemberInfo}
         </p>
       );
@@ -102,7 +122,7 @@ export const SignupHelpText = ({
       <p>
         <FontAwesomeIcon icon={"user-plus"} />{" "}
         {t("signup.help.directSignupOpenNow")}{" "}
-        <b>{getFormattedTime(directSignupEndTime, timeNow)}</b>.
+        <b>{getFormattedTime(directSignupEndTime, timeNow)}</b>.{noLotteryInfo}
         {groupMemberInfo}
       </p>
     );
