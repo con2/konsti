@@ -28,8 +28,6 @@ export const getPassedOverProgramItems = async (
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const timeNow = timeNowResult.value;
-
   const attendeeCountByProgramItemId = new Map(
     directSignups.map((directSignup) => [
       directSignup.programItemId,
@@ -56,7 +54,7 @@ export const getPassedOverProgramItems = async (
       // Only while its lottery is still ahead. Marking one whose sign-up window has shut
       // changes nothing anybody can see: the window alone already closes lottery sign-up, and
       // no run reaches a start time that has gone by
-      isSameOrBefore(timeNow, getLotterySignupEndTime(programItem)),
+      isSameOrBefore(timeNowResult.value, getLotterySignupEndTime(programItem)),
   );
 
   if (passedOverProgramItems.length > 0) {

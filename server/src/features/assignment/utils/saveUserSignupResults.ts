@@ -130,14 +130,18 @@ const removeReplacedSignups = async ({
     ]),
   );
 
+  const existingSignupsByUsername = groupBy(
+    existingSignups,
+    (signup) => signup.username,
+  );
+
   const signupsToDelete = finalResults.flatMap((result) =>
-    existingSignups
+    (existingSignupsByUsername[result.username] ?? [])
       .filter((signup) => {
         const heldStartTime = startTimeByProgramItemId.get(
           signup.programItemId,
         );
         return (
-          signup.username === result.username &&
           // The spot they won is written over their own entry, so deleting it here would take
           // back what the lottery just gave them
           signup.programItemId !== result.assignmentSignup.programItemId &&

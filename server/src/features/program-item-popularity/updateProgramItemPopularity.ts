@@ -58,8 +58,6 @@ export const updateProgramItemPopularity = async (): Promise<
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const timeNow = timeNowResult.value;
-
   // A program item no lottery will take - moved after its own, or passed over for holding
   // sign-ups already - would otherwise absorb demand for a lottery it can never enter, and be
   // left wearing a popularity figure for that lottery
@@ -82,7 +80,7 @@ export const updateProgramItemPopularity = async (): Promise<
         // Every program item in the group shares the start time the window is derived from
         programItemsForStartTime[0],
       );
-      return isBefore(timeNow, lotterySignupEndTime);
+      return isBefore(timeNowResult.value, lotterySignupEndTime);
     },
   );
 

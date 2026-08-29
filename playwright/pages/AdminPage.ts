@@ -23,6 +23,10 @@ export class AdminPage extends BasePage {
     return this.page.locator("#assignmentTime");
   }
 
+  assignmentTimeOption(startTime: string): Locator {
+    return this.assignmentTimeSelect.locator(`option[value="${startTime}"]`);
+  }
+
   get adminMessageFiInput(): Locator {
     return this.page.getByLabel(/in finnish/i);
   }

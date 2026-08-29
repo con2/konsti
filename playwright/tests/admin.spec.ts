@@ -226,9 +226,7 @@ test("Preselect the next starting time whose lottery can still be run", async ({
   await expect(adminPage.assignmentTimeSelect).toHaveValue(nextStartTime);
 
   // The starting time that has gone by is still there to be picked deliberately
-  await expect(
-    adminPage.assignmentTimeSelect.locator(`option[value="${pastStartTime}"]`),
-  ).toHaveCount(1);
+  await expect(adminPage.assignmentTimeOption(pastStartTime)).toHaveCount(1);
 });
 
 test("Admin can trigger an assignment run", async ({ page, request }) => {

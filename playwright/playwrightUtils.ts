@@ -238,20 +238,24 @@ export const postAssignment = async (
     ).toISOString(),
   });
 
-  const loginResponse = await postLogin(request, {
-    username: "admin",
-    password: "test",
-  });
-  const url = `${baseUrl}${ApiEndpoint.ASSIGNMENT}`;
-  const response = await request.post(url, {
-    data: { assignmentTime },
-    headers: { Authorization: `Bearer ${loginResponse.jwt}` },
-  });
-  expect(response.status()).toBe(200);
-  const body = (await response.json()) as PostAssignmentResponse;
-  expect(body.status).toBe("success");
-
-  await postTestSettings(request, { testTime: testTimeBefore });
+  try {
+    const loginResponse = await postLogin(request, {
+      username: "admin",
+      password: "test",
+    });
+    const url = `${baseUrl}${ApiEndpoint.ASSIGNMENT}`;
+    const response = await request.post(url, {
+      data: { assignmentTime },
+      headers: { Authorization: `Bearer ${loginResponse.jwt}` },
+    });
+    expect(response.status()).toBe(200);
+    const body = (await response.json()) as PostAssignmentResponse;
+    expect(body.status).toBe("success");
+  } finally {
+    // Put the clock back even when the run is refused, so one failure doesn't leave every
+    // later test in the file running at the lottery's moment
+    await postTestSettings(request, { testTime: testTimeBefore });
+  }
 };
 
 // The app update banner reports an update when the server's build time is

@@ -340,9 +340,8 @@ const findSignupsNotSaved = async (
         signup.directSignupProgramItemId,
       );
       if (!savedUsernames) {
-        // The read skipped the whole document, so this says nothing about whether the write
-        // landed - and the write is what created it. Reporting them dropped would tell
-        // attendees holding a spot that they got none, which choice 5 makes permanent
+        // The read skipped the document rather than proving the write missed it. Reporting them
+        // dropped would tell attendees holding a spot that they got none, which is permanent
         logger.error(
           new Error(
             `Could not verify the assignment signups saved to program item ${signup.directSignupProgramItemId}, treating them as saved`,
@@ -450,13 +449,10 @@ export const saveDirectSignups = async (
           {
             $set: {
               userSignups: {
-                // The count above was read in a separate round-trip, so it can be stale by
-                // the time this lands - a first-come-first-served sign-up in between, or a
-                // stored document the read skipped as invalid. Capping here is what
-                // actually holds the attendance limit; whoever is already in the program
-                // item sorts first, so an incumbent is never the one dropped.
-                // Only reachable when the read and the write disagree, which a test can't
-                // stage from outside the module, so no unit test covers this cap alone
+                // The count above was read in a separate round-trip, so it can be stale by the
+                // time this lands. Capping here is what actually holds the attendance limit;
+                // it keeps the head, so the attendees this write leaves alone survive it and
+                // the ones being written are what an over-full program item loses
                 $slice: [
                   {
                     $concatArrays: [
@@ -543,6 +539,30 @@ interface DelDirectSignupParams {
   username: string;
 }
 
+// Drop the user's sign-ups and recompute count from what is left, rather than decrementing it.
+// count gates the sign-up endpoint's capacity check, and a decrement drifts from the array
+// whenever it removes more than one entry
+const removeUsernamePipeline = (username: string): object[] => [
+  {
+    $set: {
+      userSignups: {
+        $filter: {
+          input: "$userSignups",
+          as: "userSignup",
+          // $literal: a username is data, and one starting with "$" would
+          // otherwise be read as a field path and match nothing
+          cond: {
+            $ne: ["$$userSignup.username", { $literal: username }],
+          },
+        },
+      },
+    },
+  },
+  {
+    $set: { count: { $size: "$userSignups" } },
+  },
+];
+
 export const delDirectSignup = async ({
   directSignupProgramItemId,
   username,
@@ -555,29 +575,7 @@ export const delDirectSignup = async ({
         programItemId: directSignupProgramItemId,
         "userSignups.username": username,
       },
-      // Drop the user's sign-ups and recompute count from what is left, rather than
-      // decrementing it. count gates the sign-up endpoint's capacity check, and a
-      // decrement drifts from the array whenever it removes more than one entry
-      [
-        {
-          $set: {
-            userSignups: {
-              $filter: {
-                input: "$userSignups",
-                as: "userSignup",
-                // $literal: a username is data, and one starting with "$" would
-                // otherwise be read as a field path and match nothing
-                cond: {
-                  $ne: ["$$userSignup.username", { $literal: username }],
-                },
-              },
-            },
-          },
-        },
-        {
-          $set: { count: { $size: "$userSignups" } },
-        },
-      ],
+      removeUsernamePipeline(username),
       { returnDocument: "after", updatePipeline: true },
     ).lean();
 
@@ -647,28 +645,7 @@ export const delDirectSignups = async (
             programItemId: directSignupProgramItemId,
             "userSignups.username": username,
           },
-          // Recompute count from the remaining array rather than decrementing, so it
-          // can't drift when the pull removes more than one entry for the user
-          update: [
-            {
-              $set: {
-                userSignups: {
-                  $filter: {
-                    input: "$userSignups",
-                    as: "userSignup",
-                    // $literal: a username is data, and one starting with "$" would
-                    // otherwise be read as a field path and match nothing
-                    cond: {
-                      $ne: ["$$userSignup.username", { $literal: username }],
-                    },
-                  },
-                },
-              },
-            },
-            {
-              $set: { count: { $size: "$userSignups" } },
-            },
-          ],
+          update: removeUsernamePipeline(username),
         },
       })),
     );
