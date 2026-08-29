@@ -13,27 +13,33 @@ export const EventLogNoAssignment = ({ eventLogItem }: Props): ReactElement => {
   const { getTime, getShortWeekdayAndTime } = useTimeFormatters();
 
   // A lottery covering several starting times names the whole span, since no single hour of it
-  // is the one the attendee was competing for
+  // is the one the attendee was competing for. Narrowed once, so the two fields cannot be read
+  // apart from each other
   const { programItemStartTime, lotteriedUntil, programType } = eventLogItem;
+  const lotteriedSpan =
+    lotteriedUntil && programType ? { lotteriedUntil, programType } : null;
 
   // A span can end on the next day, where bare clock times read as running backwards. Both ends
   // carry the day then, so neither of them is the one the reader has to guess
-  const spanCrossesDay =
-    !!lotteriedUntil &&
+  const formatSpanTime =
+    lotteriedSpan &&
     !isSameDayInEventTimezone(
       new Date(programItemStartTime),
-      new Date(lotteriedUntil),
-    );
-  const formatSpanTime = spanCrossesDay ? getShortWeekdayAndTime : getTime;
+      new Date(lotteriedSpan.lotteriedUntil),
+    )
+      ? getShortWeekdayAndTime
+      : getTime;
 
   return (
     <div>
       <span>
-        {lotteriedUntil && programType
+        {lotteriedSpan
           ? t("eventLogActions.noAssignmentTimeRange", {
-              PROGRAM_TYPE: capitalize(t(`programTypePlural.${programType}`)),
+              PROGRAM_TYPE: capitalize(
+                t(`programTypePlural.${lotteriedSpan.programType}`),
+              ),
               FIRST_TIME: formatSpanTime(programItemStartTime),
-              LAST_TIME: formatSpanTime(lotteriedUntil),
+              LAST_TIME: formatSpanTime(lotteriedSpan.lotteriedUntil),
             })
           : t("eventLogActions.noAssignment", {
               START_TIME: getTime(programItemStartTime),

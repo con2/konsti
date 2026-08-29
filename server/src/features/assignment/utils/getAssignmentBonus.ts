@@ -1,4 +1,4 @@
-import { partition } from "remeda";
+import { partition, unique } from "remeda";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -7,51 +7,59 @@ import { User } from "shared/types/models/user";
 import { isSameTime } from "shared/utils/timeComparison";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
-export const getAssignmentBonus = (
-  attendeeGroup: User[],
-  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+export interface AssignmentBonusContext {
+  currentStartTimes: readonly string[];
+  stillRunningProgramItemIds: ReadonlySet<string>;
+}
+
+// Built once per algorithm pass: every attendee group asks the same questions of the same
+// programme
+export const getAssignmentBonusContext = (
   lotterySignupProgramItems: readonly ProgramItem[],
   allProgramItems: readonly ProgramItem[],
   assignmentTime: string,
-): number => {
-  /** First time bonus */
-
+): AssignmentBonusContext => ({
   // A run must not count results for its own start time as "previous", which would strip the
-  // bonus and change outcomes: ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at
-  // the current assignmentTime, but keep genuine first-come-first-served direct sign-ups.
-  // Both are recorded against the hour the attendee turns up, so a batched run - whose own
-  // time is the parent's - is recognised by the hours of the program items it covers
-  const currentStartTimes = [
+  // bonus and change outcomes. Both are recorded against the hour the attendee turns up, so a
+  // batched run - whose own time is the parent's - is recognised by the hours it covers
+  currentStartTimes: unique([
     assignmentTime,
     ...lotterySignupProgramItems.map((programItem) => programItem.startTime),
-  ];
-  const isCurrentAssignment = (startTime: string): boolean =>
-    currentStartTimes.some((currentStartTime) =>
-      isSameTime(startTime, currentStartTime),
-    );
-
+  ]),
   // A placement the attendee never got to attend is not one they spent: cancelling their own
   // sign-up costs the bonus, the program item being cancelled does not. Asked of the whole
-  // programme, since a placement at any other start time is still a placement - only one that
-  // was deleted or cancelled stops counting
-  const stillRunningProgramItemIds = new Set(
+  // programme, since a placement at any other start time is still a placement
+  stillRunningProgramItemIds: new Set(
     allProgramItems
       .filter((programItem) => programItem.state === State.ACCEPTED)
       .map((programItem) => programItem.programItemId),
-  );
+  ),
+});
+
+export const getAssignmentBonus = (
+  attendeeGroup: User[],
+  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  { currentStartTimes, stillRunningProgramItemIds }: AssignmentBonusContext,
+): number => {
+  /** First time bonus */
+
+  const isCurrentStartTime = (startTime: string): boolean =>
+    currentStartTimes.some((currentStartTime) =>
+      isSameTime(startTime, currentStartTime),
+    );
 
   // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
     partition(attendeeGroup, (groupMember) => {
       const previousDirectSignup = lotteryParticipantDirectSignups.find(
-        (programItem) => {
-          return programItem.userSignups.find(
+        (directSignup) => {
+          return directSignup.userSignups.find(
             (userSignup) =>
               userSignup.username === groupMember.username &&
-              // Exclude this lottery's own win (priority > 0) at the current time, but keep
-              // first-come-first-served (priority 0) sign-ups counting as "previous"
+              // Exclude this run's own win (priority > 0), but keep first-come-first-served
+              // (priority 0) sign-ups counting as "previous"
               !(
-                isCurrentAssignment(userSignup.signedToStartTime) &&
+                isCurrentStartTime(userSignup.signedToStartTime) &&
                 userSignup.priority !== DIRECT_SIGNUP_PRIORITY
               ),
           );
@@ -67,7 +75,7 @@ export const getAssignmentBonus = (
           return (
             previousAssignment &&
             programItemExists &&
-            !isCurrentAssignment(eventLogItem.programItemStartTime)
+            !isCurrentStartTime(eventLogItem.programItemStartTime)
           );
         },
       );
@@ -95,7 +103,7 @@ export const getAssignmentBonus = (
       return groupMember.eventLogItems.find(
         (eventLogItem) =>
           eventLogItem.action === EventLogAction.NO_ASSIGNMENT &&
-          !isCurrentAssignment(eventLogItem.programItemStartTime),
+          !isCurrentStartTime(eventLogItem.programItemStartTime),
       );
     });
 

@@ -9,7 +9,10 @@ import {
 import { EventLogAction } from "shared/types/models/eventLog";
 import { State } from "shared/types/models/programItem";
 import { getUsers } from "server/features/assignment/utils/assignmentTestUtils";
-import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
+import {
+  getAssignmentBonus,
+  getAssignmentBonusContext,
+} from "server/features/assignment/utils/getAssignmentBonus";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 const assignmentTime = testProgramItem.startTime;
@@ -20,9 +23,11 @@ test("should give the first-time bonus to a member with no previous signups or a
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(config.server().firstSignupBonus);
@@ -52,9 +57,11 @@ test("should still give the first-time bonus when a member's only direct signup 
   const bonus = getAssignmentBonus(
     [user],
     directSignups,
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(config.server().firstSignupBonus);
@@ -84,9 +91,11 @@ test("should strip the first-time bonus for a first-come-first-served direct sig
   const bonus = getAssignmentBonus(
     [user],
     directSignups,
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(0);
@@ -111,9 +120,11 @@ test("should still give the first-time bonus when a member's only NEW_ASSIGNMENT
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(config.server().firstSignupBonus);
@@ -142,9 +153,11 @@ test("should strip the first-time bonus for a genuine previous direct signup at 
   const bonus = getAssignmentBonus(
     [user],
     directSignups,
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(0);
@@ -170,9 +183,11 @@ test("should add the additional first-time bonus for a member with a previous fa
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   // No previous direct sign-up -> first-time bonus, plus a previous failed lottery -> additional bonus
@@ -204,9 +219,11 @@ test("should still give the first-time bonus when exactly half of the group has 
   const bonus = getAssignmentBonus(
     users,
     directSignups,
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(config.server().firstSignupBonus);
@@ -232,9 +249,11 @@ test("should give no bonus when more than half of the group has a previous signu
   const bonus = getAssignmentBonus(
     users,
     directSignups,
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(0);
@@ -259,9 +278,11 @@ test("should not add the additional first-time bonus for a NO_ASSIGNMENT from th
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   // The NO_ASSIGNMENT is this run's own result (as on a re-run) -> first-time bonus only
@@ -288,9 +309,11 @@ test("should strip the first-time bonus for a member previously assigned to a mo
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem],
+      [testProgramItem],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(0);
@@ -317,9 +340,11 @@ test("should strip the first-time bonus for a previous assignment to a program i
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem, testProgramItem2],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem, testProgramItem2],
+      [testProgramItem, testProgramItem2],
+      assignmentTime,
+    ),
   );
 
   expect(bonus).toEqual(0);
@@ -345,9 +370,11 @@ test("should keep the first-time bonus when the previously assigned program item
   const bonus = getAssignmentBonus(
     [user],
     [],
-    [testProgramItem],
-    [testProgramItem, { ...testProgramItem2, state: State.CANCELLED }],
-    assignmentTime,
+    getAssignmentBonusContext(
+      [testProgramItem, { ...testProgramItem2, state: State.CANCELLED }],
+      [testProgramItem, { ...testProgramItem2, state: State.CANCELLED }],
+      assignmentTime,
+    ),
   );
 
   // They never got to attend it, so the placement was not theirs to spend
