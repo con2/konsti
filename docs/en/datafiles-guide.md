@@ -170,15 +170,16 @@ In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in to
         "createdAt": "2024-07-19T13:00:08.123Z",
       },
       {
+        // A different lottery: for one starting time a user has either this or newAssignment
         "action": "noAssignment",
         "programItemId": "", // Always empty: the row is about a starting time, not one program item
-        "programItemStartTime": "2024-07-19T15:00:00Z",
+        "programItemStartTime": "2024-07-19T17:00:00Z",
         // Only when the lottery covered several starting times at once, where the two describe
         // the span it took in. Present from Tracon 2026 onward
-        "lotteriedUntil": "2024-07-19T17:00:00Z",
+        "lotteriedUntil": "2024-07-19T19:00:00Z",
         "programType": "fleaMarket",
         "isSeen": true,
-        "createdAt": "2024-07-19T13:00:08.123Z",
+        "createdAt": "2024-07-19T15:00:09.456Z",
       },
     ],
     "email": "<redacted>", // "" if not provided; present from Tracon 2025 onward

@@ -270,9 +270,16 @@ So a spot in a sub-session starting at 10:00 is a spot at 10:00, even where the 
 lotteried with runs at 09:00. What the spot clashes with, which spot a won one replaces, and what
 the program item page tells the attendee all follow the item's own hour.
 
+What the attendee is told follows the same rule, in the event log and in the email alike. A
+placement names the hour of the program item they got. A rejection has no program item to name, so
+it names the span the lottery covered instead: from the first program item's start to the last
+one's end, which is the range the batch's own titles already carry. A run covering a single
+starting time names that hour, as it always has.
+
 The two are separate because they answer to different things. The batch time is an organiser's
 device for running one lottery over several slots; the attendee's schedule is not part of it, and
-they have no reason to expect a spot they hold at 10:00 to behave as though it were at 09:00.
+they have no reason to expect a spot they hold at 10:00 to behave as though it were at 09:00. It
+follows that the batch time is never shown to them: nothing they can see starts at it.
 
 The parent-resolved time was stored once, so that a re-run could find the previous lottery's
 sign-ups by start time and clear them before running again. The lottery runs once now (choice 7),
