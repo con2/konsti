@@ -72,9 +72,14 @@ export const SignupHelpText = ({
   }
 
   if (!usesKonstiSignup) {
+    // A revolving door item has no sign-up instructions to look up, so say how
+    // to take part here instead of pointing at the program details
+    const messageKey = programItem.revolvingDoor
+      ? ("signup.revolvingDoorNoKonstiSignup" as const)
+      : (`signup.signupType.${programItem.signupType}` as const);
     return (
       <p>
-        {t(`signup.signupType.${programItem.signupType}`, {
+        {t(messageKey, {
           PROGRAM_TYPE: t(`programTypeIllative.${programItem.programType}`),
         })}
       </p>

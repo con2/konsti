@@ -403,6 +403,8 @@ export const translationEN = {
         "This {{PROGRAM_TYPE}} does not use Konsti for signing up. Registration at Gaming Desk.",
       missing: "Missing info: sign up type",
     },
+    revolvingDoorNoKonstiSignup:
+      "This {{PROGRAM_TYPE}} does not use Konsti for signing up. You can join at any time if there is free space.",
     cancelled: "This {{PROGRAM_TYPE}} has been cancelled.",
     cancelledTitleText: "CANCELLED",
   },
