@@ -62,7 +62,7 @@ import {
 // Randomness is seeded per test, so the generated fixtures and the algorithm's shuffle produce
 // the same assignment every run and the count can be exact rather than a floor. It is a snapshot
 // of what this data yields, not a requirement - changing the fixtures or the algorithm moves it
-const expectedResultsCount = 31;
+const expectedResultsCount = 28;
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),

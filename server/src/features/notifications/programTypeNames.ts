@@ -20,6 +20,7 @@ const PLURAL_NAMES: Record<ProgramType, Record<Locale, string>> = {
     en: "flea market times",
   },
   [ProgramType.OTHER_GAMING]: { fi: "muu pelaaminen", en: "other gaming" },
+  [ProgramType.BOARDGAME]: { fi: "lautapelit", en: "board games" },
 };
 
 export const getProgramTypePluralName = (
