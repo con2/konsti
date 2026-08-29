@@ -12,6 +12,7 @@ export enum KompassiKonstiProgramType {
   FLEAMARKET = "fleamarket",
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
   OTHER_GAMING = "othergaming",
+  BOARDGAME = "boardgame",
 }
 
 export enum KompassiGamestyle {

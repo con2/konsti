@@ -1,5 +1,58 @@
 [
   {
+    "slug": "100-orange-juice-suolattu-appelsiinimehu-pelimuodossa",
+    "title": "100% Orange Juice- Suolattu appelsiinimehu pelimuodossa!",
+    "description": "100% Orange Juice on digitaalinen lautapeli, sisältäen söpöjä hahmoja, ovelia kortteja ja on hauskinta kavereiden kanssa. Tässä lautapelissä voi pelata 1-4 henkilöä kerrallaan, tosin kanssapelaajat voivat olla mukana mistä vain! Aiempaa lautapelikokemusta ei vaadita. Yhden pelin kesto on 40-60min.\r\n\r\nPeli menee itse suolaisuuden ytimeen tuoden 100% RNGtä digitaalisessa lautapelimuodossa. Pelitilanne on lähes aina kaoottinen ja johtaja-asema voi vaihtua yhdessä vuorossa jumbosijan kanssa, joten tiedossa on koukuttavaa casual-hupia päivää piristämään ja hermoja kiristämään. Pelistä löytyy nykyään myös erittäin viihdyttävä CO-OP mode, jossa pelaajat taistelevat yhdessä erilaisia bosseja vastaan! Tästä voi ohjelmanpitäjiltä kysyä lisää!\r\n\r\nOta korttipakkasi ja astu Marie Poppon mysteeriseen maailmaan!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05", "2026-09-06"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "program-type": ["game-other"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "100-orange-juice-suolattu-appelsiinimehu-pelimuodossa",
+        "title": "100% Orange Juice- Suolattu appelsiinimehu pelimuodossa! – lauantai",
+        "startTime": "2026-09-05T12:00:00+03:00",
+        "endTime": "2026-09-05T20:00:00+03:00",
+        "lengthMinutes": 480,
+        "location": "Duetto 1 (Demopöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 4",
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "100-orange-juice-suolattu-appelsiinimehu-pelimuodossa-2",
+        "title": "100% Orange Juice- Suolattu appelsiinimehu pelimuodossa! – sunnuntai",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T16:00:00+03:00",
+        "lengthMinutes": 360,
+        "location": "Duetto 1 (Demopöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 4",
+          "internal:subtitle": "sunnuntai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
     "slug": "ahmija",
     "title": "Ahmija",
     "description": "Tavallinen baari-ilta keskellä syksyä. Matkaan sattuneiden juomien kanssa joukko ystäviä talsii tihkusateessa kuppilasta toiseen.\r\n\r\nKuin tyhjästä ilmestyy rekka, joka törmäyttää koko poppoon taikamaailmaan ja huomaatte olevanne keskellä Gelgenbeckin basiliskipeijaisia! Hilpeää tunnelmaa latistaa ennustus, jonka mukaan muinainen pahuus on palannut maailmaan.\r\n\r\nPelisysteeminä Mörk Borg isekai-twistillä. Erittäin huumoripainotteisessa pelissä graafisia kuvauksia väkivallasta. Valmishahmoja käyttävä peli soveltuu hyvin aloittelijoille.",
@@ -137,6 +190,78 @@
     ]
   },
   {
+    "slug": "deep-rock-galactic-lautapeli",
+    "title": "Deep Rock Galactic lautapeli",
+    "description": "Taas mennään syvyyksiin tekemään tärkeää työtä Deep Rock Galactic yhtiölle!\r\nDeep Rock Galactic lautapeli on vuoropohjainen tiimipeli, jossa pelaajat liikkuvat vaarallisessa ympäristössä, taistelevat vihollisia vastaan, sekä yrittävät saada työtehtäväänsä tehtyä. Liian helpolla ei kuitenkaan päästä, sillä luolastot kuhisevat ötököitä ja ällöttäviä otuksia.\r\nOlipa lautapeli uusi tai entuudestaan tuttu, on kampanjassa jotakin uutta kaikille. Kampanja on itse tehty, joten sitä ei löydy mistään kirjasesta.\r\nVaikka kyseessä on videopeliin pohjautuva lautapeli, ei videopelistä tarvitse tietää mitään. Joten kokoa joukkueesi tai tule katsomaan jos tiimiläiselle olisi tarvetta, tiimityöllä tästä hyvä saadaan! \r\nPeli on aloittelijaystävällinen, johon mahtuu kerralla 4 pelaajaa ja kestää noin 1h 45min - 2h.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "deep-rock-galactic-lautapeli",
+        "title": "Deep Rock Galactic lautapeli – lauantai",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T14:00:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Demopöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 2",
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "fade-zone-selviytymispelin-demo",
+    "title": "Fade Zone – Selviytymispelin demo",
+    "description": "Fade Zone on kehitteillä oleva eläinteemainen selviytymispeli, jossa pelaajat yrittävät pitää laumansa hengissä muuttuvassa ympäristössä. Pelissä kerätään resursseja, autetaan katastrofeihin joutuneita eläimiä ja tehdään jatkuvasti päätöksiä siitä, mihin rajalliset resurssit kannattaa käyttää.\r\nSäännöt oppii nopeasti, mutta jokainen kierros tuo uusia haasteita ja valintoja. Demossa pääset kokeilemaan peliä sen kehitysvaiheessa ja vaikuttamaan sen lopulliseen muotoon.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "fade-zone-selviytymispelin-demo",
+        "title": "Fade Zone – Selviytymispelin demo – perjantai",
+        "startTime": "2026-09-04T16:30:00+03:00",
+        "endTime": "2026-09-04T20:30:00+03:00",
+        "lengthMinutes": 240,
+        "location": "Duetto 1 (Demopöytä 4)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 4",
+          "internal:subtitle": "perjantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
     "slug": "ffxiv-ttrpg-kristallivarkaat",
     "title": "FFXIV TTRPG: Kristallivarkaat",
     "description": "Ryhmä 30 tason seikkailijoita on palkattu etsimään Amajina ja pojat -mineraalikonsernin kadonneita vankkureita, jotka kuljettivat kristallilähetystä.\r\n\r\nTule tutustumaan Final Fantasy XIV:n pöytäroolipeliin. Kyseessä on suoraviivainen seikkailu, joka sisältää hieman tutkimista ja taistelua. Seikkailu on pelin starter-setistä. Alkuperäisen MMORPG:n tunteminen ei ole välttämätöntä, mutta parantaa kokemusta.\r\n\r\nKoska kaikki pelimekaaninen tulee suoraan ammatin mukaan, pelissä ei ole valmiita hahmoja vaan pelaaja voi valita jonkun seuraavista ammateista: paladin. warrior, dark knight, white mage, scholar, astrologian, monk, dragoon, ninja, bard, machinist, black mage tai summoner.",
@@ -172,6 +297,68 @@
           "konsti:maxAttendance": 6,
           "konsti:minAttendance": 2,
           "konsti:rpgSystem": "Final Fantasy XIV TTRPG"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "go-aasialainen-lautapeli",
+    "title": "go - aasialainen lautapeli",
+    "description": "Go on muinainen strategiapeli Kiinasta. Pelin tarkoituksena on valloittaa itselleen alueita 19x19-kokoisella laudalla mustien tai valkoisten kivien avulla. Sitä voi tehdä esimerkiksi rauhallisesti rajaamalla tai kiivaasti taistelemalla.\r\n\r\nGota voi harrastaa ympäri Suomea; muiden kaupunkien peli-illoista löydät tietoa osoitteesta https://www.suomigo.net/wiki/PeliIllat\r\n\r\nOhjelman pisteen järjestää tamperelainen go-toimintaa vetävä Kanpai ry, jonka Discord-palvelimelle voi liittyä osoitteesta https://discord.gg/4UfpFA7hGf\r\n\r\nOpetamme pisteellä pelin alkeet ja esittelemme sitä mielellämme kaikille kiinnostuneille. Tervetuloa tutustumaan ja pelailemaan go-lautapeliä!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-05", "2026-09-06"],
+      "form": ["offer-program-continuous"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "go-aasialainen-lautapeli",
+        "title": "go - aasialainen lautapeli",
+        "startTime": "2026-09-04T16:00:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 330,
+        "location": "Duetto 1",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "go-aasialainen-lautapeli-2",
+        "title": "go - aasialainen lautapeli",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 690,
+        "location": "Duetto 1",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "go-aasialainen-lautapeli-3",
+        "title": "go - aasialainen lautapeli",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
         }
       }
     ]
@@ -1126,6 +1313,120 @@
     ]
   },
   {
+    "slug": "peliproto-peluutusta-cats-on-the-table",
+    "title": "Peliproto peluutusta - Cats on the Table",
+    "description": "Testaa uutta kehitteillä olevaa lautapeliä! Pelin kehittäjä opettaa säännöt ja auttaa tarvittaessa pelissä. \r\n\r\nOlet kissa. Söpö, mutta tuhma. Olet talon todellinen hallitsija. Sinulla ei ole omistajia, sinulla on henkilökuntaa. Tavoitteesi on tehdä mahdollisimman paljon tuhmuuksia ilman, että henkilökunta pääsee häiritsemään tekemisiäsi. Talouden toiset kissat pyrkivät samaan, eikä kissatappeluiltakaan voi aina välttyä.\r\nCats on the Table on kevyt ja humoristinen korttipohjainen peli kissoista 2-4 pelaajalle. Se sopii noin kahdeksan vuotiaille ja ilman yläikärajaa sitä vanhemmille kissanomistajille, kissaihmisille tai muuten vain kevyestä pelailusta pitäville. Pelissä on mukana kissanomistajille tuttuja tilanteita verhoihin kiipeämisestä kissatappeluihin. Prototyypissä korttien nimet ovat englanniksi, mutta englannin osaaminen ei ole välttämätöntä ja pelaaminen onnistuu myös suomeksi. Yhden pelin kesto on n. 30 minuuttia.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-06"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "peliproto-peluutusta-cats-on-the-table",
+        "title": "Peliproto peluutusta - Cats on the Table – sunnuntai",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1 (Demopöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 2",
+          "internal:subtitle": "sunnuntai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "peliproto-peluutusta-get-the-play-on-the-stage",
+    "title": "Peliproto peluutusta - Get the Play on the Stage!",
+    "description": "Testaa uutta kehitteillä olevaa lautapeliä! Pelin kehittäjä opettaa säännöt ja auttaa tarvittaessa pelissä. \r\n\r\nGet the Play on the Stagessa olet teatterituottaja, joka yrittää löytää oikeat näyttelijät, ohjaajat, käsikirjoittajat ja käsikirjoitukset seuraavaa suurta tuotantoaan varten. Rakenna näytelmä, joka täyttää käsikirjoituksen vaatimukset, tuo se näyttämölle ja osoita, että juuri sinun tuotantosi on muita parempi. Sinun tehtäväsi on saada näytelmä näyttämölle!\r\nJokainen onnistunut tuotanto tuo sinulle lipputuloja seuraavia produktioita varten, ja vahvat esitykset voivat myös ansaita sinulle kriitikkojen tähtiä. Yleisöbonukset, sponsorisopimukset, lakot ja rojaltimaksut voivat kaikki vaikuttaa kilpailun kulkuun. Voit myös toteuttaa improvisaatioesityksen, jos et löydä sopivaa käsikirjoitusta. Ensimmäinen viisi kriitikkotähteä kerännyt tuottaja voittaa pelin.\r\n\r\nGet the Play on the Stage on korttipeli 2-4 pelaajalle. Yhden pelin kesto on noin 40-75 minuuttia pelaajamäärästä riippuen. Osa pelin korteista sisältää jonkin verran englanninkielistä tekstiä ja vähäinen englannin kielen osaaminen on hyödyksi pelin aikana.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "peliproto-peluutusta-get-the-play-on-the-stage",
+        "title": "Peliproto peluutusta - Get the Play on the Stage! – lauantai",
+        "startTime": "2026-09-05T14:30:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1 (Demopöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 2",
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "peliproto-peluutusta-hack-a-pad",
+    "title": "Peliproto peluutusta - Hack-a-Pad",
+    "description": "Olet hakkeri, joka yrittää murtautua vastustajasi tablettiin ja tuhota vastustajasi yksityisyyden. Asenna appeja, käytä haittaohjelmia, murra tietoverkko jne. Älä kuitenkaan unohda suojata omaa laitettasi, sillä kanssa pelaajat yrittävät murtaa sinun suojauksesi ensiksi.\r\nHack-a-Pad on korttipeli 2-5 pelaajalle 12-vuotiaista ylöspäin. Prototyypit ovat englanninkielisiä ja englannin osaaminen on tarpeen pelin aikana. Yhden pelin kesto on n. 20-40 minuuttia.\r\n",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["one", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "peliproto-peluutusta-hack-a-pad",
+        "title": "Peliproto peluutusta - Hack-a-Pad – perjantai",
+        "startTime": "2026-09-04T16:30:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Demopöytä 2)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 2",
+          "internal:subtitle": "perjantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
     "slug": "porrocon-workshop",
     "title": "Pörröcon Workshop",
     "description": "Pörröisessä työpajassa voit ommella haluamasi malliset korvat tai hännän, tai tuunata eläinmaskin! Pajaan voi tulla myös työstämään aiemmin aloitettua projektia.",
@@ -1163,6 +1464,68 @@
     ]
   },
   {
+    "slug": "riichi-mahjong",
+    "title": "Riichi Mahjong",
+    "description": "Tule pelailemaan japanilaista Riichi Mahjongia. Riichi Mahjong on neljän pelaajan pientä aivojumppaa vaativa peli. Tule kokeilemaan mahjongia tai löytämään itsellesi peliseuraa, jos peli on entuudestaan tuttu! Ohjattua opetusta järjestetään läpi tapahtuman.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-05", "2026-09-06"],
+      "form": ["offer-program-continuous"],
+      "room": ["duetto2"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "riichi-mahjong",
+        "title": "Riichi Mahjong",
+        "startTime": "2026-09-04T16:00:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 330,
+        "location": "Duetto 2",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "riichi-mahjong-2",
+        "title": "Riichi Mahjong",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 690,
+        "location": "Duetto 2",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "riichi-mahjong-3",
+        "title": "Riichi Mahjong",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 2",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
     "slug": "saravidigal-paja-apothecarydiaries-kasveja",
     "title": "Sara Vidigalin paja: Apothecary Diaries kasveja",
     "description": "Sara Vidigal pitää työpajan, jossa pääset oppimaan, miten maalata vesiväreillä The Apothecary Diaries -sarjasta tuttuja myrkyllisiä kasveja. Kaikki pajassa tarvittavat välineet löytyvät paikan päältä.",
@@ -1194,6 +1557,118 @@
         "cachedAnnotations": {
           "konsti:maxAttendance": 20,
           "konsti:minAttendance": 1
+        }
+      }
+    ]
+  },
+  {
+    "slug": "she-hunts-videogame-demo",
+    "title": "She Hunts, videogame demo",
+    "description": "Come try out She Hunts, the debut title from Murska Digital. Having been in development for a bit over half a year, you can see concepts and early versions, as well as see and play the demo version of the game. Explore a magical forest in a world inspired by folklore, and hunt the undead creatures that inhabit it!",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-05", "2026-09-06"],
+      "form": ["offer-program-continuous"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "program-type": ["game-other"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "she-hunts-videogame-demo-2",
+        "title": "She Hunts, videogame demo – lauantai",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 690,
+        "location": "Duetto 1 (Demopöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 1",
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      },
+      {
+        "slug": "she-hunts-videogame-demo-3",
+        "title": "She Hunts, videogame demo – sunnuntai",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1 (Demopöytä 1)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 1",
+          "internal:subtitle": "sunnuntai",
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "spell-poker",
+    "title": "Spell Poker",
+    "description": "Strategisempaa ja hauskempaa pokeria! Spell Poker on uusi suomalainen korttipeli, joka yhdistää pokeria, pakanrakennusta ja fantasiaa. Pelistä lisätietoja löytyy Gamefoundista: https://gamefound.com/en/projects/kaaos-games/spell-poker. Ensikertalaiset ovat tervetulleita, peliä pääsee kokeilemaan pelin suunnittelijan opastuksella.\r\n\r\nSpell Pokerissa pelaajat pelaavat perinteistä Texas Hold’em -peliä panoksineen, mutta nostavat käsi- ja loitsukorttinsa omasta pakastaan. Loitsukortit saattavat muuttaa pöytäkorttien arvoja ja osa voi jopa tuhota niitä. \r\n\r\nTule kokeilemaan onneasi Spell Poker -pöytään! Peliä voi kokeilla yhden demokäden valmiiksi rakennetuilla pakoilla. Tai sitten pelata kokonaisen 1-2h pelin, jossa pakan pääsee rakentamaan itse.",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-05", "2026-09-06"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "program-type": ["cardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": {},
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "spell-poker",
+        "title": "Spell Poker – perjantai",
+        "startTime": "2026-09-04T16:30:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Demopöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 5",
+          "internal:subtitle": "perjantai"
+        }
+      },
+      {
+        "slug": "spell-poker-2",
+        "title": "Spell Poker – lauantai",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 690,
+        "location": "Duetto 1 (Demopöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 5",
+          "internal:subtitle": "lauantai"
+        }
+      },
+      {
+        "slug": "spell-poker-3",
+        "title": "Spell Poker – sunnuntai",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1 (Demopöytä 5)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 5",
+          "internal:subtitle": "sunnuntai"
         }
       }
     ]
@@ -1448,6 +1923,69 @@
           "konsti:maxAttendance": 4,
           "konsti:minAttendance": 2,
           "konsti:rpgSystem": "Vampire the Masquerade"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "verta-kellotornissa-blood-on-the-clocktower",
+    "title": "Verta kellotornissa / Blood on the Clocktower",
+    "description": "Blood on the Clocktower, jännittävä sosiaalinen päättelypeli, jossa epäluulo ja strategia törmäävät.\r\n\r\nJokainen pelaaja saa ainutlaatuisen salaisen hahmoroolin, jolla on omat erityiskykynsä ja tavoitteensa. Kylää vainoaa pahantahtoinen demoni ja sen kätyrit, jotka yrittävät murhata muut pelaajat öisin, kyläläisten joukkoeen tavoitteena on saada selville kuka demoni on, ennen kuin on liian myöhäistä.\r\n\r\nPeli etenee sarjan päivä- ja yövaiheiden kautta, joissa pelaajat voivat kerätä tietoa, heittää epäilyksiä ja käyttää ainutlaatuisia kykyjään vaikuttaakseen lopputulokseen. Mutta varokaa, petos on osa peliä, eivätkä kaikki välttämättä ole sitä miltä näyttävät.\r\n\r\nJokaisen päivän lopussa pidetään äänestyksiä demoniksi epäillyn pelaajan teloittamiseksi. Pelaajan kuollessa hän ei ole kuitenkaan poissa pelistä, vaan sen sijaan hänestä tulee \"haamu\", ja hän osallistuu peliin hieman rajoitetulla mutta merkittävällä tavalla.\r\n\r\nAiempaa kokemusta sosiaalisen päätelyn peleistä tai lautapelaamisesta ei tarvita. Yhden pelin kesto noin 1,5,-2 tuntia. Pelit alkavat noin kahden tunnin välein, yhteen peliin mahtuu 7-12 pelaajaa.\r\n\r\nBlood on the Clocktower, a thrilling social deduction game where suspicion and strategy collide.\r\n\r\nEach player is assigned a unique secret character role with its own special abilities and objectives. The town is haunted by a malevolent demon and its minions, and the goal is for the villagers to discover who the demon is before it’s too late..\r\n\r\nThe game unfolds through a series of day and night phases, where players can gather information, cast suspicions, and use their unique abilities to influence the outcome. But beware—deception is part of the game, and not everyone may be who they seem.\r\n\r\nAt the end of each day there will be nominations to execute a suspicious player. When a player is eliminated, they are not entirely out of the game. Instead, they become a \"ghost,\" which allows them to participate in the game in a slightly limited but significant way.\r\n\r\nNo previous experience in social deduction games or board games is required. The duration of one game is approximately 1,5,-2 hours. Games start in about two hour intervals. One game seats 7-12 players. ",
+    "cachedHosts": "<redacted>",
+    "cachedDimensions": {
+      "date": ["2026-09-04", "2026-09-05", "2026-09-06"],
+      "form": ["offer-program-boardgame"],
+      "room": ["duetto1"],
+      "state": ["accepted"],
+      "konsti": ["boardgame"],
+      "scheduled": ["multiple", "one-or-more"],
+      "guide-tags": ["sep-adv-reg"],
+      "program-type": ["boardgame"],
+      "guidegrouping": ["games"]
+    },
+    "cachedAnnotations": { "konsti:isPlaceholder": true },
+    "isCancelled": false,
+    "scheduleItems": [
+      {
+        "slug": "verta-kellotornissa-blood-on-the-clocktower",
+        "title": "Verta kellotornissa / Blood on the Clocktower – perjantai",
+        "startTime": "2026-09-04T16:30:00+03:00",
+        "endTime": "2026-09-04T21:30:00+03:00",
+        "lengthMinutes": 300,
+        "location": "Duetto 1 (Demopöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 6",
+          "internal:subtitle": "perjantai",
+          "konsti:isPlaceholder": true
+        }
+      },
+      {
+        "slug": "verta-kellotornissa-blood-on-the-clocktower-2",
+        "title": "Verta kellotornissa / Blood on the Clocktower – lauantai",
+        "startTime": "2026-09-05T10:00:00+03:00",
+        "endTime": "2026-09-05T21:30:00+03:00",
+        "lengthMinutes": 690,
+        "location": "Duetto 1 (Demopöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 6",
+          "internal:subtitle": "lauantai",
+          "konsti:isPlaceholder": true
+        }
+      },
+      {
+        "slug": "verta-kellotornissa-blood-on-the-clocktower-3",
+        "title": "Verta kellotornissa / Blood on the Clocktower – sunnuntai",
+        "startTime": "2026-09-06T10:00:00+03:00",
+        "endTime": "2026-09-06T17:00:00+03:00",
+        "lengthMinutes": 420,
+        "location": "Duetto 1 (Demopöytä 6)",
+        "isCancelled": false,
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Demopöytä 6",
+          "internal:subtitle": "sunnuntai",
+          "konsti:isPlaceholder": true
         }
       }
     ]

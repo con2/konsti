@@ -116,6 +116,9 @@ const mapProgramType = (
     case KompassiKonstiProgramType.OTHER_GAMING:
       return ProgramType.OTHER_GAMING;
 
+    case KompassiKonstiProgramType.BOARDGAME:
+      return ProgramType.BOARDGAME;
+
     default:
       return exhaustiveSwitchGuard(programType);
   }

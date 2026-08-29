@@ -308,6 +308,7 @@ test("Receive seat from each lottery program type in separate time slots", async
     [ProgramType.ROUNDTABLE_DISCUSSION]: "roundtable discussion",
     [ProgramType.FLEAMARKET]: "flea market time",
     [ProgramType.OTHER_GAMING]: "game",
+    [ProgramType.BOARDGAME]: "board game",
   };
 
   // One program item per lottery program type in consecutive lottery slots.
