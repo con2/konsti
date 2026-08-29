@@ -429,6 +429,7 @@ export const translationEN = {
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market",
     otherGaming: "Other gaming",
+    boardgame: "Board game",
   },
   programTypeSelection: {
     all: "All program types",
@@ -441,6 +442,7 @@ export const translationEN = {
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market",
     otherGaming: "Other gaming",
+    boardgame: "Board games",
   },
   programTypeSingular: {
     all: "program item",
@@ -453,6 +455,7 @@ export const translationEN = {
     roundtableDiscussion: "roundtable discussion",
     fleaMarket: "flea market time",
     otherGaming: "game",
+    boardgame: "board game",
   },
   programTypePlural: {
     all: "program items",
@@ -465,6 +468,7 @@ export const translationEN = {
     roundtableDiscussion: "roundtable discussions",
     fleaMarket: "flea market times",
     otherGaming: "other gaming",
+    boardgame: "board games",
   },
   programTypeGenetive: {
     all: "Program item",
@@ -477,6 +481,7 @@ export const translationEN = {
     roundtableDiscussion: "Roundtable discussion",
     fleaMarket: "Flea market time",
     otherGaming: "Game",
+    boardgame: "Board game",
   },
   programTypePartitivePlural: {
     all: "program items",
@@ -489,6 +494,7 @@ export const translationEN = {
     roundtableDiscussion: "roundtable discussions",
     fleaMarket: "flea market times",
     otherGaming: "games",
+    boardgame: "board games",
   },
   programTypeInessive: {
     all: "program item",
@@ -501,6 +507,7 @@ export const translationEN = {
     roundtableDiscussion: "roundtable discussion",
     fleaMarket: "flea market time",
     otherGaming: "game",
+    boardgame: "board game",
   },
   programTypeIllative: {
     all: "program item",
@@ -513,6 +520,7 @@ export const translationEN = {
     roundtableDiscussion: "roundtable discussion",
     fleaMarket: "flea market time",
     otherGaming: "game",
+    boardgame: "board game",
   },
   firstLogin: {
     serial:

@@ -12,6 +12,7 @@ export const getAttendeeType = (programType: ProgramType): AttendeeType => {
     case ProgramType.LARP:
     case ProgramType.EXPERIENCE_POINT:
     case ProgramType.OTHER_GAMING:
+    case ProgramType.BOARDGAME:
       return AttendeeType.Player;
 
     case ProgramType.TOURNAMENT:

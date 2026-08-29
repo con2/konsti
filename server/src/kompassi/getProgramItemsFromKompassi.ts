@@ -297,6 +297,9 @@ export const mapKonstiProgramTypesToKompassiProgramTypes = (
       case ProgramType.OTHER_GAMING:
         return KompassiKonstiProgramType.OTHER_GAMING;
 
+      case ProgramType.BOARDGAME:
+        return KompassiKonstiProgramType.BOARDGAME;
+
       default:
         return exhaustiveSwitchGuard(programType);
     }

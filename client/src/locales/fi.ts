@@ -431,6 +431,7 @@ export const translationFI = {
     roundtableDiscussion: "Keskustelupiiri",
     fleaMarket: "Kirpputori",
     otherGaming: "Muu pelaaminen",
+    boardgame: "Lautapeli",
   },
   programTypeSelection: {
     all: "Kaikki ohjelmatyypit",
@@ -443,6 +444,7 @@ export const translationFI = {
     roundtableDiscussion: "Keskustelupiirit",
     fleaMarket: "Kirpputoriajat",
     otherGaming: "Muu pelaaminen",
+    boardgame: "Lautapelit",
   },
   programTypeSingular: {
     all: "ohjelmanumero",
@@ -455,6 +457,7 @@ export const translationFI = {
     roundtableDiscussion: "keskustelupiiri",
     fleaMarket: "kirpputoriaika",
     otherGaming: "peli",
+    boardgame: "lautapeli",
   },
   programTypePlural: {
     all: "ohjelmanumerot",
@@ -467,6 +470,7 @@ export const translationFI = {
     roundtableDiscussion: "keskustelupiirit",
     fleaMarket: "kirpputoriajat",
     otherGaming: "muu pelaaminen",
+    boardgame: "lautapelit",
   },
   programTypeGenetive: {
     all: "Ohjelmanumeron",
@@ -479,6 +483,7 @@ export const translationFI = {
     roundtableDiscussion: "Keskustelupiirin",
     fleaMarket: "Kirpputoriajan",
     otherGaming: "Pelin",
+    boardgame: "Lautapelin",
   },
   programTypePartitivePlural: {
     all: "ohjelmanumeroita",
@@ -491,6 +496,7 @@ export const translationFI = {
     roundtableDiscussion: "keskustelupiirejä",
     fleaMarket: "kirpputoriaikoja",
     otherGaming: "pelejä",
+    boardgame: "lautapelejä",
   },
   programTypeInessive: {
     all: "ohjelmanumerossa",
@@ -503,6 +509,7 @@ export const translationFI = {
     roundtableDiscussion: "keskustelupiirissä",
     fleaMarket: "kirpputoriajassa",
     otherGaming: "pelissä",
+    boardgame: "lautapelissä",
   },
   programTypeIllative: {
     all: "ohjelmanumeroon",
@@ -515,6 +522,7 @@ export const translationFI = {
     roundtableDiscussion: "keskustelupiiriin",
     fleaMarket: "kirpputoriaikaan",
     otherGaming: "peliin",
+    boardgame: "lautapeliin",
   },
   firstLogin: {
     serial:

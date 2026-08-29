@@ -29,6 +29,7 @@ export const eventConfig: EventConfig = {
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
     ProgramType.WORKSHOP,
+    ProgramType.BOARDGAME,
     ProgramType.FLEAMARKET,
   ],
 
@@ -44,6 +45,7 @@ export const eventConfig: EventConfig = {
   rollingDirectSignupProgramTypes: [
     ProgramType.TABLETOP_RPG,
     ProgramType.WORKSHOP,
+    ProgramType.BOARDGAME,
   ],
   enableRollingDirectSignupPreviousDay: true,
 

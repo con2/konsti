@@ -10,6 +10,7 @@ export enum ProgramType {
   ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
   FLEAMARKET = "fleaMarket",
   OTHER_GAMING = "otherGaming",
+  BOARDGAME = "boardgame",
 }
 
 export enum Genre {
