@@ -118,7 +118,9 @@ Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and rando
   When every starting item is marked the run returns `ALREADY_LOTTERIED` without touching anything.
   The stored value is a time rather than a flag so `hasLotteryAlreadyRun` can tell a **rescheduled**
   item from one still sitting where it was lotteried, which is what the program item page and
-  `storeLotterySignup` key on.
+  `storeLotterySignup` key on. It records each item's **own** start time at the moment of the run,
+  not the run's `assignmentTime`: those differ for a batch, whose parent time reads the same before
+  and after one of its items moves, so a parent-resolved mark could never detect a move at all.
 - Per program item, `runAssignment` also skips anything that already holds sign-ups, and marks it
   anyway so cancelling them can't put it back. `partition` splits those only to log which way it
   broke: a lottery-placed sign-up means a run got past its critical write and stopped before

@@ -21,7 +21,7 @@ interface SaveResultsParams {
   message: string;
   users: User[];
   programItems: ProgramItem[];
-  lotteriedProgramItemIds: readonly string[];
+  lotteriedProgramItems: readonly ProgramItem[];
   passedOverProgramItemIds: readonly string[];
 }
 
@@ -35,7 +35,7 @@ export const saveResults = async ({
   message,
   users,
   programItems,
-  lotteriedProgramItemIds,
+  lotteriedProgramItems,
   passedOverProgramItemIds,
   // Returns the results that actually landed, so the caller acts on those rather than on what
   // the algorithm proposed
@@ -44,7 +44,7 @@ export const saveResults = async ({
 > => {
   // The lottery runs on a timer, so most runs reach a start time with nothing to do at all
   if (
-    lotteriedProgramItemIds.length === 0 &&
+    lotteriedProgramItems.length === 0 &&
     passedOverProgramItemIds.length === 0
   ) {
     logger.info(
@@ -69,8 +69,7 @@ export const saveResults = async ({
   // Written only once the spots exist, because nothing clears the mark - marking before a
   // failed save would strand them out of the lottery with nobody placed
   const saveLotteryRanResult = await saveLotteryRanForStartTime(
-    lotteriedProgramItemIds,
-    assignmentTime,
+    lotteriedProgramItems,
   );
   if (!saveLotteryRanResult.ok) {
     // The spots are saved, so returning here would cost the winners their notifications over
@@ -103,7 +102,7 @@ export const saveResults = async ({
 
   // Recorded only when a program item actually went through a lottery. A run that skipped
   // every one of them decided nothing, and a record for it would read as a lottery that ran
-  if (lotteriedProgramItemIds.length > 0) {
+  if (lotteriedProgramItems.length > 0) {
     await storeResultsSnapshot({
       results: finalResults,
       assignmentTime,

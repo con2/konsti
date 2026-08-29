@@ -723,7 +723,8 @@ describe("Signup state when the start time cannot be resolved", () => {
 describe("Program items no lottery will take", () => {
   // Sat 17:00 GMT+3: lottery at 14:00, direct sign-up from 14:15
   const startTime = `${saturday}T14:00:00.000Z`;
-  const lotteryTime = `${saturday}T12:00:00.000Z`;
+  // Where it stood when its lottery ran, which is what the mark records
+  const lotteriedAtStartTime = startTime;
   const duringPhaseGap = new Date(`${saturday}T12:05:00.000Z`);
   const afterPhaseGap = new Date(`${saturday}T12:15:00.000Z`);
   const beforeLottery = new Date(`${saturday}T11:00:00.000Z`);
@@ -778,7 +779,7 @@ describe("Program items no lottery will take", () => {
     const moved = {
       ...programItem,
       startTime: `${saturday}T18:00:00.000Z`,
-      lotteryRanForStartTime: lotteryTime,
+      lotteryRanForStartTime: lotteriedAtStartTime,
     };
 
     expect(willNotBeLotteried(moved)).toEqual(true);
@@ -789,7 +790,7 @@ describe("Program items no lottery will take", () => {
     const moved = {
       ...programItem,
       startTime: `${saturday}T18:00:00.000Z`,
-      lotteryRanForStartTime: lotteryTime,
+      lotteryRanForStartTime: lotteriedAtStartTime,
     };
 
     // The new slot's own schedule would not open sign-up until 16:15
@@ -808,12 +809,45 @@ describe("Program items no lottery will take", () => {
     const moved = {
       ...programItem,
       startTime: `${saturday}T18:00:00.000Z`,
-      lotteryRanForStartTime: lotteryTime,
+      lotteryRanForStartTime: lotteriedAtStartTime,
     };
     const afterStart = new Date(`${saturday}T18:01:00.000Z`);
 
     expect(getDirectSignupStarted(moved, afterStart)).toEqual(true);
     expect(getDirectSignupInProgress(moved, afterStart)).toEqual(false);
+  });
+
+  test("A batched program item that moved after its lottery is never in another one", () => {
+    // Items under a parent are lotteried as one batch at the parent's time, so that time is
+    // the same before and after a move and cannot say whether one happened
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, `${saturday}T11:00:00.000Z`],
+      ]),
+    });
+
+    const moved = {
+      ...programItem,
+      startTime: `${saturday}T18:00:00.000Z`,
+      lotteryRanForStartTime: startTime,
+    };
+
+    expect(hasLotteryAlreadyRun(moved)).toEqual(true);
+    expect(willNotBeLotteried(moved)).toEqual(true);
+  });
+
+  test("A batched program item still in its slot has a lottery ahead of it", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, `${saturday}T11:00:00.000Z`],
+      ]),
+    });
+
+    const lotteried = { ...programItem, lotteryRanForStartTime: startTime };
+
+    expect(hasLotteryAlreadyRun(lotteried)).toEqual(false);
   });
 });
 

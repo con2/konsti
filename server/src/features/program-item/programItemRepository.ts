@@ -309,23 +309,30 @@ export const savePassedOverForLottery = async (
   }
 };
 
-// The start time these program items were lotteried for. A time rather than a flag, so one moved
-// onto another slot afterwards can be told from one still sitting where it was lotteried
+// The start time each program item was sitting at when its lottery ran. A time rather than a
+// flag, so one moved onto another slot afterwards can be told from one still where it was
+// lotteried - and each item's own start time rather than the run's, because a batch's parent
+// time is the same before and after a move and so could never tell the two apart
 export const saveLotteryRanForStartTime = async (
-  programItemIds: readonly string[],
-  assignmentTime: string,
+  programItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  if (programItemIds.length === 0) {
+  if (programItems.length === 0) {
     return makeSuccessResult();
   }
 
   try {
-    await ProgramItemModel.updateMany(
-      { programItemId: { $in: programItemIds } },
-      { lotteryRanForStartTime: new Date(assignmentTime) },
+    await ProgramItemModel.bulkWrite(
+      programItems.map((programItem) => ({
+        updateOne: {
+          filter: { programItemId: programItem.programItemId },
+          update: {
+            lotteryRanForStartTime: new Date(programItem.startTime),
+          },
+        },
+      })),
     );
     logger.info(
-      `MongoDB: Marked ${programItemIds.length} program items as lotteried for ${assignmentTime}`,
+      `MongoDB: Marked ${programItems.length} program items as lotteried`,
     );
     return makeSuccessResult();
   } catch (error) {

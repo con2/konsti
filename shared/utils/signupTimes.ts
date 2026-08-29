@@ -116,14 +116,11 @@ export const isSameStartTime = (
   isSameTime(resolveStartTime(parentId, programItemStartTime), comparedTime);
 
 // Marked for a slot it no longer starts at: its lottery ran and a reschedule moved it, so it
-// does not go into another one
+// does not go into another one. Asked of the item's own start time rather than the parent
+// override, which batches the run and does not move when the item does
 export const hasLotteryAlreadyRun = (programItem: ProgramItem): boolean =>
   programItem.lotteryRanForStartTime !== undefined &&
-  !isSameStartTime(
-    programItem.startTime,
-    programItem.parentId,
-    programItem.lotteryRanForStartTime,
-  );
+  !isSameTime(programItem.startTime, programItem.lotteryRanForStartTime);
 
 // No lottery will take this program item: it was passed over for holding sign-ups, or it moved
 // onto a slot after its own lottery ran. Both are recorded, so neither answer expires

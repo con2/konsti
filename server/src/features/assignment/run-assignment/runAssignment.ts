@@ -210,9 +210,7 @@ export const runAssignment = async ({
     message: assignResults.message,
     users: validLotterySignupsUsers,
     programItems,
-    lotteriedProgramItemIds: emptyProgramItems.map(
-      (programItem) => programItem.programItemId,
-    ),
+    lotteriedProgramItems: emptyProgramItems,
     // The occupied ones are recorded as passed over rather than lotteried, which is what they
     // were, and what keeps their sign-up open once those sign-ups are cancelled
     passedOverProgramItemIds: occupiedProgramItems.map(

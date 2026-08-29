@@ -203,10 +203,15 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     // Seeded through the writer rather than saveProgramItems, which leaves this field alone
     // on purpose so a Kompassi import can't clear it
     await saveProgramItems([testProgramItem]);
-    await saveLotteryRanForStartTime(
-      [testProgramItem.programItemId],
-      subHours(new Date(testProgramItem.startTime), 1).toISOString(),
-    );
+    await saveLotteryRanForStartTime([
+      {
+        ...testProgramItem,
+        startTime: subHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
+      },
+    ]);
     await saveUser(mockUser);
 
     const signup: PostLotterySignupRequest = {

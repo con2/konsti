@@ -308,10 +308,15 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
     // Lotteried three hours earlier and rescheduled onto this slot. Its sign-up opened back
     // then and does not shut again just because the new slot's schedule has not reached it
-    await saveLotteryRanForStartTime(
-      [testProgramItem.programItemId],
-      subHours(new Date(testProgramItem.startTime), 3).toISOString(),
-    );
+    await saveLotteryRanForStartTime([
+      {
+        ...testProgramItem,
+        startTime: subHours(
+          new Date(testProgramItem.startTime),
+          3,
+        ).toISOString(),
+      },
+    ]);
 
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,

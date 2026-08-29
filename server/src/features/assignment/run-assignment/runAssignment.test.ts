@@ -17,6 +17,7 @@ import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramType, State } from "shared/types/models/programItem";
 import { makeErrorResult } from "shared/utils/result";
+import { hasLotteryAlreadyRun } from "shared/utils/signupTimes";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
@@ -2279,4 +2280,44 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   expect(
     userAfterRun?.lotterySignups.map((signup) => signup.programItemId),
   ).toEqual([testProgramItem.programItemId]);
+});
+
+test("Should mark a batched program item with its own start time, not the parent's", async () => {
+  // A batch is lotteried as one run at the parent's time, which is the same before and after a
+  // program item moves - so only its own start time can record where it was lotteried
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
+      assignmentTime: parentStartTime,
+    }),
+  );
+
+  const programItem = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(programItem.lotteryRanForStartTime).toEqual(testProgramItem.startTime);
+  // It has not moved, so nothing should read it as lotteried somewhere else
+  expect(hasLotteryAlreadyRun(programItem)).toEqual(false);
 });
