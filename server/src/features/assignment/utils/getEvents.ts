@@ -1,6 +1,5 @@
 import { shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
-import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { Event } from "server/types/assignmentTypes";
 
@@ -10,26 +9,18 @@ export const getEvents = (
 ): Event[] => {
   const programItems = lotterySignupProgramItems.map(
     (lotterySignupProgramItem) => {
-      // Program item can have existing direct sign-ups if program item's start time has changed
-      // Consider existing direct sign-ups when determining program item attendee limits
       const programItemSignup = lotteryParticipantDirectSignups.find(
         (signup) =>
           signup.programItemId === lotterySignupProgramItem.programItemId,
       );
 
-      const changedSignups = programItemSignup?.userSignups.filter(
-        (userSignup) => {
-          return isStartTimeChanged(
-            userSignup.signedToStartTime,
-            lotterySignupProgramItem.startTime,
-            lotterySignupProgramItem.parentId,
-          );
-        },
-      );
+      // Every existing sign-up is subtracted, whoever made it. A real lottery run only sees
+      // empty program items, so this is zero there; it earns its keep in the popularity
+      // simulation, which measures demand against whatever is left
+      const currentSignups = programItemSignup?.userSignups.length ?? 0;
 
-      const currentSignups = changedSignups?.length ?? 0;
-
-      // The lottery only fills the seats left after existing sign-ups; capacity can't go negative
+      // Capacity can't go negative: a program item whose attendance limit was lowered
+      // below the number of attendees already in it offers no spots rather than negative ones
       const remainingMax = Math.max(
         lotterySignupProgramItem.maxAttendance - currentSignups,
         0,

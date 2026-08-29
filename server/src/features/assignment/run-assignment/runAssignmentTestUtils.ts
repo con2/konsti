@@ -1,5 +1,7 @@
 import { isEqual } from "date-fns";
+import { groupBy } from "remeda";
 import { expect } from "vitest";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { User } from "shared/types/models/user";
@@ -8,6 +10,7 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -159,4 +162,69 @@ export const generateTestData = async (
   await createProgramItems(newProgramItemsCount);
 
   await createLotterySignups();
+};
+
+// Properties any valid assignment has, whatever the fixtures or the algorithm's shuffle produced.
+// The generated data is 30 attendees in 10 groups across 10 program items, which is where these
+// have something to catch that a handful of hand-built attendees cannot
+export const assertAssignmentInvariants = async (
+  assignmentTime: string,
+): Promise<void> => {
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const directSignups = unsafelyUnwrap(await findDirectSignups());
+  const users = unsafelyUnwrap(await findUsers());
+
+  const startingProgramItemIds = new Set(
+    getStartingProgramItems(programItems, assignmentTime).map(
+      (programItem) => programItem.programItemId,
+    ),
+  );
+
+  const signupsForStartTime = directSignups.filter((directSignup) =>
+    startingProgramItemIds.has(directSignup.programItemId),
+  );
+
+  // Nobody holds two spots at one start time
+  const usernamesWithSpot = signupsForStartTime.flatMap((directSignup) =>
+    directSignup.userSignups.map((userSignup) => userSignup.username),
+  );
+  expect(usernamesWithSpot).toHaveLength(new Set(usernamesWithSpot).size);
+
+  for (const directSignup of signupsForStartTime) {
+    const programItem = programItems.find(
+      (found) => found.programItemId === directSignup.programItemId,
+    );
+    if (!programItem) {
+      continue;
+    }
+
+    // Attendance limits hold, and count matches the attendees it tallies
+    expect(directSignup.userSignups.length).toBeLessThanOrEqual(
+      programItem.maxAttendance,
+    );
+    expect(directSignup.count).toEqual(directSignup.userSignups.length);
+  }
+
+  // A group is placed as a whole or not at all, and always into one program item: members
+  // attend what their creator signed the group up for. Only spots the lottery handed out
+  // count - a member keeping a first-come-first-served sign-up of their own while the group
+  // goes unplaced is not a split, it is just their own sign-up standing
+  const placedProgramItemByUsername = new Map(
+    signupsForStartTime.flatMap((directSignup) =>
+      directSignup.userSignups
+        .filter((userSignup) => userSignup.priority !== DIRECT_SIGNUP_PRIORITY)
+        .map((userSignup) => [userSignup.username, directSignup.programItemId]),
+    ),
+  );
+  const groupedUsers = groupBy(
+    users.filter((user) => user.groupCode !== "0"),
+    (user) => user.groupCode,
+  );
+
+  for (const groupMembers of Object.values(groupedUsers)) {
+    const placements = groupMembers.map((groupMember) =>
+      placedProgramItemByUsername.get(groupMember.username),
+    );
+    expect(new Set(placements).size).toEqual(1);
+  }
 };

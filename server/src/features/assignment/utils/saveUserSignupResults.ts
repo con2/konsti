@@ -1,36 +1,16 @@
-import { unique } from "remeda";
+import { countBy, groupBy } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
-import { EmailNotificationTrigger } from "shared/types/emailNotification";
-import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { Settings } from "shared/types/models/settings";
 import { User } from "shared/types/models/user";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
-import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
-import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
-import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import {
-  delAssignmentDirectSignupsByStartTime,
   delDirectSignups,
   findDirectSignupsByStartTime,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
-import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import {
-  addEventLogItems,
-  deleteEventLogItemsByStartTime,
-} from "server/features/user/event-log/eventLogRepository";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
-import {
-  NotificationQueueService,
-  NotificationTask,
-  NotificationTaskType,
-  getGlobalNotificationQueueService,
-} from "server/utils/notificationQueue";
 
 interface SaveUserSignupResultsParams {
   assignmentTime: string;
@@ -39,21 +19,19 @@ interface SaveUserSignupResultsParams {
   programItems: ProgramItem[];
 }
 
+// The one write in a lottery run that anybody depends on: everything after it is bookkeeping
+// and messages. Its bulk write either lands or it doesn't, so a run that fails before this
+// point placed nobody and can be run again
 export const saveUserSignupResults = async ({
   assignmentTime,
   results,
   users,
   programItems,
-}: SaveUserSignupResultsParams): Promise<Result<void, MongoDbError>> => {
-  // Remove previous lottery result for the same start time
-  // This does not remove non-lottery sign-ups or previous sign-ups from moved program items
-  const delAssignmentSignupsByStartTimeResult =
-    await delAssignmentDirectSignupsByStartTime(assignmentTime, programItems);
-  if (!delAssignmentSignupsByStartTimeResult.ok) {
-    return delAssignmentSignupsByStartTimeResult;
-  }
-
-  // Only non-lottery sign-ups and previous sign-ups from moved program items should be remaining
+  // Returns the results that actually landed: saveDirectSignups can drop a sign-up that no
+  // longer fits, and the caller must not record those attendees as placed
+}: SaveUserSignupResultsParams): Promise<
+  Result<readonly UserAssignmentResult[], MongoDbError>
+> => {
   const directSignupsByStartTimeResult = await findDirectSignupsByStartTime(
     assignmentTime,
     programItems,
@@ -61,13 +39,24 @@ export const saveUserSignupResults = async ({
   if (!directSignupsByStartTimeResult.ok) {
     return directSignupsByStartTimeResult;
   }
-  // Resolve conflicting existing direct sign-ups
-  // If user has existing sign-ups...
-  // ... and new assignment result -> remove existing
-  // ... and no new assignment result -> keep existing
-  // A user can hold several sign-ups at the same start time (e.g. an always-open item plus a
-  // moved-in one), so remove every one of theirs, not just the first
-  const signupsToDelete = results.flatMap((result) =>
+
+  const groupCodeByUsername = new Map(
+    users.map((user) => [user.username, user.groupCode]),
+  );
+
+  const resultsToSave = dropResultsThatDoNotFit({
+    results,
+    assignmentTime,
+    existingSignups: directSignupsByStartTimeResult.value,
+    programItems,
+    groupCodeByUsername,
+  });
+
+  // A winner's own sign-ups for this start time give way to the spot the lottery gave them -
+  // they can't attend both. A spot an earlier lottery handed out is never here, since holding
+  // one settles the attendee. Several are possible at one start time (an always-open program
+  // item plus a moved-in one), so remove every one of theirs rather than just the first
+  const signupsToDelete = resultsToSave.flatMap((result) =>
     directSignupsByStartTimeResult.value
       .filter((signup) => signup.username === result.username)
       .map((signup) => ({
@@ -82,18 +71,21 @@ export const saveUserSignupResults = async ({
   }
 
   // Save new assignment results
-  const newSignups: SignupRepositoryAddSignup[] = results.map((result) => {
-    return {
-      username: result.username,
-      directSignupProgramItemId: result.assignmentSignup.programItemId,
-      // assignmentTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
-      signedToStartTime: assignmentTime,
-      signupTime: new Date().toISOString(),
-      // Sign-ups received from assignment don't have sign-up messages
-      message: "",
-      priority: result.assignmentSignup.priority,
-    };
-  });
+  const newSignups: SignupRepositoryAddSignup[] = resultsToSave.map(
+    (result) => {
+      return {
+        username: result.username,
+        directSignupProgramItemId: result.assignmentSignup.programItemId,
+        // assignmentTime can be parent-resolved; direct sign-ups store the parent time so a
+        // sign-up in a batched program item is found by lookups for the batch's start time
+        signedToStartTime: assignmentTime,
+        signupTime: new Date().toISOString(),
+        // Sign-ups received from assignment don't have sign-up messages
+        message: "",
+        priority: result.assignmentSignup.priority,
+      };
+    },
+  );
 
   // This might drop some sign-ups if by some error too many sign-ups are passed for a program item
   const saveSignupsResult = await saveDirectSignups(newSignups, programItems);
@@ -103,7 +95,7 @@ export const saveUserSignupResults = async ({
   const { droppedSignups } = saveSignupsResult.value;
 
   // Filter out possible dropped results
-  const finalResults = results.filter((result) => {
+  const finalResults = resultsToSave.filter((result) => {
     return droppedSignups.every(
       (signup) =>
         signup.directSignupProgramItemId !==
@@ -112,220 +104,82 @@ export const saveUserSignupResults = async ({
     );
   });
 
-  // The assignment seats are saved at this point, notification failures are
-  // handled inside and don't fail the run
-  await addAssignmentNotifications({
-    assignmentTime,
-    finalResults,
-    users,
-    programItems,
+  return makeSuccessResult(finalResults);
+};
+
+interface DropResultsThatDoNotFitParams {
+  results: readonly UserAssignmentResult[];
+  assignmentTime: string;
+  existingSignups: readonly { username: string; programItemId: string }[];
+  programItems: readonly ProgramItem[];
+  groupCodeByUsername: ReadonlyMap<string, string>;
+}
+
+// The algorithm already respects the attendance limits, so this should never drop anything - it
+// guards against the sign-ups moving under the run. Runs before any deletion, so a sign-up is
+// never removed to make room for a replacement that then doesn't land, and drops a whole group
+// at a time because a group lands in one program item or none
+const dropResultsThatDoNotFit = ({
+  results,
+  assignmentTime,
+  existingSignups,
+  programItems,
+  groupCodeByUsername,
+}: DropResultsThatDoNotFitParams): readonly UserAssignmentResult[] => {
+  const winners = new Set(results.map((result) => result.username));
+
+  // A winner's existing sign-ups for this start time are deleted to make room for the spot
+  // they won, so only the attendees staying put take up space
+  const stayingPutByProgramItemId = countBy(
+    existingSignups.filter((signup) => !winners.has(signup.username)),
+    (signup) => signup.programItemId,
+  );
+  const remainingByProgramItemId = new Map(
+    programItems.map((programItem) => [
+      programItem.programItemId,
+      Math.max(
+        programItem.maxAttendance -
+          (stayingPutByProgramItemId[programItem.programItemId] ?? 0),
+        0,
+      ),
+    ]),
+  );
+
+  // A group is placed as a whole or not at all, so it has to fit as a whole
+  const resultsByGroup = groupBy(results, (result) => {
+    const groupCode = groupCodeByUsername.get(result.username);
+    return groupCode === undefined || groupCode === "0"
+      ? `individual-${result.username}`
+      : `group-${groupCode}`;
   });
 
-  return makeSuccessResult();
-};
-
-interface AddAssignmentNotificationsParams {
-  assignmentTime: string;
-  finalResults: readonly UserAssignmentResult[];
-  users: User[];
-  programItems: ProgramItem[];
-}
-
-// The assignment seats are already saved when this runs, so failures are only
-// logged and never returned: an error escaping to the caller would fail the
-// run and skip the overlap lottery sign-up cleanup
-const addAssignmentNotifications = async ({
-  assignmentTime,
-  finalResults,
-  users,
-  programItems,
-}: AddAssignmentNotificationsParams): Promise<void> => {
-  const queueService = getGlobalNotificationQueueService();
-
-  const settingsResult = await findOrCreateSettings();
-  let settings: Settings | null = null;
-  if (settingsResult.ok) {
-    settings = settingsResult.value;
-  } else {
-    logger.error(
-      new Error(
-        `Assignment ${assignmentTime}: failed to find settings, skip queueing emails`,
-      ),
+  return Object.values(resultsByGroup).flatMap((groupResults) => {
+    const neededByProgramItemId = countBy(
+      groupResults,
+      (result) => result.assignmentSignup.programItemId,
     );
-  }
 
-  // Remove eventLog items from same start time
-  const deleteEventLogItemsByStartTimeResult =
-    await deleteEventLogItemsByStartTime(assignmentTime, [
-      EventLogAction.NEW_ASSIGNMENT,
-      EventLogAction.NO_ASSIGNMENT,
-    ]);
-  if (!deleteEventLogItemsByStartTimeResult.ok) {
-    logger.error(
-      new Error(
-        `Assignment ${assignmentTime}: failed to delete previous assignment event log items: ${deleteEventLogItemsByStartTimeResult.error}`,
-      ),
+    const fits = Object.entries(neededByProgramItemId).every(
+      ([programItemId, needed]) =>
+        (remainingByProgramItemId.get(programItemId) ?? 0) >= needed,
     );
-  }
-
-  // Add NEW_ASSIGNMENT to user event logs
-  const newAssignmentEventLogItemsResult = await addEventLogItems(
-    finalResults.map((result) => ({
-      username: result.username,
-      programItemId: result.assignmentSignup.programItemId,
-      programItemStartTime: assignmentTime,
-      createdAt: new Date().toISOString(),
-      action: EventLogAction.NEW_ASSIGNMENT,
-    })),
-  );
-  if (!newAssignmentEventLogItemsResult.ok) {
-    logger.error(
-      new Error(
-        `Assignment ${assignmentTime}: failed to add NEW_ASSIGNMENT event log items: ${newAssignmentEventLogItemsResult.error}`,
-      ),
-    );
-  }
-
-  // Add SEND_EMAIL_ACCEPTED to notification queue
-  if (
-    settings?.emailNotificationTrigger.includes(
-      EmailNotificationTrigger.ACCEPTED,
-    )
-  ) {
-    queueAssignmentEmails({
-      queueService,
-      assignmentTime,
-      notifications: finalResults.map((result) => ({
-        type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-        username: result.username,
-        programItemId: result.assignmentSignup.programItemId,
-        programItemStartTime: result.assignmentSignup.signedToStartTime,
-      })),
-      emailKind: EmailNotificationTrigger.ACCEPTED,
-    });
-  }
-
-  // Get users who didn't get a seat in lottery
-  const startingProgramItems = getStartingProgramItems(
-    programItems,
-    assignmentTime,
-  );
-  const groupCreators = getGroupCreators(users, startingProgramItems);
-  const groupMembers = getGroupMembersWithCreatorLotterySignups(
-    groupCreators,
-    users,
-  );
-  const allAttendees = [...groupCreators, ...groupMembers];
-  const lotterySignups = getLotterySignups(allAttendees);
-
-  const lotterySignupsForStartingTime = lotterySignups.filter(
-    (lotterySignup) => {
-      const programItem = startingProgramItems.find(
-        (startingProgramItem) =>
-          startingProgramItem.programItemId === lotterySignup.programItemId,
-      );
-      return isStartTimeMatch(
-        lotterySignup.signedToStartTime,
-        assignmentTime,
-        programItem?.parentId,
-      );
-    },
-  );
-
-  const lotterySignupUsernames = unique(
-    lotterySignupsForStartingTime.map(
-      (lotterySignup) => lotterySignup.username,
-    ),
-  );
-
-  const noAssignmentLotterySignupUsernames = lotterySignupUsernames.flatMap(
-    (lotterySignupUsername) => {
-      // Use finalResults so users whose sign-up was dropped are treated as not assigned
-      const userGotAssignment = finalResults.some(
-        (result) => result.username === lotterySignupUsername,
-      );
-      if (!userGotAssignment) {
-        return lotterySignupUsername;
-      }
-      return [];
-    },
-  );
-
-  // Add NO_ASSIGNMENT to user event logs
-  if (noAssignmentLotterySignupUsernames.length > 0) {
-    const noAssignmentEventLogItemsResult = await addEventLogItems(
-      noAssignmentLotterySignupUsernames.map(
-        (noAssignmentLotterySignupUsername) => ({
-          username: noAssignmentLotterySignupUsername,
-          programItemId: "",
-          programItemStartTime: assignmentTime,
-          createdAt: new Date().toISOString(),
-          action: EventLogAction.NO_ASSIGNMENT,
-        }),
-      ),
-    );
-    if (!noAssignmentEventLogItemsResult.ok) {
+    if (!fits) {
       logger.error(
         new Error(
-          `Assignment ${assignmentTime}: failed to add NO_ASSIGNMENT event log items: ${noAssignmentEventLogItemsResult.error}`,
+          `Assignment ${assignmentTime}: dropping ${groupResults.length} result(s) that no longer fit, leaving the attendees' existing sign-ups in place: ${groupResults.map((result) => result.username).join(", ")}`,
         ),
       );
+      return [];
     }
 
-    // Add SEND_EMAIL_REJECTED to notification queue
-    if (
-      settings?.emailNotificationTrigger.includes(
-        EmailNotificationTrigger.REJECTED,
-      )
-    ) {
-      queueAssignmentEmails({
-        queueService,
-        assignmentTime,
-        notifications: noAssignmentLotterySignupUsernames.map(
-          (noAssignmentLotterySignupUsername) => ({
-            type: NotificationTaskType.SEND_EMAIL_REJECTED,
-            username: noAssignmentLotterySignupUsername,
-            programItemId: "",
-            programItemStartTime: assignmentTime,
-          }),
-        ),
-        emailKind: EmailNotificationTrigger.REJECTED,
-      });
+    for (const [programItemId, needed] of Object.entries(
+      neededByProgramItemId,
+    )) {
+      remainingByProgramItemId.set(
+        programItemId,
+        (remainingByProgramItemId.get(programItemId) ?? 0) - needed,
+      );
     }
-  }
-};
-
-interface QueueAssignmentEmailsParams {
-  queueService: NotificationQueueService | null;
-  assignmentTime: string;
-  notifications: NotificationTask[];
-  emailKind:
-    | EmailNotificationTrigger.ACCEPTED
-    | EmailNotificationTrigger.REJECTED;
-}
-
-const queueAssignmentEmails = ({
-  queueService,
-  assignmentTime,
-  notifications,
-  emailKind,
-}: QueueAssignmentEmailsParams): void => {
-  if (queueService === null) {
-    logger.error(
-      new Error(
-        `Assignment ${assignmentTime}: notification queue not initialized, skip queueing ${emailKind} emails`,
-      ),
-    );
-    return;
-  }
-
-  const queueNotificationsResult =
-    queueService.addNotificationsBulk(notifications);
-  if (!queueNotificationsResult.ok) {
-    logger.error(
-      new Error(
-        `Assignment ${assignmentTime}: failed to queue ${emailKind} emails: ${queueNotificationsResult.error}`,
-      ),
-    );
-  }
+    return groupResults;
+  });
 };

@@ -8,8 +8,11 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
+import { User } from "shared/types/models/user";
 import { db } from "server/db/mongodb";
+import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import {
   findDirectSignups,
@@ -65,6 +68,38 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
+interface SaveAndNotifyParams {
+  assignmentTime: string;
+  results: readonly UserAssignmentResult[];
+  users: User[];
+  programItems: ProgramItem[];
+}
+
+// A run saves the spots and then tells the attendees, so the cases below drive both steps
+// in that order rather than either one alone
+const saveAndNotify = async ({
+  assignmentTime,
+  results,
+  users,
+  programItems,
+}: SaveAndNotifyParams): Promise<void> => {
+  const finalResults = unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime,
+      results,
+      users,
+      programItems,
+    }),
+  );
+
+  await addAssignmentNotifications({
+    assignmentTime,
+    finalResults,
+    users,
+    programItems,
+  });
+};
+
 test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email notifications", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -96,7 +131,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -167,7 +202,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: parentStartTime,
     results,
     users,
@@ -265,7 +300,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -353,7 +388,7 @@ test("should only add one event log item with multiple lottery signups", async (
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -446,7 +481,7 @@ test("should not add event log items after assignment if signup is dropped due t
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -507,7 +542,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -611,7 +646,7 @@ test("should remove all of a winner's existing same-time direct signups, not jus
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -662,7 +697,7 @@ test("should not send notifications to users without email addresses but still c
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -755,7 +790,7 @@ test("should respect email notification permissions based on email field", async
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -817,7 +852,7 @@ test("should handle mixed email permissions in groups", async () => {
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,

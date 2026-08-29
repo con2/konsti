@@ -218,3 +218,74 @@ test("should find direct signups for a parent-batched item by its parent start t
   expect(signups[0].programItemId).toEqual(testProgramItem.programItemId);
   expect(signups[0].username).toEqual(mockUser.username);
 });
+
+// Usernames are validated for length only, so one can start with "$". Inside an
+// aggregation pipeline that is a field path unless the value is marked as data
+const dollarPrefixedUsername = "$admin";
+
+test("should delete a signup from a user whose name starts with $", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: dollarPrefixedUsername,
+  });
+
+  unsafelyUnwrap(
+    await delDirectSignup({
+      username: dollarPrefixedUsername,
+      directSignupProgramItemId: testProgramItem.programItemId,
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  expect(signups[0].userSignups).toHaveLength(0);
+  expect(signups[0].count).toEqual(0);
+});
+
+test("should bulk delete signups from a user whose name starts with $", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: dollarPrefixedUsername,
+  });
+
+  unsafelyUnwrap(
+    await delDirectSignups([
+      {
+        username: dollarPrefixedUsername,
+        directSignupProgramItemId: testProgramItem.programItemId,
+      },
+    ]),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  expect(signups[0].userSignups).toHaveLength(0);
+  expect(signups[0].count).toEqual(0);
+});
+
+test("should count existing attendees against maxAttendance when appending", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveUser(mockUser3);
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
+
+  // One spot already taken, so only one of the two new sign-ups fits
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const response = unsafelyUnwrap(
+    await saveDirectSignups(
+      [
+        { ...mockPostDirectSignupRequest, username: mockUser2.username },
+        { ...mockPostDirectSignupRequest, username: mockUser3.username },
+      ],
+      programItems,
+    ),
+  );
+
+  expect(response.droppedSignups).toHaveLength(1);
+
+  const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
+  expect(signupsAfterSave[0].userSignups).toHaveLength(2);
+  expect(signupsAfterSave[0].count).toEqual(2);
+});

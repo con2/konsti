@@ -15,9 +15,9 @@ export const getAssignmentBonus = (
 ): number => {
   /** First time bonus */
 
-  // A re-run must not count its own results as "previous" (which would strip the bonus and
-  // change outcomes): ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at the
-  // current assignmentTime, but keep genuine first-come-first-served direct sign-ups
+  // A run must not count results for its own start time as "previous", which would strip the
+  // bonus and change outcomes: ignore lottery wins (priority > 0) and NEW_ASSIGNMENT events at
+  // the current assignmentTime, but keep genuine first-come-first-served direct sign-ups
   const isCurrentAssignment = (startTime: string): boolean =>
     isSameMinute(new Date(startTime), new Date(assignmentTime));
 
@@ -38,6 +38,8 @@ export const getAssignmentBonus = (
           );
         },
       );
+      // A placement the attendee never got to attend is not one they spent: cancelling their
+      // own sign-up costs the bonus, the program item being cancelled does not
       const newAssignmentEvent = groupMember.eventLogItems.find(
         (eventLogItem) => {
           const previousAssignment =
@@ -69,8 +71,9 @@ export const getAssignmentBonus = (
   /** Additional first time bonus */
 
   // Get group members with previous NO_ASSIGNMENT event log items and without direct sign-ups.
-  // Ignore a NO_ASSIGNMENT from the current assignmentTime — on a re-run it's this run's own
-  // earlier result, so counting it would make the re-run boost run-1 failures
+  // Ignore a NO_ASSIGNMENT from the current assignmentTime. A run that rejected everyone and
+  // then failed before marking its items can be run again, and counting the items it wrote
+  // would make the retry boost the very attendees the first attempt turned down
   const groupMembersWithPreviousFailedLotterySignup =
     groupMembersWithoutDirectSignups.filter((groupMember) => {
       return groupMember.eventLogItems.find(
