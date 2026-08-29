@@ -1,11 +1,14 @@
 import { first } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
-import { isSameStartTime } from "shared/utils/signupTimes";
 import {
   getAssignmentBonus,
   getAssignmentBonusContext,
 } from "server/features/assignment/utils/getAssignmentBonus";
+import {
+  getLotterySignupsInRun,
+  indexProgramItemsById,
+} from "server/features/assignment/utils/getLotterySignupsInRun";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ListItem } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
@@ -26,18 +29,11 @@ export const getList = ({
   allProgramItems,
 }: GetListParams): ListItem[] => {
   const bonusContext = getAssignmentBonusContext(
-    lotterySignupProgramItems,
     allProgramItems,
     assignmentTime,
   );
 
-  // Looked up once per lottery sign-up of every group, so it is indexed rather than scanned
-  const programItemsById = new Map(
-    lotterySignupProgramItems.map((programItem) => [
-      programItem.programItemId,
-      programItem,
-    ]),
-  );
+  const programItemsById = indexProgramItemsById(lotterySignupProgramItems);
 
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
@@ -46,20 +42,10 @@ export const getList = ({
       return [];
     }
 
-    const lotterySignupsInThisRun = firstMember.lotterySignups.filter(
-      (lotterySignup) => {
-        const programItem = programItemsById.get(lotterySignup.programItemId);
-        // A sign-up naming a program item this run is not allocating has no event to map
-        // to, and the assigner rejects the whole input over a single such preference
-        if (!programItem) {
-          return false;
-        }
-        return isSameStartTime(
-          programItem.startTime,
-          programItem.parentId,
-          assignmentTime,
-        );
-      },
+    const lotterySignupsInThisRun = getLotterySignupsInRun(
+      firstMember.lotterySignups,
+      programItemsById,
+      assignmentTime,
     );
     if (lotterySignupsInThisRun.length === 0) {
       return [];

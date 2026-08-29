@@ -4,10 +4,13 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem, State } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { isSameTime } from "shared/utils/timeComparison";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export interface AssignmentBonusContext {
+  thisRunsProgramItemIds: ReadonlySet<string>;
   currentStartTimes: readonly string[];
   stillRunningProgramItemIds: ReadonlySet<string>;
 }
@@ -15,31 +18,50 @@ export interface AssignmentBonusContext {
 // Built once per algorithm pass: every attendee group asks the same questions of the same
 // programme
 export const getAssignmentBonusContext = (
-  lotterySignupProgramItems: readonly ProgramItem[],
   allProgramItems: readonly ProgramItem[],
   assignmentTime: string,
-): AssignmentBonusContext => ({
-  // A run must not count results for its own start time as "previous", which would strip the
-  // bonus and change outcomes. Both are recorded against the hour the attendee turns up, so a
-  // batched run - whose own time is the parent's - is recognised by the hours it covers
-  currentStartTimes: unique([
+): AssignmentBonusContext => {
+  // The lottery program items this starting time decides. Not only the ones still being
+  // lotteried: a retry drops the items an earlier attempt placed people into, and that
+  // attempt's results must still read as this run's rather than as a lottery they lost
+  const startingProgramItems = getStartingProgramItems(
+    allProgramItems,
     assignmentTime,
-    ...lotterySignupProgramItems.map((programItem) => programItem.startTime),
-  ]),
-  // A placement the attendee never got to attend is not one they spent: cancelling their own
-  // sign-up costs the bonus, the program item being cancelled does not. Asked of the whole
-  // programme, since a placement at any other start time is still a placement
-  stillRunningProgramItemIds: new Set(
-    allProgramItems
-      .filter((programItem) => programItem.state === State.ACCEPTED)
-      .map((programItem) => programItem.programItemId),
-  ),
-});
+  ).filter(
+    (programItem) =>
+      isLotterySignupProgramItem(programItem) &&
+      programItem.state === State.ACCEPTED,
+  );
+
+  return {
+    thisRunsProgramItemIds: new Set(
+      startingProgramItems.map((programItem) => programItem.programItemId),
+    ),
+    // A rejection names no program item, so it is matched by the time it carries: the run's own
+    // hour, or any hour its program items start
+    currentStartTimes: unique([
+      assignmentTime,
+      ...startingProgramItems.map((programItem) => programItem.startTime),
+    ]),
+    // A placement the attendee never got to attend is not one they spent: cancelling their own
+    // sign-up costs the bonus, the program item being cancelled does not. Asked of the whole
+    // programme, since a placement at any other start time is still a placement
+    stillRunningProgramItemIds: new Set(
+      allProgramItems
+        .filter((programItem) => programItem.state === State.ACCEPTED)
+        .map((programItem) => programItem.programItemId),
+    ),
+  };
+};
 
 export const getAssignmentBonus = (
   attendeeGroup: User[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
-  { currentStartTimes, stillRunningProgramItemIds }: AssignmentBonusContext,
+  {
+    thisRunsProgramItemIds,
+    currentStartTimes,
+    stillRunningProgramItemIds,
+  }: AssignmentBonusContext,
 ): number => {
   /** First time bonus */
 
@@ -47,6 +69,12 @@ export const getAssignmentBonus = (
     currentStartTimes.some((currentStartTime) =>
       isSameTime(startTime, currentStartTime),
     );
+
+  // This run wrote it: for one of the program items it decides, and at one of the hours it
+  // covers. Neither half alone will do - an item can carry a placement from before it was
+  // rescheduled onto this hour, and another lottery can cover this hour with its own items
+  const isThisRunsOwn = (programItemId: string, startTime: string): boolean =>
+    thisRunsProgramItemIds.has(programItemId) && isCurrentStartTime(startTime);
 
   // Get group members with previous direct sign-ups or NEW_ASSIGNMENT event log items
   const [groupMembersWithDirectSignups, groupMembersWithoutDirectSignups] =
@@ -59,8 +87,10 @@ export const getAssignmentBonus = (
               // Exclude this run's own win (priority > 0), but keep first-come-first-served
               // (priority 0) sign-ups counting as "previous"
               !(
-                isCurrentStartTime(userSignup.signedToStartTime) &&
-                userSignup.priority !== DIRECT_SIGNUP_PRIORITY
+                isThisRunsOwn(
+                  directSignup.programItemId,
+                  userSignup.signedToStartTime,
+                ) && userSignup.priority !== DIRECT_SIGNUP_PRIORITY
               ),
           );
         },
@@ -75,7 +105,10 @@ export const getAssignmentBonus = (
           return (
             previousAssignment &&
             programItemExists &&
-            !isCurrentStartTime(eventLogItem.programItemStartTime)
+            !isThisRunsOwn(
+              eventLogItem.programItemId,
+              eventLogItem.programItemStartTime,
+            )
           );
         },
       );
