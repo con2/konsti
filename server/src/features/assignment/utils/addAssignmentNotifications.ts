@@ -10,7 +10,7 @@ import { getGroupCreators } from "server/features/assignment/utils/getGroupCreat
 import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
 import { getLotterySignups } from "server/features/assignment/utils/getLotterySignups";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
-import { findDirectSignupsByStartTimes } from "server/features/direct-signup/directSignupRepository";
+import { findDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { logger } from "server/utils/logger";
@@ -81,14 +81,14 @@ export const addAssignmentNotifications = async ({
     ),
   );
 
-  // An attendee holding a lottery-placed spot at this start time was placed by a lottery - this
-  // run, or one that saved its spots and then failed before saying so, which choice 7 allows to
-  // be run again. Telling them they got nothing would be false, and choice 5 means the event log
-  // item and the email could never be taken back
-  const placedByLotteryResult = await findDirectSignupsByStartTimes(
-    unique(startingProgramItems.map((programItem) => programItem.startTime)),
-    programItems,
-  );
+  // An attendee holding a lottery-placed spot in one of this run's own program items was placed
+  // by a lottery - this run, or one that saved its spots and then failed before saying so, which
+  // choice 7 allows to be run again. Telling them they got nothing would be false, and choice 5
+  // means the event log item and the email could never be taken back. Asked of those program
+  // items rather than of the hour, so another lottery's win cannot silence this one's rejection
+  const placedByLotteryResult = await findDirectSignupsByProgramItemIds([
+    ...startingProgramItemIds,
+  ]);
   if (!placedByLotteryResult.ok) {
     // Without it a rejection cannot be told from a placement, and a wrong one is permanent
     logger.error(
@@ -99,23 +99,27 @@ export const addAssignmentNotifications = async ({
   }
   const placedByLotteryUsernames = new Set(
     placedByLotteryResult.ok
-      ? placedByLotteryResult.value
-          .filter((signup) => signup.priority !== DIRECT_SIGNUP_PRIORITY)
-          .map((signup) => signup.username)
+      ? placedByLotteryResult.value.flatMap((directSignup) =>
+          directSignup.userSignups
+            .filter(
+              (userSignup) => userSignup.priority !== DIRECT_SIGNUP_PRIORITY,
+            )
+            .map((userSignup) => userSignup.username),
+        )
       : [],
   );
 
+  // Use finalResults so users whose sign-up was dropped are treated as not assigned
+  const placedNowUsernames = new Set(
+    finalResults.map((result) => result.username),
+  );
+
   const rejectedUsernames = placedByLotteryResult.ok
-    ? lotterySignupUsernames.filter((lotterySignupUsername) => {
-        // Use finalResults so users whose sign-up was dropped are treated as not assigned
-        const userGotAssignment = finalResults.some(
-          (result) => result.username === lotterySignupUsername,
-        );
-        return (
-          !userGotAssignment &&
-          !placedByLotteryUsernames.has(lotterySignupUsername)
-        );
-      })
+    ? lotterySignupUsernames.filter(
+        (lotterySignupUsername) =>
+          !placedNowUsernames.has(lotterySignupUsername) &&
+          !placedByLotteryUsernames.has(lotterySignupUsername),
+      )
     : [];
 
   // Add NEW_ASSIGNMENT to user event logs
