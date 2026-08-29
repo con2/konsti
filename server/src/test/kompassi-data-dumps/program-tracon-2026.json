@@ -15,7 +15,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 4,
+      "konsti:rpgSystem": "Mörk Borg"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -27,8 +31,11 @@
         "location": "Duetto 1 (Ropepöytä 4)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 4",
           "internal:subtitle": "1. pelautus",
-          "internal:freeformLocation": "Ropepöytä 4"
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 4,
+          "konsti:rpgSystem": "Mörk Borg"
         }
       },
       {
@@ -40,8 +47,11 @@
         "location": "Duetto 1 (Ropepöytä 6)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 6",
           "internal:subtitle": "2. pelautus",
-          "internal:freeformLocation": "Ropepöytä 6"
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 4,
+          "konsti:rpgSystem": "Mörk Borg"
         }
       }
     ]
@@ -58,11 +68,15 @@
       "state": ["accepted"],
       "konsti": ["tabletoprpg"],
       "scheduled": ["one", "one-or-more"],
-      "guide-tags": ["konsti-adv-reg"],
+      "guide-tags": ["konsti-adv-reg", "lang-eng"],
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Brindlewood Bay"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -73,7 +87,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 4)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 4" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 4",
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Brindlewood Bay"
+        }
       }
     ]
   },
@@ -93,7 +112,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "CBR+PNK / Forged in the Dark"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -104,7 +127,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 3" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 3",
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "CBR+PNK / Forged in the Dark"
+        }
       }
     ]
   },
@@ -124,7 +152,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Final Fantasy XIV TTRPG"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -135,7 +167,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 5",
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Final Fantasy XIV TTRPG"
+        }
       }
     ]
   },
@@ -156,8 +193,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "ropecon:isRevolvingDoor": true,
-      "konsti:maxAttendance": 25
+      "konsti:maxAttendance": 25,
+      "ropecon:isRevolvingDoor": true
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -170,8 +207,8 @@
         "location": "Opus 1-2",
         "isCancelled": false,
         "cachedAnnotations": {
-          "ropecon:isRevolvingDoor": true,
-          "konsti:maxAttendance": 25
+          "konsti:maxAttendance": 25,
+          "ropecon:isRevolvingDoor": true
         }
       }
     ]
@@ -192,7 +229,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 7,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Hex Ferrumin oma sääntömekaniikka (pitkälti d20-pohjainen)"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -203,7 +244,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 3" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 3",
+          "konsti:maxAttendance": 7,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Hex Ferrumin oma sääntömekaniikka (pitkälti d20-pohjainen)"
+        }
       }
     ]
   },
@@ -223,7 +269,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 1,
+      "konsti:rpgSystem": "Hunter the Reckoning (muokattu helpommaksi)"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -235,8 +285,11 @@
         "location": "Duetto 1 (Ropepöytä 3)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 3",
           "internal:subtitle": "1. pelautus",
-          "internal:freeformLocation": "Ropepöytä 3"
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 1,
+          "konsti:rpgSystem": "Hunter the Reckoning (muokattu helpommaksi)"
         }
       },
       {
@@ -248,8 +301,11 @@
         "location": "Duetto 1 (Ropepöytä 1)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 1",
           "internal:subtitle": "2. pelautus",
-          "internal:freeformLocation": "Ropepöytä 1"
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 1,
+          "konsti:rpgSystem": "Hunter the Reckoning (muokattu helpommaksi)"
         }
       }
     ]
@@ -270,7 +326,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "Dungeons & Dragons 5e"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -281,7 +341,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 1" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 1",
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Dungeons & Dragons 5e"
+        }
       }
     ]
   },
@@ -301,7 +366,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": { "konsti:maxAttendance": 4 },
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "3d6"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -313,8 +382,10 @@
         "location": "Duetto 1 (Ropepöytä 6)",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:maxAttendance": 4,
-          "internal:freeformLocation": "Ropepöytä 6"
+          "internal:freeformLocation": "Ropepöytä 6",
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "3d6"
         }
       }
     ]
@@ -322,7 +393,7 @@
   {
     "slug": "kirpputori-lauantai",
     "title": "Kirpputorin ajanvaraus: Lauantai klo 9:30–14",
-    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–21:30 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-09-05"],
@@ -455,7 +526,7 @@
   {
     "slug": "kirpputori-perjantai-alkuilta",
     "title": "Kirpputorin ajanvaraus: Perjantai klo 16–19",
-    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–21:30 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-09-04"],
@@ -548,8 +619,8 @@
   },
   {
     "slug": "kirpputori-perjantai-loppuilta",
-    "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22",
-    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–22 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
+    "title": "Kirpputorin ajanvaraus: Perjantai klo 19–21:30",
+    "description": "Traconin kirpputorille pääsee ostoksille pe klo 16–21:30 ja la klo 9:30–14 ainoastaan ajanvarauksella. Muina aikoina kirpputori palvelee asiakkaita jonosta. Ajanvaraus tapahtuu käyttäen Konstia, johon kirjaudutaan Kompassi-tunnuksilla. Molempien päivien ajanvarausajoille voi ilmoittautua alkaen pe klo 08:00. Koska halukkaita voi olla enemmän kuin kirpputorin ajanvarausaikoihin mahtuu, ajat arvotaan. Arvonnat tapahtuvat perjantaina kello 14:00 ja 17:00 sekä lauantaina kello 7:30. Kunkin arvonnan jälkeen niille ajanvarausajoille, joille on vielä tilaa, voi ilmoittautua Konstissa suoraan.\n\nJos sinua onnistaa arvonnassa, saat yhden puolen tunnin mittaisen saapumisajan, jonka kuluessa voit tulla jonoon koska tahansa. Saapuessasi kirpputorille avaa lippu älypuhelimeesi ja näytä se jonon valvojalle. Lipun avaaminen onnistuu kätevimmin avaamalla älypuhelimessa osoite kirpputori.tracon.fi ja valitsemalla avautuvasta näkymästä kirpputorin ajanvarauksen kohdalta ”Avaa pääsylippu”. Huomaathan että voittamasi aika takaa pääsyn kirpputorijonoon, mutta saatat silti joutua jonottamaan kirpputorille pääsyä.\n\nJos haluat osallistua arvontaan ryhmänä, teidän on ensin muodostettava ryhmä Konstin Ryhmä-näkymässä. Yksi jäsenistä luo ryhmän ja saa liittymiskoodin, jonka avulla muut liittyvät ryhmään. Tämän jälkeen ryhmän perustaja ilmoittautuu arvontaan. Vapaille ajoille ilmoittautuessa ryhmä hajoaa. Tarkemmat ohjeet löytyvät Konstin ohjeista.",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-09-04"],
@@ -562,7 +633,7 @@
     "scheduleItems": [
       {
         "slug": "kirpputori-perjantai-loppuilta-1900",
-        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 19:00–19:30",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–21:30 – Saapuminen klo 19:00–19:30",
         "startTime": "2026-09-04T19:00:00+03:00",
         "endTime": "2026-09-04T19:30:00+03:00",
         "lengthMinutes": 30,
@@ -575,7 +646,7 @@
       },
       {
         "slug": "kirpputori-perjantai-loppuilta-1930",
-        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 19:30–20:00",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–21:30 – Saapuminen klo 19:30–20:00",
         "startTime": "2026-09-04T19:30:00+03:00",
         "endTime": "2026-09-04T20:00:00+03:00",
         "lengthMinutes": 30,
@@ -588,7 +659,7 @@
       },
       {
         "slug": "kirpputori-perjantai-loppuilta-2000",
-        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 20:00–20:30",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–21:30 – Saapuminen klo 20:00–20:30",
         "startTime": "2026-09-04T20:00:00+03:00",
         "endTime": "2026-09-04T20:30:00+03:00",
         "lengthMinutes": 30,
@@ -601,7 +672,7 @@
       },
       {
         "slug": "kirpputori-perjantai-loppuilta-2030",
-        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 20:30–21:00",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–21:30 – Saapuminen klo 20:30–21:00",
         "startTime": "2026-09-04T20:30:00+03:00",
         "endTime": "2026-09-04T21:00:00+03:00",
         "lengthMinutes": 30,
@@ -614,7 +685,7 @@
       },
       {
         "slug": "kirpputori-perjantai-loppuilta-2100",
-        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–22 – Saapuminen klo 21:00–21:30",
+        "title": "Kirpputorin ajanvaraus: Perjantai klo 19–21:30 – Saapuminen klo 21:00–21:30",
         "startTime": "2026-09-04T21:00:00+03:00",
         "endTime": "2026-09-04T21:30:00+03:00",
         "lengthMinutes": 30,
@@ -622,7 +693,7 @@
         "isCancelled": false,
         "cachedAnnotations": {
           "internal:subtitle": "Saapuminen klo 21:00–21:30",
-          "konsti:maxAttendance": 45
+          "konsti:maxAttendance": 50
         }
       }
     ]
@@ -643,8 +714,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 1,
-      "konsti:maxAttendance": 24
+      "konsti:maxAttendance": 24,
+      "konsti:minAttendance": 1
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -657,8 +728,8 @@
         "location": "Program tent 1",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 1,
-          "konsti:maxAttendance": 24
+          "konsti:maxAttendance": 24,
+          "konsti:minAttendance": 1
         }
       }
     ]
@@ -680,8 +751,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 1,
-      "konsti:maxAttendance": 20
+      "konsti:maxAttendance": 20,
+      "konsti:minAttendance": 1
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -694,8 +765,8 @@
         "location": "Opus 1-2",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 1,
-          "konsti:maxAttendance": 20
+          "konsti:maxAttendance": 20,
+          "konsti:minAttendance": 1
         }
       }
     ]
@@ -712,11 +783,15 @@
       "state": ["accepted"],
       "konsti": ["tabletoprpg"],
       "scheduled": ["one", "one-or-more"],
-      "guide-tags": ["konsti-adv-reg"],
+      "guide-tags": ["konsti-adv-reg", "lang-eng"],
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "Lancer"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -727,7 +802,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 2" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 2",
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Lancer"
+        }
       }
     ]
   },
@@ -747,7 +827,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Blades in the Dark"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -758,7 +842,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 5",
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Blades in the Dark"
+        }
       }
     ]
   },
@@ -778,7 +867,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "Legendoja ja Lohikäärmeitä"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -789,7 +882,12 @@
         "lengthMinutes": 300,
         "location": "Duetto 1 (Ropepöytä 2)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 2" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 2",
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Legendoja ja Lohikäärmeitä"
+        }
       }
     ]
   },
@@ -809,7 +907,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Mage the Ascension (houserule, muokattu helpommaksi) JA Final Fantasy RPG "
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -820,7 +922,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 5",
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Mage the Ascension (houserule, muokattu helpommaksi) JA Final Fantasy RPG "
+        }
       }
     ]
   },
@@ -836,11 +943,15 @@
       "state": ["accepted"],
       "konsti": ["tabletoprpg"],
       "scheduled": ["one", "one-or-more"],
-      "guide-tags": ["konsti-adv-reg"],
+      "guide-tags": ["konsti-adv-reg", "lang-eng"],
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "Mörk Borg"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -851,7 +962,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 4)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 4" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 4",
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Mörk Borg"
+        }
       }
     ]
   },
@@ -871,7 +987,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 1,
+      "konsti:rpgSystem": "Mongoose Traveller 2e"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -882,7 +1002,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 5)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 5" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 5",
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 1,
+          "konsti:rpgSystem": "Mongoose Traveller 2e"
+        }
       }
     ]
   },
@@ -902,7 +1027,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Dungeons & Dragons 5e"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -914,8 +1043,11 @@
         "location": "Duetto 1 (Ropepöytä 2)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 2",
           "internal:subtitle": "1. pelautus",
-          "internal:freeformLocation": "Ropepöytä 2"
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Dungeons & Dragons 5e"
         }
       },
       {
@@ -927,8 +1059,11 @@
         "location": "Duetto 1 (Ropepöytä 2)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 2",
           "internal:subtitle": "2. pelautus",
-          "internal:freeformLocation": "Ropepöytä 2"
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Dungeons & Dragons 5e"
         }
       }
     ]
@@ -949,7 +1084,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "Pathfinder Second Edition"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -961,8 +1100,11 @@
         "location": "Duetto 1 (Ropepöytä 4)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 4",
           "internal:subtitle": "1. pelautus",
-          "internal:freeformLocation": "Ropepöytä 4"
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Pathfinder Second Edition"
         }
       },
       {
@@ -974,8 +1116,11 @@
         "location": "Duetto 1 (Ropepöytä 2)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 2",
           "internal:subtitle": "2. pelautus",
-          "internal:freeformLocation": "Ropepöytä 2"
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Pathfinder Second Edition"
         }
       }
     ]
@@ -997,8 +1142,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 1,
-      "konsti:maxAttendance": 20
+      "konsti:maxAttendance": 20,
+      "konsti:minAttendance": 1
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1011,8 +1156,8 @@
         "location": "Program tent 2",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 1,
-          "konsti:maxAttendance": 20
+          "konsti:maxAttendance": 20,
+          "konsti:minAttendance": 1
         }
       }
     ]
@@ -1033,8 +1178,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 1,
-      "konsti:maxAttendance": 20
+      "konsti:maxAttendance": 20,
+      "konsti:minAttendance": 1
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1047,8 +1192,8 @@
         "location": "Opus 1-2",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 1,
-          "konsti:maxAttendance": 20
+          "konsti:maxAttendance": 20,
+          "konsti:minAttendance": 1
         }
       }
     ]
@@ -1069,7 +1214,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Stalker/FLOW"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1080,7 +1229,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 6" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 6",
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Stalker/FLOW"
+        }
       }
     ]
   },
@@ -1100,7 +1254,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 3,
+      "konsti:rpgSystem": "Oma nopaton, diceless homebrew"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1112,8 +1270,11 @@
         "location": "Duetto 1 (Ropepöytä 1)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 1",
           "internal:subtitle": "1. pelautus",
-          "internal:freeformLocation": "Ropepöytä 1"
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Oma nopaton, diceless homebrew"
         }
       },
       {
@@ -1125,8 +1286,11 @@
         "location": "Duetto 1 (Ropepöytä 1)",
         "isCancelled": false,
         "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 1",
           "internal:subtitle": "2. pelautus",
-          "internal:freeformLocation": "Ropepöytä 1"
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 3,
+          "konsti:rpgSystem": "Oma nopaton, diceless homebrew"
         }
       }
     ]
@@ -1143,11 +1307,15 @@
       "state": ["accepted"],
       "konsti": ["tabletoprpg"],
       "scheduled": ["one", "one-or-more"],
-      "guide-tags": ["konsti-adv-reg"],
+      "guide-tags": ["konsti-adv-reg", "lang-eng"],
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 6,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Dungeons and Dragons 5e (2014)"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1158,7 +1326,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 1)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 1" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 1",
+          "konsti:maxAttendance": 6,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Dungeons and Dragons 5e (2014)"
+        }
       }
     ]
   },
@@ -1179,8 +1352,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 1,
-      "konsti:maxAttendance": 15
+      "konsti:maxAttendance": 15,
+      "konsti:minAttendance": 1
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1193,8 +1366,8 @@
         "location": "Opus 1-2",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 1,
-          "konsti:maxAttendance": 15
+          "konsti:maxAttendance": 15,
+          "konsti:minAttendance": 1
         }
       }
     ]
@@ -1211,11 +1384,15 @@
       "state": ["accepted"],
       "konsti": ["tabletoprpg"],
       "scheduled": ["one", "one-or-more"],
-      "guide-tags": ["konsti-adv-reg"],
+      "guide-tags": ["konsti-adv-reg", "lang-eng"],
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 5,
+      "konsti:minAttendance": 1,
+      "konsti:rpgSystem": "Dragonbane"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1226,7 +1403,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 3)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 3" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 3",
+          "konsti:maxAttendance": 5,
+          "konsti:minAttendance": 1,
+          "konsti:rpgSystem": "Dragonbane"
+        }
       }
     ]
   },
@@ -1246,7 +1428,11 @@
       "program-type": ["rpg-game"],
       "guidegrouping": ["rpg"]
     },
-    "cachedAnnotations": {},
+    "cachedAnnotations": {
+      "konsti:maxAttendance": 4,
+      "konsti:minAttendance": 2,
+      "konsti:rpgSystem": "Vampire the Masquerade"
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -1257,7 +1443,12 @@
         "lengthMinutes": 240,
         "location": "Duetto 1 (Ropepöytä 6)",
         "isCancelled": false,
-        "cachedAnnotations": { "internal:freeformLocation": "Ropepöytä 6" }
+        "cachedAnnotations": {
+          "internal:freeformLocation": "Ropepöytä 6",
+          "konsti:maxAttendance": 4,
+          "konsti:minAttendance": 2,
+          "konsti:rpgSystem": "Vampire the Masquerade"
+        }
       }
     ]
   },
@@ -1277,8 +1468,8 @@
       "guidegrouping": ["smallroomsandtents"]
     },
     "cachedAnnotations": {
-      "konsti:minAttendance": 1,
-      "konsti:maxAttendance": 24
+      "konsti:maxAttendance": 24,
+      "konsti:minAttendance": 1
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1291,8 +1482,8 @@
         "location": "Program tent 1",
         "isCancelled": false,
         "cachedAnnotations": {
-          "konsti:minAttendance": 1,
-          "konsti:maxAttendance": 24
+          "konsti:maxAttendance": 24,
+          "konsti:minAttendance": 1
         }
       }
     ]
