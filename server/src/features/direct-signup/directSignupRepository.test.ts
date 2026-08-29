@@ -11,6 +11,7 @@ import {
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
   findDirectSignupsByStartTimes,
+  removeDirectSignups,
   saveDirectSignup,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
@@ -304,4 +305,21 @@ test("should count existing attendees against maxAttendance when appending", asy
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
   expect(signupsAfterSave[0].count).toEqual(2);
+});
+
+test("should report assignment signups as dropped when the program item has no signup document", async () => {
+  // The write updates an existing document and never creates one, so a program item without
+  // one stores nothing - and saying otherwise sends an acceptance email for a spot that is
+  // not there, which the append-only event log makes permanent
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  unsafelyUnwrap(await removeDirectSignups());
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  const response = unsafelyUnwrap(
+    await saveDirectSignups([mockPostDirectSignupRequest], programItems),
+  );
+
+  expect(response.droppedSignups).toEqual([mockPostDirectSignupRequest]);
+  expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
 });

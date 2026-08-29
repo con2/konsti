@@ -299,6 +299,27 @@ export const saveDirectSignup = async (
   }
 };
 
+// Which of these program items have a sign-up document at all, read without validating it.
+// The write this verifies does not upsert, so "no document" is proof it stored nothing, where
+// "document present but unreadable" says only that the check cannot tell
+const findProgramItemIdsWithSignupDocument = async (
+  programItemIds: string[],
+): Promise<Result<Set<string>, MongoDbError>> => {
+  try {
+    const ids: string[] = await SignupModel.distinct("programItemId", {
+      programItemId: { $in: programItemIds },
+    });
+    return makeSuccessResult(new Set(ids));
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error finding direct signup documents", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 // The attendance cap is applied by the write itself, so which sign-ups actually landed is
 // only known afterwards. Reporting the ones that didn't lets the caller treat them as not
 // placed rather than telling the attendee they got a spot that was never stored
@@ -311,6 +332,13 @@ const findSignupsNotSaved = async (
   );
   if (!savedSignupsResult.ok) {
     return savedSignupsResult;
+  }
+
+  const documentedResult = await findProgramItemIdsWithSignupDocument(
+    Object.keys(signupsByProgramItems),
+  );
+  if (!documentedResult.ok) {
+    return documentedResult;
   }
 
   const savedUsernamesByProgramItemId = new Map(
@@ -340,8 +368,19 @@ const findSignupsNotSaved = async (
         signup.directSignupProgramItemId,
       );
       if (!savedUsernames) {
-        // The read skipped the document rather than proving the write missed it. Reporting them
-        // dropped would tell attendees holding a spot that they got none, which is permanent
+        // No document to update and the write does not create one, so nothing was stored.
+        // Saying otherwise would send an acceptance email for a spot that does not exist
+        if (!documentedResult.value.has(signup.directSignupProgramItemId)) {
+          logger.error(
+            new Error(
+              `Assignment signups for program item ${signup.directSignupProgramItemId} were not saved: it has no sign-up document`,
+            ),
+          );
+          return true;
+        }
+
+        // The document is there but could not be read, which says nothing about the write.
+        // Reporting them dropped would tell attendees holding a spot that they got none
         logger.error(
           new Error(
             `Could not verify the assignment signups saved to program item ${signup.directSignupProgramItemId}, treating them as saved`,
