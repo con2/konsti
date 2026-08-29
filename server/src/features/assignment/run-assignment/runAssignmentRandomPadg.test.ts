@@ -13,10 +13,12 @@ import * as padgAssign from "server/features/assignment/padg/padgAssignment";
 import * as randomAssign from "server/features/assignment/random/randomAssignment";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
+  assertAssignmentInvariants,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -32,7 +34,6 @@ import {
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
-const groupTestUsers = new Set(["group1", "group2", "group3"]);
 
 const { eventStartTime } = config.event();
 
@@ -96,22 +97,13 @@ test("Assignment with valid data should return success with random+padg algorith
     expectedResultsCount,
   );
 
-  const groupResults = assignResults.results.filter((result) =>
-    groupTestUsers.has(result.username),
-  );
-
-  if (groupResults.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(0);
-  }
-
   const updatedUsers = assignResults.results.map((result) => result.username);
   await assertUserUpdatedCorrectly(updatedUsers);
+  await assertAssignmentInvariants(assignmentTime);
 
   // SECOND RUN
+  // The lottery for a start time happens once, so running it again lotteries nothing and
+  // leaves every spot the first run handed out where it is
 
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
@@ -120,25 +112,36 @@ test("Assignment with valid data should return success with random+padg algorith
     }),
   );
 
-  expect(assignResults2.status).toEqual("success");
-  expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount,
+  expect(assignResults2.status).toEqual(
+    AssignmentResultStatus.ALREADY_LOTTERIED,
   );
+  expect(assignResults2.results).toHaveLength(0);
 
-  const groupResults2 = assignResults2.results.filter((result) =>
-    groupTestUsers.has(result.username),
+  const firstRunWinners = assignResults.results.map(
+    (result) => result.username,
   );
+  const firstRunWinnerSet = new Set(firstRunWinners);
 
-  if (groupResults2.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(0);
-  }
+  // Same attendee, same program item, still exactly one spot each
+  const signupsAfterSecondRun = unsafelyUnwrap(await findDirectSignups());
+  const heldProgramItemsByWinner = new Map(
+    signupsAfterSecondRun.flatMap((signup) =>
+      signup.userSignups
+        .filter((userSignup) => firstRunWinnerSet.has(userSignup.username))
+        .map((userSignup) => [userSignup.username, signup.programItemId]),
+    ),
+  );
+  expect(heldProgramItemsByWinner.size).toEqual(firstRunWinnerSet.size);
+  assignResults.results.map((result) => {
+    expect(heldProgramItemsByWinner.get(result.username)).toEqual(
+      result.assignmentSignup.programItemId,
+    );
+  });
 
-  const updatedUsers2 = assignResults2.results.map((result) => result.username);
-  await assertUserUpdatedCorrectly(updatedUsers2);
+  // Prior winners still have exactly one assignment (idempotent, not duplicated)
+  await assertUserUpdatedCorrectly(firstRunWinners);
+
+  await assertAssignmentInvariants(assignmentTime);
 });
 
 test("Assignment with no attendees should return error with random+padg algorithm", async () => {

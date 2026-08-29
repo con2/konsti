@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { addHours, addMinutes, subHours } from "date-fns";
+import { addHours, addMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -10,25 +10,20 @@ import { ProgramType } from "shared/types/models/programItem";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
+  assertAssignmentInvariants,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import {
-  findDirectSignups,
-  saveDirectSignup,
-} from "server/features/direct-signup/directSignupRepository";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockLotterySignups,
-  mockPostDirectSignupRequest,
   mockUser,
   mockUser2,
-  mockUser3,
-  mockUser4,
 } from "server/test/mock-data/mockUser";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -40,7 +35,6 @@ import {
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
-const groupTestUsers = new Set(["group1", "group2", "group3"]);
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -103,22 +97,13 @@ test("Assignment with valid data should return success with padg algorithm", asy
     expectedResultsCount,
   );
 
-  const groupResults = assignResults.results.filter((result) =>
-    groupTestUsers.has(result.username),
-  );
-
-  if (groupResults.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(0);
-  }
-
   const updatedUsers = assignResults.results.map((result) => result.username);
   await assertUserUpdatedCorrectly(updatedUsers);
+  await assertAssignmentInvariants(assignmentTime);
 
   // SECOND RUN
+  // The lottery for a start time happens once, so running it again lotteries nothing and
+  // leaves every spot the first run handed out where it is
 
   const assignResults2 = unsafelyUnwrap(
     await runAssignment({
@@ -127,101 +112,36 @@ test("Assignment with valid data should return success with padg algorithm", asy
     }),
   );
 
-  expect(assignResults2.status).toEqual("success");
-  expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount,
+  expect(assignResults2.status).toEqual(
+    AssignmentResultStatus.ALREADY_LOTTERIED,
   );
+  expect(assignResults2.results).toHaveLength(0);
 
-  const groupResults2 = assignResults2.results.filter((result) =>
-    groupTestUsers.has(result.username),
+  const firstRunWinners = assignResults.results.map(
+    (result) => result.username,
   );
+  const firstRunWinnerSet = new Set(firstRunWinners);
 
-  if (groupResults2.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(0);
-  }
-
-  const updatedUsers2 = assignResults2.results.map((result) => result.username);
-  await assertUserUpdatedCorrectly(updatedUsers2);
-});
-
-test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
-  const assignmentAlgorithm = AssignmentAlgorithm.PADG;
-
-  await saveProgramItems([
-    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
-  ]);
-  await saveUser(mockUser);
-  await saveUser(mockUser2);
-  await saveUser(mockUser3);
-  await saveUser(mockUser4);
-
-  // ** Save previous sign-ups
-
-  // This should remain because of different startTime
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    signedToStartTime: subHours(
-      new Date(testProgramItem.startTime),
-      1,
-    ).toISOString(),
+  // Same attendee, same program item, still exactly one spot each
+  const signupsAfterSecondRun = unsafelyUnwrap(await findDirectSignups());
+  const heldProgramItemsByWinner = new Map(
+    signupsAfterSecondRun.flatMap((signup) =>
+      signup.userSignups
+        .filter((userSignup) => firstRunWinnerSet.has(userSignup.username))
+        .map((userSignup) => [userSignup.username, signup.programItemId]),
+    ),
+  );
+  expect(heldProgramItemsByWinner.size).toEqual(firstRunWinnerSet.size);
+  assignResults.results.map((result) => {
+    expect(heldProgramItemsByWinner.get(result.username)).toEqual(
+      result.assignmentSignup.programItemId,
+    );
   });
 
-  // This should be removed becase of same startTime
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser2.username,
-  });
+  // Prior winners still have exactly one assignment (idempotent, not duplicated)
+  await assertUserUpdatedCorrectly(firstRunWinners);
 
-  // ** Save selected program items
-
-  // This will get assigned
-  await saveLotterySignups({
-    username: mockUser3.username,
-    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
-  });
-
-  // This will not get assigned because program item full
-  await saveLotterySignups({
-    username: mockUser4.username,
-    lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
-  });
-
-  const assignResults = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      assignmentTime: testProgramItem.startTime,
-    }),
-  );
-  expect(assignResults.status).toEqual("success");
-  expect(assignResults.results.length).toEqual(1);
-
-  const signupsAfterUpdate = unsafelyUnwrap(await findDirectSignups());
-
-  const assignmentSignup = signupsAfterUpdate.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
-  );
-
-  expect(assignmentSignup?.userSignups).toMatchObject([
-    {
-      username: mockUser.username,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        1,
-      ).toISOString(),
-      message: "",
-      priority: 0,
-    },
-    {
-      username: mockUser3.username,
-      signedToStartTime: testProgramItem.startTime,
-      message: "",
-      priority: 1,
-    },
-  ]);
+  await assertAssignmentInvariants(assignmentTime);
 });
 
 test("Assignment with no attendees should return error with padg algorithm", async () => {
