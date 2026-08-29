@@ -12,12 +12,15 @@ import {
   getDirectSignupEnded,
   getDirectSignupInProgress,
   getDirectSignupStartTime,
+  getDirectSignupStarted,
   getLotterySignupEndTime,
   getLotterySignupInProgress,
   getLotterySignupNotStarted,
   getLotterySignupStartTime,
   getPhaseGapInProgress,
+  hasLotteryAlreadyRun,
   isSameStartTime,
+  willNotBeLotteried,
 } from "shared/utils/signupTimes";
 
 const friday = "2023-07-28";
@@ -710,6 +713,90 @@ describe("Signup state when the start time cannot be resolved", () => {
     // The clamps would otherwise hand back the event start time, which opens
     // sign-up for an item whose own start time is unknown
     expect(getDirectSignupStartTime(programItem).getTime()).toBeNaN();
+  });
+});
+
+// A program item carries `lotteryRanForStartTime` from the moment its lottery runs, and from
+// the moment the programme shows it already holding sign-ups. Whether a lottery is still coming
+// for it decides both which sign-up it offers and, once the answer is no, that direct sign-up
+// stays open rather than closing against a schedule the item no longer follows
+describe("Program items no lottery will take", () => {
+  // Sat 17:00 GMT+3: lottery at 14:00, direct sign-up from 14:15
+  const startTime = `${saturday}T14:00:00.000Z`;
+  const lotteryTime = `${saturday}T12:00:00.000Z`;
+  const duringPhaseGap = new Date(`${saturday}T12:05:00.000Z`);
+  const afterPhaseGap = new Date(`${saturday}T12:15:00.000Z`);
+  const beforeLottery = new Date(`${saturday}T11:00:00.000Z`);
+
+  const programItem = { ...testProgramItem, startTime };
+
+  test("An unmarked program item still has its lottery ahead of it", () => {
+    expect(willNotBeLotteried(programItem, beforeLottery)).toEqual(false);
+    expect(getDirectSignupStarted(programItem, beforeLottery)).toEqual(false);
+  });
+
+  test("A program item lotteried where it stands waits out the phase gap", () => {
+    // The mark every lotteried program item carries must not open its direct sign-up early
+    const lotteried = { ...programItem, lotteryRanForStartTime: startTime };
+
+    expect(willNotBeLotteried(lotteried, duringPhaseGap)).toEqual(false);
+    expect(getDirectSignupStarted(lotteried, duringPhaseGap)).toEqual(false);
+    expect(getPhaseGapInProgress(lotteried, duringPhaseGap)).toEqual(true);
+    expect(getDirectSignupStarted(lotteried, afterPhaseGap)).toEqual(true);
+  });
+
+  test("A program item marked while its lottery signup is open was passed over", () => {
+    // No run can have written the mark yet, so it came from the program item already holding
+    // sign-ups when the programme was saved - which means its sign-up has been open
+    const passedOver = { ...programItem, lotteryRanForStartTime: startTime };
+
+    expect(willNotBeLotteried(passedOver, beforeLottery)).toEqual(true);
+    expect(hasLotteryAlreadyRun(passedOver)).toEqual(false);
+    expect(getDirectSignupStarted(passedOver, beforeLottery)).toEqual(true);
+    expect(getDirectSignupInProgress(passedOver, beforeLottery)).toEqual(true);
+  });
+
+  test("A program item that moved after its lottery is never in another one", () => {
+    // Lotteried at 17:00 and moved to 21:00, whose own lottery has not run yet
+    const moved = {
+      ...programItem,
+      startTime: `${saturday}T18:00:00.000Z`,
+      lotteryRanForStartTime: lotteryTime,
+    };
+
+    expect(willNotBeLotteried(moved, afterPhaseGap)).toEqual(true);
+    expect(hasLotteryAlreadyRun(moved)).toEqual(true);
+  });
+
+  test("Direct signup does not close again when a lotteried program item moves", () => {
+    const moved = {
+      ...programItem,
+      startTime: `${saturday}T18:00:00.000Z`,
+      lotteryRanForStartTime: lotteryTime,
+    };
+
+    // The new slot's own schedule would not open sign-up until 16:15
+    expect(getDirectSignupStartTime(moved).toISOString()).toEqual(
+      `${saturday}T16:15:00.000Z`,
+    );
+    expect(getDirectSignupStarted(moved, afterPhaseGap)).toEqual(true);
+    expect(getDirectSignupInProgress(moved, afterPhaseGap)).toEqual(true);
+    // And nothing is being decided for it, so the new slot's gap is not announced
+    expect(
+      getPhaseGapInProgress(moved, new Date(`${saturday}T16:05:00.000Z`)),
+    ).toEqual(false);
+  });
+
+  test("Direct signup still ends when the program item starts", () => {
+    const moved = {
+      ...programItem,
+      startTime: `${saturday}T18:00:00.000Z`,
+      lotteryRanForStartTime: lotteryTime,
+    };
+    const afterStart = new Date(`${saturday}T18:01:00.000Z`);
+
+    expect(getDirectSignupStarted(moved, afterStart)).toEqual(true);
+    expect(getDirectSignupInProgress(moved, afterStart)).toEqual(false);
   });
 });
 

@@ -118,6 +118,32 @@ export const isSameStartTime = (
     new Date(comparedTime),
   );
 
+// Marked for a slot it no longer starts at: its lottery ran and a reschedule moved it, so it
+// does not go into another one
+export const hasLotteryAlreadyRun = (programItem: ProgramItem): boolean =>
+  programItem.lotteryRanForStartTime !== undefined &&
+  !isSameStartTime(
+    programItem.startTime,
+    programItem.parentId,
+    programItem.lotteryRanForStartTime,
+  );
+
+// No lottery will take this program item. Either it moved after its lottery, or it is marked
+// while its lottery sign-up window is still open - which no run can have written, since a run
+// happens the minute that window shuts, so the item was passed over for holding sign-ups
+export const willNotBeLotteried = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean => {
+  if (programItem.lotteryRanForStartTime === undefined) {
+    return false;
+  }
+  return (
+    hasLotteryAlreadyRun(programItem) ||
+    isSameOrBefore(timeNow, getLotterySignupEndTime(programItem))
+  );
+};
+
 export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
   eventStartTime: string,
@@ -257,10 +283,35 @@ export const getLotterySignupInProgress = (
   );
 };
 
+// Whether the first-come phase for this program item's starting time has begun on the schedule.
+// A property of the starting time rather than of the program item: it stays false for one let out
+// early, which is what the lottery run gating needs - a program item no lottery will take is
+// skipped by the run, and must not make the whole start time read as too late to lottery
+export const getDirectSignupPhaseStarted = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean => isSameOrAfter(timeNow, getDirectSignupStartTime(programItem));
+
+// Direct sign-up never opens twice. A program item no lottery will take has had its sign-up open
+// already - before it moved, or under the schedule it collected sign-ups by - so it stays open
+// rather than shutting against a schedule pointing at a phase that will not happen. One still
+// headed for a lottery is unaffected, so the gap after a lottery is never skipped
+export const getDirectSignupStarted = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean =>
+  willNotBeLotteried(programItem, timeNow) ||
+  getDirectSignupPhaseStarted(programItem, timeNow);
+
 export const getPhaseGapInProgress = (
   programItem: ProgramItem,
   timeNow: Date,
 ): boolean => {
+  // Nothing is being decided for an item no lottery will take, whatever its own schedule says
+  if (willNotBeLotteried(programItem, timeNow)) {
+    return false;
+  }
+
   const { phaseGap } = config.event();
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
@@ -282,10 +333,9 @@ export const getDirectSignupInProgress = (
   programItem: ProgramItem,
   timeNow: Date,
 ): boolean => {
-  const directSignupStartTime = getDirectSignupStartTime(programItem);
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   return (
-    isSameOrAfter(timeNow, directSignupStartTime) &&
+    getDirectSignupStarted(programItem, timeNow) &&
     isSameOrBefore(timeNow, directSignupEndTime)
   );
 };
