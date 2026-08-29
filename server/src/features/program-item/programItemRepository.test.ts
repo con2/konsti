@@ -15,6 +15,7 @@ import {
 } from "shared/types/models/programItem";
 import { db } from "server/db/mongodb";
 import {
+  delDirectSignup,
   findDirectSignups,
   findUserDirectSignups,
   saveDirectSignup,
@@ -906,4 +907,90 @@ test("should add event notification if user has direct signup and program item s
       }),
     ]),
   );
+});
+
+// A lottery program item can only hold sign-ups before its lottery if it took them while it was
+// something else, since direct sign-up for one opens after its lottery. It is left on direct
+// sign-up rather than lotteried, and marking it here is what lets the program item page say so
+// before a run has been anywhere near it
+const withLotteryStillAhead = async (): Promise<void> => {
+  await saveTestSettings({
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart + 1,
+    ).toISOString(),
+  });
+};
+
+test("should mark a lottery program item that already holds signups as not taking part in a lottery", async () => {
+  await withLotteryStillAhead();
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  await saveProgramItems([testProgramItem]);
+
+  const programItem = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(programItem.lotteryRanForStartTime).toBeDefined();
+});
+
+test("should not mark a lottery program item nobody has signed up to", async () => {
+  await withLotteryStillAhead();
+  await saveProgramItems([testProgramItem]);
+
+  await saveProgramItems([testProgramItem]);
+
+  const programItem = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(programItem.lotteryRanForStartTime).toBeUndefined();
+});
+
+test("should keep a program item out of the lottery after its signups are cancelled", async () => {
+  // The decision is recorded rather than re-read from whoever holds a spot right now, so
+  // emptying the program item cannot put it back into a lottery
+  await withLotteryStillAhead();
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveProgramItems([testProgramItem]);
+
+  await delDirectSignup({
+    username: mockUser.username,
+    directSignupProgramItemId: testProgramItem.programItemId,
+  });
+  await saveProgramItems([testProgramItem]);
+
+  const directSignups = unsafelyUnwrap(await findDirectSignups());
+  const programItemSignup = directSignups.find(
+    (directSignup) =>
+      directSignup.programItemId === testProgramItem.programItemId,
+  );
+  expect(programItemSignup?.userSignups).toHaveLength(0);
+
+  const programItem = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(programItem.lotteryRanForStartTime).toBeDefined();
+});
+
+test("should remove lottery signups made for a program item that stops taking part in a lottery", async () => {
+  await withLotteryStillAhead();
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [mockLotterySignups[0]],
+  });
+
+  await saveProgramItems([testProgramItem]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups).toHaveLength(0);
+  expect(
+    user?.eventLogItems.map((eventLogItem) => eventLogItem.action),
+  ).toEqual([EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE]);
 });

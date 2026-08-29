@@ -6,12 +6,17 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { updateMovedProgramItems } from "server/features/assignment/utils/updateMovedProgramItems";
 import {
   createEmptyDirectSignupDocumentForProgramItems,
   findDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
+import {
+  getPassedOverProgramItems,
+  removePassedOverLotterySignups,
+} from "server/features/program-item/passedOverProgramItems";
 import {
   ProgramItemModel,
   ProgramItemSchemaDb,
@@ -79,8 +84,33 @@ export const saveProgramItems = async (
     return updateMovedProgramItemsResult;
   }
 
+  // Read before the write, so the marks below go in with the change that makes them true and the
+  // program item is never stored as a lottery item without one. Direct sign-ups are settled by
+  // now: the cancelled and deleted handling above is what last touched them
+  const directSignupsResult = await findDirectSignups();
+  if (!directSignupsResult.ok) {
+    return directSignupsResult;
+  }
+  const directSignups = directSignupsResult.value;
+
+  const passedOverProgramItemsResult = await getPassedOverProgramItems(
+    updatedProgramItems,
+    currentProgramItems,
+    directSignups,
+  );
+  if (!passedOverProgramItemsResult.ok) {
+    return passedOverProgramItemsResult;
+  }
+  const passedOverProgramItems = passedOverProgramItemsResult.value;
+  const passedOverProgramItemIds = new Set(
+    passedOverProgramItems.map((programItem) => programItem.programItemId),
+  );
+
   const bulkOps = updatedProgramItems.map((programItem) => {
-    const newProgramItem: Omit<ProgramItem, "popularity"> = {
+    const newProgramItem: Omit<
+      ProgramItem,
+      "popularity" | "lotteryRanForStartTime"
+    > = {
       programItemId: programItem.programItemId,
       parentId: programItem.parentId,
       title: programItem.title,
@@ -110,6 +140,18 @@ export const saveProgramItems = async (
       state: programItem.state,
     };
 
+    // The mark is otherwise the import's to leave alone, so it is set here only for a program
+    // item this save is what turns into a passed over one
+    const lotteryRanForStartTime = passedOverProgramItemIds.has(
+      programItem.programItemId,
+    )
+      ? {
+          lotteryRanForStartTime: new Date(
+            getProgramItemStartTime(programItem),
+          ),
+        }
+      : {};
+
     return {
       updateOne: {
         filter: {
@@ -117,6 +159,7 @@ export const saveProgramItems = async (
         },
         update: {
           ...newProgramItem,
+          ...lotteryRanForStartTime,
         },
         upsert: true,
       },
@@ -142,13 +185,9 @@ export const saveProgramItems = async (
   logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
 
   // Create sign-up document for all program items missing sign-up document
-  const directSignupsResult = await findDirectSignups();
-  if (!directSignupsResult.ok) {
-    return directSignupsResult;
-  }
   const directSignupDocMissingProgramItemIds = updatedProgramItems.flatMap(
     (updatedProgramItem) => {
-      const found = directSignupsResult.value.some(
+      const found = directSignups.some(
         (directSignup) =>
           directSignup.programItemId === updatedProgramItem.programItemId,
       );
@@ -169,7 +208,9 @@ export const saveProgramItems = async (
     }
   }
 
-  return makeSuccessResult();
+  // The mark itself went in with the write above; what is left is telling the attendees who
+  // signed up to a lottery that is not going to take this program item
+  return await removePassedOverLotterySignups(passedOverProgramItems);
 };
 
 export const findProgramItems = async (): Promise<
@@ -236,6 +277,36 @@ interface PopularityUpdate {
   programItemId: string;
   popularity: Popularity;
 }
+
+// Records which start time these program items were lotteried for. A program item is lotteried
+// at most once: if it is later moved onto a slot whose lottery has not run, it is left out of
+// that run and its remaining spots go to direct sign-up
+export const saveLotteryRanForStartTime = async (
+  programItemIds: readonly string[],
+  assignmentTime: string,
+): Promise<Result<void, MongoDbError>> => {
+  if (programItemIds.length === 0) {
+    return makeSuccessResult();
+  }
+
+  try {
+    await ProgramItemModel.updateMany(
+      { programItemId: { $in: programItemIds } },
+      { lotteryRanForStartTime: new Date(assignmentTime) },
+    );
+    logger.info(
+      `MongoDB: Marked ${programItemIds.length} program items as lotteried for ${assignmentTime}`,
+    );
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error marking program items as lotteried", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
 
 export const saveProgramItemPopularity = async (
   popularityUpdates: PopularityUpdate[],
