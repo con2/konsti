@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes } from "date-fns";
+import { addHours, addMinutes, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -369,6 +369,65 @@ test("Show no signup button before direct signup opens", async ({
   await expect(programItem.container).toContainText("Sign-up opens");
   await expect(programItem.signUpButton).toBeHidden();
   await expect(programItem.container).not.toContainText("Sign-up closes");
+});
+
+test("Open direct signup only once the gap after the lottery has passed", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(4);
+  // Derived from the two config values rather than from the app's own helper, so a change to
+  // how the gap is applied shows up here instead of moving with it
+  const { directSignupPhaseStart, phaseGap } = config.event();
+  const lotterySignupEndTime = subMinutes(
+    new Date(startTime),
+    directSignupPhaseStart,
+  );
+  const directSignupStartTime = addMinutes(lotterySignupEndTime, phaseGap);
+
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+    },
+  ]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+
+  // Inside the gap: the lottery has closed and its run is what fills the program item, so
+  // nothing may be signed up to first come, first served yet
+  await postTestSettings(request, {
+    testTime: addMinutes(lotterySignupEndTime, 5).toISOString(),
+  });
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const programItem = programList.firstItem();
+  await expect(programItem.lotterySignupButton).toBeHidden();
+  await expect(programItem.signUpButton).toBeHidden();
+  await expect(programItem.container).toContainText(
+    "Participants were selected in a lottery.",
+  );
+
+  // Once the gap has passed it opens, and this is the only thing that changed
+  await postTestSettings(request, {
+    testTime: addMinutes(directSignupStartTime, 5).toISOString(),
+  });
+  await page.reload();
+  await programList.waitForItems();
+
+  // Taken rather than only offered, so the server is shown to open at the same moment
+  await programItem.signUp();
+  await programItem.confirm();
+  await expect(programItem.cancelSignupButton).toBeVisible();
 });
 
 test("Direct signup keeps the lottery signups for the same time", async ({
