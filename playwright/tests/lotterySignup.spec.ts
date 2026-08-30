@@ -842,3 +842,70 @@ test("Receive spot in a lottery covering several starting times", async ({
     getTime(parentStartTime),
   );
 });
+
+test("Keep a program item out of the lottery after its signups are cancelled", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(4);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+
+  // Sign-up always open, so it can take a spot before any lottery has run
+  const alwaysOpenProgramItem = {
+    ...testProgramItem,
+    programType: config.event().twoPhaseSignupProgramTypes[0],
+    tags: [Tag.PRE_CONVENTION_WEEK],
+    startTime,
+    endTime,
+  };
+  const lotteryProgramItem = { ...alwaysOpenProgramItem, tags: [] };
+
+  await addProgramItems(request, [alwaysOpenProgramItem]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+
+  // Becomes a lottery program item while holding that spot, so it is passed over
+  await addProgramItems(request, [lotteryProgramItem]);
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const programItem = programList.itemByTitle(testProgramItem.title);
+  await expect(programItem.container).toContainText(
+    "It already has sign-ups, so it does not take part in the lottery.",
+  );
+
+  await programItem.cancelSignup();
+  await programItem.confirmCancellation();
+  await expect(programItem.signUpButton).toBeVisible();
+
+  // The decision is recorded rather than re-read from whoever holds a spot, so emptying the
+  // program item cannot put it back into a lottery it was already left out of
+  await addProgramItems(request, [lotteryProgramItem]);
+  await page.reload();
+  await programList.waitForItems();
+
+  await expect(programItem.lotterySignupButton).toBeHidden();
+  await expect(programItem.container).toContainText(
+    "It already has sign-ups, so it does not take part in the lottery.",
+  );
+  await expect(programItem.signUpButton).toBeVisible();
+});
