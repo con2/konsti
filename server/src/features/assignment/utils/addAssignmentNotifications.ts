@@ -102,7 +102,7 @@ export const addAssignmentNotifications = async ({
 
   // An attendee holding a lottery-placed spot in one of this run's own program items was placed
   // by a lottery - this run, or one that saved its spots and then failed before saying so, which
-  // choice 7 allows to be run again. Telling them they got nothing would be false, and choice 5
+  // rule 7 allows to be run again. Telling them they got nothing would be false, and rule 5
   // means the event log item and the email could never be taken back. Asked of those program
   // items rather than of the hour, so another lottery's win cannot silence this one's rejection.
   const placedByLotteryResult = await findDirectSignupsByProgramItemIds([

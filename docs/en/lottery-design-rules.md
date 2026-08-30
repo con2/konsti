@@ -1,6 +1,6 @@
-# Lottery Design Choices
+# Lottery Design Rules
 
-The rules the lottery is built around. They are choices, not implementation notes: each one has a
+The rules the lottery is built around. They are decisions, not implementation notes: each one has a
 defensible alternative, and what is written down is why that alternative loses. So when a change
 makes one of these rules harder to hold, the change is usually the thing that is wrong. Implementation mechanics
 live in [`server/CLAUDE.md`](../../server/CLAUDE.md); the terms used here are defined in
@@ -9,7 +9,7 @@ live in [`server/CLAUDE.md`](../../server/CLAUDE.md); the terms used here are de
 One definition the rules below lean on: a **lottery program item** is one the lottery allocates -
 its program type is in `twoPhaseSignupProgramTypes` and its sign-up is not always open
 (`isLotterySignupProgramItem`). An always-open program item is never one, whatever its program
-type - see choice 6.
+type - see rule 6.
 
 ## 1. A group lands in one program item, or none of it does
 
@@ -26,7 +26,7 @@ What follows from it:
   hold, because a group competing a member short could land the rest somewhere else.
 - Anything that drops results before they are saved - a program item that no longer fits, say -
   drops a whole group at a time.
-- A spot a member holds cannot split the group. If the group wins, that spot gives way (choice 3).
+- A spot a member holds cannot split the group. If the group wins, that spot gives way (rule 3).
 
 ## 2. A direct sign-up is never deleted automatically unless keeping it would be incoherent
 
@@ -36,7 +36,7 @@ to say why keeping it would make no sense:
 
 - The program item was deleted from the programme, so the sign-up refers to nothing.
 - The lottery just gave the attendee a spot at the same start time, which they cannot attend
-  alongside the one they hold (choice 3).
+  alongside the one they hold (rule 3).
 
 **Never speculatively.** A sign-up is only deleted once its replacement is known to land. Deleting
 first and discovering afterwards that the new spot did not fit would leave the attendee with
@@ -50,17 +50,17 @@ detail.
 When the lottery places an attendee, any direct sign-up they hold for that start time gives way to
 it. They cannot attend both, and the lottery result is the newer decision.
 
-This is what makes choice 1 possible: a group member who signed up to something else at that hour
+This is what makes rule 1 possible: a group member who signed up to something else at that hour
 still takes part with their group, and lands with them.
 
 "That start time" is the hour the attendee turns up, not the hour the lottery ran: for a batched
-program item those differ, and a spot at an hour they can still attend is left alone (choice 11).
+program item those differ, and a spot at an hour they can still attend is left alone (rule 11).
 
 ## 4. Holding a direct sign-up does not keep you out of the lottery
 
 An attendee may enter the lottery for a start time they already hold a spot at, and may take a spot
 at a start time they already have lottery sign-ups for. Neither cancels the other, and the order
-they were made in makes no difference. If the lottery places them, choice 3 applies and the spot
+they were made in makes no difference. If the lottery places them, rule 3 applies and the spot
 they win replaces the one they held; if it doesn't, the sign-up they made themselves simply
 stands.
 
@@ -82,14 +82,14 @@ The rule is about the message, so `isSeen` falls outside it - marking a notifica
 nothing the item says, and has no counterpart in the inbox to disagree with.
 
 This holds for every event log item, not only the lottery's. A start time is normally decided once
-(choice 7), so each attendee hears about it once and there is nothing to de-duplicate.
+(rule 7), so each attendee hears about it once and there is nothing to de-duplicate.
 
 **The retry is the exception, and it is not fully honoured.** An attempt that saved its spots and
 failed before marking them may be run again, and the second attempt cannot tell who the first one
 already turned down. A winner is safe: their spot is on disk, so the run reads it back and stays
 quiet. A rejection leaves nothing to read - a lottery sign-up that lost looks exactly like one still
 waiting - so everyone the first attempt rejected gets a second `NO_ASSIGNMENT` item and a second
-email, both permanent under this choice.
+email, both permanent under this rule.
 
 Closing that means giving the loser side something durable to check, which the event log already is:
 skip an attendee who already carries a `NO_ASSIGNMENT` for this start time. Until it does, the
@@ -126,8 +126,8 @@ answers no for every always-open item. Everything else follows from that one ans
 separate rules:
 
 - The lottery never places anybody in one, and its spots are never counted against lottery capacity.
-- Holding a spot in one does not keep the attendee out of the lottery (choice 4), so they still
-  compete for that start time - and a spot the lottery gives them replaces it (choice 3).
+- Holding a spot in one does not keep the attendee out of the lottery (rule 4), so they still
+  compete for that start time - and a spot the lottery gives them replaces it (rule 3).
 - It never breaks a group. A member may sign up to one and stay in their group, and holding such a
   spot does not stop anyone creating or joining a group.
 
@@ -162,7 +162,7 @@ Three things enforce the rule, at three different scopes:
   lottery will ever take carries `passedOverForLottery` instead: the two are different facts and
   are stored as such, so neither has to be guessed at from the clock. Both survive programme
   imports, left out of `saveProgramItems`' update object the way `popularity` is - the one
-  exception being a save that is itself what passes a program item over (choice 8).
+  exception being a save that is itself what passes a program item over (rule 8).
 - **The spots, per program item.** A program item about to be lotteried that already holds a
   lottery-placed sign-up is evidence that a run got past its critical write and stopped before
   marking it. That item is skipped and logged, and the rest of the start time is lotteried as
@@ -240,7 +240,7 @@ means the lottery never ran for that start time, not that it ran and achieved no
 
 One start time, one document. The collection is dumped and kept once the event is over, so it is the
 only lasting account of what the lottery did, and a start time decided by two attempts still gets one
-record: an attempt that saved its spots and failed before marking them can be run again (choice 7),
+record: an attempt that saved its spots and failed before marking them can be run again (rule 7),
 and the second attempt skips the program items the first one filled, so replacing the document would
 drop the first attempt's placements from the record for good. The placements are therefore merged.
 The run's own summary - its algorithm, its message, its group snapshot - describes the most recent
@@ -261,20 +261,20 @@ moved to another slot, or changed to a program type on a different schedule - ge
 attendees have already been given, on a program item whose attendee list is meanwhile filling up.
 Taking something away is worse than the tidier schedule is good, so the schedule loses.
 
-This is what a program item no lottery will take (choice 7) is doing on direct sign-up straight
+This is what a program item no lottery will take (rule 7) is doing on direct sign-up straight
 away, rather than waiting for the slot it now sits at:
 
 - Rescheduled after its lottery, its sign-up phase has already run at the slot it was lotteried
   for, and the attendees it placed are already in it.
-- Passed over for holding sign-ups (choice 8), it collected those sign-ups while it was
+- Passed over for holding sign-ups (rule 8), it collected those sign-ups while it was
   always-open or on a first-come schedule, so its sign-up was open by definition.
 
 **It never shortens the gap after a lottery.** A program item still headed for a lottery is
-untouched by this, so choice 8's rule that direct sign-up opens only once the gap has passed holds
+untouched by this, so rule 8's rule that direct sign-up opens only once the gap has passed holds
 unchanged, and a first-come sign-up still cannot land in a program item mid-run. The two
 only ever meet on a program item the lottery has finished with.
 
-The blind spot in choice 8 is this rule's too: a program item whose sign-up was open but drew nobody
+The blind spot in rule 8 is this rule's too: a program item whose sign-up was open but drew nobody
 is indistinguishable from one whose sign-up never opened, so it gets its lottery and its sign-up
 does close for the lottery phase. Harmless in the same way - there is no sign-up to take back.
 
@@ -301,7 +301,7 @@ they have no reason to expect a spot they hold at 10:00 to behave as though it w
 follows that the batch time is never shown to them: nothing they can see starts at it.
 
 The parent-resolved time was stored once, so that a re-run could find the previous lottery's
-sign-ups by start time and clear them before running again. The lottery runs once now (choice 7),
+sign-ups by start time and clear them before running again. The lottery runs once now (rule 7),
 so nothing needs that and a sign-up records the hour it is actually held for.
 
 ## 12. A lottery sign-up is never deleted once its lottery has run
@@ -325,7 +325,7 @@ be explained by its inputs, and the deletion is invisible in it - the row is sim
 tidiness gained is worth nothing next to that, since a sign-up whose lottery has run cannot win
 anything anyway.
 
-This is the same principle as choice 5, applied to the other record: an event log item is never
+This is the same principle as rule 5, applied to the other record: an event log item is never
 deleted because the attendee was told, a past lottery sign-up because the lottery happened.
 
 **Nothing is said about it, and nothing needs to be.** A program item leaving the lottery after its
@@ -337,7 +337,7 @@ page. A message here would be Konsti raising something the attendee has finished
 
 **One exception, and it is about what can be asked rather than what is wanted.** A program item
 deleted from the programme is gone, so there is no start time left to work out whether its lottery
-had run, and its sign-ups are removed as choice 2 removes direct sign-ups for it - they refer to
+had run, and its sign-ups are removed as rule 2 removes direct sign-ups for it - they refer to
 nothing. A sign-up's own `signedToStartTime` is not a safe substitute: for a batched program item it
 is the attendee's hour rather than the hour the lottery ran at, so it would answer the question
 wrongly in the direction that deletes. Cancelling a program item, which keeps it in the programme,

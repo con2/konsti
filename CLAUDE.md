@@ -8,22 +8,22 @@ Konsti is an event sign-up tool for conventions (Ropecon, Tracon, etc.). Users b
 
 See [docs/terminology.md](docs/terminology.md) for the glossary of domain terms.
 
-## Design Choices
+## Design Rules
 
-Some behaviour is settled deliberately and written down as a **design choice** rather than left to
+Some behaviour is settled deliberately and written down as a **design rule** rather than left to
 the code to imply. The lottery's are in
-[docs/en/lottery-design-choices.md](docs/en/lottery-design-choices.md); read them before changing
+[docs/en/lottery-design-rules.md](docs/en/lottery-design-rules.md); read them before changing
 anything in that area.
 
-- **Follow them.** When a design choice and a tidier implementation disagree, the implementation is
-  usually the thing to change. A change that quietly makes a choice harder to hold is a bug even if
+- **Follow them.** When a design rule and a tidier implementation disagree, the implementation is
+  usually the thing to change. A change that quietly makes a rule harder to hold is a bug even if
   every test passes.
-- **Say so, clearly and up front, when a change would affect one.** Name the choice, say which way
+- **Say so, clearly and up front, when a change would affect one.** Name the rule, say which way
   it moves, and let the developer decide before the work is done - not in a footnote afterwards.
-  Changing a design choice must never come as a surprise.
-- **Keep the document current.** A choice that changes is edited there in the same change that
+  Changing a design rule must never come as a surprise.
+- **Keep the document current.** A rule that changes is edited there in the same change that
   alters the behaviour, so the document never describes a rule the code stopped following. Adding a
-  new choice, or retiring one, is the developer's call to make - propose it, don't assume it.
+  new rule, or retiring one, is the developer's call to make - propose it, don't assume it.
 
 ## Monorepo Structure
 
@@ -40,7 +40,7 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 ## Code Style
 
 - Don't end a code comment with a period when it is a single sentence, however many lines it wraps over: write `// This is a comment`, not `// This is a comment.` **A comment of several sentences ends every one of them with a period, the last included** — the sentences before it already carry one, so dropping the final one just reads as a typo.
-- **Keep code comments short — three lines is a lot, and a blank `//` line separating paragraphs means it is already too long.** State the non-obvious constraint or reason and stop. Leave out: what the code plainly does, benchmark numbers, worked examples of the failure, and the reasoning that led to the decision. One clause per reason is usually enough — "cached because every visible row asks the same question" earns its place; a paragraph explaining which rows, how often, and what the measured cost was does not. If a rule genuinely needs paragraphs, it belongs in the relevant `CLAUDE.md` or in [docs/en/lottery-design-choices.md](docs/en/lottery-design-choices.md), with the code comment pointing at it.
+- **Keep code comments short — three lines is a lot, and a blank `//` line separating paragraphs means it is already too long.** State the non-obvious constraint or reason and stop. Leave out: what the code plainly does, benchmark numbers, worked examples of the failure, and the reasoning that led to the decision. One clause per reason is usually enough — "cached because every visible row asks the same question" earns its place; a paragraph explaining which rows, how often, and what the measured cost was does not. If a rule genuinely needs paragraphs, it belongs in the relevant `CLAUDE.md` or in [docs/en/lottery-design-rules.md](docs/en/lottery-design-rules.md), with the code comment pointing at it.
 - Comments document how the code works now — don't describe how it used to work or what changed (that's what git history is for).
 - Don't reference other files or components by name in code comments — renames and restructuring make them stale. Describe the role instead: "exported so callers can check...", not "exported so ProgramItemEntry can check...".
 - Never use the em dash character (—) in code, UI text, comments, or docs. Use a regular hyphen (-) or restructure the sentence. CLAUDE.md files are the exception — they keep their established em dash style.

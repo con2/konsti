@@ -1320,7 +1320,7 @@ describe("The lottery for a start time runs once", () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // What a run that saved its spots and then failed before marking them leaves behind, which
-    // choice 7 allows to be run again: the spot is there, the program item is unmarked, and the
+    // rule 7 allows to be run again: the spot is there, the program item is unmarked, and the
     // lottery sign-up is still live. The retry skips the program item as occupied, so the
     // attendee is absent from its results - but they were placed, and saying otherwise is
     // permanent.

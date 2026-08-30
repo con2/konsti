@@ -52,7 +52,7 @@ export const saveResult = async (
 
     // An attendee holds one spot per start time, so a placement written again replaces the
     // earlier record of it rather than joining it. Only the placements merge: the algorithm,
-    // the message and the group snapshot describe the attempt that wrote them (choice 9).
+    // the message and the group snapshot describe the attempt that wrote them (rule 9).
     const placedNow = new Set(
       signupResultData.map((result) => result.username),
     );
