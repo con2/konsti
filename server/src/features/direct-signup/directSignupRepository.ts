@@ -363,6 +363,64 @@ const findSignupsNotSaved = async (
   return makeSuccessResult(notSaved);
 };
 
+// Append the new sign-ups and recompute count from the resulting array in a single atomic
+// pipeline update, so count can never drift from the userSignups it tallies
+const appendSignupsPipeline = (
+  directSignups: readonly SignupRepositoryAddSignup[],
+  maxAttendance: number,
+): object[] => {
+  // $literal: a username is data, and one starting with "$" would otherwise be read as a field
+  // path and match nothing
+  const appendedUsernames = {
+    $literal: directSignups.map((signup) => signup.username),
+  };
+  const appendedSignups = {
+    $literal: directSignups.map((signup) => ({
+      username: signup.username,
+      priority: signup.priority,
+      signedToStartTime: new Date(signup.signedToStartTime),
+      signupTime: new Date(signup.signupTime),
+      message: signup.message,
+    })),
+  };
+
+  return [
+    {
+      $set: {
+        userSignups: {
+          $let: {
+            vars: {
+              // An attendee being written keeps one entry, the new one. A program item being
+              // lotteried holds no spots, so this is defence in depth: a second entry would
+              // seat them twice and charge their own place against it
+              keptSignups: {
+                $filter: {
+                  input: { $ifNull: ["$userSignups", []] },
+                  cond: {
+                    $not: [{ $in: ["$$this.username", appendedUsernames] }],
+                  },
+                },
+              },
+            },
+            // The only cap on the attendance limit, and it runs on the array as it stands rather
+            // than on a count read beforehand. Never below the attendees this write leaves alone,
+            // so an over-full program item loses only the ones being written.
+            in: {
+              $slice: [
+                { $concatArrays: ["$$keptSignups", appendedSignups] },
+                { $max: [maxAttendance, { $size: "$$keptSignups" }] },
+              ],
+            },
+          },
+        },
+      },
+    },
+    {
+      $set: { count: { $size: "$userSignups" } },
+    },
+  ];
+};
+
 export const saveDirectSignups = async (
   signupsRequests: SignupRepositoryAddSignup[],
   programItems: ProgramItem[],
@@ -387,74 +445,7 @@ export const saveDirectSignups = async (
         filter: {
           programItemId: programItem.programItemId,
         },
-        // Append the new sign-ups and recompute count from the resulting array in a single
-        // atomic pipeline update, so count can never drift from the userSignups it tallies
-        update: [
-          {
-            $set: {
-              userSignups: {
-                $let: {
-                  vars: {
-                    // An attendee being written keeps one entry, the new one. A program item
-                    // being lotteried holds no spots, so this is defence in depth: a second
-                    // entry would seat them twice and charge their own place against it
-                    keptSignups: {
-                      $filter: {
-                        input: { $ifNull: ["$userSignups", []] },
-                        cond: {
-                          $not: [
-                            {
-                              $in: [
-                                "$$this.username",
-                                {
-                                  $literal: directSignups.map(
-                                    (signup) => signup.username,
-                                  ),
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                      },
-                    },
-                  },
-                  // The only cap on the attendance limit, and it runs on the array as it stands
-                  // rather than on a count read beforehand. Never below the attendees this write
-                  // leaves alone, so an over-full program item loses only the ones being written.
-                  in: {
-                    $slice: [
-                      {
-                        $concatArrays: [
-                          "$$keptSignups",
-                          {
-                            $literal: directSignups.map((signup) => ({
-                              username: signup.username,
-                              priority: signup.priority,
-                              signedToStartTime: new Date(
-                                signup.signedToStartTime,
-                              ),
-                              signupTime: new Date(signup.signupTime),
-                              message: signup.message,
-                            })),
-                          },
-                        ],
-                      },
-                      {
-                        $max: [
-                          programItem.maxAttendance,
-                          { $size: "$$keptSignups" },
-                        ],
-                      },
-                    ],
-                  },
-                },
-              },
-            },
-          },
-          {
-            $set: { count: { $size: "$userSignups" } },
-          },
-        ],
+        update: appendSignupsPipeline(directSignups, programItem.maxAttendance),
       },
     };
   });
