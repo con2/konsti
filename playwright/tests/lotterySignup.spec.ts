@@ -745,3 +745,100 @@ test("Did not receive spot in a lottery covering several starting times", async 
     expectedRejection,
   );
 });
+
+test("Receive spot in a lottery covering several starting times", async ({
+  page,
+  request,
+}) => {
+  // A batched run decides several starting times at once, but a spot belongs to the hour its own
+  // program item starts - the hour the attendee turns up - and not to the hour the batch ran at
+  const [parentId, parentStartTime] = [
+    ...config.event().startTimesByParentIds,
+  ][0];
+  const firstStartTime = addMinutes(
+    new Date(parentStartTime),
+    30,
+  ).toISOString();
+  const secondStartTime = addMinutes(
+    new Date(parentStartTime),
+    60,
+  ).toISOString();
+  const lastEndTime = addMinutes(new Date(parentStartTime), 90).toISOString();
+  const alwaysOpenProgramItemId = "always-open-at-batch-hour";
+
+  await populateDb(request, { clean: true, admin: true, users: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      parentId,
+      startTime: firstStartTime,
+      endTime: secondStartTime,
+      // Adjust min/max so user will get the spot
+      minAttendance: 1,
+      maxAttendance: 1,
+    },
+    {
+      ...testProgramItem2,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      parentId,
+      startTime: secondStartTime,
+      endTime: lastEndTime,
+      minAttendance: 1,
+      maxAttendance: 1,
+    },
+    {
+      // 'Sign-up always open', so a spot here can be held before the run. It starts at the hour
+      // the batch is lotteried at, which is the hour a spot won in the batch would displace if
+      // the batch time were taken for the winner's own
+      ...testProgramItem,
+      programItemId: alwaysOpenProgramItemId,
+      parentId: alwaysOpenProgramItemId,
+      title: alwaysOpenTitle,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      tags: [Tag.PRE_CONVENTION_WEEK],
+      startTime: parentStartTime,
+      endTime: firstStartTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  // Inside the batch's lottery signup window, which is derived from the parent start time
+  await postTestSettings(request, {
+    testTime: subHours(new Date(parentStartTime), 3).toISOString(),
+  });
+
+  await testPostDirectSignup(request, "test1", {
+    directSignupProgramItemId: alwaysOpenProgramItemId,
+    message: "",
+  });
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+
+  await postAssignment(request, parentStartTime);
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoMyProgram();
+
+  await expect(programList.directSignupList).toContainText(
+    testProgramItem.title,
+  );
+  // Listed under the hour its own program item starts, not the hour the batch was lotteried at
+  await expect(programList.directSignupList).toContainText(
+    getTime(firstStartTime),
+  );
+
+  // The spot they held is at a different hour from the one they won, so the win leaves it be -
+  // even though it is the hour the batch was lotteried at
+  await expect(programList.directSignupList).toContainText(alwaysOpenTitle);
+  await expect(programList.directSignupList).toContainText(
+    getTime(parentStartTime),
+  );
+});
