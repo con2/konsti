@@ -5,6 +5,7 @@ import {
   getLotterySignupInProgress,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
+import { isSameTime } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { ButtonStyle } from "client/components/componentStyles";
@@ -97,8 +98,8 @@ export const ProgramItemLotterySignup = ({
     (p) => p.programItemId === programItem.programItemId,
   )?.priority;
 
-  const lotterySignupsForTimeslot = lotterySignups.filter(
-    (signup) => signup.programItem.startTime === programItem.startTime,
+  const lotterySignupsForTimeslot = lotterySignups.filter((signup) =>
+    isSameTime(signup.programItem.startTime, programItem.startTime),
   );
 
   const alreadySignedToProgramItem = isAlreadyLotterySigned(

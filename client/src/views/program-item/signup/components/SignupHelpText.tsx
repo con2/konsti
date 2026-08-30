@@ -112,7 +112,6 @@ export const SignupHelpText = ({
           <FontAwesomeIcon icon={"user-plus"} />{" "}
           {t("signup.help.directSignupStartsLater")}{" "}
           <b>{getFormattedTime(directSignupStartTime, timeNow)}</b>.
-          {noLotteryInfo}
           {groupMemberInfo}
         </p>
       );
