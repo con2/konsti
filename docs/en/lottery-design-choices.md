@@ -299,3 +299,35 @@ follows that the batch time is never shown to them: nothing they can see starts 
 The parent-resolved time was stored once, so that a re-run could find the previous lottery's
 sign-ups by start time and clear them before running again. The lottery runs once now (choice 7),
 so nothing needs that and a sign-up records the hour it is actually held for.
+
+## 12. A lottery sign-up is never deleted once its lottery has run
+
+A lottery sign-up is a request while its lottery is ahead, and a record of having entered once the
+lottery has decided. Nothing automatic deletes one after that line, whatever happens to the program
+item afterwards: it is cancelled, moved to another slot, changed to a program type outside the
+lottery, or passed over for holding sign-ups. All of those still remove a sign-up whose lottery has
+not run, because it asks for something that will not happen; none of them removes one whose lottery
+has.
+
+The line is `getLotterySignupEnded`, the moment lottery sign-up closes and the run decides the start
+time. It is a negated comparison on purpose, so a start time that cannot be resolved reads as ended:
+these are unattended deletions, and the direction they fail in has to be the one that keeps.
+
+**The event's data is read after the event, not during it.** Each convention's database is dumped
+once it is over and kept for study, and the sign-ups are what say who entered which lottery and at
+what preference. A run's results record who it placed; only the sign-ups say who it turned down, or
+who competed for a program item that filled. Deleting them later leaves a dump whose results cannot
+be explained by its inputs, and the deletion is invisible in it - the row is simply not there. The
+tidiness gained is worth nothing next to that, since a sign-up whose lottery has run cannot win
+anything anyway.
+
+This is the same principle as choice 5, applied to the other record: an event log item is never
+deleted because the attendee was told, a past lottery sign-up because the lottery happened.
+
+**One exception, and it is about what can be asked rather than what is wanted.** A program item
+deleted from the programme is gone, so there is no start time left to work out whether its lottery
+had run, and its sign-ups are removed as choice 2 removes direct sign-ups for it - they refer to
+nothing. A sign-up's own `signedToStartTime` is not a safe substitute: for a batched program item it
+is the attendee's hour rather than the hour the lottery ran at, so it would answer the question
+wrongly in the direction that deletes. Cancelling a program item, which keeps it in the programme,
+is the route that preserves both the item and the sign-ups.
