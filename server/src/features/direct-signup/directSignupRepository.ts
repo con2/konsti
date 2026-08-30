@@ -424,8 +424,8 @@ export const saveDirectSignups = async (
                 $let: {
                   vars: {
                     // An attendee being written keeps one entry, the new one. A program item
-                    // being lotteried holds no spots (rule 8), so this is defence in depth: a
-                    // second entry would seat them twice and charge their own place against it
+                    // being lotteried holds no spots, so this is defence in depth: a second
+                    // entry would seat them twice and charge their own place against it
                     keptSignups: {
                       $filter: {
                         input: { $ifNull: ["$userSignups", []] },

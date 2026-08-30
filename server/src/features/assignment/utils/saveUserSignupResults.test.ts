@@ -1063,8 +1063,7 @@ test("should replace a winner's own direct sign-up for the program item they win
   await saveUser(mockUser2);
 
   // Room for both winners, one of whom is already in the program item. A run cannot reach this
-  // state, since it skips a program item holding sign-ups (rule 8), so the case is driven here
-  // directly
+  // state, since it skips a program item holding sign-ups, so the case is driven here directly
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
   await saveDirectSignup({
