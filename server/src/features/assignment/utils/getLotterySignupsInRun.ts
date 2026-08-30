@@ -25,7 +25,7 @@ export const getLotterySignupsInRun = (
     }
     return isSameStartTime(
       programItem.startTime,
-      programItem.parentId,
       assignmentTime,
+      programItem.parentId,
     );
   });

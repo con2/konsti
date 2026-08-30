@@ -874,10 +874,10 @@ describe("isSameStartTime", () => {
   const parentStartTime = `${friday}T12:00:00.000Z`;
 
   test("compares the own start time when there is no parent", () => {
-    expect(isSameStartTime(ownStartTime, undefined, ownStartTime)).toEqual(
+    expect(isSameStartTime(ownStartTime, ownStartTime, undefined)).toEqual(
       true,
     );
-    expect(isSameStartTime(ownStartTime, undefined, parentStartTime)).toEqual(
+    expect(isSameStartTime(ownStartTime, parentStartTime, undefined)).toEqual(
       false,
     );
   });
@@ -888,10 +888,10 @@ describe("isSameStartTime", () => {
       startTimesByParentIds: new Map([[parentId, parentStartTime]]),
     });
 
-    expect(isSameStartTime(ownStartTime, parentId, parentStartTime)).toEqual(
+    expect(isSameStartTime(ownStartTime, parentStartTime, parentId)).toEqual(
       true,
     );
-    expect(isSameStartTime(ownStartTime, parentId, ownStartTime)).toEqual(
+    expect(isSameStartTime(ownStartTime, ownStartTime, parentId)).toEqual(
       false,
     );
   });
@@ -902,20 +902,20 @@ describe("isSameStartTime", () => {
       startTimesByParentIds: new Map(),
     });
 
-    expect(isSameStartTime(ownStartTime, parentId, ownStartTime)).toEqual(true);
+    expect(isSameStartTime(ownStartTime, ownStartTime, parentId)).toEqual(true);
   });
 
   test("ignores sub-minute differences, since a configured time carries no milliseconds", () => {
     expect(
-      isSameStartTime(ownStartTime, undefined, `${friday}T14:00:30.000Z`),
+      isSameStartTime(ownStartTime, `${friday}T14:00:30.000Z`, undefined),
     ).toEqual(true);
   });
 
   test("is false when either time cannot be read", () => {
-    expect(isSameStartTime("not a time", undefined, ownStartTime)).toEqual(
+    expect(isSameStartTime("not a time", ownStartTime, undefined)).toEqual(
       false,
     );
-    expect(isSameStartTime(ownStartTime, undefined, "not a time")).toEqual(
+    expect(isSameStartTime(ownStartTime, "not a time", undefined)).toEqual(
       false,
     );
   });

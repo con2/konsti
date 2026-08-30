@@ -11,8 +11,8 @@ export const getStartingProgramItems = (
   const startingProgramItems = programItems.filter((programItem) => {
     return isSameStartTime(
       programItem.startTime,
-      programItem.parentId,
       startTime,
+      programItem.parentId,
     );
   });
 

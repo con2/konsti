@@ -110,8 +110,8 @@ export const getLotterySignupEndTime = (programItem: ProgramItem): Date => {
 // time carries no milliseconds.
 export const isSameStartTime = (
   programItemStartTime: string,
-  parentId: string | undefined,
   comparedTime: string,
+  parentId: string | undefined,
 ): boolean =>
   isSameTime(resolveStartTime(parentId, programItemStartTime), comparedTime);
 
