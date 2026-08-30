@@ -1,6 +1,5 @@
 import { shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
-import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { Event } from "server/types/assignmentTypes";
 
@@ -23,16 +22,10 @@ export const getEvents = (
         lotterySignupProgramItem.programItemId,
       );
 
-      // Spots the program item carried in from another hour are not the lottery's to hand out.
-      // One held for this hour is left in, since holding it does not keep its holder out of the
-      // lottery. A program item being lotteried holds no spots at all, so this is defence in depth.
-      const currentSignups =
-        programItemSignup?.userSignups.filter((userSignup) =>
-          isStartTimeChanged(
-            userSignup.signedToStartTime,
-            lotterySignupProgramItem.startTime,
-          ),
-        ).length ?? 0;
+      // A spot already held is not the lottery's to hand out, whichever hour it was taken for. A
+      // program item being lotteried holds none, so this is defence in depth: offering the seats
+      // anyway would have the assigner propose an over-full program item and the save drop groups
+      const currentSignups = programItemSignup?.userSignups.length ?? 0;
 
       // Capacity can't go negative: a program item whose attendance limit was lowered
       // below the number of attendees already in it offers no spots rather than negative ones

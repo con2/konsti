@@ -114,10 +114,10 @@ test("should return events for program items using parent startTime via 'startTi
   );
 });
 
-test("should not count a direct sign-up made for this same start time against capacity", () => {
+test("should count a direct sign-up made for this same start time against capacity", () => {
   // A program item the lottery takes holds no direct sign-ups at all, so this is defence in
-  // depth. Subtracting one would have its holder competing against their own place, since
-  // holding a spot does not keep them out of the lottery for that hour.
+  // depth. Offering the seat anyway would have the assigner fill a program item past its limit,
+  // leaving the save to drop whole groups back out of it
   const directSignups: DirectSignupsForProgramItem[] = [
     {
       programItemId: testProgramItem.programItemId,
@@ -139,8 +139,8 @@ test("should not count a direct sign-up made for this same start time against ca
   expect(events).toEqual([
     {
       id: testProgramItem.programItemId,
-      min: testProgramItem.minAttendance,
-      max: testProgramItem.maxAttendance,
+      min: testProgramItem.minAttendance - 1,
+      max: testProgramItem.maxAttendance - 1,
       groups: [],
     },
   ]);
