@@ -389,7 +389,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].description).toEqual(newDescription);
   });
 
-  test("should keep lottery signups whose lottery has run if program item start time changes", async () => {
+  test("should keep lottery sign-ups whose lottery has run if program item start time changes", async () => {
     const newStartTime = addHours(
       new Date(testProgramItem.startTime),
       1,

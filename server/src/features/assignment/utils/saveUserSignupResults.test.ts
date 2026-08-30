@@ -929,7 +929,7 @@ test("should handle mixed email permissions in groups", async () => {
 });
 
 // The parent batches the lottery; the spot itself belongs to the hour its attendee turns up
-test("should store the won slot's own start time on a batched program item's signup", async () => {
+test("should store the won slot's own start time on a batched program item's direct sign-up", async () => {
   const parentStartTime = addMinutes(
     new Date(testProgramItem.startTime),
     30,
@@ -1058,7 +1058,7 @@ test("should keep a spot held at another hour when a batched lottery places the 
   );
 });
 
-test("should replace a winner's own direct signup for the program item they win", async () => {
+test("should replace a winner's own direct sign-up for the program item they win", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 

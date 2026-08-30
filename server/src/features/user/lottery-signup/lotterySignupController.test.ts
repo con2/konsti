@@ -106,7 +106,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(body.errorId).toEqual("signupNotOpenYet");
   });
 
-  test("should allow lottery signup when the user already holds a spot at the same start time", async () => {
+  test("should allow lottery sign-up when the user already holds a spot at the same start time", async () => {
     vi.setSystemTime(
       subMinutes(
         new Date(testProgramItem.startTime),
@@ -150,7 +150,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     ).toEqual([testProgramItem.programItemId]);
   });
 
-  test("should allow lottery signup when the held spot is at another start time", async () => {
+  test("should allow lottery sign-up when the held spot is at another start time", async () => {
     vi.setSystemTime(
       subMinutes(
         new Date(testProgramItem.startTime),

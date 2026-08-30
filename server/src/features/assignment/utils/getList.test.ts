@@ -117,7 +117,7 @@ test("should return list items for program items using parent startTime via 'sta
 // A sign-up naming a program item the run is not allocating - skipped for holding sign-ups,
 // or lotteried already - has no event for the assigner to map it to, and one such preference
 // makes it reject the whole input
-test("leaves out lottery signups for program items not in the run", () => {
+test("leaves out lottery sign-ups for program items not in the run", () => {
   const users = getUsers({ count: 1 });
 
   const list = getList({

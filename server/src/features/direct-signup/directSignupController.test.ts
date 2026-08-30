@@ -298,7 +298,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.errorId).toEqual("signupNotOpenYet");
   });
 
-  test("should allow signup before its schedule opens when the program item moved after its lottery", async () => {
+  test("should allow direct sign-up before its schedule opens when the program item moved after its lottery", async () => {
     // Same instant the test above refuses: sign-up for this start time has not opened yet
     vi.setSystemTime(
       subHours(new Date(testProgramItem.startTime), 2).toISOString(),
@@ -729,7 +729,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(user?.groupCode).toEqual("group-123");
   });
 
-  test("should keep lottery signups competing for the same start time", async () => {
+  test("should keep lottery sign-ups competing for the same start time", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     // Holding a spot doesn't withdraw the attendee from the lottery for that time: if it
@@ -788,7 +788,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     ).toEqual([testProgramItem2.programItemId, "later-program-item"]);
   });
 
-  test("should keep lottery signups when the signup fails because the program item is full", async () => {
+  test("should keep lottery sign-ups when the sign-up fails because the program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     await saveProgramItems([

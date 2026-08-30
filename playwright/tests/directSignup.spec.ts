@@ -371,7 +371,7 @@ test("Show no signup button before direct signup opens", async ({
   await expect(programItem.container).not.toContainText("Sign-up closes");
 });
 
-test("Open direct signup only once the gap after the lottery has passed", async ({
+test("Open direct sign-up only once the gap after the lottery has passed", async ({
   page,
   request,
 }) => {
@@ -430,7 +430,7 @@ test("Open direct signup only once the gap after the lottery has passed", async 
   await expect(programItem.cancelSignupButton).toBeVisible();
 });
 
-test("Direct signup keeps the lottery signups for the same time", async ({
+test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
   page,
   request,
 }) => {

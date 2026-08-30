@@ -538,7 +538,7 @@ test("Show limit message when three lottery signups in time slot", async ({
 
 // Once a start time has been lotteried, nothing at it takes lottery sign-ups any more, so the
 // spot being held has to come from a program item outside the lottery
-test("Offer lottery signup even while a spot at the same time is held", async ({
+test("Offer lottery sign-up even while a spot at the same time is held", async ({
   page,
   request,
 }) => {
@@ -596,7 +596,7 @@ test("Offer lottery signup even while a spot at the same time is held", async ({
   );
 });
 
-test("Offer direct signup instead of a lottery for a program item that already has signups", async ({
+test("Offer direct sign-up instead of a lottery for a program item that already has sign-ups", async ({
   page,
   request,
 }) => {
@@ -843,7 +843,7 @@ test("Receive spot in a lottery covering several starting times", async ({
   );
 });
 
-test("Keep a program item out of the lottery after its signups are cancelled", async ({
+test("Keep a program item out of the lottery after its direct sign-ups are cancelled", async ({
   page,
   request,
 }) => {
@@ -910,7 +910,7 @@ test("Keep a program item out of the lottery after its signups are cancelled", a
   await expect(programItem.signUpButton).toBeVisible();
 });
 
-test("Keep the lottery signups a program item carries out of the lottery", async ({
+test("Keep the lottery sign-ups a program item carries out of the lottery", async ({
   page,
   request,
 }) => {

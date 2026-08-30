@@ -107,7 +107,7 @@ test("should return groups for program items using parent startTime via 'startTi
 
 // A preference the assigner has no event for makes it reject the whole input, so a program item
 // outside the run must not reach it
-test("excludes lottery signups for program items not in the run", () => {
+test("excludes lottery sign-ups for program items not in the run", () => {
   const users = getUsers({ count: 1 });
 
   const groups = getGroups([users], assignmentTime, [testProgramItem2]);

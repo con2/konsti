@@ -196,7 +196,7 @@ test("Keep a placed sign-up and say the starting time changed", async ({
 // cancelled - they didn't cause it, and a lottery sign-up can't be re-added once its window
 // shuts. The spot doesn't keep them out of that lottery either, whoever gave it to them: they
 // take part, and what the lottery gives them takes the place of the spot they held
-test("Keep lottery signups a moved program item landed on and act on them", async ({
+test("Keep lottery sign-ups a moved program item landed on and act on them", async ({
   page,
   request,
 }) => {
@@ -276,7 +276,7 @@ test("Keep lottery signups a moved program item landed on and act on them", asyn
   );
 });
 
-test("Offer direct signup instead of a lottery for a program item moved after its lottery", async ({
+test("Offer direct sign-up instead of a lottery for a program item moved after its lottery", async ({
   page,
   request,
 }) => {

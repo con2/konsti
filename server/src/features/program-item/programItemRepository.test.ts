@@ -911,7 +911,7 @@ test("should add event notification if user has direct signup and program item s
   );
 });
 
-test("should mark a lottery program item that already holds signups as not taking part in a lottery", async () => {
+test("should mark a lottery program item that already holds direct sign-ups as not taking part in a lottery", async () => {
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
@@ -937,7 +937,7 @@ test("should not mark a lottery program item nobody has signed up to", async () 
   expect(programItem.passedOverForLottery).toBeUndefined();
 });
 
-test("should keep a program item out of the lottery after its signups are cancelled", async () => {
+test("should keep a program item out of the lottery after its direct sign-ups are cancelled", async () => {
   // The decision is recorded rather than re-read from whoever holds a spot right now, so
   // emptying the program item cannot put it back into a lottery
   await withLotteryStillAhead(testProgramItem);
@@ -965,7 +965,7 @@ test("should keep a program item out of the lottery after its signups are cancel
   expect(programItem.passedOverForLottery).toEqual(true);
 });
 
-test("should remove lottery signups made for a program item that stops taking part in a lottery", async () => {
+test("should remove lottery sign-ups made for a program item that stops taking part in a lottery", async () => {
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
@@ -984,7 +984,7 @@ test("should remove lottery signups made for a program item that stops taking pa
   ).toEqual([EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE]);
 });
 
-test("should keep lottery signups whose lottery has run when a program item stops taking part in a lottery", async () => {
+test("should keep lottery sign-ups whose lottery has run when a program item stops taking part in a lottery", async () => {
   // Inside the gap between the lottery and direct sign-up, so the program item can still be
   // passed over while the sign-ups it carries are already a record of a lottery that happened
   await saveTestSettings({

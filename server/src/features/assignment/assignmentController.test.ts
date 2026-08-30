@@ -126,7 +126,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     expect(body.status).toEqual("success");
   });
 
-  test("should refuse a manual assignment once direct signup for that starting time is open", async () => {
+  test("should refuse a manual assignment once direct sign-up for that starting time is open", async () => {
     // A lottery run after the direct signup phase opens competes with the first-come queue
     // and moves attendees out of spots they picked themselves
     await saveProgramItems([
@@ -151,7 +151,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     expect(programItems[0].lotteryRanForStartTime).toBeUndefined();
   });
 
-  test("should refuse a manual assignment while lottery signup for that starting time is open", async () => {
+  test("should refuse a manual assignment while lottery sign-up for that starting time is open", async () => {
     // Attendees can still be entering the lottery, so a run now decides the starting time
     // behind them - and would record its program items as already dealt with
     const startTime = addHours(new Date(), 3).toISOString();

@@ -179,7 +179,7 @@ describe("Assignment with valid data", () => {
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  test("should replace a previous non-lottery signup with the spot the lottery gives", async () => {
+  test("should replace a previous non-lottery sign-up with the spot the lottery gives", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
@@ -325,7 +325,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should replace a 'directSignupAlwaysOpen' signup with the spot the lottery gives", async () => {
+  test("should replace a 'directSignupAlwaysOpen' direct sign-up with the spot the lottery gives", async () => {
     const directSignupAlwaysOpenId = "1234";
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -494,7 +494,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should replace a signup from a moved program item with the spot the lottery gives", async () => {
+  test("should replace a direct sign-up from a moved program item with the spot the lottery gives", async () => {
     // ProgramItem1: 14:00 direct sign-up -> program item moved to 15:00
     // ProgramItem2: 15:00 lottery sign-up
     // A spot they took themselves doesn't keep them out of the lottery: what it gives them
@@ -1991,7 +1991,7 @@ test("Program item with parent startTime from 'startTimesByParentIds' should not
   );
 });
 
-test("Should keep a past lottery signup but not let it affect an upcoming lottery", async () => {
+test("Should keep a past lottery sign-up but not let it affect an upcoming lottery", async () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
@@ -2322,7 +2322,7 @@ test("Should mark a batched program item with its own start time, not the parent
   expect(hasLotteryAlreadyRun(programItem)).toEqual(false);
 });
 
-test("Should keep the lottery signups of a program item added to a lotteried start time", async () => {
+test("Should keep the lottery sign-ups of a program item added to a lotteried start time", async () => {
   // The start time has been decided, so these sign-ups record a lottery that is over rather
   // than one still to come, and nothing removes them
   vi.spyOn(config, "event").mockReturnValue({

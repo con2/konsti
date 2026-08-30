@@ -16,7 +16,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-test("matches a direct signup in a program item starting at the same time", () => {
+test("matches a direct sign-up in a program item starting at the same time", () => {
   const directSignups = [
     {
       programItem: {

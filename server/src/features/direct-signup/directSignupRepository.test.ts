@@ -191,7 +191,7 @@ test("should not delete multiple times if delete called multiple times", async (
   expect(signupsAfterSave[0].userSignups).toHaveLength(0);
 });
 
-test("should find a parent-batched item's signups by its own start time", async () => {
+test("should find a parent-batched item's direct sign-ups by its own start time", async () => {
   // The item is batched under a parent whose start time drives the lottery, so its own
   // The parent batches the lottery, but a spot is held for the hour its program item runs at
   const parentStartTime = addMinutes(
@@ -235,7 +235,7 @@ test("should find a parent-batched item's signups by its own start time", async 
 // aggregation pipeline that is a field path unless the value is marked as data
 const dollarPrefixedUsername = "$admin";
 
-test("should delete a signup from a user whose name starts with $", async () => {
+test("should delete a direct sign-up from a user whose name starts with $", async () => {
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
@@ -254,7 +254,7 @@ test("should delete a signup from a user whose name starts with $", async () => 
   expect(signups[0].count).toEqual(0);
 });
 
-test("should bulk delete signups from a user whose name starts with $", async () => {
+test("should bulk delete direct sign-ups from a user whose name starts with $", async () => {
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
@@ -307,7 +307,7 @@ test("should count existing attendees against maxAttendance when appending", asy
   expect(signupsAfterSave[0].count).toEqual(2);
 });
 
-test("should report assignment signups as dropped when the program item has no signup document", async () => {
+test("should report the assignment's direct sign-ups as dropped when the program item has no direct sign-up document", async () => {
   // The write updates an existing document and never creates one, so a program item without
   // one stores nothing - and saying otherwise sends an acceptance email for a spot that is
   // not there, which the append-only event log makes permanent
@@ -324,7 +324,7 @@ test("should report assignment signups as dropped when the program item has no s
   expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
 });
 
-test("should report an assignment signup the attendance cap cut from an over-full program item", async () => {
+test("should report an assignment's direct sign-up the attendance cap cut from an over-full program item", async () => {
   // Lowering the limit below the attendees already in leaves the program item over-full, and
   // the cap in the write keeps those attendees rather than the sign-up being written over one
   // of them. Nothing was stored for it, so it must not be reported as placed

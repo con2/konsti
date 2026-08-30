@@ -163,7 +163,7 @@ test("should notify a user only once for a moved item they have both a lottery a
   );
 });
 
-test("should keep lottery signups for other program items when one moves onto their slot", async () => {
+test("should keep lottery sign-ups for other program items when one moves onto their slot", async () => {
   // The user holds a spot in testProgramItem and has a lottery sign-up for testProgramItem2 an
   // hour later. Moving the held item onto that hour puts the two at the same time, and the
   // lottery will decide between them - so the sign-up stays, since cancelling it cannot be
@@ -205,7 +205,7 @@ test("should keep lottery signups for other program items when one moves onto th
   ]);
 });
 
-test("should keep lottery signups whose lottery has already run when the program item moves", async () => {
+test("should keep lottery sign-ups whose lottery has already run when the program item moves", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
 
