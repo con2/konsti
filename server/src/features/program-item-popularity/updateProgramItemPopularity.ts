@@ -1,5 +1,5 @@
 import { isBefore } from "date-fns";
-import { countBy, groupBy } from "remeda";
+import { countBy, first, groupBy } from "remeda";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -59,7 +59,7 @@ export const updateProgramItemPopularity = async (): Promise<
     return timeNowResult;
   }
   // Simulating a program item no lottery will take would spend attendees' placements on it
-  // rather than on the ones a lottery is still coming for. Its stored figure stays as it is
+  // rather than on the ones a lottery is still coming for. Its stored figure stays as it is.
   const lotteryProgramItems = validLotterySignupProgramItems.filter(
     (programItem) => !willNotBeLotteried(programItem),
   );
@@ -71,15 +71,16 @@ export const updateProgramItemPopularity = async (): Promise<
   // Only start times whose lottery sign-up is still open. Popularity measures demand for the
   // lottery, and once spots have been handed out the simulation no longer measures that -
   // reduced capacity with every attendee still competing understates some items and inflates
-  // others. A start time is never simulated again, so a figure written then is kept for good
+  // others. A start time is never simulated again, so a figure written then is kept for good.
   const openLotteryStartTimes = Object.keys(programItemsByStartTimes).filter(
     (startTime) => {
-      const programItemsForStartTime = programItemsByStartTimes[startTime];
-      const lotterySignupEndTime = getLotterySignupEndTime(
-        // Every program item in the group shares the start time the window is derived from
-        programItemsForStartTime[0],
+      // Every program item in the group shares the start time the window is derived from,
+      // and a group is never empty, so first() gives one without an absent case to handle
+      const programItem = first(programItemsByStartTimes[startTime]);
+      return isBefore(
+        timeNowResult.value,
+        getLotterySignupEndTime(programItem),
       );
-      return isBefore(timeNowResult.value, lotterySignupEndTime);
     },
   );
 
