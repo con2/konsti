@@ -9,7 +9,7 @@ export interface NewEventLogItem {
   username: string;
   programItemId: string;
   programItemStartTime: string;
-  lotteriedUntil?: string;
+  lastProgramItemEndTime?: string;
   programType?: ProgramType;
   createdAt: string;
   action: EventLogAction;

@@ -268,7 +268,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   expect(noAssignmentItems[0].programItemStartTime).toEqual(
     testProgramItem.startTime,
   );
-  expect(noAssignmentItems[0].lotteriedUntil).toBeUndefined();
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toBeUndefined();
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const notificationQueueService = getGlobalNotificationQueueService()!;
@@ -1174,7 +1174,9 @@ test("should record the whole span a batched lottery covered on its rejections",
   expect(noAssignmentItems[0].programItemStartTime).toEqual(
     testProgramItem.startTime,
   );
-  expect(noAssignmentItems[0].lotteriedUntil).toEqual(laterProgramItem.endTime);
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toEqual(
+    laterProgramItem.endTime,
+  );
   expect(noAssignmentItems[0].programType).toEqual(testProgramItem.programType);
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -1225,7 +1227,7 @@ test("should not record a span when the lottery covered a single starting time",
   expect(noAssignmentItems[0].programItemStartTime).toEqual(
     testProgramItem.startTime,
   );
-  expect(noAssignmentItems[0].lotteriedUntil).toBeUndefined();
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toBeUndefined();
   expect(noAssignmentItems[0].programType).toBeUndefined();
 });
 
@@ -1258,7 +1260,9 @@ test("should span a rejection over the batch, whichever slots were lotteried", a
   expect(noAssignmentItems[0].programItemStartTime).toEqual(
     firstProgramItem.startTime,
   );
-  expect(noAssignmentItems[0].lotteriedUntil).toEqual(laterProgramItem.endTime);
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toEqual(
+    laterProgramItem.endTime,
+  );
 });
 
 test("should still tell the losers when the placed spots cannot be read", async () => {

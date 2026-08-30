@@ -31,17 +31,17 @@ export function getRejectedEmailTemplate(
   // One lottery can cover several starting times at once, and naming only the first would point
   // at one hour out of the several the attendee was competing across. Both ends carry their date,
   // since a span can end on a later day and a bare clock time would read as running backwards.
-  const { lotteriedUntil, programType } = notification;
+  const { lastProgramItemEndTime, programType } = notification;
   const lotteriedLine = (locale: Locale): string => {
     const from = getDateAndTime(notification.programItemStartTime, locale);
-    if (!lotteriedUntil || !programType) {
+    if (!lastProgramItemEndTime || !programType) {
       return locale === Locale.FI
         ? `Paikat ${from} alkaviin ohjelmanumeroihin arvottiin.`
         : `Spots for program items starting at ${from} were randomized.`;
     }
     // Named the way the event log names it, so the inbox and the log tell one story
     const names = capitalize(getProgramTypePluralName(programType, locale));
-    const until = getDateAndTime(lotteriedUntil, locale);
+    const until = getDateAndTime(lastProgramItemEndTime, locale);
     return locale === Locale.FI
       ? `${names} välillä ${from} - ${until} arvottiin.`
       : `${names} between ${from} and ${until} were lotteried.`;

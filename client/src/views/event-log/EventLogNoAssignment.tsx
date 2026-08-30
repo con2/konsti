@@ -15,9 +15,12 @@ export const EventLogNoAssignment = ({ eventLogItem }: Props): ReactElement => {
   // A lottery covering several starting times names the whole span, since no single hour of it
   // is the one the attendee was competing for. Narrowed once, so the two fields cannot be read
   // apart from each other.
-  const { programItemStartTime, lotteriedUntil, programType } = eventLogItem;
+  const { programItemStartTime, lastProgramItemEndTime, programType } =
+    eventLogItem;
   const lotteriedSpan =
-    lotteriedUntil && programType ? { lotteriedUntil, programType } : null;
+    lastProgramItemEndTime && programType
+      ? { lastProgramItemEndTime, programType }
+      : null;
 
   // A span can end on the next day, where bare clock times read as running backwards. Both ends
   // carry the day then, so neither of them is the one the reader has to guess.
@@ -25,7 +28,7 @@ export const EventLogNoAssignment = ({ eventLogItem }: Props): ReactElement => {
     lotteriedSpan &&
     !isSameDayInEventTimezone(
       new Date(programItemStartTime),
-      new Date(lotteriedSpan.lotteriedUntil),
+      new Date(lotteriedSpan.lastProgramItemEndTime),
     )
       ? getShortWeekdayAndTime
       : getTime;
@@ -39,7 +42,7 @@ export const EventLogNoAssignment = ({ eventLogItem }: Props): ReactElement => {
                 t(`programTypePlural.${lotteriedSpan.programType}`),
               ),
               FIRST_TIME: formatSpanTime(programItemStartTime),
-              LAST_TIME: formatSpanTime(lotteriedSpan.lotteriedUntil),
+              LAST_TIME: formatSpanTime(lotteriedSpan.lastProgramItemEndTime),
             })
           : t("eventLogActions.noAssignment", {
               START_TIME: getTime(programItemStartTime),

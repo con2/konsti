@@ -176,7 +176,7 @@ In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in to
         "programItemStartTime": "2024-07-19T17:00:00Z",
         // Only when the lottery covered several starting times at once, where the two describe
         // the span it took in. Present from Tracon 2026 onward
-        "lotteriedUntil": "2024-07-19T19:00:00Z",
+        "lastProgramItemEndTime": "2024-07-19T19:00:00Z",
         "programType": "fleaMarket",
         "isSeen": true,
         "createdAt": "2024-07-19T15:00:09.456Z",

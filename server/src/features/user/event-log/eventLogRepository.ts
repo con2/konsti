@@ -32,8 +32,10 @@ export const addEventLogItems = async (
                 programItemStartTime: new Date(
                   newEventLogItem.programItemStartTime,
                 ),
-                ...(newEventLogItem.lotteriedUntil !== undefined && {
-                  lotteriedUntil: new Date(newEventLogItem.lotteriedUntil),
+                ...(newEventLogItem.lastProgramItemEndTime !== undefined && {
+                  lastProgramItemEndTime: new Date(
+                    newEventLogItem.lastProgramItemEndTime,
+                  ),
                 }),
                 ...(newEventLogItem.programType !== undefined && {
                   programType: newEventLogItem.programType,

@@ -24,8 +24,9 @@ export interface NotificationTask {
   username: string;
   programItemId: string;
   programItemStartTime: string;
-  // The span a batched lottery covered and what it lotteried, so the rejection can name both
-  lotteriedUntil?: string;
+  // The end of the last program item a batched lottery covered, paired with the start time above
+  // so the rejection can name the whole span, and the program type to name what was lotteried
+  lastProgramItemEndTime?: string;
   programType?: ProgramType;
   programItemTitle?: string;
 }

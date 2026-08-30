@@ -267,7 +267,7 @@ type LotteriedSpan =
   | { programItemStartTime: string }
   | {
       programItemStartTime: string;
-      lotteriedUntil: string;
+      lastProgramItemEndTime: string;
       programType: ProgramType;
     };
 
@@ -312,7 +312,7 @@ const getLotteriedSpan = (
 
   return {
     programItemStartTime: firstProgramItem.startTime,
-    lotteriedUntil: lastProgramItem.endTime,
+    lastProgramItemEndTime: lastProgramItem.endTime,
     programType: firstProgramItem.programType,
   };
 };

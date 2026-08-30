@@ -8,7 +8,7 @@ export interface EventLogItem {
   programItemStartTime: string;
   // The span one lottery covered, both set or neither, and only when it took in more than one
   // starting time
-  lotteriedUntil?: string;
+  lastProgramItemEndTime?: string;
   programType?: ProgramType;
   createdAt: string;
 }
