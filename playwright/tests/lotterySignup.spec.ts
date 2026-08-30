@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes, subHours } from "date-fns";
+import { addHours, addMinutes, subHours, subMinutes } from "date-fns";
 import { capitalize } from "remeda";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
@@ -908,4 +908,74 @@ test("Keep a program item out of the lottery after its signups are cancelled", a
     "It already has sign-ups, so it does not take part in the lottery.",
   );
   await expect(programItem.signUpButton).toBeVisible();
+});
+
+test("Cancel the lottery signups a program item carries out of the lottery", async ({
+  page,
+  request,
+}) => {
+  // The only route to a lottery sign-up for a program item that is then passed over: it leaves
+  // the lottery late enough for its sign-ups to be preserved, takes a spot while its sign-up is
+  // always open, and comes back inside the gap before direct sign-up would have opened
+  const startTime = hoursIntoEvent(6);
+  const lotterySignupEndTime = subMinutes(
+    new Date(startTime),
+    config.event().directSignupPhaseStart,
+  );
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+
+  const lotteryProgramItem = {
+    ...testProgramItem,
+    programType: config.event().twoPhaseSignupProgramTypes[0],
+    startTime,
+  };
+  await addProgramItems(request, [lotteryProgramItem]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+
+  await postTestSettings(request, {
+    testTime: subMinutes(lotterySignupEndTime, 60).toISOString(),
+  });
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+
+  // Sign-up always open from here on. The lottery sign-up is kept rather than cancelled,
+  // because its window has closed and it can no longer be made again
+  await postTestSettings(request, {
+    testTime: addMinutes(lotterySignupEndTime, 1).toISOString(),
+  });
+  await addProgramItems(request, [
+    { ...lotteryProgramItem, tags: [Tag.PRE_CONVENTION_WEEK] },
+  ]);
+  await testPostDirectSignup(request, "test2", {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "",
+  });
+
+  // Back to a lottery program item, now holding a spot, so it is passed over - and the lottery
+  // sign-up it carried is for a lottery that will not happen
+  await postTestSettings(request, {
+    testTime: addMinutes(lotterySignupEndTime, 2).toISOString(),
+  });
+  await addProgramItems(request, [lotteryProgramItem]);
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await expect(programList.notificationBar.bar).toContainText(
+    "no longer uses lottery sign-up and your lottery sign-up was removed",
+  );
+  await expect(programList.notificationBar.bar).toContainText(
+    testProgramItem.title,
+  );
+
+  await programList.gotoMyProgram();
+  await expect(programList.lotterySignupList).not.toContainText(
+    testProgramItem.title,
+  );
 });
