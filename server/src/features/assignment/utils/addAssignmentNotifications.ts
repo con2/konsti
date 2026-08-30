@@ -7,6 +7,7 @@ import { UserAssignmentResult } from "shared/types/models/result";
 import { Settings } from "shared/types/models/settings";
 import { User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { hasLotteryAlreadyRun } from "shared/utils/signupTimes";
 import { isSameTime } from "shared/utils/timeComparison";
 import { getGroupCreators } from "server/features/assignment/utils/getGroupCreators";
 import { getGroupMembersWithCreatorLotterySignups } from "server/features/assignment/utils/getGroupMembers";
@@ -59,7 +60,14 @@ export const addAssignmentNotifications = async ({
   const startingProgramItems = getStartingProgramItems(
     programItems,
     assignmentTime,
-  ).filter((programItem) => isLotterySignupProgramItem(programItem));
+  ).filter(
+    (programItem) =>
+      isLotterySignupProgramItem(programItem) &&
+      // Lotteried at a slot it no longer starts at, so this run neither considered nor
+      // rejected anybody over it: the spot it brought with it says nothing about this hour,
+      // and the span it covers is not part of what was lotteried here
+      !hasLotteryAlreadyRun(programItem),
+  );
   const groupCreators = getGroupCreators(users, startingProgramItems);
   const groupMembers = getGroupMembersWithCreatorLotterySignups(
     groupCreators,
