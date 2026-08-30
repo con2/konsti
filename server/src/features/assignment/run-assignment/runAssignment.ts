@@ -1,15 +1,14 @@
-import { partition } from "remeda";
 import { config } from "shared/config";
 import {
   AssignmentAlgorithm,
   RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
-import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { hasLotteryAlreadyRun } from "shared/utils/signupTimes";
 import { getDynamicStartTime } from "server/features/assignment/utils/getDynamicStartTime";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
+import { hasStartTimeBeenLotteried } from "server/features/assignment/utils/hasStartTimeBeenLotteried";
+import { partitionByHeldSignups } from "server/features/assignment/utils/partitionByHeldSignups";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
@@ -112,19 +111,9 @@ export const runAssignment = async ({
       programItem.passedOverForLottery !== true,
   );
 
-  // A start time goes through one lottery, so one program item already carrying the mark closes
-  // it for all of them: anything that arrived afterwards joins it on direct sign-up rather than
-  // reopening the hour, recorded as passed over so that stays true once its sign-ups change.
-  // Asked of the whole programme, since one cancelled after its lottery still records it ran.
-  const lotteriedHere = getStartingProgramItems(
+  const lotteriedHere = hasStartTimeBeenLotteried(
     programItems,
     resolvedAssignmentTime,
-  ).some(
-    (programItem) =>
-      programItem.lotteryRanForStartTime !== undefined &&
-      // Marked for a slot it no longer starts at means it was lotteried elsewhere and moved
-      // onto this one, which says nothing about whether this start time has had its lottery
-      !hasLotteryAlreadyRun(programItem),
   );
 
   if (
@@ -153,48 +142,11 @@ export const runAssignment = async ({
     });
   }
 
-  // A lottery program item is empty when its lottery runs. One that isn't keeps what it has and
-  // stays on direct sign-up, since lotterying the rest would decide a single program item by two
-  // different rules. Skipped items are still marked below, so emptying one cannot put it back.
-  const userSignupsByProgramItemId = new Map(
-    directSignupsResult.value.map((directSignup) => [
-      directSignup.programItemId,
-      directSignup.userSignups,
-    ]),
-  );
-  const [occupiedProgramItems, emptyProgramItems] = partition(
+  const { emptyProgramItems, occupiedProgramItems } = partitionByHeldSignups(
     notYetLotteriedProgramItems,
-    (programItem) =>
-      (userSignupsByProgramItemId.get(programItem.programItemId) ?? []).length >
-      0,
+    directSignupsResult.value,
+    resolvedAssignmentTime,
   );
-
-  // Reported apart only to say which way it broke: a lottery priority means an earlier run
-  // placed people here and stopped before marking it, a first-come one means the program item
-  // is taking direct sign-ups by another route
-  const [lotteryPlaced, takingDirectSignups] = partition(
-    occupiedProgramItems,
-    (programItem) =>
-      (userSignupsByProgramItemId.get(programItem.programItemId) ?? []).some(
-        (userSignup) => userSignup.priority !== DIRECT_SIGNUP_PRIORITY,
-      ),
-  );
-
-  if (lotteryPlaced.length > 0) {
-    logger.error(
-      new Error(
-        `Assignment ${resolvedAssignmentTime}: ${lotteryPlaced.length} program items already hold lottery-placed sign-ups, so an earlier run placed attendees there without marking it: ${lotteryPlaced.map((programItem) => programItem.programItemId).join(", ")}`,
-      ),
-    );
-  }
-
-  if (takingDirectSignups.length > 0) {
-    logger.error(
-      new Error(
-        `Assignment ${resolvedAssignmentTime}: ${takingDirectSignups.length} program items already hold first-come-first-served sign-ups, leaving them on direct sign-up instead of lotterying them: ${takingDirectSignups.map((programItem) => programItem.programItemId).join(", ")}`,
-      ),
-    );
-  }
 
   const assignResultsResult = runAssignmentAlgorithm(
     assignmentAlgorithm,
