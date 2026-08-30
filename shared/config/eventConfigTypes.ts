@@ -34,7 +34,7 @@ const SignupWindowSchema = z.object({
 // The config's shape is declared here once and the type inferred from it, so a
 // field cannot be added to one and forgotten in the other. Times are declared as
 // ISO datetimes rather than plain strings: they are hand-written, nothing else
-// validates them, and the formatters throw on a time they cannot parse
+// validates them, and the formatters throw on a time they cannot parse.
 export const EventConfigSchema = z.object({
   assignmentAlgorithm: z.enum(AssignmentAlgorithm),
   enableGroups: z.boolean(),

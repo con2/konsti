@@ -1,6 +1,6 @@
 // Design token value types. Applied where a token is defined, so a malformed
 // color or a value in the wrong unit fails to compile instead of silently
-// producing a CSS declaration the browser drops
+// producing a CSS declaration the browser drops.
 
 export type RgbColor = `rgb(${number},${number},${number})`;
 

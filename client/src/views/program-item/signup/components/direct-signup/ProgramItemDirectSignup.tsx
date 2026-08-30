@@ -105,7 +105,7 @@ export const ProgramItemDirectSignup = ({
   const signupOpen = getDirectSignupStarted(programItem, timeNow);
 
   // The only state with nothing to render: the user could sign up, but
-  // sign-up has not opened yet. Render nothing rather than an empty element
+  // sign-up has not opened yet. Render nothing rather than an empty element.
   if (canSignUp && !signupOpen && !signupFormOpen) {
     return null;
   }

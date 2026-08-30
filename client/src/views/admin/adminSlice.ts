@@ -47,7 +47,7 @@ const initialState = (): AdminState => {
 // confirm a version from a single instant. Half the poll interval: regular
 // polls a full interval apart always qualify, bursts seconds apart never do.
 // Callers pass a monotonic timestamp, so a device clock jump while a phone
-// wakes can't stall or short-circuit the window
+// wakes can't stall or short-circuit the window.
 const appBuildTimeConfirmMs = (config.client().dataUpdateInterval * 1000) / 2;
 
 const adminSlice = createSlice({

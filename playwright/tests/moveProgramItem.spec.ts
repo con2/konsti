@@ -95,7 +95,7 @@ test("Show event log notification when program item with direct sign-up is moved
 // A sign-up is made against a start time, and the lottery is run per start time.
 // An upcoming lottery sign-up is therefore dropped when the item moves - the
 // user has not been placed yet, and the seat they were queuing for no longer
-// exists at that time
+// exists at that time.
 test("Remove an upcoming lottery sign-up when the program item moves", async ({
   page,
   request,
@@ -144,7 +144,7 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
 
 // A sign-up that has already been placed is kept instead: it holds a seat at the
 // time it was made for, which is what the lottery ran against. The user is told
-// the program item moved rather than losing the sign-up
+// the program item moved rather than losing the sign-up.
 test("Keep a placed direct sign-up and say the starting time changed", async ({
   page,
   request,
@@ -195,7 +195,7 @@ test("Keep a placed direct sign-up and say the starting time changed", async ({
 // item the attendee holds a spot in onto a time they have lottery sign-ups for. Nothing is
 // cancelled - they didn't cause it, and a lottery sign-up can't be re-added once its window
 // shuts. The spot doesn't keep them out of that lottery either, whoever gave it to them: they
-// take part, and what the lottery gives them takes the place of the spot they held
+// take part, and what the lottery gives them takes the place of the spot they held.
 test("Keep lottery sign-ups a moved program item landed on and act on them", async ({
   page,
   request,
@@ -242,7 +242,7 @@ test("Keep lottery sign-ups a moved program item landed on and act on them", asy
   await page.goto("/");
 
   // The held program item moves on top of the lottery sign-up's start time. Both items are
-  // posted, since the endpoint takes the whole program list
+  // posted, since the endpoint takes the whole program list.
   await addProgramItems(request, [
     lotteryProgramItem,
     { ...heldProgramItem, startTime: lotteryStartTime },
@@ -306,14 +306,14 @@ test("Offer direct sign-up instead of a lottery for a program item moved after i
   await postAssignment(request, lotteryStartTime);
 
   // Moved to a slot whose lottery has not run. Its lottery already happened, so the spots it
-  // has left are first come, first served rather than lotteried a second time
+  // has left are first come, first served rather than lotteried a second time.
   await addProgramItems(request, [
     { ...programItem, startTime: movedStartTime },
   ]);
 
   // Two hours in, the moved program item's own lottery sign-up window would be open: it starts
   // at hour 5, and a lottery runs from four to two hours before that. Without the one-lottery
-  // rule this is exactly when it would offer a second one
+  // rule this is exactly when it would offer a second one.
   await postTestSettings(request, { testTime: hoursIntoEvent(2) });
 
   await login(page, request, { username: "test2", password: "test" });

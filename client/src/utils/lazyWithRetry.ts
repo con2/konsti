@@ -4,7 +4,7 @@ import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 // Keyed per chunk, not once for the whole app. A shared flag is cleared by any
 // import that succeeds, and the app's own chunk succeeds on every load - so a
 // view whose chunk stays broken would set the flag, reload, have it cleared
-// again, and reload forever without ever reaching an error boundary
+// again, and reload forever without ever reaching an error boundary.
 const retryKey = (chunkName: string): string =>
   `${browserStorageEventPrefix}-chunk-retry-${chunkName}`;
 
@@ -34,7 +34,7 @@ export const importWithRetry = async (
     // The flag stays set: clearing it here would let the next load reload
     // once more for the same broken chunk, forever. This chunk importing
     // successfully clears it, which is what makes a later failure retry again
-    // eslint-disable-next-line no-restricted-syntax -- Okay to throw if module loading fails after page reload
+    // eslint-disable-next-line no-restricted-syntax -- Okay to throw if module loading fails after page reload.
     throw error;
   }
 };

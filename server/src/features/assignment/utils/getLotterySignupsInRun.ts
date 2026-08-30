@@ -12,7 +12,7 @@ export const indexProgramItemsById = (
 
 // The preferences one run is allocating. The group list and the gain list have to answer this
 // the same way, and a sign-up naming a program item the run is not allocating has no event to
-// map to - the assigner rejects the whole input over a single such preference
+// map to - the assigner rejects the whole input over a single such preference.
 export const getLotterySignupsInRun = (
   lotterySignups: readonly LotterySignup[],
   programItemsById: ReadonlyMap<string, ProgramItem>,

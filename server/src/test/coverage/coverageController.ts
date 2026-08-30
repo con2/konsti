@@ -5,7 +5,7 @@ import { Request, Response } from "express";
 // NODE_V8_COVERAGE. The E2E coverage flow (scripts/runE2eCoverage.ts) calls
 // this after the Playwright suite so the server's coverage reaches disk before
 // the process is killed (a hard kill would otherwise discard it). Without
-// NODE_V8_COVERAGE set, v8.takeCoverage() is a no-op
+// NODE_V8_COVERAGE set, v8.takeCoverage() is a no-op.
 export const postWriteCoverage = (_req: Request, res: Response): Response => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Test-only endpoint

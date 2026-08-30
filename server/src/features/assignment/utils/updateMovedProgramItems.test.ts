@@ -167,7 +167,7 @@ test("should keep lottery sign-ups for other program items when one moves onto t
   // The user holds a spot in testProgramItem and has a lottery sign-up for testProgramItem2 an
   // hour later. Moving the held item onto that hour puts the two at the same time, and the
   // lottery will decide between them - so the sign-up stays, since cancelling it cannot be
-  // undone once the lottery sign-up window closes
+  // undone once the lottery sign-up window closes.
   const lotteryStartTime = addHours(
     new Date(testProgramItem.startTime),
     1,

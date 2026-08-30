@@ -321,7 +321,7 @@ test("Receive seat from each lottery program type in separate time slots", async
 
   // One program item per lottery program type in consecutive lottery slots.
   // Each slot's lottery sign-up window is [start - 4h, start - 2h], so the test
-  // time is advanced to the window start before each sign-up
+  // time is advanced to the window start before each sign-up.
   const slots = [4, 6, 8].map((hoursFromEventStart, index) => {
     const programType =
       twoPhaseSignupProgramTypes[index % twoPhaseSignupProgramTypes.length];
@@ -368,7 +368,7 @@ test("Receive seat from each lottery program type in separate time slots", async
   // Lottery sign-up to each program item in its own sign-up window, running that
   // slot's lottery before signing up to the next one. Sign-up removal strategies
   // that drop a winner's other upcoming sign-ups would otherwise leave the later
-  // slots with nothing to assign
+  // slots with nothing to assign.
   for (const slot of slots) {
     await postTestSettings(request, { testTime: slot.signupTime });
     await page.goto("/");
@@ -790,7 +790,7 @@ test("Receive spot in a lottery covering several starting times", async ({
     {
       // 'Sign-up always open', so a spot here can be held before the run. It starts at the hour
       // the batch is lotteried at, which is the hour a spot won in the batch would displace if
-      // the batch time were taken for the winner's own
+      // the batch time were taken for the winner's own.
       ...testProgramItem,
       programItemId: alwaysOpenProgramItemId,
       parentId: alwaysOpenProgramItemId,
@@ -917,7 +917,7 @@ test("Keep the lottery sign-ups a program item carries out of the lottery", asyn
   // The only route to a lottery sign-up for a program item that is then passed over: it leaves
   // the lottery late enough for its sign-ups to be preserved, takes a spot while its sign-up is
   // always open, and comes back inside the gap before direct sign-up would have opened. Its
-  // lottery has run by then, so the sign-up stays as the record of having entered it
+  // lottery has run by then, so the sign-up stays as the record of having entered it.
   const startTime = hoursIntoEvent(6);
   const lotterySignupEndTime = subMinutes(
     new Date(startTime),
@@ -945,7 +945,7 @@ test("Keep the lottery sign-ups a program item carries out of the lottery", asyn
   });
 
   // Sign-up always open from here on. The lottery sign-up is kept rather than cancelled,
-  // because its window has closed and it can no longer be made again
+  // because its window has closed and it can no longer be made again.
   await postTestSettings(request, {
     testTime: addMinutes(lotterySignupEndTime, 1).toISOString(),
   });

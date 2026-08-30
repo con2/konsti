@@ -178,7 +178,7 @@ export const storeDirectSignup = async (
   if (newSignup) {
     // Leaving the group only for a program item the lottery allocates: a group exists to enter
     // those together, so taking one of their spots alone leaves it. The sign-up already
-    // persisted, so a group-leave failure is logged rather than failing the request
+    // persisted, so a group-leave failure is logged rather than failing the request.
     let leftGroup = false;
     if (isLotterySignupProgramItem(programItem)) {
       const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);

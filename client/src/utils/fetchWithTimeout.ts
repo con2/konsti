@@ -3,7 +3,7 @@
 // signal, so the type forbids passing one. The timer is deliberately never
 // cleared: it must also bound reading the response body (a connection can
 // stall mid-body without ever erroring), and aborting an already-settled
-// request is a no-op
+// request is a no-op.
 export const fetchWithTimeout = async (
   url: string,
   timeoutMs: number,

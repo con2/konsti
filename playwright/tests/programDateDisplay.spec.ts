@@ -21,7 +21,7 @@ import {
 // Program times show the weekday only during event week; further out the
 // weekday alone is ambiguous, so the full date must be included. The times are
 // asserted by shape rather than value: the event decides which weekday and hour
-// the program items land on
+// the program items land on.
 const fullDatePattern = /^\w{3} \d{1,2}\.\d{1,2}\.\d{4} \d{2}:\d{2}$/;
 const weekdayPattern = /^\w+ \d{2}:\d{2}$/;
 

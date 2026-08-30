@@ -39,7 +39,7 @@ export const findTestSettings = async (): Promise<
     // Reading must not write: a document inserted here races with the upsert
     // in saveTestSettings, and if both see an empty collection they insert
     // separate documents. Reads then return whichever landed first, which can
-    // permanently shadow a stored test time behind an empty default
+    // permanently shadow a stored test time behind an empty default.
     if (!testSettings) {
       logger.debug("MongoDB: No test settings data, using defaults");
       return makeSuccessResult({ testTime: null });

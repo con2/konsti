@@ -118,7 +118,7 @@ test("releaseAssignmentLock should free the lock so it can be acquired again", a
 test("should not create a second settings document when one exists", async () => {
   // There must only ever be one settings document. A second insert would be
   // returned by later reads depending on insert order and silently shadow the
-  // stored settings, so creating again must yield the existing document
+  // stored settings, so creating again must yield the existing document.
   await findOrCreateSettings();
   await saveSettings({ adminMessageEn: "stored message" });
 

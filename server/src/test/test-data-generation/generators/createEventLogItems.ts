@@ -12,7 +12,7 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 // Simulate lottery results: for each start time a user has lottery sign-ups for,
 // they either win a spot (a newAssignment message plus the direct sign-up the
 // real assignment would create) or lose (a noAssignment message). This keeps
-// the event log consistent with the sign-ups shown in My Program
+// the event log consistent with the sign-ups shown in My Program.
 export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const programItemsById = new Map(

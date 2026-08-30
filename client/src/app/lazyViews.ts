@@ -8,7 +8,7 @@ import { lazyWithRetry } from "client/utils/lazyWithRetry";
 // of users. They render inside the Suspense boundary that wraps the routes.
 //
 // The prefetch list at the bottom must stay in step with these - a view split
-// without a matching entry keeps its loading spinner on every visit
+// without a matching entry keeps its loading spinner on every visit.
 
 type ViewImport = () => Promise<{ default: ComponentType }>;
 
@@ -46,7 +46,7 @@ const prefetchView = async (importView: ViewImport): Promise<void> => {
     // failed dynamic import for the rest of the session, so this chunk is now
     // poisoned and opening the view will reject instantly and reload the page
     // rather than refetch. That is why the caller only prefetches after a data
-    // load has succeeded and the connection looks usable
+    // load has succeeded and the connection looks usable.
   }
 };
 
@@ -74,7 +74,7 @@ const connectionIsTooPoor = (): boolean => {
 // download. The caller decides when, because this must not compete with the
 // requests that put content on screen. The staff tools are fetched only for
 // the roles that can reach them, to keep the transfer off everyone else's
-// connection
+// connection.
 export const prefetchLazyViews = (userGroup: UserGroup): void => {
   if (connectionIsTooPoor()) {
     return;

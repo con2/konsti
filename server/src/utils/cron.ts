@@ -94,7 +94,7 @@ export const stopCronJobs = (): void => {
 // A deploy starts a replacement instance which overwrites latestServerStartTime, so the
 // superseded instance seeing a newer time is expected: stop its cronjobs and let it wait for
 // termination. A missing or older stored time means the settings data was lost or rewound,
-// which shouldn't happen and is logged as an error
+// which shouldn't happen and is logged as an error.
 const isLatestServerInstance = async (): Promise<boolean> => {
   logger.info(
     `Check if latest running server instance with start time ${instanceStartTime}`,

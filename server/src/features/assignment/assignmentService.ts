@@ -25,7 +25,7 @@ import { logger } from "server/utils/logger";
 // it, attendees are still entering the lottery and the run would decide the start time behind
 // them; after it, the run competes with the first-come queue and moves attendees out of spots
 // they picked themselves. Checked here rather than inside the run because only a manual run can
-// be off the mark - the cron derives the start time it targets from the current time
+// be off the mark - the cron derives the start time it targets from the current time.
 interface RunWindow {
   stillTakingLotterySignups: ProgramItem[];
   alreadyTakingDirectSignups: ProgramItem[];
@@ -115,7 +115,7 @@ export const storeAssignment = async (
   // Hold the same in-progress lock the auto-assign cron uses for the whole run so a manual run
   // can't overlap a cron run (or another manual run) and corrupt results via the non-atomic
   // save. Released in the finally below, so a failed run is immediately retryable and a crash
-  // can't hold the lock past the stale timeout
+  // can't hold the lock past the stale timeout.
   const lockResult = await acquireAssignmentLock();
   if (!lockResult.ok) {
     if (lockResult.error === MongoDbError.ASSIGNMENT_LOCK_HELD) {

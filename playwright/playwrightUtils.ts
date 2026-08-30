@@ -25,7 +25,7 @@ import { resolvePortOffset } from "scripts/portOffset";
 
 // The per-worktree port offset shifts the server/API port so setup calls hit
 // the same local instance the browser targets. PLAYWRIGHT_BASEURL still wins
-// when set (the Docker run serves client and API from http://server:5000)
+// when set (the Docker run serves client and API from http://server:5000).
 const portOffset = resolvePortOffset();
 const baseUrl =
   process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:${5000 + portOffset}`;
@@ -117,7 +117,7 @@ export const login = async (
   // The init script must apply only on the first navigation after login():
   // later ones must not resurrect the session, e.g. after a UI logout or when
   // a spec drives the login form. The marker survives logout because
-  // clearSession() only removes the "state" key
+  // clearSession() only removes the "state" key.
   await page.addInitScript(
     ({ jwt, marker, stateKey }) => {
       if (localStorage.getItem(marker)) {
@@ -264,7 +264,7 @@ export const postAssignment = async (
 // simulate a deploy. Defaults to a time after the client's, i.e. a newer
 // server; pass a lower one to play an instance that hasn't rolled yet, or null
 // to drop the field as a server too old to send it would. Returns a setter so
-// a test can simulate a further deploy mid-run
+// a test can simulate a further deploy mid-run.
 export const reportServerBuildTime = async (
   page: Page,
   buildTime: string | null = "1000",
@@ -285,7 +285,7 @@ export const reportServerBuildTime = async (
       // own timeout, which would look like an outage to the app. Aborting
       // throws too once the context is gone, which is the expected case here:
       // the mocked clock can leave a poll in flight when the test ends, and
-      // closing the context disposes the response mid-read
+      // closing the context disposes the response mid-read.
       try {
         await route.abort();
       } catch {
@@ -301,7 +301,7 @@ export const reportServerBuildTime = async (
 // Program item start times, built relative to the event start so a spec never
 // pins an absolute date. Truncated to a whole hour because lottery items are
 // only valid on one, and the hour is the event's own: the config pins this
-// process to that timezone
+// process to that timezone.
 export const hoursIntoEvent = (hours: number): string =>
   startOfHour(
     addHours(new Date(config.event().eventStartTime), hours),

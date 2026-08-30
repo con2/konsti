@@ -22,7 +22,7 @@ interface SaveUserSignupResultsParams {
 
 // The one write in a lottery run that anybody depends on: everything after it is bookkeeping
 // and messages. Its bulk write either lands or it doesn't, so a run that fails before this
-// point placed nobody and can be run again
+// point placed nobody and can be run again.
 export const saveUserSignupResults = async ({
   assignmentTime,
   results,
@@ -35,7 +35,7 @@ export const saveUserSignupResults = async ({
 > => {
   // Where each program item starts now, which is what the run picked its preferences by. A
   // sign-up's own stored time is not rewritten when a program item moves, so reading the won
-  // hour off it would record the spot at an hour the program item has left
+  // hour off it would record the spot at an hour the program item has left.
   const startTimeByProgramItemId = new Map(
     programItems.map((programItem) => [
       programItem.programItemId,
@@ -140,7 +140,7 @@ interface RemoveReplacedSignupsParams {
 // Several are possible at one hour (an always-open program item plus a moved-in one), so remove
 // every one of theirs rather than just the first. Runs on the spots that actually landed, and
 // after they have: removing one for a replacement that then doesn't land would leave the
-// attendee with neither, the worst outcome available
+// attendee with neither, the worst outcome available.
 const removeReplacedSignups = async ({
   assignmentTime,
   finalResults,
@@ -198,7 +198,7 @@ interface DropResultsThatDoNotFitParams {
 // The algorithm already respects the attendance limits, so this should never drop anything - it
 // guards against the sign-ups moving under the run. Runs before any deletion, so a sign-up is
 // never removed to make room for a replacement that then doesn't land, and drops a whole group
-// at a time because a group lands in one program item or none
+// at a time because a group lands in one program item or none.
 const dropResultsThatDoNotFit = ({
   results,
   assignmentTime,
@@ -208,7 +208,7 @@ const dropResultsThatDoNotFit = ({
 }: DropResultsThatDoNotFitParams): readonly UserAssignmentResult[] => {
   // Keyed per program item rather than by username alone: the write rewrites a winner's entry in
   // the program item it places them into, so only that one entry is free. What they hold
-  // elsewhere is still occupying a spot, because the deletion runs after the write
+  // elsewhere is still occupying a spot, because the deletion runs after the write.
   const placedByProgramItemId = new Map<string, Set<string>>();
   for (const result of results) {
     const { programItemId } = result.assignmentSignup;

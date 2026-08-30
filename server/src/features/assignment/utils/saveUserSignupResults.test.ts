@@ -983,7 +983,7 @@ test("should store the won slot's own start time on a batched program item's dir
 });
 
 // The parent batches the lottery, so a run for it places attendees at several different hours.
-// A spot only gives way to one they cannot attend alongside it
+// A spot only gives way to one they cannot attend alongside it.
 test("should keep a spot held at another hour when a batched lottery places the attendee", async () => {
   // The batch is lotteried at its own configured time, distinct from either sub-session's hour
   const parentStartTime = addMinutes(

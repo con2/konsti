@@ -14,7 +14,7 @@ export const getGroupCreators = (
   for (const user of users) {
     // Only individuals and group creators carry lottery sign-ups into the assignment.
     // A non-creator member's sign-ups must not turn them into a group creator, which
-    // would duplicate the group when its members are expanded
+    // would duplicate the group when its members are expanded.
     if (user.groupCode !== "0" && !user.isGroupCreator) {
       continue;
     }

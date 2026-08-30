@@ -6,7 +6,7 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 // A cancelled program item keeps its place in the programme so attendees can see it was
 // cancelled, and the programme import strips its lottery sign-ups as soon as it sees the
 // cancellation - so there is normally nothing here to exclude. Ruled out anyway: the lottery
-// must never place anyone in one, whatever sign-ups it is somehow still carrying
+// must never place anyone in one, whatever sign-ups it is somehow still carrying.
 const isAssignableProgramItem = (programItem: ProgramItem): boolean =>
   programItem.state === State.ACCEPTED &&
   isLotterySignupProgramItem(programItem);

@@ -74,7 +74,7 @@ export const saveUser = async (
       }),
     );
     // A unique index rejection means nothing was written, so callers can retry
-    // with a different username. Every other failure may have stored the row
+    // with a different username. Every other failure may have stored the row.
     if (isDuplicateKeyError(error)) {
       return makeErrorResult(MongoDbError.DUPLICATE_KEY);
     }

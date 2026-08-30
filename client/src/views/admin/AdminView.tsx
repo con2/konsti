@@ -98,7 +98,7 @@ export const AdminView = (): ReactElement => {
 
   // The server refuses a run once its program items start taking direct sign-ups, so the default
   // skips the starting times already past that line - during an event most of the list is. Past
-  // times stay in the list rather than being hidden, to be picked deliberately
+  // times stay in the list rather than being hidden, to be picked deliberately.
   const upcomingStartTimes = new Set(
     visibleProgramItems
       .filter(
@@ -116,7 +116,7 @@ export const AdminView = (): ReactElement => {
   const [triggerRenderError, setTriggerRenderError] = useState<boolean>(false);
   const [messageStyle, setMessageStyle] = useState<string>("");
   // Null until an admin picks one, so the default keeps up with a programme that loads after
-  // the view renders and with the clock passing a lottery. Their own choice then stands
+  // the view renders and with the clock passing a lottery. Their own choice then stands.
   const [chosenAssignmentTime, setChosenAssignmentTime] = useState<
     string | null
   >(null);

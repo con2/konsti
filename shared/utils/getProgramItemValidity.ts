@@ -15,7 +15,7 @@ interface ProgramItemValidity {
 }
 
 // Check if a program item is missing required info, like attendance limits.
-// Invalid program items cannot be signed up to
+// Invalid program items cannot be signed up to.
 export const getProgramItemValidity = (
   programItem: ProgramItem,
 ): ProgramItemValidity => {
@@ -42,7 +42,7 @@ export const getProgramItemValidity = (
   //
   // Read in the event timezone, not the viewer's: an even Helsinki hour is 30 or
   // 45 minutes past in a zone with a half-hour offset, which would mark every
-  // lottery item invalid and hide its sign-up controls for those attendees
+  // lottery item invalid and hide its sign-up controls for those attendees.
   const lotteryItemNotStartingOnEvenHour =
     usesKonstiSignup &&
     isLotterySignupProgramItem(programItem) &&

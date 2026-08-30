@@ -59,7 +59,7 @@ export const submitGetSettings = (): AppThunk<Promise<boolean>> => {
     // Tracked outside the settings comparison below: the build time changes on
     // every deploy and shouldn't count as a settings change. The reducer
     // owns the acceptance logic and returns the same state when nothing
-    // changes, so the dispatch is unconditional
+    // changes, so the dispatch is unconditional.
     dispatch(
       updateServerAppBuildTime({
         buildTime: settingsResponse.appBuildTime,

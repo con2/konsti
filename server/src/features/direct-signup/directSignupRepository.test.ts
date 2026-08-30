@@ -232,7 +232,7 @@ test("should find a parent-batched item's direct sign-ups by its own start time"
 });
 
 // Usernames are validated for length only, so one can start with "$". Inside an
-// aggregation pipeline that is a field path unless the value is marked as data
+// aggregation pipeline that is a field path unless the value is marked as data.
 const dollarPrefixedUsername = "$admin";
 
 test("should delete a direct sign-up from a user whose name starts with $", async () => {
@@ -327,7 +327,7 @@ test("should report the assignment's direct sign-ups as dropped when the program
 test("should report an assignment's direct sign-up the attendance cap cut from an over-full program item", async () => {
   // Lowering the limit below the attendees already in leaves the program item over-full, and
   // the cap in the write keeps those attendees rather than the sign-up being written over one
-  // of them. Nothing was stored for it, so it must not be reported as placed
+  // of them. Nothing was stored for it, so it must not be reported as placed.
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);

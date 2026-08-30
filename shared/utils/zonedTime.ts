@@ -5,7 +5,7 @@ const HOUR_MS = 60 * 60 * 1000;
 
 // Whether an instant lands on exactly this wall-clock hour in the event timezone.
 // Converting a known instant into a timezone is unambiguous, so this is the same
-// answer on every host
+// answer on every host.
 const rendersAtWallClockHour = (
   instant: Date,
   year: number,
@@ -31,7 +31,7 @@ const rendersAtWallClockHour = (
 // same answer everywhere.
 //
 // The hour the spring transition skips does not exist at all; that resolves
-// forward, to the same instant the wall clock an hour later would give
+// forward, to the same instant the wall clock an hour later would give.
 export const atWallClockHourInEventTimezone = (
   year: number,
   month: number,

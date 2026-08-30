@@ -157,7 +157,7 @@ interface AssertSecondRunChangesNothingParams {
 
 // The lottery for a start time happens once, so running it again lotteries nothing and leaves
 // every spot the first run handed out where it is. Nothing here depends on which algorithm ran,
-// so the per-algorithm suites share it
+// so the per-algorithm suites share it.
 export const assertSecondRunChangesNothing = async ({
   assignmentAlgorithm,
   assignmentTime,
@@ -218,7 +218,7 @@ export const generateTestData = async (
 
 // Properties any valid assignment has, whatever the fixtures or the algorithm's shuffle produced.
 // The generated data is 30 attendees in 10 groups across 10 program items, which is where these
-// have something to catch that a handful of hand-built attendees cannot
+// have something to catch that a handful of hand-built attendees cannot.
 export const assertAssignmentInvariants = async (
   assignmentTime: string,
 ): Promise<void> => {
@@ -260,7 +260,7 @@ export const assertAssignmentInvariants = async (
   // A group is placed as a whole or not at all, and always into one program item: members
   // attend what their creator signed the group up for. Only spots the lottery handed out
   // count - a member keeping a first-come-first-served sign-up of their own while the group
-  // goes unplaced is not a split, it is just their own sign-up standing
+  // goes unplaced is not a split, it is just their own sign-up standing.
   const placedProgramItemByUsername = new Map(
     signupsForStartTime.flatMap((directSignup) =>
       directSignup.userSignups

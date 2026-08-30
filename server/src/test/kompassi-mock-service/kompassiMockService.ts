@@ -62,7 +62,7 @@ export const getKompassiLoginMockToken = (
     scope,
     refresh_token: "fw66oZDSDXDdx4R6UM4cu9mJ27tW49",
     // Included so the mock matches the real response shape. Nothing reads it:
-    // the claims come from the userinfo endpoint
+    // the claims come from the userinfo endpoint.
     id_token: "kompassi-login-mock-id-token",
   };
 

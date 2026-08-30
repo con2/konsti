@@ -77,7 +77,7 @@ const removeMovedLotterySignupsAndNotify = async (
 
   // A sign-up whose lottery has run records that the attendee entered it, and moving the
   // program item afterwards does not unmake that. Only one still waiting for its lottery is
-  // removed, since it asks for a slot the program item has left
+  // removed, since it asks for a slot the program item has left.
   const movedProgramItemIds = new Set(
     movedProgramItems
       .filter(

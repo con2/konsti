@@ -39,7 +39,7 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 
 ## Code Style
 
-- Don't end single line code comments with a period: write `// This is a comment`, not `// This is a comment.`
+- Don't end a code comment with a period when it is a single sentence, however many lines it wraps over: write `// This is a comment`, not `// This is a comment.` **A comment of several sentences ends every one of them with a period, the last included** — the sentences before it already carry one, so dropping the final one just reads as a typo.
 - **Keep code comments short — three lines is a lot, and a blank `//` line separating paragraphs means it is already too long.** State the non-obvious constraint or reason and stop. Leave out: what the code plainly does, benchmark numbers, worked examples of the failure, and the reasoning that led to the decision. One clause per reason is usually enough — "cached because every visible row asks the same question" earns its place; a paragraph explaining which rows, how often, and what the measured cost was does not. If a rule genuinely needs paragraphs, it belongs in the relevant `CLAUDE.md` or in [docs/en/lottery-design-choices.md](docs/en/lottery-design-choices.md), with the code comment pointing at it.
 - Comments document how the code works now — don't describe how it used to work or what changed (that's what git history is for).
 - Don't reference other files or components by name in code comments — renames and restructuring make them stale. Describe the role instead: "exported so callers can check...", not "exported so ProgramItemEntry can check...".

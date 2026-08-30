@@ -136,7 +136,7 @@ test("should record a group that took part but was placed nowhere", async () => 
 test("should keep one document per start time when the times differ only in seconds", async () => {
   // A manual run takes the time from the request, so it can carry seconds the cron's own
   // start-of-minute time doesn't. Every other start time comparison matches to the minute,
-  // so these two address one lottery and must not split into two documents
+  // so these two address one lottery and must not split into two documents.
   const firstTime = testProgramItem.startTime;
   const secondTime = setSeconds(new Date(firstTime), 30).toISOString();
 

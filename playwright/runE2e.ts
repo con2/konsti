@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
 // Runs the containerized Playwright E2E suite. Invoked by the
-// `docker-compose:test` package script (see playwright/CLAUDE.md)
+// `docker-compose:test` package script (see playwright/CLAUDE.md).
 
 // The playwright Docker image is tagged from the installed @playwright/test
 // version so the image matches the runner exactly
@@ -38,7 +38,7 @@ const dockerCompose = (args: string[]): number => {
 // Build both images in one compose invocation so Bake runs them in parallel
 // (the server build finishes inside the longer playwright build). Building the
 // playwright image every run keeps local runs on the current specs — a bare
-// `up` would silently reuse a stale cached image
+// `up` would silently reuse a stale cached image.
 const buildStatus = dockerCompose(["build", "server", "playwright"]);
 
 // Run the suite and exit with Playwright's own exit code

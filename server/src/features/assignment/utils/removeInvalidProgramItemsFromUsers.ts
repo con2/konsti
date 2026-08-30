@@ -70,7 +70,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
         const cancellationAction = getCancellationAction(foundProgramItem);
 
         // Valid sign-ups are kept. Invalid ones are preserved once their lottery has run;
-        // a deleted program item has none to ask, so those are always removed
+        // a deleted program item has none to ask, so those are always removed.
         const lotteryAlreadyRan =
           foundProgramItem !== undefined &&
           getLotterySignupEnded(foundProgramItem, timeNowResult.value);

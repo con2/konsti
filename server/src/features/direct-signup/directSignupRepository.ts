@@ -301,7 +301,7 @@ export const saveDirectSignup = async (
 
 // Which of these program items have a sign-up document at all, read without validating it.
 // The write this verifies does not upsert, so "no document" is proof it stored nothing, where
-// "document present but unreadable" says only that the check cannot tell
+// "document present but unreadable" says only that the check cannot tell.
 const findProgramItemIdsWithSignupDocument = async (
   programItemIds: string[],
 ): Promise<Result<Set<string>, MongoDbError>> => {
@@ -322,7 +322,7 @@ const findProgramItemIdsWithSignupDocument = async (
 
 // The attendance cap is applied by the write itself, so which sign-ups actually landed is
 // only known afterwards. Reporting the ones that didn't lets the caller treat them as not
-// placed rather than telling the attendee they got a spot that was never stored
+// placed rather than telling the attendee they got a spot that was never stored.
 const findSignupsNotSaved = async (
   signupsByProgramItems: Record<string, SignupRepositoryAddSignup[]>,
 ): Promise<Result<SignupRepositoryAddSignup[], MongoDbError>> => {
@@ -354,7 +354,7 @@ const findSignupsNotSaved = async (
       );
       if (!savedUsernames) {
         // No document to update and the write does not create one, so nothing was stored.
-        // Saying otherwise would send an acceptance email for a spot that does not exist
+        // Saying otherwise would send an acceptance email for a spot that does not exist.
         if (!documentedResult.value.has(signup.directSignupProgramItemId)) {
           logger.error(
             new Error(
@@ -365,7 +365,7 @@ const findSignupsNotSaved = async (
         }
 
         // The document is there but could not be read, which says nothing about the write.
-        // Reporting them dropped would tell attendees holding a spot that they got none
+        // Reporting them dropped would tell attendees holding a spot that they got none.
         logger.error(
           new Error(
             `Could not verify the assignment signups saved to program item ${signup.directSignupProgramItemId}, treating them as saved`,
@@ -448,7 +448,7 @@ export const saveDirectSignups = async (
                   },
                   // The only cap on the attendance limit, and it runs on the array as it stands
                   // rather than on a count read beforehand. Never below the attendees this write
-                  // leaves alone, so an over-full program item loses only the ones being written
+                  // leaves alone, so an over-full program item loses only the ones being written.
                   in: {
                     $slice: [
                       {
@@ -494,7 +494,7 @@ export const saveDirectSignups = async (
     const notSavedResult = await findSignupsNotSaved(signupsByProgramItems);
     if (!notSavedResult.ok) {
       // The write has landed by now, so failing the caller here would abort a lottery run that
-      // has already placed people. The unverified ones read as saved, like a skipped document
+      // has already placed people. The unverified ones read as saved, like a skipped document.
       logger.error(
         new Error(
           `Could not verify which assignment signups were saved, treating them as saved: ${notSavedResult.error}`,

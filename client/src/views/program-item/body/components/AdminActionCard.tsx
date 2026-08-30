@@ -132,7 +132,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
   // edit merges into whatever the other language already put there. The inputs
   // can be filled in any order, and an option is only valid with both languages
   // set, so the entries up to the edited one are filled in rather than left as
-  // holes the server would reject
+  // holes the server would reject.
   const updateSelectOption = (
     index: number,
     option: Partial<SignupQuestionSelectOption>,

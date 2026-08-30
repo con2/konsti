@@ -21,7 +21,7 @@ export const KompassiLoginButton = (): ReactElement => {
   // in flight, and the page then leaves for whichever authorize URL resolves
   // last - which may carry the state that is no longer stored. A ref rather
   // than state on purpose: nothing renders from it, so a page restored from
-  // the bfcache (Back from the Kompassi consent screen) can't come back stuck
+  // the bfcache (Back from the Kompassi consent screen) can't come back stuck.
   const redirecting = useRef(false);
 
   useEffect(() => {
@@ -50,13 +50,13 @@ export const KompassiLoginButton = (): ReactElement => {
           } catch (error) {
             // The request wrapper reports its own failures, so getting here
             // means storage refused to keep the login state. Nothing else
-            // would notice: the click just appears to do nothing
+            // would notice: the click just appears to do nothing.
             captureException(error);
           }
           // Only reached when no redirect happened: the success path never
           // resolves, because the page is unloading. A `finally` would say
           // this better, but the React Compiler declines any function
-          // containing one
+          // containing one.
           redirecting.current = false;
         }}
       >

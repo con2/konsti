@@ -25,7 +25,7 @@ const ownBuildTime = parseBuildTime(appBuildTime);
 
 // Shown when the server reports a build newer than the one this bundle came
 // from, i.e. a new Konsti version was deployed after this page was loaded.
-// Reloading fetches it
+// Reloading fetches it.
 export const AppUpdateBanner = (): ReactElement | null => {
   const { t } = useTranslation();
 
@@ -44,7 +44,7 @@ export const AppUpdateBanner = (): ReactElement | null => {
   // already-updated instance keeps polling instances still on the old build,
   // and must not be told to update to the version it is already running.
   // Either side missing a build time means there is nothing to compare, which
-  // is the case in every environment that doesn't stamp its builds
+  // is the case in every environment that doesn't stamp its builds.
   const serverBuildTime = parseBuildTime(serverAppBuildTime);
   const updateAvailable =
     ownBuildTime !== null &&
@@ -60,7 +60,7 @@ export const AppUpdateBanner = (): ReactElement | null => {
   // Attempt it only once per server build so a reload that fails to deliver
   // it can't loop; after that the banner's reload button remains as the
   // manual path. Keyed to the build rather than the revision so redeploying
-  // the same code - a rollback - is still allowed its own reload
+  // the same code - a rollback - is still allowed its own reload.
   useEffect(() => {
     const isNavigation = routerLocation.key !== lastLocationKey.current;
     lastLocationKey.current = routerLocation.key;

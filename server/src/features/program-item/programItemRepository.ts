@@ -85,7 +85,7 @@ export const saveProgramItems = async (
 
   // Read before the write, so the marks below go in with the change that makes them true and the
   // program item is never stored as a lottery item without one. Direct sign-ups are settled by
-  // now: the cancelled and deleted handling above is what last touched them
+  // now: the cancelled and deleted handling above is what last touched them.
   const directSignupsResult = await findDirectSignups();
   if (!directSignupsResult.ok) {
     return directSignupsResult;
@@ -111,7 +111,7 @@ export const saveProgramItems = async (
   //
   // Done before the decision is stored, so a failure here leaves the program item undecided and
   // the next import tries again. Recording it first and failing after would strand the sign-ups
-  // for good: the item would be filtered out as already decided every time from then on
+  // for good: the item would be filtered out as already decided every time from then on.
   const removeLotterySignupsResult = await removePassedOverLotterySignups(
     passedOverProgramItems,
   );
@@ -313,7 +313,7 @@ export const savePassedOverForLottery = async (
 // The start time each program item was sitting at when its lottery ran. A time rather than a
 // flag, so one moved onto another slot afterwards can be told from one still where it was
 // lotteried - and each item's own start time rather than the run's, because a batch's parent
-// time is the same before and after a move and so could never tell the two apart
+// time is the same before and after a move and so could never tell the two apart.
 export const saveLotteryRanForStartTime = async (
   programItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {

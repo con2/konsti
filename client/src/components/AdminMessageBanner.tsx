@@ -18,7 +18,7 @@ export const AdminMessageBanner = (): ReactElement | null => {
   );
 
   // Show the selected language, falling back to the other language so a message set in only
-  // one language still reaches everyone. Trim so a whitespace-only field counts as empty
+  // one language still reaches everyone. Trim so a whitespace-only field counts as empty.
   const primaryMessage =
     i18n.language === "fi" ? adminMessageFi : adminMessageEn;
   const fallbackMessage =

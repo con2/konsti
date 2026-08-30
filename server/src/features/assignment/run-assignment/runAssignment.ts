@@ -106,7 +106,7 @@ export const runAssignment = async ({
   // The lottery for a start time happens once. An item already carrying a mark either had its
   // lottery here, or had it elsewhere and was rescheduled onto this slot - either way its
   // remaining spots go to direct sign-up rather than through a second lottery among whoever
-  // signed up afterwards
+  // signed up afterwards.
   const notYetLotteriedProgramItems = startingLotteryProgramItems.filter(
     (programItem) =>
       programItem.lotteryRanForStartTime === undefined &&
@@ -116,7 +116,7 @@ export const runAssignment = async ({
   // A start time goes through one lottery, so one program item already carrying the mark closes
   // it for all of them: anything that arrived afterwards joins it on direct sign-up rather than
   // reopening the hour, recorded as passed over so that stays true once its sign-ups change.
-  // Asked of the whole programme, since one cancelled after its lottery still records it ran
+  // Asked of the whole programme, since one cancelled after its lottery still records it ran.
   const lotteriedHere = getStartingProgramItems(
     programItems,
     resolvedAssignmentTime,
@@ -163,7 +163,7 @@ export const runAssignment = async ({
 
   // A lottery program item is empty when its lottery runs. One that isn't keeps what it has and
   // stays on direct sign-up, since lotterying the rest would decide a single program item by two
-  // different rules. Skipped items are still marked below, so emptying one cannot put it back
+  // different rules. Skipped items are still marked below, so emptying one cannot put it back.
   const userSignupsByProgramItemId = new Map(
     directSignupsResult.value.map((directSignup) => [
       directSignup.programItemId,
@@ -234,7 +234,7 @@ export const runAssignment = async ({
   }
   // Only the attendees who actually got a spot. Acting on the algorithm's proposal instead
   // would strip the lottery sign-ups of someone a dropped result left with nothing, and those
-  // cannot be re-added once the sign-up window has closed
+  // cannot be re-added once the sign-up window has closed.
   const savedResults = saveResultsResult.value;
 
   if (
@@ -250,7 +250,7 @@ export const runAssignment = async ({
     if (!removeOverlapSignupsResult.ok) {
       // The spots are saved and the start time closed by now, so reporting a failure here
       // would call a lottery that finished a failure. It leaves an attendee holding a lottery
-      // sign-up for an hour they have already been placed at, which an admin can remove
+      // sign-up for an hour they have already been placed at, which an admin can remove.
       logger.error(
         new Error(
           `Assignment ${resolvedAssignmentTime}: failed to remove overlapping lottery sign-ups: ${removeOverlapSignupsResult.error}`,

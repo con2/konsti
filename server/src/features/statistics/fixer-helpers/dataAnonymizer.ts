@@ -67,7 +67,7 @@ export const anonymizeData = async (
   // anything is overwritten, so the operator can resolve problems while the
   // original names are still on disk. Konsti usernames are case-sensitive,
   // so a re-linked variant can in principle be a different person and is
-  // logged for manual review
+  // logged for manual review.
   const relinks = new Map<string, string>();
   const unresolved: string[] = [];
   for (const name of rowUsernames) {

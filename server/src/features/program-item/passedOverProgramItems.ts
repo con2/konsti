@@ -20,7 +20,7 @@ import { logger } from "server/utils/logger";
 
 // A lottery program item holding sign-ups goes to direct sign-up instead. Decided as the
 // programme is saved rather than when a run reaches it, so the program item can say so up front,
-// and the mark is what keeps the decision once those sign-ups are cancelled
+// and the mark is what keeps the decision once those sign-ups are cancelled.
 export const getPassedOverProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
   currentProgramItems: readonly ProgramItem[],
@@ -56,7 +56,7 @@ export const getPassedOverProgramItems = async (
       // Only while its schedule still has something to take away. Measured to the moment
       // direct sign-up would open rather than to the lottery's close, so a program item that
       // becomes a lottery one inside the phase gap does not have its open sign-up shut for
-      // the rest of it
+      // the rest of it.
       !getDirectSignupPhaseStarted(programItem, timeNowResult.value),
   );
 
@@ -72,7 +72,7 @@ export const getPassedOverProgramItems = async (
 // Lottery sign-ups for a program item that will not be lotteried after all. They are for a
 // lottery that will not happen, so they go the same way as those for a program item whose program
 // type leaves the lottery, and say the same thing. A sign-up whose lottery has already run is
-// left alone, whatever happens to the program item afterwards
+// left alone, whatever happens to the program item afterwards.
 export const removePassedOverLotterySignups = async (
   passedOverProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {

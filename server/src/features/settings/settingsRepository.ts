@@ -338,12 +338,12 @@ export const setProgramUpdateLastRun = async (
 
 // A held assignment lock older than this is treated as abandoned (a run that crashed without
 // releasing it) and can be reclaimed, so a crash can't deadlock assignments forever. Keep it
-// comfortably longer than any real assignment run so a slow run isn't reclaimed mid-flight
+// comfortably longer than any real assignment run so a slow run isn't reclaimed mid-flight.
 export const ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES = 5;
 
 // Acquire the assignment-in-progress lock if it is free or stale. Returns the lock token (the
 // acquisition time) to pass to releaseAssignmentLock, or SETTINGS_NOT_FOUND if another run
-// currently holds it
+// currently holds it.
 export const acquireAssignmentLock = async (): Promise<
   Result<string, MongoDbError>
 > => {
@@ -416,7 +416,7 @@ export const releaseAssignmentLock = async (
 };
 
 // Record the time of the last completed assignment. This is informational only — the run lock
-// is acquireAssignmentLock — so set it unconditionally to always reflect the latest run
+// is acquireAssignmentLock — so set it unconditionally to always reflect the latest run.
 export const setAssignmentLastRun = async (
   assignmentLastRun: string,
 ): Promise<Result<void, MongoDbError>> => {

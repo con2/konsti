@@ -7,7 +7,7 @@ import { Locator, Page, expect } from "@playwright/test";
 // installed clock otherwise keeps advancing in real time, and slow CI steps
 // could push a timed decision past the window it belongs to or fire a
 // straggler timer mid-assertion. The pause target must sit safely ahead of
-// the page's mocked clock (pausing into the past throws), hence the offset
+// the page's mocked clock (pausing into the past throws), hence the offset.
 export const pauseClock = async (page: Page): Promise<void> => {
   await page.clock.pauseAt(Date.now() + 1000);
 };
@@ -18,7 +18,7 @@ export const pauseClock = async (page: Page): Promise<void> => {
 // Pass a longer step when what is being waited for needs a fresh poll rather
 // than only a pending timer - the app drops an interval tick that arrives
 // while the previous load is still in flight, so a step shorter than the
-// poll interval can spend many rounds waiting for the tick after it
+// poll interval can spend many rounds waiting for the tick after it.
 export const fastForwardUntilVisible = async (
   page: Page,
   locator: Locator,

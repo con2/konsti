@@ -197,7 +197,7 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
   // Headings show the assignment time in the event timezone, latest run first.
   // The expected value is derived with Intl rather than with the app's own
   // formatter, so dropping the timezone from that formatter fails here instead
-  // of shifting both sides of the assertion together
+  // of shifting both sides of the assertion together.
   await expect(dashboard.runHeading(0)).toContainText(
     helsinkiTime(laterStartTime),
   );

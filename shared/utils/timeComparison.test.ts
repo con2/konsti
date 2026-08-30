@@ -33,7 +33,7 @@ describe("isSameOrBefore", () => {
 
 // These gate whether sign-up is open. Written as !isBefore / !isAfter they are
 // both true against an invalid date at once, which opens every window that
-// should be closed
+// should be closed.
 describe("An invalid date compares false, not true", () => {
   test.each([
     ["isSameOrAfter, invalid on the right", isSameOrAfter(earlier, invalid)],

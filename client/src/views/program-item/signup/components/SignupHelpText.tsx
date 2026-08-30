@@ -47,7 +47,7 @@ export const SignupHelpText = ({
 
   // Said out loud either way: an attendee seeing a future program item offer only direct
   // sign-up has no other way to know why. The two causes read differently - one is about the
-  // starting time changing, the other about the program item having sign-ups already
+  // starting time changing, the other about the program item having sign-ups already.
   const noLotteryAhead = willNotBeLotteried(programItem);
 
   const noLotteryInfo = noLotteryAhead ? (

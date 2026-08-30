@@ -60,7 +60,7 @@ export const addAssignmentNotifications = async ({
 
   // Get users who didn't get a spot in lottery. The lottery program items at this starting
   // time, whatever the run went on to do with each of them: this one set decides both who is
-  // rejected and what the rejection names, so a rejected attendee's slot is always inside it
+  // rejected and what the rejection names, so a rejected attendee's slot is always inside it.
   const startingProgramItems = getStartingProgramItems(
     programItems,
     assignmentTime,
@@ -82,7 +82,7 @@ export const addAssignmentNotifications = async ({
   );
   // Everyone with a live lottery sign-up for this start time took part, so everyone hears the
   // outcome - including an attendee who already holds a spot at that hour. The lottery really
-  // did consider them and really did not place them
+  // did consider them and really did not place them.
   const lotterySignups = getLotterySignups([...groupCreators, ...groupMembers]);
 
   // A sign-up naming a program item that does not start at this time was not part of this run,
@@ -104,7 +104,7 @@ export const addAssignmentNotifications = async ({
   // by a lottery - this run, or one that saved its spots and then failed before saying so, which
   // choice 7 allows to be run again. Telling them they got nothing would be false, and choice 5
   // means the event log item and the email could never be taken back. Asked of those program
-  // items rather than of the hour, so another lottery's win cannot silence this one's rejection
+  // items rather than of the hour, so another lottery's win cannot silence this one's rejection.
   const placedByLotteryResult = await findDirectSignupsByProgramItemIds([
     ...startingProgramItemIds,
   ]);

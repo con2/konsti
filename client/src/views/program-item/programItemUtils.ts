@@ -34,7 +34,7 @@ export const isAlreadyDirectySigned = (
 
 // Matched through each sign-up's own program item rather than its stored signedToStartTime,
 // which is never rewritten when a program item moves. Both sides are the hour the attendee
-// would turn up, so a batched program item's parent time does not come into it
+// would turn up, so a batched program item's parent time does not come into it.
 export const getDirectSignupForSlot = <T extends { programItem: ProgramItem }>(
   directSignups: readonly T[],
   programItem: ProgramItem,
@@ -45,7 +45,7 @@ export const getDirectSignupForSlot = <T extends { programItem: ProgramItem }>(
 
 // Bucketed in the event timezone so a viewer further east doesn't enter event week a day early.
 // Cached because every visible row asks the same question and the timezone-aware isSameWeek is
-// the expensive part of formatting one
+// the expensive part of formatting one.
 let eventWeekCache:
   | {
       timeNowMs: number;
@@ -113,7 +113,7 @@ export const getFormattedInterval = (
   // Same day in the event timezone: an item running 23:00 -> 01:00 Helsinki
   // crosses midnight for everyone, whatever calendar day the viewer is on.
   // Compared as calendar fields rather than with a timezone-aware isSameDay,
-  // which costs ~45us against ~10us here because each of its setters re-syncs
+  // which costs ~45us against ~10us here because each of its setters re-syncs.
   const endFormatted = isSameDayInEventTimezone(startTime, endTime)
     ? getTime(endTime.toISOString(), locale)
     : getFormattedTime(endTime, timeNow, locale);

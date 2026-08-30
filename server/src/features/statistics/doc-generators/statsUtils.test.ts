@@ -6,7 +6,7 @@ import {
 
 // Both helpers bucket instants by their Europe/Helsinki wall clock, so an instant
 // late in the UTC evening belongs to the next local day. Getting that wrong shifts
-// whole rows of the generated statistics onto the wrong day
+// whole rows of the generated statistics onto the wrong day.
 describe("bucketByHour", () => {
   test.each([
     ["2026-01-15T10:30:00Z", "2026-01-15", 12], // winter, GMT+2

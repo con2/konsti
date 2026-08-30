@@ -300,7 +300,7 @@ export interface RpgSpotCounts {
 // user's last lottery win in the final data (which loses a third of the
 // spots), so its counts come from the assignment results instead - the event
 // was lottery-only, so the results cover every spot, though a few spots users
-// gave up afterwards are included
+// gave up afterwards are included.
 const spotsCache = new Map<string, RpgSpotCounts>();
 
 export const collectRpgSpotCounts = (

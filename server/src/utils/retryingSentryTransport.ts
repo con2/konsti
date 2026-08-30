@@ -50,7 +50,7 @@ export const makeRetryingNodeTransport = (
   // Tracks the failing state so each outage logs one Sentry-bound error when
   // it starts; repeats during the episode only warn to the console. Without
   // this a failed drop report would feed itself back into the failing
-  // transport forever
+  // transport forever.
   let sendFailing = false;
 
   const reportDrop = (reason: string): void => {

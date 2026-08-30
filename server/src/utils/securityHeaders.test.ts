@@ -8,7 +8,7 @@ import { closeServer, startServer } from "server/utils/server";
 // upgrade-insecure-requests rewrites every subresource URL to https. That is
 // what the deployed profiles want and what a plain-http server must not send:
 // WebKit applies the upgrade to loopback origins too (Chromium exempts them),
-// so the whole bundle fails the TLS handshake and the page renders blank
+// so the whole bundle fails the TLS handshake and the page renders blank.
 
 let server: Server | undefined;
 

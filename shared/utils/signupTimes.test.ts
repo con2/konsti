@@ -31,7 +31,7 @@ const sunday = "2023-07-30";
 // The base every test runs against. Built once from the real config rather than
 // spread from config.event() inside the mock: config.event is already a spy by
 // then, so that would spread whatever the previous test mocked and let overrides
-// accrete across describes in file order. Describes needing more spread this
+// accrete across describes in file order. Describes needing more spread this.
 const baseEventConfig: EventConfig = {
   ...config.event(),
   eventStartTime: `${friday}T12:00:00Z`,
@@ -693,7 +693,7 @@ describe("Relative direct sign-up state", () => {
 // A start time that cannot be parsed makes every time derived from it invalid,
 // and an invalid date compares false against everything. Each predicate has to
 // land on the closed side of that, or the UI offers a sign-up the server will
-// reject
+// reject.
 describe("Sign-up state when the start time cannot be resolved", () => {
   const programItem = { ...testProgramItem, startTime: "not a time" };
   const timeNow = new Date(`${saturday}T12:00:00.000Z`);
@@ -734,7 +734,7 @@ describe("Sign-up state when the start time cannot be resolved", () => {
 // A program item carries `lotteryRanForStartTime` from the moment its lottery runs, and from
 // the moment the programme shows it already holding sign-ups. Whether a lottery is still coming
 // for it decides both which sign-up it offers and, once the answer is no, that direct sign-up
-// stays open rather than closing against a schedule the item no longer follows
+// stays open rather than closing against a schedule the item no longer follows.
 describe("Program items no lottery will take", () => {
   // Sat 17:00 GMT+3: lottery at 14:00, direct sign-up from 14:15
   const startTime = `${saturday}T14:00:00.000Z`;

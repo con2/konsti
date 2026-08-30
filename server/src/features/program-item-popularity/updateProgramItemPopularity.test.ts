@@ -304,7 +304,7 @@ test("Should not update popularity once the lottery sign-up has closed", async (
   // Between the lottery running and the program item starting, the figures popularity is
   // derived from no longer mean demand: capacity is reduced by the spots just handed out
   // while every attendee still competes for what is left. A start time is never simulated
-  // again once it has passed, so a value written here would be the one kept for good
+  // again once it has passed, so a value written here would be the one kept for good.
   const timeNow = subMinutes(
     new Date(testProgramItem.startTime),
     60,

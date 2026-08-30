@@ -2,7 +2,7 @@ import { type ErrorEvent } from "@sentry/node";
 
 // Request headers that carry the client IP address (PII). The requestData
 // integration includes request headers by default while excluding user.ip_address,
-// so these have to be scrubbed manually before sending the event to Sentry
+// so these have to be scrubbed manually before sending the event to Sentry.
 const ipHeaders = new Set([
   "x-forwarded-for",
   "x-real-ip",

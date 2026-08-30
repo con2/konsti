@@ -255,7 +255,7 @@ describe("Assignment cronjob", () => {
 
   test("should reclaim a stale in-progress lock left by a crashed run", async () => {
     // A previous run acquired the lock but never released it (the process crashed). The lock is
-    // older than the stale timeout, so the next run can reclaim it
+    // older than the stale timeout, so the next run can reclaim it.
     vi.setSystemTime(
       subMinutes(new Date(timeNow), ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES + 1),
     );

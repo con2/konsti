@@ -44,7 +44,7 @@ const signupQuestionSchema = new mongoose.Schema({
 // There is exactly one settings document. Without a unique key, concurrent
 // creates on an empty collection can each insert one - reads then return
 // whichever landed first and silently shadow the other's writes. Every query
-// matches on this key so the second insert loses on duplicate key instead
+// matches on this key so the second insert loses on duplicate key instead.
 export const SETTINGS_SINGLETON_KEY = 0;
 
 const settingsSchema = new mongoose.Schema(
@@ -80,7 +80,7 @@ const settingsSchema = new mongoose.Schema(
       // The assignment-in-progress lock: null means free, otherwise the time the running
       // assignment acquired it. Held for the whole run and reset to null on completion; a held
       // lock older than the stale timeout is treated as abandoned (a crashed run) so a crash
-      // can't deadlock assignments. Fresh row starts free (null)
+      // can't deadlock assignments. Fresh row starts free (null).
       default: null,
     },
     latestServerStartTime: {
@@ -88,7 +88,7 @@ const settingsSchema = new mongoose.Schema(
       get: (value: Date) => new Date(value),
       // Epoch (not "now") so a settings row recreated mid-run reads as older than any live
       // instance and the cron guard surfaces it as an error — a "now" default would masquerade
-      // as a newer server instance and silently stop cronjobs. Server start overwrites this
+      // as a newer server instance and silently stop cronjobs. Server start overwrites this.
       default: () => new Date(0),
     },
     loginProvider: {

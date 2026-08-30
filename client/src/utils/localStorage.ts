@@ -96,7 +96,7 @@ export const clearSession = (): void => {
 
 // Dismissed admin message is stored separately from the zod-strict 'state' object so a public
 // (logged-out) visitor can remember their dismissal without a session. We store the dismissed
-// message text itself, so a new or edited admin message no longer matches and shows again
+// message text itself, so a new or edited admin message no longer matches and shows again.
 const dismissedAdminMessageKey = `${browserStorageEventPrefix}-dismissedAdminMessage`;
 
 export const getDismissedAdminMessage = (): string => {

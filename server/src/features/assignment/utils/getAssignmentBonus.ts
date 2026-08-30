@@ -23,7 +23,7 @@ export const getAssignmentBonusContext = (
 ): AssignmentBonusContext => {
   // The lottery program items this starting time decides. Not only the ones still being
   // lotteried: a retry drops the items an earlier attempt placed people into, and that
-  // attempt's results must still read as this run's rather than as a lottery they lost
+  // attempt's results must still read as this run's rather than as a lottery they lost.
   const startingProgramItems = getStartingProgramItems(
     allProgramItems,
     assignmentTime,
@@ -45,7 +45,7 @@ export const getAssignmentBonusContext = (
     ]),
     // A placement the attendee never got to attend is not one they spent: cancelling their own
     // sign-up costs the bonus, the program item being cancelled does not. Asked of the whole
-    // programme, since a placement at any other start time is still a placement
+    // programme, since a placement at any other start time is still a placement.
     stillRunningProgramItemIds: new Set(
       allProgramItems
         .filter((programItem) => programItem.state === State.ACCEPTED)
@@ -72,7 +72,7 @@ export const getAssignmentBonus = (
 
   // This run wrote it: for one of the program items it decides, and at one of the hours it
   // covers. Neither half alone will do - an item can carry a placement from before it was
-  // rescheduled onto this hour, and another lottery can cover this hour with its own items
+  // rescheduled onto this hour, and another lottery can cover this hour with its own items.
   const isThisRunsOwn = (programItemId: string, startTime: string): boolean =>
     thisRunsProgramItemIds.has(programItemId) && isCurrentStartTime(startTime);
 
@@ -130,7 +130,7 @@ export const getAssignmentBonus = (
   // Get group members with previous NO_ASSIGNMENT event log items and without direct sign-ups.
   // Ignore a NO_ASSIGNMENT from the current assignmentTime. A run that rejected everyone and
   // then failed before marking its items can be run again, and counting the items it wrote
-  // would make the retry boost the very attendees the first attempt turned down
+  // would make the retry boost the very attendees the first attempt turned down.
   const groupMembersWithPreviousFailedLotterySignup =
     groupMembersWithoutDirectSignups.filter((groupMember) => {
       return groupMember.eventLogItems.find(

@@ -10,7 +10,7 @@ import { EventConfigSchema } from "shared/config/eventConfigTypes";
 //
 // Checked here rather than at startup because the config is static: what this
 // test parses is exactly what ships. It parses the same schema the type is
-// inferred from, so a new field is covered without being listed again
+// inferred from, so a new field is covered without being listed again.
 describe("event config", () => {
   test("matches its schema", () => {
     const result = EventConfigSchema.safeParse(config.event());

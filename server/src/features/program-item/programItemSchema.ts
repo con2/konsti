@@ -88,7 +88,7 @@ const programItemSchema = new mongoose.Schema(
     // Server-owned like popularity: written by the assignment, and left out of the program
     // item import so a Kompassi update doesn't clear it. No getter, because it is absent on
     // every program item no lottery has run for and one would read that absence as an
-    // Invalid Date
+    // Invalid Date.
     lotteryRanForStartTime: { type: Date },
     passedOverForLottery: { type: Boolean },
     programType: { type: String, required: true },

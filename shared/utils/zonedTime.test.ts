@@ -24,7 +24,7 @@ describe("Resolves an ordinary wall-clock hour", () => {
 
 // 03:00 on the autumn transition day happens twice, once at GMT+3 and again an
 // hour later at GMT+2. Which one a bare TZDate lands on depends on the host's
-// own timezone, so the choice is made explicitly and is the same everywhere
+// own timezone, so the choice is made explicitly and is the same everywhere.
 describe("Resolves the repeated autumn hour to its first occurrence", () => {
   const repeated = atWallClockHourInEventTimezone(2026, OCTOBER, 25, 3);
 

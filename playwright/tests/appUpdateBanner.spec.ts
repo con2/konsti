@@ -49,7 +49,7 @@ test("Update banner appears once polls confirm a newer build and stays dismissed
   await reportServerBuildTime(page);
 
   // Mock browser timers so the data poll (dataUpdateInterval, 60 s) can be
-  // fast-forwarded instead of waited for. Must be installed before the app loads
+  // fast-forwarded instead of waited for. Must be installed before the app loads.
   await page.clock.install();
   await page.goto("/");
   const programList = new ProgramListPage(page);
@@ -211,7 +211,7 @@ test("A later build gets a transparent reload of its own", async ({
 
   // The guard records the build it was spent on rather than that a reload has
   // happened at all, so a further deploy is still allowed one. This is what
-  // makes a rollback work: it redeploys earlier code under a later build time
+  // makes a rollback work: it redeploys earlier code under a later build time.
   setServerBuildTime("2000");
   await expect
     .poll(async () => {
@@ -293,7 +293,7 @@ test("Update reloads transparently on the first navigation, but only once per bu
 
   // The reloaded page confirms the still-differing version again. Wait for
   // the view to render first: it means the load-time poll has finished, so
-  // the fast-forwarded interval tick isn't dropped as concurrent
+  // the fast-forwarded interval tick isn't dropped as concurrent.
   const programItemPage = new ProgramItemPage(page);
   await expect(programItemPage.title).toBeVisible();
   await page.clock.fastForward("01:01");
@@ -303,7 +303,7 @@ test("Update reloads transparently on the first navigation, but only once per bu
   // further link navigation is a normal SPA transition that keeps the page
   // instance and the banner. A link click rather than history back, because
   // traversing to an entry whose document the transparent reload destroyed
-  // may be a cross-document load in some browsers
+  // may be a cross-document load in some browsers.
   await setPageMarker(page);
   // Watch for a load before navigating: asserting on the marker alone races
   // the reload, so it would hold even if one were on its way

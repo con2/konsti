@@ -67,7 +67,7 @@ export const saveResults = async ({
 
   // The program items that went through the lottery, placed or not: their lottery has happened.
   // Written only once the spots exist, because nothing clears the mark - marking before a
-  // failed save would strand them out of the lottery with nobody placed
+  // failed save would strand them out of the lottery with nobody placed.
   const saveLotteryRanResult = await saveLotteryRanForStartTime(
     lotteriedProgramItems,
   );
@@ -101,7 +101,7 @@ export const saveResults = async ({
   });
 
   // Recorded only when a program item actually went through a lottery. A run that skipped
-  // every one of them decided nothing, and a record for it would read as a lottery that ran
+  // every one of them decided nothing, and a record for it would read as a lottery that ran.
   if (lotteriedProgramItems.length > 0) {
     await storeResultsSnapshot({
       results: finalResults,

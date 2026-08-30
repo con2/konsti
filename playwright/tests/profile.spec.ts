@@ -40,7 +40,7 @@ test("Update email notification address and password from profile", async ({
   await page.reload();
   await expect(profilePage.emailInput).toHaveValue("test1@example.com");
 
-  // Change password. The field starts masked and the eye icon toggles it
+  // Change password. The field starts masked and the eye icon toggles it.
   await profilePage.newPasswordInput.fill("newpassword");
   await expect(profilePage.newPasswordInput).toHaveAttribute(
     "type",
@@ -139,7 +139,7 @@ test("Decline email notifications from profile", async ({ page, request }) => {
   // the success assertion below can only match the second save's message.
   // That matters: it keeps the reload from happening while the save's
   // session restore is still in flight, which would abort it and log the
-  // user out
+  // user out.
   await profilePage.emailNotificationsDisabled.check();
   await expect(profilePage.main).not.toContainText(
     "Email address updated successfully",

@@ -37,7 +37,7 @@ export const getVisibleProgramItems = (
 
   // Before the main event program is visible, only show pre-convention week program.
   // After it is visible, pre-convention week program is in the past so it drops out of
-  // the upcoming list on its own
+  // the upcoming list on its own.
   const phaseFilteredProgramItems = isMainEventProgramVisible(timeNow)
     ? fullnessFiltered
     : fullnessFiltered.filter((programItem) =>

@@ -21,7 +21,7 @@ import {
 // failure while keeping navigator.onLine true, matching the real wake-up
 // cases. The grace period is entered through the online event here — one
 // listener downstream of the page-resume machinery, which Playwright can't
-// drive for real (no visibility emulation)
+// drive for real (no visibility emulation).
 
 // Clock jumps tied to the client's suppression timings: the toast decision
 // runs 1 s after a failure and the grace period lasts 5 s, so a 2 s jump
@@ -34,7 +34,7 @@ const PAST_POLL_TICK = "01:01";
 
 // Abort all API requests and return a getter for how many were aborted.
 // The app loads data with sequential requests, so a count of 2+ proves the
-// first rejection was fully processed and its decision timer is scheduled
+// first rejection was fully processed and its decision timer is scheduled.
 const abortApi = async (page: Page): Promise<() => number> => {
   let failures = 0;
   await page.route("**/api/**", async (route) => {
@@ -76,7 +76,7 @@ test("Network error toast appears during an outage, heals on recovery, and is di
   await login(page, request, { username: "test1", password: "test" });
 
   // Mock browser timers so the data poll (dataUpdateInterval, 60 s) can be
-  // fast-forwarded instead of waited for. Must be installed before the app loads
+  // fast-forwarded instead of waited for. Must be installed before the app loads.
   await page.clock.install();
   await page.goto("/");
 
@@ -149,7 +149,7 @@ test("Refresh failing right after reconnect stays silent when the connection rec
   // The network is back before the probe fires, so the probe succeeds and
   // the whole blip stays silent — this is the phone-wakes-before-Wi-Fi case.
   // Await the probe's real response before jumping again, or the next jump
-  // would fire the probe's timeout while its request is still in flight
+  // would fire the probe's timeout while its request is still in flight.
   await restoreApi(page);
   const probeResponse = page.waitForResponse(`**${ApiEndpoint.HEALTH}`);
   await page.clock.fastForward(PAST_PROBE);

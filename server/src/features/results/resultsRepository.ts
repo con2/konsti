@@ -33,7 +33,7 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
 // so it is the only lasting account of what the lottery did. A start time is lotteried once,
 // but an attempt that saved its spots and failed before marking them can be run again - and
 // the second attempt skips the program items the first one filled, so replacing the document
-// would drop the first attempt's placements from the record for good
+// would drop the first attempt's placements from the record for good.
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
   groups: readonly AssignmentResultGroup[],
@@ -52,7 +52,7 @@ export const saveResult = async (
 
     // An attendee holds one spot per start time, so a placement written again replaces the
     // earlier record of it rather than joining it. Only the placements merge: the algorithm,
-    // the message and the group snapshot describe the attempt that wrote them (choice 9)
+    // the message and the group snapshot describe the attempt that wrote them (choice 9).
     const placedNow = new Set(
       signupResultData.map((result) => result.username),
     );

@@ -110,7 +110,7 @@ export const storeLotterySignup = async ({
   // A program item is lotteried at most once, and one already holding sign-ups is not lotteried
   // at all. Either way the sign-up window these times are derived from can still be open - a
   // move reopens it, and a program item passed over is marked while it is - so without this a
-  // sign-up could be made to a lottery that will not happen
+  // sign-up could be made to a lottery that will not happen.
   if (willNotBeLotteried(programItem)) {
     return {
       message: `Program item ${programItemId} does not take part in a lottery`,

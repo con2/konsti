@@ -196,7 +196,7 @@ test("Preselect the next starting time whose lottery can still be run", async ({
 }) => {
   // The first slot's direct signup is already open at event start, so its lottery can no
   // longer be run. During an event most of the list is behind that line, which is why the
-  // earliest starting time is a poor default
+  // earliest starting time is a poor default.
   const pastStartTime = hoursIntoEvent(1);
   const nextStartTime = hoursIntoEvent(4);
 

@@ -18,7 +18,7 @@ export const seedRandomness = (seed = 1): void => {
   //
   // Math.imul, not `*`: the product overflows Number.MAX_SAFE_INTEGER, and the
   // rounding that follows collapses the period to a few thousand coarsely
-  // spaced values, which is not a generator at all
+  // spaced values, which is not a generator at all.
   const modulus = 2 ** 32;
   let state = seed;
   vi.spyOn(Math, "random").mockImplementation(() => {

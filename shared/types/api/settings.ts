@@ -36,7 +36,7 @@ export interface SettingsPayload {
   // Seconds since the epoch at which the running image was built, empty when
   // not available. Images are built in the order they are deployed, so this
   // both identifies the deploy and lets a client tell a newer server from one
-  // that simply hasn't rolled yet
+  // that simply hasn't rolled yet.
   appBuildTime: string;
   hiddenProgramItemIds: readonly string[];
   appOpen: boolean;

@@ -61,7 +61,7 @@ import {
 
 // Randomness is seeded per test, so the generated fixtures and the algorithm's shuffle produce
 // the same assignment every run and the count can be exact rather than a floor. It is a snapshot
-// of what this data yields, not a requirement - changing the fixtures or the algorithm moves it
+// of what this data yields, not a requirement - changing the fixtures or the algorithm moves it.
 const expectedResultsCount = 28;
 
 vi.mock<object>(
@@ -1037,7 +1037,7 @@ describe("The lottery for a start time runs once", () => {
   // A group has to land in one program item or none - splitting it is confusing, and a member
   // is only in the lottery through the creator's sign-ups in the first place. So a
   // first-come-first-served sign-up doesn't settle its holder: they take part with the rest of
-  // the group and the spot the lottery gives them replaces it
+  // the group and the spot the lottery gives them replaces it.
   test.each([
     { role: "creator", username: mockUser.username },
     { role: "member", username: mockUser2.username },
@@ -1116,7 +1116,7 @@ describe("The lottery for a start time runs once", () => {
     ).toISOString();
 
     // Moving is not what ends a program item's lottery - the mark left by one that ran is.
-    // An item whose lottery never happened still gets it, at whatever slot it ends up in
+    // An item whose lottery never happened still gets it, at whatever slot it ends up in.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
     ]);
@@ -1227,7 +1227,7 @@ describe("The lottery for a start time runs once", () => {
 
     // Direct sign-up for a lottery program item opens only once the gap after its lottery
     // has passed, so anything already in one means it has been taking sign-ups by another
-    // rule. Deciding the same program item twice over is what the run avoids
+    // rule. Deciding the same program item twice over is what the run avoids.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
     ]);
@@ -1272,7 +1272,7 @@ describe("The lottery for a start time runs once", () => {
 
     // Skipping one program item must not cost the rest of the start time its lottery. The
     // attendee still has a sign-up naming the skipped one, and the assigner rejects its whole
-    // input over a preference it has no event for
+    // input over a preference it has no event for.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
       {
@@ -1323,7 +1323,7 @@ describe("The lottery for a start time runs once", () => {
     // choice 7 allows to be run again: the spot is there, the program item is unmarked, and the
     // lottery sign-up is still live. The retry skips the program item as occupied, so the
     // attendee is absent from its results - but they were placed, and saying otherwise is
-    // permanent
+    // permanent.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
     ]);
@@ -1355,7 +1355,7 @@ describe("The lottery for a start time runs once", () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     // A start time goes through one lottery. A program item imported after it has run joins the
-    // hour on direct sign-up rather than starting a second lottery among whoever signed up since
+    // hour on direct sign-up rather than starting a second lottery among whoever signed up since.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
     ]);
@@ -1500,7 +1500,7 @@ describe("The lottery for a start time runs once", () => {
 
     // A program type change can turn a non-lottery program item into a lottery one. Its
     // direct sign-up never opened, so it is empty and gets its one lottery like any other -
-    // which honours whoever entered it after the change
+    // which honours whoever entered it after the change.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
     ]);
@@ -1528,7 +1528,7 @@ describe("The lottery for a start time runs once", () => {
     // The state a run that saved its spots and then failed before marking them leaves behind.
     // Each program item's spots are written in one atomic update, so the ones it reached are
     // whole and the ones it didn't are untouched - skipping just those keeps a single slipped
-    // program item from costing everyone else at that start time their lottery
+    // program item from costing everyone else at that start time their lottery.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
       {
@@ -1612,7 +1612,7 @@ describe("The lottery for a start time runs once", () => {
 
     // A group wins together and one member cancels their spot afterwards, so the program item
     // that is then rescheduled onto the group's next slot carries only some of them. Nothing
-    // may withdraw the whole group over what one member happens to still hold
+    // may withdraw the whole group over what one member happens to still hold.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
       {
@@ -1703,7 +1703,7 @@ describe("The lottery for a start time runs once", () => {
     // The program item they won is rescheduled onto a slot they have lottery sign-ups for.
     // Nobody expressed a preference between the two - the conflict did not exist when they
     // signed up - so the spot is treated like any other and gives way to what the lottery
-    // hands them
+    // hands them.
     await saveProgramItems([
       { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
       {
@@ -1861,7 +1861,7 @@ test("Should not place anyone into a cancelled program item", async () => {
 
 test("Should not write a results snapshot when the run lotteried nothing", async () => {
   // The lottery runs on a timer, so most start times have nothing for it to do. Recording
-  // those would bury the real results under empty ones
+  // those would bury the real results under empty ones.
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     twoPhaseSignupProgramTypes: [testProgramItem.programType],

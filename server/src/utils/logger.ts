@@ -20,7 +20,7 @@ const LEVEL = Symbol.for("level");
 const surfaceError = format((info) => {
   if (info instanceof Error) {
     // sole-arg Error: winston makes `info` the Error itself. Return a fresh info so we don't
-    // mutate the caller's Error or create a circular self-reference through `error`
+    // mutate the caller's Error or create a circular self-reference through `error`.
     const next: TransformableInfo = {
       level: info.level,
       message: info.message,

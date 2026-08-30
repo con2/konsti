@@ -17,7 +17,7 @@ export const HistoryProvider = ({ children }: Props): ReactElement => {
   // the new location already sees the one it came from. Keeping the location
   // the pair was derived from is what makes a re-render that doesn't navigate
   // leave the pair alone, instead of promoting the current location to being
-  // its own predecessor
+  // its own predecessor.
   if (visited.current !== location) {
     setVisited({ current: location, previous: visited.current });
   }

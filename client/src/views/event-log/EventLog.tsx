@@ -23,7 +23,7 @@ export const EventLog = (): ReactElement => {
     if (useRelativeTime) {
       // The clock only advances once a minute, so an item that arrived since
       // the last tick is stamped after it. Reading such an item as "in a few
-      // seconds" would be nonsense, so measure those from their own timestamp
+      // seconds" would be nonsense, so measure those from their own timestamp.
       const reference = isBefore(timeNow, created) ? created : timeNow;
       return formatRelativeTime(reference, created);
     }

@@ -30,7 +30,7 @@ export function getRejectedEmailTemplate(
 ): EmailTemplate {
   // One lottery can cover several starting times at once, and naming only the first would point
   // at one hour out of the several the attendee was competing across. Both ends carry their date,
-  // since a span can end on a later day and a bare clock time would read as running backwards
+  // since a span can end on a later day and a bare clock time would read as running backwards.
   const { lotteriedUntil, programType } = notification;
   const lotteriedLine = (locale: Locale): string => {
     const from = getDateAndTime(notification.programItemStartTime, locale);

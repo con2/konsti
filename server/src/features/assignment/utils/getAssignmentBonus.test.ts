@@ -343,7 +343,7 @@ test("should strip the first-time bonus for another lottery's win at one of this
   const [user] = getUsers({ count: 1 });
 
   // A win in a program item this run does not decide, recorded at the same hour. Two lotteries
-  // can cover one hour, so the hour alone cannot say whose result this was
+  // can cover one hour, so the hour alone cannot say whose result this was.
   const directSignups: DirectSignupsForProgramItem[] = [
     {
       programItemId: testProgramItem2.programItemId,

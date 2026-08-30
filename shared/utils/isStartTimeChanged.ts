@@ -9,5 +9,5 @@ export const isStartTimeChanged = (
   // Reported as changed when either time is unparseable, which is what the
   // negation gives. A time that can't be read is not evidence that nothing moved,
   // and callers act on a change, so this is the answer that gets looked at rather
-  // than silently passed over
+  // than silently passed over.
   !isSameTime(signedToStartTime, programItemStartTime);

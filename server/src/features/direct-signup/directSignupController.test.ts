@@ -307,7 +307,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     // Lotteried three hours earlier and rescheduled onto this slot. Its sign-up opened back
-    // then and does not shut again just because the new slot's schedule has not reached it
+    // then and does not shut again just because the new slot's schedule has not reached it.
     await saveLotteryRanForStartTime([
       {
         ...testProgramItem,

@@ -115,7 +115,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     );
 
     // testProgramItem2 starts at the same time and the user already has a spot in it. They may
-    // still enter the lottery: if it places them, the spot they win replaces the one they hold
+    // still enter the lottery: if it places them, the spot they win replaces the one they hold.
     await saveProgramItems([
       testProgramItem,
       { ...testProgramItem2, startTime: testProgramItem.startTime },
@@ -204,7 +204,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     // Lotteried for an earlier start time and moved since: moving reopens the sign-up window
     // these times are derived from, but no run will consider the item again.
     // Seeded through the writer rather than saveProgramItems, which leaves this field alone
-    // on purpose so a Kompassi import can't clear it
+    // on purpose so a Kompassi import can't clear it.
     await saveProgramItems([testProgramItem]);
     await saveLotteryRanForStartTime([
       {

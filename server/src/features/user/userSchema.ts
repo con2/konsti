@@ -87,13 +87,13 @@ const userSchema = new mongoose.Schema(
     // No `required`: "" is the meaningful value for a local account, and the
     // global validator override that lets empty strings satisfy `required`
     // only loads with the Express app - tests connecting straight to the DB
-    // would reject every local account. The default covers the undefined case
+    // would reject every local account. The default covers the undefined case.
     kompassiId: { type: String, default: "" },
     kompassiUsernameAccepted: { type: Boolean, required: true },
     // Usernames identify a user everywhere: sign-ups, event log writes and
     // assignment results all match on this field, and a username-filtered update
     // only ever reaches one document. A second document with the same name would
-    // silently collect writes meant for the other
+    // silently collect writes meant for the other.
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userGroup: { type: String, required: true },
@@ -117,7 +117,7 @@ const userSchema = new mongoose.Schema(
 
 // One Konsti account per Kompassi identity, and an index for the lookup every
 // Kompassi login does. Partial so it ignores the "" local accounts share,
-// which would otherwise all collide with each other
+// which would otherwise all collide with each other.
 userSchema.index(
   { kompassiId: 1 },
   { unique: true, partialFilterExpression: { kompassiId: { $gt: "" } } },
