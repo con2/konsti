@@ -118,7 +118,6 @@ export const getFormattedInterval = (
     ? getTime(endTime.toISOString(), locale)
     : getFormattedTime(endTime, timeNow, locale);
 
-  // Note that the dash should be an en dash
   return `${startFormatted} – ${endFormatted}`;
 };
 

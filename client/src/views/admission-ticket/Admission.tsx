@@ -25,7 +25,6 @@ export const Admission = ({
   const { eventName, eventYear } = config.event();
 
   const formatTime = (): string => {
-    // Note that the dash should be an en dash
     return `${capitalize(getWeekdayAndTime(programItem.startTime))}–${getTime(programItem.endTime)}`;
   };
 

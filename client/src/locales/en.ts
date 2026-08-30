@@ -320,7 +320,6 @@ export const translationEN = {
       "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was cancelled.",
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
-    // Note that the dash should be an en dash
     noAssignmentTimeRange:
       "{{PROGRAM_TYPE}} between {{FIRST_TIME}}–{{LAST_TIME}} were lotteried and you didn't get a spot.",
     programItemCancelled:

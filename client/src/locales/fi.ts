@@ -322,7 +322,6 @@ export const translationFI = {
       "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}}, mutta se on peruuntunut.",
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
-    // Note that the dash should be an en dash
     noAssignmentTimeRange:
       "{{PROGRAM_TYPE}} välillä {{FIRST_TIME}}–{{LAST_TIME}} arvottiin, etkä saanut paikkaa.",
     programItemCancelled:
