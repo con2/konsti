@@ -324,6 +324,13 @@ anything anyway.
 This is the same principle as choice 5, applied to the other record: an event log item is never
 deleted because the attendee was told, a past lottery sign-up because the lottery happened.
 
+**Nothing is said about it, and nothing needs to be.** A program item leaving the lottery after its
+lottery has run used to remove the sign-ups it carried and tell their holders so. Now that they are
+kept, there is no removal to announce, and the attendee is told nothing. That is the right silence:
+their lottery is behind them and its outcome has already reached them, so a sign-up for it is a
+record they have no decision left to make about. What the program item offers them now is on its own
+page. A message here would be Konsti raising something the attendee has finished with.
+
 **One exception, and it is about what can be asked rather than what is wanted.** A program item
 deleted from the programme is gone, so there is no start time left to work out whether its lottery
 had run, and its sign-ups are removed as choice 2 removes direct sign-ups for it - they refer to
