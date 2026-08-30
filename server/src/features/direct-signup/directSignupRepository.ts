@@ -8,6 +8,7 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { isSameTime } from "shared/utils/timeComparison";
+import { isDuplicateKeyBulkWriteError } from "server/db/duplicateKeyError";
 import {
   DirectSignupSchemaDb,
   SignupModel,
@@ -664,12 +665,23 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
         },
       }),
     );
-    await SignupModel.bulkWrite(bulkOps);
+    // Unordered so one program item another caller is creating at the same time does not stop
+    // the documents for the rest of the batch
+    await SignupModel.bulkWrite(bulkOps, { ordered: false });
     logger.info(
       `MongoDB: Signup collection created for ${programItemIds.length} program items: ${programItemIds.join(", ")}`,
     );
     return makeSuccessResult();
   } catch (error) {
+    // Another caller created the document first, which is what this was for. Reporting it as a
+    // failure would fail the program item import over a state it did reach
+    if (isDuplicateKeyBulkWriteError(error)) {
+      logger.info(
+        "MongoDB: Signup documents already created by a concurrent caller",
+      );
+      return makeSuccessResult();
+    }
+
     logger.error(
       new Error(
         `MongoDB: Creating signup collection for ${programItemIds.length} program items failed`,

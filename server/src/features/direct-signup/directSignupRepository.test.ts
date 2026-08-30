@@ -373,6 +373,60 @@ test("should keep existing direct sign-ups when the empty sign-up document is cr
   expect(signups[0].count).toEqual(1);
 });
 
+test("should create the sign-up document once when two callers create it at the same time", async () => {
+  await saveProgramItems([testProgramItem]);
+  unsafelyUnwrap(await removeDirectSignups());
+
+  const [first, second] = await Promise.all([
+    createEmptyDirectSignupDocumentForProgramItems([
+      testProgramItem.programItemId,
+    ]),
+    createEmptyDirectSignupDocumentForProgramItems([
+      testProgramItem.programItemId,
+    ]),
+  ]);
+
+  // Losing the race means the document is there, which is what the caller wanted
+  expect(first.ok).toEqual(true);
+  expect(second.ok).toEqual(true);
+  expect(unsafelyUnwrap(await findDirectSignups())).toHaveLength(1);
+});
+
+test("should create the sign-up documents in one unordered batch", async () => {
+  // Weaker than the tests around it, and deliberately so: what this guards is a concurrent insert
+  // aborting the rest of an ordered batch, which needs a real race to reproduce. The option is
+  // the whole mechanism, so pin that instead
+  const bulkWrite = vi.spyOn(SignupModel, "bulkWrite");
+  await saveProgramItems([testProgramItem]);
+
+  expect(bulkWrite).toHaveBeenCalledWith(expect.anything(), { ordered: false });
+});
+
+test("should treat a duplicate key error as the sign-up document already existing", async () => {
+  // The race above is not guaranteed to interleave, so drive the branch directly
+  vi.spyOn(SignupModel, "bulkWrite").mockRejectedValue({
+    writeErrors: [{ code: 11000 }],
+  });
+
+  const response = await createEmptyDirectSignupDocumentForProgramItems([
+    testProgramItem.programItemId,
+  ]);
+
+  expect(response.ok).toEqual(true);
+});
+
+test("should report a write failure that is not a duplicate key", async () => {
+  vi.spyOn(SignupModel, "bulkWrite").mockRejectedValue({
+    writeErrors: [{ code: 11000 }, { code: 121 }],
+  });
+
+  const response = await createEmptyDirectSignupDocumentForProgramItems([
+    testProgramItem.programItemId,
+  ]);
+
+  expect(response.ok).toEqual(false);
+});
+
 test("should reject a second sign-up document for the same program item", async () => {
   await saveProgramItems([testProgramItem]);
 
