@@ -198,7 +198,11 @@ after it. Holding those back would delay sign-up for attendees who are already i
 protect a lottery that is not going to happen.
 
 So a lottery program item holding sign-ups when its lottery is due has arrived there by some other
-route: it was always-open, or a non-lottery program type, and became a lottery item afterwards.
+route. Either it was always-open, or a non-lottery program type, and became a lottery item
+afterwards - or it sat at an early slot, took sign-ups there because no lottery was coming for it,
+and was then moved to a slot where one is. Neither needs handling of its own: the decision is made
+against wherever the program item now sits, every time the programme is saved.
+
 Lotterying whatever capacity is left would decide one program item by two different rules, with the
 attendees who signed up early and the attendees in the lottery playing different games. It is left
 on direct sign-up instead.

@@ -1013,3 +1013,49 @@ test("should keep lottery sign-ups whose lottery has run when a program item sto
   );
   expect(programItem.passedOverForLottery).toEqual(true);
 });
+
+test("should mark a program item holding direct sign-ups that moves onto a slot with a lottery still coming", async () => {
+  // An early slot has no lottery to be gapped from, so this program item takes direct sign-ups
+  // from the event start without ever being lotteried. Moving it to a slot where a lottery is
+  // still coming must not hand it to that lottery on top of the attendees it already has
+  const { eventStartTime } = config.event();
+  const earlyStartTime = addHours(new Date(eventStartTime), 1).toISOString();
+  const laterStartTime = addHours(new Date(eventStartTime), 8).toISOString();
+
+  await saveTestSettings({
+    testTime: addHours(new Date(eventStartTime), 1).toISOString(),
+  });
+
+  const earlyProgramItem = { ...testProgramItem, startTime: earlyStartTime };
+  await saveProgramItems([earlyProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    signedToStartTime: earlyStartTime,
+  });
+
+  // Nothing to take away at the early slot: its direct sign-up is open on the schedule, so the
+  // save leaves it unmarked and the mark below can only come from the move
+  await saveProgramItems([earlyProgramItem]);
+  const beforeMove = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(beforeMove.passedOverForLottery).toBeUndefined();
+
+  await saveProgramItems([{ ...earlyProgramItem, startTime: laterStartTime }]);
+
+  const afterMove = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(afterMove.passedOverForLottery).toEqual(true);
+
+  // The spots that made it passed over are still there
+  const directSignups = unsafelyUnwrap(await findDirectSignups());
+  const programItemSignup = directSignups.find(
+    (directSignup) =>
+      directSignup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    programItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser.username]);
+});
