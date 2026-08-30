@@ -1408,3 +1408,61 @@ test("should place a whole group that still has room for all of it", async () =>
     ]),
   );
 });
+
+test("should place a winner whose username names an Object prototype member", async () => {
+  // A username is unrestricted input, and one with no sign-ups to look up reads back as an
+  // inherited function when the lookup is keyed into a plain object, which then cannot be
+  // filtered - after the spots have already been committed
+  const username = "constructor";
+
+  await saveUser({ ...mockUser, username });
+  await saveUser(mockUser2);
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  // Held by somebody else, so the winner being looked up has nothing of their own
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const wonProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([username]);
+
+  // Somebody else's spot at that hour is not theirs to give up
+  const heldProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  );
+  expect(
+    heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser2.username]);
+});
