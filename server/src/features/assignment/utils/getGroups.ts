@@ -1,7 +1,10 @@
 import { first, groupBy, shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
-import { isSameStartTime } from "shared/utils/signupTimes";
+import {
+  getLotterySignupsInRun,
+  indexProgramItemsById,
+} from "server/features/assignment/utils/getLotterySignupsInRun";
 import { Group } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
 
@@ -10,6 +13,8 @@ export const getGroups = (
   assignmentTime: string,
   lotterySignupProgramItems: readonly ProgramItem[],
 ): Group[] => {
+  const programItemsById = indexProgramItemsById(lotterySignupProgramItems);
+
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
@@ -19,26 +24,10 @@ export const getGroups = (
       return [];
     }
 
-    const lotterySignupsForStartTime = firstMember.lotterySignups.filter(
-      (lotterySignup) => {
-        const programItem = lotterySignupProgramItems.find(
-          (lotterySignupProgramItem) =>
-            lotterySignupProgramItem.programItemId ===
-            lotterySignup.programItemId,
-        );
-
-        // A sign-up naming a program item this run is not allocating has no event to map
-        // to, and the assigner rejects the whole input over a single such preference
-        if (!programItem) {
-          return false;
-        }
-
-        return isSameStartTime(
-          programItem.startTime,
-          programItem.parentId,
-          assignmentTime,
-        );
-      },
+    const lotterySignupsForStartTime = getLotterySignupsInRun(
+      firstMember.lotterySignups,
+      programItemsById,
+      assignmentTime,
     );
 
     // Sort by priority, randomize between same priority values
