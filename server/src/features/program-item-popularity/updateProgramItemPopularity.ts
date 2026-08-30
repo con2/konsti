@@ -58,9 +58,8 @@ export const updateProgramItemPopularity = async (): Promise<
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  // A program item no lottery will take - moved after its own, or passed over for holding
-  // sign-ups already - would otherwise absorb demand for a lottery it can never enter, at the
-  // expense of the ones still headed for one. Whatever figure it already carries stays
+  // Simulating a program item no lottery will take would spend attendees' placements on it
+  // rather than on the ones a lottery is still coming for. Its stored figure stays as it is
   const lotteryProgramItems = validLotterySignupProgramItems.filter(
     (programItem) => !willNotBeLotteried(programItem),
   );
