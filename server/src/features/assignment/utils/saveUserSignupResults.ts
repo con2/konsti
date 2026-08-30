@@ -149,13 +149,14 @@ const removeReplacedSignups = async ({
   // one moves
   startTimeByProgramItemId,
 }: RemoveReplacedSignupsParams): Promise<void> => {
-  const existingSignupsByUsername = groupBy(
-    existingSignups,
-    (signup) => signup.username,
+  // A Map rather than a keyed object: a username is unrestricted input, and one that names an
+  // Object.prototype member would read back as an inherited function past the ?? below
+  const existingSignupsByUsername = new Map(
+    Object.entries(groupBy(existingSignups, (signup) => signup.username)),
   );
 
   const signupsToDelete = finalResults.flatMap((result) =>
-    (existingSignupsByUsername[result.username] ?? [])
+    (existingSignupsByUsername.get(result.username) ?? [])
       .filter((signup) => {
         const heldStartTime = startTimeByProgramItemId.get(
           signup.programItemId,
@@ -209,16 +210,20 @@ const dropResultsThatDoNotFit = ({
 
   // A winner's existing sign-ups for this start time are deleted to make room for the spot
   // they won, so only the attendees staying put take up space
-  const stayingPutByProgramItemId = countBy(
-    existingSignups.filter((signup) => !winners.has(signup.username)),
-    (signup) => signup.programItemId,
+  const stayingPutByProgramItemId = new Map(
+    Object.entries(
+      countBy(
+        existingSignups.filter((signup) => !winners.has(signup.username)),
+        (signup) => signup.programItemId,
+      ),
+    ),
   );
   const remainingByProgramItemId = new Map(
     programItems.map((programItem) => [
       programItem.programItemId,
       Math.max(
         programItem.maxAttendance -
-          (stayingPutByProgramItemId[programItem.programItemId] ?? 0),
+          (stayingPutByProgramItemId.get(programItem.programItemId) ?? 0),
         0,
       ),
     ]),
