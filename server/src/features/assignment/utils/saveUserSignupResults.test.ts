@@ -1537,3 +1537,104 @@ test("should drop a whole group whose room is taken by a spot the write has not 
   );
   expect(groupMembersPlaced).toEqual([]);
 });
+
+test("should displace spots at every hour a batched lottery placed somebody at", async () => {
+  // One run, two sub-sessions an hour apart, and a winner in each: the run has to act on both
+  // hours rather than on whichever one it placed somebody at first
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    -30,
+  ).toISOString();
+  const laterStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    60,
+  ).toISOString();
+  const heldAtFirstHourId = "held-at-first-hour";
+  const heldAtLaterHourId = "held-at-later-hour";
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    // Same batch, so one lottery covers both, but it runs an hour later
+    {
+      ...testProgramItem2,
+      parentId: testProgramItem.parentId,
+      startTime: laterStartTime,
+      minAttendance: 1,
+      maxAttendance: 1,
+    },
+    // What each winner already holds at their own hour, outside the batch
+    {
+      ...testProgramItem,
+      programItemId: heldAtFirstHourId,
+      parentId: heldAtFirstHourId,
+      title: "Held at the first hour",
+    },
+    {
+      ...testProgramItem,
+      programItemId: heldAtLaterHourId,
+      parentId: heldAtLaterHourId,
+      title: "Held at the later hour",
+      startTime: laterStartTime,
+    },
+  ]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: heldAtFirstHourId,
+  });
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+    directSignupProgramItemId: heldAtLaterHourId,
+    signedToStartTime: laterStartTime,
+  });
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: parentStartTime,
+      results: [
+        {
+          username: mockUser.username,
+          assignmentSignup: {
+            programItemId: testProgramItem.programItemId,
+            priority: 1,
+            signedToStartTime: testProgramItem.startTime,
+          },
+        },
+        {
+          username: mockUser2.username,
+          assignmentSignup: {
+            programItemId: testProgramItem2.programItemId,
+            priority: 1,
+            signedToStartTime: laterStartTime,
+          },
+        },
+      ],
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const heldBy = (username: string): string[] =>
+    signups
+      .filter((signup) =>
+        signup.userSignups.some(
+          (userSignup) => userSignup.username === username,
+        ),
+      )
+      .map((signup) => signup.programItemId);
+
+  // Each winner holds what they won and nothing else at that hour, whichever hour it was
+  expect(heldBy(mockUser.username)).toEqual([testProgramItem.programItemId]);
+  expect(heldBy(mockUser2.username)).toEqual([testProgramItem2.programItemId]);
+});
