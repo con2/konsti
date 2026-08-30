@@ -108,9 +108,8 @@ export const ProgramItemLotterySignup = ({
   );
 
   const timeNow = useTimeNow();
-  // No run will take this program item - it moved after its lottery, or it was passed over for
-  // holding sign-ups already - so there is no lottery to sign up for. Asked through the window
-  // predicate rather than the start time alone, so the button goes once the window shuts
+  // A program item's own lottery sign-up window can be open while no lottery is coming for it:
+  // passed over for holding direct sign-ups, or moved onto a slot whose window has not run out
   const lotterySignupOpen =
     !willNotBeLotteried(programItem) &&
     getLotterySignupInProgress(programItem, timeNow);
