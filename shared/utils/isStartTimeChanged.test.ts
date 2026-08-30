@@ -7,7 +7,7 @@ import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 const startTime = "2023-07-29T15:00:00.000Z";
 
 describe("isStartTimeChanged", () => {
-  test("returns false when the sign-up records the program item's start time", () => {
+  test("returns false when the direct sign-up records the program item's start time", () => {
     expect(isStartTimeChanged(startTime, startTime)).toEqual(false);
   });
 

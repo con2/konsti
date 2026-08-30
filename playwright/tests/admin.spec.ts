@@ -51,7 +51,7 @@ test("Admin can open and close the app", async ({ page, request }) => {
   await expect(adminPage.closeKonstiButton).toBeVisible();
 });
 
-test("Admin can change the signup strategy", async ({ page, request }) => {
+test("Admin can change the sign-up strategy", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -154,7 +154,7 @@ test("Admin can remove the temporary message with Clear", async ({
   await expect(adminPage.adminMessageBanner).toBeHidden();
 });
 
-test("Admin sees signup questions listed", async ({ page, request }) => {
+test("Admin sees sign-up questions listed", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {

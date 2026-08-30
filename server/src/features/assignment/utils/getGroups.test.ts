@@ -16,7 +16,7 @@ afterEach(() => {
   vi.resetAllMocks();
 });
 
-test("excludes lottery signups for items whose lottery already ran (different start time)", () => {
+test("excludes lottery sign-ups for items whose lottery already ran (different start time)", () => {
   // A leftover sign-up for an item that already ran is kept on the user but must not
   // become a preference in a later lottery for a different start time
   const pastStartTime = subHours(new Date(assignmentTime), 2).toISOString();

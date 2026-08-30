@@ -206,7 +206,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should join group and remove lottery signups whose lottery has not yet run", async () => {
+  test("should join group and remove lottery sign-ups whose lottery has not yet run", async () => {
     const pastStartTime = new Date(testProgramItem.startTime).toISOString();
     const upcomingStartTime = addMinutes(
       new Date(testProgramItem.startTime),
@@ -267,7 +267,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     );
   });
 
-  test("should join group and keep upcoming lottery signup whose lottery has already run", async () => {
+  test("should join group and keep upcoming lottery sign-up whose lottery has already run", async () => {
     const pastStartTime = testProgramItem.startTime;
 
     await saveTestSettings({
@@ -310,7 +310,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     );
   });
 
-  test("should join group and remove lottery signup when parent startTime indicates lottery has not yet run", async () => {
+  test("should join group and remove lottery sign-up when parent startTime indicates lottery has not yet run", async () => {
     const { directSignupPhaseStart } = config.event();
 
     // 'parentStartTime' is before lottery, 'ownStartTime' in after lottery
@@ -368,7 +368,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(updatedUser?.lotterySignups.length).toEqual(0);
   });
 
-  test("should join group and not remove upcoming lottery signup with parent startTime in past", async () => {
+  test("should join group and not remove upcoming lottery sign-up with parent startTime in past", async () => {
     const timeNow = new Date(testProgramItem.startTime).toISOString();
     const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
     const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
@@ -422,7 +422,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     );
   });
 
-  test("should return error if existing upcoming direct signups", async () => {
+  test("should return error if existing upcoming direct sign-ups", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],

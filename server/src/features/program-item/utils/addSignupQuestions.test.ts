@@ -43,7 +43,7 @@ const tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> = {
   selectOptions: [],
 };
 
-test("should save configured signup questions", async () => {
+test("should save configured sign-up questions", async () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     signupQuestions: [signupQuestion],
@@ -61,7 +61,7 @@ test("should save configured signup questions", async () => {
   expect(settings.signupQuestions[0]).toMatchObject(signupQuestion);
 });
 
-test("should add tournament signup question to tournaments except excluded ones", async () => {
+test("should add tournament sign-up question to tournaments except excluded ones", async () => {
   const tournament = {
     ...testProgramItem,
     programType: ProgramType.TOURNAMENT,
@@ -93,7 +93,7 @@ test("should add tournament signup question to tournaments except excluded ones"
   });
 });
 
-test("should not add tournament signup question to non-tournament program items", async () => {
+test("should not add tournament sign-up question to non-tournament program items", async () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     signupQuestions: [],

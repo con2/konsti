@@ -39,7 +39,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should add new signup for user", async () => {
+test("should add new direct sign-up for user", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
 
@@ -51,7 +51,7 @@ test("should add new signup for user", async () => {
   expect(response.userSignups[0].username).toEqual(mockUser.username);
 });
 
-test("should delete signup from user", async () => {
+test("should delete direct sign-up from user", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -63,7 +63,7 @@ test("should delete signup from user", async () => {
   expect(response.userSignups.length).toEqual(0);
 });
 
-test("should fetch program item signups", async () => {
+test("should fetch program item direct sign-ups", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -103,7 +103,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
 });
 
-test("should set count to total userSignups when appending to a program item that already has signups", async () => {
+test("should set count to total userSignups when appending to a program item that already has direct sign-ups", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 5 }]);
@@ -126,7 +126,7 @@ test("should set count to total userSignups when appending to a program item tha
   expect(signupsAfterSave[0].count).toEqual(2);
 });
 
-test("should not add multiple duplicate signups for same user", async () => {
+test("should not add multiple duplicate direct sign-ups for same user", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
 
@@ -143,7 +143,7 @@ test("should not add multiple duplicate signups for same user", async () => {
   expect(signupsAfterSave[0].userSignups).toHaveLength(1);
 });
 
-test("should remove several users' signups in one delDirectSignups call", async () => {
+test("should remove several users' direct sign-ups in one delDirectSignups call", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 5 }]);

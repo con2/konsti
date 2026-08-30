@@ -76,7 +76,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return error when signup is not yet open", async () => {
+  test("should return error when lottery sign-up is not yet open", async () => {
     vi.setSystemTime(
       subMinutes(
         new Date(testProgramItem.startTime),
@@ -275,7 +275,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(user?.lotterySignups).toHaveLength(0);
   });
 
-  test("should return error when signup is closed", async () => {
+  test("should return error when lottery sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
@@ -381,7 +381,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(modifiedUser?.lotterySignups).toHaveLength(0);
   });
 
-  test("should return error when program item doesn't use Konsti signup", async () => {
+  test("should return error when program item doesn't use Konsti sign-up", async () => {
     await saveProgramItems([
       { ...testProgramItem, signupType: SignupType.OTHER },
     ]);
@@ -616,7 +616,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return error when signup is closed", async () => {
+  test("should return error when lottery sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );

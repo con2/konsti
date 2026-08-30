@@ -77,7 +77,7 @@ test("Periodic data poll picks up new program items without navigation", async (
   );
 });
 
-test("Periodic data poll hides signup when direct signup ends", async ({
+test("Periodic data poll hides sign-up when direct sign-up ends", async ({
   page,
   request,
 }) => {

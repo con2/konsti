@@ -71,7 +71,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should insert new program item into collection and add new direct signup document", async () => {
+test("should insert new program item into collection and add new direct sign-up document", async () => {
   await saveProgramItems([testProgramItem]);
 
   // Program item document
@@ -88,7 +88,7 @@ test("should insert new program item into collection and add new direct signup d
   expect(directSignups[0].programItemId).toEqual(testProgramItem.programItemId);
 });
 
-test("should remove program item document and signup document when program item is removed", async () => {
+test("should remove program item document and direct sign-up document when program item is removed", async () => {
   await saveProgramItems([testProgramItem]);
 
   // This will delete program item
@@ -103,7 +103,7 @@ test("should remove program item document and signup document when program item 
   expect(directSignups).toHaveLength(0);
 });
 
-test("should remove lottery signups and favorites when program item is deleted and add notification", async () => {
+test("should remove lottery sign-ups and favorites when program item is deleted and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -162,7 +162,7 @@ test("should remove lottery signups and favorites when program item is deleted a
   );
 });
 
-test("should remove direct signups when program item is deleted and add notification", async () => {
+test("should remove direct sign-ups when program item is deleted and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -212,7 +212,7 @@ test("should remove direct signups when program item is deleted and add notifica
   );
 });
 
-test("should remove lottery signups but keep favorites when program item is cancelled before lottery and add notification", async () => {
+test("should remove lottery sign-ups but keep favorites when program item is cancelled before lottery and add notification", async () => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(testProgramItem.startTime),
@@ -280,7 +280,7 @@ test("should remove lottery signups but keep favorites when program item is canc
   );
 });
 
-test("should remove direct signups when program item is cancelled and add notification", async () => {
+test("should remove direct sign-ups when program item is cancelled and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -389,7 +389,7 @@ test("should send email when program item start time changes", async () => {
   expect(queueService.getSender().getSentEmails()).toHaveLength(1);
 });
 
-test("should remove lottery signups but not favorites when program item doesn't use Konsti signup anymore before lottery and add notification", async () => {
+test("should remove lottery sign-ups but not favorites when program item doesn't use Konsti sign-up anymore before lottery and add notification", async () => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(testProgramItem.startTime),
@@ -462,7 +462,7 @@ test("should remove lottery signups but not favorites when program item doesn't 
   expect(queueService416.getSender().getSentEmails()).toHaveLength(2);
 });
 
-test("should keep direct signup when program item programType is changed to non-lottery type and don't add notification", async () => {
+test("should keep direct sign-up when program item programType is changed to non-lottery type and don't add notification", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -485,7 +485,7 @@ test("should keep direct signup when program item programType is changed to non-
   expect(noLotteryAnymoreEvents).toHaveLength(0);
 });
 
-test("should remove direct signups when program item doesn't use Konsti signup anymore and add notification", async () => {
+test("should remove direct sign-ups when program item doesn't use Konsti sign-up anymore and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -544,7 +544,7 @@ test("should remove direct signups when program item doesn't use Konsti signup a
   expect(queueService475.getSender().getSentEmails()).toHaveLength(2);
 });
 
-test("should not add duplicate notification when program item is cancelled and user has direct signup, lottery signup and favorite", async () => {
+test("should not add duplicate notification when program item is cancelled and user has direct sign-up, lottery sign-up and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -573,7 +573,7 @@ test("should not add duplicate notification when program item is cancelled and u
   expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(1);
 });
 
-test("should not add duplicate notification when signupType is changed away from Konsti and user has direct signup, lottery signup and favorite", async () => {
+test("should not add duplicate notification when signupType is changed away from Konsti and user has direct sign-up, lottery sign-up and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -602,7 +602,7 @@ test("should not add duplicate notification when signupType is changed away from
   );
 });
 
-test("should not add any notification when programType is changed to non-lottery type and user has direct signup, lottery signup and favorite", async () => {
+test("should not add any notification when programType is changed to non-lottery type and user has direct sign-up, lottery sign-up and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -624,7 +624,7 @@ test("should not add any notification when programType is changed to non-lottery
   expect(getGlobalNotificationQueueService()?.getItems()).toHaveLength(0);
 });
 
-test("should preserve lottery signup when program item is cancelled after its lottery has run but not add notification because the user didn't get a spot", async () => {
+test("should preserve lottery sign-up when program item is cancelled after its lottery has run but not add notification because the user didn't get a spot", async () => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(testProgramItem.startTime),
@@ -651,7 +651,7 @@ test("should preserve lottery signup when program item is cancelled after its lo
   expect(cancelEvents).toHaveLength(0);
 });
 
-test("should preserve lottery signup when signupType is changed away from Konsti after its lottery has run but not add notification because the user didn't get a spot", async () => {
+test("should preserve lottery sign-up when signupType is changed away from Konsti after its lottery has run but not add notification because the user didn't get a spot", async () => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(testProgramItem.startTime),
@@ -678,7 +678,7 @@ test("should preserve lottery signup when signupType is changed away from Konsti
   expect(signupTypeChangedEvents).toHaveLength(0);
 });
 
-test("should remove lottery signup but keep favorites when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
+test("should remove lottery sign-up but keep favorites when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(testProgramItem.startTime),
@@ -736,7 +736,7 @@ test("should remove lottery signup but keep favorites when programType is change
   expect(queueService649.getSender().getSentEmails()).toHaveLength(1);
 });
 
-test("should preserve lottery signup when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {
+test("should preserve lottery sign-up when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(testProgramItem.startTime),
@@ -763,7 +763,7 @@ test("should preserve lottery signup when programType is changed to non-lottery 
   expect(noLotteryAnymoreEvents).toHaveLength(0);
 });
 
-test("should add event notification if user has lottery signup and program item start time changes", async () => {
+test("should add event notification if user has lottery sign-up and program item start time changes", async () => {
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
@@ -839,7 +839,7 @@ test("should add event notification if user has lottery signup and program item 
   );
 });
 
-test("should add event notification if user has direct signup and program item start time changes", async () => {
+test("should add event notification if user has direct sign-up and program item start time changes", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);

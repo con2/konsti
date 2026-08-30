@@ -22,7 +22,7 @@ import {
 
 const alwaysOpenTitle = "Always open item";
 
-test("Add and cancel direct signup", async ({ page, request }) => {
+test("Add and cancel direct sign-up", async ({ page, request }) => {
   await clearDb(request);
   await populateDb(request, {
     clean: true,
@@ -219,7 +219,7 @@ test("Show error when program item full and update participant list", async ({
   await expect(participantList.nth(0)).toHaveText("test2");
 });
 
-test("Show no signup controls after direct signup has ended", async ({
+test("Show no sign-up controls after direct sign-up has ended", async ({
   page,
   request,
 }) => {
@@ -280,7 +280,7 @@ test("Show no signup controls after direct signup has ended", async ({
   await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
 });
 
-test("Show timeslot conflict message instead of signup button", async ({
+test("Show timeslot conflict message instead of direct sign-up button", async ({
   page,
   request,
 }) => {
@@ -331,7 +331,7 @@ test("Show timeslot conflict message instead of signup button", async ({
   await expect(conflictingProgramItem.signUpButton).toBeHidden();
 });
 
-test("Show no signup button before direct signup opens", async ({
+test("Show no sign-up button before direct sign-up opens", async ({
   page,
   request,
 }) => {

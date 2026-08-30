@@ -33,7 +33,7 @@ const clockTime = (isoTime: string): string => {
   return `${hours}:${minutes}`;
 };
 
-test("Show event log notification when program item with direct signup is moved", async ({
+test("Show event log notification when program item with direct sign-up is moved", async ({
   page,
   request,
 }) => {
@@ -145,7 +145,7 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
 // A sign-up that has already been placed is kept instead: it holds a seat at the
 // time it was made for, which is what the lottery ran against. The user is told
 // the program item moved rather than losing the sign-up
-test("Keep a placed sign-up and say the starting time changed", async ({
+test("Keep a placed direct sign-up and say the starting time changed", async ({
   page,
   request,
 }) => {

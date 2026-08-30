@@ -99,7 +99,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return 422 if signup message is too long", async () => {
+  test("should return 422 if sign-up message is too long", async () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message:
@@ -219,7 +219,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(0);
   });
 
-  test("should return error if program doesn't use Konsti signup", async () => {
+  test("should return error if program doesn't use Konsti sign-up", async () => {
     await saveProgramItems([
       { ...testProgramItem, signupType: SignupType.OTHER },
     ]);
@@ -270,7 +270,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(0);
   });
 
-  test("should return error when signup is not yet open", async () => {
+  test("should return error when direct sign-up is not yet open", async () => {
     // This test time should land to phaseGap
     vi.setSystemTime(
       subHours(new Date(testProgramItem.startTime), 2).toISOString(),
@@ -341,7 +341,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(1);
   });
 
-  test("should return error when signup is closed", async () => {
+  test("should return error when direct sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
@@ -407,7 +407,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
-  test("should return own signup message when signup question is private", async () => {
+  test("should return own sign-up message when sign-up question is private", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     await createSettings();
@@ -542,7 +542,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(matchingSignup?.count).toEqual(maxAttendance);
   });
 
-  test("should not create new signup collection when program item is full", async () => {
+  test("should not create new direct sign-up collection when program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     const maxAttendance = 2;
@@ -647,7 +647,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(member?.groupCode).toEqual("0");
   });
 
-  test("should not disband the group when the direct signup fails because the program item is full", async () => {
+  test("should not disband the group when the direct sign-up fails because the program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     await saveProgramItems([
@@ -692,7 +692,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(member?.groupCode).toEqual("group-123");
   });
 
-  test("should not remove user from group when signing up to 'signup always open' program item", async () => {
+  test("should not remove user from group when signing up to 'sign-up always open' program item", async () => {
     // A group exists to enter the lottery together, and an always-open program item is not
     // one the lottery allocates - taking a spot in it settles the user for that start time
     // without ending the group's other slots
@@ -877,7 +877,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
   });
 
-  test("should return error when signup is not found", async () => {
+  test("should return error when direct sign-up is not found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
     await saveProgramItems([testProgramItem]);
 

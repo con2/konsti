@@ -248,7 +248,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
   });
 
-  test("should clean but not remove signup document when program item is hidden", async () => {
+  test("should clean but not remove direct sign-up document when program item is hidden", async () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
@@ -327,7 +327,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     expect(response.status).toEqual(200);
   });
 
-  test("should add new text signup question", async () => {
+  test("should add new text sign-up question", async () => {
     await createSettings();
 
     const requestData: PostSignupQuestionRequest = {
@@ -354,7 +354,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     );
   });
 
-  test("should add new select signup question", async () => {
+  test("should add new select sign-up question", async () => {
     await createSettings();
 
     const requestData: PostSignupQuestionRequest = {
@@ -416,7 +416,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     expect(response.status).toEqual(200);
   });
 
-  test("should delete signup question", async () => {
+  test("should delete sign-up question", async () => {
     await createSettings();
 
     const signupQuestion: SignupQuestion = {

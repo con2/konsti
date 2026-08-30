@@ -65,7 +65,7 @@ test.each([
   expect(infoLines()).toContain(expected);
 });
 
-test("reports the sign-up opening time used as the baseline", () => {
+test("reports the direct sign-up opening time used as the baseline", () => {
   printRpgDirectSignupFullTimes([directSignup(SIGNUP_OPENS)], [programItem]);
   expect(infoLines()).toContain("0s (2/4) - Test RPG");
 });
@@ -78,7 +78,7 @@ test("skips cancelled program items", () => {
   expect(infoLines()).not.toContain("1h30min (2/4) - Test RPG");
 });
 
-test("ignores signups for non-RPG program items", () => {
+test("ignores direct sign-ups for non-RPG program items", () => {
   printRpgDirectSignupFullTimes(
     [directSignup("2023-07-29T14:30:00.000Z")],
     [{ ...programItem, programType: ProgramType.WORKSHOP }],

@@ -379,7 +379,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   );
 });
 
-test("should only add one event log item with multiple lottery signups", async () => {
+test("should only add one event log item with multiple lottery sign-ups", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
@@ -478,7 +478,7 @@ test("should only add one event log item with multiple lottery signups", async (
   );
 });
 
-test("should not add event log items after assignment if signup is dropped due to error", async () => {
+test("should not add event log items after assignment if a direct sign-up is dropped due to error", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -556,7 +556,7 @@ test("should not add event log items after assignment if signup is dropped due t
   ).toEqual(true);
 });
 
-test("should give dropped signup users a NO_ASSIGNMENT message when multiple signups are dropped due to error", async () => {
+test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups are dropped due to error", async () => {
   const lotteryUsers = [mockUser, mockUser2, mockUser3, mockUser4];
   for (const user of lotteryUsers) {
     await saveUser(user);
@@ -633,7 +633,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   expect(rejectedNotifications).toHaveLength(2);
 });
 
-test("should remove all of a winner's existing same-time direct signups, not just one", async () => {
+test("should remove all of a winner's existing same-time direct sign-ups, not just one", async () => {
   const alwaysOpenId1 = "always-open-1";
   const alwaysOpenId2 = "always-open-2";
 

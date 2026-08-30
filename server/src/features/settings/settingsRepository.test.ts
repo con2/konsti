@@ -67,7 +67,7 @@ test("should update appOpen status", async () => {
   expect(insertedSettings.appOpen).toEqual(appOpen);
 });
 
-test("should not save multiple signup questions for same programItemId", async () => {
+test("should not save multiple sign-up questions for same programItemId", async () => {
   // This will create default settings
   await findOrCreateSettings();
 

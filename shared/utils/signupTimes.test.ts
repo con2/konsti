@@ -69,50 +69,50 @@ beforeEach(() => {
   vi.spyOn(config, "event").mockReturnValue(baseEventConfig);
 });
 
-describe("Lottery signup", () => {
-  test("RPG starting at 15:00 should have signup starting at 15:00", () => {
+describe("Lottery sign-up", () => {
+  test("RPG starting at 15:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 16:00 should have signup starting at 15:00", () => {
+  test("RPG starting at 16:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T13:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 17:00 should have signup starting at 15:00", () => {
+  test("RPG starting at 17:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T14:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 18:00 should have signup starting at 15:00", () => {
+  test("RPG starting at 18:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T15:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 19:00 should have signup starting at 15:00", () => {
+  test("RPG starting at 19:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T16:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 20:00 should have signup starting at 16:00", () => {
+  test("RPG starting at 20:00 should have sign-up starting at 16:00", () => {
     const startTime = `${friday}T17:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T13:00:00.000Z`);
   });
 
-  test("RPG starting at 21:00 should have signup starting at 17:00", () => {
+  test("RPG starting at 21:00 should have sign-up starting at 17:00", () => {
     const startTime = `${friday}T18:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
@@ -120,36 +120,36 @@ describe("Lottery signup", () => {
   });
 });
 
-describe("Early lottery signup", () => {
-  test("RPG starting at 09:00 should have signup starting at 22:00", () => {
+describe("Early lottery sign-up", () => {
+  test("RPG starting at 09:00 should have sign-up starting at 22:00", () => {
     const startTime = `${saturday}T06:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T19:00:00.000Z`);
   });
 
-  test("RPG starting at 10:00 should have signup starting at 22:00", () => {
+  test("RPG starting at 10:00 should have sign-up starting at 22:00", () => {
     const startTime = `${saturday}T07:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${friday}T19:00:00.000Z`);
   });
 
-  test("RPG starting at 11:00 should have signup starting at 07:00", () => {
+  test("RPG starting at 11:00 should have sign-up starting at 07:00", () => {
     const startTime = `${saturday}T08:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T04:00:00.000Z`);
   });
 
-  test("RPG starting at 12:00 should have signup starting at 08:00", () => {
+  test("RPG starting at 12:00 should have sign-up starting at 08:00", () => {
     const startTime = `${saturday}T09:00:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T05:00:00.000Z`);
   });
 
-  test("RPG starting at 09:15 should have signup starting at 22:00, not 22:15", () => {
+  test("RPG starting at 09:15 should have sign-up starting at 22:00, not 22:15", () => {
     const startTime = `${saturday}T06:15:00.000Z`;
     const programItem = { ...testProgramItem, startTime };
     const signupStartTime = getLotterySignupStartTime(programItem);
@@ -157,8 +157,8 @@ describe("Early lottery signup", () => {
   });
 });
 
-describe("Two phase direct signup", () => {
-  test("RPG starting at 15:00 should have signup starting at 15:00", () => {
+describe("Two phase direct sign-up", () => {
+  test("RPG starting at 15:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
       ...testProgramItem,
@@ -167,7 +167,7 @@ describe("Two phase direct signup", () => {
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 16:00 should have signup starting at 15:00", () => {
+  test("RPG starting at 16:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T13:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
       ...testProgramItem,
@@ -176,7 +176,7 @@ describe("Two phase direct signup", () => {
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 17:00 should have signup starting at 15:00", () => {
+  test("RPG starting at 17:00 should have sign-up starting at 15:00", () => {
     const startTime = `${friday}T14:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
       ...testProgramItem,
@@ -185,7 +185,7 @@ describe("Two phase direct signup", () => {
     expect(signupStartTime.toISOString()).toEqual(`${friday}T12:00:00.000Z`);
   });
 
-  test("RPG starting at 18:00 should have signup starting at 16:15", () => {
+  test("RPG starting at 18:00 should have sign-up starting at 16:15", () => {
     const startTime = `${friday}T15:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
       ...testProgramItem,
@@ -194,7 +194,7 @@ describe("Two phase direct signup", () => {
     expect(signupStartTime.toISOString()).toEqual(`${friday}T13:15:00.000Z`);
   });
 
-  test("RPG starting at 19:00 should have signup starting at 17:15", () => {
+  test("RPG starting at 19:00 should have sign-up starting at 17:15", () => {
     const startTime = `${friday}T16:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
       ...testProgramItem,
@@ -203,7 +203,7 @@ describe("Two phase direct signup", () => {
     expect(signupStartTime.toISOString()).toEqual(`${friday}T14:15:00.000Z`);
   });
 
-  test("RPG starting at 20:00 should have signup starting at 18:15", () => {
+  test("RPG starting at 20:00 should have sign-up starting at 18:15", () => {
     const startTime = `${friday}T17:00:00.000Z`;
     const signupStartTime = getDirectSignupStartTime({
       ...testProgramItem,
@@ -213,7 +213,7 @@ describe("Two phase direct signup", () => {
   });
 });
 
-describe("Pre-convention week direct signup", () => {
+describe("Pre-convention week direct sign-up", () => {
   const preConventionWeekSignupStartTime = `${friday}T17:00:00.000Z`;
 
   beforeEach(() => {
@@ -229,21 +229,21 @@ describe("Pre-convention week direct signup", () => {
     startTime: `${saturday}T12:00:00.000Z`,
   };
 
-  test("signup starts at the configured pre-convention week signup start time", () => {
+  test("sign-up starts at the configured pre-convention week sign-up start time", () => {
     const signupStartTime = getDirectSignupStartTime(preConventionWeekItem);
     expect(signupStartTime.toISOString()).toEqual(
       preConventionWeekSignupStartTime,
     );
   });
 
-  test("signup is not in progress before pre-convention week signup start time", () => {
+  test("sign-up is not in progress before pre-convention week sign-up start time", () => {
     const timeNow = subMinutes(new Date(preConventionWeekSignupStartTime), 1);
     expect(getDirectSignupInProgress(preConventionWeekItem, timeNow)).toEqual(
       false,
     );
   });
 
-  test("signup is in progress after pre-convention week signup start time", () => {
+  test("sign-up is in progress after pre-convention week sign-up start time", () => {
     const timeNow = new Date(preConventionWeekSignupStartTime);
     expect(getDirectSignupInProgress(preConventionWeekItem, timeNow)).toEqual(
       true,
@@ -309,7 +309,7 @@ describe("Parent start time override via 'startTimesByParentIds'", () => {
   });
 });
 
-describe("Direct signup with signup windows", () => {
+describe("Direct sign-up with sign-up windows", () => {
   const testLarp = { ...testProgramItem, programType: ProgramType.LARP };
   const testLarp2 = { ...testProgramItem2, programType: ProgramType.LARP };
 
@@ -327,56 +327,56 @@ describe("Direct signup with signup windows", () => {
     expect(signupStartTime2.toISOString()).toEqual(signupTime);
   };
 
-  test("Larp starting at Fri 15:00 should have signup starting at Fri 15:00", () => {
+  test("Larp starting at Fri 15:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 16:00 should have signup starting at Fri 15:00", () => {
+  test("Larp starting at Fri 16:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T13:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 17:00 should have signup starting at Fri 15:00", () => {
+  test("Larp starting at Fri 17:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T14:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 18:00 should have signup starting at Fri 15:00", () => {
+  test("Larp starting at Fri 18:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T15:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 19:00 should have signup starting at Fri 15:00", () => {
+  test("Larp starting at Fri 19:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T16:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Fri 20:00 should have signup starting at Fri 15:00", () => {
+  test("Larp starting at Fri 20:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T17:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Sat 20:00 should have signup starting at Sat 11:00", () => {
+  test("Larp starting at Sat 20:00 should have sign-up starting at Sat 11:00", () => {
     const startTime = `${saturday}T17:00:00.000Z`;
     const signupTime = `${saturday}T08:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Larp starting at Sun 12:00 should have signup starting at Sat 15:00", () => {
+  test("Larp starting at Sun 12:00 should have sign-up starting at Sat 15:00", () => {
     const startTime = `${sunday}T09:00:00.000Z`;
     const signupTime = `${saturday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 });
 
-describe("Direct signup with rolling signup", () => {
+describe("Direct sign-up with rolling sign-up", () => {
   const testWorkshop = {
     ...testProgramItem,
     programType: ProgramType.WORKSHOP,
@@ -400,67 +400,67 @@ describe("Direct signup with rolling signup", () => {
     expect(signupStartTime2.toISOString()).toEqual(signupTime);
   };
 
-  test("Workshop starting at Fri 15:00 should have signup starting at Fri 15:00", () => {
+  test("Workshop starting at Fri 15:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T12:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Fri 16:00 should have signup starting at Fri 15:00", () => {
+  test("Workshop starting at Fri 16:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T13:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Fri 17:00 should have signup starting at Fri 15:00", () => {
+  test("Workshop starting at Fri 17:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T14:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Fri 18:00 should have signup starting at Fri 15:00", () => {
+  test("Workshop starting at Fri 18:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T15:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Fri 19:00 should have signup starting at Fri 15:00", () => {
+  test("Workshop starting at Fri 19:00 should have sign-up starting at Fri 15:00", () => {
     const startTime = `${friday}T16:00:00.000Z`;
     const signupTime = `${friday}T12:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Fri 20:00 should have signup starting at Fri 16:00", () => {
+  test("Workshop starting at Fri 20:00 should have sign-up starting at Fri 16:00", () => {
     const startTime = `${friday}T17:00:00.000Z`;
     const signupTime = `${friday}T13:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Sat 11:00 should have signup starting at Fri 18:00", () => {
+  test("Workshop starting at Sat 11:00 should have sign-up starting at Fri 18:00", () => {
     const startTime = `${saturday}T08:00:00.000Z`;
     const signupTime = `${friday}T15:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Sat 12:00 should have signup starting at Sat 08:00", () => {
+  test("Workshop starting at Sat 12:00 should have sign-up starting at Sat 08:00", () => {
     const startTime = `${saturday}T09:00:00.000Z`;
     const signupTime = `${saturday}T05:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Sat 11:15 should have signup starting at Fri 18:00, not 18:15", () => {
+  test("Workshop starting at Sat 11:15 should have sign-up starting at Fri 18:00, not 18:15", () => {
     const startTime = `${saturday}T08:15:00.000Z`;
     const signupTime = `${friday}T15:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Sat 20:00 should have signup starting at Sat 16:00", () => {
+  test("Workshop starting at Sat 20:00 should have sign-up starting at Sat 16:00", () => {
     const startTime = `${saturday}T17:00:00.000Z`;
     const signupTime = `${saturday}T13:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
   });
 
-  test("Workshop starting at Sun 11:00 should have signup starting at Sat 18:00", () => {
+  test("Workshop starting at Sun 11:00 should have sign-up starting at Sat 18:00", () => {
     const startTime = `${sunday}T08:00:00.000Z`;
     const signupTime = `${saturday}T15:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
@@ -469,7 +469,7 @@ describe("Direct signup with rolling signup", () => {
 
 // The "open the previous evening at a fixed hour" path has to land on the same
 // wall-clock hour whether the previous day was 23, 24 or 25 hours long
-describe("Signup times across DST transitions", () => {
+describe("Sign-up times across DST transitions", () => {
   const testWorkshop = {
     ...testProgramItem,
     programType: ProgramType.WORKSHOP,
@@ -486,7 +486,7 @@ describe("Signup times across DST transitions", () => {
     });
   });
 
-  test("lottery signup opens at 22:00 the evening before a spring-forward day", () => {
+  test("lottery sign-up opens at 22:00 the evening before a spring-forward day", () => {
     // Mon 30.3. 05:00 GMT+3, the day after clocks jumped forward
     const programItem = {
       ...testProgramItem,
@@ -497,7 +497,7 @@ describe("Signup times across DST transitions", () => {
     expect(signupStartTime.toISOString()).toEqual("2026-03-29T19:00:00.000Z");
   });
 
-  test("lottery signup opens at 22:00 the evening before a fall-back day", () => {
+  test("lottery sign-up opens at 22:00 the evening before a fall-back day", () => {
     // Mon 26.10. 05:00 GMT+2, the day after clocks fell back
     const programItem = {
       ...testProgramItem,
@@ -508,7 +508,7 @@ describe("Signup times across DST transitions", () => {
     expect(signupStartTime.toISOString()).toEqual("2026-10-25T20:00:00.000Z");
   });
 
-  test("rolling signup opens at 18:00 the evening before a spring-forward day", () => {
+  test("rolling direct sign-up opens at 18:00 the evening before a spring-forward day", () => {
     // Mon 30.3. 09:00 GMT+3
     const programItem = {
       ...testWorkshop,
@@ -521,7 +521,7 @@ describe("Signup times across DST transitions", () => {
 
   // The day before a spring-forward is only 23 hours long, so stepping back a
   // fixed 24 hours from just after midnight lands on the day before the one meant
-  test("rolling signup opens the previous evening for a just-after-midnight start", () => {
+  test("rolling direct sign-up opens the previous evening for a just-after-midnight start", () => {
     // Mon 30.3. 00:30 GMT+3
     const programItem = {
       ...testWorkshop,
@@ -532,7 +532,7 @@ describe("Signup times across DST transitions", () => {
     expect(signupStartTime.toISOString()).toEqual("2026-03-29T15:00:00.000Z");
   });
 
-  test("rolling signup opens at 18:00 the evening before a fall-back day", () => {
+  test("rolling direct sign-up opens at 18:00 the evening before a fall-back day", () => {
     // Mon 26.10. 09:00 GMT+2
     const programItem = {
       ...testWorkshop,
@@ -544,11 +544,11 @@ describe("Signup times across DST transitions", () => {
   });
 });
 
-describe("Relative lottery signup state", () => {
+describe("Relative lottery sign-up state", () => {
   const startTime = `${saturday}T12:00:00.000Z`;
   const programItem = { ...testProgramItem, startTime };
 
-  test("Lottery signup not yet started", () => {
+  test("Lottery sign-up not yet started", () => {
     const { preSignupStart } = config.event();
     const timeNow = subMinutes(
       new Date(`${saturday}T12:00:00.000Z`),
@@ -561,7 +561,7 @@ describe("Relative lottery signup state", () => {
     expect(lotterySignupNotStarted).toEqual(true);
   });
 
-  test("Lottery signup started", () => {
+  test("Lottery sign-up started", () => {
     const { preSignupStart } = config.event();
     const timeNow = subMinutes(
       new Date(`${saturday}T12:00:00.000Z`),
@@ -574,7 +574,7 @@ describe("Relative lottery signup state", () => {
     expect(lotterySignupNotStarted).toEqual(false);
   });
 
-  test("Lottery signup not in progress yet", () => {
+  test("Lottery sign-up not in progress yet", () => {
     const { preSignupStart } = config.event();
     const timeNow = subMinutes(
       new Date(`${saturday}T12:00:00.000Z`),
@@ -587,7 +587,7 @@ describe("Relative lottery signup state", () => {
     expect(lotterySignupInProgress).toEqual(false);
   });
 
-  test("Lottery signup in progress, lower limit", () => {
+  test("Lottery sign-up in progress, lower limit", () => {
     const { preSignupStart } = config.event();
     const timeNow = subMinutes(
       new Date(`${saturday}T12:00:00.000Z`),
@@ -600,7 +600,7 @@ describe("Relative lottery signup state", () => {
     expect(lotterySignupInProgress).toEqual(true);
   });
 
-  test("Lottery signup in progress, upper limit", () => {
+  test("Lottery sign-up in progress, upper limit", () => {
     const { directSignupPhaseStart } = config.event();
     const timeNow = subMinutes(
       new Date(`${saturday}T12:00:00.000Z`),
@@ -613,7 +613,7 @@ describe("Relative lottery signup state", () => {
     expect(lotterySignupInProgress).toEqual(true);
   });
 
-  test("Lottery signup ended", () => {
+  test("Lottery sign-up ended", () => {
     const { directSignupPhaseStart } = config.event();
     const timeNow = subMinutes(
       new Date(`${saturday}T12:00:00.000Z`),
@@ -627,13 +627,13 @@ describe("Relative lottery signup state", () => {
   });
 });
 
-describe("Relative direct signup state", () => {
+describe("Relative direct sign-up state", () => {
   const programItem = {
     ...testProgramItem,
     startTime: `${saturday}T12:00:00.000Z`,
   };
 
-  test("Direct signup not in progress yet", () => {
+  test("Direct sign-up not in progress yet", () => {
     const { directSignupPhaseStart, phaseGap } = config.event();
     const timeNow = subMinutes(
       new Date(programItem.startTime),
@@ -646,7 +646,7 @@ describe("Relative direct signup state", () => {
     expect(directSignupInProgress).toEqual(false);
   });
 
-  test("Direct signup in progress, lower limit", () => {
+  test("Direct sign-up in progress, lower limit", () => {
     const { directSignupPhaseStart, phaseGap } = config.event();
     const timeNow = subMinutes(
       new Date(programItem.startTime),
@@ -659,7 +659,7 @@ describe("Relative direct signup state", () => {
     expect(directSignupInProgress).toEqual(true);
   });
 
-  test("Direct signup in progress, upper limit", () => {
+  test("Direct sign-up in progress, upper limit", () => {
     const timeNow = new Date(programItem.startTime);
     const directSignupInProgress = getDirectSignupInProgress(
       programItem,
@@ -668,7 +668,7 @@ describe("Relative direct signup state", () => {
     expect(directSignupInProgress).toEqual(true);
   });
 
-  test("Direct signup not in progress anymore", () => {
+  test("Direct sign-up not in progress anymore", () => {
     const timeNow = addMinutes(new Date(programItem.startTime), 1);
     const directSignupInProgress = getDirectSignupInProgress(
       programItem,
@@ -677,13 +677,13 @@ describe("Relative direct signup state", () => {
     expect(directSignupInProgress).toEqual(false);
   });
 
-  test("Direct signup ended", () => {
+  test("Direct sign-up ended", () => {
     const timeNow = addMinutes(new Date(programItem.startTime), 1);
     const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
     expect(directSignupEnded).toEqual(true);
   });
 
-  test("Direct signup not ended", () => {
+  test("Direct sign-up not ended", () => {
     const timeNow = new Date(programItem.startTime);
     const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
     expect(directSignupEnded).toEqual(false);
@@ -694,29 +694,29 @@ describe("Relative direct signup state", () => {
 // and an invalid date compares false against everything. Each predicate has to
 // land on the closed side of that, or the UI offers a sign-up the server will
 // reject
-describe("Signup state when the start time cannot be resolved", () => {
+describe("Sign-up state when the start time cannot be resolved", () => {
   const programItem = { ...testProgramItem, startTime: "not a time" };
   const timeNow = new Date(`${saturday}T12:00:00.000Z`);
 
-  test("Lottery signup reads as not started", () => {
+  test("Lottery sign-up reads as not started", () => {
     expect(getLotterySignupStartTime(programItem).getTime()).toBeNaN();
     expect(getLotterySignupNotStarted(programItem, timeNow)).toEqual(true);
   });
 
-  test("Lottery signup reads as not in progress", () => {
+  test("Lottery sign-up reads as not in progress", () => {
     expect(getLotterySignupInProgress(programItem, timeNow)).toEqual(false);
   });
 
-  test("Lottery signup reads as ended, so nothing automatic removes its sign-ups", () => {
+  test("Lottery sign-up reads as ended, so nothing automatic removes its sign-ups", () => {
     expect(getLotterySignupEnded(programItem, timeNow)).toEqual(true);
   });
 
-  test("Direct signup reads as ended", () => {
+  test("Direct sign-up reads as ended", () => {
     expect(getDirectSignupEndTime(programItem).getTime()).toBeNaN();
     expect(getDirectSignupEnded(programItem, timeNow)).toEqual(true);
   });
 
-  test("Direct signup reads as not in progress", () => {
+  test("Direct sign-up reads as not in progress", () => {
     expect(getDirectSignupInProgress(programItem, timeNow)).toEqual(false);
   });
 
@@ -761,7 +761,7 @@ describe("Program items no lottery will take", () => {
     expect(getDirectSignupStarted(lotteried, afterPhaseGap)).toEqual(true);
   });
 
-  test("A program item recorded as passed over keeps its signup open", () => {
+  test("A program item recorded as passed over keeps its direct sign-up open", () => {
     // It held sign-ups when it became a lottery program item, so its sign-up has been open -
     // and stays open, including across the phase gap of a lottery that never runs for it
     const passedOver = { ...programItem, passedOverForLottery: true };
@@ -801,7 +801,7 @@ describe("Program items no lottery will take", () => {
     expect(hasLotteryAlreadyRun(moved)).toEqual(true);
   });
 
-  test("Direct signup does not close again when a lotteried program item moves", () => {
+  test("Direct sign-up does not close again when a lotteried program item moves", () => {
     const moved = {
       ...programItem,
       startTime: `${saturday}T18:00:00.000Z`,
@@ -820,7 +820,7 @@ describe("Program items no lottery will take", () => {
     ).toEqual(false);
   });
 
-  test("Direct signup still ends when the program item starts", () => {
+  test("Direct sign-up still ends when the program item starts", () => {
     const moved = {
       ...programItem,
       startTime: `${saturday}T18:00:00.000Z`,

@@ -33,7 +33,7 @@ afterEach(async () => {
 
 // The generator randomizes win/lose per start time, so assert the invariants
 // that must hold for either outcome
-test("every lottery signup slot gets either a newAssignment with a matching direct signup or a noAssignment", async () => {
+test("every lottery sign-up slot gets either a newAssignment with a matching direct sign-up or a noAssignment", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   // Lottery sign-ups in two different start time slots
@@ -87,7 +87,7 @@ test("every lottery signup slot gets either a newAssignment with a matching dire
   ).toEqual([]);
 });
 
-test("a full program item produces a noAssignment entry instead of an assignment without a signup", async () => {
+test("a full program item produces a noAssignment entry instead of an assignment without a direct sign-up", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   // The only lottery-signed item is already full of other attendees
@@ -115,7 +115,7 @@ test("a full program item produces a noAssignment entry instead of an assignment
   expect(eventLogItems[0].action).toEqual(EventLogAction.NO_ASSIGNMENT);
 });
 
-test("users without lottery signups get no assignment event log entries", async () => {
+test("users without lottery sign-ups get no assignment event log entries", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem, testProgramItem2]);
 

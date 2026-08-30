@@ -14,7 +14,7 @@ afterEach(() => {
   vi.resetAllMocks();
 });
 
-test("should not produce negative max or min greater than max when existing signups exceed capacity", () => {
+test("should not produce negative max or min greater than max when existing direct sign-ups exceed capacity", () => {
   // Item already has more changed-start-time direct sign-ups than its capacity
   const programItem = {
     ...testProgramItem,

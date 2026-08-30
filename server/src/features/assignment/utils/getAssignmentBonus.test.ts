@@ -17,7 +17,7 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 
 const assignmentTime = testProgramItem.startTime;
 
-test("should give the first-time bonus to a member with no previous signups or assignments", () => {
+test("should give the first-time bonus to a member with no previous direct sign-ups or assignments", () => {
   const [user] = getUsers({ count: 1 });
 
   const bonus = getAssignmentBonus(
@@ -29,7 +29,7 @@ test("should give the first-time bonus to a member with no previous signups or a
   expect(bonus).toEqual(config.server().firstSignupBonus);
 });
 
-test("should still give the first-time bonus when a member's only direct signup is this lottery's own win", () => {
+test("should still give the first-time bonus when a member's only direct sign-up is this lottery's own win", () => {
   const [user] = getUsers({ count: 1 });
 
   // A lottery win (priority > 0) at the current assignment time, i.e. this lottery's own
@@ -59,7 +59,7 @@ test("should still give the first-time bonus when a member's only direct signup 
   expect(bonus).toEqual(config.server().firstSignupBonus);
 });
 
-test("should strip the first-time bonus for a first-come-first-served direct signup at the current start time", () => {
+test("should strip the first-time bonus for a first-come-first-served direct sign-up at the current start time", () => {
   const [user] = getUsers({ count: 1 });
 
   // A priority-0 (first-come-first-served) direct sign-up is a real sign-up the user made, not
@@ -114,7 +114,7 @@ test("should still give the first-time bonus when a member's only NEW_ASSIGNMENT
   expect(bonus).toEqual(config.server().firstSignupBonus);
 });
 
-test("should strip the first-time bonus for a genuine previous direct signup at an earlier start time", () => {
+test("should strip the first-time bonus for a genuine previous direct sign-up at an earlier start time", () => {
   const [user] = getUsers({ count: 1 });
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
 
@@ -143,7 +143,7 @@ test("should strip the first-time bonus for a genuine previous direct signup at 
   expect(bonus).toEqual(0);
 });
 
-test("should add the additional first-time bonus for a member with a previous failed lottery signup", () => {
+test("should add the additional first-time bonus for a member with a previous failed lottery sign-up", () => {
   const [baseUser] = getUsers({ count: 1 });
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const user = {
@@ -173,7 +173,7 @@ test("should add the additional first-time bonus for a member with a previous fa
   );
 });
 
-test("should still give the first-time bonus when exactly half of the group has a previous signup", () => {
+test("should still give the first-time bonus when exactly half of the group has a previous direct sign-up", () => {
   const users = getUsers({ count: 2 });
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const directSignups: DirectSignupsForProgramItem[] = [
@@ -201,7 +201,7 @@ test("should still give the first-time bonus when exactly half of the group has 
   expect(bonus).toEqual(config.server().firstSignupBonus);
 });
 
-test("should give no bonus when more than half of the group has a previous signup", () => {
+test("should give no bonus when more than half of the group has a previous direct sign-up", () => {
   const users = getUsers({ count: 2 });
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const directSignups: DirectSignupsForProgramItem[] = [

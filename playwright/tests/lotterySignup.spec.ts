@@ -27,7 +27,7 @@ import {
 
 const alwaysOpenTitle = "Always open item";
 
-test("Add lottery signup", async ({ page, request }) => {
+test("Add lottery sign-up", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
@@ -79,7 +79,7 @@ test("Add lottery signup", async ({ page, request }) => {
   expect(programItemTitle?.trim()).toContain(lotterySignupProgramItemTitle);
 });
 
-test("Receive spot in lottery signup", async ({ page, request }) => {
+test("Receive spot in lottery sign-up", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
   const endTime = addMinutes(
     new Date(startTime),
@@ -144,7 +144,7 @@ test("Receive spot in lottery signup", async ({ page, request }) => {
   );
 });
 
-test("Did not receive spot in lottery signup", async ({ page, request }) => {
+test("Did not receive spot in lottery sign-up", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
   const endTime = addMinutes(
     new Date(startTime),
@@ -209,7 +209,7 @@ test("Did not receive spot in lottery signup", async ({ page, request }) => {
   );
 });
 
-test("Receive spot in lottery signup, with multiple lottery program types", async ({
+test("Receive spot in lottery sign-up, with multiple lottery program types", async ({
   page,
   request,
 }) => {
@@ -417,7 +417,7 @@ test("Receive seat from each lottery program type in separate time slots", async
   }
 });
 
-test("Cancel lottery signup on program list", async ({ page, request }) => {
+test("Cancel lottery sign-up on program list", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
   const endTime = addMinutes(
     new Date(startTime),
@@ -468,7 +468,7 @@ test("Cancel lottery signup on program list", async ({ page, request }) => {
   await expect(firstProgramItem.lotterySignupButton).toBeVisible();
 });
 
-test("Show limit message when three lottery signups in time slot", async ({
+test("Show limit message when three lottery sign-ups in time slot", async ({
   page,
   request,
 }) => {

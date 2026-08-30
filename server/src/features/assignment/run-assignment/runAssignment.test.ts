@@ -250,7 +250,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should not remove previous non-lottery signup if user doesn't have updated result", async () => {
+  test("should not remove previous non-lottery sign-up if user doesn't have updated result", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
@@ -413,7 +413,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(0);
   });
 
-  test("should not remove 'directSignupAlwaysOpen' signups if user doesn't have updated result", async () => {
+  test("should not remove 'directSignupAlwaysOpen' direct sign-ups if user doesn't have updated result", async () => {
     const directSignupAlwaysOpenId = "1234";
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -566,7 +566,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
   });
 
-  test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
+  test("should not remove previous direct sign-up from moved program item if user doesn't have updated result", async () => {
     // User1, programItem1: 14:00 direct sign-up -> program item moved 15:00
     // User2, programItem2: 15:00 lottery sign-up -> doesn't affect user1 sign-up
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
@@ -644,7 +644,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 });
 
 describe("Assignment with first time bonus", () => {
-  test("should assign user without previous lottery signup", async () => {
+  test("should assign user without previous lottery sign-up", async () => {
     const directSignupAlwaysOpenId = "1234";
 
     vi.spyOn(config, "event").mockReturnValue({
@@ -789,7 +789,7 @@ describe("Assignment with first time bonus", () => {
     });
   });
 
-  test("should assign user with previous failed lottery signup", async () => {
+  test("should assign user with previous failed lottery sign-up", async () => {
     const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
 
     await saveProgramItems([

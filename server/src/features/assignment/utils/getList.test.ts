@@ -22,7 +22,7 @@ afterEach(() => {
 
 const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
 
-test("should return empty array if user has no lottery signups", () => {
+test("should return empty array if user has no lottery sign-ups", () => {
   const users = getUsers({ count: 1, noLotterySignups: true });
   const attendeeGroups = [users, users, users];
   const list = getList({
@@ -161,7 +161,7 @@ test("leaves out a batched program item not in the run, whose own start time sti
 
 describe("should give first time bonus", () => {
   // Non-lottery direct sign-ups are filtered earlier so having them is the same as not having previous direct sign-ups
-  test("for single user when there are no direct signups from previous lotteries", () => {
+  test("for single user when there are no direct sign-ups from previous lotteries", () => {
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
     const list = getList({
@@ -182,7 +182,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for single user without previous direct signups", () => {
+  test("for single user without previous direct sign-ups", () => {
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
     const list = getList({
@@ -205,7 +205,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for single user with previous direct signup to a 'directSignupAlwaysOpenIds' program item", () => {
+  test("for single user with previous direct sign-up to a 'directSignupAlwaysOpenIds' program item", () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       directSignupAlwaysOpenIds: [testProgramItem2.programItemId],
@@ -241,7 +241,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for single user with previous direct signup to a pre-convention-week program item", () => {
+  test("for single user with previous direct sign-up to a pre-convention-week program item", () => {
     const preConventionWeekProgramItem = {
       ...testProgramItem2,
       tags: [Tag.PRE_CONVENTION_WEEK],
@@ -305,7 +305,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for group without previous direct signups", () => {
+  test("for group without previous direct sign-ups", () => {
     const users = getUsers({ count: 2 });
     const attendeeGroups = [users];
     const list = getList({
@@ -328,7 +328,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for group with half previous direct signups", () => {
+  test("for group with half previous direct sign-ups", () => {
     // Group of two, one has previous direct sign-up
     const users = getUsers({ count: 2 });
     const attendeeGroups = [users];
@@ -377,7 +377,7 @@ describe("should give first time bonus", () => {
     ]);
   });
 
-  test("for group with NEW_ASSIGNMENT event and previous direct signup", () => {
+  test("for group with NEW_ASSIGNMENT event and previous direct sign-up", () => {
     // First group member has NEW_ASSIGNMENT, second group member has direct sign-up
     const users = getUsers({
       count: 4,
@@ -433,7 +433,7 @@ describe("should give first time bonus", () => {
 });
 
 describe("should NOT give first time bonus", () => {
-  test("for single user with previous direct signup", () => {
+  test("for single user with previous direct sign-up", () => {
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
     const list = getList({
@@ -458,7 +458,7 @@ describe("should NOT give first time bonus", () => {
     ]);
   });
 
-  test("for group with more than half previous direct signups", () => {
+  test("for group with more than half previous direct sign-ups", () => {
     // Group of five, three have previous direct sign-up
     const users = getUsers({ count: 5 });
     const attendeeGroups = [users];
@@ -492,7 +492,7 @@ describe("should NOT give first time bonus", () => {
 });
 
 describe("should give additional bonus", () => {
-  test("for single user with previous failed lottery signups", () => {
+  test("for single user with previous failed lottery sign-ups", () => {
     const users = getUsers({
       count: 1,
       pastLotterySignupUsers: 1,
@@ -517,7 +517,7 @@ describe("should give additional bonus", () => {
     ]);
   });
 
-  test("for single user with multiple failed lottery signups", () => {
+  test("for single user with multiple failed lottery sign-ups", () => {
     const users = getUsers({
       count: 1,
       pastLotterySignupUsers: 1,
@@ -542,7 +542,7 @@ describe("should give additional bonus", () => {
     ]);
   });
 
-  test("for group with half previous failed lottery signups", () => {
+  test("for group with half previous failed lottery sign-ups", () => {
     const users = getUsers({
       count: 4,
       pastLotterySignupUsers: 2,
@@ -569,7 +569,7 @@ describe("should give additional bonus", () => {
 });
 
 describe("should NOT give additional bonus", () => {
-  test("for single user with previous direct signup", () => {
+  test("for single user with previous direct sign-up", () => {
     // The failed lottery sign-up would otherwise grant the additional bonus,
     // but the previous direct sign-up blocks it
     const users = getUsers({
@@ -626,7 +626,7 @@ describe("should NOT give additional bonus", () => {
     ]);
   });
 
-  test("for single user without previous lottery signup", () => {
+  test("for single user without previous lottery sign-up", () => {
     const users = getUsers({ count: 1 });
     const attendeeGroups = [users];
     const list = getList({
@@ -651,7 +651,7 @@ describe("should NOT give additional bonus", () => {
     ]);
   });
 
-  test("for group with less than half previous failed lottery signups", () => {
+  test("for group with less than half previous failed lottery sign-ups", () => {
     // Two of five members have a failed lottery sign-up -> below the 0.5 threshold
     const users = getUsers({
       count: 5,

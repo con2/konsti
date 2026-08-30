@@ -31,7 +31,7 @@ test("matches a direct sign-up in a program item starting at the same time", () 
   );
 });
 
-test("returns undefined when no direct signup occupies the slot", () => {
+test("returns undefined when no direct sign-up occupies the slot", () => {
   const directSignups = [
     {
       programItem: {

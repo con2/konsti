@@ -35,7 +35,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove lottery signups for moved program items from users", async () => {
+test("should remove lottery sign-ups for moved program items from users", async () => {
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
@@ -69,7 +69,7 @@ test("should remove lottery signups for moved program items from users", async (
   );
 });
 
-test("should notify a user about a moved lottery signup and a moved direct signup for different items", async () => {
+test("should notify a user about a moved lottery sign-up and a moved direct sign-up for different items", async () => {
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const originalProgramItems = unsafelyUnwrap(await findProgramItems());
@@ -129,7 +129,7 @@ test("should notify a user about a moved lottery signup and a moved direct signu
   );
 });
 
-test("should notify a user only once for a moved item they have both a lottery and direct signup for", async () => {
+test("should notify a user only once for a moved item they have both a lottery and direct sign-up for", async () => {
   await saveProgramItems([testProgramItem]);
   const originalProgramItems = unsafelyUnwrap(await findProgramItems());
 
