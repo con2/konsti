@@ -234,7 +234,14 @@ export const runAssignment = async ({
       resolvedAssignmentTime,
     );
     if (!removeOverlapSignupsResult.ok) {
-      return removeOverlapSignupsResult;
+      // The spots are saved and the start time closed by now, so reporting a failure here
+      // would call a lottery that finished a failure. It leaves an attendee holding a lottery
+      // sign-up for an hour they have already been placed at, which an admin can remove
+      logger.error(
+        new Error(
+          `Assignment ${resolvedAssignmentTime}: failed to remove overlapping lottery sign-ups: ${removeOverlapSignupsResult.error}`,
+        ),
+      );
     }
   }
 
