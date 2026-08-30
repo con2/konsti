@@ -2,7 +2,11 @@ import { firstBy, unique } from "remeda";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { ProgramItem, ProgramType } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramType,
+  State,
+} from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { Settings } from "shared/types/models/settings";
 import { User } from "shared/types/models/user";
@@ -63,6 +67,9 @@ export const addAssignmentNotifications = async ({
   ).filter(
     (programItem) =>
       isLotterySignupProgramItem(programItem) &&
+      // A cancelled one was never in the run - the same rule the algorithm's own input follows -
+      // so it neither rejects anybody nor stretches the span the rejection names
+      programItem.state === State.ACCEPTED &&
       // Lotteried at a slot it no longer starts at, so this run neither considered nor
       // rejected anybody over it: the spot it brought with it says nothing about this hour,
       // and the span it covers is not part of what was lotteried here
