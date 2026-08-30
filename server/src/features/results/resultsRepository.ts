@@ -29,9 +29,11 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   }
 };
 
-// A start time is lotteried once, so this writes one document per start time and nothing
-// merges into it. The collection is dumped and kept once the event is over, so it is the only
-// lasting account of what the lottery did
+// One document per start time, and the collection is dumped and kept once the event is over,
+// so it is the only lasting account of what the lottery did. A start time is lotteried once,
+// but an attempt that saved its spots and failed before marking them can be run again - and
+// the second attempt skips the program items the first one filled, so replacing the document
+// would drop the first attempt's placements from the record for good
 export const saveResult = async (
   signupResultData: readonly UserAssignmentResult[],
   groups: readonly AssignmentResultGroup[],
@@ -44,11 +46,25 @@ export const saveResult = async (
   const assignmentTimeMinute = startOfMinute(new Date(assignmentTime));
 
   try {
+    const previous = await ResultsModel.findOne({
+      assignmentTime: assignmentTimeMinute,
+    }).lean();
+
+    // An attendee holds one spot per start time, so a placement written again replaces the
+    // earlier record of it rather than joining it. Only the placements merge: the algorithm,
+    // the message and the group snapshot describe the attempt that wrote them (choice 9)
+    const placedNow = new Set(
+      signupResultData.map((result) => result.username),
+    );
+    const previousResults = (previous?.results ?? []).filter(
+      (result) => !placedNow.has(result.username),
+    );
+
     await ResultsModel.replaceOne(
       { assignmentTime: assignmentTimeMinute },
       {
         assignmentTime: assignmentTimeMinute,
-        results: signupResultData,
+        results: [...previousResults, ...signupResultData],
         groups,
         algorithm,
         message,

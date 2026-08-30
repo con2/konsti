@@ -224,8 +224,13 @@ that lotteried nothing writes nothing: the lottery runs on a timer, so most star
 for it to do, and recording those would bury the real results under empty ones. So a missing record
 means the lottery never ran for that start time, not that it ran and achieved nothing.
 
-One start time, one lottery, one document - there is nothing to merge into. The collection is dumped
-and kept once the event is over, so it is the only lasting account of what the lottery did.
+One start time, one document. The collection is dumped and kept once the event is over, so it is the
+only lasting account of what the lottery did, and a start time decided by two attempts still gets one
+record: an attempt that saved its spots and failed before marking them can be run again (choice 7),
+and the second attempt skips the program items the first one filled, so replacing the document would
+drop the first attempt's placements from the record for good. The placements are therefore merged.
+The run's own summary - its algorithm, its message, its group snapshot - describes the most recent
+attempt rather than the pair, since those are properties of a run and not of the start time.
 
 Attendees see a filtered view of this: `/dashboard` lists only runs that placed somebody, since a
 run that placed nobody has nothing for them to read. The filter belongs to the dashboard, not to

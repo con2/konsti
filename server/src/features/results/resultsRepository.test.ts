@@ -158,9 +158,10 @@ test("should keep one document per start time when the times differ only in seco
 
   const results = unsafelyUnwrap(await findResults());
   expect(results).toHaveLength(1);
-  expect(results[0].results.map((result) => result.username)).toEqual([
-    mockUser2.username,
-  ]);
+  expect(results[0].results).toHaveLength(2);
+  expect(results[0].results.map((result) => result.username)).toEqual(
+    expect.arrayContaining([mockUser.username, mockUser2.username]),
+  );
 });
 
 test("should store a document for a run that placed nobody", async () => {
@@ -178,4 +179,65 @@ test("should store a document for a run that placed nobody", async () => {
   expect(savedResults).toHaveLength(1);
   expect(savedResults[0].results).toHaveLength(0);
   expect(savedResults[0].message).toEqual("Empty run");
+});
+
+test("should keep an earlier attempt's placements when a start time is run again", async () => {
+  // A run that saved its spots and failed before marking them can be run again, and the second
+  // attempt skips the program items the first one filled - so it carries fewer placements
+  const assignmentTime = testProgramItem.startTime;
+  unsafelyUnwrap(
+    await saveResult(
+      [makeResult(mockUser.username, testProgramItem.programItemId)],
+      [],
+      assignmentTime,
+      AssignmentAlgorithm.PADG,
+      "First attempt",
+    ),
+  );
+  unsafelyUnwrap(
+    await saveResult(
+      [makeResult(mockUser2.username, testProgramItem.programItemId)],
+      [],
+      assignmentTime,
+      AssignmentAlgorithm.PADG,
+      "Second attempt",
+    ),
+  );
+
+  const results = unsafelyUnwrap(await findResults());
+
+  expect(results).toHaveLength(1);
+  expect(results[0].results).toHaveLength(2);
+  expect(results[0].results.map((result) => result.username)).toEqual(
+    expect.arrayContaining([mockUser.username, mockUser2.username]),
+  );
+});
+
+test("should record a placement once when the same attendee is written again", async () => {
+  const assignmentTime = testProgramItem.startTime;
+  const result = makeResult(mockUser.username, testProgramItem.programItemId);
+
+  unsafelyUnwrap(
+    await saveResult(
+      [result],
+      [],
+      assignmentTime,
+      AssignmentAlgorithm.PADG,
+      "",
+    ),
+  );
+  unsafelyUnwrap(
+    await saveResult(
+      [result],
+      [],
+      assignmentTime,
+      AssignmentAlgorithm.PADG,
+      "",
+    ),
+  );
+
+  const results = unsafelyUnwrap(await findResults());
+
+  // An attendee holds one spot per start time, so writing it again replaces the earlier record
+  expect(results[0].results).toHaveLength(1);
 });
