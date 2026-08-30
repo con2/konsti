@@ -51,6 +51,8 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 ## Terminology
 
 - Don't use "FCFS" as shorthand for "first-come-first-served" — write it out in full.
+- Write **"sign-up"**, hyphenated, in prose, comments, test names and UI text — not "signup". Identifiers keep their existing camelCase spelling (`directSignupProgramItemId`, `lotterySignups`), so this is about the words around the code, not the code itself.
+- **Always say which sign-up you mean.** "Sign-up" on its own is ambiguous between the two the app has, so qualify it as **lottery sign-up** or **direct sign-up** (both defined in [docs/terminology.md](docs/terminology.md)). This matters most in test names, where the kind is usually the thing being pinned: "should allow direct sign-up before its schedule opens", not "should allow signup before its schedule opens".
 
 ## Git Commits
 
