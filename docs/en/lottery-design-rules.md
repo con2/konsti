@@ -95,24 +95,9 @@ Closing that means giving the loser side something durable to check, which the e
 skip an attendee who already carries a `NO_ASSIGNMENT` for this start time. Until it does, the
 duplicate rejection is the known price of being able to retry at all.
 
-One consequence worth knowing: `getAssignmentBonus` reads a `NEW_ASSIGNMENT` item as "has been
-assigned before", so an attendee who took a spot and later cancelled it doesn't get the first-time
-bonus in a later lottery run. That follows from the log being history rather than current state,
-and is the intended reading - they had their turn.
-
-**Who cancelled decides whether the bonus survives.** The two cases read the same in the log and
-must not be treated the same:
-
-- **The attendee cancelled their own sign-up.** They chose to give the spot up, so it still counts
-  against them and the bonus is spent.
-- **The program item was cancelled.** They did not cause it and never got to attend, so the
-  placement is not theirs to have spent - the bonus stays with them.
-
-The log cannot tell them apart on its own, so the program item is what decides: a
-`NEW_ASSIGNMENT` naming one that is gone does not count as having been assigned. Care is needed
-because "gone" has to mean deleted or cancelled, not merely absent from the run being worked on -
-a placement at another start time is still a placement, and reading absence too broadly hands the
-bonus back to everyone the lottery has ever placed.
+One consequence worth knowing: because the log is history rather than current state, a placement
+recorded in it still counts as one after the attendee has given the spot up. The first-time bonus
+reads it that way, and rule 13 sets out what that costs them and what it does not.
 
 ## 6. An always-open program item sits outside the lottery entirely
 
@@ -342,3 +327,45 @@ nothing. A sign-up's own `signedToStartTime` is not a safe substitute: for a bat
 is the attendee's hour rather than the hour the lottery ran at, so it would answer the question
 wrongly in the direction that deletes. Cancelling a program item, which keeps it in the programme,
 is the route that preserves both the item and the sign-ups.
+
+## 13. A first-time bonus goes to attendees the lottery has not placed yet
+
+The lottery scores each preference by its rank, and adds a bonus on top for an attendee it has not
+placed yet. Two of them: the first-time bonus (`firstSignupBonus`) for an attendee who holds no
+lottery spot and has never been placed, and an additional one (`additionalFirstSignupBonus`) on top
+for an attendee who entered an earlier lottery and came away with nothing. Everyone gets a turn
+across the event, and losing once counts for something the next time.
+
+**One bonus, added to every preference alike.** It belongs to the attendee, not to the program item
+being scored, so it is worked out once and added equally to each preference they submitted in this
+run. That is what stops it reordering their own choices - it lifts them against everybody else while
+their first choice stays ahead of their third. Scoring it per preference instead would reward
+submitting more of them, which is not what it is for.
+
+**Holding a spot in a lottery program item spends it**, however the spot was got. That includes the
+early slots, which are direct sign-up only because no lottery can reach them (rule 8): the spot is
+still one the lottery would otherwise have handed out. A spot in an always-open program item does
+not spend it, because such an item sits outside the lottery entirely (rule 6) - taking one was never
+taking a lottery spot, which is the same reason it is not counted against lottery capacity.
+
+**Being placed spends it, and giving the spot back does not return it.** The event log is history
+rather than current state (rule 5), so an attendee who won a spot and then cancelled it themselves
+has had their turn. What they cannot spend is a placement they never got to attend: if the program
+item was cancelled or deleted they did not cause it, so the bonus stays with them. The log cannot
+tell the two apart on its own, so the program item decides - a placement naming one that is gone
+does not count. "Gone" has to mean cancelled or deleted rather than merely absent from the run being
+worked on, since a placement at another start time is still a placement, and reading absence too
+broadly would hand the bonus back to everyone the lottery has ever placed.
+
+**A run never reads its own work as history.** A run that placed people and failed before marking
+its program items can be run again (rule 7), so the retry excludes the placements and the rejections
+the first attempt wrote for this start time. Otherwise it would strip the bonus from the attendees it
+had just placed, and hand the additional one to the very attendees it had just turned down.
+
+**A group is judged as a whole, on a threshold.** The first-time bonus goes to the group when half
+its members or more have no previous spot or placement; the additional one when half or more carry
+an earlier rejection. Both are counted over the whole group, and an exact half is enough for either.
+Only a member who is new by the first test can carry a rejection into the second, so the additional
+bonus never arrives on its own: a group that earns it has earned the first-time bonus already. A
+group lands in one program item or none (rule 1), so its members cannot be scored separately, and an
+attendee signing up alone is a group of one where the threshold is simply themselves.
