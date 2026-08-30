@@ -323,3 +323,34 @@ test("should report assignment signups as dropped when the program item has no s
   expect(response.droppedSignups).toEqual([mockPostDirectSignupRequest]);
   expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
 });
+
+test("should report an assignment signup the attendance cap cut from an over-full program item", async () => {
+  // Lowering the limit below the attendees already in leaves the program item over-full, and
+  // the cap in the write keeps those attendees rather than the sign-up being written over one
+  // of them. Nothing was stored for it, so it must not be reported as placed
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
+
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+  });
+
+  // The lottery places somebody already in the program item, so the write rewrites their entry
+  // rather than adding one, and drops nothing on its own
+  const response = unsafelyUnwrap(
+    await saveDirectSignups(
+      [mockPostDirectSignupRequest],
+      [{ ...testProgramItem, maxAttendance: 1 }],
+    ),
+  );
+
+  expect(response.droppedSignups).toEqual([mockPostDirectSignupRequest]);
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  expect(
+    signups[0].userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser2.username]);
+});
