@@ -22,9 +22,9 @@ export const getEvents = (
         lotterySignupProgramItem.programItemId,
       );
 
-      // A spot already held is not the lottery's to hand out, whichever hour it was taken for. A
-      // program item being lotteried holds none, so this is defence in depth: offering the seats
-      // anyway would have the assigner propose an over-full program item and the save drop groups
+      // A spot already held is not the lottery's to hand out, whichever hour it was taken for.
+      // A program item being lotteried holds none (rule 8), so this is defence in depth: offering
+      // the seats anyway would have the assigner over-fill it and the save drop groups back out
       const currentSignups = programItemSignup?.userSignups.length ?? 0;
 
       // Capacity can't go negative: a program item whose attendance limit was lowered

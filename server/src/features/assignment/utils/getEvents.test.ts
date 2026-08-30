@@ -115,8 +115,8 @@ test("should return events for program items using parent startTime via 'startTi
 });
 
 test("should count a direct sign-up made for this same start time against capacity", () => {
-  // A program item the lottery takes holds no direct sign-ups at all, so this is defence in
-  // depth. Offering the seat anyway would have the assigner fill a program item past its limit,
+  // A program item the lottery takes holds no direct sign-ups (rule 8), so this is defence in
+  // depth. Offering the seat anyway would have the assigner fill the program item past its limit,
   // leaving the save to drop whole groups back out of it
   const directSignups: DirectSignupsForProgramItem[] = [
     {
