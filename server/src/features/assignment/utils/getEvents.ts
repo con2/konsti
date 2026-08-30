@@ -23,9 +23,9 @@ export const getEvents = (
         lotterySignupProgramItem.programItemId,
       );
 
-      // Only spots held for another hour, in a program item that has since moved onto this one:
-      // the lottery cannot use those places, while a spot held for this hour leaves its holder
-      // still competing. Neither caller normally has any, so this is defence in depth.
+      // Spots the program item carried in from another hour are not the lottery's to hand out.
+      // One held for this hour is left in, since holding it does not keep its holder out of the
+      // lottery. A program item being lotteried holds no spots at all, so this is defence in depth.
       const currentSignups =
         programItemSignup?.userSignups.filter((userSignup) =>
           isStartTimeChanged(
