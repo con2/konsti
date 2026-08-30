@@ -339,6 +339,34 @@ test("should keep the first-time bonus when the previously assigned program item
   expect(bonus).toEqual(config.server().firstSignupBonus);
 });
 
+test("should keep the first-time bonus when the previously assigned program item was deleted", () => {
+  const [baseUser] = getUsers({ count: 1 });
+  const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
+  const user = {
+    ...baseUser,
+    eventLogItems: [
+      {
+        eventLogItemId: "event-log-item-id",
+        action: EventLogAction.NEW_ASSIGNMENT,
+        isSeen: false,
+        programItemId: testProgramItem2.programItemId,
+        programItemStartTime: earlierStartTime,
+        createdAt: earlierStartTime,
+      },
+    ],
+  };
+
+  const bonus = getAssignmentBonus(
+    [user],
+    [],
+    // Gone from the programme rather than cancelled in it, so the event log names a program item
+    // the run cannot see at all
+    getAssignmentBonusContext([testProgramItem], assignmentTime),
+  );
+
+  expect(bonus).toEqual(config.server().firstSignupBonus);
+});
+
 test("should strip the first-time bonus for another lottery's win at one of this run's hours", () => {
   const [user] = getUsers({ count: 1 });
 
