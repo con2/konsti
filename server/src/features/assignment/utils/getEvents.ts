@@ -8,8 +8,8 @@ export const getEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
-  // Indexed rather than scanned: the sign-up documents cover every lottery program item in the
-  // event, and a program item about to be lotteried usually has none, which is the worst case
+  // Indexed rather than scanned: the sign-up documents cover the whole event, and this asks for
+  // one per program item being lotteried, so scanning would walk the event once for each
   const signupsByProgramItemId = new Map(
     lotteryParticipantDirectSignups.map((signup) => [
       signup.programItemId,
@@ -23,10 +23,9 @@ export const getEvents = (
         lotterySignupProgramItem.programItemId,
       );
 
-      // Only spots held for another hour, in a program item that has since moved onto this
-      // one: their holders are settled there and the lottery cannot use those places. A spot
-      // held for this hour is not subtracted, because holding one does not keep its holder out
-      // of the lottery for it - counting both would have them competing against themselves
+      // Only spots held for another hour, in a program item that has since moved onto this one:
+      // the lottery cannot use those places, while a spot held for this hour leaves its holder
+      // still competing. Neither caller normally has any, so this is defence in depth
       const currentSignups =
         programItemSignup?.userSignups.filter((userSignup) =>
           isStartTimeChanged(
@@ -44,7 +43,8 @@ export const getEvents = (
 
       return {
         id: lotterySignupProgramItem.programItemId,
-        // Keep min within [0, remainingMax] so the assigner never receives min > max
+        // Floored at one attendee while spots remain, and capped by them, so the assigner
+        // never receives min > max
         min: Math.min(
           Math.max(lotterySignupProgramItem.minAttendance - currentSignups, 1),
           remainingMax,

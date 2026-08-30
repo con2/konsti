@@ -115,8 +115,9 @@ test("should return events for program items using parent startTime via 'startTi
 });
 
 test("should not count a signup made for this same start time against capacity", () => {
-  // Holding a spot does not keep its holder out of the lottery for that hour, so subtracting
-  // it while they are still competing would have them competing against their own place
+  // A program item the lottery takes holds no direct sign-ups at all, so this is defence in
+  // depth. Subtracting one would have its holder competing against their own place, since
+  // holding a spot does not keep them out of the lottery for that hour
   const directSignups: DirectSignupsForProgramItem[] = [
     {
       programItemId: testProgramItem.programItemId,
