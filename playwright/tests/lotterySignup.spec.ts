@@ -1,11 +1,14 @@
 import { expect, test } from "@playwright/test";
 import { addHours, addMinutes, subHours } from "date-fns";
+import { capitalize } from "remeda";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { getProgramTypePluralName } from "shared/constants/programTypeNames";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { Locale } from "shared/types/locale";
 import { ProgramType, Tag } from "shared/types/models/programItem";
 import { getTime } from "shared/utils/timeFormatter";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
@@ -726,7 +729,13 @@ test("Did not receive spot in a lottery covering several starting times", async 
   await page.reload();
 
   // The span the batch covered, first start to last end, not the parent hour
-  const expectedRejection = `Flea market times between ${getTime(firstStartTime)}–${getTime(lastEndTime)} were lotteried and you didn't get a spot.`;
+  const programTypeName = capitalize(
+    getProgramTypePluralName(
+      config.event().twoPhaseSignupProgramTypes[0],
+      Locale.EN,
+    ),
+  );
+  const expectedRejection = `${programTypeName} between ${getTime(firstStartTime)}–${getTime(lastEndTime)} were lotteried and you didn't get a spot.`;
   await expect(programList.notificationBar.bar).toContainText(
     expectedRejection,
   );
