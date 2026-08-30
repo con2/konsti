@@ -57,6 +57,9 @@ beforeEach(async () => {
 
 afterEach(async () => {
   vi.resetAllMocks();
+  // resetAllMocks leaves the clock where it was, so without this the tests that set no time
+  // run at whatever instant the previous one picked
+  vi.useRealTimers();
   await closeServer(server);
 });
 

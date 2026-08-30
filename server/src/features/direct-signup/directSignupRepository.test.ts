@@ -260,6 +260,11 @@ test("should bulk delete signups from a user whose name starts with $", async ()
     username: dollarPrefixedUsername,
   });
 
+  // The bulk delete reports success whether or not it matched, so prove there was something
+  // to remove - otherwise the assertions below hold with the pipeline never running
+  const savedSignups = unsafelyUnwrap(await findDirectSignups());
+  expect(savedSignups[0].userSignups).toHaveLength(1);
+
   unsafelyUnwrap(
     await delDirectSignups([
       {
