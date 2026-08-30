@@ -408,11 +408,21 @@ export const AdminView = (): ReactElement => {
         />
         <input
           type="text"
-          placeholder="Enter program ID"
+          placeholder="Enter program ID, or a batch parent ID"
+          list="email-test-program-id"
           value={testProgramId}
           onChange={(e) => setTestProgramId(e.target.value)}
           disabled={submitting}
         />
+        {/* A batched lottery's rejection names a span of starting times rather than one program
+        item, so it is tested through the parent the batch is configured under */}
+        <datalist id="email-test-program-id">
+          {[...config.event().startTimesByParentIds.keys()].map((parentId) => (
+            <option key={parentId} value={parentId}>
+              Batched lottery rejection
+            </option>
+          ))}
+        </datalist>
         <Checkbox
           id="respect-email-notification-trigger-settings"
           label="Respect email notification trigger settings"

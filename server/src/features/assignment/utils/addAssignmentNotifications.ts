@@ -272,8 +272,9 @@ type LotteriedSpan =
     };
 
 // Measured over the program items handed to it rather than over the run's own hour, which for
-// a batch is the parent's and matches nothing the attendee saw
-const getLotteriedSpan = (
+// a batch is the parent's and matches nothing the attendee saw. Exported so the admin's test
+// email is built the same way a real rejection is, rather than from its own idea of a span
+export const getLotteriedSpan = (
   spanProgramItems: readonly ProgramItem[],
   assignmentTime: string,
 ): LotteriedSpan => {
