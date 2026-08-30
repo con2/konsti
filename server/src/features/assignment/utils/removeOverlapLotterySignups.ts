@@ -53,6 +53,9 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
+    // Both branches below pick out program items starting after the one just won, so their
+    // lotteries are still ahead and nothing here can remove a sign-up whose lottery has run
+
     // Cancel all lottery sign-ups that start during the lottery direct sign-up
     if (
       config.event().removeLotterySignupsStrategy ===

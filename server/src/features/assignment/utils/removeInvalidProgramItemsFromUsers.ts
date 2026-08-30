@@ -1,4 +1,3 @@
-import { isBefore } from "date-fns";
 import { partition, uniqueBy } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
@@ -10,7 +9,7 @@ import {
 import { FavoriteProgramItemId, LotterySignup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getLotterySignupEndTime } from "shared/utils/signupTimes";
+import { getLotterySignupEnded } from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
@@ -70,20 +69,11 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
         );
         const cancellationAction = getCancellationAction(foundProgramItem);
 
-        // Valid sign-ups are kept. Invalid ones are preserved only if the item still
-        // exists and its lottery has already run; deleted items are always removed.
-        //
-        // Deliberately a negated comparison rather than isSameOrAfter: an end time
-        // that cannot be parsed makes both false, and here that has to mean keep.
-        // Removing a sign-up is not recoverable and emails the attendee about it,
-        // and this sweep runs unattended before every assignment - so it fails
-        // towards preserving, the opposite direction from the sign-up gates
+        // Valid sign-ups are kept. Invalid ones are preserved once their lottery has run;
+        // a deleted program item has none to ask, so those are always removed
         const lotteryAlreadyRan =
           foundProgramItem !== undefined &&
-          !isBefore(
-            timeNowResult.value,
-            getLotterySignupEndTime(foundProgramItem),
-          );
+          getLotterySignupEnded(foundProgramItem, timeNowResult.value);
 
         const keep = cancellationAction === undefined || lotteryAlreadyRan;
 

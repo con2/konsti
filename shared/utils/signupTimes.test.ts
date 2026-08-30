@@ -14,6 +14,7 @@ import {
   getDirectSignupStartTime,
   getDirectSignupStarted,
   getLotterySignupEndTime,
+  getLotterySignupEnded,
   getLotterySignupInProgress,
   getLotterySignupNotStarted,
   getLotterySignupStartTime,
@@ -277,6 +278,16 @@ describe("Parent start time override via 'startTimesByParentIds'", () => {
     const signupEndTime = getLotterySignupEndTime(programItem);
     // directSignupPhaseStart (2h) before parent start time, not own start time
     expect(signupEndTime.toISOString()).toEqual(`${saturday}T10:00:00.000Z`);
+  });
+
+  // The gap between the two is what makes a sign-up's own stored start time an unsafe
+  // substitute for asking the program item: it would answer this in the direction that deletes
+  test("getLotterySignupEnded uses parent start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    // The batch was lotteried at 10:00, so an hour later it is over, even though the same
+    // arithmetic on the item's own start time says the lottery is still three hours off
+    const timeNow = new Date(`${saturday}T11:00:00.000Z`);
+    expect(getLotterySignupEnded(programItem, timeNow)).toEqual(true);
   });
 
   test("getDirectSignupStartTime uses parent start time", () => {
@@ -696,6 +707,10 @@ describe("Signup state when the start time cannot be resolved", () => {
     expect(getLotterySignupInProgress(programItem, timeNow)).toEqual(false);
   });
 
+  test("Lottery signup reads as ended, so nothing automatic removes its sign-ups", () => {
+    expect(getLotterySignupEnded(programItem, timeNow)).toEqual(true);
+  });
+
   test("Direct signup reads as ended", () => {
     expect(getDirectSignupEndTime(programItem).getTime()).toBeNaN();
     expect(getDirectSignupEnded(programItem, timeNow)).toEqual(true);
@@ -903,5 +918,30 @@ describe("isSameStartTime", () => {
     expect(isSameStartTime(ownStartTime, undefined, "not a time")).toEqual(
       false,
     );
+  });
+});
+
+describe("getLotterySignupEnded", () => {
+  // Sat 15:00 GMT+3, so its lottery signup closes at 13:00 GMT+3
+  const startTime = `${saturday}T12:00:00.000Z`;
+  const programItem = { ...testProgramItem, startTime };
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
+
+  test("Not ended a minute before the lottery", () => {
+    expect(
+      getLotterySignupEnded(programItem, subMinutes(lotterySignupEndTime, 1)),
+    ).toEqual(false);
+  });
+
+  test("Ended at the moment the lottery decides the start time", () => {
+    expect(getLotterySignupEnded(programItem, lotterySignupEndTime)).toEqual(
+      true,
+    );
+  });
+
+  test("Ended a minute after the lottery", () => {
+    expect(
+      getLotterySignupEnded(programItem, addMinutes(lotterySignupEndTime, 1)),
+    ).toEqual(true);
   });
 });

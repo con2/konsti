@@ -255,6 +255,15 @@ export const getLotterySignupNotStarted = (
   return !isSameOrAfter(timeNow, lotterySignupStartTime);
 };
 
+// Past the point where the lottery for this program item decides it, so a sign-up for it is a
+// record of having entered rather than a pending request. Deliberately a negated comparison: a
+// start time that cannot be resolved makes both directions false, and here that has to read as
+// ended, because the callers are automatic deletions that must fail towards keeping
+export const getLotterySignupEnded = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean => !isBefore(timeNow, getLotterySignupEndTime(programItem));
+
 export const getLotterySignupInProgress = (
   programItem: ProgramItem,
   timeNow: Date,
