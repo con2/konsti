@@ -3,8 +3,7 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getLotterySignupEndTime } from "shared/utils/signupTimes";
-import { isSameOrBefore } from "shared/utils/timeComparison";
+import { getDirectSignupPhaseStarted } from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
@@ -51,10 +50,11 @@ export const getPassedOverProgramItems = async (
       isLotterySignupProgramItem(programItem) &&
       !decidedProgramItemIds.has(programItem.programItemId) &&
       (attendeeCountByProgramItemId.get(programItem.programItemId) ?? 0) > 0 &&
-      // Only while its lottery is still ahead. Marking one whose sign-up window has shut
-      // changes nothing anybody can see: the window alone already closes lottery sign-up, and
-      // no run reaches a start time that has gone by
-      isSameOrBefore(timeNowResult.value, getLotterySignupEndTime(programItem)),
+      // Only while its schedule still has something to take away. Measured to the moment
+      // direct sign-up would open rather than to the lottery's close, so a program item that
+      // becomes a lottery one inside the phase gap does not have its open sign-up shut for
+      // the rest of it
+      !getDirectSignupPhaseStarted(programItem, timeNowResult.value),
   );
 
   if (passedOverProgramItems.length > 0) {
