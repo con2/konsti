@@ -153,10 +153,10 @@ unnotified. A run that returns an error therefore wrote nothing and is safe to r
 works from the final results rather than the proposed ones, so a sign-up is never given up for a
 replacement that then doesn't land — leaving the attendee with neither, which rule 2 calls the
 worst outcome available. It skips the program item they won, because the write puts their new spot
-where their old entry was rather than beside it: the lottery can place someone into a program item
-they already hold a spot in, and a run that appended would seat them twice. That in-place rewrite is
-also why the write counts only the newcomers against `maxAttendance` — an attendee already in the
-program item keeps their place either way, so charging them for it would drop somebody who fits.
+where their old entry was rather than beside it. A program item being lotteried holds no spots at
+all (rule 8), so a winner is never already in one and that rewrite is defence in depth — it is also
+why the write counts only the newcomers against `maxAttendance`: an attendee already in the program
+item keeps their place either way, so charging them for it would drop somebody who fits.
 
 **No spot keeps its holder out of a run**, whoever gave it to them, so nothing filters attendees
 before the algorithm sees them. `getRandomAndPadgInput` expands each group and hands the whole lot

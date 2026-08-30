@@ -423,9 +423,9 @@ export const saveDirectSignups = async (
               userSignups: {
                 $let: {
                   vars: {
-                    // An attendee being written keeps one entry, the new one: the lottery can
-                    // place someone into a program item they already hold a spot in, and
-                    // appending beside their old entry would give them two
+                    // An attendee being written keeps one entry, the new one. A program item
+                    // being lotteried holds no spots, so this is defence in depth: appending
+                    // beside an existing entry would seat them twice and charge their own place
                     keptSignups: {
                       $filter: {
                         input: { $ifNull: ["$userSignups", []] },
