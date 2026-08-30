@@ -449,48 +449,62 @@ export const saveDirectSignups = async (
           {
             $set: {
               userSignups: {
-                // The count above was read in a separate round-trip, so it can be stale by the
-                // time this lands. Capping here is what actually holds the attendance limit;
-                // it keeps the head, so the attendees this write leaves alone survive it and
-                // the ones being written are what an over-full program item loses
-                $slice: [
-                  {
-                    $concatArrays: [
-                      // An attendee being written keeps one entry, the new one: the lottery
-                      // can place someone into a program item they already hold a spot in,
-                      // and appending beside their old entry would seat them twice
-                      {
-                        $filter: {
-                          input: { $ifNull: ["$userSignups", []] },
-                          cond: {
-                            $not: [
-                              {
-                                $in: [
-                                  "$$this.username",
-                                  {
-                                    $literal: finalSignups.map(
-                                      (signup) => signup.username,
-                                    ),
-                                  },
-                                ],
-                              },
-                            ],
-                          },
+                $let: {
+                  vars: {
+                    // An attendee being written keeps one entry, the new one: the lottery can
+                    // place someone into a program item they already hold a spot in, and
+                    // appending beside their old entry would give them two
+                    keptSignups: {
+                      $filter: {
+                        input: { $ifNull: ["$userSignups", []] },
+                        cond: {
+                          $not: [
+                            {
+                              $in: [
+                                "$$this.username",
+                                {
+                                  $literal: finalSignups.map(
+                                    (signup) => signup.username,
+                                  ),
+                                },
+                              ],
+                            },
+                          ],
                         },
                       },
+                    },
+                  },
+                  // The count above was read in a separate round-trip, so it can be stale by
+                  // the time this lands, and this cap is what actually holds the attendance
+                  // limit. Never below the attendees this write leaves alone, so an over-full
+                  // program item loses only the ones being written
+                  in: {
+                    $slice: [
                       {
-                        $literal: finalSignups.map((signup) => ({
-                          username: signup.username,
-                          priority: signup.priority,
-                          signedToStartTime: new Date(signup.signedToStartTime),
-                          signupTime: new Date(signup.signupTime),
-                          message: signup.message,
-                        })),
+                        $concatArrays: [
+                          "$$keptSignups",
+                          {
+                            $literal: finalSignups.map((signup) => ({
+                              username: signup.username,
+                              priority: signup.priority,
+                              signedToStartTime: new Date(
+                                signup.signedToStartTime,
+                              ),
+                              signupTime: new Date(signup.signupTime),
+                              message: signup.message,
+                            })),
+                          },
+                        ],
+                      },
+                      {
+                        $max: [
+                          programItem.maxAttendance,
+                          { $size: "$$keptSignups" },
+                        ],
                       },
                     ],
                   },
-                  programItem.maxAttendance,
-                ],
+                },
               },
             },
           },
