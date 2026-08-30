@@ -15,6 +15,7 @@ import {
   saveDirectSignup,
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
+import { SignupModel } from "server/features/direct-signup/directSignupSchema";
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import {
   findProgramItems,
@@ -322,6 +323,36 @@ test("should report the assignment's direct sign-ups as dropped when the program
 
   expect(response.droppedSignups).toEqual([mockPostDirectSignupRequest]);
   expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
+});
+
+test("should treat an assignment's direct sign-ups as saved when the sign-up document cannot be read", async () => {
+  // A document that is there but unreadable says nothing about what the write stored, so
+  // reporting its sign-ups dropped would tell attendees holding a spot that they got none
+  const programItem = { ...testProgramItem, maxAttendance: 5 };
+  await saveUser(mockUser);
+  await saveProgramItems([programItem]);
+  unsafelyUnwrap(await removeDirectSignups());
+
+  // Inserted through the driver so the entry keeps a shape the read schema rejects. The write
+  // below leaves it in place, so the document is still unreadable when the check runs
+  await SignupModel.collection.insertOne({
+    programItemId: programItem.programItemId,
+    userSignups: [{ username: 42 }],
+    count: 1,
+  });
+
+  const response = unsafelyUnwrap(
+    await saveDirectSignups([mockPostDirectSignupRequest], [programItem]),
+  );
+
+  expect(response.droppedSignups).toEqual([]);
+
+  // The document really is unreadable, and the write really did land in it
+  expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
+  const stored = await SignupModel.collection.findOne({
+    programItemId: programItem.programItemId,
+  });
+  expect(stored?.userSignups).toHaveLength(2);
 });
 
 test("should report an assignment's direct sign-up the attendance cap cut from an over-full program item", async () => {

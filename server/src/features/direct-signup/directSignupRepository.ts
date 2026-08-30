@@ -36,29 +36,37 @@ export const removeDirectSignups = async (): Promise<
   }
 };
 
+// A document that cannot be read is skipped rather than failing the whole query, so one unreadable
+// row does not hide every other sign-up. The query name locates the caller in the log
+const parseSignupDocuments = (
+  responses: readonly { programItemId: string }[],
+  queryName: string,
+): DirectSignupsForProgramItem[] =>
+  responses.flatMap((response) => {
+    const result = DirectSignupSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        new Error(
+          `Error validating ${queryName} DB value: programItemId: ${response.programItemId}`,
+          { cause: result.error },
+        ),
+      );
+      return [];
+    }
+    return result.data;
+  });
+
 export const findDirectSignups = async (): Promise<
   Result<DirectSignupsForProgramItem[], MongoDbError>
 > => {
   try {
-    const response = await SignupModel.find({}).lean();
+    const responses = await SignupModel.find({}).lean();
 
     logger.debug("MongoDB: Direct signups found");
 
-    const signups = response.flatMap((signup) => {
-      const result = DirectSignupSchemaDb.safeParse(signup);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findDirectSignups DB value: programItemId: ${signup.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        return [];
-      }
-      return result.data;
-    });
-
-    return makeSuccessResult(signups);
+    return makeSuccessResult(
+      parseSignupDocuments(responses, "findDirectSignups"),
+    );
   } catch (error) {
     logger.error(
       new Error("MongoDB: Error finding direct signups", { cause: error }),
@@ -67,43 +75,28 @@ export const findDirectSignups = async (): Promise<
   }
 };
 
-export const findDirectSignupsByProgramItemIds = async (
+interface SignupDocuments {
+  signups: DirectSignupsForProgramItem[];
+  // Which program items have a document at all, readable or not. A write that does not upsert
+  // stores nothing when there is none, where an unreadable one says only that a check cannot tell
+  presentProgramItemIds: Set<string>;
+}
+
+const findSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
-): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
+  queryName: string,
+): Promise<Result<SignupDocuments, MongoDbError>> => {
   try {
     const responses = await SignupModel.find({
       programItemId: { $in: programItemIds },
     }).lean();
 
-    if (responses.length === 0) {
-      logger.info(
-        `MongoDB: No direct signups found for program item IDs: ${programItemIds.join(", ")}`,
-      );
-      return makeSuccessResult([]);
-    }
-
-    logger.debug(
-      `MongoDB: Found ${responses.length} direct signups for program item IDs: ${programItemIds.join(", ")}`,
-    );
-
-    const validSignups: DirectSignupsForProgramItem[] = [];
-
-    for (const response of responses) {
-      const result = DirectSignupSchemaDb.safeParse(response);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findDirectSignupsByProgramItemIds DB value: programItemId ${response.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        continue;
-      }
-
-      validSignups.push(result.data);
-    }
-
-    return makeSuccessResult(validSignups);
+    return makeSuccessResult({
+      signups: parseSignupDocuments(responses, queryName),
+      presentProgramItemIds: new Set(
+        responses.map((response) => response.programItemId),
+      ),
+    });
   } catch (error) {
     logger.error(
       new Error(
@@ -113,6 +106,32 @@ export const findDirectSignupsByProgramItemIds = async (
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+};
+
+export const findDirectSignupsByProgramItemIds = async (
+  programItemIds: string[],
+): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
+  const documentsResult = await findSignupDocumentsByProgramItemIds(
+    programItemIds,
+    "findDirectSignupsByProgramItemIds",
+  );
+  if (!documentsResult.ok) {
+    return documentsResult;
+  }
+  const { signups } = documentsResult.value;
+
+  if (signups.length === 0) {
+    logger.info(
+      `MongoDB: No direct signups found for program item IDs: ${programItemIds.join(", ")}`,
+    );
+    return makeSuccessResult([]);
+  }
+
+  logger.debug(
+    `MongoDB: Found ${signups.length} direct signups for program item IDs: ${programItemIds.join(", ")}`,
+  );
+
+  return makeSuccessResult(signups);
 };
 
 interface FindDirectSignupsByStartTimeResponse extends UserDirectSignup {
@@ -140,19 +159,10 @@ export const findDirectSignupsByStartTimes = async (
 
     logger.debug(`MongoDB: Found signups for times ${startTimes.join(", ")}`);
 
-    const signups = response.flatMap((signup) => {
-      const result = DirectSignupSchemaDb.safeParse(signup);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findDirectSignupsByStartTimes DB value: programItemId: ${signup.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        return [];
-      }
-      return result.data;
-    });
+    const signups = parseSignupDocuments(
+      response,
+      "findDirectSignupsByStartTimes",
+    );
 
     const formattedResponse: FindDirectSignupsByStartTimeResponse[] =
       signups.flatMap((signup) => {
@@ -186,21 +196,9 @@ export const findUserDirectSignups = async (
 
     logger.debug(`MongoDB: Found signups for user ${username}`);
 
-    const signups = response.flatMap((signup) => {
-      const result = DirectSignupSchemaDb.safeParse(signup);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findUserDirectSignups DB value: programItemId: ${signup.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        return [];
-      }
-      return result.data;
-    });
-
-    return makeSuccessResult(signups);
+    return makeSuccessResult(
+      parseSignupDocuments(response, "findUserDirectSignups"),
+    );
   } catch (error) {
     logger.error(
       new Error(`MongoDB: Error finding signups for user ${username}`, {
@@ -299,49 +297,23 @@ export const saveDirectSignup = async (
   }
 };
 
-// Which of these program items have a sign-up document at all, read without validating it.
-// The write this verifies does not upsert, so "no document" is proof it stored nothing, where
-// "document present but unreadable" says only that the check cannot tell.
-const findProgramItemIdsWithSignupDocument = async (
-  programItemIds: string[],
-): Promise<Result<Set<string>, MongoDbError>> => {
-  try {
-    const ids: string[] = await SignupModel.distinct("programItemId", {
-      programItemId: { $in: programItemIds },
-    });
-    return makeSuccessResult(new Set(ids));
-  } catch (error) {
-    logger.error(
-      new Error("MongoDB: Error finding direct signup documents", {
-        cause: error,
-      }),
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-};
-
 // The attendance cap is applied by the write itself, so which sign-ups actually landed is
 // only known afterwards. Reporting the ones that didn't lets the caller treat them as not
 // placed rather than telling the attendee they got a spot that was never stored.
 const findSignupsNotSaved = async (
   signupsByProgramItems: Record<string, SignupRepositoryAddSignup[]>,
 ): Promise<Result<SignupRepositoryAddSignup[], MongoDbError>> => {
-  const savedSignupsResult = await findDirectSignupsByProgramItemIds(
+  const documentsResult = await findSignupDocumentsByProgramItemIds(
     Object.keys(signupsByProgramItems),
+    "findSignupsNotSaved",
   );
-  if (!savedSignupsResult.ok) {
-    return savedSignupsResult;
+  if (!documentsResult.ok) {
+    return documentsResult;
   }
-
-  const documentedResult = await findProgramItemIdsWithSignupDocument(
-    Object.keys(signupsByProgramItems),
-  );
-  if (!documentedResult.ok) {
-    return documentedResult;
-  }
+  const { signups, presentProgramItemIds } = documentsResult.value;
 
   const savedUsernamesByProgramItemId = new Map(
-    savedSignupsResult.value.map((signup) => [
+    signups.map((signup) => [
       signup.programItemId,
       new Set(signup.userSignups.map((userSignup) => userSignup.username)),
     ]),
@@ -355,7 +327,7 @@ const findSignupsNotSaved = async (
       if (!savedUsernames) {
         // No document to update and the write does not create one, so nothing was stored.
         // Saying otherwise would send an acceptance email for a spot that does not exist.
-        if (!documentedResult.value.has(signup.directSignupProgramItemId)) {
+        if (!presentProgramItemIds.has(signup.directSignupProgramItemId)) {
           logger.error(
             new Error(
               `Assignment signups for program item ${signup.directSignupProgramItemId} were not saved: it has no sign-up document`,
