@@ -85,6 +85,52 @@ test("Show lottery results without login", async ({ page, request }) => {
   await expect(dashboard.assignmentRuns).not.toContainText("test1");
 });
 
+// The run is recorded either way, so this is the dashboard's own filter rather than a missing
+// record: a run that placed nobody has nothing for an attendee to read
+test("Leave a lottery run that placed nobody out of the results", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(4);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+      // Needs two attendees to run, and only one enters the lottery
+      minAttendance: 2,
+      maxAttendance: 2,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+  await postAssignment(request, startTime);
+
+  const dashboard = new DashboardPage(page);
+  await dashboard.goto();
+
+  await expect(dashboard.title).toBeVisible();
+  await expect(dashboard.assignmentRuns).toHaveCount(0);
+  await expect(dashboard.noResultsMessage).toBeVisible();
+});
+
 test("Sort assignment runs latest first", async ({ page, request }) => {
   const earlierStartTime = hoursIntoEvent(4);
   const laterStartTime = hoursIntoEvent(5);
