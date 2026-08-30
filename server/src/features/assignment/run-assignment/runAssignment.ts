@@ -114,10 +114,13 @@ export const runAssignment = async ({
   );
 
   // A start time goes through one lottery, so one program item already carrying the mark closes
-  // it for all of them: anything that arrived afterwards - newly imported, or moved onto this
-  // slot - joins it on direct sign-up rather than reopening the hour among whoever signed up
-  // since. Recorded as passed over so that stays true once their sign-ups change
-  const lotteriedHere = startingLotteryProgramItems.some(
+  // it for all of them: anything that arrived afterwards joins it on direct sign-up rather than
+  // reopening the hour, recorded as passed over so that stays true once its sign-ups change.
+  // Asked of the whole programme, since one cancelled after its lottery still records it ran
+  const lotteriedHere = getStartingProgramItems(
+    programItems,
+    resolvedAssignmentTime,
+  ).some(
     (programItem) =>
       programItem.lotteryRanForStartTime !== undefined &&
       // Marked for a slot it no longer starts at means it was lotteried elsewhere and moved
