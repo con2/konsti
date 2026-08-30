@@ -1,5 +1,5 @@
 import { AnyBulkWriteOperation } from "mongoose";
-import { first, groupBy, partition, shuffle } from "remeda";
+import { countBy, first, groupBy } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import {
@@ -325,7 +325,6 @@ const findProgramItemIdsWithSignupDocument = async (
 // placed rather than telling the attendee they got a spot that was never stored
 const findSignupsNotSaved = async (
   signupsByProgramItems: Record<string, SignupRepositoryAddSignup[]>,
-  alreadyDropped: readonly SignupRepositoryAddSignup[],
 ): Promise<Result<SignupRepositoryAddSignup[], MongoDbError>> => {
   const savedSignupsResult = await findDirectSignupsByProgramItemIds(
     Object.keys(signupsByProgramItems),
@@ -347,23 +346,9 @@ const findSignupsNotSaved = async (
       new Set(signup.userSignups.map((userSignup) => userSignup.username)),
     ]),
   );
-  const alreadyDroppedKeys = new Set(
-    alreadyDropped.map(
-      (signup) => `${signup.directSignupProgramItemId}:${signup.username}`,
-    ),
-  );
-
   const notSaved = Object.values(signupsByProgramItems)
     .flat()
     .filter((signup) => {
-      if (
-        alreadyDroppedKeys.has(
-          `${signup.directSignupProgramItemId}:${signup.username}`,
-        )
-      ) {
-        return false;
-      }
-
       const savedUsernames = savedUsernamesByProgramItemId.get(
         signup.directSignupProgramItemId,
       );
@@ -393,9 +378,12 @@ const findSignupsNotSaved = async (
     });
 
   if (notSaved.length > 0) {
+    const notSavedCounts = Object.entries(
+      countBy(notSaved, (signup) => signup.directSignupProgramItemId),
+    ).map(([programItemId, count]) => `${programItemId}: ${count}`);
     logger.error(
       new Error(
-        `${notSaved.length} assignment signups did not fit the program item they were assigned to and were not saved`,
+        `${notSaved.length} assignment signups did not fit the program item they were assigned to and were not saved - ${notSavedCounts.join(", ")}`,
       ),
     );
   }
@@ -412,23 +400,6 @@ export const saveDirectSignups = async (
     (signupsRequest) => signupsRequest.directSignupProgramItemId,
   );
 
-  // New sign-ups are appended to whoever is already in the program item, so the attendance
-  // limit has to be checked against the total rather than against this batch alone
-  const existingSignupsResult = await findDirectSignupsByProgramItemIds(
-    Object.keys(signupsByProgramItems),
-  );
-  if (!existingSignupsResult.ok) {
-    return existingSignupsResult;
-  }
-  const existingUsernamesByProgramItemId = new Map(
-    existingSignupsResult.value.map((signup) => [
-      signup.programItemId,
-      signup.userSignups.map((userSignup) => userSignup.username),
-    ]),
-  );
-
-  const droppedSignups: SignupRepositoryAddSignup[] = [];
-
   const bulkOps: AnyBulkWriteOperation[] = Object.entries(
     signupsByProgramItems,
   ).flatMap(([programItemId, directSignups]) => {
@@ -436,44 +407,6 @@ export const saveDirectSignups = async (
       (p) => p.programItemId === programItemId,
     );
     if (!programItem) {
-      return [];
-    }
-
-    const existingUsernames =
-      existingUsernamesByProgramItemId.get(programItemId) ?? [];
-    const existingCount = existingUsernames.length;
-
-    // Someone already in the program item is rewritten in place below rather than added beside
-    // themselves, so their spot is theirs either way and only the newcomers compete for room
-    const alreadyIn = new Set(existingUsernames);
-    const [rewritten, newcomers] = partition(directSignups, (signup) =>
-      alreadyIn.has(signup.username),
-    );
-    const availableSpots = Math.max(
-      programItem.maxAttendance - existingCount,
-      0,
-    );
-
-    let finalSignups: SignupRepositoryAddSignup[] = directSignups;
-    if (newcomers.length > availableSpots) {
-      // This case is handled gracefully, but it's still a bug worth flagging
-      logger.error(
-        new Error(
-          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, existing signups: ${existingCount}, direct signups: ${directSignups.length}, dropping ${newcomers.length - availableSpots} signups`,
-        ),
-      );
-      const shuffledNewcomers = shuffle(newcomers);
-      finalSignups = [
-        ...rewritten,
-        ...shuffledNewcomers.slice(0, availableSpots),
-      ];
-      droppedSignups.push(...shuffledNewcomers.slice(availableSpots));
-    }
-
-    // Nothing left to append, so the update below could only ever remove: its $slice caps the
-    // whole array, which cuts into the attendees already there once a program item holds more
-    // than its attendance limit
-    if (finalSignups.length === 0) {
       return [];
     }
 
@@ -502,7 +435,7 @@ export const saveDirectSignups = async (
                               $in: [
                                 "$$this.username",
                                 {
-                                  $literal: finalSignups.map(
+                                  $literal: directSignups.map(
                                     (signup) => signup.username,
                                   ),
                                 },
@@ -513,17 +446,16 @@ export const saveDirectSignups = async (
                       },
                     },
                   },
-                  // The count above was read in a separate round-trip, so it can be stale by
-                  // the time this lands, and this cap is what actually holds the attendance
-                  // limit. Never below the attendees this write leaves alone, so an over-full
-                  // program item loses only the ones being written
+                  // The only cap on the attendance limit, and it runs on the array as it stands
+                  // rather than on a count read beforehand. Never below the attendees this write
+                  // leaves alone, so an over-full program item loses only the ones being written
                   in: {
                     $slice: [
                       {
                         $concatArrays: [
                           "$$keptSignups",
                           {
-                            $literal: finalSignups.map((signup) => ({
+                            $literal: directSignups.map((signup) => ({
                               username: signup.username,
                               priority: signup.priority,
                               signedToStartTime: new Date(
@@ -559,10 +491,7 @@ export const saveDirectSignups = async (
     const response = await SignupModel.bulkWrite(bulkOps);
     logger.info(`Updated signups for ${response.modifiedCount} program items`);
 
-    const notSavedResult = await findSignupsNotSaved(
-      signupsByProgramItems,
-      droppedSignups,
-    );
+    const notSavedResult = await findSignupsNotSaved(signupsByProgramItems);
     if (!notSavedResult.ok) {
       // The write has landed by now, so failing the caller here would abort a lottery run that
       // has already placed people. The unverified ones read as saved, like a skipped document
@@ -575,9 +504,7 @@ export const saveDirectSignups = async (
 
     return makeSuccessResult({
       modifiedCount: response.modifiedCount,
-      droppedSignups: notSavedResult.ok
-        ? [...droppedSignups, ...notSavedResult.value]
-        : droppedSignups,
+      droppedSignups: notSavedResult.ok ? notSavedResult.value : [],
     });
   } catch (error) {
     logger.error(
