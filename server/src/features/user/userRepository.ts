@@ -5,19 +5,11 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { isDuplicateKeyError } from "server/db/duplicateKeyError";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { Serial } from "server/types/serialTypes";
 import { NewUser } from "server/types/userTypes";
 import { logger } from "server/utils/logger";
-
-// Matched structurally rather than with `instanceof MongoServerError`: Mongoose
-// throws from its own bundled driver copy, which is a different class identity
-// than the one a direct `mongodb` import resolves to
-const isDuplicateKeyError = (error: unknown): boolean =>
-  typeof error === "object" &&
-  error !== null &&
-  "code" in error &&
-  error.code === 11000;
 
 export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");

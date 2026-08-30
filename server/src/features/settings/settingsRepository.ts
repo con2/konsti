@@ -7,6 +7,7 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { isDuplicateKeyError } from "server/db/duplicateKeyError";
 import {
   SETTINGS_SINGLETON_KEY,
   SettingsModel,
@@ -18,13 +19,6 @@ import { logger } from "server/utils/logger";
 // concurrent create loses on duplicate key instead of inserting a second
 // document that would shadow the first
 const settingsFilter = { singleton: SETTINGS_SINGLETON_KEY };
-
-// Mongo's duplicate key error: another caller created the document first
-const isDuplicateKeyError = (error: unknown): boolean =>
-  typeof error === "object" &&
-  error !== null &&
-  "code" in error &&
-  error.code === 11000;
 
 export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");
