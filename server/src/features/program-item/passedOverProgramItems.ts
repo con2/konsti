@@ -3,7 +3,10 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getDirectSignupPhaseStarted } from "shared/utils/signupTimes";
+import {
+  getDirectSignupPhaseStarted,
+  getLotterySignupEnded,
+} from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
@@ -68,7 +71,8 @@ export const getPassedOverProgramItems = async (
 
 // Lottery sign-ups for a program item that will not be lotteried after all. They are for a
 // lottery that will not happen, so they go the same way as those for a program item whose program
-// type leaves the lottery, and say the same thing
+// type leaves the lottery, and say the same thing. A sign-up whose lottery has already run is
+// left alone, whatever happens to the program item afterwards
 export const removePassedOverLotterySignups = async (
   passedOverProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
@@ -76,8 +80,18 @@ export const removePassedOverLotterySignups = async (
     return makeSuccessResult();
   }
 
+  const timeNowResult = await getTimeNow();
+  if (!timeNowResult.ok) {
+    return timeNowResult;
+  }
+
   const passedOverProgramItemIds = new Set(
-    passedOverProgramItems.map((programItem) => programItem.programItemId),
+    passedOverProgramItems
+      .filter(
+        (programItem) =>
+          !getLotterySignupEnded(programItem, timeNowResult.value),
+      )
+      .map((programItem) => programItem.programItemId),
   );
 
   const usersResult = await findUsers();

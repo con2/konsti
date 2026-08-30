@@ -983,3 +983,33 @@ test("should remove lottery signups made for a program item that stops taking pa
     user?.eventLogItems.map((eventLogItem) => eventLogItem.action),
   ).toEqual([EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE]);
 });
+
+test("should keep lottery signups whose lottery has run when a program item stops taking part in a lottery", async () => {
+  // Inside the gap between the lottery and direct sign-up, so the program item can still be
+  // passed over while the sign-ups it carries are already a record of a lottery that happened
+  await saveTestSettings({
+    testTime: subMinutes(
+      new Date(testProgramItem.startTime),
+      config.event().directSignupPhaseStart - 1,
+    ).toISOString(),
+  });
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [mockLotterySignups[0]],
+  });
+
+  await saveProgramItems([testProgramItem]);
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups).toHaveLength(1);
+  expect(user?.eventLogItems).toEqual([]);
+
+  // The program item is still taken out of the lottery, only its sign-ups are left alone
+  const programItem = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(programItem.passedOverForLottery).toEqual(true);
+});

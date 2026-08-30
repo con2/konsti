@@ -2322,9 +2322,9 @@ test("Should mark a batched program item with its own start time, not the parent
   expect(hasLotteryAlreadyRun(programItem)).toEqual(false);
 });
 
-test("Should cancel and notify the lottery signups of a program item added to a lotteried start time", async () => {
-  // The mark this branch writes is what puts a program item beyond a later import's reach, so
-  // the run has to clear its lottery sign-ups itself or nothing ever will
+test("Should keep the lottery signups of a program item added to a lotteried start time", async () => {
+  // The start time has been decided, so these sign-ups record a lottery that is over rather
+  // than one still to come, and nothing removes them
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
@@ -2376,9 +2376,12 @@ test("Should cancel and notify the lottery signups of a program item added to a 
 
   const secondUser = unsafelyUnwrap(await findUser(mockUser2.username));
 
-  // The sign-up is gone rather than left waiting on a lottery that will never come
-  expect(secondUser?.lotterySignups).toEqual([]);
+  expect(secondUser?.lotterySignups).toEqual([
+    expect.objectContaining({
+      programItemId: addedProgramItem.programItemId,
+    }),
+  ]);
   expect(
     secondUser?.eventLogItems.map((eventLogItem) => eventLogItem.action),
-  ).toContain(EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE);
+  ).not.toContain(EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE);
 });

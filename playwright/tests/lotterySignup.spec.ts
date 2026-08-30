@@ -910,13 +910,14 @@ test("Keep a program item out of the lottery after its signups are cancelled", a
   await expect(programItem.signUpButton).toBeVisible();
 });
 
-test("Cancel the lottery signups a program item carries out of the lottery", async ({
+test("Keep the lottery signups a program item carries out of the lottery", async ({
   page,
   request,
 }) => {
   // The only route to a lottery sign-up for a program item that is then passed over: it leaves
   // the lottery late enough for its sign-ups to be preserved, takes a spot while its sign-up is
-  // always open, and comes back inside the gap before direct sign-up would have opened
+  // always open, and comes back inside the gap before direct sign-up would have opened. Its
+  // lottery has run by then, so the sign-up stays as the record of having entered it
   const startTime = hoursIntoEvent(6);
   const lotterySignupEndTime = subMinutes(
     new Date(startTime),
@@ -956,8 +957,7 @@ test("Cancel the lottery signups a program item carries out of the lottery", asy
     message: "",
   });
 
-  // Back to a lottery program item, now holding a spot, so it is passed over - and the lottery
-  // sign-up it carried is for a lottery that will not happen
+  // Back to a lottery program item, now holding a spot, so it is passed over
   await postTestSettings(request, {
     testTime: addMinutes(lotterySignupEndTime, 2).toISOString(),
   });
@@ -967,15 +967,20 @@ test("Cancel the lottery signups a program item carries out of the lottery", asy
   await page.goto("/");
 
   const programList = new ProgramListPage(page);
-  await expect(programList.notificationBar.bar).toContainText(
-    "no longer uses lottery sign-up and your lottery sign-up was removed",
-  );
-  await expect(programList.notificationBar.bar).toContainText(
+  await programList.gotoMyProgram();
+  await expect(programList.lotterySignupList).toContainText(
     testProgramItem.title,
   );
 
-  await programList.gotoMyProgram();
-  await expect(programList.lotterySignupList).not.toContainText(
-    testProgramItem.title,
+  // Nothing was taken away, so there is nothing to tell them about either
+  await expect(programList.notificationBar.bar).toBeHidden();
+
+  // The program item is still out of the lottery, and says so
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+  const programItem = programList.itemByTitle(testProgramItem.title);
+  await expect(programItem.lotterySignupButton).toBeHidden();
+  await expect(programItem.container).toContainText(
+    "It already has sign-ups, so it does not take part in the lottery.",
   );
 });

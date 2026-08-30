@@ -105,6 +105,10 @@ export const saveProgramItems = async (
     passedOverProgramItems.map((programItem) => programItem.programItemId),
   );
 
+  // Normally there is nothing to remove: a program item is passed over for holding direct
+  // sign-ups, and having those means its lottery is over, so any sign-up for it is a past one
+  // this leaves alone. Defence in depth for the orders that arrive out of the ordinary.
+  //
   // Done before the decision is stored, so a failure here leaves the program item undecided and
   // the next import tries again. Recording it first and failing after would strand the sign-ups
   // for good: the item would be filtered out as already decided every time from then on
