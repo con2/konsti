@@ -764,6 +764,7 @@ test("should preserve lottery signup when programType is changed to non-lottery 
 });
 
 test("should add event notification if user has lottery signup and program item start time changes", async () => {
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({

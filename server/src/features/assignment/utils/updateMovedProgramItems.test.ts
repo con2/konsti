@@ -24,6 +24,7 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
+import { withLotteryStillAhead } from "server/test/utils/lotteryClock";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
@@ -35,6 +36,7 @@ afterEach(async () => {
 });
 
 test("should remove lottery signups for moved program items from users", async () => {
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
   expect(insertedProgramItems.length).toEqual(2);
@@ -68,6 +70,7 @@ test("should remove lottery signups for moved program items from users", async (
 });
 
 test("should notify a user about a moved lottery signup and a moved direct signup for different items", async () => {
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const originalProgramItems = unsafelyUnwrap(await findProgramItems());
 
@@ -200,4 +203,30 @@ test("should keep lottery signups for other program items when one moves onto th
   expect(user?.lotterySignups.map((signup) => signup.programItemId)).toEqual([
     testProgramItem2.programItemId,
   ]);
+});
+
+test("should keep lottery signups whose lottery has already run when the program item moves", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await ProgramItemModel.updateOne(
+    { programItemId: testProgramItem.programItemId },
+    {
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
+    },
+  );
+
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
+  await updateMovedProgramItems(updatedProgramItems, insertedProgramItems);
+
+  // The clock is past both lotteries, so the move takes nothing away and says nothing
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.lotterySignups).toHaveLength(2);
+  expect(updatedUser?.eventLogItems).toEqual([]);
 });

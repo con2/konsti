@@ -389,7 +389,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].description).toEqual(newDescription);
   });
 
-  test("should remove lottery signups but not direct signups or favorite program items if program item start time changes", async () => {
+  test("should keep lottery signups whose lottery has run if program item start time changes", async () => {
     const newStartTime = addHours(
       new Date(testProgramItem.startTime),
       1,
@@ -433,9 +433,17 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
-    expect(updatedUser?.lotterySignups).toHaveLength(1);
-    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
-      testProgramItem2.programItemId,
+    // Both lotteries are long past, so moving one of the program items takes nothing away
+    expect(updatedUser?.lotterySignups).toHaveLength(2);
+    expect(
+      updatedUser?.lotterySignups.map(
+        (lotterySignup) => lotterySignup.programItemId,
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        testProgramItem.programItemId,
+        testProgramItem2.programItemId,
+      ]),
     );
     expect(updatedUser?.favoriteProgramItemIds).toHaveLength(2);
     expect(updatedUser?.eventLogItems).toHaveLength(1);

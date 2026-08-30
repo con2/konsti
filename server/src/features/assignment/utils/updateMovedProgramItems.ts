@@ -2,6 +2,8 @@ import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { getLotterySignupEnded } from "shared/utils/signupTimes";
+import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { findDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
@@ -68,19 +70,31 @@ const removeMovedLotterySignupsAndNotify = async (
 ): Promise<Result<UsersWithMovedLotterySignups, MongoDbError>> => {
   logger.info("Remove moved lottery signups from users");
 
+  const timeNowResult = await getTimeNow();
+  if (!timeNowResult.ok) {
+    return timeNowResult;
+  }
+
+  // A sign-up whose lottery has run records that the attendee entered it, and moving the
+  // program item afterwards does not unmake that. Only one still waiting for its lottery is
+  // removed, since it asks for a slot the program item has left
+  const movedProgramItemIds = new Set(
+    movedProgramItems
+      .filter(
+        (programItem) =>
+          !getLotterySignupEnded(programItem, timeNowResult.value),
+      )
+      .map((programItem) => programItem.programItemId),
+  );
+
   const usersResult = await findUsers();
   if (!usersResult.ok) {
     return usersResult;
   }
   const usersToUpdate = usersResult.value.flatMap((user) => {
-    const movedLotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const movedFound = movedProgramItems.some((movedProgramItem) => {
-        return movedProgramItem.programItemId === lotterySignup.programItemId;
-      });
-      if (movedFound) {
-        return lotterySignup;
-      }
-    });
+    const movedLotterySignups = user.lotterySignups.filter((lotterySignup) =>
+      movedProgramItemIds.has(lotterySignup.programItemId),
+    );
 
     if (movedLotterySignups.length === 0) {
       return [];
