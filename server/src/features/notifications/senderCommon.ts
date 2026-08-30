@@ -25,6 +25,17 @@ const PROGRAM_STARTING_TIME_CHANGED_SUBJECT =
   "Ohjelman aika muuttunut / Program time changed";
 const SIGNATURE = "Terveisin / Sincerely Konsti";
 
+// Every message says the same thing twice, Finnish first, and signs off the same way. Kept
+// here so the order and the blank lines between them cannot drift apart between messages
+const buildEmailTemplate = (
+  subject: string,
+  bodyFi: string,
+  bodyEn: string,
+): EmailTemplate => ({
+  subject,
+  text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
+});
+
 export function getRejectedEmailTemplate(
   notification: NotificationTask,
 ): EmailTemplate {
@@ -53,10 +64,7 @@ Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittaudui
   const bodyEn = `Hi ${notification.username}!
 ${lotteriedLine(Locale.EN)}
 Unfortunately you did not get a spot in the lottery sign-up.`;
-  return {
-    subject: SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(SUBJECT, bodyFi, bodyEn);
 }
 
 export function getAcceptedEmailTemplate(
@@ -78,10 +86,7 @@ Ohjelma alkaa ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
 You got a spot in the program ${programItemTitle}.
 The program will start at ${programStartTimeEn}.`;
-  return {
-    subject: SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(SUBJECT, bodyFi, bodyEn);
 }
 
 export function getProgramItemCancelledEmailTemplate(
@@ -102,10 +107,7 @@ Ohjelman piti alkaa ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
 Program ${notification.programItemTitle} has been cancelled.
 Program was supposed to start at ${programStartTimeEn}.`;
-  return {
-    subject: CANCELLED_DELETED_SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(CANCELLED_DELETED_SUBJECT, bodyFi, bodyEn);
 }
 
 export function getProgramItemDeletedEmailTemplate(
@@ -126,10 +128,7 @@ Ohjelman piti alkaa ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
 Program ${notification.programItemTitle} has been removed from the program.
 Program was supposed to start at ${programStartTimeEn}.`;
-  return {
-    subject: CANCELLED_DELETED_SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(CANCELLED_DELETED_SUBJECT, bodyFi, bodyEn);
 }
 
 export function getProgramItemNoKonstiSignupEmailTemplate(
@@ -141,10 +140,7 @@ Ilmoittautumisesi ohjelmaan on poistettu.`;
   const bodyEn = `Hi ${notification.username}!
 Program ${notification.programItemTitle} no longer uses Konsti sign-up.
 Your sign-up for the program has been removed.`;
-  return {
-    subject: SIGNUP_CHANGED_SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(SIGNUP_CHANGED_SUBJECT, bodyFi, bodyEn);
 }
 
 export function getProgramItemNoLotteryEmailTemplate(
@@ -156,10 +152,7 @@ Arvontailmoittautumisesi ohjelmaan on poistettu.`;
   const bodyEn = `Hi ${notification.username}!
 Program ${notification.programItemTitle} no longer uses lottery sign-up.
 Your lottery sign-up for the program has been removed.`;
-  return {
-    subject: SIGNUP_CHANGED_SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(SIGNUP_CHANGED_SUBJECT, bodyFi, bodyEn);
 }
 
 export function getProgramItemTimeChangedEmailTemplate(
@@ -180,10 +173,11 @@ Ohjelma alkaa nyt ${programStartTimeFi}.`;
   const bodyEn = `Hi ${notification.username}!
 Program ${notification.programItemTitle} start time has changed.
 The program will now start at ${programStartTimeEn}.`;
-  return {
-    subject: PROGRAM_STARTING_TIME_CHANGED_SUBJECT,
-    text: `${bodyFi}\n\n${bodyEn}\n\n${SIGNATURE}`,
-  };
+  return buildEmailTemplate(
+    PROGRAM_STARTING_TIME_CHANGED_SUBJECT,
+    bodyFi,
+    bodyEn,
+  );
 }
 
 export function buildEmail(
