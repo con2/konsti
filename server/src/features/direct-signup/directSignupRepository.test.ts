@@ -6,6 +6,7 @@ import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { db } from "server/db/mongodb";
 import {
+  createEmptyDirectSignupDocumentForProgramItems,
   delDirectSignup,
   delDirectSignups,
   findDirectSignups,
@@ -353,6 +354,36 @@ test("should treat an assignment's direct sign-ups as saved when the sign-up doc
     programItemId: programItem.programItemId,
   });
   expect(stored?.userSignups).toHaveLength(2);
+});
+
+test("should keep existing direct sign-ups when the empty sign-up document is created again", async () => {
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  await saveDirectSignup(mockPostDirectSignupRequest);
+
+  unsafelyUnwrap(
+    await createEmptyDirectSignupDocumentForProgramItems([
+      testProgramItem.programItemId,
+    ]),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  expect(signups).toHaveLength(1);
+  expect(signups[0].userSignups).toHaveLength(1);
+  expect(signups[0].count).toEqual(1);
+});
+
+test("should reject a second sign-up document for the same program item", async () => {
+  await saveProgramItems([testProgramItem]);
+
+  // Straight at the driver, so only the database's own unique key can stop it
+  await expect(
+    SignupModel.collection.insertOne({
+      programItemId: testProgramItem.programItemId,
+      userSignups: [],
+      count: 0,
+    }),
+  ).rejects.toThrow(/duplicate key/);
 });
 
 test("should report an assignment's direct sign-up the attendance cap cut from an over-full program item", async () => {

@@ -46,4 +46,9 @@ const directSignupSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// One sign-up document per program item, which every query against this collection assumes.
+// Ensuring a document exists is a read followed by a write, so without this two overlapping
+// program item imports could each insert one
+directSignupSchema.index({ programItemId: 1 }, { unique: true });
+
 export const SignupModel = mongoose.model("direct-signup", directSignupSchema);

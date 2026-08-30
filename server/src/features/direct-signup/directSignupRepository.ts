@@ -648,16 +648,23 @@ export const resetDirectSignupsByProgramItemIds = async (
 export const createEmptyDirectSignupDocumentForProgramItems = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const signupDocs = programItemIds.map((programItemId) => {
-    return new SignupModel({
-      programItemId,
-      userSignups: [],
-      count: 0,
-    });
-  });
+  if (programItemIds.length === 0) {
+    return makeSuccessResult();
+  }
 
   try {
-    await SignupModel.create(signupDocs);
+    // $setOnInsert leaves an existing document alone, so a program item whose document appeared
+    // between the caller deciding it was missing and this write keeps the sign-ups it holds
+    const bulkOps: AnyBulkWriteOperation[] = programItemIds.map(
+      (programItemId) => ({
+        updateOne: {
+          filter: { programItemId },
+          update: { $setOnInsert: { userSignups: [], count: 0 } },
+          upsert: true,
+        },
+      }),
+    );
+    await SignupModel.bulkWrite(bulkOps);
     logger.info(
       `MongoDB: Signup collection created for ${programItemIds.length} program items: ${programItemIds.join(", ")}`,
     );
