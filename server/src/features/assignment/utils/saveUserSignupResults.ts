@@ -33,10 +33,36 @@ export const saveUserSignupResults = async ({
 }: SaveUserSignupResultsParams): Promise<
   Result<readonly UserAssignmentResult[], MongoDbError>
 > => {
+  // Where each program item starts now, which is what the run picked its preferences by. A
+  // sign-up's own stored time is not rewritten when a program item moves, so reading the won
+  // hour off it would record the spot at an hour the program item has left
+  const startTimeByProgramItemId = new Map(
+    programItems.map((programItem) => [
+      programItem.programItemId,
+      programItem.startTime,
+    ]),
+  );
+
+  const wonResults = results.map((result) => {
+    const startTime = startTimeByProgramItemId.get(
+      result.assignmentSignup.programItemId,
+    );
+    if (startTime === undefined) {
+      return result;
+    }
+    return {
+      ...result,
+      assignmentSignup: {
+        ...result.assignmentSignup,
+        signedToStartTime: startTime,
+      },
+    };
+  });
+
   // The hours the lottery placed people at, which for a batched program item are not the hour
   // its lottery ran: a won spot only displaces what the attendee holds at that same hour
   const wonStartTimes = unique(
-    results.map((result) => result.assignmentSignup.signedToStartTime),
+    wonResults.map((result) => result.assignmentSignup.signedToStartTime),
   );
 
   const directSignupsByStartTimeResult = await findDirectSignupsByStartTimes(
@@ -52,7 +78,7 @@ export const saveUserSignupResults = async ({
   );
 
   const resultsToSave = dropResultsThatDoNotFit({
-    results,
+    results: wonResults,
     assignmentTime,
     existingSignups: directSignupsByStartTimeResult.value,
     programItems,
@@ -97,7 +123,7 @@ export const saveUserSignupResults = async ({
     assignmentTime,
     finalResults,
     existingSignups: directSignupsByStartTimeResult.value,
-    programItems,
+    startTimeByProgramItemId,
   });
 
   return makeSuccessResult(finalResults);
@@ -107,7 +133,7 @@ interface RemoveReplacedSignupsParams {
   assignmentTime: string;
   finalResults: readonly UserAssignmentResult[];
   existingSignups: readonly { username: string; programItemId: string }[];
-  programItems: readonly ProgramItem[];
+  startTimeByProgramItemId: ReadonlyMap<string, string>;
 }
 
 // A winner's own sign-ups for the hour they won give way to that spot - they can't attend both.
@@ -119,17 +145,10 @@ const removeReplacedSignups = async ({
   assignmentTime,
   finalResults,
   existingSignups,
-  programItems,
+  // Where each program item starts now, since a sign-up's stored time is not rewritten when
+  // one moves
+  startTimeByProgramItemId,
 }: RemoveReplacedSignupsParams): Promise<void> => {
-  // Compared against where each program item starts now, since a sign-up's stored time is not
-  // rewritten when one moves
-  const startTimeByProgramItemId = new Map(
-    programItems.map((programItem) => [
-      programItem.programItemId,
-      programItem.startTime,
-    ]),
-  );
-
   const existingSignupsByUsername = groupBy(
     existingSignups,
     (signup) => signup.username,
