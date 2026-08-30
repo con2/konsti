@@ -870,8 +870,8 @@ describe("The lottery for a start time runs once", () => {
       mockUser.username,
     ]);
 
-    // Someone signs up for the lottery afterwards and the start time is run again. The spots
-    // that are still free go to direct sign-up rather than through a second lottery
+    // A second attendee enters and the start time is run again with two of its three spots
+    // still free, so the run has something it could hand out and refuses anyway
     await saveLotterySignups({
       username: mockUser2.username,
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
