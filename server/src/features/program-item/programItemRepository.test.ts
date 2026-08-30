@@ -36,6 +36,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { withLotteryStillAhead } from "server/test/utils/lotteryClock";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   NotificationTaskType,
@@ -909,21 +910,8 @@ test("should add event notification if user has direct signup and program item s
   );
 });
 
-// A lottery program item can only hold sign-ups before its lottery if it took them while it was
-// something else, since direct sign-up for one opens after its lottery. It is left on direct
-// sign-up rather than lotteried, and marking it here is what lets the program item page say so
-// before a run has been anywhere near it
-const withLotteryStillAhead = async (): Promise<void> => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart + 1,
-    ).toISOString(),
-  });
-};
-
 test("should mark a lottery program item that already holds signups as not taking part in a lottery", async () => {
-  await withLotteryStillAhead();
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -937,7 +925,7 @@ test("should mark a lottery program item that already holds signups as not takin
 });
 
 test("should not mark a lottery program item nobody has signed up to", async () => {
-  await withLotteryStillAhead();
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
 
   await saveProgramItems([testProgramItem]);
@@ -951,7 +939,7 @@ test("should not mark a lottery program item nobody has signed up to", async () 
 test("should keep a program item out of the lottery after its signups are cancelled", async () => {
   // The decision is recorded rather than re-read from whoever holds a spot right now, so
   // emptying the program item cannot put it back into a lottery
-  await withLotteryStillAhead();
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -977,7 +965,7 @@ test("should keep a program item out of the lottery after its signups are cancel
 });
 
 test("should remove lottery signups made for a program item that stops taking part in a lottery", async () => {
-  await withLotteryStillAhead();
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
