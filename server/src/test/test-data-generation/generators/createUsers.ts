@@ -12,7 +12,7 @@ const SERIAL_LENGTH = 10;
 
 // Faker can repeat a username, and nothing rejects a duplicate on save. Two user
 // documents sharing a username break assignment: results are produced for both,
-// but every username-filtered write lands on whichever document is found first
+// but every username-filtered write lands on whichever document is found first.
 let generatedUsernameCount = 0;
 
 const generateUsername = (): string => {

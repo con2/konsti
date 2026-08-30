@@ -50,7 +50,7 @@ const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
 // PORT_OFFSET lets several local instances (e.g. one per git worktree) run side
 // by side without colliding: it shifts the server and client ports by the same
 // amount and picks a per-instance dev database name. Default 0 keeps the classic
-// 5000/8000 ports
+// 5000/8000 ports.
 const portOffset = Number(process.env.PORT_OFFSET) || 0;
 const defaultServerPort = 5000 + portOffset;
 const clientPort = 8000 + portOffset;
@@ -204,7 +204,7 @@ export const combineConfig = (): ServerConfig => {
     default:
       // Fail closed: deployed pods always run with NODE_ENV=production, so an unrecognized
       // or missing SETTINGS there must not silently fall back to devConfig's public JWT
-      // secrets — refuse to start instead. Local/test runs (any other NODE_ENV) keep devConfig
+      // secrets — refuse to start instead. Local/test runs (any other NODE_ENV) keep devConfig.
       if (process.env.NODE_ENV === "production") {
         // eslint-disable-next-line no-restricted-syntax -- fail fast on startup misconfiguration
         throw new Error(

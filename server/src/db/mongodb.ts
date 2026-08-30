@@ -25,7 +25,7 @@ const connectToDb = async (
   // automatic index build runs once per model per process, so a later
   // connection to a different database (every integration test gets its own)
   // would otherwise silently skip them - including the unique keys that keep
-  // single-document collections single
+  // single-document collections single.
   try {
     await Promise.all(
       Object.values(mongoose.models).map(async (model) => {
@@ -36,7 +36,7 @@ const connectToDb = async (
     // A unique index fails to build when the data already violates it, e.g. a
     // database that collected duplicate settings documents before the unique
     // key existed. Name the cause: the fix is removing the duplicates
-    // eslint-disable-next-line no-restricted-syntax -- Server startup
+    // eslint-disable-next-line no-restricted-syntax -- Server startup.
     throw new Error(
       "MongoDB: Error building indexes, database may hold data that violates them",
       { cause: error },

@@ -24,7 +24,7 @@ let staticPath: string;
 const bundledAssetName = "cacheTest-Ab12Cd34.js";
 // A static file served from the root. The hyphenated name is deliberate: it
 // reads like a hashed name, so it catches a cache rule that guesses from the
-// filename instead of the location
+// filename instead of the location.
 const staticFileName = "service-worker-registration.js";
 
 // A served root that itself sits under a directory called "assets", to catch a

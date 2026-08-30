@@ -75,7 +75,7 @@ test("Helper can find a user and change their password", async ({
   await expect(loginPage.navigation.logoutLink).toBeVisible();
 });
 
-test("Helper can view private signup question answers", async ({
+test("Helper can view private sign-up question answers", async ({
   page,
   request,
 }) => {

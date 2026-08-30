@@ -15,6 +15,7 @@ import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeek
 import {
   isSameOrAfter,
   isSameOrBefore,
+  isSameTime,
   isWithinMinutes,
 } from "shared/utils/timeComparison";
 import { TIMEZONE } from "shared/utils/timezone";
@@ -29,12 +30,12 @@ const toPlainDate = (time: Date): Date => new Date(time);
 // on purpose. An invalid time is not before anything, so it goes unclamped and
 // stays invalid, and the predicates and server gates that consume it read as
 // closed. Clamping it to a real instant instead would open sign-up for an item
-// whose start time could not be resolved
+// whose start time could not be resolved.
 
 // Apply the parent override that batches several items into a single lottery
-// run. Takes the parts rather than a program item, for callers that hold a
-// sign-up's stored time instead of the item it points at
-export const resolveStartTime = (
+// run. Takes the parts rather than a program item, for the helpers below that
+// hold a stored time instead of the item it points at.
+const resolveStartTime = (
   parentId: string | undefined,
   ownStartTime: string,
 ): string => {
@@ -57,7 +58,7 @@ export const getProgramItemStartTime = (programItem: ProgramItem): string =>
 //
 // Both steps run in the event timezone: stepping back a day keeps the wall-clock
 // time even when that day is 23 or 25 hours long, and naming the hour explicitly
-// resolves whichever UTC offset that day happens to have
+// resolves whichever UTC offset that day happens to have.
 const openAtFixedHourPreviousEvening = (
   timezoneStartTime: TZDate,
   hour: number,
@@ -103,6 +104,29 @@ export const getLotterySignupEndTime = (programItem: ProgramItem): Date => {
   const startTime = getProgramItemStartTime(programItem);
   return subMinutes(new Date(startTime), directSignupPhaseStart);
 };
+
+// Whether a program item runs at a given time, once the parent override is applied. Compared to
+// the minute because the two can be the same moment written differently - a configured parent
+// time carries no milliseconds.
+export const isSameStartTime = (
+  programItemStartTime: string,
+  comparedTime: string,
+  parentId: string | undefined,
+): boolean =>
+  isSameTime(resolveStartTime(parentId, programItemStartTime), comparedTime);
+
+// Marked for a slot it no longer starts at: its lottery ran and a reschedule moved it, so it
+// does not go into another one. Asked of the item's own start time rather than the parent
+// override, which batches the run and does not move when the item does.
+export const hasLotteryAlreadyRun = (programItem: ProgramItem): boolean =>
+  programItem.lotteryRanForStartTime !== undefined &&
+  !isSameTime(programItem.startTime, programItem.lotteryRanForStartTime);
+
+// No lottery will take this program item: it was passed over for holding sign-ups, or it moved
+// onto a slot after its own lottery ran. Both are recorded, so neither answer expires.
+export const willNotBeLotteried = (programItem: ProgramItem): boolean =>
+  programItem.passedOverForLottery === true ||
+  hasLotteryAlreadyRun(programItem);
 
 export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
@@ -227,9 +251,18 @@ export const getLotterySignupNotStarted = (
   // A negated timestamp comparison rather than isBefore, which is false when
   // either side is invalid and would report the sign-up as already open. Same
   // direction as the server's gate, so the help text cannot invite a sign-up
-  // the server then rejects
+  // the server then rejects.
   return !isSameOrAfter(timeNow, lotterySignupStartTime);
 };
+
+// Past the point where the lottery for this program item decides it, so a sign-up for it is a
+// record of having entered rather than a pending request. Deliberately a negated comparison: a
+// start time that cannot be resolved makes both directions false, and here that has to read as
+// ended, because the callers are automatic deletions that must fail towards keeping.
+export const getLotterySignupEnded = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean => !isBefore(timeNow, getLotterySignupEndTime(programItem));
 
 export const getLotterySignupInProgress = (
   programItem: ProgramItem,
@@ -243,10 +276,35 @@ export const getLotterySignupInProgress = (
   );
 };
 
+// Whether the first-come phase for this program item's starting time has begun on the schedule.
+// A property of the starting time rather than of the program item: it stays false for one let out
+// early, which is what the lottery run gating needs - a program item no lottery will take is
+// skipped by the run, and must not make the whole start time read as too late to lottery.
+export const getDirectSignupPhaseStarted = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean => isSameOrAfter(timeNow, getDirectSignupStartTime(programItem));
+
+// Direct sign-up never opens twice. A program item no lottery will take has had its sign-up open
+// already - before it moved, or under the schedule it collected sign-ups by - so it stays open
+// rather than shutting against a schedule pointing at a phase that will not happen. One still
+// headed for a lottery is unaffected, so the gap after a lottery is never skipped.
+export const getDirectSignupStarted = (
+  programItem: ProgramItem,
+  timeNow: Date,
+): boolean =>
+  willNotBeLotteried(programItem) ||
+  getDirectSignupPhaseStarted(programItem, timeNow);
+
 export const getPhaseGapInProgress = (
   programItem: ProgramItem,
   timeNow: Date,
 ): boolean => {
+  // Nothing is being decided for an item no lottery will take, whatever its own schedule says
+  if (willNotBeLotteried(programItem)) {
+    return false;
+  }
+
   const { phaseGap } = config.event();
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
@@ -268,10 +326,9 @@ export const getDirectSignupInProgress = (
   programItem: ProgramItem,
   timeNow: Date,
 ): boolean => {
-  const directSignupStartTime = getDirectSignupStartTime(programItem);
   const directSignupEndTime = getDirectSignupEndTime(programItem);
   return (
-    isSameOrAfter(timeNow, directSignupStartTime) &&
+    getDirectSignupStarted(programItem, timeNow) &&
     isSameOrBefore(timeNow, directSignupEndTime)
   );
 };

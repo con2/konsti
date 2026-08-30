@@ -1,13 +1,14 @@
 import { AnyBulkWriteOperation } from "mongoose";
-import { first, groupBy, shuffle } from "remeda";
+import { countBy, first, groupBy } from "remeda";
 import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
-import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { isSameTime } from "shared/utils/timeComparison";
+import { isDuplicateKeyBulkWriteError } from "server/db/duplicateKeyError";
 import {
   DirectSignupSchemaDb,
   SignupModel,
@@ -19,7 +20,6 @@ import {
   UserDirectSignup,
 } from "server/features/direct-signup/directSignupTypes";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 
 export const removeDirectSignups = async (): Promise<
@@ -37,29 +37,37 @@ export const removeDirectSignups = async (): Promise<
   }
 };
 
+// A document that cannot be read is skipped rather than failing the whole query, so one unreadable
+// row does not hide every other sign-up. The query name locates the caller in the log
+const parseSignupDocuments = (
+  responses: readonly { programItemId: string }[],
+  queryName: string,
+): DirectSignupsForProgramItem[] =>
+  responses.flatMap((response) => {
+    const result = DirectSignupSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        new Error(
+          `Error validating ${queryName} DB value: programItemId: ${response.programItemId}`,
+          { cause: result.error },
+        ),
+      );
+      return [];
+    }
+    return result.data;
+  });
+
 export const findDirectSignups = async (): Promise<
   Result<DirectSignupsForProgramItem[], MongoDbError>
 > => {
   try {
-    const response = await SignupModel.find({}).lean();
+    const responses = await SignupModel.find({}).lean();
 
     logger.debug("MongoDB: Direct signups found");
 
-    const signups = response.flatMap((signup) => {
-      const result = DirectSignupSchemaDb.safeParse(signup);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findDirectSignups DB value: programItemId: ${signup.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        return [];
-      }
-      return result.data;
-    });
-
-    return makeSuccessResult(signups);
+    return makeSuccessResult(
+      parseSignupDocuments(responses, "findDirectSignups"),
+    );
   } catch (error) {
     logger.error(
       new Error("MongoDB: Error finding direct signups", { cause: error }),
@@ -68,43 +76,28 @@ export const findDirectSignups = async (): Promise<
   }
 };
 
-export const findDirectSignupsByProgramItemIds = async (
+interface SignupDocuments {
+  signups: DirectSignupsForProgramItem[];
+  // Which program items have a document at all, readable or not. A write that does not upsert
+  // stores nothing when there is none, where an unreadable one says only that a check cannot tell
+  presentProgramItemIds: Set<string>;
+}
+
+const findSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
-): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
+  queryName: string,
+): Promise<Result<SignupDocuments, MongoDbError>> => {
   try {
     const responses = await SignupModel.find({
       programItemId: { $in: programItemIds },
     }).lean();
 
-    if (responses.length === 0) {
-      logger.info(
-        `MongoDB: No direct signups found for program item IDs: ${programItemIds.join(", ")}`,
-      );
-      return makeSuccessResult([]);
-    }
-
-    logger.debug(
-      `MongoDB: Found ${responses.length} direct signups for program item IDs: ${programItemIds.join(", ")}`,
-    );
-
-    const validSignups: DirectSignupsForProgramItem[] = [];
-
-    for (const response of responses) {
-      const result = DirectSignupSchemaDb.safeParse(response);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findDirectSignupsByProgramItemIds DB value: programItemId ${response.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        continue;
-      }
-
-      validSignups.push(result.data);
-    }
-
-    return makeSuccessResult(validSignups);
+    return makeSuccessResult({
+      signups: parseSignupDocuments(responses, queryName),
+      presentProgramItemIds: new Set(
+        responses.map((response) => response.programItemId),
+      ),
+    });
   } catch (error) {
     logger.error(
       new Error(
@@ -116,17 +109,47 @@ export const findDirectSignupsByProgramItemIds = async (
   }
 };
 
+export const findDirectSignupsByProgramItemIds = async (
+  programItemIds: string[],
+): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
+  const documentsResult = await findSignupDocumentsByProgramItemIds(
+    programItemIds,
+    "findDirectSignupsByProgramItemIds",
+  );
+  if (!documentsResult.ok) {
+    return documentsResult;
+  }
+  const { signups } = documentsResult.value;
+
+  if (signups.length === 0) {
+    logger.info(
+      `MongoDB: No direct signups found for program item IDs: ${programItemIds.join(", ")}`,
+    );
+    return makeSuccessResult([]);
+  }
+
+  logger.debug(
+    `MongoDB: Found ${signups.length} direct signups for program item IDs: ${programItemIds.join(", ")}`,
+  );
+
+  return makeSuccessResult(signups);
+};
+
 interface FindDirectSignupsByStartTimeResponse extends UserDirectSignup {
   programItemId: string;
 }
 
-export const findDirectSignupsByStartTime = async (
-  startTime: string,
+// Matched on each program item's own start time: a spot is held for the hour its attendee turns
+// up, and the parent override only says when a batch is lotteried
+export const findDirectSignupsByStartTimes = async (
+  startTimes: readonly string[],
   programItems: ProgramItem[],
 ): Promise<Result<FindDirectSignupsByStartTimeResponse[], MongoDbError>> => {
   const programItemsIds = programItems
     .filter((programItem) =>
-      isStartTimeMatch(programItem.startTime, startTime, programItem.parentId),
+      startTimes.some((startTime) =>
+        isSameTime(programItem.startTime, startTime),
+      ),
     )
     .map((programItem) => programItem.programItemId);
 
@@ -135,21 +158,12 @@ export const findDirectSignupsByStartTime = async (
       programItemId: { $in: programItemsIds },
     }).lean();
 
-    logger.debug(`MongoDB: Found signups for time ${startTime}`);
+    logger.debug(`MongoDB: Found signups for times ${startTimes.join(", ")}`);
 
-    const signups = response.flatMap((signup) => {
-      const result = DirectSignupSchemaDb.safeParse(signup);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findDirectSignupsByStartTime DB value: programItemId: ${signup.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        return [];
-      }
-      return result.data;
-    });
+    const signups = parseSignupDocuments(
+      response,
+      "findDirectSignupsByStartTimes",
+    );
 
     const formattedResponse: FindDirectSignupsByStartTimeResponse[] =
       signups.flatMap((signup) => {
@@ -162,9 +176,12 @@ export const findDirectSignupsByStartTime = async (
     return makeSuccessResult(formattedResponse);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error finding signups for time ${startTime}`, {
-        cause: error,
-      }),
+      new Error(
+        `MongoDB: Error finding signups for times ${startTimes.join(", ")}`,
+        {
+          cause: error,
+        },
+      ),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -180,21 +197,9 @@ export const findUserDirectSignups = async (
 
     logger.debug(`MongoDB: Found signups for user ${username}`);
 
-    const signups = response.flatMap((signup) => {
-      const result = DirectSignupSchemaDb.safeParse(signup);
-      if (!result.success) {
-        logger.error(
-          new Error(
-            `Error validating findUserDirectSignups DB value: programItemId: ${signup.programItemId}`,
-            { cause: result.error },
-          ),
-        );
-        return [];
-      }
-      return result.data;
-    });
-
-    return makeSuccessResult(signups);
+    return makeSuccessResult(
+      parseSignupDocuments(response, "findUserDirectSignups"),
+    );
   } catch (error) {
     logger.error(
       new Error(`MongoDB: Error finding signups for user ${username}`, {
@@ -293,6 +298,130 @@ export const saveDirectSignup = async (
   }
 };
 
+// The attendance cap is applied by the write itself, so which sign-ups actually landed is
+// only known afterwards. Reporting the ones that didn't lets the caller treat them as not
+// placed rather than telling the attendee they got a spot that was never stored.
+const findSignupsNotSaved = async (
+  signupsByProgramItems: Record<string, SignupRepositoryAddSignup[]>,
+): Promise<Result<SignupRepositoryAddSignup[], MongoDbError>> => {
+  const documentsResult = await findSignupDocumentsByProgramItemIds(
+    Object.keys(signupsByProgramItems),
+    "findSignupsNotSaved",
+  );
+  if (!documentsResult.ok) {
+    return documentsResult;
+  }
+  const { signups, presentProgramItemIds } = documentsResult.value;
+
+  const savedUsernamesByProgramItemId = new Map(
+    signups.map((signup) => [
+      signup.programItemId,
+      new Set(signup.userSignups.map((userSignup) => userSignup.username)),
+    ]),
+  );
+  const notSaved = Object.values(signupsByProgramItems)
+    .flat()
+    .filter((signup) => {
+      const savedUsernames = savedUsernamesByProgramItemId.get(
+        signup.directSignupProgramItemId,
+      );
+      if (!savedUsernames) {
+        // No document to update and the write does not create one, so nothing was stored.
+        // Saying otherwise would send an acceptance email for a spot that does not exist.
+        if (!presentProgramItemIds.has(signup.directSignupProgramItemId)) {
+          logger.error(
+            new Error(
+              `Assignment signups for program item ${signup.directSignupProgramItemId} were not saved: it has no sign-up document`,
+            ),
+          );
+          return true;
+        }
+
+        // The document is there but could not be read, which says nothing about the write.
+        // Reporting them dropped would tell attendees holding a spot that they got none.
+        logger.error(
+          new Error(
+            `Could not verify the assignment signups saved to program item ${signup.directSignupProgramItemId}, treating them as saved`,
+          ),
+        );
+        return false;
+      }
+
+      return !savedUsernames.has(signup.username);
+    });
+
+  if (notSaved.length > 0) {
+    const notSavedCounts = Object.entries(
+      countBy(notSaved, (signup) => signup.directSignupProgramItemId),
+    ).map(([programItemId, count]) => `${programItemId}: ${count}`);
+    logger.error(
+      new Error(
+        `${notSaved.length} assignment signups did not fit the program item they were assigned to and were not saved - ${notSavedCounts.join(", ")}`,
+      ),
+    );
+  }
+
+  return makeSuccessResult(notSaved);
+};
+
+// Append the new sign-ups and recompute count from the resulting array in a single atomic
+// pipeline update, so count can never drift from the userSignups it tallies
+const appendSignupsPipeline = (
+  directSignups: readonly SignupRepositoryAddSignup[],
+  maxAttendance: number,
+): object[] => {
+  // $literal: a username is data, and one starting with "$" would otherwise be read as a field
+  // path and match nothing
+  const appendedUsernames = {
+    $literal: directSignups.map((signup) => signup.username),
+  };
+  const appendedSignups = {
+    $literal: directSignups.map((signup) => ({
+      username: signup.username,
+      priority: signup.priority,
+      signedToStartTime: new Date(signup.signedToStartTime),
+      signupTime: new Date(signup.signupTime),
+      message: signup.message,
+    })),
+  };
+
+  return [
+    {
+      $set: {
+        userSignups: {
+          $let: {
+            vars: {
+              // An attendee being written keeps one entry, the new one. A program item being
+              // lotteried holds no spots, so this is defence in depth: a second entry would
+              // seat them twice and charge their own place against it
+              keptSignups: {
+                $filter: {
+                  input: { $ifNull: ["$userSignups", []] },
+                  cond: {
+                    $not: [{ $in: ["$$this.username", appendedUsernames] }],
+                  },
+                },
+              },
+            },
+            // The only cap on the attendance limit, and it runs on the array as it stands rather
+            // than on a count read beforehand. Never below the attendees this write leaves alone,
+            // so an over-full program item loses only the ones being written.
+            in: {
+              $slice: [
+                { $concatArrays: ["$$keptSignups", appendedSignups] },
+                { $max: [maxAttendance, { $size: "$$keptSignups" }] },
+              ],
+            },
+          },
+        },
+      },
+    },
+    {
+      $set: { count: { $size: "$userSignups" } },
+    },
+  ];
+};
+
 export const saveDirectSignups = async (
   signupsRequests: SignupRepositoryAddSignup[],
   programItems: ProgramItem[],
@@ -301,8 +430,6 @@ export const saveDirectSignups = async (
     signupsRequests,
     (signupsRequest) => signupsRequest.directSignupProgramItemId,
   );
-
-  const droppedSignups: SignupRepositoryAddSignup[] = [];
 
   const bulkOps: AnyBulkWriteOperation[] = Object.entries(
     signupsByProgramItems,
@@ -314,49 +441,12 @@ export const saveDirectSignups = async (
       return [];
     }
 
-    let finalSignups: SignupRepositoryAddSignup[] = directSignups;
-    if (directSignups.length > programItem.maxAttendance) {
-      // This case is handled gracefully, but it's still a bug worth flagging
-      logger.error(
-        new Error(
-          `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}, dropping ${directSignups.length - programItem.maxAttendance} signups`,
-        ),
-      );
-      const shuffledSignups = shuffle(directSignups);
-      finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
-      droppedSignups.push(...shuffledSignups.slice(programItem.maxAttendance));
-    }
-
     return {
       updateOne: {
         filter: {
           programItemId: programItem.programItemId,
         },
-        // Append the new sign-ups and recompute count from the resulting array in a single
-        // atomic pipeline update, so count can never drift from the userSignups it tallies
-        update: [
-          {
-            $set: {
-              userSignups: {
-                $concatArrays: [
-                  { $ifNull: ["$userSignups", []] },
-                  {
-                    $literal: finalSignups.map((signup) => ({
-                      username: signup.username,
-                      priority: signup.priority,
-                      signedToStartTime: new Date(signup.signedToStartTime),
-                      signupTime: new Date(signup.signupTime),
-                      message: signup.message,
-                    })),
-                  },
-                ],
-              },
-            },
-          },
-          {
-            $set: { count: { $size: "$userSignups" } },
-          },
-        ],
+        update: appendSignupsPipeline(directSignups, programItem.maxAttendance),
       },
     };
   });
@@ -364,9 +454,21 @@ export const saveDirectSignups = async (
   try {
     const response = await SignupModel.bulkWrite(bulkOps);
     logger.info(`Updated signups for ${response.modifiedCount} program items`);
+
+    const notSavedResult = await findSignupsNotSaved(signupsByProgramItems);
+    if (!notSavedResult.ok) {
+      // The write has landed by now, so failing the caller here would abort a lottery run that
+      // has already placed people. The unverified ones read as saved, like a skipped document.
+      logger.error(
+        new Error(
+          `Could not verify which assignment signups were saved, treating them as saved: ${notSavedResult.error}`,
+        ),
+      );
+    }
+
     return makeSuccessResult({
       modifiedCount: response.modifiedCount,
-      droppedSignups,
+      droppedSignups: notSavedResult.ok ? notSavedResult.value : [],
     });
   } catch (error) {
     logger.error(
@@ -381,6 +483,30 @@ interface DelDirectSignupParams {
   username: string;
 }
 
+// Drop the user's sign-ups and recompute count from what is left, rather than decrementing it.
+// count gates the sign-up endpoint's capacity check, and a decrement drifts from the array
+// whenever it removes more than one entry
+const removeUsernamePipeline = (username: string): object[] => [
+  {
+    $set: {
+      userSignups: {
+        $filter: {
+          input: "$userSignups",
+          as: "userSignup",
+          // $literal: a username is data, and one starting with "$" would
+          // otherwise be read as a field path and match nothing
+          cond: {
+            $ne: ["$$userSignup.username", { $literal: username }],
+          },
+        },
+      },
+    },
+  },
+  {
+    $set: { count: { $size: "$userSignups" } },
+  },
+];
+
 export const delDirectSignup = async ({
   directSignupProgramItemId,
   username,
@@ -393,15 +519,8 @@ export const delDirectSignup = async ({
         programItemId: directSignupProgramItemId,
         "userSignups.username": username,
       },
-      {
-        $pull: {
-          userSignups: {
-            username,
-          },
-        },
-        $inc: { count: -1 },
-      },
-      { returnDocument: "after" },
+      removeUsernamePipeline(username),
+      { returnDocument: "after", updatePipeline: true },
     ).lean();
 
     if (!signup) {
@@ -470,10 +589,7 @@ export const delDirectSignups = async (
             programItemId: directSignupProgramItemId,
             "userSignups.username": username,
           },
-          update: {
-            $pull: { userSignups: { username } },
-            $inc: { count: -1 },
-          },
+          update: removeUsernamePipeline(username),
         },
       })),
     );
@@ -530,73 +646,42 @@ export const resetDirectSignupsByProgramItemIds = async (
   }
 };
 
-export const delAssignmentDirectSignupsByStartTime = async (
-  assignmentTime: string,
-  programItems: ProgramItem[],
-): Promise<Result<void, MongoDbError>> => {
-  // Only remove "twoPhaseSignupProgramTypes" sign-ups and don't remove "directSignupAlwaysOpen" sign-ups
-  const doNotRemoveProgramItemIds = programItems
-    .filter((programItem) => !isLotterySignupProgramItem(programItem))
-    .map((programItem) => programItem.programItemId);
-
-  try {
-    await SignupModel.updateMany(
-      {
-        programItemId: { $nin: doNotRemoveProgramItemIds },
-      },
-      [
-        {
-          $set: {
-            userSignups: {
-              $filter: {
-                input: "$userSignups",
-                as: "userSignup",
-                cond: {
-                  $ne: [
-                    "$$userSignup.signedToStartTime",
-                    new Date(assignmentTime),
-                  ],
-                },
-              },
-            },
-          },
-        },
-        {
-          $set: { count: { $size: "$userSignups" } },
-        },
-      ],
-      { updatePipeline: true },
-    );
-    logger.info(
-      `MongoDB: Deleted old signups for assignmentTime: ${assignmentTime}`,
-    );
-    return makeSuccessResult();
-  } catch (error) {
-    logger.error(
-      new Error("MongoDB: Error removing invalid signup", { cause: error }),
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-};
-
 export const createEmptyDirectSignupDocumentForProgramItems = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const signupDocs = programItemIds.map((programItemId) => {
-    return new SignupModel({
-      programItemId,
-      userSignups: [],
-      count: 0,
-    });
-  });
+  if (programItemIds.length === 0) {
+    return makeSuccessResult();
+  }
 
   try {
-    await SignupModel.create(signupDocs);
+    // $setOnInsert leaves an existing document alone, so a program item whose document appeared
+    // between the caller deciding it was missing and this write keeps the sign-ups it holds
+    const bulkOps: AnyBulkWriteOperation[] = programItemIds.map(
+      (programItemId) => ({
+        updateOne: {
+          filter: { programItemId },
+          update: { $setOnInsert: { userSignups: [], count: 0 } },
+          upsert: true,
+        },
+      }),
+    );
+    // Unordered so one program item another caller is creating at the same time does not stop
+    // the documents for the rest of the batch
+    await SignupModel.bulkWrite(bulkOps, { ordered: false });
     logger.info(
       `MongoDB: Signup collection created for ${programItemIds.length} program items: ${programItemIds.join(", ")}`,
     );
     return makeSuccessResult();
   } catch (error) {
+    // Another caller created the document first, which is what this was for. Reporting it as a
+    // failure would fail the program item import over a state it did reach
+    if (isDuplicateKeyBulkWriteError(error)) {
+      logger.info(
+        "MongoDB: Signup documents already created by a concurrent caller",
+      );
+      return makeSuccessResult();
+    }
+
     logger.error(
       new Error(
         `MongoDB: Creating signup collection for ${programItemIds.length} program items failed`,

@@ -3,7 +3,7 @@ import { testProgramItem } from "shared/tests/testProgramItem";
 import { getUsers } from "server/features/assignment/utils/assignmentTestUtils";
 import { getRandomAndPadgInput } from "server/features/assignment/utils/getRandomAndPadgInput";
 
-test("does not duplicate a group when a non-creator member has a stray lottery signup", () => {
+test("does not duplicate a group when a non-creator member has a stray lottery sign-up", () => {
   // One group: a creator with lottery sign-ups plus two members without sign-ups
   const users = getUsers({ count: 3 });
 

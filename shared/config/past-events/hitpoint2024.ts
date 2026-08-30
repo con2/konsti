@@ -182,7 +182,7 @@ const eventConfig: Partial<EventConfig> = {
     "song-of-ice-and-fire-demo": {
       tags: [Tag.BEGINNER_FRIENDLY],
     },
-    // ECO MOFOS!! INTO THE ANTLION'S DEN
+    // ECO MOFOS!! INTO THE ANTLION'S DEN.
     "eco-mofos-into-the-antlions-den": {
       tags: [Tag.BEGINNER_FRIENDLY],
     },

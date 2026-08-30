@@ -1,4 +1,4 @@
-import { isAfter, isBefore, startOfMinute } from "date-fns";
+import { isAfter, isBefore, isSameMinute, startOfMinute } from "date-fns";
 
 // Comparisons date-fns has no direct equivalent for, and the two bounded-range
 // checks whose exact edge behaviour matters.
@@ -6,7 +6,13 @@ import { isAfter, isBefore, startOfMinute } from "date-fns";
 // Compared as timestamps rather than as !isBefore / !isAfter: a negated
 // comparison is true whenever either side is an invalid date, so a single
 // unparseable time would turn every sign-up gate from closed to open. NaN
-// compares false against everything, which keeps them closed
+// compares false against everything, which keeps them closed.
+
+// Program item start times are compared to the minute throughout: the same moment can be
+// written two ways, since a configured time carries no milliseconds and a stored one always
+// does. Invalid on either side is false, like the comparisons above.
+export const isSameTime = (time: string, compared: string): boolean =>
+  isSameMinute(new Date(time), new Date(compared));
 
 export const isSameOrAfter = (time: Date, compared: Date): boolean =>
   time.getTime() >= compared.getTime();

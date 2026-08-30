@@ -42,7 +42,7 @@ export const getBaseUrl = (): string => {
   // The e2e Kompassi mock is served by this same backend on the default port
   // 5000. When PORT_OFFSET runs an instance on a shifted port, follow it so the
   // instance hits its own mock instead of another instance's port 5000. Real
-  // Kompassi URLs (dev.kompassi.eu etc.) are left untouched
+  // Kompassi URLs (dev.kompassi.eu etc.) are left untouched.
   const portOffset = Number(process.env.PORT_OFFSET) || 0;
   if (portOffset > 0 && baseUrl === "http://localhost:5000") {
     return `http://localhost:${5000 + portOffset}`;
@@ -222,7 +222,7 @@ export const doKompassiLogin = async (
     // Kompassi accepts addresses that Konsti's stored-email format rejects,
     // and that format is checked on read: keeping one would make the account
     // unreadable, and so impossible to log into again. The finalize form asks
-    // every new Kompassi user for an address anyway
+    // every new Kompassi user for an address anyway.
     email: EMAIL_REGEX.test(userinfo.email) ? userinfo.email : "",
     passwordHash: "",
     userGroup: UserGroup.USER,
@@ -243,7 +243,7 @@ export const doKompassiLogin = async (
   // people whose Kompassi names quote the same nick now derive the same
   // username - so the loser of that race retries with its own unique name.
   // Only on a rejected unique index: saveUser stores the row before validating
-  // it, so retrying after any other error would create a second account
+  // it, so retrying after any other error would create a second account.
   if (
     !saveUserResult.ok &&
     saveUserResult.error === MongoDbError.DUPLICATE_KEY &&

@@ -18,7 +18,7 @@ import {
 // Every output here is user visible, so these assertions are a byte-for-byte
 // contract rather than a sanity check. The DST instants sit either side of the
 // Europe/Helsinki transitions, where a formatter that leaked the host timezone
-// would produce an hour that looks plausible but is wrong
+// would produce an hour that looks plausible but is wrong.
 const WINTER = "2026-01-15T10:30:00Z"; // Thu, GMT+2
 const SUMMER = "2026-07-15T10:30:00Z"; // Wed, GMT+3
 const MARCH_DST_BEFORE = "2026-03-29T00:59:00Z"; // Sun 02:59, last minute of GMT+2

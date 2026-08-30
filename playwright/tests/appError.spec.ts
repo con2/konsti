@@ -8,7 +8,7 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 // The handler stays registered and is switched off through the returned
 // callback rather than by unrouting: removing a route has to win a race against
 // the reload the page triggers itself, which on WebKit is where competing
-// navigations interrupt each other
+// navigations interrupt each other.
 const blockAppChunk = async (page: Page): Promise<() => void> => {
   let blocked = true;
 
@@ -16,7 +16,7 @@ const blockAppChunk = async (page: Page): Promise<() => void> => {
     (url) => {
       const file = url.pathname.split("/").pop() ?? "";
       // "App." is the dev server's module request, "App-" the built chunk.
-      // Neither matches AppRoutes or AppUpdateBanner
+      // Neither matches AppRoutes or AppUpdateBanner.
       return file.startsWith("App.") || file.startsWith("App-");
     },
     async (route) => {
@@ -64,7 +64,7 @@ test("The app recovers once its chunk loads again", async ({
   // on the next load, whatever cache headers the failure carried - traces of the
   // failures show one request against three page loads. That makes the recovery
   // unobservable there rather than broken, so the assertion runs on Chromium,
-  // and the fallback itself is covered on every browser by the test above
+  // and the fallback itself is covered on every browser by the test above.
   test.skip(
     browserName === "webkit",
     "WebKit does not re-request a module that already failed",
@@ -84,7 +84,7 @@ test("The app recovers once its chunk loads again", async ({
 
   // The positive signal first, and with room to spare: the app boots from
   // scratch after the reload, which the WebKit container runs slowly. Asserting
-  // the fallback is gone would otherwise pass while the page is still blank
+  // the fallback is gone would otherwise pass while the page is still blank.
   await expect(programList.navigation.icon).toBeVisible({ timeout: 20_000 });
   await expect(programList.appError).toBeHidden();
 });

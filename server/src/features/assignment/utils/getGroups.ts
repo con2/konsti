@@ -1,8 +1,11 @@
 import { first, groupBy, shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
+import {
+  getLotterySignupsInRun,
+  indexProgramItemsById,
+} from "server/features/assignment/utils/getLotterySignupsInRun";
 import { Group } from "server/types/assignmentTypes";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 
 export const getGroups = (
@@ -10,6 +13,8 @@ export const getGroups = (
   assignmentTime: string,
   lotterySignupProgramItems: readonly ProgramItem[],
 ): Group[] => {
+  const programItemsById = indexProgramItemsById(lotterySignupProgramItems);
+
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
@@ -19,20 +24,10 @@ export const getGroups = (
       return [];
     }
 
-    const lotterySignupsForStartTime = firstMember.lotterySignups.filter(
-      (lotterySignup) => {
-        const programItem = lotterySignupProgramItems.find(
-          (lotterySignupProgramItem) =>
-            lotterySignupProgramItem.programItemId ===
-            lotterySignup.programItemId,
-        );
-
-        return isStartTimeMatch(
-          lotterySignup.signedToStartTime,
-          assignmentTime,
-          programItem?.parentId,
-        );
-      },
+    const lotterySignupsForStartTime = getLotterySignupsInRun(
+      firstMember.lotterySignups,
+      programItemsById,
+      assignmentTime,
     );
 
     // Sort by priority, randomize between same priority values

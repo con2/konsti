@@ -1,12 +1,19 @@
 import { randomUUID } from "node:crypto";
 import { Server } from "node:http";
+import { addMinutes } from "date-fns";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostEmailTestRequest } from "shared/test-types/api/testData";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
+import { Locale } from "shared/types/locale";
 import { UserGroup } from "shared/types/models/user";
+import { getDateAndTime } from "shared/utils/timeFormatter";
 import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { getJWT } from "server/utils/jwt";
@@ -87,6 +94,65 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
     expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test("should send the batched rejection for a batch parent ID", async () => {
+    // A batched lottery's rejection names a span rather than one hour, so it has no single
+    // program item to test through - the parent the batch is configured under stands in
+    const [parentId, batchStartTime] = [
+      ...config.event().startTimesByParentIds,
+    ][0];
+    const firstStartTime = addMinutes(
+      new Date(batchStartTime),
+      30,
+    ).toISOString();
+    const lastEndTime = addMinutes(new Date(batchStartTime), 90).toISOString();
+
+    await saveProgramItems([
+      { ...testProgramItem, parentId, startTime: firstStartTime },
+      {
+        ...testProgramItem2,
+        parentId,
+        startTime: addMinutes(new Date(batchStartTime), 60).toISOString(),
+        endTime: lastEndTime,
+      },
+    ]);
+
+    const requestBody: PostEmailTestRequest = {
+      email: "test@example.com",
+      notificationType: EmailNotificationTrigger.REJECTED,
+      programId: parentId,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.EMAIL_TEST)
+      .send(requestBody)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(200);
+    expect(sendEmailSpy).toHaveBeenCalledTimes(1);
+
+    // Names both ends of the span, which is what tells it apart from the single-hour rejection
+    const [sentEmail] = sendEmailSpy.mock.calls[0];
+    expect(sentEmail.text).toContain(getDateAndTime(firstStartTime, Locale.EN));
+    expect(sentEmail.text).toContain(getDateAndTime(lastEndTime, Locale.EN));
+  });
+
+  test("should refuse a batch parent ID for a message that is not the rejection", async () => {
+    const [parentId] = [...config.event().startTimesByParentIds][0];
+    await saveProgramItems([{ ...testProgramItem, parentId }]);
+
+    const requestBody: PostEmailTestRequest = {
+      email: "test@example.com",
+      notificationType: EmailNotificationTrigger.ACCEPTED,
+      programId: parentId,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.EMAIL_TEST)
+      .send(requestBody)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(400);
+    expect(sendEmailSpy).not.toHaveBeenCalled();
   });
 
   test("should return 500 when sending the email fails", async () => {

@@ -178,7 +178,7 @@ test("Group creator can close the group", async ({ page, request }) => {
   await expect(groupPage.createGroupButton).toBeVisible();
 });
 
-test("Group member cannot lottery signup but group creator can", async ({
+test("Group member cannot lottery sign-up but group creator can", async ({
   page,
   request,
 }) => {
@@ -289,7 +289,7 @@ test("Show error when group is bigger than the program item's maximum attendance
   await expect(firstProgramItem.confirmButton).toBeHidden();
 });
 
-test("Upcoming direct signups block creating and joining a group", async ({
+test("Upcoming direct sign-ups block creating and joining a group", async ({
   page,
   request,
 }) => {

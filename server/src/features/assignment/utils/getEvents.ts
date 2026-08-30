@@ -1,6 +1,5 @@
 import { shuffle } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
-import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { Event } from "server/types/assignmentTypes";
 
@@ -8,28 +7,28 @@ export const getEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
+  // Indexed rather than scanned: the sign-up documents cover the whole event, and this asks for
+  // one per program item being lotteried, so scanning would walk the event once for each
+  const signupsByProgramItemId = new Map(
+    lotteryParticipantDirectSignups.map((signup) => [
+      signup.programItemId,
+      signup,
+    ]),
+  );
+
   const programItems = lotterySignupProgramItems.map(
     (lotterySignupProgramItem) => {
-      // Program item can have existing direct sign-ups if program item's start time has changed
-      // Consider existing direct sign-ups when determining program item attendee limits
-      const programItemSignup = lotteryParticipantDirectSignups.find(
-        (signup) =>
-          signup.programItemId === lotterySignupProgramItem.programItemId,
+      const programItemSignup = signupsByProgramItemId.get(
+        lotterySignupProgramItem.programItemId,
       );
 
-      const changedSignups = programItemSignup?.userSignups.filter(
-        (userSignup) => {
-          return isStartTimeChanged(
-            userSignup.signedToStartTime,
-            lotterySignupProgramItem.startTime,
-            lotterySignupProgramItem.parentId,
-          );
-        },
-      );
+      // A spot already held is not the lottery's to hand out, whichever hour it was taken for.
+      // A program item being lotteried holds none, so this is defence in depth: offering the
+      // seats anyway would have the assigner over-fill it and the save drop groups back out
+      const currentSignups = programItemSignup?.userSignups.length ?? 0;
 
-      const currentSignups = changedSignups?.length ?? 0;
-
-      // The lottery only fills the seats left after existing sign-ups; capacity can't go negative
+      // Capacity can't go negative: a program item whose attendance limit was lowered
+      // below the number of attendees already in it offers no spots rather than negative ones
       const remainingMax = Math.max(
         lotterySignupProgramItem.maxAttendance - currentSignups,
         0,
@@ -37,7 +36,8 @@ export const getEvents = (
 
       return {
         id: lotterySignupProgramItem.programItemId,
-        // Keep min within [0, remainingMax] so the assigner never receives min > max
+        // Floored at one attendee while spots remain, and capped by them, so the assigner
+        // never receives min > max
         min: Math.min(
           Math.max(lotterySignupProgramItem.minAttendance - currentSignups, 1),
           remainingMax,

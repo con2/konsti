@@ -213,7 +213,7 @@ export const AllProgramItemsView = (): ReactElement => {
   // stale empty value doesn't render a premature "no program items" message.
   // Only when there is something to catch up to: the visible set is recomputed
   // on every clock tick, and an empty one replaced by another empty one would
-  // otherwise flash the spinner over a legitimate no-results message
+  // otherwise flash the spinner over a legitimate no-results message.
   const isListPending = programItemsToShow !== deferredProgramItems;
   const showLoading =
     loading ||
@@ -223,7 +223,7 @@ export const AllProgramItemsView = (): ReactElement => {
 
   // If the user just came back from a program item page, briefly highlight that
   // item in the list. Captured once on mount, before the previous location is
-  // overwritten, then cleared after the highlight has had time to play
+  // overwritten, then cleared after the highlight has had time to play.
   const [highlightedProgramItemId, setHighlightedProgramItemId] = useState<
     string | null
   >(() => {

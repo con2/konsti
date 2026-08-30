@@ -6,7 +6,10 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   DeleteDirectSignupRequest,
   PostDirectSignupError,
@@ -25,7 +28,10 @@ import {
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  saveLotteryRanForStartTime,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import {
   createSettings,
   saveHidden,
@@ -35,6 +41,7 @@ import {
   saveGroupCode,
   saveGroupCreator,
 } from "server/features/user/group/groupRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
@@ -92,7 +99,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return 422 if signup message is too long", async () => {
+  test("should return 422 if sign-up message is too long", async () => {
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
       message:
@@ -212,7 +219,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(0);
   });
 
-  test("should return error if program doesn't use Konsti signup", async () => {
+  test("should return error if program doesn't use Konsti sign-up", async () => {
     await saveProgramItems([
       { ...testProgramItem, signupType: SignupType.OTHER },
     ]);
@@ -263,7 +270,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(0);
   });
 
-  test("should return error when signup is not yet open", async () => {
+  test("should return error when direct sign-up is not yet open", async () => {
     // This test time should land to phaseGap
     vi.setSystemTime(
       subHours(new Date(testProgramItem.startTime), 2).toISOString(),
@@ -291,7 +298,50 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.errorId).toEqual("signupNotOpenYet");
   });
 
-  test("should return error when signup is closed", async () => {
+  test("should allow direct sign-up before its schedule opens when the program item moved after its lottery", async () => {
+    // Same instant the test above refuses: sign-up for this start time has not opened yet
+    vi.setSystemTime(
+      subHours(new Date(testProgramItem.startTime), 2).toISOString(),
+    );
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+    // Lotteried three hours earlier and rescheduled onto this slot. Its sign-up opened back
+    // then and does not shut again just because the new slot's schedule has not reached it.
+    await saveLotteryRanForStartTime([
+      {
+        ...testProgramItem,
+        startTime: subHours(
+          new Date(testProgramItem.startTime),
+          3,
+        ).toISOString(),
+      },
+    ]);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
+    expect(signups).toHaveLength(1);
+  });
+
+  test("should return error when direct sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
@@ -357,7 +407,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
-  test("should return own signup message when signup question is private", async () => {
+  test("should return own sign-up message when sign-up question is private", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     await createSettings();
@@ -395,9 +445,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     ]);
   });
 
-  test("should store parent start time as signedToStartTime when program item has parent start time override", async () => {
-    // Direct sign-ups store the parent-resolved start time so lottery re-runs can
-    // clean them up by matching the shared parent time
+  test("should store the own start time as signedToStartTime when program item has parent start time override", async () => {
+    // The parent batches a lottery, and a spot belongs to the hour the attendee turns up
     const parentStartTime = addHours(
       new Date(testProgramItem.startTime),
       1,
@@ -444,12 +493,11 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       await findUserDirectSignups(mockUser.username),
     );
 
-    // signedToStartTime is the parent start time, not the program item own start time
     expect(
       new Date(
         modifiedSignups[0].userSignups[0].signedToStartTime,
       ).toISOString(),
-    ).toEqual(parentStartTime);
+    ).toEqual(new Date(testProgramItem.startTime).toISOString());
   });
 
   test("should not sign too many attendees to program item", async () => {
@@ -494,7 +542,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(matchingSignup?.count).toEqual(maxAttendance);
   });
 
-  test("should not create new signup collection when program item is full", async () => {
+  test("should not create new direct sign-up collection when program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     const maxAttendance = 2;
@@ -599,7 +647,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(member?.groupCode).toEqual("0");
   });
 
-  test("should not disband the group when the direct signup fails because the program item is full", async () => {
+  test("should not disband the group when the direct sign-up fails because the program item is full", async () => {
     vi.setSystemTime(testProgramItem.startTime);
 
     await saveProgramItems([
@@ -644,7 +692,10 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(member?.groupCode).toEqual("group-123");
   });
 
-  test("should not remove user from group when signing up to 'signup always open' program item", async () => {
+  test("should not remove user from group when signing up to 'sign-up always open' program item", async () => {
+    // A group exists to enter the lottery together, and an always-open program item is not
+    // one the lottery allocates - taking a spot in it settles the user for that start time
+    // without ending the group's other slots
     // directSignupAlwaysOpenIds makes the program item 'sign-up always open'
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -676,6 +727,113 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const user = unsafelyUnwrap(await findUser(mockUser.username));
     expect(user?.groupCode).toEqual("group-123");
+  });
+
+  test("should keep lottery sign-ups competing for the same start time", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    // Holding a spot doesn't withdraw the attendee from the lottery for that time: if it
+    // places them, the spot they win replaces this one
+    const laterStartTime = addHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
+    await saveProgramItems([
+      testProgramItem,
+      { ...testProgramItem2, startTime: testProgramItem.startTime },
+      {
+        ...testProgramItem2,
+        programItemId: "later-program-item",
+        parentId: "later-program-item",
+        startTime: laterStartTime,
+      },
+    ]);
+    await saveUser(mockUser);
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [
+        {
+          programItemId: testProgramItem2.programItemId,
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+        {
+          programItemId: "later-program-item",
+          priority: 1,
+          signedToStartTime: laterStartTime,
+        },
+      ],
+    });
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(
+      user?.lotterySignups.map((lotterySignup) => lotterySignup.programItemId),
+    ).toEqual([testProgramItem2.programItemId, "later-program-item"]);
+  });
+
+  test("should keep lottery sign-ups when the sign-up fails because the program item is full", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+      { ...testProgramItem2, startTime: testProgramItem.startTime },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [
+        {
+          programItemId: testProgramItem2.programItemId,
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      ],
+    });
+
+    // Fill the single spot so mockUser's sign-up below can't land
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      username: mockUser2.username,
+    });
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.message).toEqual("Program item full");
+
+    // No spot was taken, so nothing settles the user and their sign-up stands
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.lotterySignups).toHaveLength(1);
   });
 });
 
@@ -719,7 +877,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
   });
 
-  test("should return error when signup is not found", async () => {
+  test("should return error when direct sign-up is not found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
     await saveProgramItems([testProgramItem]);
 

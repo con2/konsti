@@ -6,7 +6,7 @@ import { ButtonStyle } from "client/components/componentStyles";
 
 // Shown when the app itself fails before any of it is on screen, so it can lean
 // on nothing the app sets up: no router, no store, no polled data. Only the
-// theme and translations, both of which are ready before the app is loaded
+// theme and translations, both of which are ready before the app is loaded.
 export const AppErrorFallback = (): ReactElement => {
   const { t } = useTranslation();
 

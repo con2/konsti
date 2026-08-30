@@ -13,7 +13,7 @@ import {
 // The formatters read the active language from module state, which React cannot
 // see. A component that formats a time it did not get from the clock hook has no
 // other reason to re-render on a switch, so its weekday used to stay in the
-// language it was first rendered in while the text around it changed
+// language it was first rendered in while the text around it changed.
 test("Formatted times follow a language switch", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
   await populateDb(request, { clean: true, users: true, admin: true });

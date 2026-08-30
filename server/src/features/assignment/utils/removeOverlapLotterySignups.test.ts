@@ -34,7 +34,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove overlapping lottery signups from user", async () => {
+test("should remove overlapping lottery sign-ups from user", async () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
@@ -181,7 +181,7 @@ test("should remove overlapping lottery signups from user", async () => {
   ]);
 });
 
-test("should remove all upcoming lottery signups from user", async () => {
+test("should remove all upcoming lottery sign-ups from user", async () => {
   const timeNow = new Date(testProgramItem.startTime).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
@@ -319,7 +319,7 @@ test("should remove all upcoming lottery signups from user", async () => {
   ]);
 });
 
-test("should not remove upcoming lottery signups when strategy is NONE", async () => {
+test("should not remove upcoming lottery sign-ups when strategy is NONE", async () => {
   const timeNow = new Date(testProgramItem.startTime).toISOString();
 
   vi.spyOn(config, "event").mockReturnValue({
@@ -396,7 +396,7 @@ test("should not remove upcoming lottery signups when strategy is NONE", async (
   ]);
 });
 
-test("should not remove upcoming lottery signup with past parent startTime", async () => {
+test("should not remove upcoming lottery sign-up with past parent startTime", async () => {
   const timeNow = new Date(testProgramItem.startTime).toISOString();
   const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
 

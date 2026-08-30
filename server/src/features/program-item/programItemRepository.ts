@@ -13,6 +13,10 @@ import {
   findDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import {
+  getPassedOverProgramItems,
+  removePassedOverLotterySignups,
+} from "server/features/program-item/passedOverProgramItems";
+import {
   ProgramItemModel,
   ProgramItemSchemaDb,
 } from "server/features/program-item/programItemSchema";
@@ -79,8 +83,47 @@ export const saveProgramItems = async (
     return updateMovedProgramItemsResult;
   }
 
+  // Read before the write, so the marks below go in with the change that makes them true and the
+  // program item is never stored as a lottery item without one. Direct sign-ups are settled by
+  // now: the cancelled and deleted handling above is what last touched them.
+  const directSignupsResult = await findDirectSignups();
+  if (!directSignupsResult.ok) {
+    return directSignupsResult;
+  }
+  const directSignups = directSignupsResult.value;
+
+  const passedOverProgramItemsResult = await getPassedOverProgramItems(
+    updatedProgramItems,
+    currentProgramItems,
+    directSignups,
+  );
+  if (!passedOverProgramItemsResult.ok) {
+    return passedOverProgramItemsResult;
+  }
+  const passedOverProgramItems = passedOverProgramItemsResult.value;
+  const passedOverProgramItemIds = new Set(
+    passedOverProgramItems.map((programItem) => programItem.programItemId),
+  );
+
+  // Normally there is nothing to remove: a program item is passed over for holding direct
+  // sign-ups, and having those means its lottery is over, so any sign-up for it is a past one
+  // this leaves alone. Defence in depth for the orders that arrive out of the ordinary.
+  //
+  // Done before the decision is stored, so a failure here leaves the program item undecided and
+  // the next import tries again. Recording it first and failing after would strand the sign-ups
+  // for good: the item would be filtered out as already decided every time from then on.
+  const removeLotterySignupsResult = await removePassedOverLotterySignups(
+    passedOverProgramItems,
+  );
+  if (!removeLotterySignupsResult.ok) {
+    return removeLotterySignupsResult;
+  }
+
   const bulkOps = updatedProgramItems.map((programItem) => {
-    const newProgramItem: Omit<ProgramItem, "popularity"> = {
+    const newProgramItem: Omit<
+      ProgramItem,
+      "popularity" | "lotteryRanForStartTime" | "passedOverForLottery"
+    > = {
       programItemId: programItem.programItemId,
       parentId: programItem.parentId,
       title: programItem.title,
@@ -110,6 +153,14 @@ export const saveProgramItems = async (
       state: programItem.state,
     };
 
+    // Otherwise the import's to leave alone, so it is set here only for a program item this
+    // save is what turns into a passed over one
+    const passedOverForLottery = passedOverProgramItemIds.has(
+      programItem.programItemId,
+    )
+      ? { passedOverForLottery: true }
+      : {};
+
     return {
       updateOne: {
         filter: {
@@ -117,6 +168,7 @@ export const saveProgramItems = async (
         },
         update: {
           ...newProgramItem,
+          ...passedOverForLottery,
         },
         upsert: true,
       },
@@ -142,22 +194,15 @@ export const saveProgramItems = async (
   logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
 
   // Create sign-up document for all program items missing sign-up document
-  const directSignupsResult = await findDirectSignups();
-  if (!directSignupsResult.ok) {
-    return directSignupsResult;
-  }
-  const directSignupDocMissingProgramItemIds = updatedProgramItems.flatMap(
-    (updatedProgramItem) => {
-      const found = directSignupsResult.value.some(
-        (directSignup) =>
-          directSignup.programItemId === updatedProgramItem.programItemId,
-      );
-      if (!found) {
-        return updatedProgramItem.programItemId;
-      }
-      return [];
-    },
+  const programItemIdsWithSignupDoc = new Set(
+    directSignups.map((directSignup) => directSignup.programItemId),
   );
+  const directSignupDocMissingProgramItemIds = updatedProgramItems
+    .filter(
+      (updatedProgramItem) =>
+        !programItemIdsWithSignupDoc.has(updatedProgramItem.programItemId),
+    )
+    .map((updatedProgramItem) => updatedProgramItem.programItemId);
 
   if (directSignupDocMissingProgramItemIds.length > 0) {
     const createEmptySignupResult =
@@ -236,6 +281,70 @@ interface PopularityUpdate {
   programItemId: string;
   popularity: Popularity;
 }
+
+// Recorded rather than worked out later: whether a lottery will take a program item must not
+// change as the clock moves past its sign-up window
+export const savePassedOverForLottery = async (
+  programItemIds: readonly string[],
+): Promise<Result<void, MongoDbError>> => {
+  if (programItemIds.length === 0) {
+    return makeSuccessResult();
+  }
+
+  try {
+    await ProgramItemModel.updateMany(
+      { programItemId: { $in: programItemIds } },
+      { passedOverForLottery: true },
+    );
+    logger.info(
+      `MongoDB: Recorded ${programItemIds.length} program items as passed over for the lottery`,
+    );
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error recording program items as passed over", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+// The start time each program item was sitting at when its lottery ran. A time rather than a
+// flag, so one moved onto another slot afterwards can be told from one still where it was
+// lotteried - and each item's own start time rather than the run's, because a batch's parent
+// time is the same before and after a move and so could never tell the two apart.
+export const saveLotteryRanForStartTime = async (
+  programItems: readonly ProgramItem[],
+): Promise<Result<void, MongoDbError>> => {
+  if (programItems.length === 0) {
+    return makeSuccessResult();
+  }
+
+  try {
+    await ProgramItemModel.bulkWrite(
+      programItems.map((programItem) => ({
+        updateOne: {
+          filter: { programItemId: programItem.programItemId },
+          update: {
+            lotteryRanForStartTime: new Date(programItem.startTime),
+          },
+        },
+      })),
+    );
+    logger.info(
+      `MongoDB: Marked ${programItems.length} program items as lotteried`,
+    );
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error marking program items as lotteried", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
 
 export const saveProgramItemPopularity = async (
   popularityUpdates: PopularityUpdate[],

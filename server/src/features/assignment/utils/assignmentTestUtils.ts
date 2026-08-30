@@ -50,9 +50,11 @@ const getLotterySignups = (): LotterySignup[] => {
 const getPastLotterySignupEvents = ({
   pastFailureLotterySignups,
   pastSuccessLotterySignups,
+  pastAssignmentProgramItemId = testProgramItem.programItemId,
 }: {
   pastFailureLotterySignups: number;
   pastSuccessLotterySignups: number;
+  pastAssignmentProgramItemId?: string;
 }): EventLogItem[] => {
   const eventLogItems: EventLogItem[] = [];
   for (let i = 0; i < pastFailureLotterySignups; i++) {
@@ -74,7 +76,7 @@ const getPastLotterySignupEvents = ({
       eventLogItemId: randomUUID(),
       action: EventLogAction.NEW_ASSIGNMENT,
       isSeen: false,
-      programItemId: testProgramItem.programItemId,
+      programItemId: pastAssignmentProgramItemId,
       programItemStartTime: subHours(
         new Date(assignmentTime),
         i + 1,
@@ -92,12 +94,14 @@ export const getUsers = ({
   pastLotterySignupUsers = 0,
   pastFailureLotterySignups = 0,
   pastSuccessLotterySignups = 0,
+  pastAssignmentProgramItemId,
 }: {
   count: number;
   noLotterySignups?: boolean;
   pastLotterySignupUsers?: number;
   pastSuccessLotterySignups?: number;
   pastFailureLotterySignups?: number;
+  pastAssignmentProgramItemId?: string;
 }): User[] => {
   const users: User[] = [];
   let pastLotterySignupUsersCounter = pastLotterySignupUsers;
@@ -127,6 +131,7 @@ export const getUsers = ({
             ? getPastLotterySignupEvents({
                 pastFailureLotterySignups,
                 pastSuccessLotterySignups,
+                pastAssignmentProgramItemId,
               })
             : [],
       });
@@ -141,6 +146,7 @@ export const getUsers = ({
             ? getPastLotterySignupEvents({
                 pastFailureLotterySignups,
                 pastSuccessLotterySignups,
+                pastAssignmentProgramItemId,
               })
             : [],
       });

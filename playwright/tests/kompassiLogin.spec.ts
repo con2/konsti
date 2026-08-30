@@ -168,7 +168,7 @@ test("Rejects a Kompassi callback that no login here started", async ({
 
 // The forged-callback test above covers arriving with nothing stored. This is
 // the other branch: a login was started here, but the state coming back is not
-// the one it started with
+// the one it started with.
 test("Rejects a Kompassi callback whose state does not match the stored one", async ({
   page,
   request,

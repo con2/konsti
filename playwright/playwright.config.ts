@@ -5,7 +5,7 @@ import { resolvePortOffset } from "scripts/portOffset";
 // The browser timezone set below does not reach this process, and the specs
 // build program item start times here, truncated to a wall-clock hour. In a zone
 // offset by half an hour that boundary lands on :30 in the event's zone, which
-// marks every lottery item invalid and hides its sign-up controls
+// marks every lottery item invalid and hides its sign-up controls.
 process.env.TZ = TIMEZONE;
 
 const ENABLE_CHROME = true;
@@ -63,7 +63,7 @@ ENABLE_MOBILE_SAFARI &&
 
 // The per-worktree port offset shifts the client dev server port so the suite
 // targets its own worktree's local instance. PLAYWRIGHT_BASEURL still wins
-// when set (e.g. the Docker run points it at http://server:5000)
+// when set (e.g. the Docker run points it at http://server:5000).
 const portOffset = resolvePortOffset();
 
 const config: PlaywrightTestConfig = {
@@ -71,7 +71,7 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   outputDir: "./test-results",
   // In CI emit a blob report (one per shard) alongside the console list, so the shards can be
-  // merged into a single HTML report. The blob dir is volume-mounted out of the Docker container
+  // merged into a single HTML report. The blob dir is volume-mounted out of the Docker container.
   reporter: process.env.CI ? [["list"], ["blob"]] : [["list"]],
   workers: 1,
   use: {
@@ -79,7 +79,7 @@ const config: PlaywrightTestConfig = {
       process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:${8000 + portOffset}`,
     // Full HD for the desktop projects, rather than Playwright's 1280x720
     // default. The mobile projects carry their own device viewport, which
-    // takes precedence over this one
+    // takes precedence over this one.
     viewport: { width: 1920, height: 1080 },
     video: process.env.CI ? "on-first-retry" : "on",
     trace: process.env.CI ? "on-first-retry" : "on",
@@ -89,7 +89,7 @@ const config: PlaywrightTestConfig = {
     // developer is in locally. The specs build fixture times from the wall clock
     // and assert times the app renders in the event's zone, so the two only
     // agree when they are the same zone. Pinned to the event's own, which is
-    // also what an attendee at the event sees
+    // also what an attendee at the event sees.
     timezoneId: TIMEZONE,
   },
 };

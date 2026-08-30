@@ -6,6 +6,7 @@ import { User } from "shared/types/models/user";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { runRandomAssignment } from "server/features/assignment/random/utils/runRandomAssignment";
 import { getRandomAndPadgInput } from "server/features/assignment/utils/getRandomAndPadgInput";
+import { toPercentage } from "server/features/assignment/utils/toPercentage";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   AssignmentResult,
@@ -18,6 +19,7 @@ export const randomAssignment = (
   startingProgramItems: readonly ProgramItem[],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  allProgramItems: readonly ProgramItem[],
 ): Result<AssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${assignmentTime}`);
 
@@ -51,6 +53,7 @@ export const randomAssignment = (
     attendeeGroups,
     assignmentTime,
     lotteryParticipantDirectSignups,
+    allProgramItems,
   );
   logger.debug("Random assignment: completed");
   if (!assignmentResultResult.ok) {
@@ -65,13 +68,16 @@ export const randomAssignment = (
     ),
   );
 
+  // Neither share is assumed to have a non-zero denominator - the attendees and the program
+  // items are collected separately, so one can come out empty while the other doesn't
   const message = `Random Assignment Result - Attendees: ${
     assignmentResult.results.length
-  }/${allAttendees.length} (${Math.round(
-    (assignmentResult.results.length / allAttendees.length) * 100,
-  )}%), Program items: ${selectedUniqueProgramItems.length}/${
+  }/${allAttendees.length} (${toPercentage(
+    assignmentResult.results.length,
+    allAttendees.length,
+  )}), Program items: ${selectedUniqueProgramItems.length}/${
     lotterySignupProgramItems.length
-  } (${Math.round((selectedUniqueProgramItems.length / lotterySignupProgramItems.length) * 100)}%)`;
+  } (${toPercentage(selectedUniqueProgramItems.length, lotterySignupProgramItems.length)})`;
 
   logger.debug(message);
 

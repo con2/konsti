@@ -31,7 +31,7 @@ export const getAuthUrl = (origin: string, state: string): string => {
 // Candidates that the form itself would reject are skipped rather than
 // prefilled, and the Kompassi id backstop is never empty: an empty username
 // still saves (the `required` validator accepts empty strings) into an account
-// whose JWT then fails every authenticated request
+// whose JWT then fails every authenticated request.
 export const deriveKonstiUsername = (userinfo: KompassiUserinfo): string => {
   const candidates = [
     // Kompassi quotes the nick with ASCII quotes today, but a name typed in an
@@ -51,7 +51,7 @@ export const deriveKonstiUsername = (userinfo: KompassiUserinfo): string => {
 // Kompassi account even when the name uses up the whole length budget. The
 // Kompassi id is opaque and could be long enough to crowd the name out
 // entirely, so it too is capped - leaving a name worth reading, and a total
-// the finalize form will accept
+// the finalize form will accept.
 export const addKompassiIdSuffix = (username: string, sub: string): string => {
   const suffix = `-${sub.slice(0, USERNAME_LENGTH_MAX - USERNAME_LENGTH_MIN - 1)}`;
   return `${username.slice(0, USERNAME_LENGTH_MAX - suffix.length)}${suffix}`;

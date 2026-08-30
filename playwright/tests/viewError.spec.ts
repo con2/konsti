@@ -10,7 +10,7 @@ import {
 
 // The admin view carries a button that throws while rendering, next to the
 // Sentry test buttons. Those throw from a click handler instead, which an error
-// boundary structurally cannot catch, so they cannot drive this
+// boundary structurally cannot catch, so they cannot drive this.
 const triggerViewError = async (
   page: Page,
   request: APIRequestContext,

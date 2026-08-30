@@ -23,7 +23,7 @@ export const SessionStorageValue = {
 
 // The OAuth state of the login this tab started, compared against the value
 // Kompassi echoes back to prove the callback answers our own request. Stored
-// as a plain string, so there is no shape to validate on the way out
+// as a plain string, so there is no shape to validate on the way out.
 export const getKompassiLoginState = (): string =>
   sessionStorage.getItem(SessionStorageValue.KOMPASSI_LOGIN_STATE) ?? "";
 
@@ -38,7 +38,7 @@ export const clearKompassiLoginState = (): void => {
 // The server build an automatic update reload was already attempted for.
 // Session-scoped so a reload that fails to deliver the new build (e.g. stale
 // HTML served again) is not retried in a loop in the same tab. Stored as a
-// plain string, so there is no shape to validate on the way out
+// plain string, so there is no shape to validate on the way out.
 export const getAppUpdateReloadedBuildTime = (): string =>
   sessionStorage.getItem(SessionStorageValue.APP_UPDATE_RELOADED_BUILD_TIME) ??
   "";

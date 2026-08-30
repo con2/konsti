@@ -26,7 +26,7 @@ const programItemStartTime = addHours(
 ).toISOString();
 
 // Layout of the bars the app stacks below the header. Each bar's own behaviour
-// is covered where that feature lives; these cover how they sit together
+// is covered where that feature lives; these cover how they sit together.
 
 // Stop intercepting before the context closes so a poll still in flight
 // can't fail an already finished test
@@ -73,7 +73,7 @@ test("Update banner and admin message stack instead of overlapping when scrolled
   // each other here, hiding whichever paints first
   // scrollBy rather than mouse.wheel: mobile WebKit has no wheel support.
   // Sticky positioning is pure CSS, so the late scroll event WebKit delivers
-  // for programmatic scrolls doesn't matter here
+  // for programmatic scrolls doesn't matter here.
   await page.evaluate(() => {
     window.scrollBy(0, 600);
   });
@@ -87,7 +87,7 @@ test("Update banner and admin message stack instead of overlapping when scrolled
   expect(adminBox).not.toBeNull();
 
   // Both stay fully visible, one below the other. NaN fallbacks keep a
-  // missing box from passing the comparison
+  // missing box from passing the comparison.
   const updateBottom = (updateBox?.y ?? NaN) + (updateBox?.height ?? NaN);
   expect(updateBottom).toBeLessThanOrEqual((adminBox?.y ?? NaN) + 1);
 });
@@ -136,7 +136,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
   // Break the data poll so the network error toast joins the other bars.
   // Every request has to fail: the client heals the toast on any successful
   // response, so leaving one endpoint working would take the toast away
-  // again on the next poll, mid-measurement
+  // again on the next poll, mid-measurement.
   await page.route("**/api/**", async (route) => {
     await route.abort();
   });
@@ -151,7 +151,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
 
   // The bars are separate components, so their dismiss icons drift apart
   // whenever one of them changes its box metrics. The testids come from the
-  // page objects that own them rather than being repeated here
+  // page objects that own them rather than being repeated here.
   const dismissIcons = await page.evaluate(
     (ids) =>
       ids.map((id) => {

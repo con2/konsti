@@ -1,10 +1,16 @@
 import { first } from "remeda";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
-import { getAssignmentBonus } from "server/features/assignment/utils/getAssignmentBonus";
+import {
+  getAssignmentBonus,
+  getAssignmentBonusContext,
+} from "server/features/assignment/utils/getAssignmentBonus";
+import {
+  getLotterySignupsInRun,
+  indexProgramItemsById,
+} from "server/features/assignment/utils/getLotterySignupsInRun";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ListItem } from "server/types/assignmentTypes";
-import { isStartTimeMatch } from "server/utils/isStartTimeMatch";
 import { logger } from "server/utils/logger";
 
 interface GetListParams {
@@ -12,6 +18,7 @@ interface GetListParams {
   assignmentTime: string;
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[];
   lotterySignupProgramItems: readonly ProgramItem[];
+  allProgramItems: readonly ProgramItem[];
 }
 
 export const getList = ({
@@ -19,7 +26,15 @@ export const getList = ({
   assignmentTime,
   lotteryParticipantDirectSignups,
   lotterySignupProgramItems,
+  allProgramItems,
 }: GetListParams): ListItem[] => {
+  const bonusContext = getAssignmentBonusContext(
+    allProgramItems,
+    assignmentTime,
+  );
+
+  const programItemsById = indexProgramItemsById(lotterySignupProgramItems);
+
   const results = attendeeGroups.flatMap((attendeeGroup) => {
     const firstMember = first(attendeeGroup);
     if (!firstMember) {
@@ -27,57 +42,40 @@ export const getList = ({
       return [];
     }
 
-    const list = firstMember.lotterySignups
-      .filter((lotterySignup) => {
-        const programItem = lotterySignupProgramItems.find(
-          (lotterySignupProgramItem) =>
-            lotterySignupProgramItem.programItemId ===
-            lotterySignup.programItemId,
-        );
-        return isStartTimeMatch(
-          lotterySignup.signedToStartTime,
-          assignmentTime,
-          programItem?.parentId,
-        );
-      })
-      .map((lotterySignup) => {
-        return {
-          id:
-            firstMember.groupCode === "0"
-              ? firstMember.serial
-              : firstMember.groupCode,
-          size: attendeeGroup.length,
-          event: lotterySignup.programItemId,
-          gain: getGain(
-            lotterySignup,
-            attendeeGroup,
-            lotteryParticipantDirectSignups,
-            lotterySignupProgramItems,
-            assignmentTime,
-          ),
-        };
-      });
+    const lotterySignupsInThisRun = getLotterySignupsInRun(
+      firstMember.lotterySignups,
+      programItemsById,
+      assignmentTime,
+    );
+    if (lotterySignupsInThisRun.length === 0) {
+      return [];
+    }
 
-    return list;
+    // A property of the group rather than of the preference being scored, so it is asked once
+    // rather than once per preference
+    const bonus = getAssignmentBonus(
+      attendeeGroup,
+      lotteryParticipantDirectSignups,
+      bonusContext,
+    );
+
+    return lotterySignupsInThisRun.map((lotterySignup) => {
+      return {
+        id:
+          firstMember.groupCode === "0"
+            ? firstMember.serial
+            : firstMember.groupCode,
+        size: attendeeGroup.length,
+        event: lotterySignup.programItemId,
+        gain: getGain(lotterySignup, bonus),
+      };
+    });
   });
 
   return results;
 };
 
-const getGain = (
-  lotterySignup: LotterySignup,
-  attendeeGroup: User[],
-  lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
-  lotterySignupProgramItems: readonly ProgramItem[],
-  assignmentTime: string,
-): number => {
-  const bonus = getAssignmentBonus(
-    attendeeGroup,
-    lotteryParticipantDirectSignups,
-    lotterySignupProgramItems,
-    assignmentTime,
-  );
-
+const getGain = (lotterySignup: LotterySignup, bonus: number): number => {
   switch (lotterySignup.priority) {
     case 1:
       return 1 + bonus;

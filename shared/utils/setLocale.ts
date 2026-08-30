@@ -14,7 +14,7 @@ import { Locale } from "shared/types/locale";
 // This makes the abbreviated width unreachable in Finnish, deliberately: every
 // formatter then gets the two-letter form from the ordinary token, where picking
 // the width per call site would let a new formatter render "torst." by writing
-// the token every other formatter already uses
+// the token every other formatter already uses.
 const finnish: DateFnsLocale = {
   ...fi,
   localize: {
@@ -52,7 +52,7 @@ export const getCurrentLocale = (): DateFnsLocale => currentLocale;
 
 // The subscribe half of a store, so a UI reading the formatters can re-render
 // when the language changes. Everything they produce depends on this module
-// state, which is invisible to a rendering framework unless it is published
+// state, which is invisible to a rendering framework unless it is published.
 export const subscribeToLocale = (listener: () => void): (() => void) => {
   listeners.add(listener);
   return () => listeners.delete(listener);

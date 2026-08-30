@@ -41,7 +41,7 @@ export const getRandomAndPadgInput = (
   // Combine group creators and group members
   const allAttendees = [...groupCreators, ...groupMembers];
 
-  // Combine users to groups, single user is size 1 group
+  // A group is the unit the lottery places; individuals become groups of one
   const attendeeGroups = getAttendeeGroups(allAttendees);
 
   let numberOfIndividuals = 0;

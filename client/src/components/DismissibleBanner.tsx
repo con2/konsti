@@ -20,7 +20,7 @@ interface Props {
 // Shared shell for app-level notification banners: a leading icon, the
 // message, and a dismiss button on the right. Built on the same highlighted
 // card the app uses for its other notices so the banners read as part of the
-// same system. Stickiness comes from the wrapper the app-level bars render in
+// same system. Stickiness comes from the wrapper the app-level bars render in.
 export const DismissibleBanner = ({
   children,
   onDismiss,

@@ -2,7 +2,7 @@ import { isBefore } from "date-fns";
 import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignup } from "shared/types/models/user";
 import {
-  getLotterySignupEndTime,
+  getLotterySignupEnded,
   getProgramItemStartTime,
 } from "shared/utils/signupTimes";
 
@@ -51,11 +51,9 @@ export const getLotteryNotYetRunProgramItemIds = (
   );
 
   return lotterySignupProgramItems
-    .filter((lotterySignupProgramItem) => {
-      const lotterySignupEndTime = getLotterySignupEndTime(
-        lotterySignupProgramItem,
-      );
-      return isBefore(timeNow, lotterySignupEndTime);
-    })
+    .filter(
+      (lotterySignupProgramItem) =>
+        !getLotterySignupEnded(lotterySignupProgramItem, timeNow),
+    )
     .map((programItem) => programItem.programItemId);
 };

@@ -19,7 +19,7 @@ interface RecordingTransport {
 // Replace Sentry's transport with one that just records the envelopes it would
 // have sent, so tests can assert on the captured error events. The same envelope
 // and event types are shared by @sentry/node and @sentry/react via @sentry/core,
-// so this works for both the server and client SDKs
+// so this works for both the server and client SDKs.
 export const createRecordingTransport = (): RecordingTransport => {
   const envelopes: Envelope[] = [];
 

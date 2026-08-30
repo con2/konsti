@@ -1,3 +1,6 @@
+import { getProgramTypePluralNames } from "shared/constants/programTypeNames";
+import { Locale } from "shared/types/locale";
+
 export const translationEN = {
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   appDescriptionPreConventionWeek:
@@ -213,6 +216,8 @@ export const translationEN = {
       "Group members cannot sign up, the group creator must sign up for the whole group.",
     invalidProgramItem:
       "This program item is missing required information and cannot be signed up to.",
+    lotteryAlreadyRun:
+      "This program item's starting time changed after its lottery, so it does not take part in another one. Its remaining spots are filled in sign-up order.",
   },
   closingMessage: "Konsti is closed and will open closer to the next event.",
   invalidProgramItemId:
@@ -315,6 +320,8 @@ export const translationEN = {
       "You were assigned to program item {{PROGRAM_ITEM_ID}} but it was cancelled.",
     noAssignment:
       "Spots for program items at {{START_TIME}} were randomized. Unfortunately, we couldn't fit you into any of your chosen program items.",
+    noAssignmentTimeRange:
+      "{{PROGRAM_TYPE}} between {{FIRST_TIME}}–{{LAST_TIME}} were lotteried and you didn't get a spot.",
     programItemCancelled:
       "{{PROGRAM_TYPE}} was cancelled and your sign-up was removed:",
     programItemDeleted:
@@ -371,6 +378,10 @@ export const translationEN = {
     loginLinkEnding: "to see {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Sign-up question",
     help: {
+      lotteryAlreadyRunInfo:
+        "Its starting time changed after its lottery, so it does not take part in another one.",
+      notInLotteryInfo:
+        "It already has sign-ups, so it does not take part in the lottery.",
       signupAlwaysOpenGroupMemberInfo:
         "You can sign up even though you are a group member.",
       directSignupStartsLater:
@@ -461,16 +472,7 @@ export const translationEN = {
   },
   programTypePlural: {
     all: "program items",
-    tabletopRPG: "role-playing games",
-    larp: "larps",
-    tournament: "tournaments",
-    workshop: "workshops",
-    experiencePoint: "games",
-    other: "program items",
-    roundtableDiscussion: "roundtable discussions",
-    fleaMarket: "flea market times",
-    otherGaming: "other gaming",
-    boardgame: "board games",
+    ...getProgramTypePluralNames(Locale.EN),
   },
   programTypeGenetive: {
     all: "Program item",

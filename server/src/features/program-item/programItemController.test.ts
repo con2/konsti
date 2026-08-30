@@ -76,7 +76,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(200);
   });
 
-  test("should not return private signup messages", async () => {
+  test("should not return private sign-up messages", async () => {
     await createSettings();
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
@@ -121,7 +121,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
   });
 
-  test("should not return direct signup users for hideParticipantListProgramTypes", async () => {
+  test("should not return direct sign-up users for hideParticipantListProgramTypes", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
       hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
@@ -161,7 +161,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.body).toMatchObject(expectedResponse);
   });
 
-  test("should resolve signup strategy from program item own start time when no parent start time override", async () => {
+  test("should resolve sign-up strategy from program item own start time when no parent start time override", async () => {
     const { eventStartTime, directSignupPhaseStart } = config.event();
 
     // Own start time is after the lottery cutoff (event start + 3h) so lottery applies
@@ -185,7 +185,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
   });
 
-  test("should resolve signup strategy from parent start time override", async () => {
+  test("should resolve sign-up strategy from parent start time override", async () => {
     const { eventStartTime, directSignupPhaseStart } = config.event();
 
     const ownStartTime = addHours(new Date(eventStartTime), 8).toISOString();
@@ -250,7 +250,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].title).toEqual(testProgramItem.title);
   });
 
-  test("should remove program items, lottery signups, direct signups, and favorite program items that are not in the server response", async () => {
+  test("should remove program items, lottery sign-ups, direct sign-ups, and favorite program items that are not in the server response", async () => {
     // Kompassi only returns one program items when there are two in DB
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       ok: true,
@@ -389,7 +389,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].description).toEqual(newDescription);
   });
 
-  test("should remove lottery signups but not direct signups or favorite program items if program item start time changes", async () => {
+  test("should keep lottery sign-ups whose lottery has run if program item start time changes", async () => {
     const newStartTime = addHours(
       new Date(testProgramItem.startTime),
       1,
@@ -433,9 +433,17 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
-    expect(updatedUser?.lotterySignups).toHaveLength(1);
-    expect(updatedUser?.lotterySignups[0].programItemId).toEqual(
-      testProgramItem2.programItemId,
+    // Both lotteries are long past, so moving one of the program items takes nothing away
+    expect(updatedUser?.lotterySignups).toHaveLength(2);
+    expect(
+      updatedUser?.lotterySignups.map(
+        (lotterySignup) => lotterySignup.programItemId,
+      ),
+    ).toEqual(
+      expect.arrayContaining([
+        testProgramItem.programItemId,
+        testProgramItem2.programItemId,
+      ]),
     );
     expect(updatedUser?.favoriteProgramItemIds).toHaveLength(2);
     expect(updatedUser?.eventLogItems).toHaveLength(1);

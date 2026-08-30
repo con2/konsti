@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { addMinutes } from "date-fns";
+import { addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -7,12 +7,18 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
+import { User } from "shared/types/models/user";
+import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
+import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import {
   findDirectSignups,
+  findDirectSignupsByProgramItemIds,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { EmailSender } from "server/features/notifications/email";
@@ -37,6 +43,21 @@ import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
+
+// Kept as the real implementation, so only the case that needs a failed read replaces it.
+// vi.fn(impl) survives the resetAllMocks below, which restores the implementation it was given
+vi.mock(
+  import("server/features/direct-signup/directSignupRepository"),
+  async (originalImport) => {
+    const actual = await originalImport();
+    return {
+      ...actual,
+      findDirectSignupsByProgramItemIds: vi.fn(
+        actual.findDirectSignupsByProgramItemIds,
+      ),
+    };
+  },
+);
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -64,6 +85,40 @@ afterEach(async () => {
   vi.resetAllMocks();
   await mongoose.disconnect();
 });
+
+interface SaveAndNotifyParams {
+  assignmentTime: string;
+  results: readonly UserAssignmentResult[];
+  users: User[];
+  programItems: ProgramItem[];
+  // A run lotteries the program items starting at its time, so it defaults to those rather
+  // than to everything a case seeds
+}
+
+// A run saves the spots and then tells the attendees, so the cases below drive both steps
+// in that order rather than either one alone
+const saveAndNotify = async ({
+  assignmentTime,
+  results,
+  users,
+  programItems,
+}: SaveAndNotifyParams): Promise<void> => {
+  const finalResults = unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime,
+      results,
+      users,
+      programItems,
+    }),
+  );
+
+  await addAssignmentNotifications({
+    assignmentTime,
+    finalResults,
+    users,
+    programItems,
+  });
+};
 
 test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email notifications", async () => {
   await saveUser(mockUser);
@@ -96,7 +151,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -167,7 +222,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: parentStartTime,
     results,
     users,
@@ -185,6 +240,16 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
 
+  // The hour the attendee turns up, not the parent hour the run was scheduled at
+  const newAssignmentItems =
+    usersWithAssignEventLogItem[0].eventLogItems.filter(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    );
+  expect(newAssignmentItems).toHaveLength(1);
+  expect(newAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+
   const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
     return user.eventLogItems.find(
       (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
@@ -193,6 +258,17 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
+
+  // One starting time in the batch, so the rejection names that hour and records no span
+  const noAssignmentItems =
+    usersWithNoAssignEventLogItem[0].eventLogItems.filter(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
+    );
+  expect(noAssignmentItems).toHaveLength(1);
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toBeUndefined();
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const notificationQueueService = getGlobalNotificationQueueService()!;
@@ -224,12 +300,13 @@ The program will start at Fri 26.7.2019 17:00.
 Terveisin / Sincerely Konsti`;
   const expectedAcceptedSubject =
     "Konsti-arvonnan tulos / Results for Konsti lottery sign-up";
+  // The hour the attendee's program item starts, not the parent hour the run was scheduled at
   const expectedRejectedBody = `Hei ${mockUser2.username}!
-Paikat pe 26.7.2019 17:30 alkaviin ohjelmanumeroihin arvottiin.
+Paikat pe 26.7.2019 17:00 alkaviin ohjelmanumeroihin arvottiin.
 Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
 
 Hi Test User 2!
-Spots for program items starting at Fri 26.7.2019 17:30 were randomized.
+Spots for program items starting at Fri 26.7.2019 17:00 were randomized.
 Unfortunately you did not get a spot in the lottery sign-up.
 
 Terveisin / Sincerely Konsti`;
@@ -265,7 +342,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -302,7 +379,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   );
 });
 
-test("should only add one event log item with multiple lottery signups", async () => {
+test("should only add one event log item with multiple lottery sign-ups", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
 
@@ -353,7 +430,7 @@ test("should only add one event log item with multiple lottery signups", async (
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -401,7 +478,7 @@ test("should only add one event log item with multiple lottery signups", async (
   );
 });
 
-test("should not add event log items after assignment if signup is dropped due to error", async () => {
+test("should not add event log items after assignment if a direct sign-up is dropped due to error", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -446,7 +523,7 @@ test("should not add event log items after assignment if signup is dropped due t
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -479,7 +556,7 @@ test("should not add event log items after assignment if signup is dropped due t
   ).toEqual(true);
 });
 
-test("should give dropped signup users a NO_ASSIGNMENT message when multiple signups are dropped due to error", async () => {
+test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups are dropped due to error", async () => {
   const lotteryUsers = [mockUser, mockUser2, mockUser3, mockUser4];
   for (const user of lotteryUsers) {
     await saveUser(user);
@@ -507,7 +584,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -556,7 +633,7 @@ test("should give dropped signup users a NO_ASSIGNMENT message when multiple sig
   expect(rejectedNotifications).toHaveLength(2);
 });
 
-test("should remove all of a winner's existing same-time direct signups, not just one", async () => {
+test("should remove all of a winner's existing same-time direct sign-ups, not just one", async () => {
   const alwaysOpenId1 = "always-open-1";
   const alwaysOpenId2 = "always-open-2";
 
@@ -611,7 +688,7 @@ test("should remove all of a winner's existing same-time direct signups, not jus
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -662,7 +739,7 @@ test("should not send notifications to users without email addresses but still c
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -755,7 +832,7 @@ test("should respect email notification permissions based on email field", async
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -817,7 +894,7 @@ test("should handle mixed email permissions in groups", async () => {
   const users = unsafelyUnwrap(await findUsers());
   const programItems = unsafelyUnwrap(await findProgramItems());
 
-  await saveUserSignupResults({
+  await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
     users,
@@ -849,4 +926,720 @@ test("should handle mixed email permissions in groups", async () => {
   expect(messages[0].subject).toEqual(
     "Konsti-arvonnan tulos / Results for Konsti lottery sign-up",
   );
+});
+
+// The parent batches the lottery; the spot itself belongs to the hour its attendee turns up
+test("should store the won slot's own start time on a batched program item's direct sign-up", async () => {
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: mockUser.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      // The run is keyed on the batch's time, which the stored sign-up must not take
+      assignmentTime: parentStartTime,
+      results,
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const userSignup = signups
+    .flatMap((signup) => signup.userSignups)
+    .find((signup) => signup.username === mockUser.username);
+
+  expect(new Date(userSignup?.signedToStartTime ?? "").toISOString()).toEqual(
+    new Date(testProgramItem.startTime).toISOString(),
+  );
+});
+
+// The parent batches the lottery, so a run for it places attendees at several different hours.
+// A spot only gives way to one they cannot attend alongside it.
+test("should keep a spot held at another hour when a batched lottery places the attendee", async () => {
+  // The batch is lotteried at its own configured time, distinct from either sub-session's hour
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    -30,
+  ).toISOString();
+  const laterStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    60,
+  ).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    // Same batch, so one lottery covers both, but it runs an hour later
+    {
+      ...testProgramItem2,
+      parentId: testProgramItem.parentId,
+      startTime: laterStartTime,
+    },
+  ]);
+
+  // They already hold a spot in the later sub-session
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+    signedToStartTime: laterStartTime,
+  });
+
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: parentStartTime,
+      results: [
+        {
+          username: mockUser.username,
+          assignmentSignup: {
+            programItemId: testProgramItem.programItemId,
+            priority: 1,
+            signedToStartTime: testProgramItem.startTime,
+          },
+        },
+      ],
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const heldProgramItemIds = signups
+    .filter((signup) =>
+      signup.userSignups.some(
+        (userSignup) => userSignup.username === mockUser.username,
+      ),
+    )
+    .map((signup) => signup.programItemId);
+
+  // The won spot is added and the one at the other hour is left alone
+  expect(new Set(heldProgramItemIds)).toEqual(
+    new Set([testProgramItem.programItemId, testProgramItem2.programItemId]),
+  );
+});
+
+test("should replace a winner's own direct sign-up for the program item they win", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+
+  // Room for both winners, one of whom is already in the program item. A run cannot reach this
+  // state, since it skips a program item holding sign-ups, so the case is driven here directly
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser.username,
+  });
+
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const [signup] = unsafelyUnwrap(await findDirectSignups());
+
+  // The spot they already held is rewritten, not added beside itself
+  const mockUserSignups = signup.userSignups.filter(
+    (userSignup) => userSignup.username === mockUser.username,
+  );
+  expect(mockUserSignups).toHaveLength(1);
+  expect(mockUserSignups[0].priority).toEqual(1);
+
+  // The spot they held was theirs either way, so it never counted against the other winner
+  const usernames = signup.userSignups.map((userSignup) => userSignup.username);
+  expect(usernames).toEqual(
+    expect.arrayContaining([mockUser.username, mockUser2.username]),
+  );
+  expect(signup.count).toEqual(2);
+});
+
+// Two consecutive half hour slots lotteried as one batch, the way a fleamarket day is, with
+// the run scheduled at a parent hour neither of them starts at
+const saveBatchedProgramItems = async (): Promise<{
+  parentStartTime: string;
+  firstProgramItem: ProgramItem;
+  laterProgramItem: ProgramItem;
+}> => {
+  const parentStartTime = subHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+  const firstProgramItem = {
+    ...testProgramItem,
+    endTime: addMinutes(new Date(testProgramItem.startTime), 30).toISOString(),
+  };
+  const laterProgramItem = {
+    ...testProgramItem2,
+    programType: testProgramItem.programType,
+    parentId: testProgramItem.parentId,
+    startTime: addMinutes(
+      new Date(testProgramItem.startTime),
+      30,
+    ).toISOString(),
+    endTime: addMinutes(new Date(testProgramItem.startTime), 60).toISOString(),
+  };
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveProgramItems([firstProgramItem, laterProgramItem]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  return { parentStartTime, firstProgramItem, laterProgramItem };
+};
+
+test("should record the whole span a batched lottery covered on its rejections", async () => {
+  const { parentStartTime, laterProgramItem } = await saveBatchedProgramItems();
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  // Nobody is placed, so the one lottery participant is rejected
+  await saveAndNotify({
+    assignmentTime: parentStartTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  const noAssignmentItems = userAfterSave.eventLogItems.filter(
+    (item) => item.action === EventLogAction.NO_ASSIGNMENT,
+  );
+  expect(noAssignmentItems).toHaveLength(1);
+
+  // First start to last end, which is the range the batch's titles show
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toEqual(
+    laterProgramItem.endTime,
+  );
+  expect(noAssignmentItems[0].programType).toEqual(testProgramItem.programType);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  notificationQueueService.getQueue().resume();
+  await notificationQueueService.getQueue().drained();
+  const sentMessages = notificationQueueService.getSender().getSentEmails();
+  expect(sentMessages).toHaveLength(1);
+  const [rejectedMessage] = sentMessages;
+
+  // The same span and program type the event log names, worded as a range because the far end
+  // is an end time rather than a start
+  expect(rejectedMessage.text).toEqual(`Hei ${mockUser.username}!
+Roolipelit välillä pe 26.7.2019 17:00 - pe 26.7.2019 18:00 arvottiin.
+Et valitettavasti päässyt arvonnassa yhteenkään ohjelmaan johon ilmoittauduit.
+
+Hi ${mockUser.username}!
+Role-playing games between Fri 26.7.2019 17:00 and Fri 26.7.2019 18:00 were lotteried.
+Unfortunately you did not get a spot in the lottery sign-up.
+
+Terveisin / Sincerely Konsti`);
+});
+
+test("should not record a span when the lottery covered a single starting time", async () => {
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  const noAssignmentItems = userAfterSave.eventLogItems.filter(
+    (item) => item.action === EventLogAction.NO_ASSIGNMENT,
+  );
+  expect(noAssignmentItems).toHaveLength(1);
+
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    testProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toBeUndefined();
+  expect(noAssignmentItems[0].programType).toBeUndefined();
+});
+
+test("should span a rejection over the batch, whichever slots were lotteried", async () => {
+  // The later slot was passed over for holding sign-ups, so only the first went through a
+  // lottery - but both were part of the batch the attendee entered, so both are in the span
+  const { parentStartTime, firstProgramItem, laterProgramItem } =
+    await saveBatchedProgramItems();
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: parentStartTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  const noAssignmentItems = userAfterSave.eventLogItems.filter(
+    (item) => item.action === EventLogAction.NO_ASSIGNMENT,
+  );
+  expect(noAssignmentItems).toHaveLength(1);
+
+  // The parent hour is when the run was scheduled, and no slot the attendee saw starts then
+  expect(noAssignmentItems[0].programItemStartTime).not.toEqual(
+    parentStartTime,
+  );
+  expect(noAssignmentItems[0].programItemStartTime).toEqual(
+    firstProgramItem.startTime,
+  );
+  expect(noAssignmentItems[0].lastProgramItemEndTime).toEqual(
+    laterProgramItem.endTime,
+  );
+});
+
+test("should still tell the losers when the placed spots cannot be read", async () => {
+  // Suppressing a rejection needs that read; without it, silence for everyone who lost is a
+  // certain harm where a wrong rejection is a rare one
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+
+  vi.mocked(findDirectSignupsByProgramItemIds).mockResolvedValueOnce(
+    makeErrorResult(MongoDbError.UNKNOWN_ERROR),
+  );
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results: [],
+    users,
+    programItems,
+  });
+
+  const [userAfterSave] = unsafelyUnwrap(await findUsers());
+  expect(
+    userAfterSave.eventLogItems.map((eventLogItem) => eventLogItem.action),
+  ).toContain(EventLogAction.NO_ASSIGNMENT);
+});
+
+test("should drop a whole group whose program item no longer has room for all of it", async () => {
+  const groupCode = "group-that-no-longer-fits";
+
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+  await saveUser(mockUser3);
+
+  // Two spots, one of them taken by somebody the run is not placing, so the group of two has
+  // one spot to land in and a group lands in one program item or none
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser3.username,
+  });
+  // Held at the hour the group is being placed at, so a placement would replace it
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser.username,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+  });
+
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  // Neither member is placed, rather than one of them taking the single spot
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const wonProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser3.username]);
+
+  // The spot a dropped member holds is left in place, since nothing was given to replace it
+  const heldProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  );
+  expect(
+    heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser.username]);
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+  const usersWithNewAssignment = usersAfterSave.filter((user) =>
+    user.eventLogItems.some(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    ),
+  );
+  expect(usersWithNewAssignment).toEqual([]);
+});
+
+test("should place a whole group that still has room for all of it", async () => {
+  const groupCode = "group-that-fits";
+
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+  await saveUser(mockUser3);
+
+  // One spot more than the case above, so the same group fits
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 3 }]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser3.username,
+  });
+
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const wonProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual(
+    expect.arrayContaining([
+      mockUser3.username,
+      mockUser.username,
+      mockUser2.username,
+    ]),
+  );
+});
+
+test("should place a winner whose username names an Object prototype member", async () => {
+  // A username is unrestricted input, and one with no sign-ups to look up reads back as an
+  // inherited function when the lookup is keyed into a plain object, which then cannot be
+  // filtered - after the spots have already been committed
+  const username = "constructor";
+
+  await saveUser({ ...mockUser, username });
+  await saveUser(mockUser2);
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  // Held by somebody else, so the winner being looked up has nothing of their own
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const wonProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([username]);
+
+  // Somebody else's spot at that hour is not theirs to give up
+  const heldProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  );
+  expect(
+    heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser2.username]);
+});
+
+test("should drop a whole group whose room is taken by a spot the write has not freed yet", async () => {
+  const groupCode = "group-counted-against-a-held-spot";
+
+  await saveUser(mockUser3);
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+
+  // Two spots in the program item the group is placed into, one of them held by an attendee
+  // being placed elsewhere at the same hour
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser3.username,
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: mockUser3.username,
+      assignmentSignup: {
+        programItemId: testProgramItem2.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+    ...[mockUser, mockUser2].map((user) => ({
+      username: user.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    })),
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  // The held spot is still taken when the spots are written, so there is room for one of the
+  // two and the group goes without rather than landing half in
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const groupProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    groupProgramItemSignup?.userSignups.map(
+      (userSignup) => userSignup.username,
+    ),
+  ).toEqual([]);
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+  const groupMembersPlaced = usersAfterSave.filter(
+    (user) =>
+      user.groupCode === groupCode &&
+      user.eventLogItems.some(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      ),
+  );
+  expect(groupMembersPlaced).toEqual([]);
+});
+
+test("should displace spots at every hour a batched lottery placed somebody at", async () => {
+  // One run, two sub-sessions an hour apart, and a winner in each: the run has to act on both
+  // hours rather than on whichever one it placed somebody at first
+  const parentStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    -30,
+  ).toISOString();
+  const laterStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    60,
+  ).toISOString();
+  const heldAtFirstHourId = "held-at-first-hour";
+  const heldAtLaterHourId = "held-at-later-hour";
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, parentStartTime],
+    ]),
+  });
+
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    // Same batch, so one lottery covers both, but it runs an hour later
+    {
+      ...testProgramItem2,
+      parentId: testProgramItem.parentId,
+      startTime: laterStartTime,
+      minAttendance: 1,
+      maxAttendance: 1,
+    },
+    // What each winner already holds at their own hour, outside the batch
+    {
+      ...testProgramItem,
+      programItemId: heldAtFirstHourId,
+      parentId: heldAtFirstHourId,
+      title: "Held at the first hour",
+    },
+    {
+      ...testProgramItem,
+      programItemId: heldAtLaterHourId,
+      parentId: heldAtLaterHourId,
+      title: "Held at the later hour",
+      startTime: laterStartTime,
+    },
+  ]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: heldAtFirstHourId,
+  });
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser2.username,
+    directSignupProgramItemId: heldAtLaterHourId,
+    signedToStartTime: laterStartTime,
+  });
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: parentStartTime,
+      results: [
+        {
+          username: mockUser.username,
+          assignmentSignup: {
+            programItemId: testProgramItem.programItemId,
+            priority: 1,
+            signedToStartTime: testProgramItem.startTime,
+          },
+        },
+        {
+          username: mockUser2.username,
+          assignmentSignup: {
+            programItemId: testProgramItem2.programItemId,
+            priority: 1,
+            signedToStartTime: laterStartTime,
+          },
+        },
+      ],
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const heldBy = (username: string): string[] =>
+    signups
+      .filter((signup) =>
+        signup.userSignups.some(
+          (userSignup) => userSignup.username === username,
+        ),
+      )
+      .map((signup) => signup.programItemId);
+
+  // Each winner holds what they won and nothing else at that hour, whichever hour it was
+  expect(heldBy(mockUser.username)).toEqual([testProgramItem.programItemId]);
+  expect(heldBy(mockUser2.username)).toEqual([testProgramItem2.programItemId]);
 });

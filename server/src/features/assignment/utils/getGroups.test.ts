@@ -16,7 +16,7 @@ afterEach(() => {
   vi.resetAllMocks();
 });
 
-test("excludes lottery signups for items whose lottery already ran (different start time)", () => {
+test("excludes lottery sign-ups for items whose lottery already ran (different start time)", () => {
   // A leftover sign-up for an item that already ran is kept on the user but must not
   // become a preference in a later lottery for a different start time
   const pastStartTime = subHours(new Date(assignmentTime), 2).toISOString();
@@ -103,4 +103,14 @@ test("should return groups for program items using parent startTime via 'startTi
       pref: [testProgramItem.programItemId],
     },
   ]);
+});
+
+// A preference the assigner has no event for makes it reject the whole input, so a program item
+// outside the run must not reach it
+test("excludes lottery sign-ups for program items not in the run", () => {
+  const users = getUsers({ count: 1 });
+
+  const groups = getGroups([users], assignmentTime, [testProgramItem2]);
+
+  expect(groups).toEqual([{ id: groupCreatorGroupCode, size: 1, pref: [] }]);
 });

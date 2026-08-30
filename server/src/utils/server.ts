@@ -46,7 +46,7 @@ export const startServer = async ({
   // app is served over plain http, and upgrading subresource requests there
   // breaks the page outright: WebKit applies the upgrade to loopback origins
   // too (Chromium exempts them), so every chunk fails the TLS handshake and
-  // nothing renders
+  // nothing renders.
   const servedOverTls =
     process.env.SETTINGS === "production" || process.env.SETTINGS === "staging";
 
@@ -102,7 +102,7 @@ export const startServer = async ({
   // indistinguishable from a hashed one. Everything else revalidates,
   // index.html above all - it decides which hashed files are requested.
   // Split on both separators because the path comes from the serving
-  // library and may use either style
+  // library and may use either style.
   const setStaticCacheHeaders = (
     res: ServerResponse,
     filePath: string,
@@ -234,7 +234,7 @@ export const closeServer = async (
   // Send buffered Sentry events before the process exits. The timeout leaves
   // room for the transport's short first retry; an event already in the long
   // second retry is abandoned rather than risking the k8s termination grace
-  // period. No-op when Sentry is not initialized (tests, local dev)
+  // period. No-op when Sentry is not initialized (tests, local dev).
   await flush(5000);
 
   logger.info("Shutdown completed, bye");

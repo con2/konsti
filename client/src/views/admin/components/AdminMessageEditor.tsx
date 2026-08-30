@@ -32,7 +32,7 @@ export const AdminMessageEditor = ({
     adminMessageFiInput === adminMessageFi &&
     adminMessageEnInput === adminMessageEn;
   // Save accepts a message only when both languages are filled, or both empty (which removes it) —
-  // never a partial. Clear removes the message directly, whatever is currently typed
+  // never a partial. Clear removes the message directly, whatever is currently typed.
   const fiFilled = adminMessageFiInput.trim() !== "";
   const enFilled = adminMessageEnInput.trim() !== "";
   const partial = fiFilled !== enFilled;

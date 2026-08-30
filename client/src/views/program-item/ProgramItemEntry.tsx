@@ -186,7 +186,7 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
 
 // Brief glow to point out a just-viewed item on returning to the list. Holds at
 // full for a moment, then fades out over the card's resting shadow so nothing
-// snaps when it ends
+// snaps when it ends.
 const recentlyViewedFlash = keyframes`
   0%,
   25% {

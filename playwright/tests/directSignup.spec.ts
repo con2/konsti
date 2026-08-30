@@ -1,8 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { addHours } from "date-fns";
+import { addHours, addMinutes, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
+import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -13,9 +17,12 @@ import {
   postSettings,
   postTestSettings,
   testPostDirectSignup,
+  testPostLotterySignup,
 } from "playwright/playwrightUtils";
 
-test("Add and cancel direct signup", async ({ page, request }) => {
+const alwaysOpenTitle = "Always open item";
+
+test("Add and cancel direct sign-up", async ({ page, request }) => {
   await clearDb(request);
   await populateDb(request, {
     clean: true,
@@ -212,7 +219,7 @@ test("Show error when program item full and update participant list", async ({
   await expect(participantList.nth(0)).toHaveText("test2");
 });
 
-test("Show no signup controls after direct signup has ended", async ({
+test("Show no sign-up controls after direct sign-up has ended", async ({
   page,
   request,
 }) => {
@@ -273,7 +280,7 @@ test("Show no signup controls after direct signup has ended", async ({
   await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
 });
 
-test("Show timeslot conflict message instead of signup button", async ({
+test("Show timeslot conflict message instead of direct sign-up button", async ({
   page,
   request,
 }) => {
@@ -324,7 +331,7 @@ test("Show timeslot conflict message instead of signup button", async ({
   await expect(conflictingProgramItem.signUpButton).toBeHidden();
 });
 
-test("Show no signup button before direct signup opens", async ({
+test("Show no sign-up button before direct sign-up opens", async ({
   page,
   request,
 }) => {
@@ -362,4 +369,131 @@ test("Show no signup button before direct signup opens", async ({
   await expect(programItem.container).toContainText("Sign-up opens");
   await expect(programItem.signUpButton).toBeHidden();
   await expect(programItem.container).not.toContainText("Sign-up closes");
+});
+
+test("Open direct sign-up only once the gap after the lottery has passed", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(4);
+  // Derived from the two config values rather than from the app's own helper, so a change to
+  // how the gap is applied shows up here instead of moving with it
+  const { directSignupPhaseStart, phaseGap } = config.event();
+  const lotterySignupEndTime = subMinutes(
+    new Date(startTime),
+    directSignupPhaseStart,
+  );
+  const directSignupStartTime = addMinutes(lotterySignupEndTime, phaseGap);
+
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+    },
+  ]);
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+
+  // Inside the gap: the lottery has closed and its run is what fills the program item, so
+  // nothing may be signed up to first come, first served yet
+  await postTestSettings(request, {
+    testTime: addMinutes(lotterySignupEndTime, 5).toISOString(),
+  });
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.waitForItems();
+
+  const programItem = programList.firstItem();
+  await expect(programItem.lotterySignupButton).toBeHidden();
+  await expect(programItem.signUpButton).toBeHidden();
+  await expect(programItem.container).toContainText(
+    "Participants were selected in a lottery.",
+  );
+
+  // Once the gap has passed it opens, and this is the only thing that changed
+  await postTestSettings(request, {
+    testTime: addMinutes(directSignupStartTime, 5).toISOString(),
+  });
+  await page.reload();
+  await programList.waitForItems();
+
+  // Taken rather than only offered, so the server is shown to open at the same moment
+  await programItem.signUp();
+  await programItem.confirm();
+  await expect(programItem.cancelSignupButton).toBeVisible();
+});
+
+test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(3);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+    {
+      // 'Sign-up always open', so its direct sign-up is open while the lottery for this
+      // start time still hasn't run
+      ...testProgramItem2,
+      // A title that is not a superstring of the other item's, so looking one up by title
+      // doesn't match both
+      title: alwaysOpenTitle,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      tags: [Tag.PRE_CONVENTION_WEEK],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  // A lottery sign-up for the same start time as the spot about to be taken
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  // Pre-convention week program is not in the upcoming list during the main event
+  await programList.selectStartingTime("All");
+  await programList.waitForItems();
+
+  const alwaysOpenProgramItem = programList.itemByTitle(alwaysOpenTitle);
+  await alwaysOpenProgramItem.signUp();
+  await alwaysOpenProgramItem.confirm();
+
+  // Holding a spot doesn't withdraw the attendee from the lottery for that time: the sign-up
+  // stands, and if the lottery places them the spot they win replaces this one
+  await programList.gotoMyProgram();
+  await expect(programList.directSignupList).toContainText(alwaysOpenTitle);
+  await expect(programList.lotterySignupList).toContainText(
+    testProgramItem.title,
+  );
 });

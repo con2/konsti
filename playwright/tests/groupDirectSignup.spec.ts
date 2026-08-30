@@ -15,7 +15,7 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
-test("Group member signing up to a 'signup always open' program item stays in the group", async ({
+test("Group member signing up to a 'sign-up always open' program item stays in the group", async ({
   page,
   request,
 }) => {

@@ -1,75 +1,61 @@
-import { addHours } from "date-fns";
+import { addHours, addMinutes } from "date-fns";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 
-const parentId = "test-parent-id";
-const parentStartTime = "2023-07-29T12:00:00.000Z";
+const startTime = "2023-07-29T15:00:00.000Z";
 
-describe("isStartTimeChanged with parent start time override", () => {
-  beforeEach(() => {
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([[parentId, parentStartTime]]),
-    });
+describe("isStartTimeChanged", () => {
+  test("returns false when the direct sign-up records the program item's start time", () => {
+    expect(isStartTimeChanged(startTime, startTime)).toEqual(false);
   });
 
-  test("returns false when signedToStartTime matches the parent start time", () => {
-    // Own start time differs, but the parent override is what matters
-    const result = isStartTimeChanged(
-      parentStartTime,
-      "2023-07-29T15:00:00.000Z",
-      parentId,
-    );
-    expect(result).toEqual(false);
-  });
-
-  test("returns true when signedToStartTime differs from the parent start time", () => {
-    const result = isStartTimeChanged(
-      "2023-07-29T13:30:00.000Z",
-      parentStartTime,
-      parentId,
-    );
-    expect(result).toEqual(true);
-  });
-
-  test("ignores own start time match when a parent override exists", () => {
-    const ownStartTime = "2023-07-29T15:00:00.000Z";
-    // signedToStartTime equals own start time but not the parent start time
-    const result = isStartTimeChanged(ownStartTime, ownStartTime, parentId);
-    expect(result).toEqual(true);
-  });
-});
-
-describe("isStartTimeChanged without parent start time override", () => {
-  beforeEach(() => {
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map(),
-    });
-  });
-
-  test("returns false when signedToStartTime matches the program item start time", () => {
-    const startTime = "2023-07-29T15:00:00.000Z";
-    const result = isStartTimeChanged(startTime, startTime, parentId);
-    expect(result).toEqual(false);
-  });
-
-  test("returns true when signedToStartTime differs from the program item start time", () => {
-    const result = isStartTimeChanged(
-      addHours(new Date("2023-07-29T15:00:00.000Z"), 1).toISOString(),
-      "2023-07-29T15:00:00.000Z",
-      parentId,
-    );
-    expect(result).toEqual(true);
+  test("returns true when the program item has moved", () => {
+    expect(
+      isStartTimeChanged(
+        addHours(new Date(startTime), 1).toISOString(),
+        startTime,
+      ),
+    ).toEqual(true);
   });
 
   test("ignores sub-minute differences in the program item start time", () => {
-    const result = isStartTimeChanged(
-      "2023-07-29T15:00:00.000Z",
-      "2023-07-29T15:00:30.000Z",
-      parentId,
+    expect(isStartTimeChanged(startTime, "2023-07-29T15:00:30.000Z")).toEqual(
+      false,
     );
-    expect(result).toEqual(false);
+  });
+
+  test("reports a change when either time cannot be read", () => {
+    expect(isStartTimeChanged("not a time", startTime)).toEqual(true);
+    expect(isStartTimeChanged(startTime, "not a time")).toEqual(true);
+  });
+});
+
+// The parent batches a lottery; it says nothing about when an attendee turns up, so a sign-up
+// in a batched program item still reports a move of that program item's own start time
+describe("isStartTimeChanged for a batched program item", () => {
+  const parentStartTime = addMinutes(new Date(startTime), 30).toISOString();
+
+  beforeEach(() => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+  });
+
+  test("ignores the parent start time when nothing moved", () => {
+    expect(isStartTimeChanged(startTime, startTime)).toEqual(false);
+  });
+
+  test("reports a move of the program item's own start time", () => {
+    expect(
+      isStartTimeChanged(
+        startTime,
+        addHours(new Date(startTime), 1).toISOString(),
+      ),
+    ).toEqual(true);
   });
 });

@@ -48,7 +48,7 @@ import reports from "istanbul-reports";
 // skipped with a warning so a partial run (e.g. vitest only) still reports.
 //
 // NOTE: this file runs with plain `node`, so it must stay free of TypeScript
-// syntax that needs transformation (enums, path aliases, ...)
+// syntax that needs transformation (enums, path aliases, ...).
 
 const repoRoot = path.join(import.meta.dirname, "..");
 const coverageDir = path.join(repoRoot, "coverage");
@@ -57,7 +57,7 @@ const reportDir = path.join(coverageDir, "report");
 type CoverageData = Record<string, FileCoverageData>;
 
 // Reads every coverage JSON in a directory. A local run produces one file per
-// input; sharded CI runs drop one file per shard into the same directory
+// input; sharded CI runs drop one file per shard into the same directory.
 const readCoverageJsonDir = (dir: string, label: string): CoverageData[] => {
   const jsonFiles = fs.existsSync(dir)
     ? fs.readdirSync(dir).filter((file) => file.endsWith(".json"))
@@ -204,7 +204,7 @@ const containsRange = (outer: Range, inner: Range): boolean => {
 // hit in the file proves them executed. Only statements outside every
 // function body and not nested inside another statement qualify - a statement
 // inside a top-level `if` or `try` block is contained by that statement and
-// stays uncredited, because module evaluation does not guarantee it ran
+// stays uncredited, because module evaluation does not guarantee it ran.
 const creditModuleScopeStatements = (
   canonical: FileCoverageData,
   foreign: FileCoverageData,
@@ -274,7 +274,7 @@ const projectHits = (
   // matches credit through the foreign fnMap: the V8-derived data's function
   // entries are dominated by transform helpers (e.g. esbuild's __name) with
   // meaningless remapped positions, so a line fallback would credit the wrong
-  // functions
+  // functions.
   const functions = buildIndex(
     Object.fromEntries(
       Object.entries(canonical.fnMap).map(([id, fn]) => [
@@ -300,7 +300,7 @@ const projectHits = (
   // Range fallback: a covered line inside a function's body proves the
   // function executed (defining a nested function already executes a line of
   // its parent). This is what makes the line-based server data contribute
-  // function coverage at all
+  // function coverage at all.
   const coveredLines = new Set<number>();
   for (const [id, range] of Object.entries(foreign.statementMap)) {
     if (foreign.s[id]) {

@@ -2,8 +2,7 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getDirectSignupStartTime } from "shared/utils/signupTimes";
-import { isSameOrAfter } from "shared/utils/timeComparison";
+import { getDirectSignupStarted } from "shared/utils/signupTimes";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
@@ -20,7 +19,10 @@ import { ProgramItemButton } from "client/views/program-item/components/ProgramI
 import { ProgramItemButtonGroup } from "client/views/program-item/components/ProgramItemButtonGroup";
 import { ProgramItemCancelSignupForm } from "client/views/program-item/components/ProgramItemCancelSignupForm";
 import { ProgramItemStatusMessage } from "client/views/program-item/components/ProgramItemStatusMessage";
-import { isAlreadyDirectySigned } from "client/views/program-item/programItemUtils";
+import {
+  getDirectSignupForSlot,
+  isAlreadyDirectySigned,
+} from "client/views/program-item/programItemUtils";
 import { AdmissionTicketLink } from "client/views/program-item/signup/components/AdmissionTicketLink";
 import { LoginToSignupLink } from "client/views/program-item/signup/components/LoginToSignupLink";
 import { DirectSignupForm } from "client/views/program-item/signup/components/direct-signup/DirectSignupForm";
@@ -49,8 +51,9 @@ export const ProgramItemDirectSignup = ({
   const [serverError, setServerError] =
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
-  const directSignupForTimeslot = directSignups.find(
-    (signup) => signup.programItem.startTime === programItem.startTime,
+  const directSignupForTimeslot = getDirectSignupForSlot(
+    directSignups,
+    programItem,
   );
 
   const signupQuestion = signupQuestions.find(
@@ -78,7 +81,6 @@ export const ProgramItemDirectSignup = ({
     dispatch(stopLoading());
   };
 
-  const directSignupStartTime = getDirectSignupStartTime(programItem);
   const timeNow = useTimeNow();
 
   const programItemFullMessage = (
@@ -100,10 +102,10 @@ export const ProgramItemDirectSignup = ({
     !alreadySignedToProgramItem &&
     !programItemIsFull &&
     !directSignupForTimeslot;
-  const signupOpen = isSameOrAfter(timeNow, directSignupStartTime);
+  const signupOpen = getDirectSignupStarted(programItem, timeNow);
 
   // The only state with nothing to render: the user could sign up, but
-  // sign-up has not opened yet. Render nothing rather than an empty element
+  // sign-up has not opened yet. Render nothing rather than an empty element.
   if (canSignUp && !signupOpen && !signupFormOpen) {
     return null;
   }

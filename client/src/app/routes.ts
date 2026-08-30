@@ -1,6 +1,6 @@
 // The app's URL paths. Kept apart from the component that renders the router
 // so the many views and components that only need to link somewhere don't
-// depend on the routing tree itself
+// depend on the routing tree itself.
 
 export enum AppRoute {
   ROOT = "/",

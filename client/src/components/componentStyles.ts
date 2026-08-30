@@ -2,7 +2,7 @@ import { DefaultTheme } from "styled-components";
 
 // Style variants the shared components take as props. They live apart from the
 // components themselves so those modules export nothing but their component,
-// which is what keeps Fast Refresh working for them
+// which is what keeps Fast Refresh working for them.
 
 export enum ButtonStyle {
   PRIMARY = "primary",

@@ -18,7 +18,7 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
-test("Admin adds a text signup question to a program item", async ({
+test("Admin adds a text sign-up question to a program item", async ({
   page,
   request,
 }) => {
@@ -38,7 +38,7 @@ test("Admin adds a text signup question to a program item", async ({
   await expect(programItemPage.deleteSignupQuestionButton).toBeVisible();
 });
 
-test("Admin adds a multiple choice signup question to a program item", async ({
+test("Admin adds a multiple choice sign-up question to a program item", async ({
   page,
   request,
 }) => {
@@ -94,7 +94,7 @@ test("Admin cancels the question form and deletes a saved question", async ({
   await expect(programItemPage.addSignupQuestionButton).toBeVisible();
 });
 
-test("User answers a public text signup question on direct signup", async ({
+test("User answers a public text sign-up question on direct sign-up", async ({
   page,
   request,
 }) => {
@@ -142,7 +142,7 @@ test("User answers a public text signup question on direct signup", async ({
   );
 });
 
-test("User answers a public multiple choice signup question on direct signup", async ({
+test("User answers a public multiple choice sign-up question on direct sign-up", async ({
   page,
   request,
 }) => {
@@ -180,7 +180,7 @@ test("User answers a public multiple choice signup question on direct signup", a
   await expect(directSignups).toContainText("Bard");
 });
 
-test("User answers a private signup question on direct signup", async ({
+test("User answers a private sign-up question on direct sign-up", async ({
   page,
   request,
 }) => {

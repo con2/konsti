@@ -16,7 +16,7 @@ import { ViewErrorFallback } from "client/components/ViewErrorFallback";
 // boundary and every route element on every navigation, which throws away
 // component state React Router would otherwise keep. The fallback is passed by
 // reference rather than as an inline arrow: a component defined during render is
-// a new type each time, which would remount it
+// a new type each time, which would remount it.
 export const ViewErrorBoundary = ({
   children,
 }: {

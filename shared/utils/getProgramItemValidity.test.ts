@@ -19,7 +19,7 @@ test("program item with valid values passes all validity checks", () => {
   });
 });
 
-test("program item with missing signup type is invalid", () => {
+test("program item with missing sign-up type is invalid", () => {
   const validity = getProgramItemValidity({
     ...testProgramItem,
     signupType: SignupType.MISSING,
@@ -39,7 +39,7 @@ test("program item with minAttendance 0 is invalid", () => {
   expect(validity.allValuesValid).toBe(false);
 });
 
-test("Konsti signup program item with maxAttendance 0 is invalid", () => {
+test("Konsti sign-up program item with maxAttendance 0 is invalid", () => {
   const validity = getProgramItemValidity({
     ...testProgramItem,
     maxAttendance: 0,
@@ -49,7 +49,7 @@ test("Konsti signup program item with maxAttendance 0 is invalid", () => {
   expect(validity.allValuesValid).toBe(false);
 });
 
-test("maxAttendance 0 is valid when signup is not handled by Konsti", () => {
+test("maxAttendance 0 is valid when sign-up is not handled by Konsti", () => {
   const validity = getProgramItemValidity({
     ...testProgramItem,
     signupType: SignupType.OTHER,
@@ -60,7 +60,7 @@ test("maxAttendance 0 is valid when signup is not handled by Konsti", () => {
   expect(validity.allValuesValid).toBe(true);
 });
 
-test("maxAttendance 0 is valid when program item is excluded from Konsti signup", () => {
+test("maxAttendance 0 is valid when program item is excluded from Konsti sign-up", () => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
     noKonstiSignupIds: [testProgramItem.programItemId],
@@ -101,7 +101,7 @@ test("lottery program item not starting at even hour is invalid", () => {
   expect(validity.allValuesValid).toBe(false);
 });
 
-test("direct signup program item can start at half hour", () => {
+test("direct sign-up program item can start at half hour", () => {
   const validity = getProgramItemValidity({
     ...testProgramItem,
     programType: ProgramType.TOURNAMENT,
@@ -112,7 +112,7 @@ test("direct signup program item can start at half hour", () => {
   expect(validity.allValuesValid).toBe(true);
 });
 
-test("lottery program item without Konsti signup can start at half hour", () => {
+test("lottery program item without Konsti sign-up can start at half hour", () => {
   const validity = getProgramItemValidity({
     ...testProgramItem,
     signupType: SignupType.OTHER,

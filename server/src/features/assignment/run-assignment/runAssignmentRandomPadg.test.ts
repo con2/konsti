@@ -13,6 +13,8 @@ import * as padgAssign from "server/features/assignment/padg/padgAssignment";
 import * as randomAssign from "server/features/assignment/random/randomAssignment";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
+  assertAssignmentInvariants,
+  assertSecondRunChangesNothing,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
@@ -32,7 +34,6 @@ import {
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
-const groupTestUsers = new Set(["group1", "group2", "group3"]);
 
 const { eventStartTime } = config.event();
 
@@ -96,49 +97,16 @@ test("Assignment with valid data should return success with random+padg algorith
     expectedResultsCount,
   );
 
-  const groupResults = assignResults.results.filter((result) =>
-    groupTestUsers.has(result.username),
-  );
-
-  if (groupResults.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults.length).toEqual(0);
-  }
-
   const updatedUsers = assignResults.results.map((result) => result.username);
   await assertUserUpdatedCorrectly(updatedUsers);
+  await assertAssignmentInvariants(assignmentTime);
 
   // SECOND RUN
-
-  const assignResults2 = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      assignmentTime,
-    }),
-  );
-
-  expect(assignResults2.status).toEqual("success");
-  expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount,
-  );
-
-  const groupResults2 = assignResults2.results.filter((result) =>
-    groupTestUsers.has(result.username),
-  );
-
-  if (groupResults2.length > 0) {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(groupTestUsers.size);
-  } else {
-    // eslint-disable-next-line vitest/no-conditional-expect
-    expect(groupResults2.length).toEqual(0);
-  }
-
-  const updatedUsers2 = assignResults2.results.map((result) => result.username);
-  await assertUserUpdatedCorrectly(updatedUsers2);
+  await assertSecondRunChangesNothing({
+    assignmentAlgorithm,
+    assignmentTime,
+    firstRunResults: assignResults.results,
+  });
 });
 
 test("Assignment with no attendees should return error with random+padg algorithm", async () => {

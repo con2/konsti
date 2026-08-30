@@ -25,7 +25,7 @@ const networkError = (): BackendError => ({
 // session restore), so their failures use the suppressed background error
 // handling; every other request is treated as user-initiated and its
 // failure toasts immediately. Keyed on method too: several endpoints pair a
-// polled GET with a user-initiated POST
+// polled GET with a user-initiated POST.
 const BACKGROUND_REQUESTS = new Set<string>([
   `GET ${ApiEndpoint.SETTINGS}`,
   `GET ${ApiEndpoint.USERS}`,
@@ -51,7 +51,7 @@ export const isBackgroundRequest = (method: string, url: string): boolean =>
 // reconnected), so their network error toast is suppressed while offline and
 // briefly after the connection or the page itself resumes. Suppression is
 // never final: it schedules a probe request for after the grace period, so a
-// genuine outage still surfaces the toast
+// genuine outage still surfaces the toast.
 const RECONNECT_GRACE_PERIOD_MS = 5000;
 let reconnectedAt = 0;
 
@@ -159,7 +159,7 @@ const showNetworkErrorOrProbe = (): void => {
   // While offline or hidden nothing is scheduled — otherwise a hidden but
   // still-running page would probe in a tight loop through an outage. The
   // refresh triggered by the online event or page resume starts a new cycle
-  // if the problem persists
+  // if the problem persists.
 };
 
 export const onRequestFailure = (background: boolean): void => {

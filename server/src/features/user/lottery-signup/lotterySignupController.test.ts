@@ -5,7 +5,10 @@ import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   DeleteLotterySignupError,
   DeleteLotterySignupRequest,
@@ -16,11 +19,20 @@ import {
 } from "shared/types/api/myProgramItems";
 import { SignupType, State } from "shared/types/models/programItem";
 import { UserGroup } from "shared/types/models/user";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
+import {
+  saveLotteryRanForStartTime,
+  savePassedOverForLottery,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { saveHidden } from "server/features/settings/settingsRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
+import {
+  mockLotterySignups,
+  mockPostDirectSignupRequest,
+  mockUser,
+} from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
@@ -45,6 +57,9 @@ beforeEach(async () => {
 
 afterEach(async () => {
   vi.resetAllMocks();
+  // resetAllMocks leaves the clock where it was, so without this the tests that set no time
+  // run at whatever instant the previous one picked
+  vi.useRealTimers();
   await closeServer(server);
 });
 
@@ -61,7 +76,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return error when signup is not yet open", async () => {
+  test("should return error when lottery sign-up is not yet open", async () => {
     vi.setSystemTime(
       subMinutes(
         new Date(testProgramItem.startTime),
@@ -91,7 +106,176 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(body.errorId).toEqual("signupNotOpenYet");
   });
 
-  test("should return error when signup is closed", async () => {
+  test("should allow lottery sign-up when the user already holds a spot at the same start time", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // testProgramItem2 starts at the same time and the user already has a spot in it. They may
+    // still enter the lottery: if it places them, the spot they win replaces the one they hold.
+    await saveProgramItems([
+      testProgramItem,
+      { ...testProgramItem2, startTime: testProgramItem.startTime },
+    ]);
+    await saveUser(mockUser);
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+      signedToStartTime: testProgramItem.startTime,
+    });
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupResult;
+    expect(body.status).toEqual("success");
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(
+      user?.lotterySignups.map((lotterySignup) => lotterySignup.programItemId),
+    ).toEqual([testProgramItem.programItemId]);
+  });
+
+  test("should allow lottery sign-up when the held spot is at another start time", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // The spot the user holds is an hour earlier, so it doesn't compete with this lottery
+    const earlierStartTime = subHours(
+      new Date(testProgramItem.startTime),
+      1,
+    ).toISOString();
+    await saveProgramItems([
+      testProgramItem,
+      { ...testProgramItem2, startTime: earlierStartTime },
+    ]);
+    await saveUser(mockUser);
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+      signedToStartTime: earlierStartTime,
+    });
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupResult;
+    expect(body.status).toEqual("success");
+    expect(body.lotterySignups).toHaveLength(1);
+  });
+
+  test("should return error when the program item's lottery has already been run", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // Lotteried for an earlier start time and moved since: moving reopens the sign-up window
+    // these times are derived from, but no run will consider the item again.
+    // Seeded through the writer rather than saveProgramItems, which leaves this field alone
+    // on purpose so a Kompassi import can't clear it.
+    await saveProgramItems([testProgramItem]);
+    await saveLotteryRanForStartTime([
+      {
+        ...testProgramItem,
+        startTime: subHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
+      },
+    ]);
+    await saveUser(mockUser);
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("lotteryAlreadyRun");
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.lotterySignups).toHaveLength(0);
+  });
+
+  test("should return error when the program item was passed over for the lottery", async () => {
+    vi.setSystemTime(
+      subMinutes(
+        new Date(testProgramItem.startTime),
+        config.event().preSignupStart,
+      ).toISOString(),
+    );
+
+    // It held sign-ups when it became a lottery program item, so no lottery will take it and
+    // there is nothing to sign up for, whatever its sign-up window says
+    await saveProgramItems([testProgramItem]);
+    await savePassedOverForLottery([testProgramItem.programItemId]);
+    await saveUser(mockUser);
+
+    const signup: PostLotterySignupRequest = {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostLotterySignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("lotteryAlreadyRun");
+
+    const user = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user?.lotterySignups).toHaveLength(0);
+  });
+
+  test("should return error when lottery sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );
@@ -197,7 +381,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(modifiedUser?.lotterySignups).toHaveLength(0);
   });
 
-  test("should return error when program item doesn't use Konsti signup", async () => {
+  test("should return error when program item doesn't use Konsti sign-up", async () => {
     await saveProgramItems([
       { ...testProgramItem, signupType: SignupType.OTHER },
     ]);
@@ -432,7 +616,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return error when signup is closed", async () => {
+  test("should return error when lottery sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
     );

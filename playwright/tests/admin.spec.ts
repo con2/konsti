@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { subMinutes } from "date-fns";
 import { config } from "shared/config";
 import {
   EventSignupStrategy,
@@ -50,7 +51,7 @@ test("Admin can open and close the app", async ({ page, request }) => {
   await expect(adminPage.closeKonstiButton).toBeVisible();
 });
 
-test("Admin can change the signup strategy", async ({ page, request }) => {
+test("Admin can change the sign-up strategy", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -153,7 +154,7 @@ test("Admin can remove the temporary message with Clear", async ({
   await expect(adminPage.adminMessageBanner).toBeHidden();
 });
 
-test("Admin sees signup questions listed", async ({ page, request }) => {
+test("Admin sees sign-up questions listed", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
@@ -189,6 +190,92 @@ test("Admin sees signup questions listed", async ({ page, request }) => {
   ).toBeVisible();
 });
 
+test("Preselect the next starting time whose lottery can still be run", async ({
+  page,
+  request,
+}) => {
+  // The first slot's direct signup is already open at event start, so its lottery can no
+  // longer be run. During an event most of the list is behind that line, which is why the
+  // earliest starting time is a poor default.
+  const pastStartTime = hoursIntoEvent(1);
+  const nextStartTime = hoursIntoEvent(4);
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(
+    request,
+    [pastStartTime, nextStartTime].map((startTime, index) => ({
+      ...testProgramItem,
+      programItemId: `lottery-time-item-${index}`,
+      parentId: `lottery-time-item-${index}`,
+      title: `Lottery time item ${index}`,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+    })),
+  );
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await login(page, request, { username: "admin", password: "test" });
+
+  const adminPage = new AdminPage(page);
+
+  await page.goto("/");
+  await adminPage.open();
+
+  await expect(adminPage.assignmentTimeSelect).toHaveValue(nextStartTime);
+
+  // The starting time that has gone by is still there to be picked deliberately
+  await expect(adminPage.assignmentTimeOption(pastStartTime)).toHaveCount(1);
+});
+
+test("Refuse an assignment run outside the starting time's own window", async ({
+  page,
+  request,
+}) => {
+  // Both ends of the window an admin can pick outside: one starting time is still taking
+  // lottery sign-ups, the other has moved on to direct sign-up
+  const stillOpenStartTime = hoursIntoEvent(4);
+  const pastStartTime = hoursIntoEvent(1);
+
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(
+    request,
+    [pastStartTime, stillOpenStartTime].map((startTime, index) => ({
+      ...testProgramItem,
+      programItemId: `run-window-item-${index}`,
+      parentId: `run-window-item-${index}`,
+      title: `Run window item ${index}`,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+    })),
+  );
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await login(page, request, { username: "admin", password: "test" });
+
+  const adminPage = new AdminPage(page);
+
+  await page.goto("/");
+  await adminPage.open();
+
+  // Running now would decide the hour behind the attendees still entering its lottery
+  await adminPage.selectAssignmentTime(stillOpenStartTime);
+  await adminPage.assignAttendees();
+  await expect(adminPage.main).toContainText(
+    "Lottery sign-up for this starting time is still open",
+  );
+
+  // ...and running the one already past would compete with its first-come queue
+  await adminPage.selectAssignmentTime(pastStartTime);
+  await adminPage.assignAttendees();
+  await expect(adminPage.main).toContainText(
+    "Direct signup for this starting time is already open",
+  );
+});
+
 test("Admin can trigger an assignment run", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
 
@@ -205,7 +292,14 @@ test("Admin can trigger an assignment run", async ({ page, request }) => {
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  // A run is offered only inside the starting time's own window, which opens the minute its
+  // lottery sign-up closes
+  await postTestSettings(request, {
+    testTime: subMinutes(
+      new Date(startTime),
+      config.event().directSignupPhaseStart,
+    ).toISOString(),
+  });
   await login(page, request, { username: "admin", password: "test" });
 
   const adminPage = new AdminPage(page);

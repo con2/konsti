@@ -2,7 +2,6 @@ import { subHours, subMinutes } from "date-fns";
 import { first, groupBy, sample } from "remeda";
 import { NewEventLogItem } from "shared/types/api/eventLog";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -13,7 +12,7 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 // Simulate lottery results: for each start time a user has lottery sign-ups for,
 // they either win a spot (a newAssignment message plus the direct sign-up the
 // real assignment would create) or lose (a noAssignment message). This keeps
-// the event log consistent with the sign-ups shown in My Program
+// the event log consistent with the sign-ups shown in My Program.
 export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const programItemsById = new Map(
@@ -58,8 +57,9 @@ export const createEventLogItems = async (): Promise<void> => {
       const saveResult = await saveDirectSignup({
         username: user.username,
         directSignupProgramItemId: wonSignup.programItemId,
-        // Direct sign-ups store the parent-resolved start time
-        signedToStartTime: getProgramItemStartTime(wonProgramItem),
+        // A spot is held for the hour its attendee turns up, so the program item's own start
+        // time rather than the parent time its lottery was batched at
+        signedToStartTime: wonProgramItem.startTime,
         signupTime: wonProgramItem.startTime,
         message: "",
         priority: wonSignup.priority,

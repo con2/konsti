@@ -14,6 +14,7 @@ test("should return an error when every PADG round fails", () => {
     [getUsers({ count: 1 })],
     testProgramItem.startTime,
     [],
+    [testProgramItem],
   );
 
   expect(result.ok).toBe(false);

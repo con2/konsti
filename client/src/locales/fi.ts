@@ -1,3 +1,6 @@
+import { getProgramTypePluralNames } from "shared/constants/programTypeNames";
+import { Locale } from "shared/types/locale";
+
 export const translationFI = {
   appDescription: "{{EVENT_NAME}} {{EVENT_YEAR}}",
   appDescriptionPreConventionWeek: "{{EVENT_NAME}} {{EVENT_YEAR}} – Etkoviikko",
@@ -214,6 +217,8 @@ export const translationFI = {
       "Ryhmän jäsenet eivät voi ilmoittautua, ryhmän perustaja ilmoittautuu koko ryhmän puolesta",
     invalidProgramItem:
       "Ohjelmanumerosta puuttuu vaadittuja tietoja, eikä siihen voi ilmoittautua.",
+    lotteryAlreadyRun:
+      "Tämän ohjelmanumeron alkamisaika muuttui arvonnan jälkeen, joten se ei osallistu enää arvontaan. Jäljellä olevat paikat täytetään ilmoittautumisjärjestyksessä.",
   },
   closingMessage:
     "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa.",
@@ -317,6 +322,8 @@ export const translationFI = {
       "Olet päässyt arvonnassa ohjelmanumeroon {{PROGRAM_ITEM_ID}}, mutta se on peruuntunut.",
     noAssignment:
       "Paikat klo {{START_TIME}} alkaviin ohjelmanumeroihin arvottiin. Ikävä kyllä et mahtunut mukaan mihinkään valitsemaasi ohjelmanumeroon.",
+    noAssignmentTimeRange:
+      "{{PROGRAM_TYPE}} välillä {{FIRST_TIME}}–{{LAST_TIME}} arvottiin, etkä saanut paikkaa.",
     programItemCancelled:
       "{{PROGRAM_TYPE}} peruttiin ja ilmoittautumisesi poistettiin:",
     programItemDeleted: "{{PROGRAM_TYPE}} poistettiin ja poistui ohjelmastasi:",
@@ -372,6 +379,10 @@ export const translationFI = {
     loginLinkEnding: "nähdäksesi {{ATTENDEE_TYPE}}.",
     signupQuestionAriaLabel: "Lisätietokysymys",
     help: {
+      lotteryAlreadyRunInfo:
+        "Sen alkamisaika muuttui arvonnan jälkeen, joten se ei osallistu enää arvontaan.",
+      notInLotteryInfo:
+        "Siihen on jo ilmoittautumisia, joten se ei osallistu arvontaan.",
       signupAlwaysOpenGroupMemberInfo:
         "Voit ilmoittautua vaikka olet ryhmän jäsen.",
       directSignupStartsLater:
@@ -463,16 +474,7 @@ export const translationFI = {
   },
   programTypePlural: {
     all: "ohjelmanumerot",
-    tabletopRPG: "roolipelit",
-    larp: "larpit",
-    tournament: "turnaukset",
-    workshop: "työpajat",
-    experiencePoint: "pelit",
-    other: "ohjelmanumerot",
-    roundtableDiscussion: "keskustelupiirit",
-    fleaMarket: "kirpputoriajat",
-    otherGaming: "muu pelaaminen",
-    boardgame: "lautapelit",
+    ...getProgramTypePluralNames(Locale.FI),
   },
   programTypeGenetive: {
     all: "Ohjelmanumeron",

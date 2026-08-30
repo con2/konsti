@@ -11,7 +11,7 @@ export enum BackendErrorType {
 // Errors are stored as translation keys and translated when rendered, so
 // matching an error for removal keeps working across language switches. The
 // message params exist only on the API error variant so that a plain
-// { errorKey } payload always deep-equals the stored error when removing it
+// { errorKey } payload always deep-equals the stored error when removing it.
 export type BackendError =
   | {
       errorKey: BackendErrorType.API_ERROR;

@@ -19,6 +19,18 @@ export class AdminPage extends BasePage {
     return this.page.locator('select:has(option:has-text("Lottery + Direct"))');
   }
 
+  get assignmentTimeSelect(): Locator {
+    return this.page.locator("#assignmentTime");
+  }
+
+  assignmentTimeOption(startTime: string): Locator {
+    return this.assignmentTimeSelect.locator(`option[value="${startTime}"]`);
+  }
+
+  async selectAssignmentTime(startTime: string): Promise<void> {
+    await this.assignmentTimeSelect.selectOption(startTime);
+  }
+
   get adminMessageFiInput(): Locator {
     return this.page.getByLabel(/in finnish/i);
   }

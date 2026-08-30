@@ -2,7 +2,10 @@ import { tz } from "@date-fns/tz";
 import { isSameDay } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
-import { testProgramItem } from "shared/tests/testProgramItem";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { TIMEZONE } from "shared/utils/timezone";
 import {
   getDirectSignupForSlot,
@@ -13,9 +16,14 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-test("matches a direct signup at the program item's own start time", () => {
+test("matches a direct sign-up in a program item starting at the same time", () => {
   const directSignups = [
-    { signedToStartTime: testProgramItem.startTime, programItemId: "other" },
+    {
+      programItem: {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+      },
+    },
   ];
 
   expect(getDirectSignupForSlot(directSignups, testProgramItem)).toEqual(
@@ -23,9 +31,14 @@ test("matches a direct signup at the program item's own start time", () => {
   );
 });
 
-test("returns undefined when no direct signup occupies the slot", () => {
+test("returns undefined when no direct sign-up occupies the slot", () => {
   const directSignups = [
-    { signedToStartTime: "2019-07-26T20:00:00.000Z", programItemId: "other" },
+    {
+      programItem: {
+        ...testProgramItem2,
+        startTime: "2019-07-26T20:00:00.000Z",
+      },
+    },
   ];
 
   expect(
@@ -33,9 +46,9 @@ test("returns undefined when no direct signup occupies the slot", () => {
   ).toBeUndefined();
 });
 
-test("matches a direct signup stored at the parent-resolved start time", () => {
-  // The lottery item is batched under a parent whose start time drives the lottery, so the
-  // direct sign-up for the slot is stored at the parent time, not the item's own start time
+// The parent batches a lottery; it says nothing about when an attendee turns up, so a spot in a
+// batched program item occupies its own hour
+test("ignores the parent start time when matching a slot", () => {
   const parentStartTime = "2019-07-26T18:00:00.000Z";
 
   vi.spyOn(config, "event").mockReturnValue({
@@ -45,8 +58,48 @@ test("matches a direct signup stored at the parent-resolved start time", () => {
     ]),
   });
 
+  // The held spot resolves to the same lottery as testProgramItem, but runs at another hour
   const directSignups = [
-    { signedToStartTime: parentStartTime, programItemId: "other" },
+    { programItem: { ...testProgramItem2, startTime: parentStartTime } },
+  ];
+
+  expect(
+    getDirectSignupForSlot(directSignups, testProgramItem),
+  ).toBeUndefined();
+});
+
+test("matches a batched program item held at the same hour", () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([
+      [testProgramItem.parentId, "2019-07-26T18:00:00.000Z"],
+    ]),
+  });
+
+  const directSignups = [
+    {
+      programItem: {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+      },
+    },
+  ];
+
+  expect(getDirectSignupForSlot(directSignups, testProgramItem)).toEqual(
+    directSignups[0],
+  );
+});
+
+test("matches the same instant written with and without milliseconds", () => {
+  const directSignups = [
+    {
+      programItem: {
+        ...testProgramItem2,
+        startTime: new Date(testProgramItem.startTime)
+          .toISOString()
+          .replace(".000Z", "Z"),
+      },
+    },
   ];
 
   expect(getDirectSignupForSlot(directSignups, testProgramItem)).toEqual(

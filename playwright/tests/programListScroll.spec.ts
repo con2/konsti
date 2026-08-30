@@ -43,7 +43,7 @@ const openSeededProgramList = async (
 // (growing the document) and compensate the offset for rows that grew above
 // the viewport. Polling scrollY alone can declare "settled" between those two
 // steps, so require the document height to hold still too. Returns the
-// settled scroll offset
+// settled scroll offset.
 const scrollDownAndSettle = async (page: Page): Promise<number> => {
   await page.evaluate(() => {
     window.scrollTo(0, 4000);
@@ -74,7 +74,7 @@ test("Opening a program item resets scroll, and returning restores the list posi
 
   // Wait for the list to settle with a card mounted within the viewport (below
   // the sticky header area). The window spans the full viewport height so it
-  // can't fall between two tall cards
+  // can't fall between two tall cards.
   await scrollDownAndSettle(page);
   await page.waitForFunction(() =>
     Array.from(
@@ -87,7 +87,7 @@ test("Opening a program item resets scroll, and returning restores the list posi
 
   // Pick the bottom-most fully visible card — the one that falls below the
   // fold if the restored position is off by even a partial row. Read the
-  // scroll offset in the same evaluate so both are from the same layout pass
+  // scroll offset in the same evaluate so both are from the same layout pass.
   const { href, cardTopBefore, scrollBefore } = await page.evaluate(() => {
     const visibleCards = Array.from(
       document.querySelectorAll('[data-testid="program-item-container"]'),
@@ -109,7 +109,7 @@ test("Opening a program item resets scroll, and returning restores the list posi
   // Opening the item navigates to its page, which is scrolled to the top.
   // Navigate with a dispatched click: a regular click() first scrolls and
   // focuses the target (WebKit shifts the page by several hundred px doing
-  // this), which would move the offset this test asserts is restored
+  // this), which would move the offset this test asserts is restored.
   await page.locator(`a[href="${href}"]`).dispatchEvent("click");
   await page.waitForURL(/\/program\/item\//);
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);

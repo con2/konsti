@@ -78,7 +78,7 @@ export const FinalizeRegistration = (
     // Only when the username field is actually rendered below. Once the
     // username is accepted the field is gone, so submitting again - which
     // happens when the email step failed and the user retries - would send an
-    // undefined username and fail validation on every attempt
+    // undefined username and fail validation on every attempt.
     if (isKompassiAccount && !props.kompassiUsernameAccepted) {
       const errorMessage = await dispatch(
         submitVerifyKompassiLogin(loginFormFields.username),

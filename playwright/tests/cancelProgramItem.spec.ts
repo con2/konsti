@@ -20,7 +20,7 @@ import {
   postTestSettings,
 } from "playwright/playwrightUtils";
 
-test("Show event log notification when program item with direct signup is cancelled", async ({
+test("Show event log notification when program item with direct sign-up is cancelled", async ({
   page,
   request,
 }) => {

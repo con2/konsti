@@ -6,5 +6,5 @@ import { resolvePortOffset } from "scripts/portOffset";
 // name, and runtime readers (e.g. the Kompassi mock base URL) agree with the
 // client and Playwright of the same worktree. The resolver can't be called
 // from serverConfig itself because shared config is also bundled into the
-// client, where Node builtins don't exist
+// client, where Node builtins don't exist.
 process.env.PORT_OFFSET = String(resolvePortOffset());

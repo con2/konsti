@@ -1,12 +1,15 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { capitalize } from "remeda";
+import { capitalize, first, unique } from "remeda";
 import styled, { css } from "styled-components";
 import { config } from "shared/config";
 import { EmailNotificationTrigger } from "shared/types/emailNotification";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
+import {
+  getDirectSignupPhaseStarted,
+  getProgramItemStartTime,
+} from "shared/utils/signupTimes";
 import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Checkbox } from "client/components/Checkbox";
@@ -14,6 +17,7 @@ import { Dropdown, Option } from "client/components/Dropdown";
 import { ButtonStyle } from "client/components/componentStyles";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { useTimeFormatters } from "client/utils/useTimeFormatters";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { selectHiddenProgramItems } from "client/views/admin/adminSlice";
 import {
   submitAssignment,
@@ -51,6 +55,7 @@ export const AdminView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { getWeekdayAndTime } = useTimeFormatters();
+  const timeNow = useTimeNow();
 
   const lotteryProgramItems = programItems
     .filter((programItem) => programItem.signupType === SignupType.KONSTI)
@@ -79,27 +84,48 @@ export const AdminView = (): ReactElement => {
     return visibleProgramItems;
   };
 
-  const getDropdownOptions = (): Option[] => {
-    const visibleProgramItems = getVisibleProgramItems();
-    const startTimes = visibleProgramItems.map((programItem) =>
+  const visibleProgramItems = getVisibleProgramItems();
+  const startTimes = unique(
+    visibleProgramItems.map((programItem) =>
       getProgramItemStartTime(programItem),
-    );
-    const times = [...new Set(startTimes)].sort((a, b) => a.localeCompare(b));
+    ),
+  ).sort((a, b) => a.localeCompare(b));
 
-    return times.map((time) => {
-      const formattedDate = capitalize(getWeekdayAndTime(time));
-      return { value: time, title: formattedDate };
-    });
-  };
+  const assignmentTimeDropdownValues: Option[] = startTimes.map((time) => ({
+    value: time,
+    title: capitalize(getWeekdayAndTime(time)),
+  }));
 
-  const assignmentTimeDropdownValues = getDropdownOptions();
+  // The server refuses a run once its program items start taking direct sign-ups, so the default
+  // skips the starting times already past that line - during an event most of the list is. Past
+  // times stay in the list rather than being hidden, to be picked deliberately.
+  const upcomingStartTimes = new Set(
+    visibleProgramItems
+      .filter(
+        (programItem) => !getDirectSignupPhaseStarted(programItem, timeNow),
+      )
+      .map((programItem) => getProgramItemStartTime(programItem)),
+  );
+  const nextAssignmentTime =
+    startTimes.find((time) => upcomingStartTimes.has(time)) ??
+    first(startTimes) ??
+    "";
+
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [triggerRenderError, setTriggerRenderError] = useState<boolean>(false);
   const [messageStyle, setMessageStyle] = useState<string>("");
-  const [selectedAssignmentTime, setSelectedAssignmentTime] = useState<string>(
-    assignmentTimeDropdownValues[0]?.value ?? "",
-  );
+  // Null until an admin picks one, so the default keeps up with a programme that loads after
+  // the view renders and with the clock passing a lottery. Their own choice then stands.
+  const [chosenAssignmentTime, setChosenAssignmentTime] = useState<
+    string | null
+  >(null);
+  // Dropped once the programme no longer offers it, so the select cannot show one starting
+  // time while the button posts another
+  const selectedAssignmentTime =
+    chosenAssignmentTime !== null && startTimes.includes(chosenAssignmentTime)
+      ? chosenAssignmentTime
+      : nextAssignmentTime;
   const [testEmail, setTestEmail] = useState<string>("");
   const [testProgramId, setTestProgramId] = useState<string>("");
   // Transient (not persisted): when on, test buttons for disabled triggers are blocked
@@ -288,10 +314,11 @@ export const AdminView = (): ReactElement => {
           {t("button.assignAttendees")}
         </Button>
         <Dropdown
-          options={getDropdownOptions()}
+          id="assignmentTime"
+          options={assignmentTimeDropdownValues}
           selectedValue={selectedAssignmentTime}
           onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-            setSelectedAssignmentTime(event.target.value)
+            setChosenAssignmentTime(event.target.value)
           }
         />
       </ButtonGroup>
@@ -381,11 +408,21 @@ export const AdminView = (): ReactElement => {
         />
         <input
           type="text"
-          placeholder="Enter program ID"
+          placeholder="Enter program ID, or a batch parent ID"
+          list="email-test-program-id"
           value={testProgramId}
           onChange={(e) => setTestProgramId(e.target.value)}
           disabled={submitting}
         />
+        {/* A batched lottery's rejection names a span of starting times rather than one program
+        item, so it is tested through the parent the batch is configured under */}
+        <datalist id="email-test-program-id">
+          {[...config.event().startTimesByParentIds.keys()].map((parentId) => (
+            <option key={parentId} value={parentId}>
+              Batched lottery rejection
+            </option>
+          ))}
+        </datalist>
         <Checkbox
           id="respect-email-notification-trigger-settings"
           label="Respect email notification trigger settings"

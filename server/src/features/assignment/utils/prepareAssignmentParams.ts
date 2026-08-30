@@ -1,7 +1,15 @@
-import { ProgramItem } from "shared/types/models/programItem";
+import { ProgramItem, State } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+
+// A cancelled program item keeps its place in the programme so attendees can see it was
+// cancelled, and the programme import strips its lottery sign-ups as soon as it sees the
+// cancellation - so there is normally nothing here to exclude. Ruled out anyway: the lottery
+// must never place anyone in one, whatever sign-ups it is somehow still carrying.
+const isAssignableProgramItem = (programItem: ProgramItem): boolean =>
+  programItem.state === State.ACCEPTED &&
+  isLotterySignupProgramItem(programItem);
 
 const getValidLotterySignupsUsers = (
   users: User[],
@@ -17,7 +25,7 @@ const getValidLotterySignupsUsers = (
         if (!foundProgramItem) {
           return false;
         }
-        return isLotterySignupProgramItem(foundProgramItem);
+        return isAssignableProgramItem(foundProgramItem);
       },
     );
 
@@ -65,7 +73,7 @@ export const prepareAssignmentParams = (
 
   // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const validLotterySignupProgramItems = programItems.filter((programItem) =>
-    isLotterySignupProgramItem(programItem),
+    isAssignableProgramItem(programItem),
   );
 
   // Take direct sign-ups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"

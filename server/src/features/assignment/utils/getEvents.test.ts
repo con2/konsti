@@ -14,7 +14,7 @@ afterEach(() => {
   vi.resetAllMocks();
 });
 
-test("should not produce negative max or min greater than max when existing signups exceed capacity", () => {
+test("should not produce negative max or min greater than max when existing direct sign-ups exceed capacity", () => {
   // Item already has more changed-start-time direct sign-ups than its capacity
   const programItem = {
     ...testProgramItem,
@@ -112,4 +112,36 @@ test("should return events for program items using parent startTime via 'startTi
       },
     ]),
   );
+});
+
+test("should count a direct sign-up made for this same start time against capacity", () => {
+  // A program item the lottery takes holds no direct sign-ups, so this is defence in depth.
+  // Offering the seat anyway would have the assigner fill the program item past its limit,
+  // leaving the save to drop whole groups back out of it
+  const directSignups: DirectSignupsForProgramItem[] = [
+    {
+      programItemId: testProgramItem.programItemId,
+      count: 1,
+      userSignups: [
+        {
+          username: "some username",
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+          signupTime: testProgramItem.startTime,
+          message: "",
+        },
+      ],
+    },
+  ];
+
+  const events = getEvents([testProgramItem], directSignups);
+
+  expect(events).toEqual([
+    {
+      id: testProgramItem.programItemId,
+      min: testProgramItem.minAttendance - 1,
+      max: testProgramItem.maxAttendance - 1,
+      groups: [],
+    },
+  ]);
 });

@@ -20,7 +20,7 @@ export enum MongoDbError {
   ASSIGNMENT_LOCK_HELD = "assignmentLockHeld",
   // A unique index rejected the write. Distinct from UNKNOWN_ERROR because it
   // is the one write failure that means "nothing was stored", so a caller can
-  // safely retry with a different value
+  // safely retry with a different value.
   DUPLICATE_KEY = "duplicateKey",
 }
 

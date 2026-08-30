@@ -45,7 +45,7 @@ const App = (): ReactElement => {
   // dynamic import is cached by the browser for the session - the later real
   // navigation would then reject instantly and force a full page reload even
   // though connectivity had recovered. Re-runs when the role changes, because
-  // signing in as admin/helper makes chunks reachable that weren't before
+  // signing in as admin/helper makes chunks reachable that weren't before.
   useEffect(() => {
     if (!dataLoaded) {
       return;

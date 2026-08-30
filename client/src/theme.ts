@@ -130,7 +130,7 @@ export const theme = {
 
   // Breakpoints. The Min variants sit just above the plain value so a viewport
   // exactly at the breakpoint - iPad portrait is 768px, landscape 1024px -
-  // matches the max-width side only
+  // matches the max-width side only.
   breakpointPhone: "768px" satisfies Px,
   breakpointPhoneMin: "768.02px" satisfies Px,
   breakpointDesktop: "1024px" satisfies Px,

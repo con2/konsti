@@ -34,7 +34,7 @@ import { resolvePortOffset } from "./portOffset.ts";
 // `yarn coverage:e2e programSearch`. Exits with Playwright's exit code.
 //
 // NOTE: this file runs with plain `node`, so it must stay free of TypeScript
-// syntax that needs transformation (enums, path aliases, ...)
+// syntax that needs transformation (enums, path aliases, ...).
 
 const repoRoot = path.join(import.meta.dirname, "..");
 
@@ -80,7 +80,7 @@ const killProcessTree = (child: ChildProcess): void => {
 // Kills whatever still listens on the port. On Windows taskkill /T can miss
 // children when an intermediate process has already exited, which leaves an
 // orphaned dev server behind (and the next run would then silently test a
-// stale instance)
+// stale instance).
 const killPortListeners = (port: number): void => {
   if (process.platform !== "win32") {
     // POSIX kills the whole process group in killProcessTree already

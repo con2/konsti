@@ -28,7 +28,7 @@ afterEach(() => {
 const setupStore = (): Store<RootState> & { dispatch: AppDispatch } =>
   configureStore({ reducer: combinedReducer });
 
-test("joining a group refreshes the user's own lottery signups", async () => {
+test("joining a group refreshes the user's own lottery sign-ups", async () => {
   const store = setupStore();
 
   store.dispatch(

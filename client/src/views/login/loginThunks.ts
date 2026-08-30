@@ -123,7 +123,7 @@ export const submitSessionRecovery = (
       // Logging out drops the stored session and the copy the store read from
       // it at startup. Clearing storage alone would leave that copy behind,
       // and the caller decides whether to recover from it - so recovery would
-      // be attempted again on every poll for as long as the tab stayed open
+      // be attempted again on every poll for as long as the tab stayed open.
       switch (loginResponse.errorId) {
         // Log out first so the error is raised against the state the reset
         // leaves behind, whatever the reset chooses to preserve

@@ -29,7 +29,7 @@ import {
 // Binding them here gives that dependency a place to live. The returned
 // functions get a new identity on a switch, which invalidates every memoized
 // expression that calls one, so call sites read exactly as they would if the
-// language were not a concern at all
+// language were not a concern at all.
 export const useTimeFormatters = (): TimeFormatters => {
   const locale = useSyncExternalStore(subscribeToLocale, getLocaleSnapshot);
 

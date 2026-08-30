@@ -21,7 +21,7 @@ export class ProfilePage extends BasePage {
   }
 
   // The eye icon beside the password field. Its label names the action it
-  // performs, so only the "Show" variant exists while the password is masked
+  // performs, so only the "Show" variant exists while the password is masked.
   get showPasswordToggle(): Locator {
     return this.page.getByRole("img", { name: "Show password" });
   }

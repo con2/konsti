@@ -1,9 +1,15 @@
+import { ProgramType } from "shared/types/models/programItem";
+
 export interface EventLogItem {
   eventLogItemId: string;
   action: EventLogAction;
   isSeen: boolean;
   programItemId: string;
   programItemStartTime: string;
+  // The span one lottery covered, both set or neither, and only when it took in more than one
+  // starting time
+  lastProgramItemEndTime?: string;
+  programType?: ProgramType;
   createdAt: string;
 }
 

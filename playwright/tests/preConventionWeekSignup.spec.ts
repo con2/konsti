@@ -20,7 +20,7 @@ test.skip(
   "Event has no pre-convention week program",
 );
 
-test("Pre-convention week program item uses direct signup even with lottery program type", async ({
+test("Pre-convention week program item uses direct sign-up even with lottery program type", async ({
   page,
   request,
 }) => {

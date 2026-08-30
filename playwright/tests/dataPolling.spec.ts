@@ -53,7 +53,7 @@ test("Periodic data poll picks up new program items without navigation", async (
   await login(page, request, { username: "test1", password: "test" });
 
   // Mock browser timers so the data poll (dataUpdateInterval, 60 s) can be
-  // fast-forwarded instead of waited for. Must be installed before the app loads
+  // fast-forwarded instead of waited for. Must be installed before the app loads.
   await page.clock.install();
   await page.goto("/");
 
@@ -77,7 +77,7 @@ test("Periodic data poll picks up new program items without navigation", async (
   );
 });
 
-test("Periodic data poll hides signup when direct signup ends", async ({
+test("Periodic data poll hides sign-up when direct sign-up ends", async ({
   page,
   request,
 }) => {
@@ -97,7 +97,7 @@ test("Periodic data poll hides signup when direct signup ends", async ({
   await login(page, request, { username: "test1", password: "test" });
 
   // Mock browser timers so the data poll (dataUpdateInterval, 60 s) can be
-  // fast-forwarded instead of waited for. Must be installed before the app loads
+  // fast-forwarded instead of waited for. Must be installed before the app loads.
   await page.clock.install();
   await page.goto("/");
 
@@ -117,7 +117,7 @@ test("Periodic data poll hides signup when direct signup ends", async ({
 
   // ...and the periodic poll picks up the change without navigation. A program
   // item whose direct sign-up has ended is no longer upcoming, so it drops out
-  // of the default starting time filter entirely
+  // of the default starting time filter entirely.
   await page.clock.fastForward("01:01");
   await expect(programList.items).toHaveCount(0);
 

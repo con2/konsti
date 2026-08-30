@@ -82,4 +82,27 @@ describe(`GET ${ApiEndpoint.RESULTS}`, () => {
       ],
     });
   });
+
+  test("should leave out runs that placed nobody", async () => {
+    // The record exists so a missing one means the lottery never ran, but it holds nothing
+    // an attendee could read
+    const assignmentTime = "2023-05-07T14:00:00.000Z";
+    await saveResult(
+      [],
+      [],
+      assignmentTime,
+      AssignmentAlgorithm.PADG,
+      "Nobody placed",
+    );
+
+    const response = await request(server).get(ApiEndpoint.RESULTS);
+
+    expect(response.status).toEqual(200);
+    const body = response.body as GetResultsResponse;
+    expect(body).toEqual({
+      message: "Getting results success",
+      status: "success",
+      assignmentRuns: [],
+    });
+  });
 });

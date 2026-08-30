@@ -17,7 +17,10 @@ import { UserGroup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { differenceBy } from "shared/utils/remedaExtend";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
+import {
+  getProgramItemStartTime,
+  willNotBeLotteried,
+} from "shared/utils/signupTimes";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
@@ -264,6 +267,13 @@ const getSignupStrategyForProgramItem = (
 ): ProgramItemSignupStrategy => {
   const start = new Date(getProgramItemStartTime(programItem));
   const { directSignupPhaseStart } = config.event();
+
+  // No lottery will take it, so the spots left go first come, first served. Checked before the
+  // event-wide strategy: a lottery-only event would otherwise report LOTTERY for an item every
+  // lottery sign-up path refuses, leaving it with no sign-up control at all.
+  if (willNotBeLotteried(programItem)) {
+    return ProgramItemSignupStrategy.DIRECT;
+  }
 
   // lottery
 

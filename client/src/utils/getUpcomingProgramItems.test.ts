@@ -110,14 +110,14 @@ describe("getUpcomingDirectSignups", () => {
 
   // Direct sign-ups stay listed for an hour after the program item starts, so
   // an attendee can still find the one they are currently attending
-  test("keeps a sign-up until an hour past the start time", () => {
+  test("keeps a direct sign-up until an hour past the start time", () => {
     const timeNow = addMinutes(new Date(startTime), 59);
     expect(getUpcomingDirectSignups([directSignup], timeNow)).toEqual([
       directSignup,
     ]);
   });
 
-  test("drops a sign-up an hour past the start time", () => {
+  test("drops a direct sign-up an hour past the start time", () => {
     const timeNow = addHours(new Date(startTime), 1);
     expect(getUpcomingDirectSignups([directSignup], timeNow)).toEqual([]);
   });
@@ -161,7 +161,7 @@ describe("getLotterySignups", () => {
   ];
   const timeNow = new Date(startTime);
 
-  test("shows own sign-ups when not in a group", () => {
+  test("shows own lottery sign-ups when not in a group", () => {
     expect(
       getLotterySignups({
         lotterySignups: ownSignups,
@@ -176,7 +176,7 @@ describe("getLotterySignups", () => {
 
   // Group members sign up through the creator, so their own list is not what
   // the lottery acts on
-  test("shows the group creator's sign-ups to a group member", () => {
+  test("shows the group creator's lottery sign-ups to a group member", () => {
     expect(
       getLotterySignups({
         lotterySignups: ownSignups,
@@ -202,7 +202,7 @@ describe("getLotterySignups", () => {
     ).toEqual([]);
   });
 
-  test("filters out past sign-ups unless all program items are shown", () => {
+  test("filters out past lottery sign-ups unless all program items are shown", () => {
     const params = {
       lotterySignups: ownSignups,
       isGroupCreator: false,

@@ -16,7 +16,7 @@ import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunk
 // tell a load that delivered fresh data from one whose requests failed.
 // Requests made here must be registered in the error-display policy's
 // background-request list, or their failures around a device wake toast
-// immediately instead of being suppressed
+// immediately instead of being suppressed.
 export const loadData = async (): Promise<boolean> => {
   // Get app settings
   let success = await loadSettings();

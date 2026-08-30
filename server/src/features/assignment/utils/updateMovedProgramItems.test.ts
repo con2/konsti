@@ -24,6 +24,7 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
+import { withLotteryStillAhead } from "server/test/utils/lotteryClock";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
@@ -34,7 +35,8 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove lottery signups for moved program items from users", async () => {
+test("should remove lottery sign-ups for moved program items from users", async () => {
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
   expect(insertedProgramItems.length).toEqual(2);
@@ -67,7 +69,8 @@ test("should remove lottery signups for moved program items from users", async (
   );
 });
 
-test("should notify a user about a moved lottery signup and a moved direct signup for different items", async () => {
+test("should notify a user about a moved lottery sign-up and a moved direct sign-up for different items", async () => {
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   const originalProgramItems = unsafelyUnwrap(await findProgramItems());
 
@@ -126,7 +129,7 @@ test("should notify a user about a moved lottery signup and a moved direct signu
   );
 });
 
-test("should notify a user only once for a moved item they have both a lottery and direct signup for", async () => {
+test("should notify a user only once for a moved item they have both a lottery and direct sign-up for", async () => {
   await saveProgramItems([testProgramItem]);
   const originalProgramItems = unsafelyUnwrap(await findProgramItems());
 
@@ -158,4 +161,72 @@ test("should notify a user only once for a moved item they have both a lottery a
   expect(movedEvents?.[0].programItemStartTime).toEqual(
     addHours(new Date(testProgramItem.startTime), 1).toISOString(),
   );
+});
+
+test("should keep lottery sign-ups for other program items when one moves onto their slot", async () => {
+  // The user holds a spot in testProgramItem and has a lottery sign-up for testProgramItem2 an
+  // hour later. Moving the held item onto that hour puts the two at the same time, and the
+  // lottery will decide between them - so the sign-up stays, since cancelling it cannot be
+  // undone once the lottery sign-up window closes.
+  const lotteryStartTime = addHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+
+  await saveProgramItems([
+    testProgramItem,
+    { ...testProgramItem2, startTime: lotteryStartTime },
+  ]);
+  await saveUser(mockUser);
+  await saveDirectSignup({ ...mockPostDirectSignupRequest, priority: 1 });
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: testProgramItem2.programItemId,
+        priority: 1,
+        signedToStartTime: lotteryStartTime,
+      },
+    ],
+  });
+
+  const currentProgramItems = unsafelyUnwrap(await findProgramItems());
+  await updateMovedProgramItems(
+    [
+      { ...testProgramItem, startTime: lotteryStartTime },
+      { ...testProgramItem2, startTime: lotteryStartTime },
+    ],
+    currentProgramItems,
+  );
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.lotterySignups.map((signup) => signup.programItemId)).toEqual([
+    testProgramItem2.programItemId,
+  ]);
+});
+
+test("should keep lottery sign-ups whose lottery has already run when the program item moves", async () => {
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await ProgramItemModel.updateOne(
+    { programItemId: testProgramItem.programItemId },
+    {
+      startTime: addHours(new Date(testProgramItem.startTime), 1).toISOString(),
+    },
+  );
+
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
+  await updateMovedProgramItems(updatedProgramItems, insertedProgramItems);
+
+  // The clock is past both lotteries, so the move takes nothing away and says nothing
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.lotterySignups).toHaveLength(2);
+  expect(updatedUser?.eventLogItems).toEqual([]);
 });

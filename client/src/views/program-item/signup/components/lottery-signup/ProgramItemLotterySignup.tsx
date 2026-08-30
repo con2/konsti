@@ -1,8 +1,11 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getLotterySignupStartTime } from "shared/utils/signupTimes";
-import { isSameOrAfter } from "shared/utils/timeComparison";
+import {
+  getLotterySignupInProgress,
+  willNotBeLotteried,
+} from "shared/utils/signupTimes";
+import { isSameTime } from "shared/utils/timeComparison";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { InfoText } from "client/components/InfoText";
 import { ButtonStyle } from "client/components/componentStyles";
@@ -95,8 +98,8 @@ export const ProgramItemLotterySignup = ({
     (p) => p.programItemId === programItem.programItemId,
   )?.priority;
 
-  const lotterySignupsForTimeslot = lotterySignups.filter(
-    (signup) => signup.programItem.startTime === programItem.startTime,
+  const lotterySignupsForTimeslot = lotterySignups.filter((signup) =>
+    isSameTime(signup.programItem.startTime, programItem.startTime),
   );
 
   const alreadySignedToProgramItem = isAlreadyLotterySigned(
@@ -104,10 +107,12 @@ export const ProgramItemLotterySignup = ({
     lotterySignups,
   );
 
-  const lotterySignupStartTime = getLotterySignupStartTime(programItem);
-
   const timeNow = useTimeNow();
-  const lotterySignupOpen = isSameOrAfter(timeNow, lotterySignupStartTime);
+  // A program item's own lottery sign-up window can be open while no lottery is coming for it:
+  // passed over for holding direct sign-ups, or moved onto a slot whose window has not run out
+  const lotterySignupOpen =
+    !willNotBeLotteried(programItem) &&
+    getLotterySignupInProgress(programItem, timeNow);
 
   if (!loggedIn) {
     return <LoginToSignupLink />;

@@ -1,4 +1,5 @@
-import { countBy, groupBy } from "remeda";
+import { isBefore } from "date-fns";
+import { countBy, first, groupBy } from "remeda";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
 import {
@@ -6,8 +7,11 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { getProgramItemStartTime } from "shared/utils/signupTimes";
-import { isSameOrAfter } from "shared/utils/timeComparison";
+import {
+  getLotterySignupEndTime,
+  getProgramItemStartTime,
+  willNotBeLotteried,
+} from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
@@ -50,28 +54,44 @@ export const updateProgramItemPopularity = async (): Promise<
     directSignupsResult.value,
   );
 
-  const programItemsByStartTimes = groupBy(
-    validLotterySignupProgramItems,
-    (programItem) =>
-      new Date(getProgramItemStartTime(programItem)).toISOString(),
-  );
-
   const timeNowResult = await getTimeNow();
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
-  const futureStartTimes = Object.keys(programItemsByStartTimes).filter(
-    (startTime) => isSameOrAfter(new Date(startTime), timeNowResult.value),
+  // Simulating a program item no lottery will take would spend attendees' placements on it
+  // rather than on the ones a lottery is still coming for. Its stored figure stays as it is.
+  const lotteryProgramItems = validLotterySignupProgramItems.filter(
+    (programItem) => !willNotBeLotteried(programItem),
   );
 
-  // TODO: Only update popularity for startTimes where lottery sign-up is open
-  const assignmentResults = futureStartTimes.map((startTime) => {
+  const programItemsByStartTimes = groupBy(lotteryProgramItems, (programItem) =>
+    new Date(getProgramItemStartTime(programItem)).toISOString(),
+  );
+
+  // Only start times whose lottery sign-up is still open. Popularity measures demand for the
+  // lottery, and once spots have been handed out the simulation no longer measures that -
+  // reduced capacity with every attendee still competing understates some items and inflates
+  // others. A start time is never simulated again, so a figure written then is kept for good.
+  const openLotteryStartTimes = Object.keys(programItemsByStartTimes).filter(
+    (startTime) => {
+      // Every program item in the group shares the start time the window is derived from,
+      // and a group is never empty, so first() gives one without an absent case to handle
+      const programItem = first(programItemsByStartTimes[startTime]);
+      return isBefore(
+        timeNowResult.value,
+        getLotterySignupEndTime(programItem),
+      );
+    },
+  );
+
+  const assignmentResults = openLotteryStartTimes.map((startTime) => {
     const result = runAssignmentAlgorithm(
       config.event().assignmentAlgorithm,
       validLotterySignupsUsers,
-      validLotterySignupProgramItems,
+      lotteryProgramItems,
       startTime,
       lotteryParticipantDirectSignups,
+      programItemsResult.value,
     );
     return { result, startTime };
   });
@@ -107,7 +127,7 @@ export const updateProgramItemPopularity = async (): Promise<
   const programItemPopularityUpdates = Object.entries(
     programItemSignupsCounts,
   ).flatMap(([programItemId, assignmentSignupCount]) => {
-    const programItem = validLotterySignupProgramItems.find(
+    const programItem = lotteryProgramItems.find(
       (item) => item.programItemId === programItemId,
     );
     if (!programItem) {

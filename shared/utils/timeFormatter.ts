@@ -13,7 +13,7 @@ import { TIMEZONE } from "shared/utils/timezone";
 // here means the data is already wrong. Rendering a placeholder instead would
 // show an attendee a blank where a sign-up time belongs and let the bug that
 // produced it go unnoticed, which is the silent-wrong-answer failure this module
-// exists to avoid
+// exists to avoid.
 
 // No number: a bare number is a valid argument to date-fns format but is almost
 // always a duration rather than an instant, and renders as a plausible wrong
@@ -24,7 +24,7 @@ export type Time = Date | string;
 // by hand: a hook binds these to the active language, because it otherwise lives
 // in module state that React cannot see, and a memoized weekday would keep
 // rendering in the language it was first formatted in. Omitting it falls back to
-// that module state, which is what non-rendering callers want
+// that module state, which is what non-rendering callers want.
 const resolveLocale = (locale?: Locale): ReturnType<typeof getCurrentLocale> =>
   locale === undefined ? getCurrentLocale() : localeFor(locale);
 
@@ -58,7 +58,7 @@ export const getDateAndTime = (time: Time, locale?: Locale): string =>
 
 // Deliberately the viewer's own timezone rather than the event's: these answer
 // "what time is it where you are", next to the Finnish time in the same text.
-// Only the timezone is local - the weekday still follows the UI language
+// Only the timezone is local - the weekday still follows the UI language.
 export const getLocalDateAndTime = (time: Time, locale?: Locale): string =>
   format(time, "ccc d.M.yyyy HH:mm", { locale: resolveLocale(locale) });
 
@@ -66,7 +66,7 @@ export const getLocalTimezone = (time: Time, locale?: Locale): string =>
   format(time, "zzz", { locale: resolveLocale(locale) });
 
 // For the generated statistics documents, which group rows by the event's wall
-// clock. Numeric, so the active language never reaches the output
+// clock. Numeric, so the active language never reaches the output.
 export const getIsoDate = (time: Time): string =>
   formatInEventTimezone(time, "yyyy-MM-dd");
 

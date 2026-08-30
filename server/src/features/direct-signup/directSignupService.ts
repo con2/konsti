@@ -12,9 +12,8 @@ import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramI
 import {
   getDirectSignupEndTime,
   getDirectSignupStartTime,
-  getProgramItemStartTime,
+  getDirectSignupStarted,
 } from "shared/utils/signupTimes";
-import { isSameOrAfter } from "shared/utils/timeComparison";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
   delDirectSignup,
@@ -109,7 +108,7 @@ export const storeDirectSignup = async (
 
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
-  if (!isSameOrAfter(timeNow, directSignupStartTime)) {
+  if (!getDirectSignupStarted(programItem, timeNow)) {
     // String rather than toISOString: this branch is reached when the start time
     // may be unparseable, and toISOString throws on that, which would turn the
     // structured error into a 500
@@ -142,8 +141,9 @@ export const storeDirectSignup = async (
     // User-made direct sign-ups are always first-come-first-served; the priority is set
     // here rather than trusted from the request
     priority: DIRECT_SIGNUP_PRIORITY,
-    // signedToStartTime can be parent-resolved; direct sign-ups store parent time for lottery re-run cleanup
-    signedToStartTime: getProgramItemStartTime(programItem),
+    // A spot belongs to the hour the attendee turns up, which for a batched program item is
+    // not the hour its lottery runs at
+    signedToStartTime: programItem.startTime,
     signupTime: timeNow.toISOString(),
   };
 
@@ -176,9 +176,9 @@ export const storeDirectSignup = async (
   );
 
   if (newSignup) {
-    // Group member direct sign-up removes them from the group, close group if group creator.
-    // The sign-up already persisted, so a group-leave failure must not fail the request —
-    // log it and still report success; the group state self-corrects on the next poll
+    // Leaving the group only for a program item the lottery allocates: a group exists to enter
+    // those together, so taking one of their spots alone leaves it. The sign-up already
+    // persisted, so a group-leave failure is logged rather than failing the request.
     let leftGroup = false;
     if (isLotterySignupProgramItem(programItem)) {
       const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);

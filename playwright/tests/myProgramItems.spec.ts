@@ -19,7 +19,7 @@ const endTime = addMinutes(
   testProgramItem.mins,
 ).toISOString();
 
-test("Cancel lottery signup on My Program page", async ({ page, request }) => {
+test("Cancel lottery sign-up on My Program page", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {

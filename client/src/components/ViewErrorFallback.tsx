@@ -12,7 +12,7 @@ interface Props {
 
 // Shown in place of a view that threw while rendering. Kept deliberately plain:
 // it renders inside a tree that has just failed, so it depends on nothing but
-// translations
+// translations.
 export const ViewErrorFallback = (props: Props): ReactElement => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
@@ -22,7 +22,7 @@ export const ViewErrorFallback = (props: Props): ReactElement => {
   // A boundary holds its failed state until something resets it, and the routes
   // are inside this one, so without this the header links would appear to do
   // nothing. Done here rather than by keying the boundary on the route, which
-  // would remount every route element on every navigation
+  // would remount every route element on every navigation.
   useEffect(() => {
     if (pathname !== failedPathname) {
       props.resetError();

@@ -26,7 +26,7 @@ test("should not store a document when reading missing test settings", async () 
   // Reading must not write. A document inserted by a read races with the
   // upsert in saveTestSettings, and two inserts leave reads returning
   // whichever landed first, shadowing the stored time behind an empty default.
-  // Concurrent reads are the case that used to insert
+  // Concurrent reads are the case that used to insert.
   const reads = await Promise.all([
     findTestSettings(),
     findTestSettings(),

@@ -5,7 +5,7 @@ import {
   NewEventLogItem,
   PostEventLogIsSeenRequest,
 } from "shared/types/api/eventLog";
-import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
+import { EventLogItem } from "shared/types/models/eventLog";
 import {
   Result,
   makeErrorResult,
@@ -32,6 +32,14 @@ export const addEventLogItems = async (
                 programItemStartTime: new Date(
                   newEventLogItem.programItemStartTime,
                 ),
+                ...(newEventLogItem.lastProgramItemEndTime !== undefined && {
+                  lastProgramItemEndTime: new Date(
+                    newEventLogItem.lastProgramItemEndTime,
+                  ),
+                }),
+                ...(newEventLogItem.programType !== undefined && {
+                  programType: newEventLogItem.programType,
+                }),
                 isSeen: false,
                 createdAt: new Date(newEventLogItem.createdAt),
               },
@@ -104,33 +112,6 @@ export const updateEventLogItemIsSeen = async (
   } catch (error) {
     logger.error(
       new Error(`MongoDB: Error updating event log item for user ${username}`, {
-        cause: error,
-      }),
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-};
-
-export const deleteEventLogItemsByStartTime = async (
-  startTime: string,
-  actions: EventLogAction[],
-): Promise<Result<void, MongoDbError>> => {
-  try {
-    await UserModel.updateMany(
-      {},
-      {
-        $pull: {
-          eventLogItems: {
-            programItemStartTime: startTime,
-            action: { $in: actions },
-          },
-        },
-      },
-    );
-    return makeSuccessResult();
-  } catch (error) {
-    logger.error(
-      new Error(`Deleting event log items for startTime ${startTime} failed`, {
         cause: error,
       }),
     );

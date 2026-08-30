@@ -30,6 +30,7 @@ export const runRandomAssignment = (
   attendeeGroups: readonly User[][],
   assignmentTime: string,
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
+  allProgramItems: readonly ProgramItem[],
 ): Result<AssignmentAlgorithmResult, AssignmentError> => {
   const groups = getGroups(
     attendeeGroups,
@@ -45,6 +46,7 @@ export const runRandomAssignment = (
     assignmentTime,
     lotteryParticipantDirectSignups,
     lotterySignupProgramItems,
+    allProgramItems,
   });
 
   const { randomAssignmentRounds } = config.server();

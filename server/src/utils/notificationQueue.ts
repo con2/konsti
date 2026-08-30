@@ -1,5 +1,6 @@
 import { queueAsPromised, promise as queuePromise } from "fastq";
 import { QueueError } from "shared/types/api/errors";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,
   makeErrorResult,
@@ -23,6 +24,10 @@ export interface NotificationTask {
   username: string;
   programItemId: string;
   programItemStartTime: string;
+  // The end of the last program item a batched lottery covered, paired with the start time above
+  // so the rejection can name the whole span, and the program type to name what was lotteried
+  lastProgramItemEndTime?: string;
+  programType?: ProgramType;
   programItemTitle?: string;
 }
 

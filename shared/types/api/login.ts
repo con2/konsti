@@ -25,7 +25,7 @@ export interface PostLoginResult extends ApiResult {
   eventLogItems: EventLogItem[];
   kompassiUsernameAccepted: boolean;
   // The Kompassi OIDC `sub` claim, or "" for a local account. Opaque: Kompassi
-  // makes no promises about its format
+  // makes no promises about its format.
   kompassiId: string;
   email: string;
   emailNotificationPermitAsked: boolean;
@@ -47,7 +47,7 @@ export type PostSessionRecoveryRequest = z.infer<
 
 // Same success shape as a login, but the failures differ: recovery can fail
 // because the stored token itself is unusable, which a login can't. Keeping
-// that out of PostLoginError spares the login paths a case they never see
+// that out of PostLoginError spares the login paths a case they never see.
 export interface PostSessionRecoveryError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled" | "sessionExpired";
 }

@@ -55,7 +55,7 @@ type VirtualRow =
 // mount. Keep these close to the real median row heights: every estimated-vs-
 // actual mismatch on a row's first measurement is compensated with a scroll
 // correction, and large corrections show up as visible jumps when scrolling
-// through rows that were skipped past unmeasured (e.g. after a fast fling)
+// through rows that were skipped past unmeasured (e.g. after a fast fling).
 const HEADER_ESTIMATED_HEIGHT = 92;
 const ITEM_ESTIMATED_HEIGHT = 350;
 
@@ -66,7 +66,7 @@ const NO_SIGNUPS: UserSignup[] = [];
 // The window scroll offset and measured row sizes when the list unmounts, so
 // returning to it (e.g. via the browser back button after viewing a program
 // item) restores the exact scroll position — the clicked card comes back where
-// it was. Module-scoped so it survives navigation within the SPA session
+// it was. Module-scoped so it survives navigation within the SPA session.
 let savedScrollState: {
   offset: number;
   measurementsCache: VirtualItem[];
@@ -80,7 +80,7 @@ export const AllProgramItemsList = ({
   // that stays referentially stable while its measurements mutate inside it, so
   // the row offsets and total size read from it during render are external
   // mutable state the compiler cannot see change. Memoized, rows keep the
-  // offsets they were first rendered with and end up overlapping each other
+  // offsets they were first rendered with and end up overlapping each other.
   "use no memo";
 
   const { t, i18n } = useTranslation();
@@ -108,7 +108,7 @@ export const AllProgramItemsList = ({
   // scanning the full sign-ups array (which made the list render O(n^2)).
   // Memoized by hand because the opt-out above also stops the compiler from
   // memoizing anything else here, and this component re-renders on every clock
-  // tick and every scroll-driven virtualizer update
+  // tick and every scroll-driven virtualizer update.
   const signupsByProgramItemId = useMemo(
     () =>
       new Map(signups.map((signup) => [signup.programItemId, signup.users])),
@@ -203,7 +203,7 @@ export const AllProgramItemsList = ({
   // which lags the live position by up to a frame while the user is scrolling —
   // an absolute target would yank the page back by that lag (a visible jump).
   // Apply only the not-yet-applied part of the correction as a relative
-  // scrollBy instead, which is immune to the stale base offset
+  // scrollBy instead, which is immune to the stale base offset.
   const appliedAdjustmentsRef = useRef(0);
   useEffect(() => {
     // The virtualizer zeroes its cumulative adjustments on every scroll event;
@@ -234,7 +234,7 @@ export const AllProgramItemsList = ({
     },
     // Seeding the virtualizer with the previous visit's measured row sizes
     // lets the saved pixel offset land on the same rows instead of drifting on
-    // height estimates. Only read when the virtualizer instance is created
+    // height estimates. Only read when the virtualizer instance is created.
     initialMeasurementsCache: savedScrollState?.measurementsCache,
     estimateSize: (index) =>
       rows[index].kind === "header"
@@ -244,7 +244,7 @@ export const AllProgramItemsList = ({
     // is fixed with a scroll correction — visible as a jump if the row is
     // already on screen. Overscan is the buffer that lets rows mount and
     // measure while still off-screen, so it needs to cover a realistic
-    // per-frame wheel/fling scroll distance
+    // per-frame wheel/fling scroll distance.
     overscan: 10,
     scrollMargin,
     getItemKey: (index) => {
@@ -283,7 +283,7 @@ export const AllProgramItemsList = ({
   // scrollAdjustments (cleared once the event arrives), so its intended
   // offset is scrollOffset + scrollAdjustments. The field is private, so
   // read it defensively — if it disappears in an upgrade, only the
-  // undelivered-event case regresses
+  // undelivered-event case regresses.
   useLayoutEffect(() => {
     return () => {
       const pendingAdjustments =
@@ -299,7 +299,7 @@ export const AllProgramItemsList = ({
 
   // On mount, restore the previous scroll position (e.g. returning via the back
   // button). The just-viewed item comes back exactly where it was and is
-  // highlighted there. Guarded to run only once, when the list first has rows
+  // highlighted there. Guarded to run only once, when the list first has rows.
   const hasRestoredScrollRef = useRef(false);
   useEffect(() => {
     if (hasRestoredScrollRef.current || rows.length === 0) {
@@ -318,7 +318,7 @@ export const AllProgramItemsList = ({
     // across frames until the offset holds — WebKit most often lands short on
     // the first frame. Stop once the document stops growing (scrollY no longer
     // climbs) so an unreachable target doesn't keep yanking the user for the
-    // full frame budget, e.g. when the list is now shorter than the saved offset
+    // full frame budget, e.g. when the list is now shorter than the saved offset.
     const MAX_RESTORE_FRAMES = 30;
     const MAX_STALLED_FRAMES = 3;
     let attempts = 0;
