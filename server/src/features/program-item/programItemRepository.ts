@@ -190,18 +190,15 @@ export const saveProgramItems = async (
   logger.info(`MongoDB: Found ${newProgramItems.length} new program items`);
 
   // Create sign-up document for all program items missing sign-up document
-  const directSignupDocMissingProgramItemIds = updatedProgramItems.flatMap(
-    (updatedProgramItem) => {
-      const found = directSignups.some(
-        (directSignup) =>
-          directSignup.programItemId === updatedProgramItem.programItemId,
-      );
-      if (!found) {
-        return updatedProgramItem.programItemId;
-      }
-      return [];
-    },
+  const programItemIdsWithSignupDoc = new Set(
+    directSignups.map((directSignup) => directSignup.programItemId),
   );
+  const directSignupDocMissingProgramItemIds = updatedProgramItems
+    .filter(
+      (updatedProgramItem) =>
+        !programItemIdsWithSignupDoc.has(updatedProgramItem.programItemId),
+    )
+    .map((updatedProgramItem) => updatedProgramItem.programItemId);
 
   if (directSignupDocMissingProgramItemIds.length > 0) {
     const createEmptySignupResult =
