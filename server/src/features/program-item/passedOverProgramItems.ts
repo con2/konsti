@@ -109,18 +109,27 @@ export const removePassedOverLotterySignups = async (
     return delLotterySignupsResult;
   }
 
+  const passedOverProgramItemsById = new Map(
+    passedOverProgramItems.map((programItem) => [
+      programItem.programItemId,
+      programItem,
+    ]),
+  );
+
   const eventUpdates = usersToUpdate.flatMap((user) =>
-    passedOverProgramItems
-      .filter((programItem) =>
-        user.lotterySignupProgramItemIds.includes(programItem.programItemId),
-      )
-      .map((programItem) => ({
+    user.lotterySignupProgramItemIds.flatMap((programItemId) => {
+      const programItem = passedOverProgramItemsById.get(programItemId);
+      if (!programItem) {
+        return [];
+      }
+      return {
         username: user.username,
         programItemId: programItem.programItemId,
         programItemStartTime: programItem.startTime,
         createdAt: new Date().toISOString(),
         action: EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
-      })),
+      };
+    }),
   );
 
   const addEventLogItemsResult = await addEventLogItems(eventUpdates);

@@ -8,11 +8,19 @@ export const getEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
+  // Indexed rather than scanned: the sign-up documents cover every lottery program item in the
+  // event, and a program item about to be lotteried usually has none, which is the worst case
+  const signupsByProgramItemId = new Map(
+    lotteryParticipantDirectSignups.map((signup) => [
+      signup.programItemId,
+      signup,
+    ]),
+  );
+
   const programItems = lotterySignupProgramItems.map(
     (lotterySignupProgramItem) => {
-      const programItemSignup = lotteryParticipantDirectSignups.find(
-        (signup) =>
-          signup.programItemId === lotterySignupProgramItem.programItemId,
+      const programItemSignup = signupsByProgramItemId.get(
+        lotterySignupProgramItem.programItemId,
       );
 
       // Only spots held for another hour, in a program item that has since moved onto this

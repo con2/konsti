@@ -34,13 +34,15 @@ interface RunWindow {
 const findRunWindow = async (
   assignmentTime: string,
 ): Promise<Result<RunWindow, MongoDbError>> => {
-  const timeNowResult = await getTimeNow();
+  const [timeNowResult, programItemsResult] = await Promise.all([
+    getTimeNow(),
+    findProgramItems(),
+  ]);
   if (!timeNowResult.ok) {
     return timeNowResult;
   }
   const timeNow = timeNowResult.value;
 
-  const programItemsResult = await findProgramItems();
   if (!programItemsResult.ok) {
     return programItemsResult;
   }
