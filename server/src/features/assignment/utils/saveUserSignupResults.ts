@@ -206,14 +206,27 @@ const dropResultsThatDoNotFit = ({
   programItems,
   groupCodeByUsername,
 }: DropResultsThatDoNotFitParams): readonly UserAssignmentResult[] => {
-  const winners = new Set(results.map((result) => result.username));
+  // Keyed per program item rather than by username alone: the write rewrites a winner's entry in
+  // the program item it places them into, so only that one entry is free. What they hold
+  // elsewhere is still occupying a spot, because the deletion runs after the write
+  const placedByProgramItemId = new Map<string, Set<string>>();
+  for (const result of results) {
+    const { programItemId } = result.assignmentSignup;
+    const placedUsernames =
+      placedByProgramItemId.get(programItemId) ?? new Set<string>();
+    placedUsernames.add(result.username);
+    placedByProgramItemId.set(programItemId, placedUsernames);
+  }
 
-  // A winner's existing sign-ups for this start time are deleted to make room for the spot
-  // they won, so only the attendees staying put take up space
   const stayingPutByProgramItemId = new Map(
     Object.entries(
       countBy(
-        existingSignups.filter((signup) => !winners.has(signup.username)),
+        existingSignups.filter(
+          (signup) =>
+            !placedByProgramItemId
+              .get(signup.programItemId)
+              ?.has(signup.username),
+        ),
         (signup) => signup.programItemId,
       ),
     ),

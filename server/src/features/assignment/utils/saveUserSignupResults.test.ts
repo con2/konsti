@@ -1466,3 +1466,74 @@ test("should place a winner whose username names an Object prototype member", as
     heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([mockUser2.username]);
 });
+
+test("should drop a whole group whose room is taken by a spot the write has not freed yet", async () => {
+  const groupCode = "group-counted-against-a-held-spot";
+
+  await saveUser(mockUser3);
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+
+  // Two spots in the program item the group is placed into, one of them held by an attendee
+  // being placed elsewhere at the same hour
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser3.username,
+  });
+
+  const results: UserAssignmentResult[] = [
+    {
+      username: mockUser3.username,
+      assignmentSignup: {
+        programItemId: testProgramItem2.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    },
+    ...[mockUser, mockUser2].map((user) => ({
+      username: user.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    })),
+  ];
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  // The held spot is still taken when the spots are written, so there is room for one of the
+  // two and the group goes without rather than landing half in
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const groupProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    groupProgramItemSignup?.userSignups.map(
+      (userSignup) => userSignup.username,
+    ),
+  ).toEqual([]);
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+  const groupMembersPlaced = usersAfterSave.filter(
+    (user) =>
+      user.groupCode === groupCode &&
+      user.eventLogItems.some(
+        (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+      ),
+  );
+  expect(groupMembersPlaced).toEqual([]);
+});
