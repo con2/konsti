@@ -1289,3 +1289,122 @@ test("should still tell the losers when the placed spots cannot be read", async 
     userAfterSave.eventLogItems.map((eventLogItem) => eventLogItem.action),
   ).toContain(EventLogAction.NO_ASSIGNMENT);
 });
+
+test("should drop a whole group whose program item no longer has room for all of it", async () => {
+  const groupCode = "group-that-no-longer-fits";
+
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+  await saveUser(mockUser3);
+
+  // Two spots, one of them taken by somebody the run is not placing, so the group of two has
+  // one spot to land in and a group lands in one program item or none
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser3.username,
+  });
+  // Held at the hour the group is being placed at, so a placement would replace it
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser.username,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+  });
+
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  // Neither member is placed, rather than one of them taking the single spot
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const wonProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser3.username]);
+
+  // The spot a dropped member holds is left in place, since nothing was given to replace it
+  const heldProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  );
+  expect(
+    heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser.username]);
+
+  const usersAfterSave = unsafelyUnwrap(await findUsers());
+  const usersWithNewAssignment = usersAfterSave.filter((user) =>
+    user.eventLogItems.some(
+      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
+    ),
+  );
+  expect(usersWithNewAssignment).toEqual([]);
+});
+
+test("should place a whole group that still has room for all of it", async () => {
+  const groupCode = "group-that-fits";
+
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+  await saveUser(mockUser3);
+
+  // One spot more than the case above, so the same group fits
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 3 }]);
+
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    username: mockUser3.username,
+  });
+
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
+    username: user.username,
+    assignmentSignup: {
+      programItemId: testProgramItem.programItemId,
+      priority: 1,
+      signedToStartTime: testProgramItem.startTime,
+    },
+  }));
+
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results,
+    users,
+    programItems,
+  });
+
+  const signups = unsafelyUnwrap(await findDirectSignups());
+  const wonProgramItemSignup = signups.find(
+    (signup) => signup.programItemId === testProgramItem.programItemId,
+  );
+  expect(
+    wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual(
+    expect.arrayContaining([
+      mockUser3.username,
+      mockUser.username,
+      mockUser2.username,
+    ]),
+  );
+});
