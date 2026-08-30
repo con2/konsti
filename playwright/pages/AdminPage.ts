@@ -27,6 +27,10 @@ export class AdminPage extends BasePage {
     return this.assignmentTimeSelect.locator(`option[value="${startTime}"]`);
   }
 
+  async selectAssignmentTime(startTime: string): Promise<void> {
+    await this.assignmentTimeSelect.selectOption(startTime);
+  }
+
   get adminMessageFiInput(): Locator {
     return this.page.getByLabel(/in finnish/i);
   }
