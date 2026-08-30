@@ -11,11 +11,11 @@ import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   assertAssignmentInvariants,
+  assertSecondRunChangesNothing,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -102,46 +102,11 @@ test("Assignment with valid data should return success with random algorithm", a
   await assertAssignmentInvariants(assignmentTime);
 
   // SECOND RUN
-  // The lottery for a start time happens once, so running it again lotteries nothing and
-  // leaves every spot the first run handed out where it is
-
-  const assignResults2 = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      assignmentTime,
-    }),
-  );
-
-  expect(assignResults2.status).toEqual(
-    AssignmentResultStatus.ALREADY_LOTTERIED,
-  );
-  expect(assignResults2.results).toHaveLength(0);
-
-  const firstRunWinners = assignResults.results.map(
-    (result) => result.username,
-  );
-  const firstRunWinnerSet = new Set(firstRunWinners);
-
-  // Same attendee, same program item, still exactly one spot each
-  const signupsAfterSecondRun = unsafelyUnwrap(await findDirectSignups());
-  const heldProgramItemsByWinner = new Map(
-    signupsAfterSecondRun.flatMap((signup) =>
-      signup.userSignups
-        .filter((userSignup) => firstRunWinnerSet.has(userSignup.username))
-        .map((userSignup) => [userSignup.username, signup.programItemId]),
-    ),
-  );
-  expect(heldProgramItemsByWinner.size).toEqual(firstRunWinnerSet.size);
-  assignResults.results.map((result) => {
-    expect(heldProgramItemsByWinner.get(result.username)).toEqual(
-      result.assignmentSignup.programItemId,
-    );
+  await assertSecondRunChangesNothing({
+    assignmentAlgorithm,
+    assignmentTime,
+    firstRunResults: assignResults.results,
   });
-
-  // Prior winners still have exactly one assignment (idempotent, not duplicated)
-  await assertUserUpdatedCorrectly(firstRunWinners);
-
-  await assertAssignmentInvariants(assignmentTime);
 });
 
 test("Assignment with no attendees should return error with random algorithm", async () => {

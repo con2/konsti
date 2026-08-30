@@ -1,15 +1,18 @@
 import { isEqual } from "date-fns";
 import { groupBy } from "remeda";
 import { expect } from "vitest";
+import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { UserAssignmentResult } from "shared/types/models/result";
 import { User } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
+import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
@@ -19,6 +22,7 @@ import { createLotterySignups } from "server/test/test-data-generation/generator
 import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { AssignmentResultStatus } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
 
 export const firstLotterySignupSlot = 3;
@@ -143,6 +147,54 @@ export const assertUserUpdatedCorrectly = async (
 
   const verifyResult = await verifyUserSignups();
   expect(verifyResult.ok).toBe(true);
+};
+
+interface AssertSecondRunChangesNothingParams {
+  assignmentAlgorithm: AssignmentAlgorithm;
+  assignmentTime: string;
+  firstRunResults: readonly UserAssignmentResult[];
+}
+
+// The lottery for a start time happens once, so running it again lotteries nothing and leaves
+// every spot the first run handed out where it is. Nothing here depends on which algorithm ran,
+// so the per-algorithm suites share it
+export const assertSecondRunChangesNothing = async ({
+  assignmentAlgorithm,
+  assignmentTime,
+  firstRunResults,
+}: AssertSecondRunChangesNothingParams): Promise<void> => {
+  const secondRunResults = unsafelyUnwrap(
+    await runAssignment({ assignmentAlgorithm, assignmentTime }),
+  );
+
+  expect(secondRunResults.status).toEqual(
+    AssignmentResultStatus.ALREADY_LOTTERIED,
+  );
+  expect(secondRunResults.results).toHaveLength(0);
+
+  const firstRunWinners = firstRunResults.map((result) => result.username);
+  const firstRunWinnerSet = new Set(firstRunWinners);
+
+  // Same attendee, same program item, still exactly one spot each
+  const signupsAfterSecondRun = unsafelyUnwrap(await findDirectSignups());
+  const heldProgramItemsByWinner = new Map(
+    signupsAfterSecondRun.flatMap((signup) =>
+      signup.userSignups
+        .filter((userSignup) => firstRunWinnerSet.has(userSignup.username))
+        .map((userSignup) => [userSignup.username, signup.programItemId]),
+    ),
+  );
+  expect(heldProgramItemsByWinner.size).toEqual(firstRunWinnerSet.size);
+  for (const result of firstRunResults) {
+    expect(heldProgramItemsByWinner.get(result.username)).toEqual(
+      result.assignmentSignup.programItemId,
+    );
+  }
+
+  // Prior winners still have exactly one assignment, not a second one
+  await assertUserUpdatedCorrectly(firstRunWinners);
+
+  await assertAssignmentInvariants(assignmentTime);
 };
 
 export const generateTestData = async (
