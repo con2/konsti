@@ -20,12 +20,15 @@ const share = (part: number, whole: number): string =>
 const signed = (value: number): string =>
   value >= 0 ? `+${value}` : String(value);
 
+// Both names: the key is what `--event` takes and what the baseline is filed under, the name
+// is what the event is called - and for Tracon Hitpoint the two do not resemble each other
 export const reportInput = (
   event: string,
+  name: string,
   loaded: LoadedDump,
   configFallbacks: readonly (keyof EventConfig)[],
 ): void => {
-  write(`\n${event}`);
+  write(`\n${name} (${event})`);
   write(
     `  input: ${loaded.programItems.length} program items, ${loaded.usersWithLotterySignups} attendees with ${loaded.lotterySignups} lottery sign-ups`,
   );
@@ -108,6 +111,10 @@ export const reportFailedRun = (
 
 // Skipping is an outcome the reader has to see, so it goes to the report rather than the
 // logger, which a low log level hides
-export const reportSkipped = (event: string, reason: string): void => {
-  write(`\n${event}: not replayed, ${reason}`);
+export const reportSkipped = (
+  event: string,
+  name: string,
+  reason: string,
+): void => {
+  write(`\n${name} (${event}): not replayed, ${reason}`);
 };
