@@ -210,6 +210,10 @@ Application settings dump. Not required for statistics.
 - **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017-2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.
 - **Batched lotteries**: an event config can put program items that start at several different times through a single lottery run, by listing their shared `parentId` in `startTimesByParentIds`. Only Tracon 2024 (2 batches, 21 flea market items) and Tracon 2025 (3 batches, 21 items) ever did; Ropecon 2026's `parentId` values are multi-session program items that were each lotteried at their own hour. In a batch, the run's `assignmentTime` is the batch's hour while every stored `signedToStartTime` and `programItemStartTime` is the program item's own - the hour the attendee turns up. Those hours were the batch's in the Tracon 2024 and 2025 dumps as originally taken, and were rewritten to each program item's own to match what Konsti stores from Tracon 2026 onward. A rejection has no program item to name, so it names the span instead.
 
+## Replaying an event's lotteries
+
+`yarn simulate-lottery` loads a dump into a temporary database and re-runs every lottery the event recorded against the current code, to catch regressions and to measure how the lottery performs on real data. It reads `program-items.json`, `users.json`, `direct-signups.json` and `results.json`, and reports how far its input is from what the runs actually saw - see "Replaying a past event's lotteries" in [`server/CLAUDE.md`](../../server/CLAUDE.md) for what it can and cannot reconstruct. The `lotterySignups` caveat above is the main limit.
+
 ## Tips for Analysis
 
 - **Sign-up success rate**: Compare `users.json` `lotterySignups` (what users wanted) against `direct-signups.json` or `results.json` (what they got). Users with `eventLogItems` action `"noAssignment"` did not get a spot.
