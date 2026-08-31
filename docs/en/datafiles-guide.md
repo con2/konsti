@@ -47,7 +47,7 @@ A handful of historical entries are overfilled (more sign-ups than the program's
 - `2` - Got their 2nd lottery choice
 - `3` - Got their 3rd lottery choice
 
-**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded sign-up moment. For earlier events (2017-2025) the field was backfilled during normalization: direct sign-ups (`priority: 0`) use the program's start time, and lottery-assigned sign-ups (priority > 0) use two hours before the assigned slot, which is when the assignment run happened - except in the Tracon 2024 and 2025 dumps, where lottery-assigned rows use the slot time itself.
+**`signupTime` values:** Ropecon 2026 is the first event where `signupTime` is the actual recorded sign-up moment. For earlier events (2017-2025) the field was backfilled during normalization: direct sign-ups (`priority: 0`) use the program's start time, and lottery-assigned sign-ups (priority > 0) use two hours before the assigned slot, which is when the assignment run happened - except in the Tracon 2024 and 2025 dumps, where lottery-assigned rows use the moment their run happened, which for the batched flea markets is the batch's hour rather than the sub-slot's (see "Batched lotteries" below).
 
 2017-2019 events were lottery-only, so all of their entries use `priority` 1-3; Ropecon 2021 ran direct sign-up only (remote / COVID convention), so all of its entries use `priority: 0`.
 
@@ -62,7 +62,7 @@ All program items for the event.
   {
     "programItemId": "example-program",
     "title": "Example Program",
-    "parentId": "example-program", // Kompassi parent program id shared by multi-session items; present from Tracon 2025 onward
+    "parentId": "example-program", // Kompassi parent program id shared by multi-session items; present in Tracon 2024 (flea market only), Tracon 2025 and Ropecon 2026
     "programType": "tabletopRPG", // tabletopRPG, larp, workshop, tournament, otherGaming, fleaMarket, other
     "signupType": "konsti", // Items not using Konsti sign-up have notRequired, other, ropelarp, or experiencePoint
     "state": "accepted", // "cancelled" if the program was cancelled
@@ -91,6 +91,8 @@ All program items for the event.
   },
 ]
 ```
+
+Konsti writes two more program item fields from Tracon 2026 onward, so no dump listed here carries them: `lotteryRanForStartTime` (the start time the item was sitting at when its lottery ran) and `passedOverForLottery` (no lottery will ever take it). For the earlier events, which items were lotteried can only be read from `results.json`, and nothing records which ones were passed over.
 
 ### results.json
 
@@ -130,7 +132,7 @@ From Ropecon 2026 onward, `groups` is a live snapshot recorded when the run happ
 
 **Wins can reference program items missing from `program-items.json`:** items deleted after their lottery keep their result rows even though the live cleanup removes every user-side reference. Joining `results.json` to `program-items.json` on `programItemId` drops these rows: 9 in Tracon Hitpoint 2023, 6 in Tracon Hitpoint 2024, and 5 in Ropecon 2026.
 
-A win's `signedToStartTime` always equals its run's `assignmentTime`, except for Tracon 2025's parent-batched flea-market rows, where one run assigns several sequential sub-slots.
+A win's `signedToStartTime` is the program item's own start time, which equals its run's `assignmentTime` everywhere except the Tracon 2024 and 2025 batched flea markets, where one run assigns several sequential sub-slots (see "Batched lotteries" below).
 
 Ropecon 2021 has no `results.json` because no lottery was run that year (remote / COVID convention, direct sign-up only).
 
@@ -175,7 +177,8 @@ In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in to
         "programItemId": "", // Always empty: the row is about a starting time, not one program item
         "programItemStartTime": "2024-07-19T17:00:00Z",
         // Only when the lottery covered several starting times at once, where the two describe
-        // the span it took in. Present from Tracon 2026 onward
+        // the span it took in. Written from Tracon 2026 onward, backfilled into the two earlier
+        // events that batched a lottery
         "lastProgramItemEndTime": "2024-07-19T19:00:00Z",
         "programType": "fleaMarket",
         "isSeen": true,
@@ -188,7 +191,7 @@ In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in to
 ]
 ```
 
-**Caveat: `lotterySignups` can be incomplete.** Lottery sign-ups may be removed after the lottery has run: before Ropecon 2026 joining a group deleted the user's sign-ups for already-run lotteries (2026 onward preserves them), winning a spot removes other lottery sign-ups according to the event's `removeLotterySignupsStrategy` (overlapping sign-ups for most events, all upcoming ones in Tracon 2025, none in Tracon 2024), and program items moved or deleted after a run erase the matching sign-ups. `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`.
+**Caveat: `lotterySignups` can be incomplete.** Lottery sign-ups may be removed after the lottery has run: before Ropecon 2026 joining a group deleted the user's sign-ups for already-run lotteries (2026 onward preserves them), winning a spot removes other lottery sign-ups according to the event's `removeLotterySignupsStrategy` (overlapping sign-ups for most events, all upcoming ones in Tracon 2025, none in Tracon 2024), and program items moved or deleted after a run erase the matching sign-ups. From Tracon 2026 onward a sign-up whose lottery has already run is preserved when its program item is cancelled, moved, or leaves the lottery, so only a deleted program item still erases one. `eventLogItems` are never modified. This means some users have `newAssignment` or `noAssignment` entries for program items or time slots that no longer appear in their `lotterySignups`. To reconstruct what users originally wanted, treat `eventLogItems` as authoritative evidence of past lottery participation and combine it with the remaining `lotterySignups`.
 
 ### serials.json
 
@@ -205,6 +208,7 @@ Application settings dump. Not required for statistics.
 - **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.
 - **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017-2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.
+- **Batched lotteries**: an event config can put program items that start at several different times through a single lottery run, by listing their shared `parentId` in `startTimesByParentIds`. Only Tracon 2024 (2 batches, 21 flea market items) and Tracon 2025 (3 batches, 21 items) ever did; Ropecon 2026's `parentId` values are multi-session program items that were each lotteried at their own hour. In a batch, the run's `assignmentTime` is the batch's hour while every stored `signedToStartTime` and `programItemStartTime` is the program item's own - the hour the attendee turns up. Those hours were the batch's in the Tracon 2024 and 2025 dumps as originally taken, and were rewritten to each program item's own to match what Konsti stores from Tracon 2026 onward. A rejection has no program item to name, so it names the span instead.
 
 ## Tips for Analysis
 
