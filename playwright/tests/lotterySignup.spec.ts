@@ -644,7 +644,7 @@ test("Offer direct sign-up instead of a lottery for a program item that already 
   const programItem = programList.itemByTitle(testProgramItem.title);
   await expect(programItem.lotterySignupButton).toBeHidden();
   await expect(programItem.container).toContainText(
-    "It already has sign-ups, so it does not take part in the lottery.",
+    "This program item is not in the lottery because it already has sign-ups.",
   );
   // Its sign-up has been open all along, and does not shut now that the two-phase schedule it
   // has just landed on says sign-up is still hours away
@@ -657,7 +657,7 @@ test("Offer direct sign-up instead of a lottery for a program item that already 
 
   const programItemPage = new ProgramItemPage(page);
   await expect(programItemPage.main).toContainText(
-    "It already has sign-ups, so it does not take part in the lottery.",
+    "This program item is not in the lottery because it already has sign-ups.",
   );
   await expect(programItemPage.main).toContainText("Sign-up closes");
 });
@@ -890,7 +890,7 @@ test("Keep a program item out of the lottery after its direct sign-ups are cance
 
   const programItem = programList.itemByTitle(testProgramItem.title);
   await expect(programItem.container).toContainText(
-    "It already has sign-ups, so it does not take part in the lottery.",
+    "This program item is not in the lottery because it already has sign-ups.",
   );
 
   await programItem.cancelSignup();
@@ -905,7 +905,7 @@ test("Keep a program item out of the lottery after its direct sign-ups are cance
 
   await expect(programItem.lotterySignupButton).toBeHidden();
   await expect(programItem.container).toContainText(
-    "It already has sign-ups, so it does not take part in the lottery.",
+    "This program item is not in the lottery because it already has sign-ups.",
   );
   await expect(programItem.signUpButton).toBeVisible();
 });
@@ -981,6 +981,6 @@ test("Keep the lottery sign-ups a program item carries out of the lottery", asyn
   const programItem = programList.itemByTitle(testProgramItem.title);
   await expect(programItem.lotterySignupButton).toBeHidden();
   await expect(programItem.container).toContainText(
-    "It already has sign-ups, so it does not take part in the lottery.",
+    "This program item is not in the lottery because it already has sign-ups.",
   );
 });
