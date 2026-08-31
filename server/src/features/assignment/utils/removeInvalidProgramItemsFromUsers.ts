@@ -9,7 +9,10 @@ import {
 import { FavoriteProgramItemId, LotterySignup } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getLotterySignupEnded } from "shared/utils/signupTimes";
+import {
+  getLotterySignupEnded,
+  lotteryRanForProgramItem,
+} from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
@@ -56,6 +59,13 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
   if (!usersResult.ok) {
     return usersResult;
   }
+  // From whichever list carries the mark: the incoming programme never does, and the
+  // pre-assignment caller passes no stored programme but reads its items from the database
+  const lotteriedProgramItemIds = new Set(
+    [...programItems, ...currentProgramItems]
+      .filter((programItem) => lotteryRanForProgramItem(programItem))
+      .map((programItem) => programItem.programItemId),
+  );
   const usersToNofify: UserToNofify[] = [];
 
   const usersToUpdate = usersResult.value.flatMap((user) => {
@@ -70,10 +80,12 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
         const cancellationAction = getCancellationAction(foundProgramItem);
 
         // Valid sign-ups are kept. Invalid ones are preserved once their lottery has run;
-        // a deleted program item has none to ask, so those are always removed.
+        // a deleted program item has none to ask, so those are always removed. The mark is
+        // asked alongside the window, which a move to a later slot reopens.
         const lotteryAlreadyRan =
           foundProgramItem !== undefined &&
-          getLotterySignupEnded(foundProgramItem, timeNowResult.value);
+          (lotteriedProgramItemIds.has(lotterySignup.programItemId) ||
+            getLotterySignupEnded(foundProgramItem, timeNowResult.value));
 
         const keep = cancellationAction === undefined || lotteryAlreadyRan;
 

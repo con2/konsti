@@ -2,7 +2,10 @@ import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Result, makeSuccessResult } from "shared/utils/result";
-import { getLotterySignupEnded } from "shared/utils/signupTimes";
+import {
+  getLotterySignupEnded,
+  lotteryRanForProgramItem,
+} from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import { findDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import { queueCancelledDeletedEmails } from "server/features/notifications/queueCancelledDeletedEmails";
@@ -43,10 +46,18 @@ export const updateMovedProgramItems = async (
     ]),
   );
 
+  // Read from what is stored: the incoming programme carries no lottery marks
+  const lotteriedProgramItemIds = new Set(
+    currentProgramItems
+      .filter((programItem) => lotteryRanForProgramItem(programItem))
+      .map((programItem) => programItem.programItemId),
+  );
+
   // This will remove lottery sign-ups
   const removeMovedLotterySignupsResult =
     await removeMovedLotterySignupsAndNotify(
       movedProgramItems,
+      lotteriedProgramItemIds,
       programItemTitlesById,
     );
   if (!removeMovedLotterySignupsResult.ok) {
@@ -66,6 +77,7 @@ export const updateMovedProgramItems = async (
 
 const removeMovedLotterySignupsAndNotify = async (
   movedProgramItems: readonly ProgramItem[],
+  lotteriedProgramItemIds: ReadonlySet<string>,
   programItemTitlesById: Map<string, string>,
 ): Promise<Result<UsersWithMovedLotterySignups, MongoDbError>> => {
   logger.info("Remove moved lottery signups from users");
@@ -75,14 +87,15 @@ const removeMovedLotterySignupsAndNotify = async (
     return timeNowResult;
   }
 
-  // A sign-up whose lottery has run records that the attendee entered it, and moving the
-  // program item afterwards does not unmake that. Only one still waiting for its lottery is
-  // removed, since it asks for a slot the program item has left. The window is derived from the
-  // slot just moved to, so a move to a later one reopens it and removes anyway - a known gap.
+  // A sign-up whose lottery has run records that the attendee entered it, and moving the program
+  // item afterwards does not unmake that. Only one still waiting for its lottery is removed, since
+  // it asks for a slot the program item has left. The mark is what answers here: the window is
+  // derived from the slot just moved to, so a move to a later one reopens it.
   const movedProgramItemIds = new Set(
     movedProgramItems
       .filter(
         (programItem) =>
+          !lotteriedProgramItemIds.has(programItem.programItemId) &&
           !getLotterySignupEnded(programItem, timeNowResult.value),
       )
       .map((programItem) => programItem.programItemId),

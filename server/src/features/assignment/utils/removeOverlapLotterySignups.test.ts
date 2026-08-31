@@ -13,6 +13,7 @@ import { db } from "server/db/mongodb";
 import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import {
   findProgramItems,
+  saveLotteryRanForStartTime,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -394,6 +395,80 @@ test("should not remove upcoming lottery sign-ups when strategy is NONE", async 
       signedToStartTime: upcomingStartTime,
     },
   ]);
+});
+
+test("should not remove an upcoming lottery sign-up whose lottery has already run", async () => {
+  const timeNow = new Date(testProgramItem.startTime).toISOString();
+
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
+  });
+
+  const resultProgramItemId = "result-program-item-id";
+  const resultProgramItemStartTime = new Date(timeNow).toISOString();
+
+  // Lotteried where it used to sit and moved onto a later slot, so it reads as upcoming
+  const lotteriedProgramItemId = "lotteried-program-item-id";
+  const lotteriedStartTime = addHours(new Date(timeNow), 2).toISOString();
+
+  await saveProgramItems([
+    {
+      ...testProgramItem,
+      programItemId: resultProgramItemId,
+      startTime: resultProgramItemStartTime,
+    },
+    {
+      ...testProgramItem,
+      programItemId: lotteriedProgramItemId,
+      startTime: lotteriedStartTime,
+    },
+  ]);
+  await saveLotteryRanForStartTime([
+    {
+      ...testProgramItem,
+      programItemId: lotteriedProgramItemId,
+      startTime: resultProgramItemStartTime,
+    },
+  ]);
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: resultProgramItemId,
+        priority: 1,
+        signedToStartTime: resultProgramItemStartTime,
+      },
+      {
+        programItemId: lotteriedProgramItemId,
+        priority: 1,
+        signedToStartTime: lotteriedStartTime,
+      },
+    ],
+  });
+  const userResult: UserAssignmentResult = {
+    username: mockUser.username,
+    assignmentSignup: {
+      programItemId: resultProgramItemId,
+      priority: 1,
+      signedToStartTime: resultProgramItemStartTime,
+    },
+  };
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await removeOverlapLotterySignups(
+    [userResult],
+    programItems,
+    resultProgramItemStartTime,
+  );
+
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    updatedUser?.lotterySignups.map((signup) => signup.programItemId),
+  ).toEqual([resultProgramItemId, lotteriedProgramItemId]);
 });
 
 test("should not remove upcoming lottery sign-up with past parent startTime", async () => {
