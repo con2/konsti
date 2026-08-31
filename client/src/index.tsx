@@ -84,6 +84,14 @@ init({
     "Non-Error promise rejection captured with value: Object Not Found Matching Id:",
     // Error from the script the Instagram iOS in-app browser injects into every page
     "evaluating 'window.webkit.messageHandlers'",
+    // Error from a browser extension's injected content script, not from app code
+    "Invalid call to runtime.sendMessage()",
+    // Errors from the reader-mode and wallet scripts Brave iOS injects into
+    // every page
+    "__firefox__",
+    "window.ethereum",
+    // Error from the bridge script an in-app browser injects into every page
+    "Error invoking post: Method not found",
   ],
   denyUrls: [
     // Errors from scripts the Facebook in-app browser injects into every page
