@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { vi } from "vitest";
+import { makeSeededRandom } from "server/test/utils/seededRandom";
 
 // The assignment tests assert fixed result counts, but both the fixtures and the
 // algorithms draw from randomness: generateTestData through faker and n(), the
@@ -12,17 +13,5 @@ import { vi } from "vitest";
 // randomUUID(). `vi.restoreAllMocks` in afterEach puts Math.random back.
 export const seedRandomness = (seed = 1): void => {
   faker.seed(seed);
-
-  // A plain linear congruential generator: the values only have to be repeatable
-  // and spread out enough to shuffle a fixture list, not to be unpredictable.
-  //
-  // Math.imul, not `*`: the product overflows Number.MAX_SAFE_INTEGER, and the
-  // rounding that follows collapses the period to a few thousand coarsely
-  // spaced values, which is not a generator at all.
-  const modulus = 2 ** 32;
-  let state = seed;
-  vi.spyOn(Math, "random").mockImplementation(() => {
-    state = (Math.imul(state, 1103515245) + 12345) >>> 0;
-    return state / modulus;
-  });
+  vi.spyOn(Math, "random").mockImplementation(makeSeededRandom(seed));
 };
