@@ -1,0 +1,36 @@
+{
+  "event": "tracon/2024",
+  "algorithm": "random",
+  "totals": {
+    "runs": 2,
+    "entrants": 357,
+    "placed": 260,
+    "placedByPriority": [198, 33, 29],
+    "spotsOffered": 260,
+    "programItemsUnderMinAttendance": 0
+  },
+  "runs": [
+    {
+      "assignmentTime": "2024-09-06T12:00:00Z",
+      "status": "success",
+      "entrants": 220,
+      "placed": 130,
+      "placedByPriority": [101, 17, 12],
+      "programItemsLotteried": 1,
+      "spotsOffered": 130,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "fd98b660f74d8972"
+    },
+    {
+      "assignmentTime": "2024-09-07T06:30:00Z",
+      "status": "success",
+      "entrants": 137,
+      "placed": 130,
+      "placedByPriority": [97, 16, 17],
+      "programItemsLotteried": 1,
+      "spotsOffered": 130,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "98e512917eaf4d27"
+    }
+  ]
+}

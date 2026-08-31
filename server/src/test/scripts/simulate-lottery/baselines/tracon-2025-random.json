@@ -1,0 +1,47 @@
+{
+  "event": "tracon/2025",
+  "algorithm": "random",
+  "totals": {
+    "runs": 3,
+    "entrants": 1506,
+    "placed": 1370,
+    "placedByPriority": [653, 348, 369],
+    "spotsOffered": 2470,
+    "programItemsUnderMinAttendance": 0
+  },
+  "runs": [
+    {
+      "assignmentTime": "2025-09-05T13:00:00Z",
+      "status": "success",
+      "entrants": 751,
+      "placed": 600,
+      "placedByPriority": [268, 181, 151],
+      "programItemsLotteried": 6,
+      "spotsOffered": 600,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "709f22268937a3c5"
+    },
+    {
+      "assignmentTime": "2025-09-05T16:00:00Z",
+      "status": "success",
+      "entrants": 380,
+      "placed": 393,
+      "placedByPriority": [174, 83, 136],
+      "programItemsLotteried": 6,
+      "spotsOffered": 700,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "154cc6a8397e5f7e"
+    },
+    {
+      "assignmentTime": "2025-09-06T06:30:00Z",
+      "status": "success",
+      "entrants": 375,
+      "placed": 377,
+      "placedByPriority": [211, 84, 82],
+      "programItemsLotteried": 9,
+      "spotsOffered": 1170,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "396052cd5437436a"
+    }
+  ]
+}

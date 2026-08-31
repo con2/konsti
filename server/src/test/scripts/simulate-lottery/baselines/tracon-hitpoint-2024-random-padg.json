@@ -1,0 +1,135 @@
+{
+  "event": "tracon-hitpoint/2024",
+  "algorithm": "random+padg",
+  "totals": {
+    "runs": 11,
+    "entrants": 162,
+    "placed": 135,
+    "placedByPriority": [112, 12, 11],
+    "spotsOffered": 181,
+    "programItemsUnderMinAttendance": 5
+  },
+  "runs": [
+    {
+      "assignmentTime": "2024-11-02T12:00:00Z",
+      "status": "success",
+      "entrants": 7,
+      "placed": 4,
+      "placedByPriority": [4, 0, 0],
+      "programItemsLotteried": 1,
+      "spotsOffered": 4,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "78cbdca0e35a5c23"
+    },
+    {
+      "assignmentTime": "2024-11-02T13:00:00Z",
+      "status": "success",
+      "entrants": 12,
+      "placed": 12,
+      "placedByPriority": [7, 0, 5],
+      "programItemsLotteried": 3,
+      "spotsOffered": 20,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "fef5f23ec94ca7a7"
+    },
+    {
+      "assignmentTime": "2024-11-02T14:00:00Z",
+      "status": "success",
+      "entrants": 18,
+      "placed": 18,
+      "placedByPriority": [13, 4, 1],
+      "programItemsLotteried": 5,
+      "spotsOffered": 26,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "7ccf11c763c5e6b8"
+    },
+    {
+      "assignmentTime": "2024-11-02T15:00:00Z",
+      "status": "success",
+      "entrants": 12,
+      "placed": 10,
+      "placedByPriority": [9, 1, 0],
+      "programItemsLotteried": 3,
+      "spotsOffered": 18,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "326e957694695202"
+    },
+    {
+      "assignmentTime": "2024-11-02T16:00:00Z",
+      "status": "success",
+      "entrants": 6,
+      "placed": 5,
+      "placedByPriority": [5, 0, 0],
+      "programItemsLotteried": 1,
+      "spotsOffered": 5,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "29e5b5d1888505ce"
+    },
+    {
+      "assignmentTime": "2024-11-02T17:00:00Z",
+      "status": "success",
+      "entrants": 15,
+      "placed": 14,
+      "placedByPriority": [11, 2, 1],
+      "programItemsLotteried": 3,
+      "spotsOffered": 15,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "fce3bc821155d1f7"
+    },
+    {
+      "assignmentTime": "2024-11-02T18:00:00Z",
+      "status": "success",
+      "entrants": 14,
+      "placed": 11,
+      "placedByPriority": [11, 0, 0],
+      "programItemsLotteried": 3,
+      "spotsOffered": 15,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "59e9d61899b8333c"
+    },
+    {
+      "assignmentTime": "2024-11-03T09:00:00Z",
+      "status": "success",
+      "entrants": 30,
+      "placed": 28,
+      "placedByPriority": [20, 4, 4],
+      "programItemsLotteried": 8,
+      "spotsOffered": 36,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "f4f57f7a976ad665"
+    },
+    {
+      "assignmentTime": "2024-11-03T10:00:00Z",
+      "status": "success",
+      "entrants": 22,
+      "placed": 17,
+      "placedByPriority": [16, 1, 0],
+      "programItemsLotteried": 5,
+      "spotsOffered": 24,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "63d1d839e00e9812"
+    },
+    {
+      "assignmentTime": "2024-11-03T12:00:00Z",
+      "status": "success",
+      "entrants": 18,
+      "placed": 12,
+      "placedByPriority": [12, 0, 0],
+      "programItemsLotteried": 3,
+      "spotsOffered": 14,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "0fbc75988265a50e"
+    },
+    {
+      "assignmentTime": "2024-11-03T14:00:00Z",
+      "status": "success",
+      "entrants": 8,
+      "placed": 4,
+      "placedByPriority": [4, 0, 0],
+      "programItemsLotteried": 1,
+      "spotsOffered": 4,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "586029a35d2f8013"
+    }
+  ]
+}
