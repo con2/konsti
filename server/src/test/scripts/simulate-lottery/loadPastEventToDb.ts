@@ -21,6 +21,15 @@ import {
 import { PastEventDump } from "server/test/scripts/simulate-lottery/pastEventDump";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 
+// A program item holding more attendees than its own maxAttendance now allows, because the
+// limit was lowered after it had already filled. Nothing puts those attendees back out, so
+// the spots are real and the replay has to load all of them.
+interface OverCapacityProgramItem {
+  programItemId: string;
+  held: number;
+  maxAttendance: number;
+}
+
 export interface LoadedDump {
   programItems: readonly ProgramItem[];
   usersWithLotterySignups: number;
@@ -31,9 +40,11 @@ export interface LoadedDump {
   preferenceSetsWithHoles: number;
   directSignupsLoaded: number;
   directSignupsSkipped: number;
-  // A handful of historical program items hold more sign-ups than their own maxAttendance,
-  // and the write enforces the limit, so those rows do not land
-  directSignupsDropped: number;
+  overCapacityProgramItems: readonly OverCapacityProgramItem[];
+  // Sign-ups the write refused. Always zero, and an anomaly if not: the write's drop alarm
+  // exists for the assignment, where a drop means a real bug, so the loader must not be the
+  // thing that keeps setting it off.
+  unexpectedlyDropped: number;
 }
 
 // A direct sign-up made after a lottery must not be fed back into it. Direct sign-up for a
@@ -48,6 +59,55 @@ const wasHeldBeforeTheLottery = (
   !lotteriedStartTimes.has(
     new Date(getProgramItemStartTime(programItem)).toISOString(),
   );
+
+const findOverCapacityProgramItems = (
+  directSignups: readonly SignupRepositoryAddSignup[],
+  programItemsById: ReadonlyMap<string, ProgramItem>,
+): OverCapacityProgramItem[] => {
+  const heldByProgramItemId = new Map<string, number>();
+  for (const directSignup of directSignups) {
+    const { directSignupProgramItemId } = directSignup;
+    heldByProgramItemId.set(
+      directSignupProgramItemId,
+      (heldByProgramItemId.get(directSignupProgramItemId) ?? 0) + 1,
+    );
+  }
+
+  return [...heldByProgramItemId].flatMap(
+    ([programItemId, held]): OverCapacityProgramItem[] => {
+      const programItem = programItemsById.get(programItemId);
+      if (!programItem || held <= programItem.maxAttendance) {
+        return [];
+      }
+      return [
+        { programItemId, held, maxAttendance: programItem.maxAttendance },
+      ];
+    },
+  );
+};
+
+// The write caps what it appends at the program item's maxAttendance, which would throw away
+// attendees the event really seated - the limit came down after they were already in, and
+// nothing removes anyone when it does. Raised for this one call so every held spot lands; the
+// stored program items keep their real limit, and only this array is used to build the write.
+const withRoomForHeldSpots = (
+  programItems: readonly ProgramItem[],
+  overCapacityProgramItems: readonly OverCapacityProgramItem[],
+): ProgramItem[] => {
+  const heldByProgramItemId = new Map(
+    overCapacityProgramItems.map((overCapacity) => [
+      overCapacity.programItemId,
+      overCapacity.held,
+    ]),
+  );
+
+  return programItems.map((programItem) => {
+    const held = heldByProgramItemId.get(programItem.programItemId);
+    return held === undefined
+      ? programItem
+      : { ...programItem, maxAttendance: held };
+  });
+};
 
 const countPreferenceSetsWithHoles = (dump: PastEventDump): number =>
   dump.users.reduce((holes, user) => {
@@ -156,16 +216,21 @@ export const loadPastEventToDb = async ({
     );
   });
 
-  let directSignupsDropped = 0;
+  const overCapacityProgramItems = findOverCapacityProgramItems(
+    directSignupsToLoad,
+    programItemsById,
+  );
+
+  let unexpectedlyDropped = 0;
   if (directSignupsToLoad.length > 0) {
     const saveDirectSignupsResult = await saveDirectSignups(
       directSignupsToLoad,
-      dump.programItems,
+      withRoomForHeldSpots(dump.programItems, overCapacityProgramItems),
     );
     if (!saveDirectSignupsResult.ok) {
       return saveDirectSignupsResult;
     }
-    directSignupsDropped = saveDirectSignupsResult.value.droppedSignups.length;
+    unexpectedlyDropped = saveDirectSignupsResult.value.droppedSignups.length;
   }
 
   // The lottery reads no settings, but the notification step reads the email triggers and the
@@ -191,8 +256,9 @@ export const loadPastEventToDb = async ({
       0,
     ),
     preferenceSetsWithHoles: countPreferenceSetsWithHoles(dump),
-    directSignupsLoaded: directSignupsToLoad.length - directSignupsDropped,
+    overCapacityProgramItems,
+    unexpectedlyDropped,
+    directSignupsLoaded: directSignupsToLoad.length - unexpectedlyDropped,
     directSignupsSkipped: allDirectSignups.length - directSignupsToLoad.length,
-    directSignupsDropped,
   });
 };
