@@ -8,6 +8,11 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import {
+  getLotterySignupEnded,
+  willNotBeLotteried,
+} from "shared/utils/signupTimes";
+import { isSameTime } from "shared/utils/timeComparison";
 import { Checkbox } from "client/components/Checkbox";
 import { Dropdown } from "client/components/Dropdown";
 import { ErrorMessage } from "client/components/ErrorMessage";
@@ -16,7 +21,9 @@ import { TextArea } from "client/components/TextArea";
 import { InfoTextVariant } from "client/components/componentStyles";
 import { startLoading, stopLoading } from "client/state/loading/loadingSlice";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useTimeNow } from "client/utils/useTimeNow";
 import { getIsInGroup } from "client/views/group/groupUtils";
+import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
 import {
   PostDirectSignupErrorMessage,
   submitPostDirectSignup,
@@ -42,6 +49,7 @@ export const DirectSignupForm = ({
   const dispatch = useAppDispatch();
 
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const loading = useAppSelector((state) => state.loading);
 
@@ -59,6 +67,17 @@ export const DirectSignupForm = ({
   const entryCondition = getEntryCondition(programItem, t);
 
   const isInGroup = getIsInGroup(groupCode);
+  const timeNow = useTimeNow();
+
+  // Only a lottery that can still place them, so a sign-up kept as a record of one that has run
+  // does not warn about a spot nothing will take. A win replaces what they hold at the hour the
+  // program item they won starts, so the times compared are the items' own, not the batch's.
+  const lotterySignupsAtSameStartTime = lotterySignups.filter(
+    (lotterySignup) =>
+      isSameTime(lotterySignup.programItem.startTime, programItem.startTime) &&
+      !willNotBeLotteried(lotterySignup.programItem) &&
+      !getLotterySignupEnded(lotterySignup.programItem, timeNow),
+  );
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -170,6 +189,19 @@ export const DirectSignupForm = ({
           label={entryCondition.label}
           id={entryCondition.id}
         />
+      )}
+
+      {lotterySignupsAtSameStartTime.length > 0 && (
+        <InfoText variant={InfoTextVariant.WARNING}>
+          {t("signup.inLotteryAtSameStartTime")}{" "}
+          <b>
+            {lotterySignupsAtSameStartTime
+              .map((lotterySignup) => lotterySignup.programItem.title)
+              .join(", ")}
+          </b>
+          {". "}
+          {t("signup.directSignupWillBeRemoved")}
+        </InfoText>
       )}
 
       <SignupFormButtons

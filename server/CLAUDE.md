@@ -181,9 +181,12 @@ sign-ups.
 An attendee may hold a direct sign-up and a lottery sign-up for the same start time, in either
 order: neither `storeLotterySignup` nor `storeDirectSignup` cancels the other. If the run places
 them, the spot they win replaces the one they held; if not, what they signed up for themselves
-stands. `LotterySignupForm` says so before they confirm, but only in that order and only about the
-first spot it finds at that hour; `DirectSignupForm` has no counterpart, which rule 11 records as a
-known gap.
+stands. Both forms say so before they confirm — `LotterySignupForm` about the direct sign-up
+they hold, `DirectSignupForm` about the lottery sign-ups they have at that start time whose lottery
+is still ahead, since one kept as a record of a lottery that has run cannot take the spot away. Both
+compare the items' **own** start times, because a win displaces spots at the hour the won program
+item starts rather than the hour its batch was lotteried at. The lottery form still names only the
+first spot it finds at that hour, which rule 11 records as a known gap.
 
 One route is left open on purpose: rescheduling a program item someone holds a spot in onto a slot
 they have lottery sign-ups for. `updateMovedProgramItems` cancels the moved item's own lottery

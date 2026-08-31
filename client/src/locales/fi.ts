@@ -351,6 +351,9 @@ export const translationFI = {
       "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
     signupWillBeRemoved:
       "Jos pääset tähän {{PROGRAM_TYPE_THIS}} arvonnassa, ilmoittautumisesi {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} perutaan.",
+    inLotteryAtSameStartTime: "Olet mukana arvonnassa samaan alkamisaikaan:",
+    directSignupWillBeRemoved:
+      "Jos saat arvonnassa paikan, tämä ilmoittautuminen perutaan.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     attendeesNeeded: "Tarvitaan {{COUNT}} lisää",
     programItemFull: "Tämä {{PROGRAM_TYPE}} on täynnä.",

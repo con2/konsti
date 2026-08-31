@@ -351,6 +351,9 @@ export const translationEN = {
       "You cannot sign up to another program item starting at the same time.",
     signupWillBeRemoved:
       "If you get a spot in this {{PROGRAM_TYPE_THIS}} in the lottery, your sign-up to the {{PROGRAM_TYPE_OTHER}} {{OTHER_PROGRAM_NAME}} will be cancelled.",
+    inLotteryAtSameStartTime: "You are in the lottery at the same start time:",
+    directSignupWillBeRemoved:
+      "If you get a spot in the lottery, this sign-up will be cancelled.",
     signupCount: "{{ATTENDEE_COUNT}}/{{MAX_ATTENDANCE}} sign-ups",
     attendeesNeeded: "Needs {{COUNT}} more",
     programItemFull: "This {{PROGRAM_TYPE}} is full.",
