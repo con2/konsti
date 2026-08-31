@@ -43,8 +43,14 @@ export const pastEvents: readonly PastEvent[] = [
   { datafileDir: "ropecon", year: "2026", eventConfig: ropecon2026 },
 ];
 
+// What `--event` takes, which is the dump's location rather than the event's name
 export const getPastEventKey = ({ datafileDir, year }: PastEvent): string =>
   `${datafileDir}/${year}`;
+
+// What the event is called. The reconstructed configs all carry a name, so the fallback is
+// only there because the type cannot say so.
+export const getPastEventName = (pastEvent: PastEvent): string =>
+  `${pastEvent.eventConfig.eventName ?? pastEvent.datafileDir} ${pastEvent.year}`;
 
 export const findPastEvent = (key: string): PastEvent | undefined =>
   pastEvents.find((pastEvent) => getPastEventKey(pastEvent) === key);

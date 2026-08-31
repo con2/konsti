@@ -11,6 +11,7 @@ import {
   PastEvent,
   findPastEvent,
   getPastEventKey,
+  getPastEventName,
   pastEvents,
 } from "shared/config/past-events";
 import { MongoDbError } from "shared/types/api/errors";
@@ -155,10 +156,11 @@ const replayEvent = async ({
   dbConnString,
 }: ReplayEventParams): Promise<Replay | undefined> => {
   const event = getPastEventKey(pastEvent);
+  const name = getPastEventName(pastEvent);
   const configFallbacks = overrideEventConfig(pastEvent.eventConfig);
   const dumpResult = readPastEventDump(pastEvent);
   if (!dumpResult.ok) {
-    reportSkipped(event, dumpResult.error);
+    reportSkipped(event, name, dumpResult.error);
     return undefined;
   }
   const dump = dumpResult.value;
@@ -167,7 +169,7 @@ const replayEvent = async ({
     a.assignmentTime.localeCompare(b.assignmentTime),
   );
   if (recordedRuns.length === 0) {
-    reportSkipped(event, "it recorded no lottery runs");
+    reportSkipped(event, name, "it recorded no lottery runs");
     return undefined;
   }
 
@@ -187,7 +189,7 @@ const replayEvent = async ({
       );
       return undefined;
     }
-    reportInput(event, loadResult.value, configFallbacks);
+    reportInput(event, name, loadResult.value, configFallbacks);
 
     const replay: Replay = {
       runs: [],
@@ -453,6 +455,7 @@ const simulateLottery = async (): Promise<number> => {
     if (algorithms.length === 0) {
       reportSkipped(
         getPastEventKey(pastEvent),
+        getPastEventName(pastEvent),
         "its algorithm is not one the codebase still has",
       );
     }
