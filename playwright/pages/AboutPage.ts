@@ -18,4 +18,8 @@ export class AboutPage extends BasePage {
   async gotoAbout(): Promise<void> {
     await this.page.getByRole("link", { name: "About", exact: true }).click();
   }
+
+  async expandFaqEntry(name: RegExp): Promise<void> {
+    await this.page.getByRole("button", { name }).click();
+  }
 }

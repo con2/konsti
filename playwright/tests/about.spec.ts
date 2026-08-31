@@ -21,6 +21,11 @@ test("About page views content logged", async ({ page, request }) => {
   await aboutPage.gotoFaq();
   await expect(aboutPage.heading("For participants")).toBeVisible();
 
+  // The privacy notice is only linked from the sign-up consent forms otherwise,
+  // so this is where a logged in user can still read it
+  await aboutPage.expandFaqEntry(/How is my personal data processed/);
+  await expect(aboutPage.main).toContainText("Data Controller");
+
   await aboutPage.gotoAbout();
   await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
 });
