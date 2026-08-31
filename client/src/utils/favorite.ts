@@ -34,15 +34,13 @@ export const updateFavorite = async (
     favoriteProgramItemIds.splice(programItemIndex, 1);
   }
 
-  const error = await dispatch(
+  // A failed request is already reported to the user by the request wrapper,
+  // and the only error id this endpoint returns is "unknown", so there is
+  // nothing here a caller could tell apart or act on
+  await dispatch(
     submitUpdateFavorites({
       username,
       favoriteProgramItemIds,
     }),
   );
-
-  if (error) {
-    // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-    throw new Error(`submitUpdateFavorites error: ${error}`);
-  }
 };
