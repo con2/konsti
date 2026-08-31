@@ -11,7 +11,7 @@ import { ProgramType } from "shared/types/models/programItem";
 
 // Event days
 const friday = "2024-09-06";
-// const saturday = "2024-09-07";
+const saturday = "2024-09-07";
 // const sunday = "2024-09-07";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -88,6 +88,18 @@ const eventConfig: Partial<EventConfig> = {
   directSignupPhaseStart: 60 * 2, // minutes
   phaseGap: 15, // minutes
   fixedLotterySignupTime: `${friday}T05:00:00Z`, // Fri 08:00 GMT+3
+
+  // Program items with parentId use startTime configured here
+  startTimesByParentIds: new Map([
+    [
+      "kirpputorin-ajanvaraus-perjantai",
+      `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
+    ],
+    [
+      "kirpputorin-ajanvaraus-lauantai",
+      `${saturday}T06:30:00Z`, // Sat 09:30 GMT+3
+    ],
+  ]),
 
   // Default DB values
   defaultSignupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
