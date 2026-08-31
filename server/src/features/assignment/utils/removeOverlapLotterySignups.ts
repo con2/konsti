@@ -53,8 +53,9 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
-    // Both branches below pick out program items starting after the one just won, so their
-    // lotteries are still ahead and nothing here can remove a sign-up whose lottery has run
+    // Both branches below pick program items out by start time alone, asking neither the sign-up
+    // window nor the lottery's mark, so a sign-up whose lottery has already run can be removed
+    // here - the design rules record it as a known gap.
 
     // Cancel all lottery sign-ups that start during the lottery direct sign-up
     if (
