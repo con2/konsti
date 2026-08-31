@@ -61,6 +61,7 @@ export const reportInput = (
 };
 
 export interface ReplayReport {
+  name: string;
   algorithm: AssignmentAlgorithm;
   totals: EventMetrics;
   runCount: number;
@@ -71,6 +72,7 @@ export interface ReplayReport {
 }
 
 export const reportReplay = ({
+  name,
   algorithm,
   totals,
   runCount,
@@ -81,7 +83,9 @@ export const reportReplay = ({
 }: ReplayReport): void => {
   const [first = 0, second = 0, third = 0] = totals.placedByPriority;
 
-  write(`\n  ${algorithm}`);
+  // Named again here, though the input block above says it too: a results block is what gets
+  // scrolled back to and copied out, and the algorithm alone does not say whose result it is
+  write(`\n  ${name} - ${algorithm}`);
   write(
     `    runs ${totals.runs}, placed ${totals.placed} of ${totals.entrants} entrants (${share(totals.placed, totals.entrants)})`,
   );
