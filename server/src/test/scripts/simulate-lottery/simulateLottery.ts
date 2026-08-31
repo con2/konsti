@@ -349,6 +349,7 @@ const replayOne = async (
     : undefined;
 
   reportReplay({
+    name: getPastEventName(pastEvent),
     algorithm,
     totals: current.totals,
     runCount: replay.runs.length,
