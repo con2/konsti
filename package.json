@@ -51,6 +51,7 @@
     "start": "yarn workspace server start",
     "stylelint": "yarn workspace client stylelint",
     "test-assign": "yarn workspace server test-assign",
+    "simulate-lottery": "yarn workspace server simulate-lottery",
     "test:watch": "yarn vitest watch",
     "knip": "knip --cache",
     "test": "yarn vitest run",
