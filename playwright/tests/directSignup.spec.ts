@@ -487,6 +487,16 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
 
   const alwaysOpenProgramItem = programList.itemByTitle(alwaysOpenTitle);
   await alwaysOpenProgramItem.signUp();
+
+  // Told before confirming that the lottery can take this spot away, rather than finding out
+  // when it does
+  await expect(alwaysOpenProgramItem.container).toContainText(
+    `You are in the lottery at the same start time: ${testProgramItem.title}.`,
+  );
+  await expect(alwaysOpenProgramItem.container).toContainText(
+    "If you get a spot in the lottery, this sign-up will be cancelled.",
+  );
+
   await alwaysOpenProgramItem.confirm();
 
   // Holding a spot doesn't withdraw the attendee from the lottery for that time: the sign-up
@@ -495,5 +505,70 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
   await expect(programList.directSignupList).toContainText(alwaysOpenTitle);
   await expect(programList.lotterySignupList).toContainText(
     testProgramItem.title,
+  );
+});
+
+test("Show no lottery warning on the direct sign-up form once the lottery is over", async ({
+  page,
+  request,
+}) => {
+  const startTime = hoursIntoEvent(3);
+  const endTime = addMinutes(
+    new Date(startTime),
+    testProgramItem.mins,
+  ).toISOString();
+
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [
+    {
+      ...testProgramItem,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      startTime,
+      endTime,
+    },
+    {
+      ...testProgramItem2,
+      title: alwaysOpenTitle,
+      programType: config.event().twoPhaseSignupProgramTypes[0],
+      tags: [Tag.PRE_CONVENTION_WEEK],
+      startTime,
+      endTime,
+    },
+  ]);
+
+  await postSettings(request, {
+    signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
+  });
+  await postTestSettings(request, {
+    testTime: config.event().eventStartTime,
+  });
+
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem.programItemId,
+    priority: 1,
+  });
+
+  // Past the moment lottery sign-up closed and the run decided the start time. The sign-up is
+  // kept as a record of having entered, so it is still there to warn about - and must not,
+  // since no lottery is coming to replace the spot
+  await postTestSettings(request, {
+    testTime: hoursIntoEvent(2),
+  });
+
+  await login(page, request, { username: "test1", password: "test" });
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await programList.selectStartingTime("All");
+  await programList.waitForItems();
+
+  const alwaysOpenProgramItem = programList.itemByTitle(alwaysOpenTitle);
+  await alwaysOpenProgramItem.signUp();
+
+  await expect(alwaysOpenProgramItem.confirmButton).toBeVisible();
+  await expect(alwaysOpenProgramItem.container).not.toContainText(
+    "You are in the lottery at the same start time",
   );
 });
