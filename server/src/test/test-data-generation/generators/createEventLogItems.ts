@@ -2,11 +2,16 @@ import { subHours, subMinutes } from "date-fns";
 import { first, groupBy, sample } from "remeda";
 import { NewEventLogItem } from "shared/types/api/eventLog";
 import { EventLogAction } from "shared/types/models/eventLog";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
-import { findProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  saveLotteryRanForStartTime,
+} from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
+import { getLotteryRunTime } from "server/test/test-data-generation/lotteryRunTime";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 // Simulate lottery results: for each start time a user has lottery sign-ups for,
@@ -27,6 +32,7 @@ export const createEventLogItems = async (): Promise<void> => {
 
   const newAssignmentEventLogUpdates: NewEventLogItem[] = [];
   const noAssignmentEventLogUpdates: NewEventLogItem[] = [];
+  const lotteriedStartTimes = new Set<string>();
 
   for (const user of users) {
     const signupsBySlot = groupBy(user.lotterySignups, (lotterySignup) =>
@@ -36,6 +42,17 @@ export const createEventLogItems = async (): Promise<void> => {
 
     for (const [index, [slotStartTime, slotSignups]] of slots.entries()) {
       const createdAt = createdAtTimes[index].toISOString();
+
+      // The lottery this slot stands for, whatever it goes on to decide. Batched program
+      // items share one, so the time comes from the parent override rather than the slot
+      for (const slotSignup of slotSignups) {
+        const signedProgramItem = programItemsById.get(
+          slotSignup.programItemId,
+        );
+        if (signedProgramItem) {
+          lotteriedStartTimes.add(getLotteryRunTime(signedProgramItem));
+        }
+      }
 
       const wonSignup =
         getRandomInt(0, 1) === 1 ? first(sample(slotSignups, 1)) : undefined;
@@ -92,6 +109,17 @@ export const createEventLogItems = async (): Promise<void> => {
       });
     }
   }
+
+  // Record the lottery, not only its effects. Without this the seeded program items hold
+  // sign-ups while still reading as undecided, and the next programme import passes them
+  // over for the lottery they have in fact already had.
+  await saveLotteryRanForStartTime(
+    programItems.filter(
+      (programItem) =>
+        isLotterySignupProgramItem(programItem) &&
+        lotteriedStartTimes.has(getLotteryRunTime(programItem)),
+    ),
+  );
 
   await addEventLogItems(newAssignmentEventLogUpdates);
   await addEventLogItems(noAssignmentEventLogUpdates);
