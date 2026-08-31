@@ -3,11 +3,11 @@
   "algorithm": "random+padg",
   "totals": {
     "runs": 28,
-    "entrants": 4396,
-    "placed": 1793,
-    "placedByPriority": [1244, 360, 189],
+    "entrants": 4368,
+    "placed": 1792,
+    "placedByPriority": [1267, 363, 162],
     "spotsOffered": 2482,
-    "programItemsUnderMinAttendance": 60
+    "programItemsUnderMinAttendance": 61
   },
   "runs": [
     {
@@ -58,23 +58,23 @@
       "assignmentTime": "2025-07-25T19:00:00Z",
       "status": "success",
       "entrants": 59,
-      "placed": 28,
-      "placedByPriority": [26, 1, 1],
+      "placed": 29,
+      "placedByPriority": [22, 6, 1],
       "programItemsLotteried": 4,
       "spotsOffered": 40,
       "programItemsUnderMinAttendance": 0,
-      "placementsDigest": "57f33118ec554d85"
+      "placementsDigest": "383ce063745dbd4d"
     },
     {
       "assignmentTime": "2025-07-25T20:00:00Z",
       "status": "success",
       "entrants": 19,
       "placed": 6,
-      "placedByPriority": [6, 0, 0],
+      "placedByPriority": [5, 1, 0],
       "programItemsLotteried": 2,
       "spotsOffered": 30,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "dcaad38e8fbc0baa"
+      "placementsDigest": "475f4c76c6543349"
     },
     {
       "assignmentTime": "2025-07-25T21:00:00Z",
@@ -92,231 +92,231 @@
       "status": "success",
       "entrants": 220,
       "placed": 112,
-      "placedByPriority": [97, 10, 5],
+      "placedByPriority": [96, 13, 3],
       "programItemsLotteried": 22,
       "spotsOffered": 158,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "355f2fc918336536"
+      "placementsDigest": "d0c2c882cb9304ab"
     },
     {
       "assignmentTime": "2025-07-26T07:00:00Z",
       "status": "success",
-      "entrants": 61,
+      "entrants": 59,
       "placed": 29,
-      "placedByPriority": [17, 10, 2],
+      "placedByPriority": [16, 11, 2],
       "programItemsLotteried": 8,
       "spotsOffered": 51,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "bb2d56f561830735"
+      "placementsDigest": "36cbabd349feb448"
     },
     {
       "assignmentTime": "2025-07-26T08:00:00Z",
       "status": "success",
-      "entrants": 261,
-      "placed": 137,
-      "placedByPriority": [78, 33, 26],
+      "entrants": 258,
+      "placed": 136,
+      "placedByPriority": [82, 35, 19],
       "programItemsLotteried": 29,
       "spotsOffered": 191,
-      "programItemsUnderMinAttendance": 4,
-      "placementsDigest": "b5e340489698ea23"
+      "programItemsUnderMinAttendance": 5,
+      "placementsDigest": "6ef4fe49315e40c1"
     },
     {
       "assignmentTime": "2025-07-26T09:00:00Z",
       "status": "success",
-      "entrants": 153,
-      "placed": 69,
-      "placedByPriority": [44, 17, 8],
+      "entrants": 152,
+      "placed": 66,
+      "placedByPriority": [49, 12, 5],
       "programItemsLotteried": 14,
       "spotsOffered": 147,
       "programItemsUnderMinAttendance": 5,
-      "placementsDigest": "269faf0223646a52"
+      "placementsDigest": "5ac246ef14b41faf"
     },
     {
       "assignmentTime": "2025-07-26T10:00:00Z",
       "status": "success",
-      "entrants": 233,
-      "placed": 89,
-      "placedByPriority": [56, 20, 13],
+      "entrants": 241,
+      "placed": 90,
+      "placedByPriority": [60, 17, 13],
       "programItemsLotteried": 14,
       "spotsOffered": 97,
       "programItemsUnderMinAttendance": 0,
-      "placementsDigest": "c995194d653c2a80"
+      "placementsDigest": "bfa8ba68b3e0a270"
     },
     {
       "assignmentTime": "2025-07-26T11:00:00Z",
       "status": "success",
-      "entrants": 173,
-      "placed": 94,
-      "placedByPriority": [50, 26, 18],
+      "entrants": 162,
+      "placed": 91,
+      "placedByPriority": [69, 21, 1],
       "programItemsLotteried": 22,
       "spotsOffered": 101,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "e402b98a0398ae71"
+      "placementsDigest": "ac8b8d8e70e598c9"
     },
     {
       "assignmentTime": "2025-07-26T12:00:00Z",
       "status": "success",
-      "entrants": 121,
+      "entrants": 131,
       "placed": 75,
-      "placedByPriority": [63, 11, 1],
+      "placedByPriority": [71, 3, 1],
       "programItemsLotteried": 11,
       "spotsOffered": 92,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "0e7476e4165e043a"
+      "placementsDigest": "44bdca982daea78f"
     },
     {
       "assignmentTime": "2025-07-26T13:00:00Z",
       "status": "success",
-      "entrants": 199,
+      "entrants": 200,
       "placed": 38,
-      "placedByPriority": [35, 3, 0],
+      "placedByPriority": [34, 4, 0],
       "programItemsLotteried": 8,
       "spotsOffered": 81,
       "programItemsUnderMinAttendance": 3,
-      "placementsDigest": "83f756b47e64201e"
+      "placementsDigest": "330801bc0f4858b0"
     },
     {
       "assignmentTime": "2025-07-26T14:00:00Z",
       "status": "success",
-      "entrants": 327,
+      "entrants": 331,
       "placed": 104,
-      "placedByPriority": [74, 22, 8],
+      "placedByPriority": [75, 24, 5],
       "programItemsLotteried": 21,
       "spotsOffered": 144,
       "programItemsUnderMinAttendance": 3,
-      "placementsDigest": "36de76cb8eafdeed"
+      "placementsDigest": "4ce2b216c0edb6ff"
     },
     {
       "assignmentTime": "2025-07-26T15:00:00Z",
       "status": "success",
-      "entrants": 225,
-      "placed": 94,
-      "placedByPriority": [79, 12, 3],
+      "entrants": 221,
+      "placed": 95,
+      "placedByPriority": [62, 19, 14],
       "programItemsLotteried": 17,
       "spotsOffered": 140,
       "programItemsUnderMinAttendance": 3,
-      "placementsDigest": "95663e6e51f434ae"
+      "placementsDigest": "f8b8501e6d90b2a9"
     },
     {
       "assignmentTime": "2025-07-26T16:00:00Z",
       "status": "success",
-      "entrants": 194,
+      "entrants": 177,
       "placed": 69,
-      "placedByPriority": [62, 5, 2],
+      "placedByPriority": [58, 7, 4],
       "programItemsLotteried": 12,
       "spotsOffered": 75,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "c96bed37294bd475"
+      "placementsDigest": "fe3f6c20d286689e"
     },
     {
       "assignmentTime": "2025-07-26T17:00:00Z",
       "status": "success",
-      "entrants": 252,
+      "entrants": 235,
       "placed": 80,
-      "placedByPriority": [53, 14, 13],
+      "placedByPriority": [73, 5, 2],
       "programItemsLotteried": 10,
       "spotsOffered": 80,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "cd0d81171ba18def"
+      "placementsDigest": "c667b41bc77ab038"
     },
     {
       "assignmentTime": "2025-07-26T18:00:00Z",
       "status": "success",
-      "entrants": 88,
+      "entrants": 89,
       "placed": 20,
       "placedByPriority": [17, 3, 0],
       "programItemsLotteried": 5,
       "spotsOffered": 28,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "e381190b142b157d"
+      "placementsDigest": "d4d5635098b854aa"
     },
     {
       "assignmentTime": "2025-07-26T19:00:00Z",
       "status": "success",
-      "entrants": 59,
+      "entrants": 61,
       "placed": 7,
-      "placedByPriority": [6, 1, 0],
+      "placedByPriority": [7, 0, 0],
       "programItemsLotteried": 3,
       "spotsOffered": 11,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "bddf193550967625"
+      "placementsDigest": "de2ac12cf414d0a7"
     },
     {
       "assignmentTime": "2025-07-26T20:00:00Z",
       "status": "success",
-      "entrants": 49,
+      "entrants": 51,
       "placed": 6,
       "placedByPriority": [5, 1, 0],
       "programItemsLotteried": 2,
       "spotsOffered": 30,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "4fae348f8e99221a"
+      "placementsDigest": "afb8ffc972170c32"
     },
     {
       "assignmentTime": "2025-07-27T06:00:00Z",
       "status": "success",
       "entrants": 218,
       "placed": 111,
-      "placedByPriority": [80, 20, 11],
+      "placedByPriority": [67, 32, 12],
       "programItemsLotteried": 19,
       "spotsOffered": 143,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "7664b374e723e1a8"
+      "placementsDigest": "31eec2e92fa065ba"
     },
     {
       "assignmentTime": "2025-07-27T07:00:00Z",
       "status": "success",
-      "entrants": 88,
+      "entrants": 94,
       "placed": 13,
-      "placedByPriority": [12, 1, 0],
+      "placedByPriority": [10, 1, 2],
       "programItemsLotteried": 7,
       "spotsOffered": 45,
       "programItemsUnderMinAttendance": 4,
-      "placementsDigest": "5d52cb6123ca1832"
+      "placementsDigest": "40a155ca4c339777"
     },
     {
       "assignmentTime": "2025-07-27T08:00:00Z",
       "status": "success",
       "entrants": 322,
-      "placed": 123,
-      "placedByPriority": [61, 33, 29],
+      "placed": 122,
+      "placedByPriority": [71, 27, 24],
       "programItemsLotteried": 27,
       "spotsOffered": 162,
       "programItemsUnderMinAttendance": 6,
-      "placementsDigest": "6010d14ac91ca9fb"
+      "placementsDigest": "2b5ca1f1f377f117"
     },
     {
       "assignmentTime": "2025-07-27T09:00:00Z",
       "status": "success",
-      "entrants": 262,
-      "placed": 97,
-      "placedByPriority": [81, 14, 2],
+      "entrants": 265,
+      "placed": 101,
+      "placedByPriority": [79, 16, 6],
       "programItemsLotteried": 16,
       "spotsOffered": 106,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "df137fa22b8ba72e"
+      "placementsDigest": "08ccfe9ae4de839b"
     },
     {
       "assignmentTime": "2025-07-27T10:00:00Z",
       "status": "success",
-      "entrants": 116,
+      "entrants": 110,
       "placed": 53,
-      "placedByPriority": [38, 12, 3],
+      "placedByPriority": [34, 15, 4],
       "programItemsLotteried": 6,
       "spotsOffered": 53,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "4032b7cefda8dfc3"
+      "placementsDigest": "90c7059326ac65b6"
     },
     {
       "assignmentTime": "2025-07-27T11:00:00Z",
       "status": "success",
-      "entrants": 134,
+      "entrants": 130,
       "placed": 26,
-      "placedByPriority": [23, 3, 0],
+      "placedByPriority": [24, 2, 0],
       "programItemsLotteried": 5,
       "spotsOffered": 31,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "e703f23f9722d119"
+      "placementsDigest": "63755d88675d0017"
     }
   ]
 }

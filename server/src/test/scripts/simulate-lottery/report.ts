@@ -33,11 +33,26 @@ export const reportInput = (
     `  input: ${loaded.programItems.length} program items, ${loaded.usersWithLotterySignups} attendees with ${loaded.lotterySignups} lottery sign-ups`,
   );
   write(
-    `  direct sign-ups: ${loaded.directSignupsLoaded} loaded, ${loaded.directSignupsSkipped} skipped as made after their lottery, ${loaded.directSignupsDropped} dropped as over maxAttendance`,
+    `  direct sign-ups: ${loaded.directSignupsLoaded} loaded, ${loaded.directSignupsSkipped} skipped as made after their lottery`,
   );
   write(
     `  preference sets missing a middle choice: ${loaded.preferenceSetsWithHoles}`,
   );
+  if (loaded.overCapacityProgramItems.length > 0) {
+    write(
+      `  program items whose maxAttendance was lowered after they filled, loaded in full:`,
+    );
+    for (const overCapacity of loaded.overCapacityProgramItems) {
+      write(
+        `    ${overCapacity.programItemId}: ${overCapacity.held} attendees, maxAttendance now ${overCapacity.maxAttendance}`,
+      );
+    }
+  }
+  if (loaded.unexpectedlyDropped > 0) {
+    write(
+      `  WARNING: the write refused ${loaded.unexpectedlyDropped} direct sign-ups that should have fit`,
+    );
+  }
   if (configFallbacks.length > 0) {
     write(
       `  WARNING: config taken from the current event for ${configFallbacks.join(", ")}`,
