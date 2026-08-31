@@ -13,8 +13,7 @@ const friday = "2023-07-28";
 const saturday = "2023-07-29";
 const sunday = "2023-07-30";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: Partial<EventConfig> = {
+export const eventConfig: Partial<EventConfig> = {
   // Event info
   eventName: EventName.ROPECON,
   eventYear: "2023",

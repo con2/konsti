@@ -10,8 +10,7 @@ import {
 } from "shared/config/eventConfigTypes";
 import { ProgramType } from "shared/types/models/programItem";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: Partial<EventConfig> = {
+export const eventConfig: Partial<EventConfig> = {
   // Event info
   eventName: EventName.ROPECON,
   eventYear: "2022",
