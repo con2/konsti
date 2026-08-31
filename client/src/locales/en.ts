@@ -382,9 +382,9 @@ export const translationEN = {
     signupQuestionAriaLabel: "Sign-up question",
     help: {
       lotteryAlreadyRunInfo:
-        "Its starting time changed after its lottery, so it does not take part in another one.",
+        "This program item is not in another lottery because its starting time changed after its lottery.",
       notInLotteryInfo:
-        "It already has sign-ups, so it does not take part in the lottery.",
+        "This program item is not in the lottery because it already has sign-ups.",
       signupAlwaysOpenGroupMemberInfo:
         "You can sign up even though you are a group member.",
       directSignupStartsLater:

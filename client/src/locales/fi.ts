@@ -383,9 +383,9 @@ export const translationFI = {
     signupQuestionAriaLabel: "Lisätietokysymys",
     help: {
       lotteryAlreadyRunInfo:
-        "Sen alkamisaika muuttui arvonnan jälkeen, joten se ei osallistu enää arvontaan.",
+        "Tätä ohjelmanumeroa ei arvota uudelleen, koska sen alkamisaika muuttui arvonnan jälkeen.",
       notInLotteryInfo:
-        "Siihen on jo ilmoittautumisia, joten se ei osallistu arvontaan.",
+        "Tätä ohjelmanumeroa ei arvota, koska siihen on jo ilmoittautumisia.",
       signupAlwaysOpenGroupMemberInfo:
         "Voit ilmoittautua vaikka olet ryhmän jäsen.",
       directSignupStartsLater:

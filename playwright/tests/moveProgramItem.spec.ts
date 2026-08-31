@@ -326,7 +326,7 @@ test("Offer direct sign-up instead of a lottery for a program item moved after i
   const movedProgramItem = programList.itemByTitle(testProgramItem.title);
   await expect(movedProgramItem.lotterySignupButton).toBeHidden();
   await expect(movedProgramItem.container).toContainText(
-    "Its starting time changed after its lottery, so it does not take part in another one.",
+    "This program item is not in another lottery because its starting time changed after its lottery.",
   );
   // Direct sign-up opened right after its lottery and does not shut again: the new slot's own
   // schedule would not reach it until hour 3:15
@@ -339,7 +339,7 @@ test("Offer direct sign-up instead of a lottery for a program item moved after i
 
   const programItemPage = new ProgramItemPage(page);
   await expect(programItemPage.main).toContainText(
-    "Its starting time changed after its lottery, so it does not take part in another one.",
+    "This program item is not in another lottery because its starting time changed after its lottery.",
   );
   await expect(programItemPage.main).toContainText("Sign-up closes");
 });
