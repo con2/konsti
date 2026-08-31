@@ -23,6 +23,7 @@
     "stats:gen-docs": "tsx src/features/statistics/docGenerator.ts",
     "test": "yarn run -T vitest run",
     "test-assign": "NODE_ENV=development tsx src/test/scripts/testAssignment.ts",
+    "simulate-lottery": "NODE_ENV=development tsx src/test/scripts/simulate-lottery/simulateLottery.ts",
     "test:watch": "yarn run -T vitest watch",
     "type-check": "yarn run -T tsc --noEmit",
     "update-popularity": "NODE_ENV=development tsx src/test/scripts/testUpdateProgramItemPopularity.ts",
