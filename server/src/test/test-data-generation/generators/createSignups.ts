@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { groupBy } from "remeda";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -21,10 +22,18 @@ export const createDirectSignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signups: ${programItems.length} program items`);
+  // A lottery program item takes first-come sign-ups only once its lottery is behind it, so
+  // these are the leftovers after the simulated lottery - not a queue competing with it
+  const signupTargets = programItems.filter(
+    (programItem) =>
+      !isLotterySignupProgramItem(programItem) ||
+      programItem.lotteryRanForStartTime !== undefined,
+  );
+
+  logger.info(`Signups: ${signupTargets.length} program items`);
   logger.info(`Signups: ${users.length} users`);
 
-  const shuffledProgramItems = shuffleArray(programItems);
+  const shuffledProgramItems = shuffleArray(signupTargets);
 
   const programItemsByProgramType = groupBy(
     shuffledProgramItems,

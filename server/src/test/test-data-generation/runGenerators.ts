@@ -2,7 +2,10 @@ import { config } from "shared/config";
 import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { db } from "server/db/mongodb";
 import { removeDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { removeProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  removeLotteryMarks,
+  removeProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { removeUsers } from "server/features/user/userRepository";
@@ -106,23 +109,34 @@ export const runGenerators = async (
     logger.info("* Generator: Completed generate lottery signups");
   }
 
+  // Before the direct sign-ups: this simulates the lottery and records that it ran, and a
+  // lottery program item only takes first-come sign-ups once that is true of it
+  if (options.eventLog) {
+    logger.info("* Generator: Generate event log items");
+
+    // It writes the winners' sign-ups and both lottery marks, so re-simulating has to clear
+    // them - otherwise a program item is left decided by a lottery that no longer exists
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    !options.clean && (await removeDirectSignups());
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    !options.clean && (await removeLotteryMarks());
+
+    await createEventLogItems();
+
+    logger.info("* Generator: Completed generate event log items");
+  }
+
   if (options.directSignups) {
     logger.info("* Generator: Generate direct signups");
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeDirectSignups());
+    !options.clean && !options.eventLog && (await removeDirectSignups());
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeResults());
 
     await createDirectSignups();
 
     logger.info("* Generator: Completed generate direct signups");
-  }
-
-  if (options.eventLog) {
-    logger.info("* Generator: Generate event log items");
-    await createEventLogItems();
-    logger.info("* Generator: Completed generate event log items");
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions

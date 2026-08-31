@@ -346,6 +346,26 @@ export const saveLotteryRanForStartTime = async (
   }
 };
 
+// Undoes both lottery marks across the collection. Only the data generators need this: they
+// simulate a lottery and must be able to re-simulate it without dropping the program items.
+export const removeLotteryMarks = async (): Promise<
+  Result<void, MongoDbError>
+> => {
+  try {
+    await ProgramItemModel.updateMany(
+      {},
+      { $unset: { lotteryRanForStartTime: "", passedOverForLottery: "" } },
+    );
+    logger.info("MongoDB: Lottery marks removed from program items");
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error removing lottery marks", { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 export const saveProgramItemPopularity = async (
   popularityUpdates: PopularityUpdate[],
 ): Promise<Result<void, MongoDbError>> => {
