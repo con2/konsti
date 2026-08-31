@@ -493,13 +493,10 @@ may take an overlapping one. It is the lottery's own half of this that the merge
 rests on: a second placement of one attendee at a start time is read there as a correction rather
 than as a second spot ([rule 15][15]).
 
-**Nothing is said about the spot that went.** The attendee is told they won, and the lottery
-sign-up form told them before they confirmed that winning cancels what they hold at that hour
-([rule 11][11]). The removal is the offer they accepted rather than news, so a message announcing it
-would be Konsti reporting back the half of the decision they already made. Where the form said
-nothing -
-the spot was taken after the lottery sign-up, in the order [rule 11][11] records as a gap - this silence
-is the second half of that gap rather than this rule holding.
+**Nothing is said about the spot that went.** The attendee is told they won, and whichever form
+they confirmed told them that winning cancels what they hold at that hour ([rule 11][11]). The
+removal is the offer they accepted rather than news, so a message announcing it would be Konsti
+reporting back the half of the decision they already made.
 
 **The removal is the one part that can fail without failing the run.** It happens after the spots
 are saved, so a failure there costs nobody a place - it leaves an attendee holding a spot the
@@ -521,13 +518,16 @@ Konsti has no preference to honour, and guessing one means withdrawing whole gro
 member's spot. The lottery sign-up form says plainly that winning here cancels what they hold,
 which is the decision they actually get to make.
 
-**What the attendee is told depends on the order, and that is a gap rather than a decision.** The
-form shows that warning only to an attendee who enters the lottery already holding the spot. The
-other order says nothing: taking a spot at a start time they already have lottery sign-ups for is
-warned about only as far as the group goes, so the same outcome arrives unannounced, and [rule 10][10]'s
-silence afterwards rests on an offer they were never made. The warning also names a single held
-spot where several are possible and all of them go. Closing it means the direct sign-up form
-carrying its own version of the warning, over every spot at that start time.
+**Both orders are warned about.** The lottery sign-up form says it to an attendee entering the
+lottery while already holding a spot, and the direct sign-up form says it to one taking a spot at a
+start time whose lottery still lies ahead of them. Neither order arrives unannounced, which is what
+[rule 10][10]'s silence afterwards rests on. A sign-up kept as a record of a lottery that has
+already run ([rule 13][13]) is not warned about, having nothing left to take the spot away.
+
+**The lottery sign-up form still names a single held spot, and that is a gap rather than a
+decision.** It names the first spot it finds at that hour, where several are possible and all of
+them go. Closing it means naming every one of them, as the direct sign-up form already names every
+lottery sign-up at the start time.
 
 ## 12. A direct sign-up is never deleted automatically unless keeping it would be incoherent
 
@@ -740,8 +740,8 @@ what closing it would take.
   entered carrying several first preferences.
 - [Rule 9][9] - having been open is nowhere recorded, so only a program item the lottery has
   finished with keeps its direct sign-up open.
-- [Rule 11][11] - the direct sign-up form gives no warning that a lottery win will replace the spot,
-  so only one of the two orders is told.
+- [Rule 11][11] - the lottery sign-up form's warning names a single held spot where several are
+  possible.
 - [Rule 12][12] - hiding a program item removes the direct sign-ups it carries silently, and unhiding
   brings nothing back.
 - [Rule 13][13] - hiding a program item removes the lottery sign-ups it carries whatever their
