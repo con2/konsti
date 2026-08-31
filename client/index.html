@@ -15,7 +15,12 @@
     <title>Konsti</title>
   </head>
   <body>
-    <div id="main"></div>
+    <!-- Browser translation replaces the text nodes React is holding, so the
+         next commit that moves or removes one throws and the error boundary
+         takes down the whole app. The app is translated in-app instead, through
+         the language selector. This is the React root, and nothing renders
+         outside it, so the whole tree inherits it. -->
+    <div id="main" translate="no"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
