@@ -5,6 +5,7 @@ import { MongoDbError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { Result, makeSuccessResult } from "shared/utils/result";
+import { lotteryRanForProgramItem } from "shared/utils/signupTimes";
 import { isBetweenExclusive } from "shared/utils/timeComparison";
 import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import {
@@ -26,6 +27,16 @@ export const removeOverlapLotterySignups = async (
   if (!usersResult.ok) {
     return usersResult;
   }
+
+  // A sign-up whose lottery has run records that the attendee entered it, so only one still
+  // waiting for its lottery is given up for the spot just won. The mark is what says which: the
+  // sign-up window is derived from the current start time, which a move reopens.
+  const lotteriedProgramItemIds = new Set(
+    programItems
+      .filter((programItem) => lotteryRanForProgramItem(programItem))
+      .map((programItem) => programItem.programItemId),
+  );
+
   results.flatMap((result) => {
     const assignmentSignupProgramItem = programItems.find(
       (programItem) =>
@@ -53,10 +64,6 @@ export const removeOverlapLotterySignups = async (
       return [];
     }
 
-    // Both branches below pick program items out by start time alone, asking neither the sign-up
-    // window nor the lottery's mark, so a sign-up whose lottery has already run can be removed
-    // here - the design rules record it as a known gap.
-
     // Cancel all lottery sign-ups that start during the lottery direct sign-up
     if (
       config.event().removeLotterySignupsStrategy ===
@@ -69,7 +76,10 @@ export const removeOverlapLotterySignups = async (
             (programItem) =>
               programItem.programItemId === lotterySignup.programItemId,
           );
-          if (!foundProgramItem) {
+          if (
+            !foundProgramItem ||
+            lotteriedProgramItemIds.has(foundProgramItem.programItemId)
+          ) {
             return false;
           }
           const startsDuring = isBetweenExclusive(
@@ -103,6 +113,8 @@ export const removeOverlapLotterySignups = async (
           signedUser.lotterySignups,
           programItems,
           new Date(assignmentTime),
+        ).filter(
+          (programItemId) => !lotteriedProgramItemIds.has(programItemId),
         );
 
       // Only update users with upcoming lottery sign-ups

@@ -122,6 +122,12 @@ export const hasLotteryAlreadyRun = (programItem: ProgramItem): boolean =>
   programItem.lotteryRanForStartTime !== undefined &&
   !isSameTime(programItem.startTime, programItem.lotteryRanForStartTime);
 
+// A lottery ran for this program item, wherever it now sits. Broader than the predicate above,
+// which answers only for one that has moved since. The automatic removals need this one: the
+// sign-up window is derived from the current start time, so a move to a later slot reopens it.
+export const lotteryRanForProgramItem = (programItem: ProgramItem): boolean =>
+  programItem.lotteryRanForStartTime !== undefined;
+
 // No lottery will take this program item: it was passed over for holding sign-ups, or it moved
 // onto a slot after its own lottery ran. Both are recorded, so neither answer expires.
 export const willNotBeLotteried = (programItem: ProgramItem): boolean =>

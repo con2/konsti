@@ -625,23 +625,16 @@ a hidden program item is still in the programme, so the question can be asked he
 not. Unhiding brings nothing back, and the dump the event leaves behind is missing exactly the rows
 this rule exists to keep. [Rule 12][12] records the same gap on the direct sign-up side.
 
-**The line is read off where the program item sits now, and a reschedule moves it - a gap rather
-than a decision.** `getLotterySignupEnded` derives the window from the program item's current start
-time, so one lotteried at an early slot and then moved to a later one reads as waiting for a lottery
-that is behind it: the move cancels the sign-ups it carries and tells their holders so, permanently
-under [rule 14][14]. A move is the only one of the changes above that can reopen a closed window,
-the rest leaving the time it is derived from alone. Nothing needs working out to close the gap,
-because the answer is already stored - `lotteryRanForStartTime`, which [rule 6][6] reads through a
-predicate for this exact "moved since its lottery" case. Every automatic removal would have to ask that as well as the
-window.
+**The window is never asked on its own.** `getLotterySignupEnded` derives it from the program item's
+current start time, so one lotteried at an early slot and then moved to a later one would read as
+waiting for a lottery that is behind it. A move is the only one of the changes above that can reopen
+a closed window, the rest leaving the time it is derived from alone. So each automatic removal asks
+the lottery's mark beside the window: `lotteryRanForStartTime` records that a run decided the
+program item, and is left out of the import's update so a programme change cannot clear it.
 
-**The run's own removal asks neither - a gap rather than a decision.** The sign-ups a run takes from
-the attendees it places are picked by start time alone, consulting neither the window nor the mark.
-Under the "all upcoming" strategy the losing sign-ups of the run itself are still safe, since a
-program item at the start time just lotteried does not start after it, and only a rescheduled item
-is reached. Under "overlap" a batched sub-session is reached as well: its own hour can fall inside
-the program item just won while its lottery ran with the batch ([rule 8][8]), so a sign-up decided
-minutes earlier in the same run is removed. Both close the same way as the gap above.
+The run's own removal goes by the mark alone. The sign-ups it takes from the attendees it places are
+picked by start time, so a program item another run has already decided is what it has to recognize,
+and the mark is what says so.
 
 ## 14. An event log item is never deleted, and what it says never changes
 
@@ -753,10 +746,6 @@ what closing it would take.
   brings nothing back.
 - [Rule 13][13] - hiding a program item removes the lottery sign-ups it carries whatever their
   lottery has done.
-- [Rule 13][13] - the window is derived from the program item's current start time, so a reschedule
-  reopens a closed one.
-- [Rule 13][13] - the run's own cleanup picks sign-ups by start time, asking neither the window nor
-  the mark.
 - [Rule 14][14] - a retried run sends a second rejection to everyone the first attempt turned down.
 
 [1]: #1-an-always-open-program-item-sits-outside-the-lottery-entirely

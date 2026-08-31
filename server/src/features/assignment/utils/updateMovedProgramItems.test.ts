@@ -12,6 +12,7 @@ import { updateMovedProgramItems } from "server/features/assignment/utils/update
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import {
   findProgramItems,
+  saveLotteryRanForStartTime,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
@@ -226,6 +227,38 @@ test("should keep lottery sign-ups whose lottery has already run when the progra
   await updateMovedProgramItems(updatedProgramItems, insertedProgramItems);
 
   // The clock is past both lotteries, so the move takes nothing away and says nothing
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(updatedUser?.lotterySignups).toHaveLength(2);
+  expect(updatedUser?.eventLogItems).toEqual([]);
+});
+
+test("should keep lottery sign-ups of a lotteried program item moved to a later slot", async () => {
+  // Moving it forward makes the sign-up window read as open again, so only the lottery's mark
+  // says the lottery is behind this program item
+  const newStartTime = addHours(
+    new Date(testProgramItem.startTime),
+    3,
+  ).toISOString();
+  await withLotteryStillAhead({ ...testProgramItem, startTime: newStartTime });
+
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveLotteryRanForStartTime([testProgramItem]);
+  const insertedProgramItems = unsafelyUnwrap(await findProgramItems());
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+
+  await ProgramItemModel.updateOne(
+    { programItemId: testProgramItem.programItemId },
+    { startTime: newStartTime },
+  );
+
+  const updatedProgramItems = unsafelyUnwrap(await findProgramItems());
+  await updateMovedProgramItems(updatedProgramItems, insertedProgramItems);
+
   const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
   expect(updatedUser?.lotterySignups).toHaveLength(2);
   expect(updatedUser?.eventLogItems).toEqual([]);
