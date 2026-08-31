@@ -61,11 +61,13 @@ const Container = styled.div`
 const StyledRaisedCard = styled(RaisedCard)`
   margin: 0;
 
-  p:first-of-type {
+  /* The content is Markdown, so the leading and trailing elements vary and have
+     no component of their own to carry a margin */
+  > :first-child {
     margin-top: 0;
   }
 
-  p:last-of-type {
+  > :last-child {
     margin-bottom: 0;
   }
 `;
