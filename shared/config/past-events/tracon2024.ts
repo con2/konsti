@@ -14,8 +14,7 @@ const friday = "2024-09-06";
 // const saturday = "2024-09-07";
 // const sunday = "2024-09-07";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const eventConfig: Partial<EventConfig> = {
+export const eventConfig: Partial<EventConfig> = {
   // Event info
   eventName: EventName.TRACON,
   eventYear: "2024",
