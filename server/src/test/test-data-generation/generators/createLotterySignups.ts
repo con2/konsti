@@ -3,12 +3,18 @@ import { config } from "shared/config";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUsers } from "server/features/user/userRepository";
+import { getLotteryRunTime } from "server/test/test-data-generation/lotteryRunTime";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
+
+// How many of the event's lotteries the generated attendees enter. Keeps the seeded data to a
+// readable size instead of every attendee holding sign-ups across the whole event.
+const LOTTERIED_TIMES_COUNT = 4;
 
 export const createLotterySignups = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
@@ -47,24 +53,23 @@ const getRandomLotterySignup = (
   const activeProgramItems = programItems
     .filter((programItem) => programItem.signupType === SignupType.KONSTI)
     .filter((programItem) => isLotterySignupProgramItem(programItem))
+    // The slots at the start of the event have no room for a lottery sign-up window, so the
+    // predicate answers this rather than the generated start times being counted off
+    .filter((programItem) => !tooEarlyForLotterySignup(programItem))
     .filter(
       (programItem) => !noKonstiSignupIds.includes(programItem.programItemId),
     );
 
-  const startTimes = activeProgramItems.map((activeProgramItem) =>
-    new Date(activeProgramItem.startTime).toISOString(),
-  );
-  const uniqueTimes = [...new Set(startTimes)];
-  // Three first times are direct sign-up only
-  const firstFourTimes = uniqueTimes.slice(3, 7);
+  const uniqueTimes = [
+    ...new Set(activeProgramItems.map(getLotteryRunTime)),
+  ].slice(0, LOTTERIED_TIMES_COUNT);
 
-  // Select random program items for each start time
-  return firstFourTimes.flatMap((startTime) => {
-    logger.debug(`Generate lottery signups for time ${startTime}`);
+  // Select random program items for each lottery
+  return uniqueTimes.flatMap((lotteryRunTime) => {
+    logger.debug(`Generate lottery signups for time ${lotteryRunTime}`);
     const programItemsForTime = activeProgramItems.filter(
       (activeProgramItem) =>
-        new Date(activeProgramItem.startTime).toISOString() ===
-        new Date(startTime).toISOString(),
+        getLotteryRunTime(activeProgramItem) === lotteryRunTime,
     );
 
     const numberOfSignups = Math.min(programItemsForTime.length, 3);
