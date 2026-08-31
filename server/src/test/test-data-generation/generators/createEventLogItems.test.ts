@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
+import { subHours } from "date-fns";
 import mongoose from "mongoose";
-import { afterEach, beforeEach, expect, test } from "vitest";
+import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   testProgramItem,
@@ -12,7 +13,10 @@ import {
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { saveProgramItems } from "server/features/program-item/programItemRepository";
+import {
+  findProgramItems,
+  saveProgramItems,
+} from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
@@ -113,6 +117,50 @@ test("a full program item produces a noAssignment entry instead of an assignment
   const eventLogItems = user?.eventLogItems ?? [];
   expect(eventLogItems).toHaveLength(1);
   expect(eventLogItems[0].action).toEqual(EventLogAction.NO_ASSIGNMENT);
+});
+
+test("records the lottery it simulates, so a later programme import does not pass the program items over", async () => {
+  // Before direct sign-up opens, which is the window in which an import passes an undecided
+  // program item over for holding sign-ups
+  vi.setSystemTime(subHours(new Date(testProgramItem.startTime), 3));
+
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: mockLotterySignups,
+  });
+  // A spot the import can pass the program item over for, whichever way the simulated
+  // lottery's coin flip lands
+  await saveDirectSignup({
+    username: mockUser2.username,
+    directSignupProgramItemId: testProgramItem.programItemId,
+    signedToStartTime: testProgramItem.startTime,
+    signupTime: testProgramItem.startTime,
+    message: "",
+    priority: DIRECT_SIGNUP_PRIORITY,
+  });
+
+  await createEventLogItems();
+
+  // Every program item whose lottery was simulated is marked, not only the ones that took a
+  // winner - the real run marks the whole start time
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  expect(
+    programItems.filter(
+      (programItem) => programItem.lotteryRanForStartTime === undefined,
+    ),
+  ).toEqual([]);
+
+  await saveProgramItems([testProgramItem, testProgramItem2]);
+
+  const programItemsAfterImport = unsafelyUnwrap(await findProgramItems());
+  expect(
+    programItemsAfterImport.filter(
+      (programItem) => programItem.passedOverForLottery === true,
+    ),
+  ).toEqual([]);
 });
 
 test("users without lottery sign-ups get no assignment event log entries", async () => {
