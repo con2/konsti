@@ -51,7 +51,7 @@ A plain-language glossary of Konsti terms.
   - **PADG** - a preference-based algorithm.
   - **Random** - a randomized algorithm.
   - **PADG + Random** - runs both and keeps whichever result scores better.
-- **First sign-up bonus** - a boost given to users (or groups) who haven't yet been assigned to any program item at the event, with an extra boost on top for those who lost earlier lotteries. Helps give everyone a fair shot across the event.
+- **First sign-up bonus** - a boost given to users (or groups) who hold no spot in a lottery program item and haven't been assigned one earlier at the event, with an extra boost on top for those who lost earlier lotteries. A spot spends the bonus however it was got, and giving it up later doesn't return it. Helps give everyone a fair shot across the event.
 
 ## Groups
 

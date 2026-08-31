@@ -272,7 +272,10 @@
       "program-type": ["boardgame"],
       "guidegrouping": ["games"]
     },
-    "cachedAnnotations": { "konsti:isPlaceholder": true },
+    "cachedAnnotations": {
+      "konsti:isPlaceholder": true,
+      "ropecon:isRevolvingDoor": true
+    },
     "isCancelled": false,
     "scheduleItems": [
       {
@@ -286,7 +289,8 @@
         "cachedAnnotations": {
           "internal:freeformLocation": "Demopöytä 2",
           "internal:subtitle": "lauantai",
-          "konsti:isPlaceholder": true
+          "konsti:isPlaceholder": true,
+          "ropecon:isRevolvingDoor": true
         }
       }
     ]

@@ -128,17 +128,18 @@ Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and rando
   Both are skips rather than run-level failures, so one slipped program item costs its own lottery
   and not the whole hour's. `getPassedOverProgramItems` normally gets to the second case first
   (see below), leaving this as the backstop.
-- Per run, `storeAssignment` refuses once direct sign-up has opened for the start time requested
-  (`directSignupAlreadyOpen`). It lives there rather than in `runAssignment` because only a manual
-  run can be late - the cron derives its start time from the current time - and because every item
-  in a run shares a start time, making lateness a property of the run. Note this re-adds the guard
-  reverted in July 2026; the reason for that revert was that the re-run logic was about to be
-  reworked, which is what this is.
+- Per run, `storeAssignment` refuses a run that misses the gap between lottery sign-up closing and
+  direct sign-up opening, on either side (`lotterySignupStillOpen`, `directSignupAlreadyOpen`). It
+  lives there rather than in `runAssignment` because only a manual run can be off the mark - the
+  cron derives its start time from the current time - and because every item in a run shares a
+  start time, making both verdicts properties of the run. Note this re-adds the guard reverted in
+  July 2026; the reason for that revert was that the re-run logic was about to be reworked, which
+  is what this is.
 
 **The rules the lottery is built around are written down in
 [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md)** - a group lands in one
 program item or none, direct sign-ups are never deleted automatically without cause, a lottery win
-overwrites a previous direct sign-up, holding a direct sign-up doesn't keep an attendee out of the
+overwrites a spot already held at that hour, holding a direct sign-up doesn't keep an attendee out of the
 lottery, a start time is lotteried once, and a program item is empty when it is lotteried. Read
 those before changing anything below; this section is how they are implemented, not why they hold.
 
@@ -147,14 +148,16 @@ those before changing anything below; this section is how they are implemented, 
 replaced, then `saveLotteryRanForStartTime` closes the start time, then the notifications and the
 stored snapshot. Everything after the `bulkWrite` logs its failure instead of returning it — the
 spots are safe by then, and aborting would leave a decided start time unmarked and its winners
-unnotified. A run that returns an error therefore wrote nothing and is safe to run again.
+unnotified. A run that returns an error therefore failed at or before the `bulkWrite` — and since
+that is one update per program item, it may still have placed the attendees of the ones it reached,
+which the next run skips rather than redoes.
 
 **The removal comes after the write, and only for the spots that landed.** `removeReplacedSignups`
 works from the final results rather than the proposed ones, so a sign-up is never given up for a
-replacement that then doesn't land — leaving the attendee with neither, which rule 2 calls the
+replacement that then doesn't land — leaving the attendee with neither, which rule 12 calls the
 worst outcome available. It skips the program item they won, because the write puts their new spot
 where their old entry was rather than beside it. A program item being lotteried holds no spots at
-all (rule 8), so a winner is never already in one and that rewrite is defence in depth — it is also
+all (rule 7), so a winner is never already in one and that rewrite is defence in depth — it is also
 why the write counts only the newcomers against `maxAttendance`: an attendee already in the program
 item keeps their place either way, so charging them for it would drop somebody who fits.
 
@@ -178,7 +181,9 @@ sign-ups.
 An attendee may hold a direct sign-up and a lottery sign-up for the same start time, in either
 order: neither `storeLotterySignup` nor `storeDirectSignup` cancels the other. If the run places
 them, the spot they win replaces the one they held; if not, what they signed up for themselves
-stands. `LotterySignupForm` says so before they confirm.
+stands. `LotterySignupForm` says so before they confirm, but only in that order and only about the
+first spot it finds at that hour; `DirectSignupForm` has no counterpart, which rule 11 records as a
+known gap.
 
 One route is left open on purpose: rescheduling a program item someone holds a spot in onto a slot
 they have lottery sign-ups for. `updateMovedProgramItems` cancels the moved item's own lottery
@@ -193,7 +198,9 @@ attendees already in it leaves it over its new limit. Neither self-corrects, and
 the remedy - the ops answer to a lottery that went wrong, once its direct sign-up phase has opened,
 is the admin message plus direct sign-up. The clock gate above is what holds admins to that.
 
-**The assignment's event log is append-only** - see "an event log item is never deleted, and what it says never changes" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md). Nothing here removes or rewrites an item, and nothing needs to: `addAssignmentNotifications` runs after the spots are saved for a start time that is normally decided exactly once, so each attendee hears about it once. The de-duplication and follow-up notices that existed while re-runs did went with them. One case is left over: on the retry rule 7 permits, the winners are protected because the run reads their spots back off disk, but a rejection leaves no such trace, so everyone the first attempt turned down is told a second time. See "an event log item is never deleted" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md) for what closing it would take.
+**The assignment's event log is append-only** - see "an event log item is never deleted, and what it says never changes" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md). Nothing here removes or rewrites an item, and nothing needs to: `addAssignmentNotifications` runs after the spots are saved for a start time that is normally decided exactly once, so each attendee hears about it once. The de-duplication and follow-up notices that existed while re-runs did went with them. One case is left over: on the retry rule 6 permits, the winners are protected because the run reads their spots back off disk, but a rejection leaves no such trace, so everyone the first attempt turned down is told a second time. See "an event log item is never deleted" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md) for what closing it would take.
+
+Two mechanics hold the append-only half. `addEventLogItems` and the `isSeen` update are the only writes that touch `eventLogItems` at all, so **an update that saves a whole user document must leave the field out** — `updateUsersByUsername` lists five fields for exactly this reason, and its callers hand it a `User` they read moments earlier. Writing that back would silently drop any item appended in between, with no error and nothing in the log. And **`$addToSet` is not a duplicate guard here**: each item carries its own `createdAt` and Mongoose gives every subdocument an `_id`, so it behaves as `$push`. Nothing depends on it de-duplicating (the retry above assumes it doesn't), but don't read it as protection.
 
 **Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, sign-up cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
 
@@ -201,27 +208,31 @@ The fixtures and both algorithms draw from randomness (faker, `n()`, and the PAD
 
 ## Program Item Changes That Take It Out Of The Lottery
 
-`saveProgramItems` calls `getPassedOverProgramItems` **before** its bulk write. A lottery program item that already holds direct sign-ups is not going to be lotteried (see "a program item is empty when it is lotteried" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md)), so `passedOverForLottery` is folded into that same `updateOne` — the item is never stored as a lottery item without the mark, so there is no window in which it can be offered as one. `lotteryRanForStartTime` is left alone here: no lottery ran, and the two are different facts. `removePassedOverLotterySignups` then cancels any lottery sign-ups it carries with `PROGRAM_ITEM_NO_LOTTERY_ANYMORE`, **unless their lottery has already run** (see "a lottery sign-up is never deleted once its lottery has run" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md)). In practice there is nothing to cancel either way: holding direct sign-ups is what passes a program item over, and an item that has those has its lottery behind it, so this is defence in depth rather than a path that normally fires. Any sign-up it does carry can only come from an earlier spell as a lottery program item, since the marked item never accepted one. Marking rather than re-reading the sign-up count is what keeps the decision after those sign-ups are cancelled; it only happens while the item's own lottery is still ahead, since marking one whose sign-up window has shut changes nothing observable. Reached only through a program item becoming a lottery one after taking sign-ups as something else — direct sign-up for a lottery program item opens after its lottery, so it cannot happen the ordinary way. Such an item keeps direct sign-up open from that moment (rule 10), rather than closing it against the two-phase schedule it has just landed on.
+`saveProgramItems` calls `getPassedOverProgramItems` **before** its bulk write. A lottery program item that already holds direct sign-ups is not going to be lotteried (see "a program item is empty when it is lotteried" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md)), so `passedOverForLottery` is folded into that same `updateOne` — the item is never stored as a lottery item without the mark, so there is no window in which it can be offered as one. `lotteryRanForStartTime` is left alone here: no lottery ran, and the two are different facts. `removePassedOverLotterySignups` then cancels any lottery sign-ups it carries with `PROGRAM_ITEM_NO_LOTTERY_ANYMORE`, **unless their lottery has already run** (see "a lottery sign-up is never deleted once its lottery has run" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md)). In practice there is nothing to cancel either way: holding direct sign-ups is what passes a program item over, and an item that has those has its lottery behind it, so this is defence in depth rather than a path that normally fires. Any sign-up it does carry can only come from an earlier spell as a lottery program item, since the marked item never accepted one. Marking rather than re-reading the sign-up count is what keeps the decision after those sign-ups are cancelled; it only happens while `getDirectSignupPhaseStarted` is still false for the item, since one already offering direct sign-up on the schedule gains nothing from the mark. That line is drawn at direct sign-up opening rather than at the lottery closing on purpose, so an item that becomes a lottery one inside the phase gap is still marked and keeps its open sign-up instead of having it shut for the rest of the gap. Reached only through a program item becoming a lottery one after taking sign-ups as something else — direct sign-up for a lottery program item opens after its lottery, so it cannot happen the ordinary way. Such an item keeps direct sign-up open from that moment (rule 9), rather than closing it against the two-phase schedule it has just landed on.
 
 ## Program Item Cancellation Types
 
-A program item can effectively "go away" in four distinct ways; each has different data-cleanup semantics:
+A program item can effectively "go away" in five distinct ways; each has different data-cleanup semantics:
 
 1. **Cancelled** — `state: "cancelled"` in DB. Item stays visible (so users know it was cancelled).
 2. **Deleted** — the program item document is removed from the DB entirely. All related records (lottery sign-ups, favorites, direct sign-ups, etc.) should also be removed.
 3. **Sign-up type changed** — item stays in DB with `state: "accepted"`, but `signupType` is no longer `KONSTI` (e.g. moved to `OTHER`). No new Konsti sign-ups possible.
 4. **Program type changed to non-lottery** — item stays in DB with `state: "accepted"` and `signupType: "konsti"`, but `programType` is no longer in `twoPhaseSignupProgramTypes` (e.g. changed from `TABLETOP_RPG` to `OTHER`). Lottery is no longer meaningful for this item; use `isLotterySignupProgramItem` to detect this state.
+5. **Hidden** — the program item's ID is in `Settings.hiddenProgramItemIds`. Item stays in DB unchanged but disappears from every attendee-facing view, so a spot in one can no longer be seen or given up. Unlike the four above this is an admin settings change, not a programme import.
 
-Cleanup rules (admin-import path, `notify: true`):
+Cleanup rules (admin-import path, `notify: true`; hidden is the settings path, see below):
 
-| Case               | Lottery sign-up                                            | Direct sign-up   | Favorite        |
-| ------------------ | ---------------------------------------------------------- | ---------------- | --------------- |
-| Cancelled          | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep            |
-| Deleted            | Remove + notify                                            | Remove + notify  | Remove + notify |
-| SignupType change  | Preserve if lottery already ran, otherwise remove + notify | Remove + notify  | Keep            |
-| ProgramType change | Preserve if lottery already ran, otherwise remove + notify | Keep (no notify) | Keep            |
+| Case               | Lottery sign-up                                            | Direct sign-up    | Favorite          |
+| ------------------ | ---------------------------------------------------------- | ----------------- | ----------------- |
+| Cancelled          | Preserve if lottery already ran, otherwise remove + notify | Remove + notify   | Keep              |
+| Deleted            | Remove + notify                                            | Remove + notify   | Remove + notify   |
+| SignupType change  | Preserve if lottery already ran, otherwise remove + notify | Remove + notify   | Keep              |
+| ProgramType change | Preserve if lottery already ran, otherwise remove + notify | Keep (no notify)  | Keep              |
+| Hidden             | Remove, no notify, no lottery-run gate                     | Remove, no notify | Remove, no notify |
 
-Lottery sign-up cleanup lives in `removeCancelledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `getLotterySignupEnded`, the shared predicate every automatic removal asks - see "a lottery sign-up is never deleted once its lottery has run" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md). A **deleted** program item is the one case that cannot be asked, since there is no start time left to derive the answer from, so its sign-ups always go. **Because those sign-ups are preserved, the assignment has to exclude cancelled program items itself** - `isAssignableProgramItem` in `prepareAssignmentParams` requires `State.ACCEPTED`, without which a re-run would place attendees into a program item that isn't happening. Direct sign-up cleanup lives in `handleCancelledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct sign-ups for programType-only changes because the item still exists and still uses Konsti sign-up (direct sign-up remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct sign-up for the same item, so there's no double notification.
+**Hiding is the odd one out on both counts.** It runs from `removeHiddenProgramItemsFromUsers` (`server/src/features/settings/utils/`) on every `POST` to the hidden-items setting, not from `saveProgramItems`, and it is the only cleanup path that removes records without writing an event log item or queueing an email — see "a direct sign-up is never deleted automatically" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md), which records the silence as a known gap. It also removes lottery sign-ups without asking `getLotterySignupEnded`, which is the one place that does not hold the preservation rule the other four do. Unhiding restores nothing: the records are gone.
+
+Lottery sign-up cleanup lives in `removeCancelledDeletedProgramItemsFromUsers` (`server/src/features/assignment/utils/removeInvalidProgramItemsFromUsers.ts`); preservation is gated on `getLotterySignupEnded`, which the move and pass-over cleanups ask too - see "a lottery sign-up is never deleted once its lottery has run" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md), and note the two gaps it records: the predicate derives its window from the program item's **current** start time, so a reschedule onto a later slot reopens it, and `removeOverlapLotterySignups` (the run's own cleanup, driven by `removeLotterySignupsStrategy`) picks by start time without asking it at all. `lotteryRanForStartTime`, via `hasLotteryAlreadyRun`, is what would answer correctly in both. A **deleted** program item is the one case that cannot be asked, since there is no start time left to derive the answer from, so its sign-ups always go. **Because those sign-ups are preserved, the assignment has to exclude cancelled program items itself** - `isAssignableProgramItem` in `prepareAssignmentParams` requires `State.ACCEPTED`, without which a re-run would place attendees into a program item that isn't happening. Direct sign-up cleanup lives in `handleCancelledDeletedProgramItems` (`server/src/features/program-item/programItemUtils.ts`); it does not touch direct sign-ups for programType-only changes because the item still exists and still uses Konsti sign-up (direct sign-up remains valid whether the lottery has run or not). The lottery-signup path deduplicates event log entries when a user has both a lottery and a direct sign-up for the same item, so there's no double notification.
 
 Each case emits its own event log action so the user sees a case-specific message: **Cancelled** uses `PROGRAM_ITEM_CANCELLED`, **Deleted** uses `PROGRAM_ITEM_DELETED`, **SignupType change** uses `PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE`, and **ProgramType change** uses `PROGRAM_ITEM_NO_LOTTERY_ANYMORE` (enum in `shared/types/models/eventLog.ts`, rendered client-side by the matching `EventLogProgramItem*` components and `eventLogActions.*` locale keys). The lottery path picks the action via the `getCancellationAction` classifier; the direct-signup path routes each bucket through `notifyUsersWithDirectSignups` with the matching action.
 

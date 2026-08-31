@@ -2,16 +2,16 @@
 
 ## English
 
-- [Terminology](terminology.md) — Canonical glossary of domain terms
+- [Terminology](terminology.md) - Canonical glossary of domain terms
 - [Lottery Design Rules](en/lottery-design-rules.md) - The rules the lottery is built around, and what follows from them
-- [Datafiles Guide](en/datafiles-guide.md) — How to read and use the database dump files for statistics
-- [Statistics](statistics.md) — Aggregated statistics derived from past-event database dumps
-- [Adding New Domains](en/adding-new-domains.md) — Steps for adding a new konsti.example.com domain
-- [Style Guide](en/style-guide.md) — Logos, banners, and color palette
+- [Datafiles Guide](en/datafiles-guide.md) - How to read and use the database dump files for statistics
+- [Statistics](statistics.md) - Aggregated statistics derived from past-event database dumps
+- [Adding New Domains](en/adding-new-domains.md) - Steps for adding a new konsti.example.com domain
+- [Style Guide](en/style-guide.md) - Logos, banners, and color palette
 
 ## Suomeksi
 
-- [Käyttöönotto tapahtumassa](fi/kayttoonotto-tapahtumassa.md) — Muistilista Konstin käyttöönotosta tapahtumassa
-- [Konsti-koulutus](fi/konsti-koulutus.md) — Koulutusmateriaalit ja mainostekstit
-- [Konsti-tilastoja Tracon 2025](fi/konsti-tilastoja-tracon2025.md) — Tilastoja Tracon 2025 -tapahtumasta
-- [Tapahtumien kontaktihenkilöt](fi/tapahtumien-kontaktit.md) — Eri tapahtumien kontaktihenkilöt, jotka liittyvät Konstin käyttöön
+- [Käyttöönotto tapahtumassa](fi/kayttoonotto-tapahtumassa.md) - Muistilista Konstin käyttöönotosta tapahtumassa
+- [Konsti-koulutus](fi/konsti-koulutus.md) - Koulutusmateriaalit ja mainostekstit
+- [Konsti-tilastoja Tracon 2025](fi/konsti-tilastoja-tracon2025.md) - Tilastoja Tracon 2025 -tapahtumasta
+- [Tapahtumien kontaktihenkilöt](fi/tapahtumien-kontaktit.md) - Eri tapahtumien kontaktihenkilöt, jotka liittyvät Konstin käyttöön

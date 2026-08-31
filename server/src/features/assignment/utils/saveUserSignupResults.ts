@@ -21,8 +21,8 @@ interface SaveUserSignupResultsParams {
 }
 
 // The one write in a lottery run that anybody depends on: everything after it is bookkeeping
-// and messages. Its bulk write either lands or it doesn't, so a run that fails before this
-// point placed nobody and can be run again.
+// and messages. One update per program item, so a failure part way through leaves the ones it
+// reached whole and the rest untouched, and the next run skips whatever landed.
 export const saveUserSignupResults = async ({
   assignmentTime,
   results,
