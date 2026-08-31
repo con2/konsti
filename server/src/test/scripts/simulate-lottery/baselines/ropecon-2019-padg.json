@@ -1,0 +1,267 @@
+{
+  "event": "ropecon/2019",
+  "algorithm": "padg",
+  "totals": {
+    "runs": 23,
+    "entrants": 782,
+    "placed": 631,
+    "placedByPriority": [542, 69, 20],
+    "spotsOffered": 1047,
+    "programItemsUnderMinAttendance": 50
+  },
+  "runs": [
+    {
+      "assignmentTime": "2019-07-26T14:00:00.000Z",
+      "status": "success",
+      "entrants": 62,
+      "placed": 36,
+      "placedByPriority": [33, 2, 1],
+      "programItemsLotteried": 9,
+      "spotsOffered": 47,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "fe517fb0f27720cf"
+    },
+    {
+      "assignmentTime": "2019-07-26T15:00:00.000Z",
+      "status": "success",
+      "entrants": 71,
+      "placed": 54,
+      "placedByPriority": [48, 6, 0],
+      "programItemsLotteried": 11,
+      "spotsOffered": 62,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "5a27f05c9f367103"
+    },
+    {
+      "assignmentTime": "2019-07-26T16:00:00.000Z",
+      "status": "success",
+      "entrants": 79,
+      "placed": 55,
+      "placedByPriority": [43, 6, 6],
+      "programItemsLotteried": 11,
+      "spotsOffered": 62,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "14ce3df6af7c9e5a"
+    },
+    {
+      "assignmentTime": "2019-07-26T17:00:00.000Z",
+      "status": "success",
+      "entrants": 50,
+      "placed": 37,
+      "placedByPriority": [34, 2, 1],
+      "programItemsLotteried": 9,
+      "spotsOffered": 48,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "0180eb4d77717dfc"
+    },
+    {
+      "assignmentTime": "2019-07-26T18:00:00.000Z",
+      "status": "success",
+      "entrants": 54,
+      "placed": 49,
+      "placedByPriority": [44, 2, 3],
+      "programItemsLotteried": 11,
+      "spotsOffered": 54,
+      "programItemsUnderMinAttendance": 0,
+      "placementsDigest": "47b336d27b735783"
+    },
+    {
+      "assignmentTime": "2019-07-26T19:00:00.000Z",
+      "status": "success",
+      "entrants": 21,
+      "placed": 17,
+      "placedByPriority": [17, 0, 0],
+      "programItemsLotteried": 5,
+      "spotsOffered": 26,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "fd7ed57a0a5f9b61"
+    },
+    {
+      "assignmentTime": "2019-07-27T07:00:00.000Z",
+      "status": "success",
+      "entrants": 7,
+      "placed": 4,
+      "placedByPriority": [4, 0, 0],
+      "programItemsLotteried": 4,
+      "spotsOffered": 19,
+      "programItemsUnderMinAttendance": 3,
+      "placementsDigest": "5cfa6fee132b4e91"
+    },
+    {
+      "assignmentTime": "2019-07-27T08:00:00.000Z",
+      "status": "success",
+      "entrants": 16,
+      "placed": 18,
+      "placedByPriority": [17, 1, 0],
+      "programItemsLotteried": 6,
+      "spotsOffered": 31,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "6e951d6f5844527b"
+    },
+    {
+      "assignmentTime": "2019-07-27T09:00:00.000Z",
+      "status": "success",
+      "entrants": 19,
+      "placed": 18,
+      "placedByPriority": [12, 1, 5],
+      "programItemsLotteried": 7,
+      "spotsOffered": 38,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "82233df3486966eb"
+    },
+    {
+      "assignmentTime": "2019-07-27T10:00:00.000Z",
+      "status": "success",
+      "entrants": 39,
+      "placed": 30,
+      "placedByPriority": [29, 1, 0],
+      "programItemsLotteried": 10,
+      "spotsOffered": 57,
+      "programItemsUnderMinAttendance": 4,
+      "placementsDigest": "967213e8d51646f1"
+    },
+    {
+      "assignmentTime": "2019-07-27T11:00:00.000Z",
+      "status": "success",
+      "entrants": 53,
+      "placed": 45,
+      "placedByPriority": [32, 11, 2],
+      "programItemsLotteried": 10,
+      "spotsOffered": 59,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "e79f717cac0825a8"
+    },
+    {
+      "assignmentTime": "2019-07-27T12:00:00.000Z",
+      "status": "success",
+      "entrants": 33,
+      "placed": 27,
+      "placedByPriority": [27, 0, 0],
+      "programItemsLotteried": 9,
+      "spotsOffered": 46,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "34b66fb7ed2ef6a4"
+    },
+    {
+      "assignmentTime": "2019-07-27T13:00:00.000Z",
+      "status": "success",
+      "entrants": 42,
+      "placed": 28,
+      "placedByPriority": [23, 5, 0],
+      "programItemsLotteried": 9,
+      "spotsOffered": 42,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "33766089906fe00e"
+    },
+    {
+      "assignmentTime": "2019-07-27T14:00:00.000Z",
+      "status": "success",
+      "entrants": 14,
+      "placed": 16,
+      "placedByPriority": [15, 1, 0],
+      "programItemsLotteried": 7,
+      "spotsOffered": 38,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "ed36f1e7e0f1b8db"
+    },
+    {
+      "assignmentTime": "2019-07-27T15:00:00.000Z",
+      "status": "success",
+      "entrants": 29,
+      "placed": 28,
+      "placedByPriority": [27, 0, 1],
+      "programItemsLotteried": 9,
+      "spotsOffered": 51,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "3179b8be12b8e171"
+    },
+    {
+      "assignmentTime": "2019-07-27T16:00:00.000Z",
+      "status": "success",
+      "entrants": 52,
+      "placed": 31,
+      "placedByPriority": [22, 9, 0],
+      "programItemsLotteried": 9,
+      "spotsOffered": 49,
+      "programItemsUnderMinAttendance": 3,
+      "placementsDigest": "de333be9e6f240c3"
+    },
+    {
+      "assignmentTime": "2019-07-27T17:00:00.000Z",
+      "status": "success",
+      "entrants": 33,
+      "placed": 32,
+      "placedByPriority": [24, 7, 1],
+      "programItemsLotteried": 8,
+      "spotsOffered": 43,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "dad67842c3251a77"
+    },
+    {
+      "assignmentTime": "2019-07-27T18:00:00.000Z",
+      "status": "success",
+      "entrants": 20,
+      "placed": 23,
+      "placedByPriority": [20, 3, 0],
+      "programItemsLotteried": 7,
+      "spotsOffered": 37,
+      "programItemsUnderMinAttendance": 1,
+      "placementsDigest": "467b64da6ec2c18a"
+    },
+    {
+      "assignmentTime": "2019-07-27T19:00:00.000Z",
+      "status": "success",
+      "entrants": 9,
+      "placed": 13,
+      "placedByPriority": [10, 3, 0],
+      "programItemsLotteried": 6,
+      "spotsOffered": 28,
+      "programItemsUnderMinAttendance": 2,
+      "placementsDigest": "fae8bd236fe101c8"
+    },
+    {
+      "assignmentTime": "2019-07-28T07:00:00.000Z",
+      "status": "success",
+      "entrants": 22,
+      "placed": 18,
+      "placedByPriority": [17, 1, 0],
+      "programItemsLotteried": 12,
+      "spotsOffered": 66,
+      "programItemsUnderMinAttendance": 7,
+      "placementsDigest": "6fa254ec99a5e54b"
+    },
+    {
+      "assignmentTime": "2019-07-28T08:00:00.000Z",
+      "status": "success",
+      "entrants": 19,
+      "placed": 19,
+      "placedByPriority": [16, 3, 0],
+      "programItemsLotteried": 10,
+      "spotsOffered": 53,
+      "programItemsUnderMinAttendance": 4,
+      "placementsDigest": "d68c85b4507fffef"
+    },
+    {
+      "assignmentTime": "2019-07-28T09:00:00.000Z",
+      "status": "success",
+      "entrants": 22,
+      "placed": 20,
+      "placedByPriority": [17, 3, 0],
+      "programItemsLotteried": 9,
+      "spotsOffered": 55,
+      "programItemsUnderMinAttendance": 4,
+      "placementsDigest": "6ae5df89389e6fa4"
+    },
+    {
+      "assignmentTime": "2019-07-28T10:00:00.000Z",
+      "status": "success",
+      "entrants": 16,
+      "placed": 13,
+      "placedByPriority": [11, 2, 0],
+      "programItemsLotteried": 6,
+      "spotsOffered": 36,
+      "programItemsUnderMinAttendance": 3,
+      "placementsDigest": "6c7d1b6baefac5b4"
+    }
+  ]
+}
