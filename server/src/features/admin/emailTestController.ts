@@ -8,7 +8,10 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { getLotteriedSpan } from "server/features/assignment/utils/addAssignmentNotifications";
-import { EmailSender } from "server/features/notifications/email";
+import {
+  EmailDelivery,
+  EmailSender,
+} from "server/features/notifications/email";
 import {
   EmailMessage,
   buildEmail,
@@ -102,7 +105,9 @@ export const postEmailTest = async (
       if (!batchMessageResult.ok) {
         return res.status(400).json({ message: batchMessageResult.error });
       }
-      await new EmailSender().sendEmail(batchMessageResult.value);
+      await new EmailSender(EmailDelivery.ADMIN_TEST).sendEmail(
+        batchMessageResult.value,
+      );
       logger.info(`Test email sent to ${email} for batch ${programId}`);
       return res.status(200).json({ message: "Test email sent successfully" });
     }
@@ -218,7 +223,7 @@ export const postEmailTest = async (
         return res.status(400).json({ message: "Invalid notification type" });
     }
 
-    const emailSender = new EmailSender();
+    const emailSender = new EmailSender(EmailDelivery.ADMIN_TEST);
     await emailSender.sendEmail(message);
 
     logger.info(
