@@ -206,6 +206,10 @@ Application settings dump. Not required for statistics.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.
 - **Past-event configs**: [`shared/config/past-events/`](../../shared/config/past-events/) holds a `Partial<EventConfig>` per event. Files for 2017-2022 (Ropecon) and 2019 (Tracon Hitpoint) were reconstructed from the data files (not preserved from the live event) and carry a notice header.
 
+## Replaying an event's lotteries
+
+`yarn simulate-lottery` loads a dump into a temporary database and re-runs every lottery the event recorded against the current code, to catch regressions and to measure how the lottery performs on real data. It reads `program-items.json`, `users.json`, `direct-signups.json` and `results.json`, and reports how far its input is from what the runs actually saw - see "Replaying a past event's lotteries" in [`server/CLAUDE.md`](../../server/CLAUDE.md) for what it can and cannot reconstruct. The `lotterySignups` caveat above is the main limit.
+
 ## Tips for Analysis
 
 - **Sign-up success rate**: Compare `users.json` `lotterySignups` (what users wanted) against `direct-signups.json` or `results.json` (what they got). Users with `eventLogItems` action `"noAssignment"` did not get a spot.
