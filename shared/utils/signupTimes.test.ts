@@ -1,4 +1,4 @@
-import { addMinutes, subMinutes } from "date-fns";
+import { addMinutes, differenceInMinutes, subMinutes } from "date-fns";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { EventConfig } from "shared/config/eventConfigTypes";
@@ -21,9 +21,9 @@ import {
   getPhaseGapInProgress,
   hasLotteryAlreadyRun,
   isSameStartTime,
+  tooEarlyForLotterySignup,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 
 const friday = "2023-07-28";
 const saturday = "2023-07-29";
@@ -233,6 +233,41 @@ describe("Two phase direct sign-up", () => {
     expect(getDirectSignupStartTime(beforeCutoff).toISOString()).toEqual(
       `${friday}T12:00:00.000Z`,
     );
+  });
+});
+
+// The first slots have no lottery window to be gapped from: lottery sign-up cannot open before
+// the event, so for them it would close at or before it opened
+describe("Too early for lottery sign-up", () => {
+  test("An RPG starting with the event is too early for a lottery sign-up", () => {
+    const programItem = {
+      ...testProgramItem,
+      startTime: `${friday}T12:00:00.000Z`,
+    };
+    expect(tooEarlyForLotterySignup(programItem)).toEqual(true);
+  });
+
+  test("An RPG starting past the cutoff takes lottery sign-ups", () => {
+    const programItem = {
+      ...testProgramItem,
+      startTime: `${friday}T16:00:00.000Z`,
+    };
+    expect(tooEarlyForLotterySignup(programItem)).toEqual(false);
+  });
+
+  test("A batched RPG is judged by the time its lottery runs, not its own", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, `${friday}T16:00:00.000Z`],
+      ]),
+    });
+    // Its own start time is inside the cutoff, the batch it is lotteried in is past it
+    const programItem = {
+      ...testProgramItem,
+      startTime: `${friday}T13:00:00.000Z`,
+    };
+    expect(tooEarlyForLotterySignup(programItem)).toEqual(false);
   });
 });
 
@@ -768,6 +803,147 @@ describe("Relative direct sign-up state", () => {
     const timeNow = new Date(programItem.startTime);
     const directSignupEnded = getDirectSignupEnded(programItem, timeNow);
     expect(directSignupEnded).toEqual(false);
+  });
+});
+
+// The pause between a lottery closing and its direct sign-up opening. It belongs to the lottery,
+// so a program item on any other schedule has none - and neither does an early slot, whose gap
+// is clamped away along with the lottery it would have followed.
+describe("Phase gap", () => {
+  const { directSignupPhaseStart, phaseGap } = baseEventConfig;
+
+  // Sat 15:00 GMT+3: lottery sign-up closes at 10:00Z, direct sign-up opens at 10:15Z
+  const startTime = `${saturday}T12:00:00.000Z`;
+  const programItem = { ...testProgramItem, startTime };
+  const lotterySignupEndTime = subMinutes(
+    new Date(startTime),
+    directSignupPhaseStart,
+  );
+
+  test("Direct sign-up opens 'phaseGap' after lottery sign-up closes", () => {
+    const gap = differenceInMinutes(
+      getDirectSignupStartTime(programItem),
+      getLotterySignupEndTime(programItem),
+    );
+    expect(gap).toEqual(phaseGap);
+  });
+
+  test("A batched program item's gap is measured from its parent start time", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      startTimesByParentIds: new Map([[testProgramItem.parentId, startTime]]),
+    });
+    // Starts three hours after the batch it is lotteried in
+    const batched = {
+      ...testProgramItem,
+      startTime: `${saturday}T15:00:00.000Z`,
+    };
+
+    const gap = differenceInMinutes(
+      getDirectSignupStartTime(batched),
+      getLotterySignupEndTime(batched),
+    );
+    expect(gap).toEqual(phaseGap);
+  });
+
+  test("Not in progress at the moment lottery sign-up closes, since the run is still ahead", () => {
+    expect(getPhaseGapInProgress(programItem, lotterySignupEndTime)).toEqual(
+      false,
+    );
+  });
+
+  test("In progress a minute after lottery sign-up closes", () => {
+    const timeNow = addMinutes(lotterySignupEndTime, 1);
+    expect(getPhaseGapInProgress(programItem, timeNow)).toEqual(true);
+  });
+
+  test("In progress until the minute before direct sign-up opens", () => {
+    const timeNow = addMinutes(lotterySignupEndTime, phaseGap - 1);
+    expect(getPhaseGapInProgress(programItem, timeNow)).toEqual(true);
+  });
+
+  test("Not in progress once direct sign-up has opened", () => {
+    const timeNow = addMinutes(lotterySignupEndTime, phaseGap);
+    expect(getPhaseGapInProgress(programItem, timeNow)).toEqual(false);
+  });
+
+  test("A rolling direct sign-up program item never has one", () => {
+    const workshop = { ...programItem, programType: ProgramType.WORKSHOP };
+    const timeNow = subMinutes(getDirectSignupStartTime(workshop), 1);
+    expect(getPhaseGapInProgress(workshop, timeNow)).toEqual(false);
+  });
+
+  test("A windowed direct sign-up program item never has one", () => {
+    const larp = { ...programItem, programType: ProgramType.LARP };
+    const timeNow = subMinutes(getDirectSignupStartTime(larp), 1);
+    expect(getPhaseGapInProgress(larp, timeNow)).toEqual(false);
+  });
+
+  test("An always open program item never has one", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      directSignupAlwaysOpenIds: [testProgramItem.programItemId],
+    });
+    const timeNow = subMinutes(getDirectSignupStartTime(programItem), 1);
+    expect(getPhaseGapInProgress(programItem, timeNow)).toEqual(false);
+  });
+
+  // A schedule can land on the same instant the gap would end without there being a gap at all.
+  // These three do, so nothing about them may be read off the arithmetic alone.
+  describe("Sign-up opening where a gap would have ended", () => {
+    // Its lottery would close at 11:45, a phase gap short of the 12:00 event start
+    const collidingStartTime = `${friday}T13:45:00.000Z`;
+    const timeNow = new Date(`${friday}T11:50:00.000Z`);
+
+    test("A rolling program item clamped to the event start has none", () => {
+      const workshop = {
+        ...testProgramItem,
+        programType: ProgramType.WORKSHOP,
+        startTime: collidingStartTime,
+      };
+
+      expect(getDirectSignupStartTime(workshop).toISOString()).toEqual(
+        `${friday}T12:00:00.000Z`,
+      );
+      expect(getPhaseGapInProgress(workshop, timeNow)).toEqual(false);
+    });
+
+    test("A windowed program item opening with its window has none", () => {
+      const larp = {
+        ...testProgramItem,
+        programType: ProgramType.LARP,
+        startTime: collidingStartTime,
+      };
+
+      expect(getDirectSignupStartTime(larp).toISOString()).toEqual(
+        `${friday}T12:00:00.000Z`,
+      );
+      expect(getPhaseGapInProgress(larp, timeNow)).toEqual(false);
+    });
+
+    test("An early slot whose gap was clamped away has none", () => {
+      const earlyItem = {
+        ...testProgramItem,
+        startTime: collidingStartTime,
+      };
+
+      expect(tooEarlyForLotterySignup(earlyItem)).toEqual(true);
+      expect(getPhaseGapInProgress(earlyItem, timeNow)).toEqual(false);
+    });
+  });
+
+  test("An early slot has none, since its direct sign-up opens with the event", () => {
+    // Fri 17:00 GMT+3, whose lottery would close at the moment the doors open
+    const earlyItem = {
+      ...testProgramItem,
+      startTime: `${friday}T14:00:00.000Z`,
+    };
+    const timeNow = subMinutes(new Date(baseEventConfig.eventStartTime), 1);
+
+    expect(getDirectSignupStartTime(earlyItem).toISOString()).toEqual(
+      `${friday}T12:00:00.000Z`,
+    );
+    expect(getPhaseGapInProgress(earlyItem, timeNow)).toEqual(false);
   });
 });
 

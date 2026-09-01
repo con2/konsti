@@ -19,9 +19,9 @@ import { differenceBy } from "shared/utils/remedaExtend";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import {
   getLotterySignupEndTime,
+  tooEarlyForLotterySignup,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
 import {
   delDirectSignupDocumentsByProgramItemIds,

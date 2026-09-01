@@ -3,7 +3,7 @@ import { config } from "shared/config";
 import { ProgramItem, SignupType } from "shared/types/models/programItem";
 import { LotterySignup, User } from "shared/types/models/user";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
+import { tooEarlyForLotterySignup } from "shared/utils/signupTimes";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
