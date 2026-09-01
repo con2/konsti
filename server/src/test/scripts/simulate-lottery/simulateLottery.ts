@@ -410,10 +410,11 @@ const runInChildProcess = (
 const simulateLottery = async (): Promise<number> => {
   const commander = new Command();
   commander
+    .name("simulate-lottery")
+    .description("Replay a past event's lotteries against the current code")
     .option(
       "-e, --event <key>",
       'Event to replay, as "<datafile directory>/<year>", or "all"',
-      "ropecon/2025",
     )
     .option(
       "-a, --algorithm <name>",
@@ -429,9 +430,19 @@ const simulateLottery = async (): Promise<number> => {
       "-o, --out <directory>",
       "Where to write the full placement lists",
       "simulate-lottery-output",
+    )
+    // The event key is the one thing a caller cannot guess, so the help lists them
+    .addHelpText(
+      "after",
+      `\nKnown events:\n  ${pastEvents.map(getPastEventKey).join(", ")}`,
     );
   commander.parse(process.argv);
   const options = commander.opts();
+
+  // No event means nothing to replay, and which one to name is what the help is for
+  if (options.event === undefined) {
+    commander.help();
+  }
 
   const selectedEvents =
     options.event === "all"
