@@ -77,6 +77,8 @@ Both **lottery sign-ups** and **direct sign-ups** store the program item's **own
 
 The parent override is for lottery _timing_ only: use the parent-resolved time to decide when a program item is lotteried and when its sign-up windows open (`getProgramItemStartTime`, `getStartingProgramItems`, the `signupTimes.ts` window helpers), and the item's own `startTime` for anything about a held spot — which hour it occupies, whether it moved, and what a won spot displaces.
 
+**The same split decides what an attendee is shown**, which is what `client/src/utils/getUpcomingProgramItems.ts` holds all three answers to, side by side: a favorite and a direct sign-up are listed against the program item's own hour, because that is where the attendee will be, while a lottery sign-up still awaiting its run — and the heading the lottery list groups it under — follows the batch, because that entry belongs to the run rather than to an hour.
+
 ## Conventions
 
 - Use enums/`as const` for closed sets (program types, sign-up types, user groups); use the `Result` tagged union for fallible operations.
