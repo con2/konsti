@@ -163,21 +163,38 @@ export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
   eventStartTime: string,
 ): Date => {
+  const {
+    enableRollingDirectSignupPreviousDay,
+    rollingDirectSignupEarliestStartTime,
+  } = config.event();
+
+  // Earliest start time, which is the event start time unless the event sets its own
+  const earliestStartTime = new Date(
+    rollingDirectSignupEarliestStartTime ?? eventStartTime,
+  );
+
   // Sign-up starts 4 hours before program item start time
   const rollingStartTime = subHours(new Date(programItem.startTime), 4);
 
-  // Earliest start time is event start time
-  if (isBefore(rollingStartTime, new Date(eventStartTime))) {
-    return new Date(eventStartTime);
+  if (isBefore(rollingStartTime, earliestStartTime)) {
+    return earliestStartTime;
   }
 
   // If program item starts before 12:00, sign-up starts 18:00 previous day
-  if (config.event().enableRollingDirectSignupPreviousDay) {
+  if (enableRollingDirectSignupPreviousDay) {
     // Set timezone because hour comparison and setting hour value
     const timezoneStartTime = new TZDate(programItem.startTime, TIMEZONE);
     const startTimeIsTooEarly = getHours(timezoneStartTime) < 12;
     if (startTimeIsTooEarly) {
-      return openAtFixedHourPreviousEvening(timezoneStartTime, 18);
+      const previousEvening = openAtFixedHourPreviousEvening(
+        timezoneStartTime,
+        18,
+      );
+      // The previous evening can land before the earliest start time even when the
+      // rolling time does not, so it is clamped too
+      return isBefore(previousEvening, earliestStartTime)
+        ? earliestStartTime
+        : previousEvening;
     }
   }
 

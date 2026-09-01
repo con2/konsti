@@ -38,6 +38,7 @@ const baseEventConfig: EventConfig = {
   eventStartTime: `${friday}T12:00:00Z`,
   fixedLotterySignupTime: null,
   enableRollingDirectSignupPreviousDay: true,
+  rollingDirectSignupEarliestStartTime: null,
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   directSignupWindows: {
     larp: [
@@ -580,6 +581,51 @@ describe("Direct sign-up with rolling sign-up", () => {
     const startTime = `${sunday}T08:00:00.000Z`;
     const signupTime = `${saturday}T15:00:00.000Z`;
     assertSignupTime(startTime, signupTime);
+  });
+});
+
+// The event start time can be pulled forward to open the lottery, so an event
+// that does that configures the earliest direct sign-up time separately
+describe("Rolling direct sign-up with a configured earliest start time", () => {
+  const testWorkshop = {
+    ...testProgramItem,
+    programType: ProgramType.WORKSHOP,
+  };
+
+  const mockEarliestStartTime = (earliestStartTime: string): void => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      rollingDirectSignupEarliestStartTime: earliestStartTime,
+    });
+  };
+
+  const assertSignupTime = (startTime: string, signupTime: string): void => {
+    const signupStartTime = getDirectSignupStartTime({
+      ...testWorkshop,
+      startTime,
+    });
+
+    expect(signupStartTime.toISOString()).toEqual(signupTime);
+  };
+
+  test("Workshop starting at Fri 20:00 should have sign-up starting at Fri 18:00, not 16:00", () => {
+    mockEarliestStartTime(`${friday}T15:00:00Z`); // Fri 18:00
+    assertSignupTime(`${friday}T17:00:00.000Z`, `${friday}T15:00:00.000Z`);
+  });
+
+  test("Workshop starting at Fri 23:00 should have sign-up starting at Fri 19:00", () => {
+    mockEarliestStartTime(`${friday}T15:00:00Z`); // Fri 18:00
+    assertSignupTime(`${friday}T20:00:00.000Z`, `${friday}T16:00:00.000Z`);
+  });
+
+  test("Workshop starting at Sat 11:00 should have sign-up starting at Fri 18:00", () => {
+    mockEarliestStartTime(`${friday}T15:00:00Z`); // Fri 18:00
+    assertSignupTime(`${saturday}T08:00:00.000Z`, `${friday}T15:00:00.000Z`);
+  });
+
+  test("Workshop starting at Sat 11:00 should have sign-up starting at Fri 20:00 when the previous evening is too early", () => {
+    mockEarliestStartTime(`${friday}T17:00:00Z`); // Fri 20:00
+    assertSignupTime(`${saturday}T08:00:00.000Z`, `${friday}T17:00:00.000Z`);
   });
 });
 

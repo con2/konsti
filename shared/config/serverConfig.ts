@@ -188,7 +188,7 @@ const devConfig = {
 
   // Attendee assign cron
   autoAssignAttendeesEnabled: true,
-  autoAssignInterval: "0,15,30 * * * *",
+  autoAssignInterval: "0,30 * * * *",
   autoAssignDelay: 1000 * 1,
 };
 
