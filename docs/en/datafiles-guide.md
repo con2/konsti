@@ -212,7 +212,7 @@ Application settings dump. Not required for statistics.
 
 ## Replaying an event's lotteries
 
-`yarn simulate-lottery` loads a dump into a temporary database and re-runs every lottery the event recorded against the current code, to catch regressions and to measure how the lottery performs on real data. It reads `program-items.json`, `users.json`, `direct-signups.json` and `results.json`, and reports how far its input is from what the runs actually saw - see "Replaying a past event's lotteries" in [`server/CLAUDE.md`](../../server/CLAUDE.md) for what it can and cannot reconstruct. The `lotterySignups` caveat above is the main limit.
+`yarn simulate-lottery --event <datafile directory>/<year>` loads that dump into a temporary database and re-runs every lottery the event recorded against the current code, to catch regressions and to measure how the lottery performs on real data. It reads `program-items.json`, `users.json`, `direct-signups.json` and `results.json`, and reports how far its input is from what the runs actually saw - see "Replaying a past event's lotteries" in [`server/CLAUDE.md`](../../server/CLAUDE.md) for what it can and cannot reconstruct. The `lotterySignups` caveat above is the main limit.
 
 ## Tips for Analysis
 
