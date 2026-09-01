@@ -1,7 +1,7 @@
 import { config } from "shared/config";
 import { PopulateDbOptions } from "shared/test-types/api/testData";
 import { db } from "server/db/mongodb";
-import { removeDirectSignups } from "server/features/direct-signup/directSignupRepository";
+import { resetDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   removeLotteryMarks,
   removeProgramItems,
@@ -117,7 +117,7 @@ export const runGenerators = async (
     // It writes the winners' sign-ups and both lottery marks, so re-simulating has to clear
     // them - otherwise a program item is left decided by a lottery that no longer exists
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeDirectSignups());
+    !options.clean && (await resetDirectSignups());
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeLotteryMarks());
 
@@ -130,7 +130,7 @@ export const runGenerators = async (
     logger.info("* Generator: Generate direct signups");
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && !options.eventLog && (await removeDirectSignups());
+    !options.clean && !options.eventLog && (await resetDirectSignups());
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !options.clean && (await removeResults());
 
