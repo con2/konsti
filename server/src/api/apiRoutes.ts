@@ -50,7 +50,6 @@ import {
   deleteDirectSignup,
   postDirectSignup,
 } from "server/features/direct-signup/directSignupController";
-import { getHealthStatus } from "server/features/health/healthController";
 import {
   postKompassiLoginCallback,
   postKompassiLoginRedirect,
@@ -258,7 +257,6 @@ apiRoutes.get(
   requireAuth(UserGroup.ADMIN),
   getSentryTest,
 );
-apiRoutes.get(ApiEndpoint.HEALTH, getHealthStatus);
 
 /* DELETE routes */
 
