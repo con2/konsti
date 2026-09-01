@@ -352,6 +352,12 @@ describe("Cronjob registration", () => {
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "Start cronjob: automatic attendee assignment",
     );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "Cronjob disabled in config: program auto update",
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "Cronjob disabled in config: automatic attendee assignment",
+    );
 
     stopCronJobs();
 
@@ -372,6 +378,12 @@ describe("Cronjob registration", () => {
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
       "Start cronjob: automatic attendee assignment",
+    );
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Cronjob disabled in config: program auto update",
+    );
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Cronjob disabled in config: automatic attendee assignment",
     );
 
     // startCronJobs still records this instance as the latest started one

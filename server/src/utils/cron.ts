@@ -65,6 +65,8 @@ export const startCronJobs = async (): Promise<void> => {
       autoUpdateProgramItems,
     );
     cronJobs.push(autoUpdateProgramItemsJob);
+  } else {
+    logger.info("Cronjob disabled in config: program auto update");
   }
 
   if (autoAssignAttendeesEnabled) {
@@ -80,6 +82,8 @@ export const startCronJobs = async (): Promise<void> => {
       autoAssignAttendees,
     );
     cronJobs.push(autoAssignAttendeesJob);
+  } else {
+    logger.info("Cronjob disabled in config: automatic attendee assignment");
   }
 };
 
