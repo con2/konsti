@@ -11,6 +11,7 @@ import {
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { isDirectSignupAlwaysOpen } from "shared/utils/isDirectSignupAlwaysOpen";
+import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 import {
   isSameOrAfter,
@@ -133,6 +134,30 @@ export const lotteryRanForProgramItem = (programItem: ProgramItem): boolean =>
 export const willNotBeLotteried = (programItem: ProgramItem): boolean =>
   programItem.passedOverForLottery === true ||
   hasLotteryAlreadyRun(programItem);
+
+// The first slots of the event get direct sign-up: there is no room for a lottery window before
+// the doors open. Derived rather than a fixed three hours, so it stays the same boundary the
+// direct sign-up time clamps at - the hour of slack past the last lottery that could close at the
+// event start. How many slots that covers follows from the settings; with doors at 15:00,
+// 'preSignupStart' 4h and 'directSignupPhaseStart' 2h it is the first three:
+//   Start time 15:00 -> lottery 11:00-13:00 -> use direct
+//   Start time 16:00 -> lottery 12:00-14:00 -> use direct
+//   Start time 17:00 -> lottery 13:00-15:00 -> use direct
+//   Start time 18:00 -> lottery 14:00-16:00 -> lottery with shorter duration 15:00-16:00
+//   Start time 19:00 -> lottery 15:00-17:00 -> show normally
+export const tooEarlyForLotterySignup = (programItem: ProgramItem): boolean => {
+  const { eventStartTime, directSignupPhaseStart } = config.event();
+
+  // The lottery window is driven by the parent-resolved start time, so use it here too
+  const startTime = getProgramItemStartTime(programItem);
+
+  const noLotterySignupBefore = addHours(
+    addMinutes(new Date(eventStartTime), directSignupPhaseStart),
+    1,
+  );
+
+  return isBefore(new Date(startTime), noLotterySignupBefore);
+};
 
 export const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
@@ -306,20 +331,26 @@ export const getPhaseGapInProgress = (
   programItem: ProgramItem,
   timeNow: Date,
 ): boolean => {
-  // Nothing is being decided for an item no lottery will take, whatever its own schedule says
-  if (willNotBeLotteried(programItem)) {
+  // The gap belongs to a lottery, so only a program item with one still ahead of it has a gap
+  // to wait out. A rolling or windowed schedule takes its sign-up time from somewhere else
+  // entirely, and an early slot has no lottery window to be gapped from.
+  if (
+    willNotBeLotteried(programItem) ||
+    !isLotterySignupProgramItem(programItem) ||
+    tooEarlyForLotterySignup(programItem)
+  ) {
     return false;
   }
 
-  const { phaseGap } = config.event();
+  const lotterySignupEndTime = getLotterySignupEndTime(programItem);
   const directSignupStartTime = getDirectSignupStartTime(programItem);
 
   // Delay showing lottery results immediately since lottery is still running
   const DELAY_SHOW_AFTER_LOTTERY = 1;
 
-  const phaseGapStart = subMinutes(
-    directSignupStartTime,
-    phaseGap - DELAY_SHOW_AFTER_LOTTERY,
+  const phaseGapStart = addMinutes(
+    lotterySignupEndTime,
+    DELAY_SHOW_AFTER_LOTTERY,
   );
 
   return (

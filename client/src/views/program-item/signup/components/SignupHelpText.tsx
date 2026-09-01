@@ -14,9 +14,9 @@ import {
   getLotterySignupNotStarted,
   getLotterySignupStartTime,
   hasLotteryAlreadyRun,
+  tooEarlyForLotterySignup,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
-import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 import { useAppSelector } from "client/utils/hooks";
 import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { useTimeNow } from "client/utils/useTimeNow";
