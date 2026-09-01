@@ -48,6 +48,7 @@ export const eventConfig: EventConfig = {
     ProgramType.BOARDGAME,
   ],
   enableRollingDirectSignupPreviousDay: true,
+  rollingDirectSignupEarliestStartTime: `${friday}T09:00:00Z`, // Fri 12:00 GMT+3
 
   hideParticipantListProgramTypes: [ProgramType.FLEAMARKET],
 

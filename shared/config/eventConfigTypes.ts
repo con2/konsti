@@ -56,6 +56,7 @@ export const EventConfigSchema = z.object({
     .nullable(),
   rollingDirectSignupProgramTypes: z.array(z.enum(ProgramType)),
   enableRollingDirectSignupPreviousDay: z.boolean(),
+  rollingDirectSignupEarliestStartTime: z.iso.datetime().nullable(),
   directSignupAlwaysOpenIds: z.array(z.string()),
   twoPhaseSignupProgramTypes: z.array(z.enum(ProgramType)),
   addToKonstiOther: z.array(z.string()),

@@ -48,6 +48,7 @@ beforeEach(() => {
     ...config.event(),
     eventStartTime: EVENT_START,
     enableRollingDirectSignupPreviousDay: true,
+    rollingDirectSignupEarliestStartTime: null,
     rollingDirectSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   });
 });
