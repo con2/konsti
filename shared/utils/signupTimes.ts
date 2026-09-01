@@ -3,6 +3,7 @@ import {
   addHours,
   addMinutes,
   getHours,
+  isAfter,
   isBefore,
   subDays,
   subHours,
@@ -168,10 +169,16 @@ export const getRollingDirectSignupStartTime = (
     rollingDirectSignupEarliestStartTime,
   } = config.event();
 
-  // Earliest start time, which is the event start time unless the event sets its own
-  const earliestStartTime = new Date(
-    rollingDirectSignupEarliestStartTime ?? eventStartTime,
-  );
+  // Sign-up can be held back past the event start, which is pulled early when
+  // the lottery opens from it. Never before the event start, though.
+  const earliestStartTime =
+    rollingDirectSignupEarliestStartTime &&
+    isAfter(
+      new Date(rollingDirectSignupEarliestStartTime),
+      new Date(eventStartTime),
+    )
+      ? new Date(rollingDirectSignupEarliestStartTime)
+      : new Date(eventStartTime);
 
   // Sign-up starts 4 hours before program item start time
   const rollingStartTime = subHours(new Date(programItem.startTime), 4);
