@@ -9,6 +9,19 @@ import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 
+const startServerWithConfig = async (
+  overrides: Partial<ServerConfig>,
+): Promise<Server> => {
+  vi.spyOn(config, "server").mockReturnValue({
+    ...config.server(),
+    ...overrides,
+  });
+  return await startServer({
+    dbConnString: globalThis.__MONGO_URI__,
+    dbName: randomUUID(),
+  });
+};
+
 describe("Client-server instance", () => {
   beforeEach(async () => {
     server = await startServer({
@@ -52,20 +65,44 @@ describe("Client-server instance", () => {
   });
 });
 
-describe("Cronjob-only instance", () => {
-  const startServerWithConfig = async (
-    overrides: Partial<ServerConfig>,
-  ): Promise<Server> => {
-    vi.spyOn(config, "server").mockReturnValue({
-      ...config.server(),
-      ...overrides,
-    });
-    return await startServer({
-      dbConnString: globalThis.__MONGO_URI__,
-      dbName: randomUUID(),
-    });
-  };
+describe("Cross-origin client", () => {
+  const clientOrigin = "http://localhost:8000";
 
+  afterEach(async () => {
+    await closeServer(server);
+    vi.restoreAllMocks();
+  });
+
+  // The client dev server is a different origin from the API, and the network
+  // probe is a plain fetch the browser drops without the header
+  test("should allow the health route from an allowed origin", async () => {
+    server = await startServerWithConfig({
+      allowedCorsOrigins: [clientOrigin],
+    });
+
+    const response = await request(server)
+      .get(ApiEndpoint.HEALTH)
+      .set("Origin", clientOrigin);
+
+    expect(response.headers["access-control-allow-origin"]).toEqual(
+      clientOrigin,
+    );
+  });
+
+  test("should block the health route from an unknown origin", async () => {
+    server = await startServerWithConfig({
+      allowedCorsOrigins: [clientOrigin],
+    });
+
+    const response = await request(server)
+      .get(ApiEndpoint.HEALTH)
+      .set("Origin", "http://evil.example");
+
+    expect(response.status).toEqual(403);
+  });
+});
+
+describe("Cronjob-only instance", () => {
   afterEach(async () => {
     await closeServer(server);
     vi.restoreAllMocks();
@@ -83,6 +120,21 @@ describe("Cronjob-only instance", () => {
 
     const response = await request(server).get(ApiEndpoint.SETTINGS);
     expect(response.status).toEqual(404);
+  });
+
+  // The health route carries its own CORS middleware, so nothing else on the
+  // instance answers a cross-origin caller
+  test("should not handle CORS outside the health route", async () => {
+    server = await startServerWithConfig({
+      onlyCronjobs: true,
+      allowedCorsOrigins: ["http://localhost:8000"],
+    });
+
+    const response = await request(server)
+      .get(ApiEndpoint.SETTINGS)
+      .set("Origin", "http://localhost:8000");
+
+    expect(response.headers["access-control-allow-origin"]).toBeUndefined();
   });
 
   test("should serve API routes when cronjobs and backend share instance", async () => {
