@@ -56,6 +56,8 @@ export const EventConfigSchema = z.object({
     .nullable(),
   rollingDirectSignupProgramTypes: z.array(z.enum(ProgramType)),
   enableRollingDirectSignupPreviousDay: z.boolean(),
+  // Rolling direct sign-up does not open before this. The event start it is
+  // otherwise clamped to can be much earlier, since the lottery opens from that.
   rollingDirectSignupEarliestStartTime: z.iso.datetime().nullable(),
   directSignupAlwaysOpenIds: z.array(z.string()),
   twoPhaseSignupProgramTypes: z.array(z.enum(ProgramType)),

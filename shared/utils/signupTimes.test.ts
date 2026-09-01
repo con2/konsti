@@ -627,6 +627,11 @@ describe("Rolling direct sign-up with a configured earliest start time", () => {
     mockEarliestStartTime(`${friday}T17:00:00Z`); // Fri 20:00
     assertSignupTime(`${saturday}T08:00:00.000Z`, `${friday}T17:00:00.000Z`);
   });
+
+  test("Workshop starting at Fri 18:00 should have sign-up starting at the event start when the earliest start time is before it", () => {
+    mockEarliestStartTime(`${friday}T09:00:00Z`); // Fri 12:00, before the event start
+    assertSignupTime(`${friday}T15:00:00.000Z`, `${friday}T12:00:00.000Z`);
+  });
 });
 
 // The "open the previous evening at a fixed hour" path has to land on the same
