@@ -341,6 +341,77 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(1);
   });
 
+  // The far edge of the phase gap. The refusal above lands on its first minute, where the
+  // program item's own start time is early enough that its sign-up time is clamped to the event
+  // start; this pair uses a slot with a real gap, so it is the gap that decides.
+  test("should return error when direct sign-up opens a minute later", async () => {
+    const { eventStartTime, directSignupPhaseStart, phaseGap } = config.event();
+    const startTime = addHours(new Date(eventStartTime), 8).toISOString();
+    vi.setSystemTime(
+      subMinutes(
+        new Date(startTime),
+        directSignupPhaseStart - phaseGap + 1,
+      ).toISOString(),
+    );
+
+    await saveProgramItems([{ ...testProgramItem, startTime }]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupError;
+    expect(body.status).toEqual("error");
+    expect(body.errorId).toEqual("signupNotOpenYet");
+  });
+
+  test("should allow direct sign-up the moment the phase gap has passed", async () => {
+    const { eventStartTime, directSignupPhaseStart, phaseGap } = config.event();
+    const startTime = addHours(new Date(eventStartTime), 8).toISOString();
+    vi.setSystemTime(
+      subMinutes(
+        new Date(startTime),
+        directSignupPhaseStart - phaseGap,
+      ).toISOString(),
+    );
+
+    await saveProgramItems([{ ...testProgramItem, startTime }]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.status).toEqual("success");
+
+    const signups = unsafelyUnwrap(
+      await findUserDirectSignups(mockUser.username),
+    );
+    expect(signups).toHaveLength(1);
+  });
+
   test("should return error when direct sign-up is closed", async () => {
     vi.setSystemTime(
       addSeconds(new Date(testProgramItem.startTime), 1).toISOString(),
