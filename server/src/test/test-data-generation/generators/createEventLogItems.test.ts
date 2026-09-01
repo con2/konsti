@@ -1,7 +1,8 @@
 import { randomUUID } from "node:crypto";
-import { subHours } from "date-fns";
+import { addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
+import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import {
   testProgramItem,
@@ -161,6 +162,107 @@ test("records the lottery it simulates, so a later programme import does not pas
       (programItem) => programItem.passedOverForLottery === true,
     ),
   ).toEqual([]);
+});
+
+test("a batched lottery decides one slot for the whole batch", async () => {
+  const [parentId, batchStartTime] = [
+    ...config.event().startTimesByParentIds,
+  ][0];
+  const firstStartTime = addMinutes(new Date(batchStartTime), 30).toISOString();
+  const secondStartTime = addMinutes(
+    new Date(batchStartTime),
+    60,
+  ).toISOString();
+
+  await saveUser(mockUser);
+  await saveProgramItems([
+    { ...testProgramItem, parentId, startTime: firstStartTime },
+    { ...testProgramItem2, parentId, startTime: secondStartTime },
+  ]);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: firstStartTime,
+      },
+      {
+        programItemId: testProgramItem2.programItemId,
+        priority: 2,
+        signedToStartTime: secondStartTime,
+      },
+    ],
+  });
+
+  await createEventLogItems();
+
+  // The two sign-ups are one lottery, so the user hears about it once rather than once per
+  // starting time inside the batch
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(user?.eventLogItems).toHaveLength(1);
+});
+
+test("a rejection from a batched lottery names the span the lottery covered", async () => {
+  const [parentId, batchStartTime] = [
+    ...config.event().startTimesByParentIds,
+  ][0];
+  const firstStartTime = addMinutes(new Date(batchStartTime), 30).toISOString();
+  const secondStartTime = addMinutes(
+    new Date(batchStartTime),
+    60,
+  ).toISOString();
+  const lastEndTime = addMinutes(new Date(batchStartTime), 90).toISOString();
+
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  // Both program items are full, so the slot is a loss whichever way the coin flip lands
+  const batchProgramItems = [
+    { ...testProgramItem, parentId, startTime: firstStartTime },
+    {
+      ...testProgramItem2,
+      parentId,
+      startTime: secondStartTime,
+      endTime: lastEndTime,
+    },
+  ].map((programItem) => ({ ...programItem, maxAttendance: 1 }));
+  await saveProgramItems(batchProgramItems);
+  for (const programItem of batchProgramItems) {
+    await saveDirectSignup({
+      username: mockUser2.username,
+      directSignupProgramItemId: programItem.programItemId,
+      signedToStartTime: programItem.startTime,
+      signupTime: programItem.startTime,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    });
+  }
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: firstStartTime,
+      },
+      {
+        programItemId: testProgramItem2.programItemId,
+        priority: 2,
+        signedToStartTime: secondStartTime,
+      },
+    ],
+  });
+
+  await createEventLogItems();
+
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  const eventLogItems = user?.eventLogItems ?? [];
+  expect(eventLogItems).toHaveLength(1);
+  expect(eventLogItems[0].action).toEqual(EventLogAction.NO_ASSIGNMENT);
+  // Both ends of the span, not the parent hour the batch was lotteried at
+  expect(eventLogItems[0].programItemStartTime).toEqual(firstStartTime);
+  expect(eventLogItems[0].lastProgramItemEndTime).toEqual(lastEndTime);
+  expect(eventLogItems[0].programType).toEqual(testProgramItem.programType);
 });
 
 test("users without lottery sign-ups get no assignment event log entries", async () => {

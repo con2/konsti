@@ -37,6 +37,23 @@ export const removeDirectSignups = async (): Promise<
   }
 };
 
+// Empties every sign-up document without deleting it. Only the data generators need this: a
+// programme import owns creating the documents, so one wiped between imports never comes back
+export const resetDirectSignups = async (): Promise<
+  Result<void, MongoDbError>
+> => {
+  logger.info("MongoDB: remove ALL direct signups from program items");
+  try {
+    await SignupModel.updateMany({}, { userSignups: [], count: 0 });
+    return makeSuccessResult();
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error resetting direct signups", { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 // A document that cannot be read is skipped rather than failing the whole query, so one unreadable
 // row does not hide every other sign-up. The query name locates the caller in the log
 const parseSignupDocuments = (

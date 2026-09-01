@@ -1,8 +1,9 @@
-import { subHours, subMinutes } from "date-fns";
+import { startOfMinute, subHours, subMinutes } from "date-fns";
 import { first, groupBy, sample } from "remeda";
 import { NewEventLogItem } from "shared/types/api/eventLog";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getLotteriedSpan } from "server/features/assignment/utils/addAssignmentNotifications";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import {
@@ -14,10 +15,10 @@ import { findUsers } from "server/features/user/userRepository";
 import { getLotteryRunTime } from "server/test/test-data-generation/lotteryRunTime";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
-// Simulate lottery results: for each start time a user has lottery sign-ups for,
-// they either win a spot (a newAssignment message plus the direct sign-up the
-// real assignment would create) or lose (a noAssignment message). This keeps
-// the event log consistent with the sign-ups shown in My Program.
+// Simulate lottery results: for each lottery a user has sign-ups in, they either
+// win a spot (a newAssignment message plus the direct sign-up the real assignment
+// would create) or lose (a noAssignment message). This keeps the event log
+// consistent with the sign-ups shown in My Program.
 export const createEventLogItems = async (): Promise<void> => {
   const programItems = unsafelyUnwrap(await findProgramItems());
   const programItemsById = new Map(
@@ -30,29 +31,50 @@ export const createEventLogItems = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
+  // The span each lottery covers, measured over its own program items the way a real run
+  // measures a rejection - for a batch that is several starting times, not the parent hour
+  const lotteryProgramItemsByRunTime = groupBy(
+    programItems.filter((programItem) =>
+      isLotterySignupProgramItem(programItem),
+    ),
+    getLotteryRunTime,
+  );
+  const lotteriedSpansByRunTime = new Map(
+    Object.entries(lotteryProgramItemsByRunTime).map(
+      ([runTime, lotteryProgramItems]) => [
+        runTime,
+        getLotteriedSpan(lotteryProgramItems, runTime),
+      ],
+    ),
+  );
+
   const newAssignmentEventLogUpdates: NewEventLogItem[] = [];
   const noAssignmentEventLogUpdates: NewEventLogItem[] = [];
   const lotteriedStartTimes = new Set<string>();
 
   for (const user of users) {
-    const signupsBySlot = groupBy(user.lotterySignups, (lotterySignup) =>
-      new Date(lotterySignup.signedToStartTime).toISOString(),
-    );
+    // One slot is one lottery, whatever it goes on to decide. Batched program items share
+    // one, so the time comes from the parent override rather than each sign-up's own hour
+    const signupsBySlot = groupBy(user.lotterySignups, (lotterySignup) => {
+      const signedProgramItem = programItemsById.get(
+        lotterySignup.programItemId,
+      );
+      return signedProgramItem
+        ? getLotteryRunTime(signedProgramItem)
+        : startOfMinute(
+            new Date(lotterySignup.signedToStartTime),
+          ).toISOString();
+    });
     const slots = Object.entries(signupsBySlot).slice(0, createdAtTimes.length);
 
-    for (const [index, [slotStartTime, slotSignups]] of slots.entries()) {
+    for (const [index, [lotteryRunTime, slotSignups]] of slots.entries()) {
       const createdAt = createdAtTimes[index].toISOString();
 
-      // The lottery this slot stands for, whatever it goes on to decide. Batched program
-      // items share one, so the time comes from the parent override rather than the slot
-      for (const slotSignup of slotSignups) {
-        const signedProgramItem = programItemsById.get(
-          slotSignup.programItemId,
-        );
-        if (signedProgramItem) {
-          lotteriedStartTimes.add(getLotteryRunTime(signedProgramItem));
-        }
-      }
+      lotteriedStartTimes.add(lotteryRunTime);
+
+      const lotteriedSpan = lotteriedSpansByRunTime.get(lotteryRunTime) ?? {
+        programItemStartTime: lotteryRunTime,
+      };
 
       const wonSignup =
         getRandomInt(0, 1) === 1 ? first(sample(slotSignups, 1)) : undefined;
@@ -64,7 +86,7 @@ export const createEventLogItems = async (): Promise<void> => {
         noAssignmentEventLogUpdates.push({
           username: user.username,
           programItemId: "",
-          programItemStartTime: slotStartTime,
+          ...lotteriedSpan,
           createdAt,
           action: EventLogAction.NO_ASSIGNMENT,
         });
@@ -93,7 +115,7 @@ export const createEventLogItems = async (): Promise<void> => {
         noAssignmentEventLogUpdates.push({
           username: user.username,
           programItemId: "",
-          programItemStartTime: slotStartTime,
+          ...lotteriedSpan,
           createdAt,
           action: EventLogAction.NO_ASSIGNMENT,
         });
