@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
+import { isSameTime } from "shared/utils/timeComparison";
 import { AppRoute } from "client/app/routes";
 import { InfoText } from "client/components/InfoText";
 import { SignupQuestionAnswer } from "client/components/SignUpQuestionAnswer";
@@ -69,7 +70,8 @@ export const DirectSignupItem = ({
     setLoading(false);
   };
 
-  if (signup.programItem.startTime !== startTime) {
+  // Rendered under every heading the list has, and shown under the one its program item starts at
+  if (!isSameTime(signup.programItem.startTime, startTime)) {
     return null;
   }
 
