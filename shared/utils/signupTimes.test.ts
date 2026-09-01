@@ -23,6 +23,7 @@ import {
   isSameStartTime,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
+import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
 
 const friday = "2023-07-28";
 const saturday = "2023-07-29";
@@ -210,6 +211,28 @@ describe("Two phase direct sign-up", () => {
       startTime,
     });
     expect(signupStartTime.toISOString()).toEqual(`${friday}T15:15:00.000Z`);
+  });
+
+  // The clamp and the lottery cutoff have to draw one line: a program item offered a lottery
+  // whose direct sign-up opened with the event would take first-come sign-ups while still
+  // accepting lottery entries
+  test("RPG starting at the lottery cutoff gets a gap, and one a minute earlier gets none", () => {
+    const cutoff = `${friday}T15:00:00.000Z`;
+    const atCutoff = { ...testProgramItem, startTime: cutoff };
+    const beforeCutoff = {
+      ...testProgramItem,
+      startTime: subMinutes(new Date(cutoff), 1).toISOString(),
+    };
+
+    expect(tooEarlyForLotterySignup(atCutoff)).toEqual(false);
+    expect(getDirectSignupStartTime(atCutoff).toISOString()).toEqual(
+      `${friday}T13:15:00.000Z`,
+    );
+
+    expect(tooEarlyForLotterySignup(beforeCutoff)).toEqual(true);
+    expect(getDirectSignupStartTime(beforeCutoff).toISOString()).toEqual(
+      `${friday}T12:00:00.000Z`,
+    );
   });
 });
 
