@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addMinutes } from "date-fns";
+import { addMinutes, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
@@ -294,18 +294,17 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   page,
   request,
 }) => {
-  // Both program items take a rolling direct sign-up, which is open from the
-  // moment sign-ups do, so both are upcoming and signable at that time. A two
-  // phase program type could not be: its direct sign-up opens shortly before
-  // the item starts, so only one whole hour could ever be in that phase here.
-  const startTime1 = hoursIntoEvent(1);
-  const startTime2 = hoursIntoEvent(2);
+  // Only a direct sign-up to a lottery program type blocks the group actions, so
+  // both program items take one. The clock goes half an hour before the earlier
+  // one, which is past the gap after both lotteries and before either starts.
+  const startTime1 = hoursIntoEvent(4);
+  const startTime2 = hoursIntoEvent(5);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      programType: config.event().rollingDirectSignupProgramTypes[0],
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: startTime1,
       endTime: addMinutes(
         new Date(startTime1),
@@ -314,7 +313,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
     },
     {
       ...testProgramItem2,
-      programType: config.event().rollingDirectSignupProgramTypes[0],
+      programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: startTime2,
       endTime: addMinutes(
         new Date(startTime2),
@@ -325,7 +324,9 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: signupsOpenTime() });
+  await postTestSettings(request, {
+    testTime: subMinutes(new Date(startTime1), 30).toISOString(),
+  });
 
   // Sign up to the later program item first: the list must still show the
   // earlier program item first
