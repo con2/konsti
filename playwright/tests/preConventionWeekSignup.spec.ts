@@ -13,6 +13,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test.skip(
@@ -49,7 +50,7 @@ test("Pre-convention week program item uses direct sign-up even with lottery pro
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 

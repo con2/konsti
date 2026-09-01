@@ -1,6 +1,5 @@
 import { expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
-import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
@@ -16,12 +15,13 @@ import {
   postSettings,
   postTestSettings,
   reportServerBuildTime,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Program item starts an hour into the event so it is upcoming at the event
 // start time the tests run at
 const programItemStartTime = addHours(
-  new Date(config.event().eventStartTime),
+  new Date(signupsOpenTime()),
   1,
 ).toISOString();
 
@@ -51,7 +51,7 @@ test("Update banner and admin message stack instead of overlapping when scrolled
       startTime,
     })),
   );
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await postSettings(request, {
     adminMessageEn: "Admin message for the stacking test",
     adminMessageFi: "Yllapidon viesti",
@@ -102,7 +102,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
       endTime: addHours(new Date(programItemStartTime), 4).toISOString(),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await postSettings(request, {
     adminMessageEn: "Admin message for the alignment test",
     adminMessageFi: "Yllapidon viesti",

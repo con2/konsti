@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Add favorite", async ({ page, request }) => {
@@ -16,7 +16,7 @@ test("Add favorite", async ({ page, request }) => {
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -63,7 +63,7 @@ test("Favorite button highlights on hover only on hover-capable devices", async 
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 

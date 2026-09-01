@@ -1,5 +1,4 @@
 import { APIRequestContext, Page, expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
@@ -8,6 +7,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Seed enough program items that the list is tall enough to scroll, and open
@@ -27,7 +27,7 @@ const openSeededProgramList = async (
       startTime,
     })),
   );
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 

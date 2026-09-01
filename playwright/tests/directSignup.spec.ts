@@ -16,6 +16,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
@@ -36,7 +37,7 @@ test("Add and cancel direct sign-up", async ({ page, request }) => {
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -124,7 +125,7 @@ test("Show program item full message when logged out and logged in", async ({
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   // Fill the program item with another user
@@ -178,7 +179,7 @@ test("Show error when program item full and update participant list", async ({
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -240,7 +241,7 @@ test("Show no sign-up controls after direct sign-up has ended", async ({
   // Sign up test1 while direct sign-up is open, then move time past the start
   // when direct sign-up has ended
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await testPostDirectSignup(request, "test1", {
     directSignupProgramItemId: testProgramItem.programItemId,
@@ -304,7 +305,7 @@ test("Show timeslot conflict message instead of direct sign-up button", async ({
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   // Sign up to the first program item, then view the other one starting at
@@ -356,7 +357,7 @@ test("Show no sign-up button before direct sign-up opens", async ({
     signupStrategy: EventSignupStrategy.DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
@@ -467,7 +468,7 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   // A lottery sign-up for the same start time as the spot about to be taken
@@ -541,7 +542,7 @@ test("Show no lottery warning on the direct sign-up form once the lottery is ove
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostLotterySignup(request, "test1", {

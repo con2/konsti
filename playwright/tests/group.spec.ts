@@ -16,6 +16,7 @@ import {
   postAssignment,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
 
@@ -45,7 +46,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await login(page, request, { username: "test1", password: "test" });
@@ -111,7 +112,7 @@ test("Group member can leave the group", async ({ page, request }) => {
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   const groupPage = new GroupPage(page);
 
@@ -141,7 +142,7 @@ test("Show error when joining a group that does not exist", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   const groupPage = new GroupPage(page);
 
@@ -161,7 +162,7 @@ test("Group creator can close the group", async ({ page, request }) => {
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   const groupPage = new GroupPage(page);
 
@@ -200,7 +201,7 @@ test("Group member cannot lottery sign-up but group creator can", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   const groupPage = new GroupPage(page);
   const programList = new ProgramListPage(page);
@@ -255,7 +256,7 @@ test("Show error when group is bigger than the program item's maximum attendance
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   const groupPage = new GroupPage(page);
   const programList = new ProgramListPage(page);
@@ -293,8 +294,10 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   page,
   request,
 }) => {
-  // Both program items are in the direct sign-up phase at event start time,
-  // starting one and two hours after it
+  // Both program items take a rolling direct sign-up, which is open from the
+  // moment sign-ups do, so both are upcoming and signable at that time. A two
+  // phase program type could not be: its direct sign-up opens shortly before
+  // the item starts, so only one whole hour could ever be in that phase here.
   const startTime1 = hoursIntoEvent(1);
   const startTime2 = hoursIntoEvent(2);
 
@@ -302,7 +305,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
+      programType: config.event().rollingDirectSignupProgramTypes[0],
       startTime: startTime1,
       endTime: addMinutes(
         new Date(startTime1),
@@ -311,7 +314,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
     },
     {
       ...testProgramItem2,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
+      programType: config.event().rollingDirectSignupProgramTypes[0],
       startTime: startTime2,
       endTime: addMinutes(
         new Date(startTime2),
@@ -322,7 +325,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   // Sign up to the later program item first: the list must still show the
   // earlier program item first

@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import {
   EventSignupStrategy,
   LoginProvider,
@@ -15,6 +14,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
 
@@ -102,7 +102,7 @@ test("Helper can view private sign-up question answers", async ({
       },
     ],
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   await testPostDirectSignup(request, "test1", {
     directSignupProgramItemId: "helper-message-item",

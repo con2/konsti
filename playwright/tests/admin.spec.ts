@@ -18,6 +18,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Admin can open and close the app", async ({ page, request }) => {
@@ -176,7 +177,7 @@ test("Admin sees sign-up questions listed", async ({ page, request }) => {
       },
     ],
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "admin", password: "test" });
 
   const adminPage = new AdminPage(page);
@@ -194,7 +195,7 @@ test("Preselect the next starting time whose lottery can still be run", async ({
   page,
   request,
 }) => {
-  // The first slot's direct signup is already open at event start, so its lottery can no
+  // The first slot's direct sign-up is already open when sign-ups do, so its lottery can no
   // longer be run. During an event most of the list is behind that line, which is why the
   // earliest starting time is a poor default.
   const pastStartTime = hoursIntoEvent(1);
@@ -215,7 +216,7 @@ test("Preselect the next starting time whose lottery can still be run", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "admin", password: "test" });
 
   const adminPage = new AdminPage(page);
@@ -253,7 +254,7 @@ test("Refuse an assignment run outside the starting time's own window", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "admin", password: "test" });
 
   const adminPage = new AdminPage(page);
@@ -322,11 +323,11 @@ test("Hide program item", async ({ page, request }) => {
   await addProgramItems(request, [
     {
       ...testProgramItem,
-      startTime: new Date(config.event().eventStartTime).toISOString(),
+      startTime: new Date(signupsOpenTime()).toISOString(),
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await login(page, request, { username: "admin", password: "test" });

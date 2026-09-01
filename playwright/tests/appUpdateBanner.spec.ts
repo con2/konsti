@@ -11,12 +11,13 @@ import {
   populateDb,
   postTestSettings,
   reportServerBuildTime,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Program item starts an hour into the event so it is upcoming at the event
 // start time the tests run at
 const programItemStartTime = addHours(
-  new Date(config.event().eventStartTime),
+  new Date(signupsOpenTime()),
   1,
 ).toISOString();
 
@@ -188,7 +189,7 @@ test("A later build gets a transparent reload of its own", async ({
       endTime: addHours(new Date(programItemStartTime), 4).toISOString(),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   const setServerBuildTime = await reportServerBuildTime(page, "1000");
 
   await page.clock.install();
@@ -267,7 +268,7 @@ test("Update reloads transparently on the first navigation, but only once per bu
       endTime: addHours(new Date(programItemStartTime), 4).toISOString(),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await reportServerBuildTime(page);
 
   await page.clock.install();

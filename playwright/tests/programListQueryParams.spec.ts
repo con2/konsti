@@ -8,6 +8,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // The query param can only select a program type the event has
@@ -39,7 +40,7 @@ test("Active program type is selected from the programType query parameter", asy
       startTime: hoursIntoEvent(2),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
 
   const programList = new ProgramListPage(page);
@@ -88,7 +89,7 @@ test("The invalid query parameter lists only program items missing required info
       startTime: hoursIntoEvent(2),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
 
   const programList = new ProgramListPage(page);

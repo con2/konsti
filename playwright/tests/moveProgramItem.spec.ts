@@ -19,6 +19,7 @@ import {
   postAssignment,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
@@ -51,7 +52,7 @@ test("Show event log notification when program item with direct sign-up is moved
   ]);
 
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -113,7 +114,7 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
@@ -157,7 +158,7 @@ test("Keep a placed direct sign-up and say the starting time changed", async ({
   await addProgramItems(request, [
     { ...testProgramItem, startTime: signedToStartTime },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
 
   await page.goto("/");
@@ -226,7 +227,7 @@ test("Keep lottery sign-ups a moved program item landed on and act on them", asy
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostDirectSignup(request, "test1", {
@@ -296,7 +297,7 @@ test("Offer direct sign-up instead of a lottery for a program item moved after i
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostLotterySignup(request, "test1", {

@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
@@ -10,6 +9,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
 
@@ -37,7 +37,7 @@ test("Admission ticket reflects whether the user has signed up", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   await testPostDirectSignup(request, "test1", {
     directSignupProgramItemId: "admission-signed-item",
