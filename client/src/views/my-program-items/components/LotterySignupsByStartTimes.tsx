@@ -1,6 +1,6 @@
 import { Fragment, ReactElement } from "react";
 import { capitalize, groupBy } from "remeda";
-import { config } from "shared/config";
+import { getProgramItemStartTime } from "shared/utils/signupTimes";
 import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import { LotterySignupItem } from "client/views/my-program-items/components/LotterySignupItem";
 import {
@@ -18,12 +18,11 @@ export const LotterySignupsByStartTimes = ({
 }: Props): ReactElement => {
   const { getWeekdayAndTime } = useTimeFormatters();
 
-  const groupedLotterySignups = groupBy(lotterySignups, (lotterySignup) => {
-    const parentStartTime = config
-      .event()
-      .startTimesByParentIds.get(lotterySignup.programItem.parentId);
-    return parentStartTime ?? lotterySignup.signedToStartTime;
-  });
+  // Grouped by the hour the lottery covers, which for a batched program item is the batch's own -
+  // one heading over the ranking the attendee made for that run
+  const groupedLotterySignups = groupBy(lotterySignups, (lotterySignup) =>
+    getProgramItemStartTime(lotterySignup.programItem),
+  );
 
   return (
     <>
