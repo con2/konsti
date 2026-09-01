@@ -1,4 +1,4 @@
-import { isAfter, subMinutes } from "date-fns";
+import { isAfter } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
@@ -18,7 +18,7 @@ import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramI
 import { differenceBy } from "shared/utils/remedaExtend";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import {
-  getProgramItemStartTime,
+  getLotterySignupEndTime,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
 import { tooEarlyForLotterySignup } from "shared/utils/tooEarlyForLotterySignup";
@@ -265,9 +265,6 @@ const getSignupStrategyForProgramItem = (
   settings: Settings,
   currentTime: Date,
 ): ProgramItemSignupStrategy => {
-  const start = new Date(getProgramItemStartTime(programItem));
-  const { directSignupPhaseStart } = config.event();
-
   // No lottery will take it, so the spots left go first come, first served. Checked before the
   // event-wide strategy: a lottery-only event would otherwise report LOTTERY for an item every
   // lottery sign-up path refuses, leaving it with no sign-up control at all.
@@ -297,11 +294,14 @@ const getSignupStrategyForProgramItem = (
     return ProgramItemSignupStrategy.DIRECT;
   }
 
-  const isAfterDirectSignupStarted = isAfter(
+  // Flipped at the lottery closing rather than at direct sign-up opening, so the phase gap
+  // offers the direct sign-up form with its button still shut. Strict, because the sign-up
+  // write accepts a lottery entry made at that exact instant.
+  const lotterySignupClosed = isAfter(
     currentTime,
-    subMinutes(start, directSignupPhaseStart),
+    getLotterySignupEndTime(programItem),
   );
-  if (isAfterDirectSignupStarted) {
+  if (lotterySignupClosed) {
     return ProgramItemSignupStrategy.DIRECT;
   }
 
