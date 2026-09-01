@@ -14,6 +14,7 @@ A plain-language glossary of Konsti terms.
 
 - **Program item** - the thing users sign up to (e.g. a roleplaying session or a tournament).
 - **Program type** - the category a program item belongs to (e.g. tabletop rpg, larp).
+- **Parent program item** - the Kompassi programme entry a program item belongs to. One programme with several sessions becomes several Konsti program items sharing a parent.
 - **Spot** - one attendee slot in a program item.
 - **Attendee** - a person who has a spot in a program item. Sometimes called "player" (for rpg/larp) or "participant" (for other types).
 - **Favorite** - a "watch this" bookmark on a program item.
@@ -47,6 +48,7 @@ A plain-language glossary of Konsti terms.
 
 - **Assignment** - the step that allocates spots to users based on lottery sign-ups. Called "lottery" in user-facing contexts, since that's a more familiar word.
 - **Auto-assignment** - the scheduled cron run that kicks off assignment automatically as each lottery phase closes. This is the normal path; admins only trigger assignment manually as a backup.
+- **Batched lottery** - one lottery covering several program items that start at different times. The event config gives the parent a single start time, which decides when that lottery runs and when its sign-up windows open; each program item keeps its own start time for everything about a spot.
 - **Assignment algorithm** - the algorithm that decides who gets which spot. Konsti supports two, plus a combined mode:
   - **PADG** - a preference-based algorithm.
   - **Random** - a randomized algorithm.

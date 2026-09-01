@@ -388,7 +388,8 @@ starts.
 
 **The program item's own start time decides where the attendee is.** A spot in that sub-session is
 a spot at 10:00, whatever batch it was lotteried in. What it clashes with, which spot a won one
-replaces, and which hour a sign-up records all follow the program item's own hour.
+replaces, which hour a sign-up records, and which hour a favorite is listed under all follow the
+program item's own hour.
 
 What the attendee is told follows that same division, in the event log and in the email alike. A
 placement names the hour of the program item they got. A rejection has no program item to name, so
