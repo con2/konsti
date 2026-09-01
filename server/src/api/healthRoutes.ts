@@ -8,10 +8,9 @@ import { logApiCall } from "server/middleware/logApiCall";
 // client traffic, which the deployment's liveness and readiness probes need
 export const healthRoutes = express.Router();
 
-healthRoutes.use(logApiCall);
-
 /* GET routes */
 
-// Route-level CORS keeps it off the paths onlyCronjobs is there to close off.
-// The client's network probe fetches this cross-origin from its own dev server.
-healthRoutes.get(ApiEndpoint.HEALTH, allowCORS, getHealthStatus);
+// Route-level middleware, not router-level: this router is mounted at the app
+// root, so a `use` here would run for every request. CORS because the client's
+// network probe fetches this cross-origin from its own dev server.
+healthRoutes.get(ApiEndpoint.HEALTH, logApiCall, allowCORS, getHealthStatus);
