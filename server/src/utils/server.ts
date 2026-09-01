@@ -7,6 +7,7 @@ import expressStaticGzip from "express-static-gzip";
 import helmet from "helmet";
 import { config } from "shared/config";
 import { apiRoutes } from "server/api/apiRoutes";
+import { healthRoutes } from "server/api/healthRoutes";
 import { sentryRoutes } from "server/api/sentryRoutes";
 import { db } from "server/db/mongodb";
 import { allowCORS } from "server/middleware/cors";
@@ -68,8 +69,17 @@ export const startServer = async ({
     app.use(express.urlencoded({ extended: true }));
   }
 
-  // Accepts raw body
-  app.use(sentryRoutes);
+  // A cronjob-only instance serves no client traffic, but is still probed
+  const serveIndexAndApi =
+    !config.server().onlyCronjobs ||
+    config.server().cronjobsAndBackendSameInstance;
+
+  app.use(healthRoutes);
+
+  if (serveIndexAndApi) {
+    // Accepts raw body, so it has to be mounted before the JSON parser below
+    app.use(sentryRoutes);
+  }
 
   // Parse body and populate req.body - only accepts JSON
   app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
@@ -82,11 +92,13 @@ export const startServer = async ({
     next(err);
   });
 
-  app.use("/api", allowCORS);
-  app.use("/auth", allowCORS);
   app.use(wwwRedirect);
 
-  app.use(apiRoutes);
+  if (serveIndexAndApi) {
+    app.use("/api", allowCORS);
+    app.use("/auth", allowCORS);
+    app.use(apiRoutes);
+  }
 
   // Set static path
   const staticPath =
@@ -118,10 +130,6 @@ export const startServer = async ({
       isBundledAsset ? "public, max-age=31536000, immutable" : "no-cache",
     );
   };
-
-  const serveIndexAndApi =
-    !config.server().onlyCronjobs ||
-    config.server().cronjobsAndBackendSameInstance;
 
   if (serveIndexAndApi) {
     // Set compression

@@ -17,7 +17,7 @@ Run from the repo root as `yarn workspace server <script>` (or via the root shor
 ## Directory Layout (`server/src`)
 
 - **`index.ts`** — entry point (ESM). Does **not** import `utils/instrument.ts` directly; Sentry is initialized via the `--import=./src/utils/instrument.ts` Node preload in the `start` scripts (see Sentry note below).
-- **`api/`** — route tables. `apiRoutes.ts` (the main router) and `sentryRoutes.ts` (separate router for the Sentry tunnel, mounted before `express.json()`).
+- **`api/`** — route tables. `apiRoutes.ts` (the main router), `sentryRoutes.ts` (separate router for the Sentry tunnel, mounted before `express.json()`), and `healthRoutes.ts` (separate router so the health check survives `onlyCronjobs`, which gates the other two). See "Intentional divergences" below for why the latter two are split out.
 - **`features/{feature}/`** — feature modules: `admin`, `assignment`, `direct-signup`, `health`, `kompassi-login`, `notifications`, `program-item`, `program-item-popularity`, `results`, `sentry-tunnel`, `serial`, `settings`, `statistics`, `user`. Each has controllers (HTTP), services (business logic), and Mongoose schemas/repositories.
 - **`middleware/`** — `requireAuth.ts`, `validateRequest.ts` (exports both `validateBody` and `validateQuery`), `logApiCall.ts`, `cors.ts`, `wwwRedirect.ts`.
 - **`db/`** — `mongodb.ts` (connection lifecycle) and `mongoosePlugins.ts` (global plugins).
@@ -66,6 +66,7 @@ Intentional divergences from the standard chain:
 
 - **`postUpdateUserEmailAddress`** keeps inline `safeParse` because its 422 response is a custom JSON body (`{message, status, errorId: "invalidEmail"}`), which `validateBody`'s plain `sendStatus(422)` can't produce.
 - **`postSentryTunnel`** lives in `server/src/api/sentryRoutes.ts` (separate router, mounted before `express.json()`) because it accepts raw `Buffer` envelopes from Sentry's client SDK rather than JSON. It does its own inline `logger.info(...)` since `logApiCall` isn't mounted on that router.
+- **`getHealthStatus`** lives in `server/src/api/healthRoutes.ts` (separate router, `logApiCall` mounted on it) because it is the **only** route a cronjob-only instance serves. `onlyCronjobs` gates `apiRoutes`, `sentryRoutes` and the static SPA together, so the cron deployment can neither serve nor mutate attendee data; its k8s liveness and readiness probes hit `/api/health`, which would restart the pod in a loop if that route went with the rest. Add new routes to `apiRoutes` unless the cron instance itself needs them.
 - **`getProgramItems`** uses `getAuthorizedUserGroup` instead of `requireAuth` because it intentionally allows unauthenticated callers and varies its response by role.
 - **Kompassi mock service** (`server/src/test/kompassi-mock-service/`) routes are registered only when `NODE_ENV === "development"` and `throw` on validation failure rather than 422 — they're test fixtures, not user-facing endpoints.
 
