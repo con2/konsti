@@ -185,6 +185,50 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
   });
 
+  // The strategy flips at the lottery closing rather than at direct sign-up opening, so the
+  // phase gap offers the direct sign-up form with its button still shut
+  test("should report lottery sign-up strategy a minute before lottery sign-up closes", async () => {
+    const { eventStartTime, directSignupPhaseStart } = config.event();
+    const startTime = addHours(new Date(eventStartTime), 8).toISOString();
+    const timeNow = subMinutes(
+      new Date(startTime),
+      directSignupPhaseStart + 1,
+    ).toISOString();
+
+    await saveTestSettings({ testTime: timeNow });
+    await createSettings();
+    await saveProgramItems([{ ...testProgramItem, startTime }]);
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+    expect(response.status).toEqual(200);
+
+    const { programItems } = response.body as GetProgramItemsResult;
+    expect(programItems[0].programItem.signupStrategy).toEqual(
+      ProgramItemSignupStrategy.LOTTERY,
+    );
+  });
+
+  test("should report direct sign-up strategy inside the phase gap, before direct sign-up opens", async () => {
+    const { eventStartTime, directSignupPhaseStart } = config.event();
+    const startTime = addHours(new Date(eventStartTime), 8).toISOString();
+    const timeNow = subMinutes(
+      new Date(startTime),
+      directSignupPhaseStart - 1,
+    ).toISOString();
+
+    await saveTestSettings({ testTime: timeNow });
+    await createSettings();
+    await saveProgramItems([{ ...testProgramItem, startTime }]);
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+    expect(response.status).toEqual(200);
+
+    const { programItems } = response.body as GetProgramItemsResult;
+    expect(programItems[0].programItem.signupStrategy).toEqual(
+      ProgramItemSignupStrategy.DIRECT,
+    );
+  });
+
   test("should resolve sign-up strategy from parent start time override", async () => {
     const { eventStartTime, directSignupPhaseStart } = config.event();
 
