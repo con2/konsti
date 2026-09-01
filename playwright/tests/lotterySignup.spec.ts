@@ -714,6 +714,13 @@ test("Did not receive spot in a lottery covering several starting times", async 
     testTime: subHours(new Date(parentStartTime), 3).toISOString(),
   });
 
+  // The second slot is signed up to here so the attendee holds one lottery sign-up per slot,
+  // which is the only state the list's grouping is visible in
+  await testPostLotterySignup(request, "test1", {
+    programItemId: testProgramItem2.programItemId,
+    priority: 1,
+  });
+
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
@@ -724,6 +731,23 @@ test("Did not receive spot in a lottery covering several starting times", async 
 
   await firstProgramItem.lotterySignup();
   await firstProgramItem.confirmLotterySignup();
+
+  // One ranking covering the whole batch, so both slots are listed under the batch's own hour
+  // rather than under one heading each
+  await programList.gotoMyProgram();
+  await expect(programList.lotterySignupTimeHeadings).toHaveCount(1);
+  await expect(programList.lotterySignupTimeHeadings).toContainText(
+    getTime(parentStartTime),
+  );
+  await expect(programList.lotterySignupTimeHeadings).not.toContainText(
+    getTime(firstStartTime),
+  );
+  await expect(
+    programList.lotterySignupList.getByTestId("program-item-title"),
+  ).toHaveCount(2);
+  await expect(programList.lotterySignupList).toContainText(
+    testProgramItem2.title,
+  );
 
   await postAssignment(request, parentStartTime);
   await page.reload();
