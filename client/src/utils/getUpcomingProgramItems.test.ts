@@ -37,6 +37,21 @@ const lotterySignupFor = (
   programItem,
 });
 
+// A sub-session of a batch lotteried five hours before it starts, which is the gap that
+// separates the batch's hour from the program item's own
+const batchedProgramItem = (): typeof testProgramItem => {
+  const parentId = "parent";
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    startTimesByParentIds: new Map([[parentId, startTime]]),
+  });
+
+  return programItemAt("child", {
+    parentId,
+    startTime: addHours(new Date(startTime), 5).toISOString(),
+  });
+};
+
 const directSignupFor = (
   programItem: typeof testProgramItem,
 ): DirectSignupWithProgramItem => ({
@@ -121,6 +136,16 @@ describe("getUpcomingDirectSignups", () => {
     const timeNow = addHours(new Date(startTime), 1);
     expect(getUpcomingDirectSignups([directSignup], timeNow)).toEqual([]);
   });
+
+  // A spot is held for the hour the attendee turns up, which for a batched program item
+  // is not the hour its lottery ran at
+  test("ignores the parent start time when the program item has one", () => {
+    const batchedSignup = directSignupFor(batchedProgramItem());
+    const timeNow = addHours(new Date(startTime), 1);
+    expect(getUpcomingDirectSignups([batchedSignup], timeNow)).toEqual([
+      batchedSignup,
+    ]);
+  });
 });
 
 describe("getUpcomingFavorites", () => {
@@ -130,20 +155,17 @@ describe("getUpcomingFavorites", () => {
     expect(getUpcomingFavorites([programItem], timeNow)).toEqual([programItem]);
   });
 
-  // A sub-session's own start time can sit hours after the parent's, so the
-  // override decides when it drops off the list
-  test("uses the parent start time when the program item has one", () => {
-    const parentId = "parent";
-    const programItem = programItemAt("child", {
-      parentId,
-      startTime: addHours(new Date(startTime), 5).toISOString(),
-    });
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([[parentId, startTime]]),
-    });
-
+  // A favorite marks where the attendee means to be, so a batched sub-session is listed
+  // against its own hour even though its lottery ran at the batch's
+  test("ignores the parent start time when the program item has one", () => {
+    const programItem = batchedProgramItem();
     const timeNow = addHours(new Date(startTime), 1);
+    expect(getUpcomingFavorites([programItem], timeNow)).toEqual([programItem]);
+  });
+
+  test("drops a batched favorite an hour past its own start time", () => {
+    const programItem = batchedProgramItem();
+    const timeNow = addHours(new Date(programItem.startTime), 1);
     expect(getUpcomingFavorites([programItem], timeNow)).toEqual([]);
   });
 });
@@ -216,6 +238,23 @@ describe("getLotterySignups", () => {
     );
     expect(
       getLotterySignups({ ...params, showAllProgramItems: false }),
+    ).toEqual([]);
+  });
+
+  // A lottery sign-up belongs to the run it was entered into, so a batched one is past an
+  // hour after the batch was lotteried, whatever its program item's own hour says
+  test("filters out a batched lottery sign-up an hour past the batch start time", () => {
+    const batchedSignups = [lotterySignupFor(batchedProgramItem())];
+
+    expect(
+      getLotterySignups({
+        lotterySignups: batchedSignups,
+        isGroupCreator: false,
+        groupMembers: [],
+        isInGroup: false,
+        showAllProgramItems: false,
+        timeNow: addHours(new Date(startTime), 2),
+      }),
     ).toEqual([]);
   });
 });

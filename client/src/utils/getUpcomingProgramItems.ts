@@ -33,6 +33,8 @@ export const isMainEventProgramVisible = (timeNow: Date): boolean => {
   );
 };
 
+// A lottery sign-up belongs to the run it was entered into, so a batched one stops being upcoming
+// an hour after the batch was lotteried rather than an hour after its own program item
 const getUpcomingLotterySignups = (
   lotterySignups: readonly LotterySignupWithProgramItem[],
   timeNow: Date,
@@ -103,6 +105,8 @@ export const getUpcomingDirectSignups = (
   return upcomingProgramItems;
 };
 
+// A favorite marks a program item the attendee means to be at, so it follows the item's own hour
+// rather than the one a batched lottery ran at
 export const getUpcomingFavorites = (
   favoriteProgramItems: readonly ProgramItem[],
   timeNow: Date,
@@ -110,7 +114,7 @@ export const getUpcomingFavorites = (
   const upcomingProgramItems = favoriteProgramItems.filter(
     (favoriteProgramItem) => {
       return isAfter(
-        addHours(new Date(getProgramItemStartTime(favoriteProgramItem)), 1),
+        addHours(new Date(favoriteProgramItem.startTime), 1),
         timeNow,
       );
     },
