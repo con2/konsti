@@ -1,5 +1,5 @@
 import { APIRequestContext, Page, expect } from "@playwright/test";
-import { addHours, startOfHour, subMinutes } from "date-fns";
+import { addHours, isAfter, startOfHour, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
@@ -298,11 +298,26 @@ export const reportServerBuildTime = async (
   };
 };
 
+// The moment the suite treats as the start of the event: every spec's mocked
+// clock and every program item start time is built from this. It is the event
+// start unless the event holds direct sign-up back past it, because a spec
+// starting its clock before sign-ups open has nothing to sign up to.
+export const signupsOpenTime = (): string => {
+  const { eventStartTime, rollingDirectSignupEarliestStartTime } =
+    config.event();
+
+  return rollingDirectSignupEarliestStartTime &&
+    isAfter(
+      new Date(rollingDirectSignupEarliestStartTime),
+      new Date(eventStartTime),
+    )
+    ? rollingDirectSignupEarliestStartTime
+    : eventStartTime;
+};
+
 // Program item start times, built relative to the event start so a spec never
 // pins an absolute date. Truncated to a whole hour because lottery items are
 // only valid on one, and the hour is the event's own: the config pins this
 // process to that timezone.
 export const hoursIntoEvent = (hours: number): string =>
-  startOfHour(
-    addHours(new Date(config.event().eventStartTime), hours),
-  ).toISOString();
+  startOfHour(addHours(new Date(signupsOpenTime()), hours)).toISOString();

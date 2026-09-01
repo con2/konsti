@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
@@ -8,6 +7,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Search filters the program list and shows the empty state", async ({
@@ -29,7 +29,7 @@ test("Search filters the program list and shows the empty state", async ({
       startTime: hoursIntoEvent(2),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 
@@ -69,7 +69,7 @@ test("The empty state is not shown while the program list loads its items", asyn
       startTime: hoursIntoEvent(1),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
 
   // The list renders at a lower priority (useDeferredValue), so its initial

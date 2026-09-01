@@ -15,6 +15,7 @@ import {
   postAssignment,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
 
@@ -64,7 +65,7 @@ test("Show lottery results without login", async ({ page, request }) => {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   // Seed the lottery sign-up and run the lottery on the background
@@ -114,7 +115,7 @@ test("Leave a lottery run that placed nobody out of the results", async ({
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostLotterySignup(request, "test1", {
@@ -167,10 +168,7 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
   // One hour into the event both items' lottery sign-up windows are open -
   // the later item's window hasn't opened yet at the event start
   await postTestSettings(request, {
-    testTime: addHours(
-      new Date(config.event().eventStartTime),
-      1,
-    ).toISOString(),
+    testTime: addHours(new Date(signupsOpenTime()), 1).toISOString(),
   });
 
   // Separate users per time slot so the first run's overlap cleanup can't

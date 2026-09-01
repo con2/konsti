@@ -1,11 +1,11 @@
 import { APIRequestContext, Page, expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { AboutPage } from "playwright/pages/AboutPage";
 import { AdminPage } from "playwright/pages/AdminPage";
 import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // The admin view carries a button that throws while rendering, next to the
@@ -16,7 +16,7 @@ const triggerViewError = async (
   request: APIRequestContext,
 ): Promise<AdminPage> => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "admin", password: "test" });
 
   await page.goto("/admin");

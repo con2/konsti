@@ -9,6 +9,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test.skip(!config.event().enableTagDropdown, "Event has no tag filter");
@@ -48,7 +49,7 @@ test("Multiple tag filters combine with AND logic and persist over reload", asyn
       startTime,
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
 

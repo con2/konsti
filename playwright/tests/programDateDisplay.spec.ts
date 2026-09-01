@@ -16,6 +16,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Program times show the weekday only during event week; further out the
@@ -26,7 +27,7 @@ const fullDatePattern = /^\w{3} \d{1,2}\.\d{1,2}\.\d{4} \d{2}:\d{2}$/;
 const weekdayPattern = /^\w+ \d{2}:\d{2}$/;
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
-const eventStart = new Date(config.event().eventStartTime);
+const eventStart = new Date(signupsOpenTime());
 // Offsets from the event start keep both program items on the same weekdays
 // whatever timezone the test runs in
 const preWeekStart = subDays(eventStart, 4);
@@ -60,10 +61,7 @@ test("Before event week, program times include the full date", async ({
 }) => {
   await seed(request);
   await postTestSettings(request, {
-    testTime: subWeeks(
-      new Date(config.event().eventStartTime),
-      3,
-    ).toISOString(),
+    testTime: subWeeks(new Date(signupsOpenTime()), 3).toISOString(),
   });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");
@@ -88,7 +86,7 @@ test("During event week, program times show the weekday without a date", async (
 }) => {
   await seed(request);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
   await page.goto("/");

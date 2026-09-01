@@ -1,5 +1,4 @@
 import { Page, expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
@@ -11,6 +10,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // The client suppresses the network error toast for failed background
@@ -71,7 +71,7 @@ test("Network error toast appears during an outage, heals on recovery, and is di
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -121,7 +121,7 @@ test("Refresh failing right after reconnect stays silent when the connection rec
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -169,7 +169,7 @@ test("Genuine outage at reconnect time surfaces the toast via the probe", async 
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -207,7 +207,7 @@ test("HTTP errors on background requests count as connectivity issues inside the
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -257,7 +257,7 @@ test("Failed favorite action shows the toast immediately", async ({
     programItems: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 

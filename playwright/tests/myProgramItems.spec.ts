@@ -11,6 +11,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 const startTime = hoursIntoEvent(3);
@@ -33,7 +34,7 @@ test("Cancel lottery sign-up on My Program page", async ({ page, request }) => {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -67,7 +68,7 @@ test("Show empty My Program lists and toggle past program items", async ({
 }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -132,7 +133,7 @@ test("Remove favorite on My Program page", async ({ page, request }) => {
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 

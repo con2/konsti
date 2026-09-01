@@ -10,6 +10,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Program items missing required info show error messages", async ({
@@ -62,7 +63,7 @@ test("Program items missing required info show error messages", async ({
       startTime: addMinutes(new Date(hoursIntoEvent(6)), 30).toISOString(),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
   await login(page, request, { username: "test1", password: "test" });
 
   const programList = new ProgramListPage(page);

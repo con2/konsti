@@ -9,6 +9,7 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
 
@@ -50,7 +51,7 @@ test("Program list filters narrow the list and persist over reload", async ({
       startTime,
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 
   // Fill the one-seat program item so it shows as fully booked
   await testPostDirectSignup(request, "test2", {

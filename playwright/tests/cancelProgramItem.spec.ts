@@ -18,6 +18,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct sign-up is cancelled", async ({
@@ -563,7 +564,7 @@ const initDb = async (request: APIRequestContext): Promise<void> => {
     admin: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 };
 

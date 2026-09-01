@@ -21,6 +21,7 @@ import {
   postAssignment,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
@@ -48,7 +49,7 @@ test("Add lottery sign-up", async ({ page, request }) => {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -108,7 +109,7 @@ test("Receive spot in lottery sign-up", async ({ page, request }) => {
   });
 
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await login(page, request, { username: "test1", password: "test" });
@@ -173,7 +174,7 @@ test("Did not receive spot in lottery sign-up", async ({ page, request }) => {
   });
 
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await login(page, request, { username: "test1", password: "test" });
@@ -261,7 +262,7 @@ test("Receive spot in lottery sign-up, with multiple lottery program types", asy
   });
 
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await login(page, request, { username: "test1", password: "test" });
@@ -302,7 +303,7 @@ test("Receive seat from each lottery program type in separate time slots", async
   page,
   request,
 }) => {
-  const { eventStartTime, twoPhaseSignupProgramTypes } = config.event();
+  const { twoPhaseSignupProgramTypes } = config.event();
 
   // Expected English names for the program type interpolations, the
   // programTypeSingular and programTypeIllative locale values are identical in English
@@ -326,7 +327,7 @@ test("Receive seat from each lottery program type in separate time slots", async
     const programType =
       twoPhaseSignupProgramTypes[index % twoPhaseSignupProgramTypes.length];
     const startTime = addHours(
-      new Date(eventStartTime),
+      new Date(signupsOpenTime()),
       hoursFromEventStart,
     ).toISOString();
     return {
@@ -438,7 +439,7 @@ test("Cancel lottery sign-up on program list", async ({ page, request }) => {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -502,7 +503,7 @@ test("Show limit message when three lottery sign-ups in time slot", async ({
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   // Seed the first two sign-ups in the time slot on the background
@@ -572,7 +573,7 @@ test("Offer lottery sign-up even while a spot at the same time is held", async (
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostDirectSignup(request, "test1", {
@@ -622,7 +623,7 @@ test("Offer direct sign-up instead of a lottery for a program item that already 
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostDirectSignup(request, "test2", {
@@ -894,7 +895,7 @@ test("Keep a program item out of the lottery after its direct sign-ups are cance
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await testPostDirectSignup(request, "test1", {

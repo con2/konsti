@@ -1,5 +1,4 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
@@ -16,6 +15,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Admin adds a text sign-up question to a program item", async ({
@@ -264,7 +264,7 @@ const seedProgramItem = async (request: APIRequestContext): Promise<void> => {
       startTime: hoursIntoEvent(1),
     },
   ]);
-  await postTestSettings(request, { testTime: config.event().eventStartTime });
+  await postTestSettings(request, { testTime: signupsOpenTime() });
 };
 
 const openDirectSignup = async (

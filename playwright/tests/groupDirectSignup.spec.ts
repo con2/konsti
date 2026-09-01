@@ -13,6 +13,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Group member signing up to a 'sign-up always open' program item stays in the group", async ({
@@ -40,7 +41,7 @@ test("Group member signing up to a 'sign-up always open' program item stays in t
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   const groupPage = new GroupPage(page);
@@ -86,7 +87,7 @@ test("Group member direct signing up to a normal program item is removed from th
   page,
   request,
 }) => {
-  // Program item is in the direct sign-up phase at event start time
+  // Program item is in the direct sign-up phase when sign-ups open
   const startTime = hoursIntoEvent(1);
   const endTime = addMinutes(
     new Date(startTime),
@@ -106,7 +107,7 @@ test("Group member direct signing up to a normal program item is removed from th
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   const groupPage = new GroupPage(page);

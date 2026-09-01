@@ -12,13 +12,14 @@ import {
   login,
   populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 const programType = config.event().twoPhaseSignupProgramTypes[0];
 // Both program items start an hour into the event so they are upcoming at the
 // event start time the tests run at
 const programItemStartTime = addHours(
-  new Date(config.event().eventStartTime),
+  new Date(signupsOpenTime()),
   1,
 ).toISOString();
 const programItemEndTime = addHours(
@@ -48,7 +49,7 @@ test("Periodic data poll picks up new program items without navigation", async (
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [initialProgramItem]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 
@@ -92,7 +93,7 @@ test("Periodic data poll hides sign-up when direct sign-up ends", async ({
     },
   ]);
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
   await login(page, request, { username: "test1", password: "test" });
 

@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
@@ -13,6 +12,7 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 const programItemStartTime = hoursIntoEvent(1);
@@ -24,7 +24,7 @@ test("Admin login", async ({ page, request }) => {
   ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   const username = "admin";
@@ -56,7 +56,7 @@ test("Helper login", async ({ page, request }) => {
   ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await page.goto("/");
@@ -84,7 +84,7 @@ test("User login", async ({ page, request }) => {
   ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   const username = "test1";
@@ -126,7 +126,7 @@ test("Show error when password is wrong", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await page.goto("/login");
@@ -152,7 +152,7 @@ test("Show validation errors when submitting empty login form", async ({
   await populateDb(request, { clean: true, admin: true });
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await page.goto("/login");
@@ -174,7 +174,7 @@ test("Login and registration offer both Kompassi and Konsti accounts", async ({
     appOpen: true,
   });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   await page.goto("/login");
@@ -212,7 +212,7 @@ test("Login redirect back to program item", async ({ page, request }) => {
   ]);
   await postSettings(request, { loginProvider: LoginProvider.LOCAL });
   await postTestSettings(request, {
-    testTime: config.event().eventStartTime,
+    testTime: signupsOpenTime(),
   });
 
   const username = "test1";
