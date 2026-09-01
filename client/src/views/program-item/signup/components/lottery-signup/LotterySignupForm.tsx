@@ -4,6 +4,7 @@ import { capitalize } from "remeda";
 import styled from "styled-components";
 import { PostLotterySignupRequest } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
+import { isSameTime } from "shared/utils/timeComparison";
 import { Checkbox } from "client/components/Checkbox";
 import { Dropdown } from "client/components/Dropdown";
 import { ErrorMessage } from "client/components/ErrorMessage";
@@ -44,11 +45,12 @@ export const LotterySignupForm = ({
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const loading = useAppSelector((state) => state.loading);
 
+  // The priorities already taken at this hour, which is the program items' own rather than the
+  // one a batch is lotteried at
   const selectedPriorities = new Set(
     lotterySignups
-      .filter(
-        (lotterySignup) =>
-          lotterySignup.programItem.startTime === programItem.startTime,
+      .filter((lotterySignup) =>
+        isSameTime(lotterySignup.programItem.startTime, programItem.startTime),
       )
       .map((lotterySignup) => lotterySignup.priority),
   );
