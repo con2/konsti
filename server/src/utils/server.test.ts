@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { ServerConfig } from "shared/config/serverConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -62,6 +63,21 @@ describe("Client-server instance", () => {
   test("should serve API routes", async () => {
     const response = await request(server).get(ApiEndpoint.SETTINGS);
     expect(response.status).toEqual(200);
+  });
+
+  // Every router is mounted at the app root, so one logging the requests it
+  // doesn't serve would log each call once per router
+  test("should log an API call once", async () => {
+    vi.mocked(logger.info).mockClear();
+
+    await request(server).get(ApiEndpoint.SETTINGS);
+
+    const apiCallLogs = vi
+      .mocked(logger.info)
+      .mock.calls.map((call) => call[0])
+      .filter((arg) => typeof arg === "string")
+      .filter((message: string) => message.startsWith("API call:"));
+    expect(apiCallLogs).toHaveLength(1);
   });
 });
 
