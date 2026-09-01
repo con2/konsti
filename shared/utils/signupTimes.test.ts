@@ -297,6 +297,64 @@ describe("Parent start time override via 'startTimesByParentIds'", () => {
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T10:15:00.000Z`);
   });
 
+  // The gap is measured from the run the batch is gapped from, so the whole batch waits it
+  // out together rather than each sub-session waiting one out at its own hour
+  test("getPhaseGapInProgress uses parent start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    // Direct sign-up opens at 10:15, so the gap runs from 10:01
+    const duringBatchPhaseGap = new Date(`${saturday}T10:05:00.000Z`);
+    expect(getPhaseGapInProgress(programItem, duringBatchPhaseGap)).toEqual(
+      true,
+    );
+  });
+
+  test("getPhaseGapInProgress is over at the own start time's phase gap", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    // Where the gap would fall if the own start time drove it, three hours after the batch
+    // opened direct sign-up
+    const timeNow = new Date(`${saturday}T13:05:00.000Z`);
+    expect(getPhaseGapInProgress(programItem, timeNow)).toEqual(false);
+  });
+
+  // Direct sign-up opens with the batch but closes when the program item itself starts
+  test("direct sign-up runs from the parent start time to the own start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    const batchDirectSignupStart = new Date(`${saturday}T10:15:00.000Z`);
+    expect(
+      getDirectSignupInProgress(programItem, batchDirectSignupStart),
+    ).toEqual(true);
+    expect(getDirectSignupEnded(programItem, batchDirectSignupStart)).toEqual(
+      false,
+    );
+
+    const afterOwnStartTime = addMinutes(new Date(ownStartTime), 1);
+    expect(getDirectSignupInProgress(programItem, afterOwnStartTime)).toEqual(
+      false,
+    );
+    expect(getDirectSignupEnded(programItem, afterOwnStartTime)).toEqual(true);
+  });
+
+  // The current event opens every lottery sign-up at one configured instant, which leaves the
+  // parent override deciding only when the batch's lottery sign-up closes
+  test("a fixed lottery sign-up time is used over the parent start time", () => {
+    const fixedLotterySignupTime = `${saturday}T05:00:00.000Z`;
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      fixedLotterySignupTime,
+      startTimesByParentIds: new Map([
+        [testProgramItem.parentId, parentStartTime],
+      ]),
+    });
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    expect(getLotterySignupStartTime(programItem).toISOString()).toEqual(
+      fixedLotterySignupTime,
+    );
+    // The close still follows the batch
+    expect(getLotterySignupEndTime(programItem).toISOString()).toEqual(
+      `${saturday}T10:00:00.000Z`,
+    );
+  });
+
   test("falls back to own start time when parentId has no override", () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...baseEventConfig,
