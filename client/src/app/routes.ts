@@ -16,6 +16,7 @@ export enum AppRoute {
   ABOUT = "/about",
   DASHBOARD = "/dashboard",
   NOTIFICATIONS = "/notifications",
+  PRIVACY_NOTICE = "/about/privacy",
   KOMPASSI_LOGOUT_CALLBACK = "/kompassi-logout-callback",
   ANY = "/*",
 }

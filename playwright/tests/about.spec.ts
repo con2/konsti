@@ -21,13 +21,15 @@ test("About page views content logged", async ({ page, request }) => {
   await aboutPage.gotoFaq();
   await expect(aboutPage.heading("For participants")).toBeVisible();
 
-  // The privacy notice is only linked from the sign-up consent forms otherwise,
-  // so this is where a logged in user can still read it
-  await aboutPage.expandFaqEntry(/How is my personal data processed/);
-  await expect(aboutPage.main).toContainText("Data Controller");
-
   await aboutPage.gotoAbout();
   await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
+
+  // The FAQ entry is the only route into the privacy notice from inside the app
+  await aboutPage.gotoFaq();
+  await aboutPage.expandFaqEntry(/How is my personal data processed/);
+  await aboutPage.gotoPrivacyNoticeFromFaq();
+  await expect(aboutPage.heading("Privacy Notice")).toBeVisible();
+  await expect(aboutPage.main).toContainText("Data Controller");
 });
 
 test("Switch language between English and Finnish", async ({
@@ -76,4 +78,17 @@ test("About page views content not logged", async ({ page, request }) => {
 
   await aboutPage.gotoAbout();
   await expect(aboutPage.heading("What is Konsti?")).toBeVisible();
+});
+
+// Other conventions link to the privacy notice from their own privacy pages, so
+// the address has to work as a cold navigation for a logged out visitor
+test("Privacy notice opens from a direct link", async ({ page, request }) => {
+  await clearDb(request);
+
+  await page.goto("/about/privacy");
+
+  const aboutPage = new AboutPage(page);
+
+  await expect(aboutPage.heading("Privacy Notice")).toBeVisible();
+  await expect(aboutPage.main).toContainText("Data Controller");
 });

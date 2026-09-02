@@ -19,6 +19,12 @@ export class AboutPage extends BasePage {
     await this.page.getByRole("link", { name: "About", exact: true }).click();
   }
 
+  // The notice has no tab of its own, so the FAQ entry holding this link is the
+  // only way into it from inside the app
+  async gotoPrivacyNoticeFromFaq(): Promise<void> {
+    await this.page.getByRole("link", { name: "privacy notice" }).click();
+  }
+
   async expandFaqEntry(name: RegExp): Promise<void> {
     await this.page.getByRole("button", { name }).click();
   }

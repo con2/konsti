@@ -14,8 +14,7 @@ import { CurrentTime } from "./components/CurrentTime";
 import { FinnishTime } from "./components/FinnishTime";
 import { Expand } from "./components/Expand";
 import { LotteryThermometerValues } from "./components/LotteryThermometerValues";
-import { ProfileTab } from "client/app/routes";
-import { PrivacyNoticeText } from "client/components/PrivacyNoticeText";
+import { AppRoute, ProfileTab } from "client/app/routes";
 import { ProgramGuide } from "./components/ProgramGuide";
 import { HelpDesks } from "./components/HelpDesks";
 import { HasHelpDesks } from "./components/HasHelpDesks";
@@ -407,7 +406,13 @@ When you sign up for a program item through a lottery, the popularity of the pro
 ### How is my personal data processed?
 </En>
 
-<PrivacyNoticeText />
+<Fi>
+Henkilötietojen käsittely on kuvattu <Link to={AppRoute.PRIVACY_NOTICE}>tietosuojaselosteessa</Link>.
+</Fi>
+
+<En>
+The processing of personal data is described in the <Link to={AppRoute.PRIVACY_NOTICE}>privacy notice</Link>.
+</En>
 </Expand>
 
 <Fi>
