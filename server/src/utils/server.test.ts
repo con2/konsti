@@ -64,20 +64,47 @@ describe("Client-server instance", () => {
     const response = await request(server).get(ApiEndpoint.SETTINGS);
     expect(response.status).toEqual(200);
   });
+});
 
-  // Every router is mounted at the app root, so one logging the requests it
-  // doesn't serve would log each call once per router
-  test("should log an API call once", async () => {
+describe("Request logging", () => {
+  beforeEach(async () => {
+    server = await startServer({
+      dbConnString: globalThis.__MONGO_URI__,
+      dbName: randomUUID(),
+    });
     vi.mocked(logger.info).mockClear();
+  });
 
-    await request(server).get(ApiEndpoint.SETTINGS);
+  afterEach(async () => {
+    await closeServer(server);
+  });
 
-    const apiCallLogs = vi
+  const getApiCallLogs = (): string[] =>
+    vi
       .mocked(logger.info)
       .mock.calls.map((call) => call[0])
       .filter((arg) => typeof arg === "string")
       .filter((message: string) => message.startsWith("API call:"));
-    expect(apiCallLogs).toHaveLength(1);
+
+  // Every router is mounted at the app root, so one logging the requests it
+  // doesn't serve would log each call once per router
+  test("should log an API call once", async () => {
+    await request(server).get(ApiEndpoint.SETTINGS);
+
+    expect(getApiCallLogs()).toHaveLength(1);
+  });
+
+  // The deployment probes this every few seconds
+  test("should not log health check probes", async () => {
+    await request(server).get(ApiEndpoint.HEALTH);
+
+    expect(getApiCallLogs()).toEqual([]);
+  });
+
+  test("should not log requests outside the API", async () => {
+    await request(server).get("/wp-login.php");
+
+    expect(getApiCallLogs()).toEqual([]);
   });
 });
 

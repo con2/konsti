@@ -12,7 +12,9 @@ import {
   describe,
   expect,
   test,
+  vi,
 } from "vitest";
+import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
 // A directory of this suite's own rather than the real build output: other
@@ -104,6 +106,21 @@ describe("static file serving", () => {
     expect(response.status).toEqual(200);
     expect(response.headers["cache-control"]).toEqual("no-cache");
     expect(response.headers["content-type"]).toContain("text/html");
+  });
+
+  // A page load fetches dozens of these, which would bury the API calls
+  test("should not log asset and app route requests", async () => {
+    vi.mocked(logger.info).mockClear();
+
+    await request(server).get(`/assets/${bundledAssetName}`);
+    await request(server).get("/profile/group");
+
+    const apiCallLogs = vi
+      .mocked(logger.info)
+      .mock.calls.map((call) => call[0])
+      .filter((arg) => typeof arg === "string")
+      .filter((message: string) => message.startsWith("API call:"));
+    expect(apiCallLogs).toEqual([]);
   });
 
   test("should return 404 for a missing asset instead of index.html", async () => {
