@@ -5,6 +5,7 @@ import {
   getHours,
   isAfter,
   isBefore,
+  startOfMinute,
   subDays,
   subHours,
   subMinutes,
@@ -53,6 +54,12 @@ const resolveStartTime = (
 // Resolve a program item's effective start time
 export const getProgramItemStartTime = (programItem: ProgramItem): string =>
   resolveStartTime(programItem.parentId, programItem.startTime);
+
+// The lottery a program item belongs to, as a value callers can group and compare by. Batched
+// program items share one lottery, so the parent override decides it. Truncated to the minute to
+// match the comparison the run itself uses, which is what keys grouped this way are handed to.
+export const getLotteryRunTime = (programItem: ProgramItem): string =>
+  startOfMinute(new Date(getProgramItemStartTime(programItem))).toISOString();
 
 // Open the whole batch at a fixed hour the previous evening. The wanted instant is
 // built from the previous calendar day and the hour, so an item starting at e.g.

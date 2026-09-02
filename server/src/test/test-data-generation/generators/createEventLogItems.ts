@@ -3,6 +3,7 @@ import { first, groupBy, sample } from "remeda";
 import { NewEventLogItem } from "shared/types/api/eventLog";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
+import { getLotteryRunTime } from "shared/utils/signupTimes";
 import { getLotteriedSpan } from "server/features/assignment/utils/addAssignmentNotifications";
 import { getRandomInt } from "server/features/assignment/utils/getRandomInt";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
@@ -12,7 +13,6 @@ import {
 } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
-import { getLotteryRunTime } from "server/test/test-data-generation/lotteryRunTime";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 // Simulate lottery results: for each lottery a user has sign-ups in, they either
