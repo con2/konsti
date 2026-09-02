@@ -31,6 +31,13 @@ export const logApiCall = (
     return;
   }
 
+  // The router carrying this is mounted at the app root, so it sees every
+  // request - including the ones that fall through to static serving below it
+  if (!req.path.startsWith("/api") && !req.path.startsWith("/auth")) {
+    next();
+    return;
+  }
+
   const start = Date.now();
   res.on("finish", () => {
     const ms = Date.now() - start;
