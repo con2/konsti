@@ -18,6 +18,7 @@ import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback
 import { Tabs } from "client/components/Tabs";
 import { isAdmin, isAdminOrHelper } from "client/utils/checkUserGroup";
 import { useAppSelector } from "client/utils/hooks";
+import { PrivacyNoticeView } from "client/views/about/PrivacyNoticeView";
 import { AdmissionTicketView } from "client/views/admission-ticket/AdmissionTicketView";
 import { AllProgramItemsView } from "client/views/all-program-items/AllProgramItemsView";
 import { DashboardView } from "client/views/dashboard/DashboardView";
@@ -131,6 +132,7 @@ export const AppRoutes = (): ReactElement => {
           <Route path={AppRoute.ADMIN_LOGIN} element={<LoginView />} />
         )}
         <Route path={AppRoute.LOGOUT} element={<LogoutView />} />
+        <Route path={AppRoute.PRIVACY_NOTICE} element={<PrivacyNoticeView />} />
         <Route
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
@@ -215,6 +217,7 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelper(userGroup) && (
           <Route path={AppRoute.HELPER} element={<HelperView />} />
         )}
+        <Route path={AppRoute.PRIVACY_NOTICE} element={<PrivacyNoticeView />} />
         <Route
           path={`${AppRoute.ABOUT}/*`}
           element={<Tabs tabContents={aboutTabs} />}
@@ -256,6 +259,7 @@ export const AppRoutes = (): ReactElement => {
         path={`${AppRoute.PROGRAM_ITEM}/:programItemId`}
         element={<ProgramItemView />}
       />
+      <Route path={AppRoute.PRIVACY_NOTICE} element={<PrivacyNoticeView />} />
       <Route
         path={`${AppRoute.ABOUT}/*`}
         element={<Tabs tabContents={aboutTabs} />}
