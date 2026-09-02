@@ -8,8 +8,8 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import {
+  getLotteryRunTime,
   getLotterySignupEndTime,
-  getProgramItemStartTime,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
@@ -64,8 +64,12 @@ export const updateProgramItemPopularity = async (): Promise<
     (programItem) => !willNotBeLotteried(programItem),
   );
 
-  const programItemsByStartTimes = groupBy(lotteryProgramItems, (programItem) =>
-    new Date(getProgramItemStartTime(programItem)).toISOString(),
+  // Grouped by the lottery each program item belongs to rather than by its resolved start time
+  // as written: the simulation is handed these keys and matches items to the minute, so two
+  // groups inside one minute would simulate the same items twice and double their counts.
+  const programItemsByStartTimes = groupBy(
+    lotteryProgramItems,
+    getLotteryRunTime,
   );
 
   // Only start times whose lottery sign-up is still open. Popularity measures demand for the
