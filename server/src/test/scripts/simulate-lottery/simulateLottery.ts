@@ -56,7 +56,7 @@ import { saveTestSettings } from "server/test/test-settings/testSettingsReposito
 import { seedMathRandom } from "server/test/utils/seededRandom";
 import { logger } from "server/utils/logger";
 
-const mongoDbVersion = "8.0.26";
+const mongoDbVersion = "8.0.29";
 const maxReportedDiffs = 20;
 
 interface Replay {
