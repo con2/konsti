@@ -3,18 +3,29 @@ import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
+  printDirectSignupFillTimes,
   printProgramItemSignups,
-  printRpgDirectSignupFullTimes,
 } from "server/features/statistics/statistics-helpers/directSignupDataHelpers";
 import { logger } from "server/utils/logger";
 
 export const getDirectSignupStats = (event: string, year: number): void => {
+  // Ropecon 2026 was the first event to record the sign-up moment, and the
+  // dumps before it carry a backfilled signupTime
+  if (year < 2026) {
+    logger.error(
+      new Error(
+        `${event} ${year} predates recorded sign-up times, so its fill times cannot be computed`,
+      ),
+    );
+    return;
+  }
+
   const directSignups = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,
       "utf8",
     ),
-  ) as (DirectSignupsForProgramItem & { updatedAt: string })[];
+  ) as DirectSignupsForProgramItem[];
 
   const programItems = JSON.parse(
     fs.readFileSync(
@@ -25,7 +36,7 @@ export const getDirectSignupStats = (event: string, year: number): void => {
 
   logger.info(`Loaded ${directSignups.length} direct signups`);
 
-  printRpgDirectSignupFullTimes(directSignups, programItems);
+  printDirectSignupFillTimes(directSignups, programItems);
 
   printProgramItemSignups(directSignups, programItems);
 };
