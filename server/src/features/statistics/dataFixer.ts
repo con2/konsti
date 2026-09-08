@@ -18,7 +18,9 @@ const fixData = (): void => {
 
   commander
     .command("format-fields <event> <year>")
-    .description("Remove _id and __v fields and unwrap $date timestamps")
+    .description(
+      "Remove _id, __v and singleton fields and unwrap $date timestamps",
+    )
     .action(async (event: string, year: number) => {
       await formatFields(event, year);
     });

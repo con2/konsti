@@ -1,0 +1,26 @@
+[
+  {
+    "hiddenProgramItemIds": [],
+    "appOpen": true,
+    "adminMessageFi": "",
+    "adminMessageEn": "",
+    "signupStrategy": "lottery+direct",
+    "assignmentInProgressStartTime": null,
+    "loginProvider": "kompassi",
+    "emailNotificationTrigger": [
+      "accepted",
+      "rejected",
+      "programItemCancelled",
+      "programItemDeleted",
+      "programItemNoKonstiSignupAnymore",
+      "programItemNoLotteryAnymore",
+      "programItemTimeChanged"
+    ],
+    "signupQuestions": [],
+    "programUpdateLastRun": "2026-09-08T17:50:00.034Z",
+    "assignmentLastRun": "2026-09-08T17:30:05.608Z",
+    "latestServerStartTime": "2026-09-02T19:46:30.511Z",
+    "createdAt": "2026-09-02T17:49:57.39Z",
+    "updatedAt": "2026-09-08T17:50:00.034Z"
+  }
+]

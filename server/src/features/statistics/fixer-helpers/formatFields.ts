@@ -13,6 +13,10 @@ const datatypes = [
   "serials",
 ];
 
+// The unique index key that pins settings to a single document is DB
+// mechanics like _id, so it is stripped with it
+const removedKeys = new Set(["_id", "__v", "singleton"]);
+
 const cleanValue = (value: unknown): unknown => {
   if (Array.isArray(value)) {
     return value.map((item) => cleanValue(item));
@@ -28,7 +32,7 @@ const cleanValue = (value: unknown): unknown => {
 
     return Object.fromEntries(
       Object.entries(record)
-        .filter(([key]) => key !== "_id" && key !== "__v")
+        .filter(([key]) => !removedKeys.has(key))
         .map(([key, nestedValue]) => [key, cleanValue(nestedValue)]),
     );
   }

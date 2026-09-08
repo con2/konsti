@@ -6,7 +6,7 @@ In each bar, `█` = filled spots and `▄` = unfilled spots. After the bar, `fu
 
 Excluded from the rate but counted separately per row: programs not signed up via Konsti (`non-Konsti`: RPGs listed in Konsti without Konsti sign-up, such as drop-in and externally organized games).
 
-**Across all events combined**: **9929 / 10768** spots filled (92.2%).
+**Across all events combined**: **10033 / 10896** spots filled (92.1%).
 
 ## Ropecon
 
@@ -35,6 +35,7 @@ Excluded from the rate but counted separately per row: programs not signed up vi
 ```
 2024 █████████████████████████████▄▄▄▄▄▄  81.7%  116 / 142 spots  ·  17 full / 0 empty / 29 programs
 2025 ████████████████████████████████▄▄▄  91.9%  124 / 135 spots  ·  24 full / 0 empty / 28 programs
+2026 ████████████████████████████▄▄▄▄▄▄▄  81.3%  104 / 128 spots  ·  18 full / 1 empty / 26 programs
 ```
 
 ## Solmukohta
