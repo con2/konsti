@@ -4,7 +4,7 @@ Distinct users who engaged with tabletop RPGs at each event: submitted a lottery
 
 In each row, `got a spot` = players who got at least one RPG spot, `spots` = total RPG spots filled (a user playing two RPGs counts twice), and the last percentage compares players against all registered Konsti accounts for that event. Group members are counted from the group compositions stored with the lottery results - live records from Ropecon 2026 onward, backfilled from the event's final state for older events, so older years are slightly undercounted.
 
-**Across all events combined**: **8122** players summed over all event years (each unique user counted once per event), of which **6591** got at least one spot (81.1%). Total RPG spots filled: **9929**.
+**Across all events combined**: **8205** players summed over all event years (each unique user counted once per event), of which **6674** got at least one spot (81.3%). Total RPG spots filled: **10033**.
 
 ## Ropecon
 
@@ -37,6 +37,7 @@ In each row, `got a spot` = players who got at least one RPG spot, `spots` = tot
 ```
 2024 ███████████████████████████████ 94 players · 94 got a spot (100.0%) · 116 spots · 4.4% of Konsti users
 2025 ███████████████████████████████ 94 players · 94 got a spot (100.0%) · 124 spots · 4.5% of Konsti users
+2026 ████████████████████████████ 83 players · 83 got a spot (100.0%) · 104 spots · 3.8% of Konsti users
 
 (scale: 1 block ≈ 3 players)
 ```

@@ -297,8 +297,8 @@
   },
   {
     "slug": "fade-zone-selviytymispelin-demo",
-    "title": "Fade Zone – Selviytymispelin demo",
-    "description": "Fade Zone on kehitteillä oleva eläinteemainen selviytymispeli, jossa pelaajat yrittävät pitää laumansa hengissä muuttuvassa ympäristössä. Pelissä kerätään resursseja, autetaan katastrofeihin joutuneita eläimiä ja tehdään jatkuvasti päätöksiä siitä, mihin rajalliset resurssit kannattaa käyttää.\r\nSäännöt oppii nopeasti, mutta jokainen kierros tuo uusia haasteita ja valintoja. Demossa pääset kokeilemaan peliä sen kehitysvaiheessa ja vaikuttamaan sen lopulliseen muotoon.",
+    "title": "Bounty Season – lautapelidemo",
+    "description": "Bounty Season on noin 15 minuutin yksinpeli, jossa rakennat ja kehität omaa maatilaasi yhden kauden ajan. Kasvata satoa, huolehdi eläimistä, valmista tuotteita ja täytä tilauksia saadaksesi mahdollisimman paljon rahaa.\r\nPeluutus toimii nonstop-periaatteella, joten mukaan voi tulla kokeilemaan peliä milloin tahansa ohjelman aikana. Kuinka suuren tuloksen sinä saat?",
     "cachedHosts": "<redacted>",
     "cachedDimensions": {
       "date": ["2026-09-04"],
@@ -318,7 +318,7 @@
     "scheduleItems": [
       {
         "slug": "fade-zone-selviytymispelin-demo",
-        "title": "Fade Zone – Selviytymispelin demo – perjantai",
+        "title": "Bounty Season – lautapelidemo – perjantai",
         "startTime": "2026-09-04T16:30:00+03:00",
         "endTime": "2026-09-04T20:30:00+03:00",
         "lengthMinutes": 240,
@@ -626,7 +626,7 @@
       "guidegrouping": ["rpg"]
     },
     "cachedAnnotations": {
-      "konsti:maxAttendance": 5,
+      "konsti:maxAttendance": 4,
       "konsti:minAttendance": 3,
       "konsti:rpgSystem": "3d6"
     },
@@ -642,7 +642,7 @@
         "isCancelled": false,
         "cachedAnnotations": {
           "internal:freeformLocation": "Ropepöytä 6",
-          "konsti:maxAttendance": 5,
+          "konsti:maxAttendance": 4,
           "konsti:minAttendance": 3,
           "konsti:rpgSystem": "3d6"
         }
@@ -1169,7 +1169,7 @@
     "cachedAnnotations": {
       "konsti:maxAttendance": 6,
       "konsti:minAttendance": 2,
-      "konsti:rpgSystem": "Mage the Ascension (houserule, muokattu helpommaksi) JA Final Fantasy RPG "
+      "konsti:rpgSystem": "Final Fantasy RPG "
     },
     "isCancelled": false,
     "scheduleItems": [
@@ -1185,7 +1185,7 @@
           "internal:freeformLocation": "Ropepöytä 5",
           "konsti:maxAttendance": 6,
           "konsti:minAttendance": 2,
-          "konsti:rpgSystem": "Mage the Ascension (houserule, muokattu helpommaksi) JA Final Fantasy RPG "
+          "konsti:rpgSystem": "Final Fantasy RPG "
         }
       }
     ]

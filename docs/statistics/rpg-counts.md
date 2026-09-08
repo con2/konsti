@@ -4,7 +4,7 @@ How many tabletop RPG programs were run at each event. Counts non-cancelled `tab
 
 Bars are scaled per event section (see the scale note under each chart), so bar lengths are not comparable between sections.
 
-**Across all events combined**: **2172** RPG programs run over 14 event years.
+**Across all events combined**: **2198** RPG programs run over 15 event years.
 
 ## Ropecon
 
@@ -37,6 +37,7 @@ Bars are scaled per event section (see the scale note under each chart), so bar 
 ```
 2024 █████████████████████████████ 29
 2025 ████████████████████████████ 28 (-1 vs 2024)
+2026 ██████████████████████████ 26 (-2 vs 2025)
 
 (scale: 1 block = 1 RPG)
 ```
