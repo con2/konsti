@@ -19,7 +19,7 @@ import {
 // request after the grace period, heals the toast on any successful
 // response, and shows failures of user-initiated requests immediately. Aborting routes simulates network
 // failure while keeping navigator.onLine true, matching the real wake-up
-// cases. The grace period is entered through the online event here — one
+// cases. The grace period is entered through the online event here - one
 // listener downstream of the page-resume machinery, which Playwright can't
 // drive for real (no visibility emulation).
 
@@ -49,7 +49,7 @@ const restoreApi = async (page: Page): Promise<void> => {
 };
 
 // Answer all API requests with an HTTP error instead of failing them at the
-// network level — a captive portal or gateway interception behaves like
+// network level - a captive portal or gateway interception behaves like
 // this: the request resolves, but not from the app server
 const fulfillApiWithHttpError = async (page: Page): Promise<() => number> => {
   let failures = 0;
@@ -147,7 +147,7 @@ test("Refresh failing right after reconnect stays silent when the connection rec
   await expect(programList.errorBar.networkError).toBeHidden();
 
   // The network is back before the probe fires, so the probe succeeds and
-  // the whole blip stays silent — this is the phone-wakes-before-Wi-Fi case.
+  // the whole blip stays silent - this is the phone-wakes-before-Wi-Fi case.
   // Await the probe's real response before jumping again, or the next jump
   // would fire the probe's timeout while its request is still in flight.
   await restoreApi(page);
@@ -228,7 +228,7 @@ test("HTTP errors on background requests count as connectivity issues inside the
   await expect.poll(failures).toBeGreaterThanOrEqual(2);
 
   // Inside the grace period the HTTP errors count as connectivity issues:
-  // no API error toast, no network error toast — a probe is scheduled
+  // no API error toast, no network error toast - a probe is scheduled
   await page.clock.fastForward(PAST_TOAST_DECISIONS);
   await expect(programList.errorBar.items).toHaveCount(0);
 
@@ -267,7 +267,7 @@ test("Failed favorite action shows the toast immediately", async ({
   await programList.gotoAllProgram();
   await programList.waitForItems();
 
-  // Only the favorite request fails — background polling keeps succeeding
+  // Only the favorite request fails - background polling keeps succeeding
   await page.route(`**${ApiEndpoint.FAVORITE}`, async (route) => {
     await route.abort();
   });
@@ -293,7 +293,7 @@ test("Failed helper user search shows the toast immediately", async ({
     `**${ApiEndpoint.SIGNUP_MESSAGE}`,
   );
   await helperPage.open();
-  // The view's own mount requests must settle before failures are injected —
+  // The view's own mount requests must settle before failures are injected -
   // a success landing after the aborted search would heal the toast under
   // assertion
   await signupMessagesLoaded;
@@ -326,7 +326,7 @@ test("Failed session refresh after email change shows the form error", async ({
   await profilePage.navigation.gotoProfile();
 
   // The email update itself succeeds, but the session refresh that follows
-  // it fails — the form must report the failure instead of success, even
+  // it fails - the form must report the failure instead of success, even
   // though the failed request gets the suppressed background error handling
   await page.route(`**${ApiEndpoint.SESSION_RESTORE}`, async (route) => {
     await route.abort();
@@ -352,7 +352,7 @@ test("Failed password change shows the form error", async ({
   await profilePage.navigation.gotoProfile();
 
   // The password itself passes client-side validation, so the form reaches
-  // the API — a failure there must be reported in place of success
+  // the API - a failure there must be reported in place of success
   await page.route(`**${ApiEndpoint.USERS_PASSWORD}`, async (route) => {
     await route.abort();
   });

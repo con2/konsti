@@ -118,7 +118,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
       );
     }
 
-    // FAVORITES — removed only when the program item is deleted from DB
+    // FAVORITES - removed only when the program item is deleted from DB
 
     const [validFavoriteProgramItemIds, invalidFavoriteProgramItemIds] =
       partition(user.favoriteProgramItemIds, (favoriteProgramItemId) => {

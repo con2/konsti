@@ -15,7 +15,7 @@ import path from "node:path";
 // worktree paths to offsets. Entries whose worktree no longer exists are
 // pruned on each lookup so removed worktrees release their slot. The
 // read-modify-write is not locked: two worktrees resolving their first offset
-// at the exact same moment could race, which at worst assigns a duplicate —
+// at the exact same moment could race, which at worst assigns a duplicate -
 // rerunning after removing the registry file recovers.
 
 const registryFileName = "konsti-port-offsets.json";

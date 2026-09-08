@@ -89,7 +89,7 @@ export const getTagFilteredProgramItems = (
 };
 
 // The header of the group currently at (or scrolled past) the top of the visible
-// range — pinned to the top while its group scrolls. `stickyHeaderIndexes` is
+// range - pinned to the top while its group scrolls. `stickyHeaderIndexes` is
 // ascending, so the last one at or before `rangeStartIndex` is the active header
 export const getActiveStickyHeaderIndex = (
   stickyHeaderIndexes: readonly number[],

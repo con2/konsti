@@ -15,7 +15,6 @@ test("Kompassi login", async ({ page, request }) => {
   const loginPage = new LoginPage(page);
   const profilePage = new ProfilePage(page);
 
-  // Go to login page
   await loginPage.navigation.gotoLoginPage();
 
   await loginPage.kompassiLoginButton.click();
@@ -44,7 +43,6 @@ test("Kompassi login", async ({ page, request }) => {
   await expect(profilePage.main).not.toContainText("Code:");
   await expect(profilePage.newPasswordInput).toHaveCount(0);
 
-  // Logout
   await profilePage.navigation.logout();
 
   // Check if logout was completed

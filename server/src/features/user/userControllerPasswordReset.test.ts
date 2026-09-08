@@ -102,7 +102,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       password: "testpass",
     };
 
-    // Authorization must be by JWT userGroup, not by the username string — a USER-group
+    // Authorization must be by JWT userGroup, not by the username string - a USER-group
     // token whose username happens to be "admin" must not gain reset rights
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)

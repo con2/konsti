@@ -71,7 +71,7 @@ const settingsSchema = new mongoose.Schema(
     assignmentLastRun: {
       type: Date,
       get: (value: Date) => new Date(value),
-      // Epoch (not "now") so a fresh settings row means "no assignment has run yet" — set to
+      // Epoch (not "now") so a fresh settings row means "no assignment has run yet" - set to
       // the run time on each successful assignment
       default: () => new Date(0),
     },
@@ -87,7 +87,7 @@ const settingsSchema = new mongoose.Schema(
       type: Date,
       get: (value: Date) => new Date(value),
       // Epoch (not "now") so a settings row recreated mid-run reads as older than any live
-      // instance and the cron guard surfaces it as an error — a "now" default would masquerade
+      // instance and the cron guard surfaces it as an error - a "now" default would masquerade
       // as a newer server instance and silently stop cronjobs. Server start overwrites this.
       default: () => new Date(0),
     },

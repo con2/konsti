@@ -55,7 +55,6 @@ test("Can create and join a group and receive a shared lottery result", async ({
   const groupPage = new GroupPage(page);
   const programList = new ProgramListPage(page);
 
-  // Create group
   const groupCode = await groupPage.createGroup();
   await expect(groupPage.main).toContainText("1) test1 (group creator)");
 

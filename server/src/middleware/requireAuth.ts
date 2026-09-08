@@ -29,7 +29,7 @@ export const getAuthUsername = (req: {
   if (!req.auth) {
     // eslint-disable-next-line no-restricted-syntax -- programming error if requireAuth was not wired
     throw new Error(
-      "requireAuth middleware did not run before this handler — wire requireAuth() in apiRoutes",
+      "requireAuth middleware did not run before this handler - wire requireAuth() in apiRoutes",
     );
   }
   return req.auth.username;

@@ -39,15 +39,45 @@ Yarn 4 workspaces — only `client` and `server` are Yarn workspaces; `shared` a
 
 ## Code Style
 
-- Don't end a code comment with a period when it is a single sentence, however many lines it wraps over: write `// This is a comment`, not `// This is a comment.` **A comment of several sentences ends every one of them with a period, the last included** — the sentences before it already carry one, so dropping the final one just reads as a typo.
-- **Keep code comments short — three lines is a lot, and a blank `//` line separating paragraphs means it is already too long.** State the non-obvious constraint or reason and stop. Leave out: what the code plainly does, benchmark numbers, worked examples of the failure, and the reasoning that led to the decision. One clause per reason is usually enough — "cached because every visible row asks the same question" earns its place; a paragraph explaining which rows, how often, and what the measured cost was does not. If a rule genuinely needs paragraphs, it belongs in the relevant `CLAUDE.md` or in [docs/en/lottery-design-rules.md](docs/en/lottery-design-rules.md), with the code comment pointing at it.
-- Comments document how the code works now — don't describe how it used to work or what changed (that's what git history is for).
-- Don't reference other files or components by name in code comments — renames and restructuring make them stale. Describe the role instead: "exported so callers can check...", not "exported so ProgramItemEntry can check...".
-- **Don't cite a design rule by number in a code comment either** — rules get added, retired and renumbered, so "(rule 8)" goes stale the same way a filename does, and silently. State the substance the comment needs and stop: "a program item being lotteried holds no direct sign-ups", not "holds none (rule 8)". The numbered cross-references belong in [docs/en/lottery-design-rules.md](docs/en/lottery-design-rules.md) and the `CLAUDE.md` files, where they are edited together.
 - Never use the em dash character (—) in code, UI text, comments, or docs. Use a regular hyphen (-) or restructure the sentence. CLAUDE.md files are the exception — they keep their established em dash style.
 - **Prefer keeping an unused variable over an `eslint-disable`.** When a rule fires only because something is declared but never read, declare it anyway and let `no-unused-vars` ignore it, rather than suppressing the rule. Unused function arguments and destructured array elements take a leading underscore (`_foo`); a `useState` pair whose setter is never called keeps the conventional `setValue` name, which `react/hook-use-state` requires and `destructuredArrayIgnorePattern` therefore also ignores. Both patterns are in the root `eslint.config.ts`. The point is that the rule keeps applying to the rest of the file, where a suppression comment silently stops mattering as the code around it moves.
 - **One assertion per `expect`.** Never fold two checks into one matcher with `&&` — `expect(body.status === "success" && body.assignmentRuns).toEqual([])` reports `false` when the status is wrong, naming neither what was expected nor which half failed. Write an `expect` per statement. When the `&&` is there to narrow a discriminated union (a `status: "success" | "error"` response, say), that is a sign to assert the whole object instead: `expect(body).toEqual({ status: "success", assignmentRuns: [] })` needs no narrowing and pins the rest of the shape too.
 - **Import order is automated** by `@trivago/prettier-plugin-sort-imports` (root `prettier.config.ts`): builtins, npm packages, `shared/*`, workspace aliases (`client/*`, `server/*`, `playwright/*`, `scripts/*`, `assets/*`), then relative. Don't hand-order imports and don't add an ESLint ordering rule alongside it. Side-effect imports (`import "…"` with no bindings) are pinned where they're written, because some of them must run before their dependents — keep a comment saying why when the position matters.
+
+### Comments
+
+Comment only what the code cannot say for itself. The bar is: would a competent reader be surprised, or waste time working out why this is here? Code should be self-documenting — needing a comment to explain _what_ it does is a sign to refactor, so prefer a clearer name or a smaller function over a comment that props up unclear code. Everything below applies to doc comments exactly as to inline comments: a doc comment restating the function's name earns its place no more than a line comment restating the line.
+
+Worth a comment:
+
+- Workarounds for a bug in a library, a browser or the platform — say what breaks without it.
+- Non-obvious API behaviour, e.g. a Mongoose `findOneAndUpdate` returning the pre-update document unless `new: true` is passed.
+- A complex regex or a dense expression — say what it matches or computes.
+- Coupling that is invisible from the file you are in. State the constraint, not the fact: "this must stay in sync with the client-side check because it relies on it" earns its place; "this matches the client-side check" is trivia.
+- A deliberate choice that looks wrong, e.g. a test that waits out an animation, or a cache keyed by something coarser than the current value.
+- Intent in tests — it is often hard to see from the data setup which case is being exercised.
+
+Not worth a comment:
+
+- Restating the line below it (`// clamp to 240` above a `Math.max(240, …)`) or narrating structure (`// build the rows`, `// the button`).
+- Explaining standard language or framework behaviour, or justifying an ordinary design choice nobody would question.
+- Notes about what changed ("<- now supports xyz") or how the code used to work — that's what git history is for. Comments document how the code works now.
+- Responses to the current prompt or task — tell the user instead.
+- Rationale that belongs in the issue, a design doc or an ADR: alternatives considered, why a rejected approach was rejected, notes from a design session.
+- The same explanation in two places (a module doc and again at the call site).
+- How a function is built, in that function's doc comment. A note about an implementation choice goes at the line that makes it, where someone about to change that line will see it.
+- References to something that appears nowhere in the codebase, unless the comment says where to look.
+
+When a comment does earn its place:
+
+- Write for a reader who has only this file, not for one who shares your working context (the ticket, an external schema, the unit of a config field).
+- Reread each comment cold, as a standalone sentence. A relative clause with an ambiguous referent or a fragment with an unclear subject is a defect even when the content is right.
+- Apply all of this while writing, not in a separate pass. A later pruning pass over your own comments tests redundancy, not comprehensibility, so ambiguity survives it.
+- Don't end a code comment with a period when it is a single sentence, however many lines it wraps over: write `// This is a comment`, not `// This is a comment.` **A comment of several sentences ends every one of them with a period, the last included** — the sentences before it already carry one, so dropping the final one just reads as a typo.
+- **Keep code comments short — three lines is a lot, and a blank `//` line separating paragraphs means it is already too long.** State the non-obvious constraint or reason and stop. Leave out: what the code plainly does, benchmark numbers, worked examples of the failure, and the reasoning that led to the decision. One clause per reason is usually enough — "cached because every visible row asks the same question" earns its place; a paragraph explaining which rows, how often, and what the measured cost was does not. If a rule genuinely needs paragraphs, it belongs in the relevant `CLAUDE.md` or in [docs/en/lottery-design-rules.md](docs/en/lottery-design-rules.md), with the code comment pointing at it.
+- Don't reference other files or components by name in code comments — renames and restructuring make them stale. Describe the role instead: "exported so callers can check...", not "exported so ProgramItemEntry can check...".
+- **Don't cite a design rule by number in a code comment either** — rules get added, retired and renumbered, so "(rule 8)" goes stale the same way a filename does, and silently. State the substance the comment needs and stop: "a program item being lotteried holds no direct sign-ups", not "holds none (rule 8)". The numbered cross-references belong in [docs/en/lottery-design-rules.md](docs/en/lottery-design-rules.md) and the `CLAUDE.md` files, where they are edited together.
+- When making changes, leave existing comments in place unless the change makes them invalid.
 
 ## Terminology
 

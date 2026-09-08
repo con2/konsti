@@ -1,5 +1,5 @@
-// Reconstructed from server/src/features/statistics/datafiles/ropecon/2021/
-// rather than preserved from the live event. Some fields may be inferred
+// Reconstructed from the event's statistics datafiles rather than preserved
+// from the live event. Some fields may be inferred
 // (e.g. eventStartTime from the earliest program-item startTime) or omitted.
 //
 // Ropecon 2021 was a remote / COVID-era convention with direct sign-up only

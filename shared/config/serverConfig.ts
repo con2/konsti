@@ -204,7 +204,7 @@ export const combineConfig = (): ServerConfig => {
     default:
       // Fail closed: deployed pods always run with NODE_ENV=production, so an unrecognized
       // or missing SETTINGS there must not silently fall back to devConfig's public JWT
-      // secrets — refuse to start instead. Local/test runs (any other NODE_ENV) keep devConfig.
+      // secrets - refuse to start instead. Local/test runs (any other NODE_ENV) keep devConfig.
       if (process.env.NODE_ENV === "production") {
         // eslint-disable-next-line no-restricted-syntax -- fail fast on startup misconfiguration
         throw new Error(

@@ -36,7 +36,7 @@ const assertContainerStillRunning = async (): Promise<void> => {
   try {
     execSync(`docker logs --tail 20 ${containerName}`, { stdio: "inherit" });
   } catch {
-    // logs unavailable — already reported the exit
+    // logs unavailable - already reported the exit
   }
   // eslint-disable-next-line unicorn/no-process-exit
   process.exit(1);

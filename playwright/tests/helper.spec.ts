@@ -58,7 +58,7 @@ test("Helper can find a user and change their password", async ({
   await expect(helperPage.main).toContainText("Found user");
   await expect(helperPage.main).toContainText("test1");
 
-  // The helper flow manages only the found user's password — it must not expose an email
+  // The helper flow manages only the found user's password - it must not expose an email
   // field (those settings act on the logged-in helper's own account, not the found user)
   await expect(helperPage.emailInput).toHaveCount(0);
 

@@ -29,7 +29,6 @@ const getMockKompassiProgramItems = (
 };
 
 describe("should load Kompassi data for all events", () => {
-  // Loop all event names
   for (const eventName of Object.values(EventName)) {
     const mockKompassiProgramItems = getMockKompassiProgramItems(eventName);
 

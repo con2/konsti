@@ -31,7 +31,6 @@ export const ProgramItemView = (): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
-  // Figure out if user has signed up to this program item
   const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector(selectGroupMembers);

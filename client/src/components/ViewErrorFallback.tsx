@@ -21,8 +21,7 @@ export const ViewErrorFallback = (props: Props): ReactElement => {
 
   // A boundary holds its failed state until something resets it, and the routes
   // are inside this one, so without this the header links would appear to do
-  // nothing. Done here rather than by keying the boundary on the route, which
-  // would remount every route element on every navigation.
+  // nothing
   useEffect(() => {
     if (pathname !== failedPathname) {
       props.resetError();

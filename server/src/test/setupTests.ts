@@ -22,7 +22,7 @@ if (!config.server().enableLoggingInTests) {
   });
 }
 
-// Defined in globalSetup.ts
+// Declared by the global test setup
 Object.defineProperty(globalThis, "__MONGO_URI__", {
   value: `mongodb://127.0.0.1:${mongoDbPort}/`,
   writable: true,

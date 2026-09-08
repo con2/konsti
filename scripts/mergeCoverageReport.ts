@@ -23,26 +23,10 @@ import reports from "istanbul-reports";
 // with istanbul's AST-based statement/function/branch maps. The E2E inputs
 // cannot be merged into it key-by-key - the browser data is instrumented after
 // Vite's transforms and the server data comes from V8 coverage - so instead
-// their hits are projected onto the canonical maps:
-//
-// - Statements match by exact start position first (the browser data matches
-//   those after its embedded source maps are applied). The line fallback for
-//   the line-based V8 server data credits only the FIRST statement on the
-//   line: a line hit proves the line's first statement started executing, but
-//   says nothing about later statements on the same line (e.g. the `return`
-//   in `if (x) return;`)
-// - Functions credit on exact start matches (signature or body position), and
-//   otherwise a function counts as covered when any line inside its body has
-//   hits - the V8-derived data's own function entries are mostly transform
-//   helpers with meaningless positions, so they cannot be position-matched
-// - Module-scope statements are credited whenever the foreign data shows the
-//   module executed at all: evaluating a module runs every top-level
-//   statement, but the browser data's remap collapses many of them (e.g.
-//   styled-components declarations, whose instrumented positions fall inside
-//   template literals with no mapping back to the source), so they can never
-//   match by position
-// - Branch hits are only projected on exact matches, so branch coverage is
-//   mostly determined by the unit tests
+// their hits are projected onto the canonical maps by position, with the
+// fallbacks explained at each projection step below. Branch hits are only
+// projected on exact matches, so branch coverage is mostly determined by the
+// unit tests.
 //
 // Writes html + lcov + text reports to coverage/report. Missing inputs are
 // skipped with a warning so a partial run (e.g. vitest only) still reports.

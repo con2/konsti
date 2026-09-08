@@ -57,7 +57,6 @@ test("Add lottery sign-up", async ({ page, request }) => {
 
   const programList = new ProgramListPage(page);
 
-  // Navigate to program list tab
   await programList.gotoAllProgram();
 
   // Lottery sign-up to first program item

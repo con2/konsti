@@ -60,7 +60,6 @@ test("should not insert same serial into collection when creating", async () => 
 });
 
 test("should not insert same serial into collection if the serial is in a collection", async () => {
-  // save the first serial into the collection
   await saveSerials(1);
   const savedSerials = unsafelyUnwrap(await saveSerials(4));
   const results = savedSerials.map((serial) => serial.serial);

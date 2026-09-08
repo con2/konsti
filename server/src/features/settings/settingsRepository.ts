@@ -365,7 +365,7 @@ export const acquireAssignmentLock = async (): Promise<
     ).lean();
     if (!response) {
       // No document matched the update: either another run holds the lock, or there is no
-      // settings row at all — distinguish the two so the caller can treat a missing row as a
+      // settings row at all - distinguish the two so the caller can treat a missing row as a
       // genuine error rather than as "already running"
       const settingsExists = await SettingsModel.exists(settingsFilter);
       return makeErrorResult(
@@ -384,7 +384,7 @@ export const acquireAssignmentLock = async (): Promise<
   }
 };
 
-// Release the assignment-in-progress lock, but only if we still hold it (the token matches) —
+// Release the assignment-in-progress lock, but only if we still hold it (the token matches) -
 // if the lock was reclaimed as stale and re-acquired by another run, this must not clobber it
 export const releaseAssignmentLock = async (
   lockToken: string,
@@ -409,8 +409,8 @@ export const releaseAssignmentLock = async (
   }
 };
 
-// Record the time of the last completed assignment. This is informational only — the run lock
-// is acquireAssignmentLock — so set it unconditionally to always reflect the latest run.
+// Record the time of the last completed assignment. This is informational only - the run lock
+// is acquireAssignmentLock - so set it unconditionally to always reflect the latest run.
 export const setAssignmentLastRun = async (
   assignmentLastRun: string,
 ): Promise<Result<void, MongoDbError>> => {

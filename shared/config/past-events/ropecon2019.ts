@@ -1,5 +1,5 @@
-// Reconstructed from server/src/features/statistics/datafiles/ropecon/2019/
-// rather than preserved from the live event. Some fields may be inferred
+// Reconstructed from the event's statistics datafiles rather than preserved
+// from the live event. Some fields may be inferred
 // (e.g. eventStartTime from the earliest program-item startTime) or omitted.
 import {
   AssignmentAlgorithm,

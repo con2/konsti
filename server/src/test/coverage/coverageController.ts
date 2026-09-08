@@ -2,8 +2,8 @@ import * as v8 from "node:v8";
 import { Request, Response } from "express";
 
 // Flushes the V8 code coverage collected so far to the directory given in
-// NODE_V8_COVERAGE. The E2E coverage flow (scripts/runE2eCoverage.ts) calls
-// this after the Playwright suite so the server's coverage reaches disk before
+// NODE_V8_COVERAGE. The E2E coverage runner calls this after the Playwright
+// suite so the server's coverage reaches disk before
 // the process is killed (a hard kill would otherwise discard it). Without
 // NODE_V8_COVERAGE set, v8.takeCoverage() is a no-op.
 export const postWriteCoverage = (_req: Request, res: Response): Response => {

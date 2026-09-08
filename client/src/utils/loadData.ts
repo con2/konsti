@@ -18,25 +18,19 @@ import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunk
 // background-request list, or their failures around a device wake toast
 // immediately instead of being suppressed.
 export const loadData = async (): Promise<boolean> => {
-  // Get app settings
   let success = await loadSettings();
 
-  // Get test settings
   if (process.env.SETTINGS !== "production" && config.client().showTestValues) {
     success = (await loadTestSettings()) && success;
   }
 
-  // Check if existing user session
   success = (await recoverSession()) && success;
 
-  // Get user data
   success = (await loadUser()) && success;
 
-  // Get program items data
-  // Must be loaded after user to be able to access state.login
+  // After the user, since loading program items reads the login state
   success = (await loadProgramItems({ forceUpdate: false })) && success;
 
-  // Get group members
   success = (await loadGroupMembers()) && success;
 
   return success;
