@@ -166,7 +166,7 @@ export const tooEarlyForLotterySignup = (programItem: ProgramItem): boolean => {
   return isBefore(new Date(startTime), noLotterySignupBefore);
 };
 
-export const getRollingDirectSignupStartTime = (
+const getRollingDirectSignupStartTime = (
   programItem: ProgramItem,
   eventStartTime: string,
 ): Date => {

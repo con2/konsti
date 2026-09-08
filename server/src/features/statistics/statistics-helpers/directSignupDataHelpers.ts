@@ -1,111 +1,170 @@
 import { differenceInMinutes, differenceInSeconds } from "date-fns";
-import { sortBy } from "remeda";
+import { groupBy, sortBy } from "remeda";
 import { config } from "shared/config";
 import {
   ProgramItem,
   ProgramType,
+  SignupType,
   State,
 } from "shared/types/models/programItem";
-import { getRollingDirectSignupStartTime } from "shared/utils/signupTimes";
+import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { getShortWeekdayAndTime } from "shared/utils/timeFormatter";
-import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
+import {
+  DirectSignupsForProgramItem,
+  UserDirectSignup,
+} from "server/features/direct-signup/directSignupTypes";
 import { logger } from "server/utils/logger";
 
-export const printRpgDirectSignupFullTimes = (
-  directSignups: (DirectSignupsForProgramItem & { updatedAt: string })[],
+const formatElapsed = (from: Date, to: Date): string => {
+  const totalMinutes = differenceInMinutes(to, from);
+  if (totalMinutes <= 1) {
+    return `${differenceInSeconds(to, from)}s`;
+  }
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return hours > 0 ? `${hours}h${minutes}min` : `${minutes}min`;
+};
+
+// Program items with Konsti sign-up that are still on, grouped by program
+// type with each group in start-time order
+const groupByProgramType = (
+  programItems: ProgramItem[],
+  includeProgramType: (programType: ProgramType) => boolean,
+): Record<string, ProgramItem[]> =>
+  groupBy(
+    sortBy(
+      programItems.filter(
+        (programItem) =>
+          programItem.signupType === SignupType.KONSTI &&
+          programItem.state !== State.CANCELLED &&
+          includeProgramType(programItem.programType),
+      ),
+      (programItem) => programItem.programType,
+      (programItem) => programItem.startTime,
+    ),
+    (programItem) => programItem.programType,
+  );
+
+const findUserSignups = (
+  directSignups: DirectSignupsForProgramItem[],
+  programItem: ProgramItem,
+): readonly UserDirectSignup[] =>
+  directSignups.find(
+    (directSignup) => directSignup.programItemId === programItem.programItemId,
+  )?.userSignups ?? [];
+
+// Two-phase program types are left out: the lottery fills them before direct
+// sign-up opens, so the time to fill says little about the direct phase
+export const printDirectSignupFillTimes = (
+  directSignups: DirectSignupsForProgramItem[],
   programItems: ProgramItem[],
 ): void => {
-  const rpgDirectSignups = directSignups.filter((directSignup) =>
-    programItems.find(
-      (programItem) =>
-        programItem.programItemId === directSignup.programItemId &&
-        programItem.programType === ProgramType.TABLETOP_RPG,
-    ),
+  const { twoPhaseSignupProgramTypes } = config.event();
+  const byProgramType = groupByProgramType(
+    programItems,
+    (programType) => !twoPhaseSignupProgramTypes.includes(programType),
   );
 
-  logger.info(
-    `Loaded direct signups for ${rpgDirectSignups.length} RPG program items`,
-  );
+  for (const [programType, programItemsOfType] of Object.entries(
+    byProgramType,
+  )) {
+    logger.info(`${programType} (${programItemsOfType.length} program items)`);
 
-  for (const rpgDirectSignup of rpgDirectSignups) {
-    const programItem = programItems.find(
-      (p) => p.programItemId === rpgDirectSignup.programItemId,
-    );
-    if (!programItem || programItem.state === State.CANCELLED) {
-      continue;
-    }
+    let fullCount = 0;
+    let underMinAttendanceCount = 0;
+    let filledWithinMinuteCount = 0;
 
-    const directSignupStartTime = getRollingDirectSignupStartTime(
-      programItem,
-      config.event().eventStartTime,
-    );
+    for (const programItem of programItemsOfType) {
+      const userSignups = findUserSignups(directSignups, programItem);
 
-    const programItemFullTime = new Date(rpgDirectSignup.updatedAt);
+      const attendance = `${userSignups.length}/${programItem.maxAttendance}`;
 
-    const totalMinutes = differenceInMinutes(
-      programItemFullTime,
-      directSignupStartTime,
-    );
+      if (userSignups.length >= programItem.maxAttendance) {
+        fullCount++;
+      }
+      if (userSignups.length < programItem.minAttendance) {
+        underMinAttendanceCount++;
+      }
 
-    const attendance = `${rpgDirectSignup.userSignups.length}/${programItem.maxAttendance}`;
+      if (userSignups.length === 0) {
+        logger.info(`  no sign-ups (${attendance}) - ${programItem.title}`);
+        continue;
+      }
 
-    if (totalMinutes <= 1) {
-      const seconds = differenceInSeconds(
-        programItemFullTime,
-        directSignupStartTime,
+      const directSignupStartTime = getDirectSignupStartTime(programItem);
+      const signupTimes = sortBy(
+        userSignups.map((userSignup) => new Date(userSignup.signupTime)),
+        (signupTime) => signupTime.getTime(),
       );
-      logger.info(`${seconds}s (${attendance}) - ${programItem.title}`);
-      continue;
+      const secondsToSpot = (spots: number): number =>
+        differenceInSeconds(signupTimes[spots - 1], directSignupStartTime);
+      const elapsedToSpot = (spots: number): string =>
+        formatElapsed(directSignupStartTime, signupTimes[spots - 1]);
+
+      // A dropped spot that was taken again pushes the last sign-up late, so
+      // when it came well after the one before it the time to one spot short
+      // of full is shown beside it, to tell a refill from a slow fill
+      const nearlyFull = programItem.maxAttendance - 1;
+      const last = userSignups.length;
+      const lastCameWellAfter =
+        nearlyFull >= 1 &&
+        last > nearlyFull &&
+        secondsToSpot(last) - secondsToSpot(nearlyFull) > 60 &&
+        secondsToSpot(last) > 2 * secondsToSpot(nearlyFull);
+      const elapsed = lastCameWellAfter
+        ? `${elapsedToSpot(nearlyFull)} for ${nearlyFull} spots, ${elapsedToSpot(last)} for ${last} spots`
+        : elapsedToSpot(last);
+      logger.info(`  ${elapsed} (${attendance}) - ${programItem.title}`);
+
+      // A refilled program item counts by its first fill, one spot short
+      const filledWithinMinute =
+        last >= programItem.maxAttendance &&
+        secondsToSpot(lastCameWellAfter ? nearlyFull : last) < 60;
+      if (filledWithinMinute) {
+        filledWithinMinuteCount++;
+      }
     }
 
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = totalMinutes % 60;
-
-    if (hours > 0) {
-      logger.info(
-        `${hours}h${minutes}min (${attendance}) - ${programItem.title}`,
-      );
-    } else {
-      logger.info(`${minutes}min (${attendance}) - ${programItem.title}`);
-    }
+    const total = programItemsOfType.length;
+    logger.info(`  Summary: ${fullCount} of ${total} program items full`);
+    logger.info(
+      `  Summary: ${underMinAttendanceCount} of ${total} program items under min attendance`,
+    );
+    logger.info(
+      `  Summary: ${filledWithinMinuteCount} of ${total} program items filled in under a minute`,
+    );
   }
 };
 
+// The two-phase program types, which the fill-time report leaves out: how
+// many spots the lottery took and how many were left for direct sign-up
 export const printProgramItemSignups = (
-  directSignups: (DirectSignupsForProgramItem & { updatedAt: string })[],
+  directSignups: DirectSignupsForProgramItem[],
   programItems: ProgramItem[],
 ): void => {
-  const fleaMarketDirectSignups = directSignups.filter((directSignup) =>
-    programItems.find(
-      (programItem) =>
-        programItem.programItemId === directSignup.programItemId &&
-        programItem.programType === ProgramType.FLEAMARKET,
-    ),
+  const { twoPhaseSignupProgramTypes } = config.event();
+  const byProgramType = groupByProgramType(programItems, (programType) =>
+    twoPhaseSignupProgramTypes.includes(programType),
   );
 
-  const sorted = sortBy(
-    fleaMarketDirectSignups,
-    (signup) => signup.programItemId,
-  );
+  for (const [programType, programItemsOfType] of Object.entries(
+    byProgramType,
+  )) {
+    logger.info(`${programType} (${programItemsOfType.length} program items)`);
 
-  for (const directSignup of sorted) {
-    const lotterySignups = directSignup.userSignups.filter(
-      (userSignup) => userSignup.priority !== 0,
-    );
-    const signupsAfterLottery = directSignup.userSignups.filter(
-      (userSignup) => userSignup.priority === 0,
-    );
+    for (const programItem of programItemsOfType) {
+      const userSignups = findUserSignups(directSignups, programItem);
 
-    const programItem = programItems.find(
-      (p) => p.programItemId === directSignup.programItemId,
-    );
+      const lotterySignups = userSignups.filter(
+        (userSignup) => userSignup.priority !== 0,
+      );
+      const signupsAfterLottery = userSignups.filter(
+        (userSignup) => userSignup.priority === 0,
+      );
 
-    if (!programItem) {
-      continue;
+      logger.info(
+        `  ${getShortWeekdayAndTime(programItem.startTime)} - max: ${programItem.maxAttendance} - lottery: ${lotterySignups.length} - direct: ${signupsAfterLottery.length}`,
+      );
     }
-
-    logger.info(
-      `${getShortWeekdayAndTime(programItem.startTime)} - max: ${programItem.maxAttendance} - lottery: ${lotterySignups.length} - direct: ${signupsAfterLottery.length}`,
-    );
   }
 };
