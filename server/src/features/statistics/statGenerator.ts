@@ -9,27 +9,27 @@ const getStatistics = (): void => {
 
   commander
     .command("users <event> <year>")
-    .description("Get user statisticss")
+    .description("Get user statistics")
     .action((event: string, year: number) => {
       getUserStats(event, year);
     });
 
   commander
-    .command("direct-signups <year> <event>")
-    .description("Get direct signup statistics")
+    .command("direct-signups <event> <year>")
+    .description("Get direct sign-up statistics")
     .action((event: string, year: number) => {
       getDirectSignupStats(event, year);
     });
 
   commander
-    .command("program-items <year> <event>")
+    .command("program-items <event> <year>")
     .description("Get program item statistics")
     .action((event: string, year: number) => {
       getProgramItemStats(event, year);
     });
 
   commander
-    .command("results <year> <event>")
+    .command("results <event> <year>")
     .description("Get result statistics")
     .action((event: string, year: number) => {
       getResultsStats(event, year);
