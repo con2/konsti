@@ -10,7 +10,6 @@ export const LanguageSelector = (): ReactElement => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
 
-  // Language toggle
   const toggle = async (lng: string): Promise<TFunction> =>
     await i18n.changeLanguage(lng);
 

@@ -10,7 +10,6 @@ export const getAttendeeGroups = (
   for (const [groupCode, users] of Object.entries(groupedUsers)) {
     if (Array.isArray(users)) {
       if (groupCode === "0") {
-        // Loop array and add attendees individually
         for (const user of users) {
           attendeesArray.push([user]);
         }

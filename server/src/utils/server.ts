@@ -81,8 +81,8 @@ export const startServer = async ({
     app.use(sentryRoutes);
   }
 
-  // Parse body and populate req.body - only accepts JSON
-  app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
+  // Every request body is parsed as JSON, whatever content type it declares
+  app.use(express.json({ limit: "1000kb", type: "*/*" }));
 
   app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
     if ("status" in err && err.status === 400) {
@@ -100,7 +100,6 @@ export const startServer = async ({
     app.use(apiRoutes);
   }
 
-  // Set static path
   const staticPath =
     staticFilesPath ?? path.join(import.meta.dirname, "../../", "front");
 
@@ -132,7 +131,6 @@ export const startServer = async ({
   };
 
   if (serveIndexAndApi) {
-    // Set compression
     if (config.server().bundleCompression) {
       app.use(
         expressStaticGzip(staticPath, {
@@ -178,12 +176,9 @@ export const startServer = async ({
   // Sentry setup: add this after all routes and before other error-handling middlewares
   setupExpressErrorHandler(app);
 
-  // Error handler
   app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
-    // Delegate to the default Express error handler, when the headers have already been sent to the client
-    // For example, if error is encountered while streaming the response to the client
-    // Express default error handler closes the connection and fails the request
-    // https://expressjs.com/en/guide/error-handling.html
+    // Once headers are sent the default Express handler is the only thing that can still
+    // close the connection and fail the request, e.g. after an error mid-stream
     if (res.headersSent) {
       logger.error(new Error("Error after headers sent", { cause: err }));
       next(err);

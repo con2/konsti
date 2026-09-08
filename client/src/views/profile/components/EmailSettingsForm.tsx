@@ -13,7 +13,7 @@ interface Props {
   email: string;
 }
 
-// The logged-in user's own email notification settings — shown only in Profile, never in the
+// The logged-in user's own email notification settings - shown only in Profile, never in the
 // helper flow where another user is managed (there the email endpoint would target the helper)
 export const EmailSettingsForm = ({ email }: Props): ReactElement => {
   const { t } = useTranslation();

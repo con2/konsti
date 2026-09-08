@@ -34,7 +34,7 @@ export const postUserPassword = async (
   const requesterUserGroup = getAuthorizedUserGroup(req.headers.authorization);
   const { usernameToUpdate, password } = req.body;
 
-  // Only the account owner, helpers, or admins may change a password — decided by the JWT
+  // Only the account owner, helpers, or admins may change a password - decided by the JWT
   // userGroup claim, never by the requester's username
   const isAdminOrHelper =
     requesterUserGroup === UserGroup.ADMIN ||

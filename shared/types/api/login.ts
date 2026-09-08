@@ -8,7 +8,7 @@ import { UserGroup } from "shared/types/models/user";
 
 export const PostLoginRequestSchema = z.object({
   username: z.string(),
-  // Trim to match registration/password-update, which store the trimmed password — otherwise
+  // Trim to match registration/password-update, which store the trimmed password - otherwise
   // a trailing/leading space typed at login would never match the stored hash
   password: z.string().trim().min(1),
 });

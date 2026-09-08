@@ -76,14 +76,13 @@ export const getLotterySignups = ({
   showAllProgramItems,
   timeNow,
 }: GetLotterySignupsParams): readonly LotterySignupWithProgramItem[] => {
-  // Show own lottery sign-ups if group creator or not in group
   if (isGroupCreator || !isInGroup) {
     return showAllProgramItems
       ? lotterySignups
       : getUpcomingLotterySignups(lotterySignups, timeNow);
   }
 
-  // Show group creator lottery sign-ups if in group and not group creator
+  // A group member sees the creator's lottery sign-ups, which are the ones the lottery acts on
   const groupCreator = getGroupCreator(groupMembers);
   if (!groupCreator) {
     return [];

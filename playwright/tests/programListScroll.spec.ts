@@ -85,7 +85,7 @@ test("Opening a program item resets scroll, and returning restores the list posi
     }),
   );
 
-  // Pick the bottom-most fully visible card — the one that falls below the
+  // Pick the bottom-most fully visible card - the one that falls below the
   // fold if the restored position is off by even a partial row. Read the
   // scroll offset in the same evaluate so both are from the same layout pass.
   const { href, cardTopBefore, scrollBefore } = await page.evaluate(() => {
@@ -150,14 +150,14 @@ test("Scroll to top button scrolls the virtualized list back to the top", async 
   await scrollDownAndSettle(page);
 
   // One click must land all the way at the top: the scroll goes through the
-  // virtualizer, whose smooth scroll re-targets until the offset is stable —
+  // virtualizer, whose smooth scroll re-targets until the offset is stable -
   // a plain window smooth scroll would be cancelled partway when the rows
   // mounting above the viewport get measured
   await programList.scrollToTopButton.click();
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 
   // The virtualizer re-rendered the top of the list (the first card may still
-  // sit below the fold on small viewports — the filter card takes the screen)
+  // sit below the fold on small viewports - the filter card takes the screen)
   await expect(
     page.getByRole("heading", { name: "Scroll test item 0" }),
   ).toBeAttached();

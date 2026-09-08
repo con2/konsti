@@ -14,7 +14,7 @@ import { GlobalStyle } from "client/globalStyle";
 import { theme } from "client/theme";
 import { getLocalStorageLocale } from "client/utils/localStorage";
 import { store } from "client/utils/store";
-// Initialized i18next instance
+// Initializes i18next, which the lazily loaded app expects to be ready
 import "client/utils/i18n";
 import { lazyWithRetry } from "client/utils/lazyWithRetry";
 import { resetStaleEventStorage } from "client/utils/resetStaleEventStorage";
@@ -24,7 +24,7 @@ setLocale(getLocalStorageLocale());
 
 // The app manages scroll itself on navigation (views reset to the top on
 // mount, the program list restores its own saved position), so disable the
-// browser's history scroll restoration — WebKit applies it asynchronously on
+// browser's history scroll restoration - WebKit applies it asynchronously on
 // back navigation and overrides the app's restore with a stale offset
 history.scrollRestoration = "manual";
 

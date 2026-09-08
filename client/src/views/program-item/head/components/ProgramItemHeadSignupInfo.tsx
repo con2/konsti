@@ -164,7 +164,7 @@ const AttendeeList = styled.ul`
     list-style: none;
   }
 
-  /* Add some space between rows to group attendees if there are many of them to show. */
+  /* Space between every ten rows groups a long attendee list */
   li:nth-child(10n) {
     padding-bottom: 12px;
   }

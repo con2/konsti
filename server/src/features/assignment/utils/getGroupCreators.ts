@@ -31,7 +31,6 @@ export const getGroupCreators = (
           break;
         }
       }
-      // User matched, break
       if (match) {
         selectedAttendees.push(user);
         break;

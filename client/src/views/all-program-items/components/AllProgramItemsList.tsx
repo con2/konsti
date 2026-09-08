@@ -40,7 +40,7 @@ import { ProgramItemEntry } from "client/views/program-item/ProgramItemEntry";
 
 interface Props {
   programItems: readonly ProgramItem[];
-  // Program item to briefly highlight (and scroll to) — the one the user just
+  // Program item to briefly highlight (and scroll to) - the one the user just
   // came back from, or null
   highlightedProgramItemId: string | null;
 }
@@ -65,7 +65,7 @@ const NO_SIGNUPS: UserSignup[] = [];
 
 // The window scroll offset and measured row sizes when the list unmounts, so
 // returning to it (e.g. via the browser back button after viewing a program
-// item) restores the exact scroll position — the clicked card comes back where
+// item) restores the exact scroll position - the clicked card comes back where
 // it was. Module-scoped so it survives navigation within the SPA session.
 let savedScrollState: {
   offset: number;
@@ -200,7 +200,7 @@ export const AllProgramItemsList = ({
   // When a row's measured height differs from its estimate, the virtualizer
   // corrects the scroll position so on-screen content doesn't shift. It issues
   // the correction as an absolute scrollTo based on its cached scroll offset,
-  // which lags the live position by up to a frame while the user is scrolling —
+  // which lags the live position by up to a frame while the user is scrolling -
   // an absolute target would yank the page back by that lag (a visible jump).
   // Apply only the not-yet-applied part of the correction as a relative
   // scrollBy instead, which is immune to the stale base offset.
@@ -223,7 +223,7 @@ export const AllProgramItemsList = ({
     count: rows.length,
     scrollToFn: (offset, { adjustments, behavior }) => {
       // No adjustments: a navigation scroll (scrollToOffset/scrollToIndex)
-      // where the absolute target is the intent — pass it through
+      // where the absolute target is the intent - pass it through
       if (adjustments === undefined) {
         window.scrollTo({ top: offset, behavior });
         return;
@@ -241,7 +241,7 @@ export const AllProgramItemsList = ({
         ? HEADER_ESTIMATED_HEIGHT
         : ITEM_ESTIMATED_HEIGHT,
     // Rows are measured when they mount, and a mismatch against the estimate
-    // is fixed with a scroll correction — visible as a jump if the row is
+    // is fixed with a scroll correction - visible as a jump if the row is
     // already on screen. Overscan is the buffer that lets rows mount and
     // measure while still off-screen, so it needs to cover a realistic
     // per-frame wheel/fling scroll distance.
@@ -278,11 +278,11 @@ export const AllProgramItemsList = ({
   // clamped against the shrinking document), and the virtualizer's last
   // observed offset misses its own row-measurement compensation scroll while
   // the scroll event for it is still undelivered (WebKit dispatches scroll
-  // events for programmatic scrolls asynchronously — under load only after
+  // events for programmatic scrolls asynchronously - under load only after
   // the navigation). The virtualizer tracks that undelivered compensation in
   // scrollAdjustments (cleared once the event arrives), so its intended
   // offset is scrollOffset + scrollAdjustments. The field is private, so
-  // read it defensively — if it disappears in an upgrade, only the
+  // read it defensively - if it disappears in an upgrade, only the
   // undelivered-event case regresses.
   useLayoutEffect(() => {
     return () => {
@@ -315,7 +315,7 @@ export const AllProgramItemsList = ({
     // The document keeps growing for a few frames after mount as rows are
     // measured and the scroll margin settles, so a single scrollTo can clamp
     // short (the document isn't tall enough yet) and stick there. Re-apply
-    // across frames until the offset holds — WebKit most often lands short on
+    // across frames until the offset holds - WebKit most often lands short on
     // the first frame. Stop once the document stops growing (scrollY no longer
     // climbs) so an unreachable target doesn't keep yanking the user for the
     // full frame budget, e.g. when the list is now shorter than the saved offset.

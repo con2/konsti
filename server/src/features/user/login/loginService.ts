@@ -47,8 +47,6 @@ export const login = async (
     };
   }
 
-  // User exists
-
   const validLoginResult = await validateLogin(password, user.password);
   if (!validLoginResult.ok) {
     return {

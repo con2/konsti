@@ -74,7 +74,7 @@ test("The empty state is not shown while the program list loads its items", asyn
 
   // The list renders at a lower priority (useDeferredValue), so its initial
   // value is momentarily empty. Record whether the "no program items" empty
-  // state is ever inserted into the DOM during that transition — it must not be,
+  // state is ever inserted into the DOM during that transition - it must not be,
   // since there are matching items to show. Installed before the app renders,
   // and inspects added nodes so a single-commit flash is still caught.
   await page.addInitScript(() => {

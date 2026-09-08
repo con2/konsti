@@ -16,13 +16,12 @@ import {
 import { resolvePortOffset } from "./portOffset.ts";
 
 // Runs the Playwright suite against a coverage-instrumented app and leaves
-// istanbul-format coverage JSON behind for scripts/mergeCoverageReport.ts:
+// istanbul-format coverage JSON behind for the merge step:
 //
 //   coverage/e2e/client/*.json           browser coverage: the client dev
 //                                        server runs with COVERAGE=true, which
 //                                        istanbul-instruments the served code
-//                                        and collects window.__coverage__ via
-//                                        client/coverageCollectorPlugin.ts
+//                                        and collects window.__coverage__
 //   coverage/e2e/server/coverage-final.json
 //                                        server coverage: the server runs with
 //                                        NODE_V8_COVERAGE, flushes it via the
@@ -162,8 +161,8 @@ const main = async (): Promise<number> => {
     LOG_LEVEL: process.env.LOG_LEVEL ?? "warn",
     ...portOffsetEnv,
   });
-  // Vite runs with strictPort (see client/vite.config.ts), so an occupied
-  // port fails the run instead of silently testing another instance
+  // The client dev server runs with a strict port, so an occupied port fails
+  // the run instead of silently testing another instance
   const client = startProcess("yarn workspace client start", {
     COVERAGE: "true",
     ...portOffsetEnv,
@@ -213,7 +212,6 @@ const main = async (): Promise<number> => {
     killPortListeners(5000 + portOffset);
   }
 
-  // Remap the V8 coverage onto the TS sources and convert it to istanbul JSON
   console.log("Converting server coverage to istanbul format");
   const c8 = runNodeCli(c8Cli, [
     "report",

@@ -471,13 +471,13 @@ test("should keep direct sign-up when program item programType is changed to non
     { ...testProgramItem, programType: ProgramType.OTHER },
   ]);
 
-  // Direct sign-up remains valid — the item still exists and still uses Konsti sign-up
+  // Direct sign-up remains valid - the item still exists and still uses Konsti sign-up
   const directSignups = unsafelyUnwrap(
     await findUserDirectSignups(mockUser.username),
   );
   expect(directSignups).toHaveLength(1);
 
-  // No notification should be added — direct sign-ups stay valid on a program type change
+  // No notification should be added - direct sign-ups stay valid on a program type change
   const user = unsafelyUnwrap(await findUser(mockUser.username));
   const noLotteryAnymoreEvents = user?.eventLogItems.filter(
     (e) => e.action === EventLogAction.PROGRAM_ITEM_NO_LOTTERY_ANYMORE,

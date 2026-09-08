@@ -7,7 +7,6 @@ import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 export const loginWithJwt = async (
   jwt: string,
 ): Promise<PostSessionRecoveryResponse> => {
-  // Restore session
   const jwtData = decodeJWT(jwt);
 
   if (!jwtData) {

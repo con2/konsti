@@ -12,6 +12,6 @@ export const RegistrationView = (): ReactElement | null => {
   } else if (loginProvider == LoginProvider.LOCAL_KOMPASSI) {
     return <KonstiAndKompassiRegistrationPage />;
   }
-  // No separate page for Kompassi-only case, registration happens in Kompassi.
+  // No separate page for Kompassi-only case, registration happens in Kompassi
   return null;
 };

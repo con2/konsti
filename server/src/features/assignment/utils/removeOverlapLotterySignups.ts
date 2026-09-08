@@ -91,7 +91,6 @@ export const removeOverlapLotterySignups = async (
         },
       );
 
-      // Only update users with overlapping lottery sign-ups
       if (overlappingLotterySignups.length > 0) {
         usersToUpdate.push({
           username: signedUser.username,
@@ -117,7 +116,6 @@ export const removeOverlapLotterySignups = async (
           (programItemId) => !lotteriedProgramItemIds.has(programItemId),
         );
 
-      // Only update users with upcoming lottery sign-ups
       if (upcomingLotterySignupProgramItemIds.length > 0) {
         usersToUpdate.push({
           username: signedUser.username,

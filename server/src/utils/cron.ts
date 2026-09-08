@@ -215,7 +215,6 @@ export const autoAssignAttendees = async (): Promise<void> => {
       return;
     }
 
-    // Record the last successful run time
     await setAssignmentLastRun(new Date().toISOString());
 
     logger.info("***** Automatic attendee assignment completed");

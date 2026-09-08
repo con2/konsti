@@ -72,7 +72,7 @@ const apiFetch = async <T>(
   // Reading the response body can reject with AbortError if the page unloads
   // mid-response, so json() calls need the same error handling as fetch()
 
-  // Handle redirect responses (301/302 with JSON body containing location)
+  // A redirect response carries its target in a JSON body
   if ([301, 302].includes(response.status)) {
     let data: { location: string };
     try {
@@ -85,7 +85,6 @@ const apiFetch = async <T>(
     return new Promise<ApiResponse<T>>(() => {});
   }
 
-  // Handle errors
   if (!response.ok) {
     if (shouldTreatHttpErrorAsNetworkError(background)) {
       return networkErrorResponse<T>(background);

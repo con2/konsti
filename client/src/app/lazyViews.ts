@@ -45,8 +45,7 @@ const prefetchView = async (importView: ViewImport): Promise<void> => {
     // Nothing useful to do here, but note the cost: the browser caches a
     // failed dynamic import for the rest of the session, so this chunk is now
     // poisoned and opening the view will reject instantly and reload the page
-    // rather than refetch. That is why the caller only prefetches after a data
-    // load has succeeded and the connection looks usable.
+    // rather than refetch
   }
 };
 

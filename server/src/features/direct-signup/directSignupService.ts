@@ -169,8 +169,7 @@ export const storeDirectSignup = async (
     })),
   };
 
-  // Check if current user is signed in
-  // If user is not included, the program item was full
+  // The user missing from the stored sign-ups means the program item was full
   const newSignup = signup.userSignups.find(
     (userSignup) => userSignup.username === username,
   );

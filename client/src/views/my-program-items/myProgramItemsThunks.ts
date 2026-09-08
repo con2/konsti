@@ -132,7 +132,6 @@ export const submitPostDirectSignup = (
       }
     }
 
-    // Update current sign-ups for program item
     dispatch(
       submitUpdateDirectSignupAsync({
         programItemId: signupResponse.allSignups.programItemId,
@@ -151,12 +150,11 @@ export const submitPostDirectSignup = (
       dispatch(submitUpdateGroupAsync([]));
     }
 
-    // Show error if sign-up failed, ie. program item is full
+    // No sign-up in the response means the program item was full
     if (!signupResponse.directSignup) {
       return PostDirectSignupErrorMessage.PROGRAM_ITEM_FULL;
     }
 
-    // If sign-up success, update for user
     dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
   };
 };

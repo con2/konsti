@@ -37,7 +37,7 @@ const dockerCompose = (args: string[]): number => {
 
 // Build both images in one compose invocation so Bake runs them in parallel
 // (the server build finishes inside the longer playwright build). Building the
-// playwright image every run keeps local runs on the current specs — a bare
+// playwright image every run keeps local runs on the current specs - a bare
 // `up` would silently reuse a stale cached image.
 const buildStatus = dockerCompose(["build", "server", "playwright"]);
 

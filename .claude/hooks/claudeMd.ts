@@ -6,7 +6,7 @@ import { getProjectRoot } from "./nodeTool.ts";
 
 // Stop hook: when a session makes structural changes (files added/renamed/
 // deleted, or a package.json edited), remind Claude to review the relevant
-// CLAUDE.md before finishing. Pure in-file edits are ignored on purpose —
+// CLAUDE.md before finishing. Pure in-file edits are ignored on purpose -
 // CLAUDE.md documents structure, scripts, and conventions, not line-level logic
 
 interface StopHookInput {
@@ -100,7 +100,7 @@ const lines = freshAreas.map((area) => {
     .filter((c) => c.area === area)
     .map((c) => `${c.kind}: ${c.path}`)
     .slice(0, 8);
-  return `- ${area} — ${items.join("; ")}`;
+  return `- ${area} - ${items.join("; ")}`;
 });
 
 const reason =

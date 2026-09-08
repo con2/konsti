@@ -24,7 +24,6 @@ test("Add favorite", async ({ page, request }) => {
 
   const programList = new ProgramListPage(page);
 
-  // Navigate to program list tab
   await programList.gotoAllProgram();
 
   // Favorite first program item
@@ -46,7 +45,7 @@ test("Add favorite", async ({ page, request }) => {
 });
 
 // Touch devices emulate :hover on tap and keep it active after the tap, so the
-// hover highlight must only apply on hover-capable devices — otherwise tapping
+// hover highlight must only apply on hover-capable devices - otherwise tapping
 // the favorite button leaves a stuck highlight around it. Mobile emulation
 // matches (hover: none) but a synthetic mouse hover still sets the :hover
 // state, which is exactly the condition a real tap leaves behind.

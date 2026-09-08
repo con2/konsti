@@ -33,7 +33,7 @@ test("should still give the first-time bonus when a member's only direct sign-up
   const [user] = getUsers({ count: 1 });
 
   // A lottery win (priority > 0) at the current assignment time, i.e. this lottery's own
-  // result on a re-run — it must not strip the first-time bonus
+  // result on a re-run - it must not strip the first-time bonus
   const directSignups: DirectSignupsForProgramItem[] = [
     {
       programItemId: testProgramItem.programItemId,

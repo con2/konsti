@@ -272,20 +272,15 @@ const getSignupStrategyForProgramItem = (
     return ProgramItemSignupStrategy.DIRECT;
   }
 
-  // lottery
-
   if (settings.signupStrategy === EventSignupStrategy.LOTTERY) {
     return ProgramItemSignupStrategy.LOTTERY;
   }
-
-  // direct
 
   if (settings.signupStrategy === EventSignupStrategy.DIRECT) {
     return ProgramItemSignupStrategy.DIRECT;
   }
 
-  // lottery+direct
-
+  // The remaining strategy is lottery and direct
   if (!isLotterySignupProgramItem(programItem)) {
     return ProgramItemSignupStrategy.DIRECT;
   }

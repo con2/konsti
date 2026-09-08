@@ -30,7 +30,6 @@ export const saveSerials = async (
   count: number,
 ): Promise<Result<Serial[], MongoDbError>> => {
   const serials: Serial[] = [];
-  // create serials
   for (let i = 1; i <= count; i += 1) {
     const serial = generator.generate(10);
     const rawSerials = serials.map((s) => s.serial);

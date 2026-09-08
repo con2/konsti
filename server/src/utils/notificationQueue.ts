@@ -78,7 +78,7 @@ export function createNotificationQueueService(
     notification: NotificationTask,
   ): Result<boolean, QueueError> {
     try {
-      // Promise returned by push is fullfilled after task is completed.
+      // The promise push returns settles only once the task has run, and nothing waits for that
       void queue.push(notification);
       return makeSuccessResult(true);
     } catch {

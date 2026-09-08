@@ -29,7 +29,7 @@ const absentByDefault: Partial<EventConfig> = {
   directSignupAlwaysOpenIds: [],
 };
 
-// The non-vitest counterpart of setupTests.ts's `vi.spyOn(config, "event")`. `config` is a
+// The non-vitest counterpart of the test setup's `vi.spyOn(config, "event")`. `config` is a
 // plain object of getters, so replacing one is enough and no production file gains a hook.
 export const overrideEventConfig = (
   pastEventConfig: Partial<EventConfig>,

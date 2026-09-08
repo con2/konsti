@@ -8,7 +8,6 @@ export const getLotterySignups = (
   logger.debug("Get lottery signups");
   const lotterySignups: AssignmentLotterySignup[] = [];
 
-  // Get lottery sign-ups for all users
   for (const user of users) {
     if (user.lotterySignups.length > 0) {
       for (const lotterySignup of user.lotterySignups) {

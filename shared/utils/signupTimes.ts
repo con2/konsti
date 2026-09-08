@@ -89,12 +89,11 @@ export const getLotterySignupStartTime = (programItem: ProgramItem): Date => {
 
   const startTime = getProgramItemStartTime(programItem);
 
-  // Set timezone because hour comparison and setting hour value
+  // In the event timezone, since the hour is compared and set below
   const timezoneStartTime = fixedLotterySignupTime
     ? new TZDate(fixedLotterySignupTime, TIMEZONE)
     : subMinutes(new TZDate(startTime, TIMEZONE), preSignupStart);
 
-  // If lottery sign-up starts before event start time, use event start time
   if (isBefore(timezoneStartTime, new Date(eventStartTime))) {
     return new Date(eventStartTime);
   }
@@ -196,7 +195,7 @@ export const getRollingDirectSignupStartTime = (
 
   // If program item starts before 12:00, sign-up starts 18:00 previous day
   if (enableRollingDirectSignupPreviousDay) {
-    // Set timezone because hour comparison and setting hour value
+    // In the event timezone, since the hour is compared and set below
     const timezoneStartTime = new TZDate(programItem.startTime, TIMEZONE);
     const startTimeIsTooEarly = getHours(timezoneStartTime) < 12;
     if (startTimeIsTooEarly) {
