@@ -462,7 +462,7 @@ export default defineConfig([
     ...eslintPluginMdx.flat,
 
     // Must come after the spread: eslintPluginMdx.flat sets files to **/*.{md,mdx},
-    // which would otherwise lint plain .md files (CLAUDE.md, docs/**) too
+    // which would otherwise lint every plain .md file in the repo too
     files: ["**/*.mdx"],
 
     extends: [
