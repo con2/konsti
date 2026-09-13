@@ -38,6 +38,7 @@ import {
   mockUser4,
 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { logger } from "server/utils/logger";
 import {
   NotificationTaskType,
   createNotificationQueueService,
@@ -788,6 +789,52 @@ test("should not send notifications to users without email addresses but still c
   const messages = notificationQueueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
+});
+
+test("should summarize sent and skipped emails once the queue drains", async () => {
+  const userWithoutEmail = { ...mockUser, email: "" };
+  const userWithEmail = mockUser2;
+
+  await saveUser(userWithoutEmail);
+  await saveUser(userWithEmail);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+  ]);
+  await saveLotterySignups({
+    username: userWithoutEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+  });
+  await saveLotterySignups({
+    username: userWithEmail.username,
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
+  });
+
+  // The winner has no address, so their accepted email is skipped and the loser's rejected
+  // email is the only one sent
+  await saveAndNotify({
+    assignmentTime: testProgramItem.startTime,
+    results: [
+      {
+        username: userWithoutEmail.username,
+        assignmentSignup: {
+          programItemId: testProgramItem.programItemId,
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      },
+    ],
+    users: unsafelyUnwrap(await findUsers()),
+    programItems: unsafelyUnwrap(await findProgramItems()),
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const notificationQueueService = getGlobalNotificationQueueService()!;
+  notificationQueueService.getQueue().resume();
+  await notificationQueueService.getQueue().drained();
+
+  expect(logger.info).toHaveBeenCalledWith(
+    "Email notification queue drained: 1 sent, 1 skipped (no email address), 0 failed",
+  );
 });
 
 test("should respect email notification permissions based on email field", async () => {
