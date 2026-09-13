@@ -5,3 +5,21 @@ Dockerfile
 .github
 .husky
 docker
+# Build output, which the image produces for itself. Copying the host's in is
+# not just waste: COPY merges into a directory rather than replacing it, so a
+# file from an older local build survives the fresh one copied over it - and
+# server/front is served to the public, stale source maps included
+client/build
+server/front
+# Developer-local env files, which must stay out of an image layer. The deployed
+# build gets its Sentry token as a build secret and the server its configuration
+# from the environment, so none of these are needed: a local `docker:build-*`
+# would otherwise bake in a personal auth token, or a PORT_OFFSET that points the
+# bundle at a port nothing in the container listens on. `.env.local` needs its own
+# entry - `.env.*.local` cannot match it, being longer than the name itself
+client/.env.sentry-build-plugin
+client/.env.local
+client/.env.*.local
+server/.env.local
+server/.env.*.local
+server/.env.development

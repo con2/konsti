@@ -74,7 +74,9 @@ eslint.config.bundled*
 
 #dotenv
 server/.env.development
+server/.env.local
 client/.env.sentry-build-plugin
+client/.env.local
 client/.env.development.local
 
 # claude
