@@ -32,6 +32,7 @@ export enum KompassiError {
 
 export enum KompassiLoginError {
   UNKNOWN_ERROR = "unknownError",
+  INVALID_GRANT = "invalidGrant",
 }
 
 export enum AssignmentError {

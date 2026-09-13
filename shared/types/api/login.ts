@@ -79,7 +79,12 @@ export type PostKompassiLoginRequest = z.infer<
 type PostKompassiLoginResult = PostLoginResult;
 
 interface PostKompassiLoginError extends ApiError {
-  errorId: "unknown" | "loginFailed" | "loginDisabled" | "invalidUserGroup";
+  errorId:
+    | "unknown"
+    | "loginFailed"
+    | "loginDisabled"
+    | "invalidUserGroup"
+    | "kompassiLoginFailed";
 }
 
 export type PostKompassiLoginResponse =

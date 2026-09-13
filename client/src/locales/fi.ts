@@ -165,6 +165,7 @@ export const translationFI = {
     loginFailed: "Nimimerkki ja salasana eivät täsmää",
     loginDisabled: "Kirjautuminen on suljettu",
     invalidUserGroup: "Virheellinen käyttäjäryhmä",
+    kompassiLoginFailed: "Kompassi-kirjautuminen epäonnistui, yritä uudelleen",
     unknown: "Tuntematon virhe",
   },
   appError: {
