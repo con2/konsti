@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { captureException } from "@sentry/react";
 import { ComponentType } from "react";
 import {
   afterAll,
@@ -11,6 +12,8 @@ import {
 } from "vitest";
 import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 import { importWithRetry } from "client/utils/lazyWithRetry";
+
+vi.mock("@sentry/react", () => ({ captureException: vi.fn() }));
 
 const chunkName = "TestView";
 const retryKey = `${browserStorageEventPrefix}-chunk-retry-${chunkName}`;
@@ -36,6 +39,7 @@ afterAll(() => {
 beforeEach(() => {
   storage.clear();
   reloadMock.mockClear();
+  vi.mocked(captureException).mockClear();
 });
 
 const testComponent = { default: (() => null) as ComponentType };
@@ -93,6 +97,44 @@ describe("importWithRetry", () => {
     // chunk all over again
     expect(storage.get(retryKey)).toEqual("true");
   });
+  test("does not report the first failure, which reloads instead", async () => {
+    const resultPromise = importWithRetry(chunkName, failingImport);
+
+    // Let the rejected import settle so the catch path runs
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(reloadMock).toHaveBeenCalledOnce();
+    expect(captureException).not.toHaveBeenCalled();
+
+    void resultPromise;
+  });
+
+  test("reports a new error, not the one the loader threw, after a failed retry", async () => {
+    storage.set(retryKey, "true");
+    const loaderError = new Error(
+      "Failed to fetch dynamically imported module",
+    );
+
+    await expect(
+      importWithRetry(chunkName, () => Promise.reject(loaderError)),
+    ).rejects.toBe(loaderError);
+
+    expect(captureException).toHaveBeenCalledOnce();
+
+    // The loader names only the document in its stack, and that frame carries
+    // no build stamp, so reporting its error would have the injected-script
+    // filter discard it as third-party
+    const [reported] = vi.mocked(captureException).mock.calls[0];
+    expect(reported).not.toBe(loaderError);
+    expect(reported).toBeInstanceOf(Error);
+    expect((reported as Error).message).toContain(
+      "Chunk load failed after retry: TestView",
+    );
+    expect((reported as Error).message).toContain(
+      "Failed to fetch dynamically imported module",
+    );
+  });
+
   // A shared flag made this reload forever: the app's own chunk succeeds on
   // every load and cleared it, so the broken view never got to throw
   test("one chunk succeeding does not clear another's retry flag", async () => {

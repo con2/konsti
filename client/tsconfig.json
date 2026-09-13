@@ -8,12 +8,5 @@
     "incremental": true,
     "tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo"
   },
-  "include": [
-    "src/**/*",
-    "../shared/**/*",
-    "vitest.config.ts",
-    "coverageCollectorPlugin.ts",
-    "preloadBootChunksPlugin.ts",
-    "preloadBootChunksPlugin.test.ts"
-  ]
+  "include": ["src/**/*", "../shared/**/*", "vitest.config.ts"]
 }

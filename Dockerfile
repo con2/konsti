@@ -25,7 +25,8 @@ RUN yarn
 # Copy source and build client. SENTRY_AUTH_TOKEN is mounted as a build secret
 # so it never lands in an image layer; when present the Vite Sentry plugin
 # uploads source maps and deletes them from the build. Absent (e.g. local
-# builds) the plugin is skipped and the build proceeds normally
+# builds) it skips the upload but still stamps the chunks the error filter
+# needs, and warns about the skip rather than failing the build
 COPY --chown=node:node client ./client/
 COPY --chown=node:node shared ./shared/
 # vite.config.ts imports the port-offset resolver from scripts/

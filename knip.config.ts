@@ -29,7 +29,7 @@ const config: KnipConfig = {
 
   workspaces: {
     ".": {
-      entry: ["shared/config/past-events/*.ts", "yarn.config.ts"],
+      entry: ["shared/config/past-events/*.ts"],
     },
     "client/": {
       entry: ["src/index.tsx"],

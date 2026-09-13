@@ -1,8 +1,8 @@
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
-// Runs the containerized Playwright E2E suite. Invoked by the
-// `docker-compose:test` package script (see playwright/CLAUDE.md).
+// Runs the containerized Playwright E2E suite, invoked by the
+// `docker-compose:test` package script
 
 // The playwright Docker image is tagged from the installed @playwright/test
 // version so the image matches the runner exactly
