@@ -218,6 +218,15 @@ export const getProgramFromServer = async (): Promise<
       headers,
       body: JSON.stringify(body),
     });
+    // An error page is not JSON, so parsing it would report a syntax error instead of the status
+    if (!response.ok) {
+      logger.error(
+        new Error(
+          `Error downloading program items from Kompassi: responded ${response.status} ${response.statusText}`,
+        ),
+      );
+      return makeErrorResult(KompassiError.UNKNOWN_ERROR);
+    }
     const responseData = await response.json();
     const result = KompassiResponseFormSchema.safeParse(responseData);
     if (!result.success) {
