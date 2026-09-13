@@ -44,7 +44,7 @@ const startApp = async (): Promise<void> => {
       config.server().emailNotificationQueueWorkerCount,
     );
     setGlobalNotificationQueueService(notificationQueueService);
-    logger.info("Email notification queue initialized.");
+    logger.info("Email notification queue initialized");
   } catch (error) {
     logger.error(
       new Error("Failed to initialize notification queue!", { cause: error }),
