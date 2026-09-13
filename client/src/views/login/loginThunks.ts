@@ -32,6 +32,7 @@ export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
   LOGIN_DISABLED = "error.loginDisabled",
   INVALID_USER_GROUP = "error.invalidUserGroup",
+  KOMPASSI_LOGIN_FAILED = "error.kompassiLoginFailed",
   UNKNOWN = "error.unknown",
 }
 
@@ -218,6 +219,8 @@ export const submitKompassiLogin = (
           return LoginErrorMessage.LOGIN_DISABLED;
         case "invalidUserGroup":
           return LoginErrorMessage.INVALID_USER_GROUP;
+        case "kompassiLoginFailed":
+          return LoginErrorMessage.KOMPASSI_LOGIN_FAILED;
         case "unknown":
           return LoginErrorMessage.UNKNOWN;
         default:

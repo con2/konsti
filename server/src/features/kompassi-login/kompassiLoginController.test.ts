@@ -426,6 +426,38 @@ describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`, () => {
     const body = response.body as PostKompassiLoginResponse;
     expect(body).toMatchObject({ status: "error", errorId: "unknown" });
   });
+
+  // Kompassi answers invalid_grant to a code that was already redeemed or has
+  // expired, which a slow phone can hit with nothing misconfigured, so the user
+  // gets a retry prompt rather than an unknown error
+  test("should ask to retry when Kompassi rejects the code with invalid_grant", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      Response.json({ error: "invalid_grant" }, { status: 400 }),
+    );
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({
+      status: "error",
+      errorId: "kompassiLoginFailed",
+    });
+  });
+
+  // Any other OAuth error means the client id, secret or redirect URI is wrong,
+  // which a retry cannot fix
+  test("should return unknown error when Kompassi rejects the client", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      Response.json({ error: "invalid_client" }, { status: 401 }),
+    );
+
+    const response = await postKompassiLoginCallback(server);
+    expect(response.status).toEqual(200);
+
+    const body = response.body as PostKompassiLoginResponse;
+    expect(body).toMatchObject({ status: "error", errorId: "unknown" });
+  });
 });
 
 describe(`POST ${AuthEndpoint.KOMPASSI_LOGOUT}`, () => {

@@ -13,6 +13,7 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import {
+  KompassiTokenErrorSchema,
   KompassiTokens,
   KompassiTokensSchema,
   KompassiUserinfo,
@@ -79,6 +80,17 @@ const getKompassiTokens = async (
     const responseData = await response.json();
     const result = KompassiTokensSchema.safeParse(responseData);
     if (!result.success) {
+      const errorResult = KompassiTokenErrorSchema.safeParse(responseData);
+      // Kompassi rejects a code that was already redeemed or has passed its
+      // lifetime of a minute, so a slow page load between its redirect and
+      // this exchange ends here. Nothing is wrong on either side: the user is
+      // asked to log in again.
+      if (errorResult.success && errorResult.data.error === "invalid_grant") {
+        logger.warn(
+          `Kompassi login: token endpoint rejected the code with invalid_grant, body ${JSON.stringify(errorResult.data)}`,
+        );
+        return makeErrorResult(KompassiLoginError.INVALID_GRANT);
+      }
       logger.error(
         new Error(
           `Error validating getKompassiTokens response: status ${response.status}, body ${JSON.stringify(redactTokenValues(responseData))}`,
@@ -138,7 +150,10 @@ export const doKompassiLogin = async (
     return {
       message: "Error getting tokens from Kompassi",
       status: "error",
-      errorId: "unknown",
+      errorId:
+        tokensResult.error === KompassiLoginError.INVALID_GRANT
+          ? "kompassiLoginFailed"
+          : "unknown",
     };
   }
   const userinfoResult = await getKompassiUserinfo(

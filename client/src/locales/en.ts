@@ -166,6 +166,7 @@ export const translationEN = {
     loginFailed: "Username and password don't match",
     loginDisabled: "Login is disabled",
     invalidUserGroup: "Invalid user group",
+    kompassiLoginFailed: "Kompassi login failed, please try again",
     unknown: "Unknown error",
   },
   appError: {

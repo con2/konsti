@@ -14,6 +14,12 @@ export const KompassiTokensSchema = z.object({
 
 export type KompassiTokens = z.infer<typeof KompassiTokensSchema>;
 
+// The OAuth error body the token endpoint returns with a 4xx status
+export const KompassiTokenErrorSchema = z.object({
+  error: z.string(),
+  error_description: z.string().optional(),
+});
+
 // The full claim set Kompassi returns from /oidc/userinfo/. There is no
 // username claim - Kompassi is removing usernames - so `sub` is the identity.
 export const KompassiUserinfoSchema = z.object({
