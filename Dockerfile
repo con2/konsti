@@ -70,8 +70,9 @@ COPY --from=client-builder /usr/src/builder/client/build /usr/src/app/server/fro
 # App binds to port 5000
 EXPOSE 5000
 
-# Set non-root user
-USER node
+# Run as the image's node user. Numeric so a runtime that enforces non-root
+# (runAsNonRoot) can verify it without resolving the name
+USER 1000:1000
 
 # Command to run app
 CMD ["dumb-init", "yarn", "start"]
