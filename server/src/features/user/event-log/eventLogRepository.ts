@@ -60,8 +60,9 @@ export const addEventLogItems = async (
   try {
     await UserModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Added ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users: ${String(usernames)}`,
+      `MongoDB: Added ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users`,
     );
+    logger.debug(`Event log items added for users: ${String(usernames)}`);
     return makeSuccessResult();
   } catch (error) {
     logger.error(

@@ -37,6 +37,15 @@ export const removeOverlapLotterySignups = async (
       .map((programItem) => programItem.programItemId),
   );
 
+  const strategy = config.event().removeLotterySignupsStrategy;
+  if (strategy !== RemoveLotterySignupsStrategy.NONE) {
+    logger.info(
+      strategy === RemoveLotterySignupsStrategy.OVERLAP
+        ? "Remove overlapping signups"
+        : "Remove upcoming signups",
+    );
+  }
+
   results.flatMap((result) => {
     const assignmentSignupProgramItem = programItems.find(
       (programItem) =>
@@ -65,11 +74,7 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all lottery sign-ups that start during the lottery direct sign-up
-    if (
-      config.event().removeLotterySignupsStrategy ===
-      RemoveLotterySignupsStrategy.OVERLAP
-    ) {
-      logger.info("Remove overlapping signups");
+    if (strategy === RemoveLotterySignupsStrategy.OVERLAP) {
       const overlappingLotterySignups = signedUser.lotterySignups.filter(
         (lotterySignup) => {
           const foundProgramItem = programItems.find(
@@ -102,11 +107,7 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all upcoming lottery sign-ups
-    if (
-      config.event().removeLotterySignupsStrategy ===
-      RemoveLotterySignupsStrategy.ALL_UPCOMING
-    ) {
-      logger.info("Remove upcoming signups");
+    if (strategy === RemoveLotterySignupsStrategy.ALL_UPCOMING) {
       const upcomingLotterySignupProgramItemIds =
         getUpcomingLotterySignupProgramItemIds(
           signedUser.lotterySignups,
