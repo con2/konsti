@@ -84,10 +84,17 @@ export const startServer = async ({
   // Every request body is parsed as JSON, whatever content type it declares
   app.use(express.json({ limit: "1000kb", type: "*/*" }));
 
+  // The parser rejects a body the client got wrong (malformed JSON, too large,
+  // an unsupported charset) with a 4xx error, so it is not a server error
   app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
-    if ("status" in err && err.status === 400) {
+    if (
+      "status" in err &&
+      typeof err.status === "number" &&
+      err.status >= 400 &&
+      err.status < 500
+    ) {
       logger.warn(`Invalid request: ${err.message}`);
-      return res.sendStatus(400);
+      return res.sendStatus(err.status);
     }
     next(err);
   });
