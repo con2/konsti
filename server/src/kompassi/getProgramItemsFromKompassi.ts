@@ -168,6 +168,8 @@ export const eventNameToKompassiEventName = (eventName: EventName): string => {
   }
 };
 
+const fetchTimeoutMs = 1000 * 30;
+
 export const getProgramFromServer = async (): Promise<
   Result<unknown, KompassiError>
 > => {
@@ -217,6 +219,9 @@ export const getProgramFromServer = async (): Promise<
       method: "POST",
       headers,
       body: JSON.stringify(body),
+      // Well inside the 5-minute update interval, so a hung Kompassi fails this tick rather
+      // than blocking the next one
+      signal: AbortSignal.timeout(fetchTimeoutMs),
     });
     // An error page is not JSON, so parsing it would report a syntax error instead of the status
     if (!response.ok) {

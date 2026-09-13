@@ -17,6 +17,9 @@ import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 afterEach(() => {
+  // The logger is a shared mock from the test setup, so its call history has to be cleared
+  // as well as the fetch spy restored
+  vi.clearAllMocks();
   vi.restoreAllMocks();
 });
 
@@ -59,6 +62,32 @@ describe("should load Kompassi data for all events", () => {
 });
 
 describe("loading the program from the Kompassi server", () => {
+  test("should fail the download when Kompassi does not answer in time", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+    vi.spyOn(globalThis, "fetch").mockRejectedValue(
+      new DOMException(
+        "The operation was aborted due to timeout",
+        "TimeoutError",
+      ),
+    );
+
+    const result = await getProgramFromServer();
+
+    expect(result).toEqual({
+      ok: false,
+      error: KompassiError.UNKNOWN_ERROR,
+    });
+    expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      new Error("Error downloading program items from Kompassi", {
+        cause: new DOMException(
+          "The operation was aborted due to timeout",
+          "TimeoutError",
+        ),
+      }),
+    );
+  });
+
   test("should report the HTTP status when Kompassi answers with an error page", async () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
     vi.spyOn(globalThis, "fetch").mockResolvedValue(

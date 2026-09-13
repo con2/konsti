@@ -148,6 +148,12 @@ export const runAssignment = async ({
     resolvedAssignmentTime,
   );
 
+  if (emptyProgramItems.length > 0) {
+    logger.info(
+      `Assignment ${resolvedAssignmentTime}: lotterying ${emptyProgramItems.length} program items for ${validLotterySignupsUsers.length} users with ${assignmentAlgorithm}`,
+    );
+  }
+
   const assignResultsResult = runAssignmentAlgorithm(
     assignmentAlgorithm,
     validLotterySignupsUsers,
