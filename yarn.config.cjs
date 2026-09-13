@@ -1,9 +1,13 @@
-import { defineConfig } from "@yarnpkg/types";
-
+// @ts-check
 // https://yarnpkg.com/features/constraints
+//
+// Must keep this exact name: Yarn 4 loads yarn.config.cjs and nothing else, and
+// given any other name it evaluates nothing while still exiting 0
 
-export default defineConfig({
-  // eslint-disable-next-line @typescript-eslint/require-await -- Yarn's constraints type requires an async signature
+const { defineConfig } = require("@yarnpkg/types");
+
+module.exports = defineConfig({
+  // Async because Yarn's constraints type requires that signature
   constraints: async ({ Yarn }) => {
     // Enforce that the engines.node field is properly set in all workspaces
     for (const workspace of Yarn.workspaces()) {
