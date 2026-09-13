@@ -1,7 +1,7 @@
 // Single source of truth for the coverage include/exclude globs used by every
-// half of the combined-coverage pipeline (see "Combined Code Coverage" in
-// CLAUDE.md): the root vitest config, the c8 conversion of the server's V8
-// coverage, and the browser instrumentation of the client dev server
+// half of the combined-coverage pipeline: the root vitest config, the c8
+// conversion of the server's V8 coverage, and the browser instrumentation of
+// the client dev server
 //
 // NOTE: consumed by plain-node scripts, so this file must stay free of
 // TypeScript syntax that needs transformation (enums, path aliases, ...)
