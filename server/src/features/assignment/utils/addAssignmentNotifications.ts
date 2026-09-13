@@ -176,6 +176,10 @@ export const addAssignmentNotifications = async ({
       })),
       emailKind: EmailNotificationTrigger.ACCEPTED,
     });
+  } else {
+    logger.info(
+      `Assignment ${assignmentTime}: ${EmailNotificationTrigger.ACCEPTED} emails not enabled in settings, none queued`,
+    );
   }
 
   // Add NO_ASSIGNMENT to user event logs
@@ -222,6 +226,10 @@ export const addAssignmentNotifications = async ({
         })),
         emailKind: EmailNotificationTrigger.REJECTED,
       });
+    } else {
+      logger.info(
+        `Assignment ${assignmentTime}: ${EmailNotificationTrigger.REJECTED} emails not enabled in settings, none queued`,
+      );
     }
   }
 };
@@ -258,7 +266,12 @@ const queueAssignmentEmails = ({
         `Assignment ${assignmentTime}: failed to queue ${emailKind} emails: ${queueNotificationsResult.error}`,
       ),
     );
+    return;
   }
+
+  logger.info(
+    `Assignment ${assignmentTime}: queued ${notifications.length} ${emailKind} emails`,
+  );
 };
 
 // Spread into the event log item and the email task, so the two span fields are either both

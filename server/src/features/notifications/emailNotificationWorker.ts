@@ -20,10 +20,17 @@ import {
   getRejectedEmailTemplate,
 } from "./senderCommon";
 
+export enum EmailNotificationOutcome {
+  SENT = "sent",
+  // The attendee has no valid email address, so there is nothing to send
+  SKIPPED = "skipped",
+  FAILED = "failed",
+}
+
 export async function emailNotificationWorker(
   sender: EmailSender,
   notification: NotificationTask,
-): Promise<void> {
+): Promise<EmailNotificationOutcome> {
   try {
     const userResult = await findUser(notification.username);
     if (!userResult.ok) {
@@ -32,7 +39,7 @@ export async function emailNotificationWorker(
           `Failed to fetch user to send email notification ${notification.username}`,
         ),
       );
-      return;
+      return EmailNotificationOutcome.FAILED;
     }
 
     const user = userResult.value;
@@ -41,25 +48,27 @@ export async function emailNotificationWorker(
       logger.error(
         `Trying to send email notification for unknown user ${notification.username}.`,
       );
-      return;
+      return EmailNotificationOutcome.FAILED;
     }
 
     if (!user.email || !EMAIL_REGEX.test(user.email)) {
-      return;
+      return EmailNotificationOutcome.SKIPPED;
     }
 
     const message = await generateEmail(user.email, notification);
-    if (message !== null) {
-      await sender.sendEmail(message);
+    if (message === null) {
+      return EmailNotificationOutcome.FAILED;
     }
+    await sender.sendEmail(message);
+    return EmailNotificationOutcome.SENT;
   } catch (error) {
     logger.error(
       new Error("Unexpected error in sending email notification", {
         cause: error,
       }),
     );
+    return EmailNotificationOutcome.FAILED;
   }
-  return;
 }
 
 async function generateEmail(

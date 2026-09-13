@@ -7,7 +7,11 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { EmailSender } from "server/features/notifications/email";
-import { emailNotificationWorker } from "server/features/notifications/emailNotificationWorker";
+import {
+  EmailNotificationOutcome,
+  emailNotificationWorker,
+} from "server/features/notifications/emailNotificationWorker";
+import { logger } from "server/utils/logger";
 
 export enum NotificationTaskType {
   SEND_EMAIL_ACCEPTED,
@@ -38,7 +42,7 @@ export interface NotificationQueueService {
   drain(): Promise<void>;
   kill(): Promise<void>;
   getItems(): NotificationTask[];
-  getQueue(): queueAsPromised<NotificationTask>;
+  getQueue(): queueAsPromised<NotificationTask, EmailNotificationOutcome>;
   getSender(): EmailSender;
 }
 
@@ -47,11 +51,26 @@ export function createNotificationQueueService(
   workerCount = 1,
   stopOnStart = false,
 ): NotificationQueueService {
-  const queue: queueAsPromised<NotificationTask> = queuePromise(
-    (notification: NotificationTask) =>
-      emailNotificationWorker(sender, notification),
-    workerCount,
-  );
+  // The worker logs each failure on its own, so this is the one line saying how a batch went.
+  // Tallied inside the worker rather than off the push promise, because the queue calls drain
+  // before the last task's promise settles.
+  const outcomes = new Map<EmailNotificationOutcome, number>();
+  const queue: queueAsPromised<NotificationTask, EmailNotificationOutcome> =
+    queuePromise(async (notification: NotificationTask) => {
+      const outcome = await emailNotificationWorker(sender, notification);
+      outcomes.set(outcome, (outcomes.get(outcome) ?? 0) + 1);
+      return outcome;
+    }, workerCount);
+  // fastq calls this hook each time the last running task finishes with nothing waiting, so it
+  // runs once per batch, after all its emails have been processed
+  queue.drain = () => {
+    const count = (outcome: EmailNotificationOutcome): number =>
+      outcomes.get(outcome) ?? 0;
+    logger.info(
+      `Email notification queue drained: ${count(EmailNotificationOutcome.SENT)} sent, ${count(EmailNotificationOutcome.SKIPPED)} skipped (no email address), ${count(EmailNotificationOutcome.FAILED)} failed`,
+    );
+    outcomes.clear();
+  };
 
   if (stopOnStart) {
     queue.pause();
@@ -97,7 +116,7 @@ export function createNotificationQueueService(
     getItems(): NotificationTask[] {
       return queue.getQueue();
     },
-    getQueue(): queueAsPromised<NotificationTask> {
+    getQueue(): queueAsPromised<NotificationTask, EmailNotificationOutcome> {
       return queue;
     },
     getSender(): EmailSender {
