@@ -40,6 +40,22 @@ describe("Client-server instance", () => {
     expect(response.status).toEqual(400);
   });
 
+  // Scanners probe with EBCDIC charsets the parser cannot decode
+  test("should return 415 if request declares an unsupported charset", async () => {
+    const response = await request(server)
+      .post("/foobar")
+      .set("Content-Type", "application/json; charset=ibm037")
+      .send("{}");
+    expect(response.status).toEqual(415);
+  });
+
+  test("should return 413 if request body exceeds the size limit", async () => {
+    const response = await request(server)
+      .post("/foobar")
+      .send({ data: "x".repeat(1024 * 1024) });
+    expect(response.status).toEqual(413);
+  });
+
   test("should return 404 for unknown API path", async () => {
     const response = await request(server).get("/api/foobar");
     expect(response.status).toEqual(404);
