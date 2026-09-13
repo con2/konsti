@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/react";
 import { ComponentType, LazyExoticComponent, lazy } from "react";
 import { browserStorageEventPrefix } from "shared/constants/browserStorage";
 
@@ -30,6 +31,14 @@ export const importWithRetry = async (
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       return new Promise(() => {});
     }
+
+    // Reported as a new error rather than the caught one, which the module
+    // loader throws with the document URL as its only frame: that frame carries
+    // none of the build's stamps, so the injected-script filter discards it
+    const detail = error instanceof Error ? error.message : String(error);
+    captureException(
+      new Error(`Chunk load failed after retry: ${chunkName} - ${detail}`),
+    );
 
     // The flag stays set: clearing it here would let the next load reload
     // once more for the same broken chunk, forever. This chunk importing
