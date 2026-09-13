@@ -11,6 +11,14 @@ const isAssignableProgramItem = (programItem: ProgramItem): boolean =>
   programItem.state === State.ACCEPTED &&
   isLotterySignupProgramItem(programItem);
 
+export const getValidLotterySignupProgramItems = (
+  programItems: readonly ProgramItem[],
+): ProgramItem[] => {
+  return programItems.filter((programItem) =>
+    isAssignableProgramItem(programItem),
+  );
+};
+
 const getValidLotterySignupsUsers = (
   users: User[],
   programItems: ProgramItem[],
@@ -56,7 +64,6 @@ export const getLotteryParticipantDirectSignups = (
 
 interface AssignmentParams {
   validLotterySignupsUsers: User[];
-  validLotterySignupProgramItems: ProgramItem[];
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[];
 }
 
@@ -71,11 +78,6 @@ export const prepareAssignmentParams = (
     programItems,
   );
 
-  // Take program items with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
-  const validLotterySignupProgramItems = programItems.filter((programItem) =>
-    isAssignableProgramItem(programItem),
-  );
-
   // Take direct sign-ups with "twoPhaseSignupProgramTypes" which are not in "directSignupAlwaysOpenIds"
   const lotteryParticipantDirectSignups = getLotteryParticipantDirectSignups(
     directSignups,
@@ -84,7 +86,6 @@ export const prepareAssignmentParams = (
 
   return {
     validLotterySignupsUsers,
-    validLotterySignupProgramItems,
     lotteryParticipantDirectSignups,
   };
 };
