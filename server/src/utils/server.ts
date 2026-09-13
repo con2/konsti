@@ -86,14 +86,17 @@ export const startServer = async ({
 
   // The parser rejects a body the client got wrong (malformed JSON, too large,
   // an unsupported charset) with a 4xx error, so it is not a server error
-  app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (
       "status" in err &&
       typeof err.status === "number" &&
       err.status >= 400 &&
       err.status < 500
     ) {
-      logger.warn(`Invalid request: ${err.message}`);
+      const ip = req.ip?.replace(/^::ffff:/, "") ?? "-";
+      logger.warn(
+        `Invalid request: ${req.method} ${req.originalUrl} ip=${ip}: ${err.message}`,
+      );
       return res.sendStatus(err.status);
     }
     next(err);
