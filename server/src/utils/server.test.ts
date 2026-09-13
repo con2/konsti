@@ -40,6 +40,24 @@ describe("Client-server instance", () => {
     expect(response.status).toEqual(400);
   });
 
+  // Scanners send most of the malformed bodies, so the warning has to say where a request
+  // came from for a real client bug to stand out among them
+  test("should log the method, path and IP of a malformed request", async () => {
+    vi.mocked(logger.warn).mockClear();
+
+    await request(server)
+      .post("/api/foobar")
+      .set("X-Forwarded-For", "203.0.113.5")
+      .send("notJSON");
+
+    expect(logger.warn).toHaveBeenCalledTimes(1);
+    expect(logger.warn).toHaveBeenCalledWith(
+      expect.stringMatching(
+        /^Invalid request: POST \/api\/foobar ip=203\.0\.113\.5: Unexpected token/,
+      ),
+    );
+  });
+
   // Scanners probe with EBCDIC charsets the parser cannot decode
   test("should return 415 if request declares an unsupported charset", async () => {
     const response = await request(server)
