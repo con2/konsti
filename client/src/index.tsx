@@ -1,4 +1,8 @@
-import { ErrorBoundary, init } from "@sentry/react";
+import {
+  ErrorBoundary,
+  init,
+  thirdPartyErrorFilterIntegration,
+} from "@sentry/react";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
@@ -12,6 +16,10 @@ import loaderImage from "assets/loading.gif";
 import { AppErrorFallback } from "client/components/AppErrorFallback";
 import { GlobalStyle } from "client/globalStyle";
 import { theme } from "client/theme";
+import {
+  injectedScriptFilterOptions,
+  isBundleStamped,
+} from "client/utils/injectedScriptFilter";
 import { getLocalStorageLocale } from "client/utils/localStorage";
 import { store } from "client/utils/store";
 // Initializes i18next, which the lazily loaded app expects to be ready
@@ -70,33 +78,20 @@ init({
   dsn: getDsn(),
   // Drop the default session tracking and client reports
   // Tunnel traffic is error events only
-  integrations: (defaultIntegrations) =>
-    defaultIntegrations.filter(
+  integrations: (defaultIntegrations) => [
+    ...defaultIntegrations.filter(
       (integration) => integration.name !== "BrowserSession",
     ),
+    // Left out when this bundle carries no stamps, as a dev server's modules do
+    // not, because every frame would then read as third-party
+    ...(isBundleStamped()
+      ? [thirdPartyErrorFilterIntegration(injectedScriptFilterOptions)]
+      : []),
+  ],
   sendClientReports: false,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
-  ignoreErrors: [
-    // Error when Outlook scans a link
-    // https://github.com/getsentry/sentry-javascript/issues/3440
-    "Non-Error promise rejection captured with value: Object Not Found Matching Id:",
-    // Error from the script the Instagram iOS in-app browser injects into every page
-    "evaluating 'window.webkit.messageHandlers'",
-    // Error from a browser extension's injected content script, not from app code
-    "Invalid call to runtime.sendMessage()",
-    // Errors from the reader-mode and wallet scripts Brave iOS injects into
-    // every page
-    "__firefox__",
-    "window.ethereum",
-    // Error from the bridge script an in-app browser injects into every page
-    "Error invoking post: Method not found",
-  ],
-  denyUrls: [
-    // Errors from scripts the Facebook in-app browser injects into every page
-    /^iabjs:\/\//,
-  ],
   maxValueLength: config.sentry().maxValueLength,
 });
 

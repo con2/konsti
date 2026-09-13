@@ -5,7 +5,7 @@ import babel from "@rolldown/plugin-babel";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import browserslistToEsbuild from "browserslist-to-esbuild";
-import { defineConfig, loadEnv } from "vite";
+import { createLogger, defineConfig, loadEnv } from "vite";
 import { compression } from "vite-plugin-compression2";
 import istanbul from "vite-plugin-istanbul";
 import svgr from "vite-plugin-svgr";
@@ -16,10 +16,14 @@ import {
   clientCoverageInclude,
 } from "../scripts/coverageGlobs";
 import { resolvePortOffset } from "../scripts/portOffset";
-import { sentryConfig } from "../shared/config/sentryConfig";
+import {
+  sentryApplicationKeyProperty,
+  sentryConfig,
+} from "../shared/config/sentryConfig";
 /* eslint-enable @typescript-eslint/no-restricted-imports */
-import { coverageCollector } from "./coverageCollectorPlugin";
-import { preloadBootChunks } from "./preloadBootChunksPlugin";
+import { assertSentryStamp } from "./src/vitePlugins/assertSentryStampPlugin";
+import { coverageCollector } from "./src/vitePlugins/coverageCollectorPlugin";
+import { preloadBootChunks } from "./src/vitePlugins/preloadBootChunksPlugin";
 
 const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
   production: "konsti-frontend-prod",
@@ -67,11 +71,29 @@ export default defineConfig(({ mode, command }) => {
       ? `http://127.0.0.1:${5000 + portOffset}`
       : env.API_SERVER_URL;
 
-  // Upload source maps to Sentry only when an auth token is available (CI build
-  // secret, or the local client/.env.sentry-build-plugin file). The development
-  // build only uploads when enableSentryInDev is set.
+  // Gates the Sentry plugin's network work - creating the release and uploading
+  // source maps - on an auth token being available (CI build secret, or the
+  // local client/.env.sentry-build-plugin file). The development build only
+  // uploads when enableSentryInDev is set. The plugin itself runs either way:
+  // marking the app's own chunks is a pure build transform that needs no
+  // credentials, and the SDK's injected-script filter depends on every build
+  // carrying those marks
   const sentryAuthToken = readSentryAuthToken(import.meta.dirname);
   const sentryProject = SENTRY_PROJECT_BY_MODE[mode];
+
+  // Said here rather than left to the Sentry plugin: its own "no auth token"
+  // warning sits behind the source map upload, which this build turns off for
+  // the same reason, so nothing else would report a deploy build that lost its
+  // secret and shipped unsymbolicated
+  if (
+    command === "build" &&
+    !sentryAuthToken &&
+    (mode === "production" || mode === "staging")
+  ) {
+    createLogger().warn(
+      `[konsti] No SENTRY_AUTH_TOKEN for the ${mode} build: source maps will not be uploaded and its errors will arrive unsymbolicated`,
+    );
+  }
 
   // Build time of this image, from the APP_BUILD_TIME Docker build-arg. The
   // client reports an update only when the server's build is strictly newer,
@@ -97,8 +119,10 @@ export default defineConfig(({ mode, command }) => {
       outDir: "build",
       // "hidden" still emits .map files (uploaded to Sentry with debug IDs by
       // the plugin below) but omits the //# sourceMappingURL comment, so the
-      // shipped bundle never advertises a map URL for browsers or Sentry to fetch
-      sourcemap: "hidden",
+      // shipped bundle never advertises a map URL for browsers or Sentry to
+      // fetch. Only worth generating when something uploads them: otherwise the
+      // Sentry plugin's cleanup just deletes what rolldown spent time producing
+      sourcemap: enableSentryUpload ? "hidden" : false,
       // Vite 8 uses Oxc which uses same target format as esbuild
       target: browserslistToEsbuild(),
 
@@ -179,24 +203,46 @@ export default defineConfig(({ mode, command }) => {
       // The root component is dynamically imported but always rendered, so its
       // chunks are preloaded rather than discovered after the entry has run
       preloadBootChunks(["client/src/app/App.tsx"]),
-      // Must come after all other plugins. Injects debug IDs into the emitted
-      // bundle, uploads the source maps to Sentry, then deletes the .map files
-      // so they are never shipped
-      enableSentryUpload &&
+      // Stamps every chunk with the application key the SDK's injected-script
+      // filter looks for, and when an auth token is available also injects debug
+      // IDs, uploads the source maps to Sentry and deletes the .map files so
+      // they are never shipped. Only stamps in renderChunk, which the dev server
+      // never reaches, so building is the only command it has work to do
+      command === "build" &&
         sentryVitePlugin({
           org: "konsti",
           project: sentryProject,
           authToken: sentryAuthToken,
-          // The raw build-arg rather than the appVersion placeholder, so
-          // dev-mode uploads don't create a release named after the fallback.
-          // || rather than ?? so an empty build-arg is treated as unset too
-          // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-          release: { name: process.env.APP_VERSION || undefined },
+          applicationKey: sentryConfig.applicationKey,
+          release: {
+            // The raw build-arg rather than the appVersion placeholder, so
+            // dev-mode uploads don't create a release named after the fallback.
+            // || rather than ?? so an empty build-arg is treated as unset too
+            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+            name: process.env.APP_VERSION || undefined,
+            create: enableSentryUpload,
+            // Without an upload there are no artifacts under the release name, so
+            // stamping it into the bundle would only tag events against an empty one
+            inject: enableSentryUpload,
+            // Not covered by `create`, and reaches Sentry on its own
+            finalize: enableSentryUpload,
+            // Off everywhere rather than gated: the deployed build runs in
+            // Docker, whose context carries no .git for commit detection to read
+            setCommits: false,
+          },
           telemetry: false,
+          // Debug IDs are part of the source map machinery, so they go with the
+          // upload: without one there are no maps for them to match. build.sourcemap
+          // is gated on the same flag, so a build that uploads nothing emits no
+          // maps either and the deletion glob below has nothing to match
           sourcemaps: {
+            disable: !enableSentryUpload,
             filesToDeleteAfterUpload: ["./build/**/*.map"],
           },
         }),
+      // Position here decides nothing: the Sentry plugin declares enforce: "pre"
+      // and this one enforce: "post", which is what Vite orders them by
+      assertSentryStamp(sentryApplicationKeyProperty),
     ],
 
     resolve: {

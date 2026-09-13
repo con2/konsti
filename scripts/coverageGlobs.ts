@@ -15,6 +15,9 @@ export const coverageInclude = [
 
 export const coverageExclude = [
   "client/src/test/**",
+  // Vite plugins and their tests: they run in Node during the build, so the
+  // browser never executes them and they can never gain coverage
+  "client/src/vitePlugins/**",
   "client/src/markdown/prettier.config.ts",
   "server/src/test/**",
   "server/src/features/statistics/**",

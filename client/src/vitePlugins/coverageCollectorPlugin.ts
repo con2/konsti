@@ -27,6 +27,9 @@ import type { Plugin } from "vite";
 
 const coverageDir = path.join(
   import.meta.dirname,
+  // Up out of client/src/vitePlugins to the repo root
+  "..",
+  "..",
   "..",
   "coverage",
   "e2e",
