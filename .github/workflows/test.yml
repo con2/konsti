@@ -35,6 +35,16 @@ jobs:
         with:
           args: -color
 
+      - name: Run hadolint
+        uses: hadolint/hadolint-action@v3.5.0
+        with:
+          dockerfile: Dockerfile
+
+      - name: Run hadolint on Playwright Dockerfile
+        uses: hadolint/hadolint-action@v3.5.0
+        with:
+          dockerfile: playwright/Dockerfile
+
       - name: Use Node.js
         uses: actions/setup-node@v7
         with:
