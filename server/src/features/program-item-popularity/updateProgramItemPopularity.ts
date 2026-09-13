@@ -13,7 +13,10 @@ import {
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
 import { getTimeNow } from "server/features/assignment/utils/getTimeNow";
-import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
+import {
+  getValidLotterySignupProgramItems,
+  prepareAssignmentParams,
+} from "server/features/assignment/utils/prepareAssignmentParams";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { getPopularity } from "server/features/program-item-popularity/getPopularity";
@@ -44,14 +47,14 @@ export const updateProgramItemPopularity = async (): Promise<
     return directSignupsResult;
   }
 
-  const {
-    validLotterySignupsUsers,
-    validLotterySignupProgramItems,
-    lotteryParticipantDirectSignups,
-  } = prepareAssignmentParams(
-    usersResult.value,
+  const { validLotterySignupsUsers, lotteryParticipantDirectSignups } =
+    prepareAssignmentParams(
+      usersResult.value,
+      programItemsResult.value,
+      directSignupsResult.value,
+    );
+  const validLotterySignupProgramItems = getValidLotterySignupProgramItems(
     programItemsResult.value,
-    directSignupsResult.value,
   );
 
   const timeNowResult = await getTimeNow();

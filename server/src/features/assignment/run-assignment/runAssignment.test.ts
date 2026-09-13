@@ -1859,6 +1859,63 @@ test("Should not place anyone into a cancelled program item", async () => {
   expect(cancelledProgramItemSignup?.userSignups ?? []).toHaveLength(0);
 });
 
+test("Should remove a lottery sign-up for a deleted program item before lotterying the start time", async () => {
+  // The pre-run cleanup is a safety net behind the programme import, which normally handles
+  // this first. A sign-up naming a program item that no longer exists is the one case the
+  // import cannot have preserved, so it shows whether the cleanup ran.
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 1, maxAttendance: 2 },
+  ]);
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      { ...mockLotterySignups[0], priority: 1 },
+      // testProgramItem2 was never saved, so this names a deleted program item
+      { ...mockLotterySignups[1], priority: 2 },
+    ],
+  });
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
+      assignmentTime: testProgramItem.startTime,
+    }),
+  );
+
+  expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    user?.lotterySignups.map((lotterySignup) => lotterySignup.programItemId),
+  ).not.toContain(testProgramItem2.programItemId);
+});
+
+test("Should leave lottery sign-ups alone when no lottery program item starts at the time", async () => {
+  // Most timed runs reach a start time with nothing to lottery and return before touching
+  // users or sign-ups, so the cleanup above does not run either
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    // testProgramItem2 was never saved, so this names a deleted program item
+    lotterySignups: [{ ...mockLotterySignups[1], priority: 1 }],
+  });
+
+  const assignResults = unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm: AssignmentAlgorithm.RANDOM,
+      assignmentTime: testProgramItem2.startTime,
+    }),
+  );
+
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
+  );
+  const user = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    user?.lotterySignups.map((lotterySignup) => lotterySignup.programItemId),
+  ).toEqual([testProgramItem2.programItemId]);
+});
+
 test("Should not write a results snapshot when the run lotteried nothing", async () => {
   // The lottery runs on a timer, so most start times have nothing for it to do. Recording
   // those would bury the real results under empty ones.

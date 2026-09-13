@@ -9,7 +9,10 @@ import { getDynamicStartTime } from "server/features/assignment/utils/getDynamic
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { hasStartTimeBeenLotteried } from "server/features/assignment/utils/hasStartTimeBeenLotteried";
 import { partitionByHeldSignups } from "server/features/assignment/utils/partitionByHeldSignups";
-import { prepareAssignmentParams } from "server/features/assignment/utils/prepareAssignmentParams";
+import {
+  getValidLotterySignupProgramItems,
+  prepareAssignmentParams,
+} from "server/features/assignment/utils/prepareAssignmentParams";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import { runAssignmentAlgorithm } from "server/features/assignment/utils/runAssignmentAlgorithm";
@@ -65,6 +68,26 @@ export const runAssignment = async ({
   }
   const programItems = programItemsResult.value;
 
+  // The run is on a timer, so most ticks reach a start time where no lottery program item
+  // starts. Asked before the users, sign-ups and cleanup are loaded on its behalf.
+  const validLotterySignupProgramItems =
+    getValidLotterySignupProgramItems(programItems);
+  const startingLotteryProgramItems = getStartingProgramItems(
+    validLotterySignupProgramItems,
+    resolvedAssignmentTime,
+  );
+  if (startingLotteryProgramItems.length === 0) {
+    logger.info(
+      `Assignment ${resolvedAssignmentTime}: no lottery program items start at this time, nothing to do`,
+    );
+    return makeSuccessResult({
+      results: [],
+      message: `${assignmentAlgorithm} Assignment Result - No starting program items`,
+      algorithm: assignmentAlgorithm,
+      status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
+    });
+  }
+
   const removeCancelledDeletedProgramItemsResult =
     await removeCancelledDeletedProgramItemsFromUsers({
       programItems,
@@ -86,20 +109,12 @@ export const runAssignment = async ({
     return directSignupsResult;
   }
 
-  const {
-    validLotterySignupsUsers,
-    validLotterySignupProgramItems,
-    lotteryParticipantDirectSignups,
-  } = prepareAssignmentParams(
-    usersResult.value,
-    programItems,
-    directSignupsResult.value,
-  );
-
-  const startingLotteryProgramItems = getStartingProgramItems(
-    validLotterySignupProgramItems,
-    resolvedAssignmentTime,
-  );
+  const { validLotterySignupsUsers, lotteryParticipantDirectSignups } =
+    prepareAssignmentParams(
+      usersResult.value,
+      programItems,
+      directSignupsResult.value,
+    );
 
   // The lottery for a start time happens once. An item already carrying a mark either had its
   // lottery here, or had it elsewhere and was rescheduled onto this slot - either way its
