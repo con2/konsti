@@ -11,6 +11,7 @@
 
 ## Suomeksi
 
+- [Infopaketti järjestäjille](fi/infopaketti.md) - Tapahtuman aikaiset päivitykset ja tiskien ohjeet
 - [Käyttöönotto tapahtumassa](fi/kayttoonotto-tapahtumassa.md) - Muistilista Konstin käyttöönotosta tapahtumassa
 - [Konsti-koulutus](fi/konsti-koulutus.md) - Koulutusmateriaalit ja mainostekstit
 - [Konsti-tilastoja Tracon 2025](fi/konsti-tilastoja-tracon2025.md) - Tilastoja Tracon 2025 -tapahtumasta
