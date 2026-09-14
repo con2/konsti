@@ -10,6 +10,7 @@ import {
 } from "shared/tests/testProgramItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { db } from "server/db/mongodb";
+import { getAssignmentResult } from "server/features/assignment/utils/assignmentTestUtils";
 import { removeOverlapLotterySignups } from "server/features/assignment/utils/removeOverlapLotterySignups";
 import {
   findProgramItems,
@@ -80,14 +81,9 @@ test("should remove overlapping lottery sign-ups from user", async () => {
       },
     ],
   });
-  const user1Result: UserAssignmentResult = {
+  const user1Result: UserAssignmentResult = getAssignmentResult({
     username: mockUser.username,
-    assignmentSignup: {
-      programItemId: testProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: testProgramItem.startTime,
-    },
-  };
+  });
 
   // User 2 received a direct sign-up but doesn't have overlapping lottery sign-ups
   await saveUser(mockUser2);
@@ -102,14 +98,9 @@ test("should remove overlapping lottery sign-ups from user", async () => {
       },
     ],
   });
-  const user2Result: UserAssignmentResult = {
+  const user2Result: UserAssignmentResult = getAssignmentResult({
     username: mockUser2.username,
-    assignmentSignup: {
-      programItemId: testProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: testProgramItem.startTime,
-    },
-  };
+  });
 
   // User 3 didn't receive a direct sign-up in lottery so lottery sign-ups are not removed
   await saveUser(mockUser3);
