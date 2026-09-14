@@ -8,14 +8,17 @@ import {
 } from "shared/tests/testProgramItem";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { State } from "shared/types/models/programItem";
-import { getUsers } from "server/features/assignment/utils/assignmentTestUtils";
+import {
+  assignmentTime,
+  getEventLogItem,
+  getPreviousDirectSignup,
+  getUsers,
+} from "server/features/assignment/utils/assignmentTestUtils";
 import {
   getAssignmentBonus,
   getAssignmentBonusContext,
 } from "server/features/assignment/utils/getAssignmentBonus";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
-
-const assignmentTime = testProgramItem.startTime;
 
 test("should give the first-time bonus to a member with no previous direct sign-ups or assignments", () => {
   const [user] = getUsers({ count: 1 });
@@ -34,20 +37,12 @@ test("should still give the first-time bonus when a member's only direct sign-up
 
   // A lottery win (priority > 0) at the current assignment time, i.e. this lottery's own
   // result on a re-run - it must not strip the first-time bonus
-  const directSignups: DirectSignupsForProgramItem[] = [
-    {
-      programItemId: testProgramItem.programItemId,
-      count: 1,
-      userSignups: [
-        {
-          username: user.username,
-          priority: 1,
-          signedToStartTime: assignmentTime,
-          signupTime: assignmentTime,
-          message: "",
-        },
-      ],
-    },
+  const directSignups = [
+    getPreviousDirectSignup({
+      username: user.username,
+      priority: 1,
+      signedToStartTime: assignmentTime,
+    }),
   ];
 
   const bonus = getAssignmentBonus(
@@ -64,20 +59,12 @@ test("should strip the first-time bonus for a first-come-first-served direct sig
 
   // A priority-0 (first-come-first-served) direct sign-up is a real sign-up the user made, not
   // this lottery's output, so it should still count as "previous" even at the current time
-  const directSignups: DirectSignupsForProgramItem[] = [
-    {
-      programItemId: testProgramItem.programItemId,
-      count: 1,
-      userSignups: [
-        {
-          username: user.username,
-          priority: DIRECT_SIGNUP_PRIORITY,
-          signedToStartTime: assignmentTime,
-          signupTime: assignmentTime,
-          message: "",
-        },
-      ],
-    },
+  const directSignups = [
+    getPreviousDirectSignup({
+      username: user.username,
+      priority: DIRECT_SIGNUP_PRIORITY,
+      signedToStartTime: assignmentTime,
+    }),
   ];
 
   const bonus = getAssignmentBonus(
@@ -93,16 +80,7 @@ test("should still give the first-time bonus when a member's only NEW_ASSIGNMENT
   const [baseUser] = getUsers({ count: 1 });
   const user = {
     ...baseUser,
-    eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
-        action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
-        programItemId: testProgramItem.programItemId,
-        programItemStartTime: assignmentTime,
-        createdAt: assignmentTime,
-      },
-    ],
+    eventLogItems: [getEventLogItem({ action: EventLogAction.NEW_ASSIGNMENT })],
   };
 
   const bonus = getAssignmentBonus(
@@ -118,20 +96,12 @@ test("should strip the first-time bonus for a genuine previous direct sign-up at
   const [user] = getUsers({ count: 1 });
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
 
-  const directSignups: DirectSignupsForProgramItem[] = [
-    {
-      programItemId: testProgramItem.programItemId,
-      count: 1,
-      userSignups: [
-        {
-          username: user.username,
-          priority: DIRECT_SIGNUP_PRIORITY,
-          signedToStartTime: earlierStartTime,
-          signupTime: earlierStartTime,
-          message: "",
-        },
-      ],
-    },
+  const directSignups = [
+    getPreviousDirectSignup({
+      username: user.username,
+      priority: DIRECT_SIGNUP_PRIORITY,
+      signedToStartTime: earlierStartTime,
+    }),
   ];
 
   const bonus = getAssignmentBonus(
@@ -149,14 +119,11 @@ test("should add the additional first-time bonus for a member with a previous fa
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NO_ASSIGNMENT,
-        isSeen: false,
         programItemId: "",
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -176,20 +143,12 @@ test("should add the additional first-time bonus for a member with a previous fa
 test("should still give the first-time bonus when exactly half of the group has a previous direct sign-up", () => {
   const users = getUsers({ count: 2 });
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
-  const directSignups: DirectSignupsForProgramItem[] = [
-    {
-      programItemId: testProgramItem.programItemId,
-      count: 1,
-      userSignups: [
-        {
-          username: users[0].username,
-          priority: DIRECT_SIGNUP_PRIORITY,
-          signedToStartTime: earlierStartTime,
-          signupTime: earlierStartTime,
-          message: "",
-        },
-      ],
-    },
+  const directSignups = [
+    getPreviousDirectSignup({
+      username: users[0].username,
+      priority: DIRECT_SIGNUP_PRIORITY,
+      signedToStartTime: earlierStartTime,
+    }),
   ];
 
   const bonus = getAssignmentBonus(
@@ -232,14 +191,10 @@ test("should not add the additional first-time bonus for a NO_ASSIGNMENT from th
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NO_ASSIGNMENT,
-        isSeen: false,
         programItemId: "",
-        programItemStartTime: assignmentTime,
-        createdAt: assignmentTime,
-      },
+      }),
     ],
   };
 
@@ -259,14 +214,10 @@ test("should strip the first-time bonus for a member previously assigned to a mo
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
-        programItemId: testProgramItem.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -285,14 +236,11 @@ test("should strip the first-time bonus for a previous assignment to a program i
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
         programItemId: testProgramItem2.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -315,14 +263,11 @@ test("should keep the first-time bonus when the previously assigned program item
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
         programItemId: testProgramItem2.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -345,14 +290,11 @@ test("should keep the first-time bonus when the previously assigned program item
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
         programItemId: testProgramItem2.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -372,20 +314,13 @@ test("should strip the first-time bonus for another lottery's win at one of this
 
   // A win in a program item this run does not decide, recorded at the same hour. Two lotteries
   // can cover one hour, so the hour alone cannot say whose result this was.
-  const directSignups: DirectSignupsForProgramItem[] = [
-    {
+  const directSignups = [
+    getPreviousDirectSignup({
+      username: user.username,
       programItemId: testProgramItem2.programItemId,
-      count: 1,
-      userSignups: [
-        {
-          username: user.username,
-          priority: 1,
-          signedToStartTime: assignmentTime,
-          signupTime: assignmentTime,
-          message: "",
-        },
-      ],
-    },
+      priority: 1,
+      signedToStartTime: assignmentTime,
+    }),
   ];
 
   const bonus = getAssignmentBonus(
