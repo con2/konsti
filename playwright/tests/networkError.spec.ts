@@ -1,7 +1,11 @@
 import { Page, expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
+import {
+  PAST_POLL_TICK,
+  fastForwardUntilVisible,
+  pauseClock,
+} from "playwright/clockTestUtils";
 import { HelperPage } from "playwright/pages/HelperPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -26,11 +30,9 @@ import {
 // Clock jumps tied to the client's suppression timings: the toast decision
 // runs 1 s after a failure and the grace period lasts 5 s, so a 2 s jump
 // fires pending decisions while still inside the grace period; the probe
-// fires 1 s after the grace period ends, so a 7 s jump reaches it; polling
-// runs every 60 s
+// fires 1 s after the grace period ends, so a 7 s jump reaches it
 const PAST_TOAST_DECISIONS = "00:02";
 const PAST_PROBE = "00:07";
-const PAST_POLL_TICK = "01:01";
 
 // Abort all API requests and return a getter for how many were aborted.
 // The app loads data with sequential requests, so a count of 2+ proves the
