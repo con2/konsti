@@ -1,6 +1,7 @@
 import { addMinutes } from "date-fns";
 import { afterEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -39,12 +40,7 @@ test("picks the program items starting at the given time", () => {
 // The override batches several own start times into one lottery, so the batch's time is what
 // decides which run a program item belongs to
 test("picks a batched program item by its parent start time, not its own", () => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   const startingProgramItems = getStartingProgramItems(
     [testProgramItem],
@@ -57,12 +53,7 @@ test("picks a batched program item by its parent start time, not its own", () =>
 });
 
 test("leaves a batched program item out of the run for its own start time", () => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   const startingProgramItems = getStartingProgramItems(
     [testProgramItem],

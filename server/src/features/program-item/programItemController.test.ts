@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -236,12 +237,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     // Parent start time is earlier than own start time so its direct sign-up phase has started
     const parentStartTime = addHours(new Date(eventStartTime), 5).toISOString();
 
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([
-        [testProgramItem.parentId, parentStartTime],
-      ]),
-    });
+    stubParentStartTime(testProgramItem, parentStartTime);
 
     // Now is before the own direct sign-up phase start, but after the parent-derived one
     const timeNow = subMinutes(

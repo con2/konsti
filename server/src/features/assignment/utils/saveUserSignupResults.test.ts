@@ -3,6 +3,7 @@ import { addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -182,12 +183,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -958,12 +954,7 @@ test("should store the won slot's own start time on a batched program item's dir
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([
@@ -1018,12 +1009,7 @@ test("should keep a spot held at another hour when a batched lottery places the 
     60,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([
@@ -1156,12 +1142,7 @@ const saveBatchedProgramItems = async (): Promise<{
     endTime: addMinutes(new Date(testProgramItem.startTime), 60).toISOString(),
   };
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([firstProgramItem, laterProgramItem]);
@@ -1578,12 +1559,7 @@ test("should displace spots at every hour a batched lottery placed somebody at",
   const heldAtFirstHourId = "held-at-first-hour";
   const heldAtLaterHourId = "held-at-later-hour";
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveUser(mockUser2);

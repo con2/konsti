@@ -2,6 +2,7 @@ import { tz } from "@date-fns/tz";
 import { isSameDay } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -51,12 +52,7 @@ test("returns undefined when no direct sign-up occupies the slot", () => {
 test("ignores the parent start time when matching a slot", () => {
   const parentStartTime = "2019-07-26T18:00:00.000Z";
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   // The held spot resolves to the same lottery as testProgramItem, but runs at another hour
   const directSignups = [

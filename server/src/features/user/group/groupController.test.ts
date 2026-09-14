@@ -5,6 +5,7 @@ import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -297,12 +298,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       directSignupPhaseStart - 1,
     ).toISOString();
 
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([
-        [testProgramItem.parentId, parentStartTime],
-      ]),
-    });
+    stubParentStartTime(testProgramItem, parentStartTime);
 
     await saveTestSettings({
       testTime: timeNow,
@@ -343,12 +339,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
     const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
 
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([
-        [testProgramItem.parentId, parentStartTime],
-      ]),
-    });
+    stubParentStartTime(testProgramItem, parentStartTime);
 
     await saveTestSettings({
       testTime: timeNow,
