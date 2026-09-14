@@ -5,6 +5,7 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { PAST_POLL_TICK } from "playwright/clockTestUtils";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -70,7 +71,7 @@ test("Periodic data poll picks up new program items without navigation", async (
   );
 
   // ...until the periodic poll fires and refetches the data
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(programList.itemByTitle("Added program").container).toHaveCount(
     1,
   );
@@ -116,7 +117,7 @@ test("Periodic data poll hides sign-up when direct sign-up ends", async ({
   // ...and the periodic poll picks up the change without navigation. A program
   // item whose direct sign-up has ended is no longer upcoming, so it drops out
   // of the default starting time filter entirely.
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(programList.items).toHaveCount(0);
 
   // It is still listed under All, now without any sign-up controls
