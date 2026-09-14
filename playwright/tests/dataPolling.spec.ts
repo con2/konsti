@@ -8,7 +8,6 @@ import {
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
   login,
   populateDb,
   postTestSettings,
@@ -45,7 +44,6 @@ test("Periodic data poll picks up new program items without navigation", async (
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [initialProgramItem]);
   await postTestSettings(request, {
@@ -82,7 +80,6 @@ test("Periodic data poll hides sign-up when direct sign-up ends", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   const startTime = programItemStartTime;
   await addProgramItems(request, [

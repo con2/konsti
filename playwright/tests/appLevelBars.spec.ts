@@ -8,7 +8,6 @@ import { ErrorBar } from "playwright/pages/ErrorBar";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
   hoursIntoEvent,
   login,
   populateDb,
@@ -38,7 +37,6 @@ test("Update banner and admin message stack instead of overlapping when scrolled
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   const startTime = hoursIntoEvent(1);
   // Enough items that the page scrolls, so the sticky bars actually pin
@@ -93,7 +91,6 @@ test("Update banner and admin message stack instead of overlapping when scrolled
 });
 
 test("App level bars line up with each other", async ({ page, request }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
