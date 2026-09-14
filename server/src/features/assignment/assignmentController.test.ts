@@ -20,8 +20,8 @@ import {
   acquireAssignmentLock,
   findOrCreateSettings,
 } from "server/features/settings/settingsRepository";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import {
   createNotificationQueueService,
   getGlobalNotificationQueueService,
@@ -65,7 +65,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "username")}`);
+      .set(authorizedAs(UserGroup.USER, "username"));
     expect(response.status).toEqual(401);
   });
 
@@ -74,7 +74,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(422);
   });
 
@@ -85,7 +85,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
   });
 
@@ -100,7 +100,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
@@ -119,7 +119,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentResponse;
@@ -139,7 +139,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentError;
@@ -161,7 +161,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentError;
@@ -187,7 +187,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     expect((response.body as PostAssignmentResponse).status).toEqual("success");
@@ -202,7 +202,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const firstResponse = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect((firstResponse.body as PostAssignmentResponse).status).toEqual(
       "success",
     );
@@ -211,7 +211,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const secondResponse = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect((secondResponse.body as PostAssignmentResponse).status).toEqual(
       "success",
     );

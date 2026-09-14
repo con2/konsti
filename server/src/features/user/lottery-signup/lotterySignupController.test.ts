@@ -33,8 +33,8 @@ import {
   mockPostDirectSignupRequest,
   mockUser,
 } from "server/test/mock-data/mockUser";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -72,7 +72,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -94,10 +94,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -134,10 +131,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -181,10 +175,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -224,10 +215,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -260,10 +248,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -290,10 +275,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -315,10 +297,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -337,10 +316,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -367,10 +343,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -394,10 +367,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -424,10 +394,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -455,10 +422,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
-      );
+      .set(authorizedAs(UserGroup.USER, "user_not_found"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -495,10 +459,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -514,10 +475,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -548,10 +506,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -582,10 +537,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupResult;
@@ -612,7 +564,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(deleteRequest)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -630,10 +582,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -654,10 +603,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as DeleteLotterySignupError;
@@ -694,10 +640,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(deleteRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as DeleteLotterySignupResponse;

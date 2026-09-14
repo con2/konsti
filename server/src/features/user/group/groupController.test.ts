@@ -33,8 +33,8 @@ import {
   mockUser3,
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -60,10 +60,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(422);
   });
 
@@ -86,10 +83,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
         username: mockUser2.username,
         groupCode: mockUser.serial,
       })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupResult;
@@ -104,10 +98,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
       .query({ groupCode: "0" })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -125,10 +116,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
       .query({ groupCode: mockUser.serial })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -149,10 +137,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.GROUP)
       .send({})
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -173,10 +158,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.GROUP)
       .send({})
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostCreateGroupError;
@@ -199,10 +181,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(422);
   });
 
@@ -253,10 +232,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -296,10 +272,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -357,10 +330,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -408,10 +378,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -451,10 +418,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -472,10 +436,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostJoinGroupError;
@@ -505,10 +466,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostJoinGroupError;
@@ -536,10 +494,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.LEAVE_GROUP)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -555,10 +510,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.LEAVE_GROUP)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLeaveGroupError;
@@ -581,10 +533,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -601,10 +550,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -626,10 +572,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
       .send(groupRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostCloseGroupResponse;

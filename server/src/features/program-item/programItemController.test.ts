@@ -52,8 +52,8 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -284,7 +284,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
@@ -319,7 +319,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -356,7 +356,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -380,7 +380,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -421,7 +421,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -473,7 +473,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -535,7 +535,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -568,7 +568,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
