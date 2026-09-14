@@ -28,7 +28,10 @@ import {
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import { groupCreatorGroupCode } from "server/features/assignment/utils/assignmentTestUtils";
+import {
+  getAssignmentResult,
+  groupCreatorGroupCode,
+} from "server/features/assignment/utils/assignmentTestUtils";
 import {
   delDirectSignup,
   findDirectSignups,
@@ -296,14 +299,9 @@ describe.each([
 
     expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
     expect(assignResults.results).toHaveLength(1);
-    expect(assignResults.results[0]).toMatchObject({
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    });
+    expect(assignResults.results[0]).toMatchObject(
+      getAssignmentResult({ username: mockUser.username }),
+    );
 
     const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
     expect(userAfterSave?.eventLogItems).toHaveLength(1);
@@ -346,22 +344,8 @@ describe.each([
     expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
     expect(assignResults.results).toHaveLength(2);
     expect(assignResults.results).toMatchObject([
-      {
-        username: mockUser.username,
-        assignmentSignup: {
-          programItemId: testProgramItem.programItemId,
-          priority: 1,
-          signedToStartTime: testProgramItem.startTime,
-        },
-      },
-      {
-        username: mockUser2.username,
-        assignmentSignup: {
-          programItemId: testProgramItem.programItemId,
-          priority: 1,
-          signedToStartTime: testProgramItem.startTime,
-        },
-      },
+      getAssignmentResult({ username: mockUser.username }),
+      getAssignmentResult({ username: mockUser2.username }),
     ]);
 
     const user1AfterSave = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2263,14 +2247,12 @@ test("Should keep a past lottery sign-up but not let it affect an upcoming lotte
   // Only the current item is assigned; the past sign-up is ignored by the upcoming lottery
   expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
   expect(assignResults.results).toHaveLength(1);
-  expect(assignResults.results[0]).toMatchObject({
-    username: mockUser.username,
-    assignmentSignup: {
-      programItemId: currentProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: currentProgramItem.startTime,
-    },
-  });
+  expect(assignResults.results[0]).toMatchObject(
+    getAssignmentResult({
+      username: mockUser.username,
+      programItem: currentProgramItem,
+    }),
+  );
 
   // The past lottery sign-up is preserved for data accuracy, not removed by the run
   const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
