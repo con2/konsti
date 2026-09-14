@@ -85,6 +85,10 @@ Tests drive app state through the server's **dev/test API** (not the UI) for set
 
 Helpers log in as `admin:test` internally where admin rights are needed. Test credentials are in the [root CLAUDE.md](../CLAUDE.md).
 
+## Program phase fixtures (`programPhaseFixtures.ts`)
+
+`seedProgramPhases(request, { preWeekStart, mainEventStart })` seeds one pre-convention-week program item and one main event program item, titled "Pre-week program" and "Main event program", for the specs that compare how the two are shown (`programPhase`, `programDateDisplay`). Each spec picks the two times itself, relative to the event config rather than as absolute dates.
+
 ## Mocked-clock helpers (`clockTestUtils.ts`)
 
 Separate from `playwrightUtils.ts` because these drive the **page**, not the setup API. Both are for specs that have called `page.clock.install()`:
