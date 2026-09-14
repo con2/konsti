@@ -1,14 +1,13 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
-import { EventName } from "shared/config/eventConfigTypes";
 import { KompassiError } from "shared/types/api/errors";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { ProgramType } from "shared/types/models/programItem";
 import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
 import {
   getProgramFromServer,
   testHelperWrapper,
 } from "server/kompassi/getProgramItemsFromKompassi";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
+import { KompassiKonstiProgramType } from "server/kompassi/kompassiProgramItem";
 import {
   mockKompassiProgramItem,
   mockKompassiProgramItem2,
@@ -23,42 +22,85 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-const getMockKompassiProgramItems = (
-  eventName: EventName,
-): KompassiProgramItem[] => {
-  switch (eventName) {
-    case EventName.ROPECON:
-      return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    case EventName.HITPOINT:
-      return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    case EventName.SOLMUKOHTA:
-      return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    case EventName.TRACON:
-      return [mockKompassiProgramItem, mockKompassiProgramItem2];
-    default:
-      return exhaustiveSwitchGuard(eventName);
-  }
-};
-
-describe("should load Kompassi data for all events", () => {
-  for (const eventName of Object.values(EventName)) {
-    const mockKompassiProgramItems = getMockKompassiProgramItems(eventName);
-
-    test(`should parse event ${eventName} program items`, async () => {
-      vi.spyOn(config, "event").mockReturnValue({
-        ...config.event(),
-        eventName,
-      });
-
-      vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-        ok: true,
-        value: mockKompassiProgramItems,
-      });
-
-      const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
-      expect(programItems.length).toEqual(2);
+describe("picking Konsti program items from the full program", () => {
+  test("should keep program items that carry a Konsti program type", async () => {
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [mockKompassiProgramItem, mockKompassiProgramItem2],
     });
-  }
+
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+    expect(programItems.length).toEqual(2);
+  });
+
+  test("should drop program items without a Konsti program type", async () => {
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [
+        mockKompassiProgramItem,
+        {
+          ...mockKompassiProgramItem2,
+          cachedDimensions: {
+            ...mockKompassiProgramItem2.cachedDimensions,
+            konsti: [],
+          },
+        },
+      ],
+    });
+
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+    expect(programItems.map((p) => p.programItemId)).toEqual([
+      mockKompassiProgramItem.slug,
+    ]);
+  });
+
+  test("should import a hand picked program item without a Konsti program type as 'other'", async () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      addToKonstiOther: [mockKompassiProgramItem2.slug],
+    });
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [
+        mockKompassiProgramItem,
+        {
+          ...mockKompassiProgramItem2,
+          cachedDimensions: {
+            ...mockKompassiProgramItem2.cachedDimensions,
+            konsti: [],
+          },
+        },
+      ],
+    });
+
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+    expect(programItems.map((p) => [p.programItemId, p.programType])).toEqual([
+      [mockKompassiProgramItem.slug, ProgramType.TABLETOP_RPG],
+      [mockKompassiProgramItem2.slug, ProgramType.OTHER],
+    ]);
+  });
+
+  test("should override the Konsti program type of a hand picked program item with 'other'", async () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      addToKonstiOther: [mockKompassiProgramItem2.slug],
+    });
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [
+        {
+          ...mockKompassiProgramItem2,
+          cachedDimensions: {
+            ...mockKompassiProgramItem2.cachedDimensions,
+            konsti: [KompassiKonstiProgramType.LARP],
+          },
+        },
+      ],
+    });
+
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+    expect(programItems.map((p) => p.programType)).toEqual([ProgramType.OTHER]);
+  });
 });
 
 describe("loading the program from the Kompassi server", () => {

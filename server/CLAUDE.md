@@ -23,7 +23,7 @@ Run from the repo root as `yarn workspace server <script>` (or via the root shor
 - **`db/`** — `mongodb.ts` (connection lifecycle) and `mongoosePlugins.ts` (global plugins).
 - **`utils/`** — cross-cutting helpers: `server.ts` (Express app assembly), `logger.ts` (winston), `instrument.ts` (Sentry), `applyPortOffset.ts` (per-worktree `PORT_OFFSET` preload, see Scripts above), `cron.ts` (scheduled jobs), `notificationQueue.ts` (email queue), `jwt.ts`, `bcrypt.ts`, `authHeader.ts`, `zodUtils.ts`, etc.
 - **`types/`** — server-only types (`assignmentTypes.ts`, `jwtTypes.ts`, `serialTypes.ts`, `userTypes.ts`, `resultTypes.ts`, `declarations/`). Domain models live in `shared/types/models/`.
-- **`kompassi/`** — event-specific Kompassi program-item import logic (`ropecon/`, `tracon/`, etc.). Kompassi _login_ lives in `features/kompassi-login/`, not here.
+- **`kompassi/`** — Kompassi program-item import logic (fetch, zod parsing, mapping to `ProgramItem`). It is event-agnostic: every event shares one Kompassi schema, and per-event differences are config (`addToKonstiOther`, `eventNameToKompassiEventName`), not code. Kompassi _login_ lives in `features/kompassi-login/`, not here.
 - **`test/`** — `globalSetup.ts` + `setupTests.ts`, `mock-data/`, `utils/` (test helpers), `test-data-generation/`, `kompassi-mock-service/` (registered only in `development`), `test-settings/`, `scripts/`.
 
 ## Build & Run Model

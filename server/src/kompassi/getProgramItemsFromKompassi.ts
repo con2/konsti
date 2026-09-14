@@ -20,9 +20,9 @@ import {
 } from "server/kompassi/kompassiProgramItem";
 import { logger } from "server/utils/logger";
 
-export const getProgramItemsFromKompassi = async (
-  eventName: EventName,
-): Promise<Result<KompassiProgramItem[], KompassiError>> => {
+export const getProgramItemsFromKompassi = async (): Promise<
+  Result<KompassiProgramItem[], KompassiError>
+> => {
   const eventProgramItemsResult =
     await testHelperWrapper.getEventProgramItems();
   if (!eventProgramItemsResult.ok) {
@@ -45,10 +45,7 @@ export const getProgramItemsFromKompassi = async (
 
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 
-  const programItems = getProgramItemsFromFullProgram(
-    eventName,
-    eventProgramItems,
-  );
+  const programItems = getProgramItemsFromFullProgram(eventProgramItems);
 
   return programItems.length === 0
     ? makeErrorResult(KompassiError.NO_PROGRAM_ITEMS)

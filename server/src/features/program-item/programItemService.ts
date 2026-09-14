@@ -19,9 +19,7 @@ import { enrichProgramItems } from "./programItemUtils";
 export const getProgramItemsForEvent = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>
 > => {
-  const eventName = config.event().eventName;
-  const kompassiProgramItemsResult =
-    await getProgramItemsFromKompassi(eventName);
+  const kompassiProgramItemsResult = await getProgramItemsFromKompassi();
   if (!kompassiProgramItemsResult.ok) {
     return kompassiProgramItemsResult;
   }
