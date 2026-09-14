@@ -7,7 +7,6 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
   hoursIntoEvent,
   login,
   populateDb,
@@ -31,7 +30,6 @@ test("Pre-convention week program item uses direct sign-up even with lottery pro
     testProgramItem.mins,
   ).toISOString();
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {

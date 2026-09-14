@@ -9,7 +9,6 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
   login,
   populateDb,
   postTestSettings,
@@ -45,7 +44,6 @@ const mainEventProgramItem = {
 };
 
 const seed = async (request: APIRequestContext): Promise<void> => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [preWeekProgramItem, mainEventProgramItem]);
 };

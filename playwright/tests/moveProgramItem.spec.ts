@@ -12,7 +12,6 @@ import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
   hoursIntoEvent,
   login,
   populateDb,
@@ -38,7 +37,6 @@ test("Show event log notification when program item with direct sign-up is moved
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -106,7 +104,6 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
     programType: config.event().twoPhaseSignupProgramTypes[0],
   };
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     { ...lotteryProgramItem, startTime: hoursIntoEvent(3) },
@@ -153,7 +150,6 @@ test("Keep a placed direct sign-up and say the starting time changed", async ({
   const signedToStartTime = hoursIntoEvent(1);
   const movedStartTime = hoursIntoEvent(2);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     { ...testProgramItem, startTime: signedToStartTime },
@@ -204,7 +200,6 @@ test("Keep lottery sign-ups a moved program item landed on and act on them", asy
   const lotteryStartTime = hoursIntoEvent(3);
   const heldStartTime = hoursIntoEvent(1);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
 
   const lotteryProgramItem = {
@@ -284,7 +279,6 @@ test("Offer direct sign-up instead of a lottery for a program item moved after i
   const lotteryStartTime = hoursIntoEvent(3);
   const movedStartTime = hoursIntoEvent(5);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
 
   const programItem = {
