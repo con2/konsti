@@ -172,7 +172,6 @@ const devConfig = {
     `http://localhost:${defaultServerPort}`,
     `http://127.0.0.1:${clientPort}`,
     `http://127.0.0.1:${defaultServerPort}`,
-    "http://server:5000",
   ]),
   consoleLogFormatJson: false,
 
