@@ -1,10 +1,13 @@
-import { expect, test } from "@playwright/test";
+import { Page, expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
 import { config } from "shared/config";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
+import { pauseClock } from "playwright/clockTestUtils";
+import { setPageHidden } from "playwright/pageVisibilityUtils";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
@@ -39,6 +42,32 @@ const addedProgramItem = {
   programType,
   startTime: programItemStartTime,
   endTime: programItemEndTime,
+};
+
+// Every data load starts by requesting the settings, so that request counts
+// the loads
+const countLoads = (page: Page): (() => number) => {
+  let loads = 0;
+  page.on("request", (pageRequest) => {
+    if (
+      pageRequest.method() === "GET" &&
+      pageRequest.url().includes(ApiEndpoint.SETTINGS)
+    ) {
+      loads += 1;
+    }
+  });
+  return () => loads;
+};
+
+// A load's first request is on the wire before the clock jump or visibility
+// change that started it has returned control, so its request event only
+// needs a moment of real time to arrive
+const expectNoLoadStarted = async (
+  page: Page,
+  loads: () => number,
+): Promise<void> => {
+  await page.waitForTimeout(1000);
+  expect(loads()).toBe(0);
 };
 
 test("Periodic data poll picks up new program items without navigation", async ({
@@ -126,4 +155,87 @@ test("Periodic data poll hides sign-up when direct sign-up ends", async ({
   await programList.selectStartingTime("All");
   await expect(firstProgramItem.signUpButton).toBeHidden();
   await expect(firstProgramItem.container).not.toContainText("Sign-up closes");
+});
+
+test("Periodic data poll pauses while the page is hidden and refreshes on resume", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [initialProgramItem]);
+  await postTestSettings(request, {
+    testTime: signupsOpenTime(),
+  });
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.clock.install();
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await expect(
+    programList.itemByTitle("Initial program").container,
+  ).toHaveCount(1);
+  await pauseClock(page);
+
+  await setPageHidden(page, true);
+  const loadsSinceHidden = countLoads(page);
+  await addProgramItems(request, [initialProgramItem, addedProgramItem]);
+
+  // The poll tick that would have picked the item up is skipped while hidden
+  await page.clock.fastForward("01:01");
+  await expectNoLoadStarted(page, loadsSinceHidden);
+  await expect(programList.itemByTitle("Added program").container).toHaveCount(
+    0,
+  );
+
+  // Showing the page again refreshes the data it missed
+  await setPageHidden(page, false);
+  await expect(programList.itemByTitle("Added program").container).toHaveCount(
+    1,
+  );
+  expect(loadsSinceHidden()).toBe(1);
+});
+
+test("Periodic data poll does not refresh on resume while its data is fresh", async ({
+  page,
+  request,
+}) => {
+  await clearDb(request);
+  await populateDb(request, { clean: true, users: true, admin: true });
+  await addProgramItems(request, [initialProgramItem]);
+  await postTestSettings(request, {
+    testTime: signupsOpenTime(),
+  });
+  await login(page, request, { username: "test1", password: "test" });
+
+  await page.clock.install();
+  await page.goto("/");
+
+  const programList = new ProgramListPage(page);
+  await programList.gotoAllProgram();
+  await expect(
+    programList.itemByTitle("Initial program").container,
+  ).toHaveCount(1);
+  await pauseClock(page);
+
+  await setPageHidden(page, true);
+  const loadsSinceHidden = countLoads(page);
+  await addProgramItems(request, [initialProgramItem, addedProgramItem]);
+
+  // Hidden for less than a poll interval, so the data is still fresh when
+  // the page is shown again and plain tab switching causes no request. The
+  // hide is short enough that the real time the app took to boot before the
+  // clock was paused cannot push the next tick inside it
+  await page.clock.fastForward("00:10");
+  await setPageHidden(page, false);
+  await expectNoLoadStarted(page, loadsSinceHidden);
+
+  // The regular tick then delivers the change
+  await page.clock.fastForward("00:51");
+  await expect(programList.itemByTitle("Added program").container).toHaveCount(
+    1,
+  );
+  expect(loadsSinceHidden()).toBe(1);
 });
