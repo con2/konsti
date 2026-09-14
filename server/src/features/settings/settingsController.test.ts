@@ -46,8 +46,8 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -101,7 +101,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
   test("should return 401 without admin authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SETTINGS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
@@ -109,7 +109,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send({ appOpen: "not boolean" })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(422);
   });
@@ -145,7 +145,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const fullUpdateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send(testSettings)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(fullUpdateResponse.status).toEqual(200);
     expect(fullUpdateResponse.body).toEqual({
@@ -162,7 +162,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const partialUpdateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send(partialSettings)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(partialUpdateResponse.status).toEqual(200);
     expect(partialUpdateResponse.body).toEqual({
@@ -179,7 +179,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const updateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send({ adminMessageFi, adminMessageEn })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(updateResponse.status).toEqual(200);
     expect((updateResponse.body as PostSettingsResponse).status).toEqual(
@@ -195,7 +195,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send({ adminMessageFi: "", adminMessageEn: "" })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     const clearedResponse = await request(server).get(ApiEndpoint.SETTINGS);
     const clearedSettings = clearedResponse.body as SettingsPayload;
@@ -230,7 +230,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
       .send({ hiddenProgramItemIds: [testProgramItem.programItemId] })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
@@ -261,7 +261,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await request(server)
       .post(ApiEndpoint.HIDDEN)
       .send({ hiddenProgramItemIds: [testProgramItem.programItemId] })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     const signupsAfter = unsafelyUnwrap(await findDirectSignups());
     expect(signupsAfter).toHaveLength(1);
@@ -276,7 +276,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
       .send({ hiddenProgramItemIds: [] })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
@@ -297,14 +297,14 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
   test("should return 401 with helper authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(401);
   });
 
@@ -323,7 +323,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
   });
 
@@ -344,7 +344,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     const settings = unsafelyUnwrap(await findOrCreateSettings());
 
@@ -375,7 +375,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     const settings = unsafelyUnwrap(await findOrCreateSettings());
 
@@ -395,14 +395,14 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
   test("should return 401 with helper authorization", async () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(401);
   });
 
@@ -412,7 +412,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
   });
 
@@ -440,7 +440,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
       .send({ programItemId: "123" })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     const updatedSettings = unsafelyUnwrap(await findOrCreateSettings());
     expect(updatedSettings.signupQuestions).toHaveLength(0);

@@ -16,7 +16,7 @@ import { UserGroup } from "shared/types/models/user";
 import { getDateAndTime } from "shared/utils/timeFormatter";
 import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { getJWT } from "server/utils/jwt";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -53,7 +53,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
@@ -61,7 +61,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send({})
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(422);
   });
 
@@ -76,7 +76,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
     expect(sendEmailSpy).toHaveBeenCalledTimes(1);
   });
@@ -91,7 +91,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
     expect(sendEmailSpy).toHaveBeenCalledTimes(1);
   });
@@ -126,7 +126,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     expect(sendEmailSpy).toHaveBeenCalledTimes(1);
@@ -149,7 +149,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(400);
     expect(sendEmailSpy).not.toHaveBeenCalled();
@@ -166,7 +166,7 @@ describe(`POST ${ApiEndpoint.EMAIL_TEST}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EMAIL_TEST)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(500);
     expect(sendEmailSpy).toHaveBeenCalledTimes(1);
   });

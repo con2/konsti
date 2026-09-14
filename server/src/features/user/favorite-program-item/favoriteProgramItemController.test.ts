@@ -4,7 +4,7 @@ import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
-import { getJWT } from "server/utils/jwt";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -29,7 +29,7 @@ describe(`POST ${ApiEndpoint.FAVORITE}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.FAVORITE)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 });

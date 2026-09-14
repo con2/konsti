@@ -322,11 +322,11 @@ beforeEach(async () => {
 });
 afterEach(async () => await closeServer(server));
 
-// Authenticate by minting a JWT for the required role
+// Authenticate by minting a JWT for the required role (authorizedAs is in src/test/utils/)
 const response = await request(server)
   .post(ApiEndpoint.X)
   .send(body)
-  .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "username")}`);
+  .set(authorizedAs(UserGroup.USER, "username"));
 ```
 
 **Tests that don't start a server connect with `db.connectToDb(globalThis.__MONGO_URI__, randomUUID())`, not a bare `mongoose.connect`.** Mongoose builds a model's indexes only once per process, so a plain connect leaves every database after the first without them — and each test gets its own. The unique keys would then be missing exactly where tests seed data, so a test could insert duplicate users or a second settings document that production would reject. `startServer` already routes through the same helper, so controller tests need nothing extra.

@@ -23,8 +23,8 @@ import {
   saveUser,
 } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -96,7 +96,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({})
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -107,7 +107,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(200);
   });
 
@@ -118,10 +118,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user-removed-from-db")}`,
-      );
+      .set(authorizedAs(UserGroup.USER, "user-removed-from-db"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostVerifyKompassiLoginError;
@@ -139,10 +136,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     const body = response.body as PostVerifyKompassiLoginResult;
     expect(body.status).toEqual("success");
@@ -163,10 +157,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -185,10 +176,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostVerifyKompassiLoginResult;
