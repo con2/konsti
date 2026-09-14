@@ -7,8 +7,8 @@ import { PostUpdateUserEmailAddressRequest } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -36,10 +36,7 @@ describe(`POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS)
       .send({ email: "not-an-email" })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(422);
     const body = response.body as { status: string; errorId: string };
@@ -56,10 +53,7 @@ describe(`POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS)
       .send(requestBody)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as {
@@ -82,10 +76,7 @@ describe(`POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS)
       .send({ email: "" })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as { status: string };
