@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { addHours, subMinutes } from "date-fns";
+import { addHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -35,7 +35,10 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
-import { withLotteryStillAhead } from "server/test/utils/lotteryClock";
+import {
+  withLotteryJustRun,
+  withLotteryStillAhead,
+} from "server/test/utils/lotteryClock";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
@@ -207,12 +210,7 @@ test("should remove direct sign-ups when program item is deleted and add notific
 });
 
 test("should remove lottery sign-ups but keep favorites when program item is cancelled before lottery and add notification", async () => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart + 1,
-    ).toISOString(),
-  });
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -376,12 +374,7 @@ test("should send email when program item start time changes", async () => {
 });
 
 test("should remove lottery sign-ups but not favorites when program item doesn't use Konsti sign-up anymore before lottery and add notification", async () => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart + 1,
-    ).toISOString(),
-  });
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -607,12 +600,7 @@ test("should not add any notification when programType is changed to non-lottery
 });
 
 test("should preserve lottery sign-up when program item is cancelled after its lottery has run but not add notification because the user didn't get a spot", async () => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart - 1,
-    ).toISOString(),
-  });
+  await withLotteryJustRun(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -634,12 +622,7 @@ test("should preserve lottery sign-up when program item is cancelled after its l
 });
 
 test("should preserve lottery sign-up when signupType is changed away from Konsti after its lottery has run but not add notification because the user didn't get a spot", async () => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart - 1,
-    ).toISOString(),
-  });
+  await withLotteryJustRun(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -661,12 +644,7 @@ test("should preserve lottery sign-up when signupType is changed away from Konst
 });
 
 test("should remove lottery sign-up but keep favorites when programType is changed to non-lottery type before its lottery has run and add notification", async () => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart + 1,
-    ).toISOString(),
-  });
+  await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -717,12 +695,7 @@ test("should remove lottery sign-up but keep favorites when programType is chang
 });
 
 test("should preserve lottery sign-up when programType is changed to non-lottery type after its lottery has run and not add notification", async () => {
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart - 1,
-    ).toISOString(),
-  });
+  await withLotteryJustRun(testProgramItem);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -965,12 +938,7 @@ test("should remove lottery sign-ups made for a program item that stops taking p
 test("should keep lottery sign-ups whose lottery has run when a program item stops taking part in a lottery", async () => {
   // Inside the gap between the lottery and direct sign-up, so the program item can still be
   // passed over while the sign-ups it carries are already a record of a lottery that happened
-  await saveTestSettings({
-    testTime: subMinutes(
-      new Date(testProgramItem.startTime),
-      config.event().directSignupPhaseStart - 1,
-    ).toISOString(),
-  });
+  await withLotteryJustRun(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
