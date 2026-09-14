@@ -4,9 +4,9 @@ import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventLogAction } from "shared/types/models/eventLog";
-import { ProgramType } from "shared/types/models/programItem";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
@@ -142,13 +142,7 @@ test("Should assign user with 'startTimesByParentIds' program item", async () =>
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
@@ -192,13 +186,7 @@ test("Should assign group with 'startTimesByParentIds' program item", async () =
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveProgramItems([
     { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },

@@ -2,6 +2,7 @@ import { addMinutes } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -75,12 +76,7 @@ test("should return list items for program items using parent startTime via 'sta
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   const users = getUsers({ count: 1 });
   const attendeeGroups = [users, users, users];
@@ -137,12 +133,7 @@ test("leaves out a batched program item not in the run, whose own start time sti
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   // Without the program item there is no parent to resolve, so an unguarded lookup compares
   // the raw times and keeps a preference the assigner cannot place
@@ -687,12 +678,7 @@ test("treats this run's own win as current for a batched program item", () => {
     -30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   const users = getUsers({ count: 1 });
 
