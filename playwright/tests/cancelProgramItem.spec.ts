@@ -1,5 +1,5 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
-import { addMinutes, subHours } from "date-fns";
+import { subHours } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -12,12 +12,14 @@ import {
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
   signupsOpenTime,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct sign-up is cancelled", async ({
@@ -26,7 +28,7 @@ test("Show event log notification when program item with direct sign-up is cance
 }) => {
   await initDb(request);
   const startTime = getStartTime("direct");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [
     {
@@ -94,16 +96,9 @@ test("Show event log notification when program item with lottery sign-up is canc
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -151,7 +146,7 @@ test("Show event log notification when program item with direct sign-up doesn't 
 }) => {
   await initDb(request);
   const startTime = getStartTime("direct");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [
     {
@@ -208,16 +203,9 @@ test("Show event log notification when program item with lottery sign-up doesn't
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -265,7 +253,7 @@ test("Show event log notification when program item with direct sign-up is delet
 }) => {
   await initDb(request);
   const startTime = getStartTime("direct");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [
     {
@@ -312,16 +300,8 @@ test("Show event log notification when program item with lottery sign-up is dele
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = getEndTime(startTime);
 
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -360,16 +340,8 @@ test("Show event log notification when program item with lottery sign-up is dele
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = getEndTime(startTime);
 
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -413,16 +385,9 @@ test("Show event log notification when program item with lottery sign-up changes
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -469,7 +434,7 @@ test("Show event log notification when a favorited program item is deleted", asy
 }) => {
   await initDb(request);
   const startTime = getStartTime("direct");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [
     {
@@ -522,7 +487,7 @@ test("Dismissing an event log notification removes it for good", async ({
 }) => {
   await initDb(request);
   const startTime = getStartTime("direct");
-  const endTime = getEndTime(startTime);
+  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [{ ...testProgramItem, startTime, endTime }]);
   await login(page, request, { username: "test1", password: "test" });
@@ -568,7 +533,3 @@ const initDb = async (request: APIRequestContext): Promise<void> => {
 
 const getStartTime = (type: "lottery" | "direct"): string =>
   hoursIntoEvent(type === "direct" ? 1 : 3);
-
-const getEndTime = (startTime: string): string => {
-  return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();
-};
