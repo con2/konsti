@@ -51,9 +51,9 @@ import {
   mockUser4,
   mockUser5,
 } from "server/test/mock-data/mockUser";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { NewUser } from "server/types/userTypes";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -92,10 +92,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -108,10 +105,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -130,10 +124,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const signups = unsafelyUnwrap(
@@ -155,10 +146,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -179,10 +167,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -203,10 +188,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -232,10 +214,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -254,10 +233,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -286,10 +262,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -325,10 +298,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -364,10 +334,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -396,10 +363,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -427,10 +391,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -457,10 +418,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -500,10 +458,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -550,10 +505,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -591,10 +543,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       return await request(server)
         .post(ApiEndpoint.DIRECT_SIGNUP)
         .send(signup)
-        .set(
-          "Authorization",
-          `Bearer ${getJWT(UserGroup.USER, user.username)}`,
-        );
+        .set(authorizedAs(UserGroup.USER, user.username));
     };
 
     await Promise.all([
@@ -634,10 +583,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       return await request(server)
         .post(ApiEndpoint.DIRECT_SIGNUP)
         .send(signup)
-        .set(
-          "Authorization",
-          `Bearer ${getJWT(UserGroup.USER, user.username)}`,
-        );
+        .set(authorizedAs(UserGroup.USER, user.username));
     };
 
     // Save two more sign-ups at the same time -> one should fail and only one sign-up collection should exist
@@ -667,10 +613,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -698,10 +641,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -743,10 +683,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -785,10 +722,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -843,10 +777,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -892,10 +823,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -919,7 +847,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -935,10 +863,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -958,10 +883,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
-      );
+      .set(authorizedAs(UserGroup.USER, "user_not_found"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostDirectSignupError;
@@ -991,10 +913,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 

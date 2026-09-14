@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
 import { mockUser } from "server/test/mock-data/mockUser";
-import { getJWT } from "server/utils/jwt";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -45,10 +45,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SENTRY_TUNNEL)
       .send(envelope)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     expect(errorLoggerSpy).not.toHaveBeenCalled();
   });
@@ -60,10 +57,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SENTRY_TUNNEL)
       .send(envelope)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     expect(errorLoggerSpy).toHaveBeenCalled();
   });
@@ -78,14 +72,14 @@ describe(`GET ${ApiEndpoint.SENTRY_TEST}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SENTRY_TEST)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "username")}`);
+      .set(authorizedAs(UserGroup.USER, "username"));
     expect(response.status).toEqual(401);
   });
 
   test("should return 500 with admin authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SENTRY_TEST)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(500);
   });
 });

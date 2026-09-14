@@ -25,7 +25,7 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
-import { getJWT } from "server/utils/jwt";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -50,7 +50,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   test("should return 401 with normal user authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testUser")}`);
+      .set(authorizedAs(UserGroup.USER, "testUser"));
     expect(response.status).toEqual(401);
   });
 
@@ -96,7 +96,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
 
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
 
     expect(response.status).toEqual(200);
 

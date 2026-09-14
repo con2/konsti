@@ -5,8 +5,8 @@ import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/types/models/user";
 import { saveSerials } from "server/features/serial/serialRepository";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -40,7 +40,7 @@ describe(`GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .get(ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(422);
   });
 });
