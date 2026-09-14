@@ -58,6 +58,17 @@ import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
 
+const postDirectSignupAs = async (user: NewUser): Promise<Test> => {
+  const signup: PostDirectSignupRequest = {
+    directSignupProgramItemId: testProgramItem.programItemId,
+    message: "Test message",
+  };
+  return await request(server)
+    .post(ApiEndpoint.DIRECT_SIGNUP)
+    .send(signup)
+    .set(authorizedAs(UserGroup.USER, user.username));
+};
+
 beforeEach(async () => {
   // Sign-up start defaults to 'eventStartTime' if before
   vi.spyOn(config, "event").mockReturnValue({
@@ -535,23 +546,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser4);
     await saveUser(mockUser5);
 
-    const makeRequest = async (user: NewUser): Promise<Test> => {
-      const signup: PostDirectSignupRequest = {
-        directSignupProgramItemId: testProgramItem.programItemId,
-        message: "Test message",
-      };
-      return await request(server)
-        .post(ApiEndpoint.DIRECT_SIGNUP)
-        .send(signup)
-        .set(authorizedAs(UserGroup.USER, user.username));
-    };
-
     await Promise.all([
-      makeRequest(mockUser),
-      makeRequest(mockUser2),
-      makeRequest(mockUser3),
-      makeRequest(mockUser4),
-      makeRequest(mockUser5),
+      postDirectSignupAs(mockUser),
+      postDirectSignupAs(mockUser2),
+      postDirectSignupAs(mockUser3),
+      postDirectSignupAs(mockUser4),
+      postDirectSignupAs(mockUser5),
     ]);
 
     const signups = unsafelyUnwrap(await findDirectSignups());
@@ -575,19 +575,11 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // Save on sign-up -> one seat left
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    const makeRequest = async (user: NewUser): Promise<Test> => {
-      const signup: PostDirectSignupRequest = {
-        directSignupProgramItemId: testProgramItem.programItemId,
-        message: "Test message",
-      };
-      return await request(server)
-        .post(ApiEndpoint.DIRECT_SIGNUP)
-        .send(signup)
-        .set(authorizedAs(UserGroup.USER, user.username));
-    };
-
     // Save two more sign-ups at the same time -> one should fail and only one sign-up collection should exist
-    await Promise.all([makeRequest(mockUser2), makeRequest(mockUser3)]);
+    await Promise.all([
+      postDirectSignupAs(mockUser2),
+      postDirectSignupAs(mockUser3),
+    ]);
 
     const signups = unsafelyUnwrap(await findDirectSignups());
     expect(signups).toHaveLength(1);
