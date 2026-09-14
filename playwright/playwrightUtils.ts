@@ -1,5 +1,11 @@
 import { APIRequestContext, Page, expect } from "@playwright/test";
-import { addHours, isAfter, startOfHour, subMinutes } from "date-fns";
+import {
+  addHours,
+  addMinutes,
+  isAfter,
+  startOfHour,
+  subMinutes,
+} from "date-fns";
 import { config } from "shared/config";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
@@ -9,6 +15,7 @@ import {
 } from "shared/test-types/api/testData";
 import { GetTestSettingsResponse } from "shared/test-types/api/testSettings";
 import { TestSettings } from "shared/test-types/models/testSettings";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import {
   PostLoginRequest,
@@ -321,3 +328,22 @@ export const signupsOpenTime = (): string => {
 // process to that timezone.
 export const hoursIntoEvent = (hours: number): string =>
   startOfHour(addHours(new Date(signupsOpenTime()), hours)).toISOString();
+
+// When a program item starting at the given time ends, keeping the fixture's length
+export const endTimeFor = (startTime: string): string => {
+  return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();
+};
+
+// The fixture as a lottery program item at the given start time
+export const twoPhaseProgramItem = (
+  startTime: string,
+  overrides: Partial<ProgramItem> = {},
+): ProgramItem => {
+  return {
+    ...testProgramItem,
+    programType: config.event().twoPhaseSignupProgramTypes[0],
+    startTime,
+    endTime: endTimeFor(startTime),
+    ...overrides,
+  };
+};

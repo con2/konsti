@@ -10,6 +10,7 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -18,6 +19,7 @@ import {
   signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const alwaysOpenTitle = "Always open item";
@@ -428,19 +430,11 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime),
     {
       // 'Sign-up always open', so its direct sign-up is open while the lottery for this
       // start time still hasn't run
@@ -505,19 +499,11 @@ test("Show no lottery warning on the direct sign-up form once the lottery is ove
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime),
     {
       ...testProgramItem2,
       title: alwaysOpenTitle,
