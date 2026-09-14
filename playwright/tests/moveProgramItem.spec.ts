@@ -1,4 +1,3 @@
-import { TZDate } from "@date-fns/tz";
 import { expect, test } from "@playwright/test";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
@@ -7,11 +6,11 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { Tag } from "shared/types/models/programItem";
-import { TIMEZONE } from "shared/utils/timezone";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  helsinkiClockTime,
   hoursIntoEvent,
   login,
   populateDb,
@@ -22,16 +21,6 @@ import {
   testPostDirectSignup,
   testPostLotterySignup,
 } from "playwright/playwrightUtils";
-
-// The wall clock the app renders a time at, built here rather than taken from
-// the formatters the app itself uses, so the assertions below are about which
-// instant is shown rather than about how it is formatted
-const clockTime = (isoTime: string): string => {
-  const zoned = new TZDate(isoTime, TIMEZONE);
-  const hours = String(zoned.getHours()).padStart(2, "0");
-  const minutes = String(zoned.getMinutes()).padStart(2, "0");
-  return `${hours}:${minutes}`;
-};
 
 test("Show event log notification when program item with direct sign-up is moved", async ({
   page,
@@ -126,7 +115,7 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
 
   await programList.gotoMyProgram();
   await expect(programList.lotterySignupTimeHeadings.first()).toContainText(
-    clockTime(hoursIntoEvent(3)),
+    helsinkiClockTime(hoursIntoEvent(3)),
   );
 
   await addProgramItems(request, [
@@ -181,10 +170,10 @@ test("Keep a placed direct sign-up and say the starting time changed", async ({
     "Starting time changed",
   );
   await expect(programList.directSignupList).toContainText(
-    clockTime(signedToStartTime),
+    helsinkiClockTime(signedToStartTime),
   );
   await expect(programList.directSignupList).toContainText(
-    clockTime(movedStartTime),
+    helsinkiClockTime(movedStartTime),
   );
 });
 

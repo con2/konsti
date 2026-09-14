@@ -10,12 +10,12 @@ import {
 } from "shared/tests/testProgramItem";
 import { Locale } from "shared/types/locale";
 import { ProgramType, Tag } from "shared/types/models/programItem";
-import { getTime } from "shared/utils/timeFormatter";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   endTimeFor,
+  helsinkiClockTime,
   hoursIntoEvent,
   login,
   populateDb,
@@ -684,10 +684,10 @@ test("Did not receive spot in a lottery covering several starting times", async 
   await programList.gotoMyProgram();
   await expect(programList.lotterySignupTimeHeadings).toHaveCount(1);
   await expect(programList.lotterySignupTimeHeadings).toContainText(
-    getTime(parentStartTime),
+    helsinkiClockTime(parentStartTime),
   );
   await expect(programList.lotterySignupTimeHeadings).not.toContainText(
-    getTime(firstStartTime),
+    helsinkiClockTime(firstStartTime),
   );
   await expect(
     programList.lotterySignupList.getByTestId("program-item-title"),
@@ -706,7 +706,7 @@ test("Did not receive spot in a lottery covering several starting times", async 
       Locale.EN,
     ),
   );
-  const expectedRejection = `${programTypeName} between ${getTime(firstStartTime)}–${getTime(lastEndTime)} were lotteried and you didn't get a spot.`;
+  const expectedRejection = `${programTypeName} between ${helsinkiClockTime(firstStartTime)}–${helsinkiClockTime(lastEndTime)} were lotteried and you didn't get a spot.`;
   await expect(programList.notificationBar.bar).toContainText(
     expectedRejection,
   );
@@ -803,14 +803,14 @@ test("Receive spot in a lottery covering several starting times", async ({
   );
   // Listed under the hour its own program item starts, not the hour the batch was lotteried at
   await expect(programList.directSignupList).toContainText(
-    getTime(firstStartTime),
+    helsinkiClockTime(firstStartTime),
   );
 
   // The spot they held is at a different hour from the one they won, so the win leaves it be -
   // even though it is the hour the batch was lotteried at
   await expect(programList.directSignupList).toContainText(alwaysOpenTitle);
   await expect(programList.directSignupList).toContainText(
-    getTime(parentStartTime),
+    helsinkiClockTime(parentStartTime),
   );
 });
 
