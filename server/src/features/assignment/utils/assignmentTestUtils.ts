@@ -2,6 +2,8 @@ import { randomUUID } from "node:crypto";
 import { subHours } from "date-fns";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
+import { UserAssignmentResult } from "shared/types/models/result";
 import { LotterySignup, User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
@@ -37,6 +39,26 @@ export const getPreviousDirectSignup = ({
       },
     ],
     count: 1,
+  };
+};
+
+// A lottery placing the user into the program item at its own start time
+export const getAssignmentResult = ({
+  username,
+  programItem = testProgramItem,
+  priority = 1,
+}: {
+  username: string;
+  programItem?: ProgramItem;
+  priority?: number;
+}): UserAssignmentResult => {
+  return {
+    username,
+    assignmentSignup: {
+      programItemId: programItem.programItemId,
+      priority,
+      signedToStartTime: programItem.startTime,
+    },
   };
 };
 
