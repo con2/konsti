@@ -8,6 +8,7 @@ import {
   RemoveLotterySignupsStrategy,
 } from "shared/config/eventConfigTypes";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -2016,12 +2017,12 @@ test("Program item with parent startTime from 'startTimesByParentIds' should not
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
+  mockParentStartTime({
+    programItem: testProgramItem,
+    parentStartTime,
+    eventConfig: {
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    },
   });
 
   await saveProgramItems([
@@ -2347,12 +2348,12 @@ test("Should mark a batched program item with its own start time, not the parent
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
+  mockParentStartTime({
+    programItem: testProgramItem,
+    parentStartTime,
+    eventConfig: {
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    },
   });
 
   await saveProgramItems([

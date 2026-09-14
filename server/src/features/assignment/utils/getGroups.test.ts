@@ -1,6 +1,6 @@
 import { addMinutes, subHours } from "date-fns";
 import { afterEach, expect, test, vi } from "vitest";
-import { config } from "shared/config";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -74,12 +74,7 @@ test("should return groups for program items using parent startTime via 'startTi
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  mockParentStartTime({ programItem: testProgramItem, parentStartTime });
 
   const users = getUsers({ count: 1 });
   const attendeeGroups = [users, users, users];

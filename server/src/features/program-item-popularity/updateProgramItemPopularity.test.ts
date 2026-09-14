@@ -3,6 +3,7 @@ import { Server } from "node:http";
 import { addHours, subHours, subMinutes } from "date-fns";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -189,12 +190,12 @@ test("Should update popularity of upcoming program item with parent", async () =
   const upcomingStartTime = addHours(new Date(timeNow), 4).toISOString();
 
   vi.setSystemTime(timeNow);
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
+  mockParentStartTime({
+    programItem: testProgramItem,
+    parentStartTime,
+    eventConfig: {
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    },
   });
 
   await saveUser(mockUser);
@@ -249,12 +250,12 @@ test("Should not update upcoming program item popularity if parent starTime in p
   const upcomingStartTime = addHours(new Date(timeNow), 2).toISOString();
 
   vi.setSystemTime(timeNow);
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
+  mockParentStartTime({
+    programItem: testProgramItem,
+    parentStartTime,
+    eventConfig: {
+      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    },
   });
 
   await saveUser(mockUser);

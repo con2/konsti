@@ -1,7 +1,7 @@
 import { addMinutes, subHours } from "date-fns";
 import { afterEach, expect, test, vi } from "vitest";
-import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -84,12 +84,7 @@ test("should return events for program items using parent startTime via 'startTi
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  mockParentStartTime({ programItem: testProgramItem, parentStartTime });
 
   const events = getEvents(
     [testProgramItem, testProgramItem2],
