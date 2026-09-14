@@ -19,18 +19,14 @@ import {
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
-import { EmailSender } from "server/features/notifications/email";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
-import {
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
-} from "server/utils/notificationQueue";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
@@ -50,9 +46,7 @@ vi.mock<object>(
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
-    createNotificationQueueService(new EmailSender(), 1, true),
-  );
+  mockNotificationQueue();
 });
 
 afterEach(async () => {

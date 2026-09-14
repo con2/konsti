@@ -23,7 +23,6 @@ import {
   verifyUserSignups,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
-import { EmailSender } from "server/features/notifications/email";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { updateProgramItems } from "server/features/program-item/programItemService";
 import {
@@ -35,14 +34,11 @@ import { saveLotterySignups } from "server/features/user/lottery-signup/lotteryS
 import { findUsers } from "server/features/user/userRepository";
 import { createIndividualUsers } from "server/test/test-data-generation/generators/createUsers";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { startCronJobs, stopCronJobs } from "server/utils/cron";
 import { logger } from "server/utils/logger";
-import {
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
-} from "server/utils/notificationQueue";
 
 // Both jobs run here against the live event config and the event's own Kompassi dump rather
 // than fixtures, because that is where the two can disagree: a parent hour that stopped lining
@@ -93,9 +89,7 @@ beforeEach(async () => {
     useTestTime: true,
   });
 
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
-    createNotificationQueueService(new EmailSender(), 1, true),
-  );
+  mockNotificationQueue();
 
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
   await createSettings();

@@ -14,7 +14,6 @@ import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { KompassiError } from "shared/types/api/errors";
 import { makeErrorResult } from "shared/utils/result";
-import { EmailSender } from "server/features/notifications/email";
 import {
   ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
   acquireAssignmentLock,
@@ -24,6 +23,7 @@ import {
 } from "server/features/settings/settingsRepository";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import {
   autoAssignAttendees,
@@ -33,10 +33,6 @@ import {
   stopCronJobs,
 } from "server/utils/cron";
 import { logger } from "server/utils/logger";
-import {
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
-} from "server/utils/notificationQueue";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -74,12 +70,7 @@ beforeEach(async () => {
     useLocalProgramFile: true,
     localKompassiFile: "program-ropecon-2025.json",
   });
-  const queueService = createNotificationQueueService(
-    new EmailSender(),
-    1,
-    true,
-  );
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+  mockNotificationQueue();
 
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,

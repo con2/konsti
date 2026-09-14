@@ -21,7 +21,6 @@ import {
   findDirectSignupsByProgramItemIds,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { EmailSender } from "server/features/notifications/email";
 import { EmailMessage } from "server/features/notifications/senderCommon";
 import {
   findProgramItems,
@@ -37,12 +36,12 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import {
+  NotificationQueueService,
   NotificationTaskType,
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
 
 // Kept as the real implementation, so only the case that needs a failed read replaces it.
@@ -71,15 +70,12 @@ vi.mock<object>(
   },
 );
 
+let queueService: NotificationQueueService;
+
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
 
-  const queueService = createNotificationQueueService(
-    new EmailSender(),
-    1,
-    true,
-  );
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+  queueService = mockNotificationQueue();
 });
 
 afterEach(async () => {
@@ -271,9 +267,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   );
   expect(noAssignmentItems[0].lastProgramItemEndTime).toBeUndefined();
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
 
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
@@ -285,11 +279,9 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
-  const messages: EmailMessage[] = notificationQueueService
-    .getSender()
-    .getSentEmails();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+  const messages: EmailMessage[] = queueService.getSender().getSentEmails();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
 Olet ollut onnekas ja pääsit ohjelmaan Test program item.
 Ohjelma alkaa pe 26.7.2019 17:00.
@@ -368,9 +360,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(2);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].type).toEqual(
     NotificationTaskType.SEND_EMAIL_REJECTED,
@@ -465,9 +455,7 @@ test("should only add one event log item with multiple lottery sign-ups", async 
     EventLogAction.NO_ASSIGNMENT,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
   expect(queueAfterUserSignup[0].type).toEqual(
@@ -546,9 +534,7 @@ test("should not add event log items after assignment if a direct sign-up is dro
   expect(usersWithoutEventLogItem).toHaveLength(1);
   expect(usersWithEventLogItem).toHaveLength(3);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(3);
   expect(
     queueAfterUserSignup.every(
@@ -621,9 +607,7 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
   );
   expect(usersWithExactlyOneEventLogItem).toHaveLength(4);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   const acceptedNotifications = queueAfterUserSignup.filter(
     (task) => task.type === NotificationTaskType.SEND_EMAIL_ACCEPTED,
   );
@@ -769,9 +753,7 @@ test("should not send notifications to users without email addresses but still c
     userWithEmail.username,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
 
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(userWithoutEmail.username);
@@ -783,10 +765,10 @@ test("should not send notifications to users without email addresses but still c
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages = queueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
 });
@@ -827,10 +809,8 @@ test("should summarize sent and skipped emails once the queue drains", async () 
     programItems: unsafelyUnwrap(await findProgramItems()),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
   expect(logger.info).toHaveBeenCalledWith(
     "Email notification queue drained: 1 sent, 1 skipped (no email address), 0 failed",
@@ -892,15 +872,13 @@ test("should respect email notification permissions based on email field", async
   );
   expect(usersWithEventLogItems).toHaveLength(2);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages = queueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
@@ -954,9 +932,7 @@ test("should handle mixed email permissions in groups", async () => {
   );
   expect(usersWithEventLogItem).toHaveLength(2);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(
     queueAfterUserSignup.every(
@@ -964,10 +940,10 @@ test("should handle mixed email permissions in groups", async () => {
     ),
   ).toBe(true);
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages = queueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
@@ -1226,11 +1202,9 @@ test("should record the whole span a batched lottery covered on its rejections",
   );
   expect(noAssignmentItems[0].programType).toEqual(testProgramItem.programType);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
-  const sentMessages = notificationQueueService.getSender().getSentEmails();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+  const sentMessages = queueService.getSender().getSentEmails();
   expect(sentMessages).toHaveLength(1);
   const [rejectedMessage] = sentMessages;
 

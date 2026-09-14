@@ -11,7 +11,6 @@ import {
   PostAssignmentResponse,
 } from "shared/types/api/assignment";
 import { UserGroup } from "shared/types/models/user";
-import { EmailSender } from "server/features/notifications/email";
 import {
   findProgramItems,
   saveProgramItems,
@@ -21,11 +20,8 @@ import {
   findOrCreateSettings,
 } from "server/features/settings/settingsRepository";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import {
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
-} from "server/utils/notificationQueue";
 import { closeServer, startServer } from "server/utils/server";
 
 vi.mock<object>(
@@ -46,9 +42,7 @@ beforeEach(async () => {
     dbConnString: globalThis.__MONGO_URI__,
     dbName: randomUUID(),
   });
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(
-    createNotificationQueueService(new EmailSender(), 1, true),
-  );
+  mockNotificationQueue();
 });
 
 afterEach(async () => {
