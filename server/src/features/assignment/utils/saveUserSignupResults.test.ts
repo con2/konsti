@@ -12,10 +12,10 @@ import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { User } from "shared/types/models/user";
 import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
 import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
+import { usersWithEventLogAction } from "server/features/assignment/utils/assignmentTestUtils";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import {
   findDirectSignups,
@@ -37,6 +37,7 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
+import { findProgramItemSignups } from "server/test/utils/findProgramItemSignups";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
@@ -87,20 +88,17 @@ afterEach(async () => {
 interface SaveAndNotifyParams {
   assignmentTime: string;
   results: readonly UserAssignmentResult[];
-  users: User[];
-  programItems: ProgramItem[];
-  // A run lotteries the program items starting at its time, so it defaults to those rather
-  // than to everything a case seeds
 }
 
 // A run saves the spots and then tells the attendees, so the cases below drive both steps
-// in that order rather than either one alone
+// in that order rather than either one alone, over the users and program items as stored
 const saveAndNotify = async ({
   assignmentTime,
   results,
-  users,
-  programItems,
 }: SaveAndNotifyParams): Promise<void> => {
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
   const finalResults = unsafelyUnwrap(
     await saveUserSignupResults({
       assignmentTime,
@@ -146,32 +144,25 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -212,23 +203,17 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: parentStartTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
@@ -243,11 +228,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     testProgramItem.startTime,
   );
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -328,31 +312,24 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
 
   const results: UserAssignmentResult[] = [];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(0);
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(2);
 
@@ -414,22 +391,16 @@ test("should only add one event log item with multiple lottery sign-ups", async 
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
@@ -438,11 +409,10 @@ test("should only add one event log item with multiple lottery sign-ups", async 
     EventLogAction.NEW_ASSIGNMENT,
   );
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -505,14 +475,9 @@ test("should not add event log items after assignment if a direct sign-up is dro
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
@@ -564,14 +529,9 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
     },
   }));
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // Only two sign-ups fit, the other two are dropped
@@ -582,18 +542,16 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
   // The two users whose sign-ups were saved get a NEW_ASSIGNMENT message
-  const usersWithNewAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    ),
+  const usersWithNewAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
   );
   expect(usersWithNewAssignment).toHaveLength(2);
 
   // The two users whose sign-ups were dropped get a NO_ASSIGNMENT message instead of silence
-  const usersWithNoAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    ),
+  const usersWithNoAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
   );
   expect(usersWithNoAssignment).toHaveLength(2);
 
@@ -666,14 +624,9 @@ test("should remove all of a winner's existing same-time direct sign-ups, not ju
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // Both prior same-time sign-ups must be removed, leaving only the assignment result
@@ -717,28 +670,21 @@ test("should not send notifications to users without email addresses but still c
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(
@@ -801,8 +747,6 @@ test("should summarize sent and skipped emails once the queue drains", async () 
         },
       },
     ],
-    users: unsafelyUnwrap(await findUsers()),
-    programItems: unsafelyUnwrap(await findProgramItems()),
   });
 
   queueService.getQueue().resume();
@@ -852,14 +796,9 @@ test("should respect email notification permissions based on email field", async
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
@@ -912,14 +851,9 @@ test("should handle mixed email permissions in groups", async () => {
 
   const results: UserAssignmentResult[] = [];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
@@ -1089,14 +1023,9 @@ test("should replace a winner's own direct sign-up for the program item they win
     },
   }));
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const [signup] = unsafelyUnwrap(await findDirectSignups());
@@ -1157,15 +1086,10 @@ const saveBatchedProgramItems = async (): Promise<{
 test("should record the whole span a batched lottery covered on its rejections", async () => {
   const { parentStartTime, laterProgramItem } = await saveBatchedProgramItems();
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   // Nobody is placed, so the one lottery participant is rejected
   await saveAndNotify({
     assignmentTime: parentStartTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1210,14 +1134,9 @@ test("should not record a span when the lottery covered a single starting time",
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1239,14 +1158,9 @@ test("should span a rejection over the batch, whichever slots were lotteried", a
   const { parentStartTime, firstProgramItem, laterProgramItem } =
     await saveBatchedProgramItems();
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: parentStartTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1281,14 +1195,9 @@ test("should still tell the losers when the placed spots cannot be read", async 
     makeErrorResult(MongoDbError.UNKNOWN_ERROR),
   );
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1331,38 +1240,31 @@ test("should drop a whole group whose program item no longer has room for all of
     },
   }));
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // Neither member is placed, rather than one of them taking the single spot
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const wonProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const wonProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([mockUser3.username]);
 
   // The spot a dropped member holds is left in place, since nothing was given to replace it
-  const heldProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  const heldProgramItemSignup = await findProgramItemSignups(
+    testProgramItem2.programItemId,
   );
   expect(
     heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([mockUser.username]);
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
-  const usersWithNewAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    ),
+  const usersWithNewAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
   );
   expect(usersWithNewAssignment).toEqual([]);
 });
@@ -1391,19 +1293,13 @@ test("should place a whole group that still has room for all of it", async () =>
     },
   }));
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const wonProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const wonProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
@@ -1447,27 +1343,21 @@ test("should place a winner whose username names an Object prototype member", as
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const wonProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const wonProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([username]);
 
   // Somebody else's spot at that hour is not theirs to give up
-  const heldProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  const heldProgramItemSignup = await findProgramItemSignups(
+    testProgramItem2.programItemId,
   );
   expect(
     heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
@@ -1512,21 +1402,15 @@ test("should drop a whole group whose room is taken by a spot the write has not 
     })),
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // The held spot is still taken when the spots are written, so there is room for one of the
   // two and the group goes without rather than landing half in
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const groupProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const groupProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     groupProgramItemSignup?.userSignups.map(

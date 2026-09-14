@@ -179,3 +179,12 @@ export const getUsers = ({
 
   return users;
 };
+
+export const usersWithEventLogAction = (
+  users: User[],
+  action: EventLogAction,
+): User[] => {
+  return users.filter((user) =>
+    user.eventLogItems.some((eventLogItem) => eventLogItem.action === action),
+  );
+};
