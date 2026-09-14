@@ -1,5 +1,6 @@
 import { makeNodeTransport } from "@sentry/node";
 import { afterEach, describe, expect, test, vi } from "vitest";
+import { runWithFakeTimers } from "server/test/utils/runWithFakeTimers";
 import { logger } from "server/utils/logger";
 import { makeRetryingNodeTransport } from "server/utils/retryingSentryTransport";
 
@@ -20,18 +21,10 @@ const testEnvelope = [{}, []] as Envelope;
 const buildTransport = (): ReturnType<typeof makeRetryingNodeTransport> =>
   makeRetryingNodeTransport({} as TransportOptions);
 
-// Runs a send with fake timers so the retry delay doesn't slow tests down
 const runSend = async (
   transport: ReturnType<typeof makeRetryingNodeTransport>,
 ): Promise<Awaited<ReturnType<(typeof transport)["send"]>>> => {
-  vi.useFakeTimers();
-  try {
-    const promise = transport.send(testEnvelope);
-    await vi.runAllTimersAsync();
-    return await promise;
-  } finally {
-    vi.useRealTimers();
-  }
+  return await runWithFakeTimers(() => transport.send(testEnvelope));
 };
 
 afterEach(() => {
