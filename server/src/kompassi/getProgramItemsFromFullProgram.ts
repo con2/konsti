@@ -1,25 +1,60 @@
-import { EventName } from "shared/config/eventConfigTypes";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { getProgramItemsFromFullProgramHitpoint } from "server/kompassi/hitpoint/getProgramItemsFromFullProgramHitpoint";
-import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
-import { getProgramItemsFromFullProgramRopecon } from "server/kompassi/ropecon/getProgramItemsFromFullProgramRopecon";
-import { getProgramItemsFromFullProgramSolmukohta } from "server/kompassi/solmukohta/getProgramItemsFromFullProgramSolmukohta";
-import { getProgramItemsFromFullProgramTracon } from "server/kompassi/tracon/getProgramItemsFromFullProgramTracon";
+import { first } from "remeda";
+import { config } from "shared/config";
+import {
+  checkUnknownKeys,
+  parseProgramItem,
+} from "server/kompassi/getProgramItemsFromKompassi";
+import {
+  KompassiKonstiProgramType,
+  KompassiProgramItem,
+  KompassiProgramItemSchema,
+} from "server/kompassi/kompassiProgramItem";
+import { logger } from "server/utils/logger";
 
 export const getProgramItemsFromFullProgram = (
-  eventName: EventName,
-  eventProgramItems: unknown[],
+  programItems: unknown[],
 ): KompassiProgramItem[] => {
-  switch (eventName) {
-    case EventName.ROPECON:
-      return getProgramItemsFromFullProgramRopecon(eventProgramItems);
-    case EventName.HITPOINT:
-      return getProgramItemsFromFullProgramHitpoint(eventProgramItems);
-    case EventName.SOLMUKOHTA:
-      return getProgramItemsFromFullProgramSolmukohta(eventProgramItems);
-    case EventName.TRACON:
-      return getProgramItemsFromFullProgramTracon(eventProgramItems);
-    default:
-      return exhaustiveSwitchGuard(eventName);
+  checkUnknownKeys(programItems, KompassiProgramItemSchema);
+
+  const kompassiProgramItems = programItems.flatMap((programItem) => {
+    const result = parseProgramItem(programItem, KompassiProgramItemSchema);
+    return result ?? [];
+  });
+
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
+
+  const matchingProgramItems = kompassiProgramItems.flatMap((programItem) => {
+    // Hand picked program items with invalid program type - use 'other' program type
+    if (config.event().addToKonstiOther.includes(programItem.slug)) {
+      return {
+        ...programItem,
+        cachedDimensions: {
+          ...programItem.cachedDimensions,
+          konsti: [KompassiKonstiProgramType.OTHER],
+        },
+      };
+    }
+
+    // Take program items with Konsti dimension and valid program type
+    const programType = first(programItem.cachedDimensions.konsti);
+
+    const validProgramType =
+      programType &&
+      Object.values(KompassiKonstiProgramType).includes(programType);
+
+    if (!validProgramType) {
+      return [];
+    }
+
+    return programItem;
+  });
+
+  if (matchingProgramItems.length === 0) {
+    logger.error(new Error("No program items with known categories found"));
+    return [];
   }
+
+  logger.info(`Found ${matchingProgramItems.length} matching program items`);
+
+  return matchingProgramItems;
 };
