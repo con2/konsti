@@ -25,7 +25,7 @@ import { resolvePortOffset } from "scripts/portOffset";
 
 // The per-worktree port offset shifts the server/API port so setup calls hit
 // the same local instance the browser targets. PLAYWRIGHT_BASEURL still wins
-// when set (the Docker run serves client and API from http://server:5000).
+// when set (the E2E runner serves client and API from the server port).
 const portOffset = resolvePortOffset();
 const baseUrl =
   process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:${5000 + portOffset}`;
