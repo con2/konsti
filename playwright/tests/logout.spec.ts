@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
+import { PAST_POLL_TICK } from "playwright/clockTestUtils";
 import { ErrorBar } from "playwright/pages/ErrorBar";
 import { LoginPage } from "playwright/pages/LoginPage";
 import { Navigation } from "playwright/pages/Navigation";
@@ -114,8 +115,8 @@ test("A rejected session is given up on rather than retried every poll", async (
     ),
   ).toBeNull();
 
-  await page.clock.fastForward("01:01");
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
+  await page.clock.fastForward(PAST_POLL_TICK);
   expect(recoveryAttempts).toBe(1);
 
   // Being signed out mid-session is explained rather than just happening

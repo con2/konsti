@@ -1,7 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
+import {
+  PAST_POLL_TICK,
+  fastForwardUntilVisible,
+  pauseClock,
+} from "playwright/clockTestUtils";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
 import { BasePage } from "playwright/pages/BasePage";
 import { ErrorBar } from "playwright/pages/ErrorBar";
@@ -63,7 +67,7 @@ test("Update banner and admin message stack instead of overlapping when scrolled
   await programList.waitForItems();
 
   const banner = new AppUpdateBanner(page);
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
   await expect(programList.adminMessageBanner).toBeVisible();
 
@@ -124,7 +128,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
   const banner = new AppUpdateBanner(page);
   await expect
     .poll(async () => {
-      await page.clock.fastForward("01:01");
+      await page.clock.fastForward(PAST_POLL_TICK);
       return await banner.container.isVisible();
     })
     .toBe(true);
@@ -143,7 +147,7 @@ test("App level bars line up with each other", async ({ page, request }) => {
   await fastForwardUntilVisible(
     page,
     programList.errorBar.networkError,
-    "01:01",
+    PAST_POLL_TICK,
   );
 
   // The bars are separate components, so their dismiss icons drift apart

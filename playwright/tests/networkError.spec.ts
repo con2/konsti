@@ -1,7 +1,11 @@
 import { Page, expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { fastForwardUntilVisible, pauseClock } from "playwright/clockTestUtils";
+import {
+  PAST_POLL_TICK,
+  fastForwardUntilVisible,
+  pauseClock,
+} from "playwright/clockTestUtils";
 import { HelperPage } from "playwright/pages/HelperPage";
 import { ProfilePage } from "playwright/pages/ProfilePage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -30,7 +34,6 @@ import {
 // runs every 60 s
 const PAST_TOAST_DECISIONS = "00:02";
 const PAST_PROBE = "00:07";
-const PAST_POLL_TICK = "01:01";
 
 // Abort all API requests and return a getter for how many were aborted.
 // The app loads data with sequential requests, so a count of 2+ proves the
