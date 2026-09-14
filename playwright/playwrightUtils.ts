@@ -28,6 +28,7 @@ import {
 } from "shared/types/api/myProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { Settings } from "shared/types/models/settings";
+import { TIMEZONE } from "shared/utils/timezone";
 import { resolvePortOffset } from "scripts/portOffset";
 
 // The per-worktree port offset shifts the server/API port so setup calls hit
@@ -346,4 +347,15 @@ export const twoPhaseProgramItem = (
     endTime: endTimeFor(startTime),
     ...overrides,
   };
+};
+
+// The wall-clock time the app renders an instant at, built independently of the app's own
+// formatters so that losing the event timezone fails an assertion instead of moving both
+// sides of it together
+export const helsinkiClockTime = (time: string): string => {
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: TIMEZONE,
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(time));
 };
