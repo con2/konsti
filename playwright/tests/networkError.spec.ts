@@ -19,9 +19,9 @@ import {
 // request after the grace period, heals the toast on any successful
 // response, and shows failures of user-initiated requests immediately. Aborting routes simulates network
 // failure while keeping navigator.onLine true, matching the real wake-up
-// cases. The grace period is entered through the online event here - one
-// listener downstream of the page-resume machinery, which Playwright can't
-// drive for real (no visibility emulation).
+// cases. The grace period is entered through the online event here; the
+// page-resume path that also enters it is driven elsewhere by overriding the
+// document's visibility.
 
 // Clock jumps tied to the client's suppression timings: the toast decision
 // runs 1 s after a failure and the grace period lasts 5 s, so a 2 s jump
