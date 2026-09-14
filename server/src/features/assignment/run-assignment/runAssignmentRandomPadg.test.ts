@@ -1,5 +1,4 @@
 import { randomUUID } from "node:crypto";
-import { addHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
@@ -12,26 +11,13 @@ import { db } from "server/db/mongodb";
 import * as padgAssign from "server/features/assignment/padg/padgAssignment";
 import * as randomAssign from "server/features/assignment/random/randomAssignment";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
-import {
-  assertAssignmentInvariants,
-  assertSecondRunChangesNothing,
-  assertUserUpdatedCorrectly,
-  firstLotterySignupSlot,
-  generateTestData,
-} from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
-import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
-
-// This needs to be adjusted if test data is changed
-const expectedResultsCount = 20;
-
-const { eventStartTime } = config.event();
 
 vi.mock<object>(
   import("server/utils/notificationQueue"),
@@ -52,87 +38,6 @@ beforeEach(async () => {
 afterEach(async () => {
   vi.restoreAllMocks();
   await mongoose.disconnect();
-});
-
-test("Assignment with valid data should return success with random+padg algorithm", async () => {
-  const newUsersCount = 20;
-  const groupSize = 3;
-  const numberOfGroups = 5;
-  const newProgramItemsCount = 10;
-  const testUsersCount = 0;
-
-  seedRandomness();
-
-  await generateTestData(
-    newUsersCount,
-    newProgramItemsCount,
-    groupSize,
-    numberOfGroups,
-    testUsersCount,
-  );
-
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const assignmentTime = addHours(
-    new Date(eventStartTime),
-    firstLotterySignupSlot,
-  ).toISOString();
-
-  // FIRST RUN
-
-  const assignResults = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      assignmentTime,
-    }),
-  );
-
-  expect(assignResults.status).toEqual("success");
-  expect(assignResults.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount,
-  );
-
-  const updatedUsers = assignResults.results.map((result) => result.username);
-  await assertUserUpdatedCorrectly(updatedUsers);
-  await assertAssignmentInvariants(assignmentTime);
-
-  // SECOND RUN
-  await assertSecondRunChangesNothing({
-    assignmentAlgorithm,
-    assignmentTime,
-    firstRunResults: assignResults.results,
-  });
-});
-
-test("Assignment with no attendees should return error with random+padg algorithm", async () => {
-  const newUsersCount = 0;
-  const groupSize = 0;
-  const numberOfGroups = 0;
-  const newProgramItemsCount = 1;
-  const testUsersCount = 0;
-
-  seedRandomness();
-
-  await generateTestData(
-    newUsersCount,
-    newProgramItemsCount,
-    groupSize,
-    numberOfGroups,
-    testUsersCount,
-  );
-
-  const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
-  const assignmentTime = addHours(new Date(eventStartTime), 2).toISOString();
-
-  const assignResults = unsafelyUnwrap(
-    await runAssignment({
-      assignmentAlgorithm,
-      assignmentTime,
-    }),
-  );
-
-  expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
-  );
 });
 
 test("If random assignment fails, should return PADG result", async () => {

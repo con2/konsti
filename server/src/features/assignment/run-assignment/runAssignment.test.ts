@@ -23,10 +23,12 @@ import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import {
   assertAssignmentInvariants,
+  assertSecondRunChangesNothing,
   assertUserUpdatedCorrectly,
   firstLotterySignupSlot,
   generateTestData,
 } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import { groupCreatorGroupCode } from "server/features/assignment/utils/assignmentTestUtils";
 import {
   delDirectSignup,
   findDirectSignups,
@@ -176,6 +178,202 @@ describe("Assignment with valid data", () => {
     );
     await assertUserUpdatedCorrectly(updatedUsers2);
     await assertAssignmentInvariants(startTime2);
+  });
+});
+
+// Every algorithm places attendees, refuses an empty run and honours a batched start time the
+// same way, so the cases run once per algorithm. A per-algorithm file holds only what is
+// specific to one.
+describe.each([
+  AssignmentAlgorithm.PADG,
+  AssignmentAlgorithm.RANDOM,
+  AssignmentAlgorithm.RANDOM_PADG,
+])("Assignment with the %s algorithm", (assignmentAlgorithm) => {
+  test("should place attendees and leave them placed on a second run", async () => {
+    // The seeded data yields at least this many placements; adjust if the fixtures change
+    const minimumPlacedAttendees = 20;
+    const newUsersCount = 20;
+    const groupSize = 3;
+    const numberOfGroups = 5;
+    const newProgramItemsCount = 10;
+    const testUsersCount = 0;
+
+    seedRandomness();
+
+    await generateTestData(
+      newUsersCount,
+      newProgramItemsCount,
+      groupSize,
+      numberOfGroups,
+      testUsersCount,
+    );
+
+    const { eventStartTime } = config.event();
+    const assignmentTime = addHours(
+      new Date(eventStartTime),
+      firstLotterySignupSlot,
+    ).toISOString();
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      minimumPlacedAttendees,
+    );
+
+    const updatedUsers = assignResults.results.map((result) => result.username);
+    await assertUserUpdatedCorrectly(updatedUsers);
+    await assertAssignmentInvariants(assignmentTime);
+
+    await assertSecondRunChangesNothing({
+      assignmentAlgorithm,
+      assignmentTime,
+      firstRunResults: assignResults.results,
+    });
+  });
+
+  test("should return an error when nobody has a lottery sign-up", async () => {
+    const newUsersCount = 0;
+    const groupSize = 0;
+    const numberOfGroups = 0;
+    const newProgramItemsCount = 1;
+    const testUsersCount = 0;
+
+    seedRandomness();
+
+    await generateTestData(
+      newUsersCount,
+      newProgramItemsCount,
+      groupSize,
+      numberOfGroups,
+      testUsersCount,
+    );
+
+    const { eventStartTime } = config.event();
+    const assignmentTime = addHours(new Date(eventStartTime), 2).toISOString();
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual(
+      AssignmentResultStatus.NO_LOTTERY_SIGNUPS,
+    );
+  });
+
+  test("should assign user with 'startTimesByParentIds' program item", async () => {
+    const parentStartTime = addMinutes(
+      new Date(testProgramItem.startTime),
+      30,
+    ).toISOString();
+
+    stubParentStartTime(testProgramItem, parentStartTime);
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
+    ]);
+    await saveUser(mockUser);
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: parentStartTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+    expect(assignResults.results).toHaveLength(1);
+    expect(assignResults.results[0]).toMatchObject({
+      username: mockUser.username,
+      assignmentSignup: {
+        programItemId: testProgramItem.programItemId,
+        priority: 1,
+        signedToStartTime: testProgramItem.startTime,
+      },
+    });
+
+    const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(userAfterSave?.eventLogItems).toHaveLength(1);
+    expect(userAfterSave?.eventLogItems[0].action).toEqual(
+      EventLogAction.NEW_ASSIGNMENT,
+    );
+  });
+
+  test("should assign group with 'startTimesByParentIds' program item", async () => {
+    const parentStartTime = addMinutes(
+      new Date(testProgramItem.startTime),
+      30,
+    ).toISOString();
+
+    stubParentStartTime(testProgramItem, parentStartTime);
+
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+    ]);
+
+    await saveUser({
+      ...mockUser,
+      groupCode: groupCreatorGroupCode,
+      isGroupCreator: true,
+    });
+    await saveUser({ ...mockUser2, groupCode: groupCreatorGroupCode });
+
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: parentStartTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+    expect(assignResults.results).toHaveLength(2);
+    expect(assignResults.results).toMatchObject([
+      {
+        username: mockUser.username,
+        assignmentSignup: {
+          programItemId: testProgramItem.programItemId,
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      },
+      {
+        username: mockUser2.username,
+        assignmentSignup: {
+          programItemId: testProgramItem.programItemId,
+          priority: 1,
+          signedToStartTime: testProgramItem.startTime,
+        },
+      },
+    ]);
+
+    const user1AfterSave = unsafelyUnwrap(await findUser(mockUser.username));
+    expect(user1AfterSave?.eventLogItems).toHaveLength(1);
+    expect(user1AfterSave?.eventLogItems[0].action).toEqual(
+      EventLogAction.NEW_ASSIGNMENT,
+    );
+
+    const user2AfterSave = unsafelyUnwrap(await findUser(mockUser2.username));
+    expect(user2AfterSave?.eventLogItems).toHaveLength(1);
+    expect(user2AfterSave?.eventLogItems[0].action).toEqual(
+      EventLogAction.NEW_ASSIGNMENT,
+    );
   });
 });
 
