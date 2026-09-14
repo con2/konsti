@@ -12,7 +12,6 @@ import {
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
   hoursIntoEvent,
   login,
   populateDb,
@@ -557,7 +556,6 @@ test("Dismissing an event log notification removes it for good", async ({
 });
 
 const initDb = async (request: APIRequestContext): Promise<void> => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,

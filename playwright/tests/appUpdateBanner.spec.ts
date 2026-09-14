@@ -179,7 +179,6 @@ test("A later build gets a transparent reload of its own", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
@@ -258,7 +257,6 @@ test("Update reloads transparently on the first navigation, but only once per bu
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
