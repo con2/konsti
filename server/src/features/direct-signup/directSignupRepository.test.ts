@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { addMinutes } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
-import { config } from "shared/config";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { db } from "server/db/mongodb";
 import {
@@ -201,12 +201,7 @@ test("should find a parent-batched item's direct sign-ups by its own start time"
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);

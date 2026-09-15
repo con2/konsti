@@ -3,6 +3,9 @@ import { Locator, Page, expect } from "@playwright/test";
 // Helpers for driving the client's mocked clock (page.clock.install()) in
 // specs that need timers to fire on demand rather than in real time
 
+// One jump past the app's 60 s data poll, so the next tick has fired
+export const PAST_POLL_TICK = "01:01";
+
 // Freeze the mocked clock so timers fire only on explicit jumps - an
 // installed clock otherwise keeps advancing in real time, and slow CI steps
 // could push a timed decision past the window it belongs to or fire a

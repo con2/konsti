@@ -1,6 +1,6 @@
 import { addHours, addMinutes } from "date-fns";
-import { beforeEach, describe, expect, test, vi } from "vitest";
-import { config } from "shared/config";
+import { beforeEach, describe, expect, test } from "vitest";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 
@@ -38,12 +38,7 @@ describe("isStartTimeChanged for a batched program item", () => {
   const parentStartTime = addMinutes(new Date(startTime), 30).toISOString();
 
   beforeEach(() => {
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([
-        [testProgramItem.parentId, parentStartTime],
-      ]),
-    });
+    stubParentStartTime(testProgramItem, parentStartTime);
   });
 
   test("ignores the parent start time when nothing moved", () => {

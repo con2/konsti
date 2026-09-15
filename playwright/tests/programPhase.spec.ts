@@ -1,19 +1,13 @@
-import { APIRequestContext, expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { addHours, subDays } from "date-fns";
 import { config } from "shared/config";
-import {
-  testProgramItem,
-  testProgramItem2,
-} from "shared/tests/testProgramItem";
-import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
-  addProgramItems,
-  clearDb,
   login,
-  populateDb,
   postTestSettings,
+  signupsOpenTime,
 } from "playwright/playwrightUtils";
+import { seedProgramPhases } from "playwright/programPhaseFixtures";
 
 test.skip(
   !config.event().mainEventProgramVisibleTime,
@@ -26,35 +20,18 @@ const mainEventProgramVisibleTime = new Date(
   config.event().mainEventProgramVisibleTime ?? 0,
 );
 
-const programType = config.event().twoPhaseSignupProgramTypes[0];
-// Pre-convention week program takes place before the main event starts
-const preWeekProgramItem = {
-  ...testProgramItem,
-  title: "Pre-week program",
-  tags: [Tag.PRE_CONVENTION_WEEK],
-  programType,
-  startTime: "2026-07-20T15:00:00.000Z",
-  endTime: "2026-07-20T19:00:00.000Z",
-};
-const mainEventProgramItem = {
-  ...testProgramItem2,
-  title: "Main event program",
-  programType,
-  startTime: "2026-07-24T15:00:00.000Z",
-  endTime: "2026-07-24T19:00:00.000Z",
-};
-
-const seed = async (request: APIRequestContext): Promise<void> => {
-  await clearDb(request);
-  await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [preWeekProgramItem, mainEventProgramItem]);
+// The pre-convention week program is over before the main event program becomes visible,
+// and the main event program starts after it has
+const programPhaseTimes = {
+  preWeekStart: subDays(mainEventProgramVisibleTime, 1),
+  mainEventStart: addHours(new Date(signupsOpenTime()), 3),
 };
 
 test("Before main event program is visible, only pre-convention week program is shown", async ({
   page,
   request,
 }) => {
-  await seed(request);
+  await seedProgramPhases(request, programPhaseTimes);
   await postTestSettings(request, {
     testTime: subDays(mainEventProgramVisibleTime, 1).toISOString(),
   });
@@ -78,7 +55,7 @@ test("After main event program is visible, main event program is shown and pre-c
   page,
   request,
 }) => {
-  await seed(request);
+  await seedProgramPhases(request, programPhaseTimes);
   await postTestSettings(request, {
     testTime: addHours(mainEventProgramVisibleTime, 1).toISOString(),
   });

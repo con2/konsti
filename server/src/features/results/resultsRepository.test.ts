@@ -12,6 +12,7 @@ import {
   UserAssignmentResult,
 } from "shared/types/models/result";
 import { db } from "server/db/mongodb";
+import { getAssignmentResult } from "server/features/assignment/utils/assignmentTestUtils";
 import {
   findResults,
   saveResult,
@@ -30,22 +31,8 @@ afterEach(async () => {
 
 test("should insert new result into collection", async () => {
   const signupResults: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
-    {
-      username: mockUser2.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({ username: mockUser2.username }),
   ];
   const groups: AssignmentResultGroup[] = [
     {

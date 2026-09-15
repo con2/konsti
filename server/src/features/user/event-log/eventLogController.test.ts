@@ -13,8 +13,8 @@ import { UserGroup } from "shared/types/models/user";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -43,10 +43,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -60,10 +57,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
-      );
+      .set(authorizedAs(UserGroup.USER, "user_not_found"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostEventLogIsSeenResult;
@@ -83,10 +77,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("error");
@@ -115,10 +106,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("success");

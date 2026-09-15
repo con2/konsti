@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -52,8 +53,8 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -236,12 +237,7 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     // Parent start time is earlier than own start time so its direct sign-up phase has started
     const parentStartTime = addHours(new Date(eventStartTime), 5).toISOString();
 
-    vi.spyOn(config, "event").mockReturnValue({
-      ...config.event(),
-      startTimesByParentIds: new Map([
-        [testProgramItem.parentId, parentStartTime],
-      ]),
-    });
+    stubParentStartTime(testProgramItem, parentStartTime);
 
     // Now is before the own direct sign-up phase start, but after the parent-derived one
     const timeNow = subMinutes(
@@ -284,7 +280,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
@@ -319,7 +315,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -356,7 +352,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -380,7 +376,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -421,7 +417,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -473,7 +469,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -535,7 +531,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -568,7 +564,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 

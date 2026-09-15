@@ -3,6 +3,7 @@ import { addMinutes, subHours } from "date-fns";
 import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -11,17 +12,19 @@ import { MongoDbError } from "shared/types/api/errors";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { ProgramItem } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
-import { User } from "shared/types/models/user";
 import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
 import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
+import {
+  getAssignmentResult,
+  usersWithEventLogAction,
+} from "server/features/assignment/utils/assignmentTestUtils";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import {
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { EmailSender } from "server/features/notifications/email";
 import { EmailMessage } from "server/features/notifications/senderCommon";
 import {
   findProgramItems,
@@ -37,12 +40,13 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
+import { findProgramItemSignups } from "server/test/utils/findProgramItemSignups";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import {
+  NotificationQueueService,
   NotificationTaskType,
-  createNotificationQueueService,
-  getGlobalNotificationQueueService,
 } from "server/utils/notificationQueue";
 
 // Kept as the real implementation, so only the case that needs a failed read replaces it.
@@ -71,15 +75,12 @@ vi.mock<object>(
   },
 );
 
+let queueService: NotificationQueueService;
+
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
 
-  const queueService = createNotificationQueueService(
-    new EmailSender(),
-    1,
-    true,
-  );
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+  queueService = mockNotificationQueue();
 });
 
 afterEach(async () => {
@@ -90,20 +91,17 @@ afterEach(async () => {
 interface SaveAndNotifyParams {
   assignmentTime: string;
   results: readonly UserAssignmentResult[];
-  users: User[];
-  programItems: ProgramItem[];
-  // A run lotteries the program items starting at its time, so it defaults to those rather
-  // than to everything a case seeds
 }
 
 // A run saves the spots and then tells the attendees, so the cases below drive both steps
-// in that order rather than either one alone
+// in that order rather than either one alone, over the users and program items as stored
 const saveAndNotify = async ({
   assignmentTime,
   results,
-  users,
-  programItems,
 }: SaveAndNotifyParams): Promise<void> => {
+  const users = unsafelyUnwrap(await findUsers());
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
   const finalResults = unsafelyUnwrap(
     await saveUserSignupResults({
       assignmentTime,
@@ -139,42 +137,28 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -186,12 +170,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -210,33 +189,20 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: parentStartTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
@@ -251,11 +217,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     testProgramItem.startTime,
   );
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -271,9 +236,7 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   );
   expect(noAssignmentItems[0].lastProgramItemEndTime).toBeUndefined();
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
 
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
@@ -285,11 +248,9 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
-  const messages: EmailMessage[] = notificationQueueService
-    .getSender()
-    .getSentEmails();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+  const messages: EmailMessage[] = queueService.getSender().getSentEmails();
   const expectedAcceptedBody = `Hei ${mockUser.username}!
 Olet ollut onnekas ja pääsit ohjelmaan Test program item.
 Ohjelma alkaa pe 26.7.2019 17:00.
@@ -340,37 +301,28 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
 
   const results: UserAssignmentResult[] = [];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(0);
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(2);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].type).toEqual(
     NotificationTaskType.SEND_EMAIL_REJECTED,
@@ -418,32 +370,19 @@ test("should only add one event log item with multiple lottery sign-ups", async 
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
@@ -452,11 +391,10 @@ test("should only add one event log item with multiple lottery sign-ups", async 
     EventLogAction.NEW_ASSIGNMENT,
   );
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -465,9 +403,7 @@ test("should only add one event log item with multiple lottery sign-ups", async 
     EventLogAction.NO_ASSIGNMENT,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
   expect(queueAfterUserSignup[0].type).toEqual(
@@ -487,48 +423,15 @@ test("should not add event log items after assignment if a direct sign-up is dro
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 3 }]);
 
   const results: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
-    {
-      username: mockUser2.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
-    {
-      username: mockUser3.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
-    {
-      username: mockUser4.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({ username: mockUser2.username }),
+    getAssignmentResult({ username: mockUser3.username }),
+    getAssignmentResult({ username: mockUser4.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
@@ -546,9 +449,7 @@ test("should not add event log items after assignment if a direct sign-up is dro
   expect(usersWithoutEventLogItem).toHaveLength(1);
   expect(usersWithEventLogItem).toHaveLength(3);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(3);
   expect(
     queueAfterUserSignup.every(
@@ -573,23 +474,13 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
     });
   }
 
-  const results: UserAssignmentResult[] = lotteryUsers.map((user) => ({
-    username: user.username,
-    assignmentSignup: {
-      programItemId: testProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: testProgramItem.startTime,
-    },
-  }));
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
+  const results: UserAssignmentResult[] = lotteryUsers.map((user) =>
+    getAssignmentResult({ username: user.username }),
+  );
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // Only two sign-ups fit, the other two are dropped
@@ -600,18 +491,16 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
   // The two users whose sign-ups were saved get a NEW_ASSIGNMENT message
-  const usersWithNewAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    ),
+  const usersWithNewAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
   );
   expect(usersWithNewAssignment).toHaveLength(2);
 
   // The two users whose sign-ups were dropped get a NO_ASSIGNMENT message instead of silence
-  const usersWithNoAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    ),
+  const usersWithNoAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
   );
   expect(usersWithNoAssignment).toHaveLength(2);
 
@@ -621,9 +510,7 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
   );
   expect(usersWithExactlyOneEventLogItem).toHaveLength(4);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   const acceptedNotifications = queueAfterUserSignup.filter(
     (task) => task.type === NotificationTaskType.SEND_EMAIL_ACCEPTED,
   );
@@ -676,24 +563,12 @@ test("should remove all of a winner's existing same-time direct sign-ups, not ju
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // Both prior same-time sign-ups must be removed, leaving only the assignment result
@@ -727,38 +602,24 @@ test("should not send notifications to users without email addresses but still c
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: userWithoutEmail.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: userWithoutEmail.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(
@@ -769,9 +630,7 @@ test("should not send notifications to users without email addresses but still c
     userWithEmail.username,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
 
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(queueAfterUserSignup[0].username).toEqual(userWithoutEmail.username);
@@ -783,10 +642,10 @@ test("should not send notifications to users without email addresses but still c
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages = queueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
 });
@@ -813,24 +672,11 @@ test("should summarize sent and skipped emails once the queue drains", async () 
   // email is the only one sent
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
-    results: [
-      {
-        username: userWithoutEmail.username,
-        assignmentSignup: {
-          programItemId: testProgramItem.programItemId,
-          priority: 1,
-          signedToStartTime: testProgramItem.startTime,
-        },
-      },
-    ],
-    users: unsafelyUnwrap(await findUsers()),
-    programItems: unsafelyUnwrap(await findProgramItems()),
+    results: [getAssignmentResult({ username: userWithoutEmail.username })],
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
   expect(logger.info).toHaveBeenCalledWith(
     "Email notification queue drained: 1 sent, 1 skipped (no email address), 0 failed",
@@ -866,24 +712,12 @@ test("should respect email notification permissions based on email field", async
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: userWithEmail.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: userWithEmail.username }),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
@@ -892,15 +726,13 @@ test("should respect email notification permissions based on email field", async
   );
   expect(usersWithEventLogItems).toHaveLength(2);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages = queueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
@@ -938,14 +770,9 @@ test("should handle mixed email permissions in groups", async () => {
 
   const results: UserAssignmentResult[] = [];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
@@ -954,9 +781,7 @@ test("should handle mixed email permissions in groups", async () => {
   );
   expect(usersWithEventLogItem).toHaveLength(2);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  const queueAfterUserSignup = notificationQueueService.getItems();
+  const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
   expect(
     queueAfterUserSignup.every(
@@ -964,10 +789,10 @@ test("should handle mixed email permissions in groups", async () => {
     ),
   ).toBe(true);
 
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
 
-  const messages = notificationQueueService.getSender().getSentEmails();
+  const messages = queueService.getSender().getSentEmails();
   expect(messages).toHaveLength(1);
   expect(messages[0].to).toEqual(userWithEmail.email);
   expect(messages[0].subject).toEqual(
@@ -982,12 +807,7 @@ test("should store the won slot's own start time on a batched program item's dir
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([
@@ -999,14 +819,7 @@ test("should store the won slot's own start time on a batched program item's dir
   });
 
   const results: UserAssignmentResult[] = [
-    {
-      username: mockUser.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    },
+    getAssignmentResult({ username: mockUser.username }),
   ];
 
   unsafelyUnwrap(
@@ -1042,12 +855,7 @@ test("should keep a spot held at another hour when a batched lottery places the 
     60,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([
@@ -1075,16 +883,7 @@ test("should keep a spot held at another hour when a batched lottery places the 
   unsafelyUnwrap(
     await saveUserSignupResults({
       assignmentTime: parentStartTime,
-      results: [
-        {
-          username: mockUser.username,
-          assignmentSignup: {
-            programItemId: testProgramItem.programItemId,
-            priority: 1,
-            signedToStartTime: testProgramItem.startTime,
-          },
-        },
-      ],
+      results: [getAssignmentResult({ username: mockUser.username })],
       users: unsafelyUnwrap(await findUsers()),
       programItems: unsafelyUnwrap(await findProgramItems()),
     }),
@@ -1118,23 +917,13 @@ test("should replace a winner's own direct sign-up for the program item they win
     username: mockUser.username,
   });
 
-  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
-    username: user.username,
-    assignmentSignup: {
-      programItemId: testProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: testProgramItem.startTime,
-    },
-  }));
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) =>
+    getAssignmentResult({ username: user.username }),
+  );
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   const [signup] = unsafelyUnwrap(await findDirectSignups());
@@ -1180,12 +969,7 @@ const saveBatchedProgramItems = async (): Promise<{
     endTime: addMinutes(new Date(testProgramItem.startTime), 60).toISOString(),
   };
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveProgramItems([firstProgramItem, laterProgramItem]);
@@ -1200,15 +984,10 @@ const saveBatchedProgramItems = async (): Promise<{
 test("should record the whole span a batched lottery covered on its rejections", async () => {
   const { parentStartTime, laterProgramItem } = await saveBatchedProgramItems();
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   // Nobody is placed, so the one lottery participant is rejected
   await saveAndNotify({
     assignmentTime: parentStartTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1226,11 +1005,9 @@ test("should record the whole span a batched lottery covered on its rejections",
   );
   expect(noAssignmentItems[0].programType).toEqual(testProgramItem.programType);
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const notificationQueueService = getGlobalNotificationQueueService()!;
-  notificationQueueService.getQueue().resume();
-  await notificationQueueService.getQueue().drained();
-  const sentMessages = notificationQueueService.getSender().getSentEmails();
+  queueService.getQueue().resume();
+  await queueService.getQueue().drained();
+  const sentMessages = queueService.getSender().getSentEmails();
   expect(sentMessages).toHaveLength(1);
   const [rejectedMessage] = sentMessages;
 
@@ -1255,14 +1032,9 @@ test("should not record a span when the lottery covered a single starting time",
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1284,14 +1056,9 @@ test("should span a rejection over the batch, whichever slots were lotteried", a
   const { parentStartTime, firstProgramItem, laterProgramItem } =
     await saveBatchedProgramItems();
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: parentStartTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1326,14 +1093,9 @@ test("should still tell the losers when the placed spots cannot be read", async 
     makeErrorResult(MongoDbError.UNKNOWN_ERROR),
   );
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results: [],
-    users,
-    programItems,
   });
 
   const [userAfterSave] = unsafelyUnwrap(await findUsers());
@@ -1367,47 +1129,35 @@ test("should drop a whole group whose program item no longer has room for all of
     directSignupProgramItemId: testProgramItem2.programItemId,
   });
 
-  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
-    username: user.username,
-    assignmentSignup: {
-      programItemId: testProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: testProgramItem.startTime,
-    },
-  }));
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) =>
+    getAssignmentResult({ username: user.username }),
+  );
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // Neither member is placed, rather than one of them taking the single spot
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const wonProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const wonProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([mockUser3.username]);
 
   // The spot a dropped member holds is left in place, since nothing was given to replace it
-  const heldProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  const heldProgramItemSignup = await findProgramItemSignups(
+    testProgramItem2.programItemId,
   );
   expect(
     heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([mockUser.username]);
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
-  const usersWithNewAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    ),
+  const usersWithNewAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
   );
   expect(usersWithNewAssignment).toEqual([]);
 });
@@ -1427,28 +1177,17 @@ test("should place a whole group that still has room for all of it", async () =>
     username: mockUser3.username,
   });
 
-  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) => ({
-    username: user.username,
-    assignmentSignup: {
-      programItemId: testProgramItem.programItemId,
-      priority: 1,
-      signedToStartTime: testProgramItem.startTime,
-    },
-  }));
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
+  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) =>
+    getAssignmentResult({ username: user.username }),
+  );
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const wonProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const wonProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
@@ -1492,27 +1231,21 @@ test("should place a winner whose username names an Object prototype member", as
     },
   ];
 
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
-
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const wonProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const wonProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     wonProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
   ).toEqual([username]);
 
   // Somebody else's spot at that hour is not theirs to give up
-  const heldProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem2.programItemId,
+  const heldProgramItemSignup = await findProgramItemSignups(
+    testProgramItem2.programItemId,
   );
   expect(
     heldProgramItemSignup?.userSignups.map((userSignup) => userSignup.username),
@@ -1547,31 +1280,20 @@ test("should drop a whole group whose room is taken by a spot the write has not 
         signedToStartTime: testProgramItem.startTime,
       },
     },
-    ...[mockUser, mockUser2].map((user) => ({
-      username: user.username,
-      assignmentSignup: {
-        programItemId: testProgramItem.programItemId,
-        priority: 1,
-        signedToStartTime: testProgramItem.startTime,
-      },
-    })),
+    ...[mockUser, mockUser2].map((user) =>
+      getAssignmentResult({ username: user.username }),
+    ),
   ];
-
-  const users = unsafelyUnwrap(await findUsers());
-  const programItems = unsafelyUnwrap(await findProgramItems());
 
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
     results,
-    users,
-    programItems,
   });
 
   // The held spot is still taken when the spots are written, so there is room for one of the
   // two and the group goes without rather than landing half in
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  const groupProgramItemSignup = signups.find(
-    (signup) => signup.programItemId === testProgramItem.programItemId,
+  const groupProgramItemSignup = await findProgramItemSignups(
+    testProgramItem.programItemId,
   );
   expect(
     groupProgramItemSignup?.userSignups.map(
@@ -1604,12 +1326,7 @@ test("should displace spots at every hour a batched lottery placed somebody at",
   const heldAtFirstHourId = "held-at-first-hour";
   const heldAtLaterHourId = "held-at-later-hour";
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   await saveUser(mockUser);
   await saveUser(mockUser2);
@@ -1654,14 +1371,7 @@ test("should displace spots at every hour a batched lottery placed somebody at",
     await saveUserSignupResults({
       assignmentTime: parentStartTime,
       results: [
-        {
-          username: mockUser.username,
-          assignmentSignup: {
-            programItemId: testProgramItem.programItemId,
-            priority: 1,
-            signedToStartTime: testProgramItem.startTime,
-          },
-        },
+        getAssignmentResult({ username: mockUser.username }),
         {
           username: mockUser2.username,
           assignmentSignup: {
