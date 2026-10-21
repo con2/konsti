@@ -3,6 +3,7 @@ import { setTimeout as sleep } from "node:timers/promises";
 import { logger } from "server/utils/logger";
 
 const mongoDbVersion = "9.0.4";
+const mongoDbImage = `mongo:${mongoDbVersion}-resolute`;
 const containerName = `konsti-mongodb-${mongoDbVersion}`;
 const stabilityCheckMs = 3000;
 
@@ -54,7 +55,7 @@ const main = async (): Promise<void> => {
   } else {
     logger.info("Docker: Running new MongoDB container...");
     execSync(
-      `docker run -p 27017:27017 -d --name ${containerName} mongo:${mongoDbVersion}-noble`,
+      `docker run -p 27017:27017 -d --name ${containerName} ${mongoDbImage}`,
       {
         stdio: "inherit",
       },
