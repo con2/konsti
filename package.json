@@ -117,7 +117,7 @@
     "vitest": "4.1.9"
   },
   "engines": {
-    "node": ">=24.18.0"
+    "node": ">=24.22.1"
   },
   "packageManager": "yarn@4.17.0"
 }

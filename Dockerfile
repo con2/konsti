@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:24.18.0-alpine3.24
+ARG NODE_IMAGE=node:24.22.1-alpine3.24
 
 ### BUILD CLIENT
 FROM ${NODE_IMAGE} AS client-builder
