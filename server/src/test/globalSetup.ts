@@ -1,6 +1,6 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 
-const mongoDbVersion = "8.0.29";
+const mongoDbVersion = "9.0.4";
 export const mongoDbPort = 47233;
 
 let mongoDb: MongoMemoryServer;
