@@ -17,7 +17,7 @@ services:
       - mongo
 
   mongo:
-    image: mongo:8.0.29-noble
+    image: mongo:9.0.4-resolute
     container_name: konsti-mongodb
     restart: always
     ports:
