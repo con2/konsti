@@ -6,10 +6,10 @@ import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
-import { TIMEZONE } from "shared/utils/timezone";
 import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
+  helsinkiClockTime,
   hoursIntoEvent,
   populateDb,
   postAssignment,
@@ -17,16 +17,8 @@ import {
   postTestSettings,
   signupsOpenTime,
   testPostLotterySignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
-
-// An oracle independent of the app's own formatter: asserting with that would
-// make both sides move together, so losing the event timezone would still pass
-const helsinkiTime = (time: string): string =>
-  new Intl.DateTimeFormat("en-GB", {
-    timeZone: TIMEZONE,
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date(time));
 
 test("Show empty state when the lottery hasn't been run", async ({
   page,
@@ -43,22 +35,14 @@ test("Show empty state when the lottery hasn't been run", async ({
 
 test("Show lottery results without login", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Adjust min/max so user will get the spot
       minAttendance: 1,
       maxAttendance: 1,
-    },
+    }),
   ]);
 
   await postSettings(request, {
@@ -93,22 +77,14 @@ test("Leave a lottery run that placed nobody out of the results", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Needs two attendees to run, and only one enters the lottery
       minAttendance: 2,
       maxAttendance: 2,
-    },
+    }),
   ]);
 
   await postSettings(request, {
@@ -197,9 +173,9 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
   // formatter, so dropping the timezone from that formatter fails here instead
   // of shifting both sides of the assertion together.
   await expect(dashboard.runHeading(0)).toContainText(
-    helsinkiTime(laterStartTime),
+    helsinkiClockTime(laterStartTime),
   );
   await expect(dashboard.runHeading(1)).toContainText(
-    helsinkiTime(earlierStartTime),
+    helsinkiClockTime(earlierStartTime),
   );
 });

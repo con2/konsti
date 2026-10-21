@@ -10,11 +10,12 @@ import {
 } from "shared/tests/testProgramItem";
 import { Locale } from "shared/types/locale";
 import { ProgramType, Tag } from "shared/types/models/programItem";
-import { getTime } from "shared/utils/timeFormatter";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
+  helsinkiClockTime,
   hoursIntoEvent,
   login,
   populateDb,
@@ -24,26 +25,16 @@ import {
   signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const alwaysOpenTitle = "Always open item";
 
 test("Add lottery sign-up", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -81,10 +72,6 @@ test("Add lottery sign-up", async ({ page, request }) => {
 
 test("Receive spot in lottery sign-up", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
 
   await populateDb(request, {
     clean: true,
@@ -92,15 +79,11 @@ test("Receive spot in lottery sign-up", async ({ page, request }) => {
     users: true,
   });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Adjust min/max so user will get the spot
       minAttendance: 1,
       maxAttendance: 1,
-    },
+    }),
   ]);
 
   await postSettings(request, {
@@ -146,10 +129,6 @@ test("Receive spot in lottery sign-up", async ({ page, request }) => {
 
 test("Did not receive spot in lottery sign-up", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
 
   await populateDb(request, {
     clean: true,
@@ -157,15 +136,11 @@ test("Did not receive spot in lottery sign-up", async ({ page, request }) => {
     users: true,
   });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Adjust min/max so user cannot get the spot
       minAttendance: 2,
       maxAttendance: 2,
-    },
+    }),
   ]);
 
   await postSettings(request, {
@@ -214,10 +189,7 @@ test("Receive spot in lottery sign-up, with multiple lottery program types", asy
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   const firstProgramItemTitle = "first program item";
   const secondProgramItemTitle = "second program item";
@@ -419,20 +391,9 @@ test("Receive seat from each lottery program type in separate time slots", async
 
 test("Cancel lottery sign-up on program list", async ({ page, request }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
 
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -473,10 +434,7 @@ test("Show limit message when three lottery sign-ups in time slot", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   const titles = [
     "Lottery item Alpha",
@@ -543,19 +501,11 @@ test("Offer lottery sign-up even while a spot at the same time is held", async (
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime),
     {
       // Lottery program type with the pre-convention week tag makes 'sign-up always open',
       // which is the only way to hold a spot at a time whose lottery hasn't run yet
@@ -601,10 +551,7 @@ test("Offer direct sign-up instead of a lottery for a program item that already 
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
 
@@ -737,10 +684,10 @@ test("Did not receive spot in a lottery covering several starting times", async 
   await programList.gotoMyProgram();
   await expect(programList.lotterySignupTimeHeadings).toHaveCount(1);
   await expect(programList.lotterySignupTimeHeadings).toContainText(
-    getTime(parentStartTime),
+    helsinkiClockTime(parentStartTime),
   );
   await expect(programList.lotterySignupTimeHeadings).not.toContainText(
-    getTime(firstStartTime),
+    helsinkiClockTime(firstStartTime),
   );
   await expect(
     programList.lotterySignupList.getByTestId("program-item-title"),
@@ -759,7 +706,7 @@ test("Did not receive spot in a lottery covering several starting times", async 
       Locale.EN,
     ),
   );
-  const expectedRejection = `${programTypeName} between ${getTime(firstStartTime)}–${getTime(lastEndTime)} were lotteried and you didn't get a spot.`;
+  const expectedRejection = `${programTypeName} between ${helsinkiClockTime(firstStartTime)}–${helsinkiClockTime(lastEndTime)} were lotteried and you didn't get a spot.`;
   await expect(programList.notificationBar.bar).toContainText(
     expectedRejection,
   );
@@ -856,14 +803,14 @@ test("Receive spot in a lottery covering several starting times", async ({
   );
   // Listed under the hour its own program item starts, not the hour the batch was lotteried at
   await expect(programList.directSignupList).toContainText(
-    getTime(firstStartTime),
+    helsinkiClockTime(firstStartTime),
   );
 
   // The spot they held is at a different hour from the one they won, so the win leaves it be -
   // even though it is the hour the batch was lotteried at
   await expect(programList.directSignupList).toContainText(alwaysOpenTitle);
   await expect(programList.directSignupList).toContainText(
-    getTime(parentStartTime),
+    helsinkiClockTime(parentStartTime),
   );
 });
 
@@ -872,10 +819,7 @@ test("Keep a program item out of the lottery after its direct sign-ups are cance
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
 

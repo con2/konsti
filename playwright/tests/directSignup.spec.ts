@@ -10,7 +10,7 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -19,12 +19,12 @@ import {
   signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const alwaysOpenTitle = "Always open item";
 
 test("Add and cancel direct sign-up", async ({ page, request }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -110,7 +110,6 @@ test("Show program item full message when logged out and logged in", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -164,7 +163,6 @@ test("Show error when program item full and update participant list", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -224,7 +222,6 @@ test("Show no sign-up controls after direct sign-up has ended", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -285,7 +282,6 @@ test("Show timeslot conflict message instead of direct sign-up button", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -336,7 +332,6 @@ test("Show no sign-up button before direct sign-up opens", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,
@@ -386,7 +381,6 @@ test("Open direct sign-up only once the gap after the lottery has passed", async
   );
   const directSignupStartTime = addMinutes(lotterySignupEndTime, phaseGap);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
@@ -436,20 +430,11 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime),
     {
       // 'Sign-up always open', so its direct sign-up is open while the lottery for this
       // start time still hasn't run
@@ -514,20 +499,11 @@ test("Show no lottery warning on the direct sign-up form once the lottery is ove
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime),
     {
       ...testProgramItem2,
       title: alwaysOpenTitle,

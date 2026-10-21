@@ -210,7 +210,7 @@ is the admin message plus direct sign-up. The clock gate above is what holds adm
 
 Two mechanics hold the append-only half. `addEventLogItems` and the `isSeen` update are the only writes that touch `eventLogItems` at all, so **an update that saves a whole user document must leave the field out** — `updateUsersByUsername` lists five fields for exactly this reason, and its callers hand it a `User` they read moments earlier. Writing that back would silently drop any item appended in between, with no error and nothing in the log. And **`$addToSet` is not a duplicate guard here**: each item carries its own `createdAt` and Mongoose gives every subdocument an `_id`, so it behaves as `$push`. Nothing depends on it de-duplicating (the retry above assumes it doesn't), but don't read it as protection.
 
-**Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, sign-up cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. The per-algorithm files (`runAssignmentPadg.test.ts`, `runAssignmentRandom.test.ts`, `runAssignmentRandomPadg.test.ts`) hold only cases specific to that algorithm. New generic cases go in `runAssignment.test.ts`.
+**Assignment test organization** (`run-assignment/`): put generic, algorithm-independent behavior — start-time filtering, sign-up cleanup/preservation, result snapshots, error cases — in `runAssignment.test.ts`. Behaviour every algorithm must share runs there once per algorithm through a `describe.each`. A per-algorithm file (`runAssignmentRandomPadg.test.ts` is the only one so far) holds only cases specific to that algorithm, such as its fallback between the two. New generic cases go in `runAssignment.test.ts`.
 
 The fixtures and both algorithms draw from randomness (faker, `n()`, and the PADG list shuffle, all through `Math.random`), so a test asserting a fixed result count must call `seedRandomness()` from `src/test/utils/` before `generateTestData`. It seeds faker too, which is why per-test database names come from `randomUUID()` rather than faker - seeded, every test in a file would otherwise draw the same name and share one database.
 
@@ -322,11 +322,11 @@ beforeEach(async () => {
 });
 afterEach(async () => await closeServer(server));
 
-// Authenticate by minting a JWT for the required role
+// Authenticate by minting a JWT for the required role (authorizedAs is in src/test/utils/)
 const response = await request(server)
   .post(ApiEndpoint.X)
   .send(body)
-  .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "username")}`);
+  .set(authorizedAs(UserGroup.USER, "username"));
 ```
 
 **Tests that don't start a server connect with `db.connectToDb(globalThis.__MONGO_URI__, randomUUID())`, not a bare `mongoose.connect`.** Mongoose builds a model's indexes only once per process, so a plain connect leaves every database after the first without them — and each test gets its own. The unique keys would then be missing exactly where tests seed data, so a test could insert duplicate users or a second settings document that production would reject. `startServer` already routes through the same helper, so controller tests need nothing extra.

@@ -2,11 +2,13 @@ import { addMinutes } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { stubParentStartTime } from "shared/tests/stubParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { Tag } from "shared/types/models/programItem";
+import { User } from "shared/types/models/user";
 import {
   assignmentTime,
   getPreviousDirectSignup,
@@ -15,6 +17,7 @@ import {
 } from "server/features/assignment/utils/assignmentTestUtils";
 import { getList } from "server/features/assignment/utils/getList";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
+import { ListItem } from "server/types/assignmentTypes";
 
 afterEach(() => {
   vi.resetAllMocks();
@@ -22,51 +25,44 @@ afterEach(() => {
 
 const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
 
-test("should return empty array if user has no lottery sign-ups", () => {
-  const users = getUsers({ count: 1, noLotterySignups: true });
-  const attendeeGroups = [users, users, users];
-  const list = getList({
+type GetListParams = Parameters<typeof getList>[0];
+
+const listFor = (
+  attendeeGroups: User[][],
+  overrides: Partial<GetListParams> = {},
+): ListItem[] => {
+  return getList({
     attendeeGroups,
     assignmentTime,
     lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [testProgramItem],
     allProgramItems: [testProgramItem, testProgramItem2],
+    ...overrides,
   });
+};
+
+const listItem = (gain: number, size: number): ListItem => {
+  return {
+    event: testProgramItem.programItemId,
+    gain,
+    id: groupCreatorGroupCode,
+    size,
+  };
+};
+
+test("should return empty array if user has no lottery sign-ups", () => {
+  const users = getUsers({ count: 1, noLotterySignups: true });
+  const list = listFor([users, users, users]);
 
   expect(list).toEqual([]);
 });
 
 test("should return as many list items as user groups", () => {
   const users = getUsers({ count: 1 });
-  const attendeeGroups = [users, users, users];
-  const list = getList({
-    attendeeGroups,
-    assignmentTime,
-    lotteryParticipantDirectSignups: [],
-    lotterySignupProgramItems: [testProgramItem],
-    allProgramItems: [testProgramItem, testProgramItem2],
-  });
+  const list = listFor([users, users, users]);
 
-  expect(list).toEqual([
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-  ]);
+  const expectedItem = listItem(1 + firstSignupBonus, 1);
+  expect(list).toEqual([expectedItem, expectedItem, expectedItem]);
 });
 
 test("should return list items for program items using parent startTime via 'startTimesByParentIds'", () => {
@@ -75,43 +71,15 @@ test("should return list items for program items using parent startTime via 'sta
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   const users = getUsers({ count: 1 });
-  const attendeeGroups = [users, users, users];
-  const list = getList({
-    attendeeGroups,
+  const list = listFor([users, users, users], {
     assignmentTime: parentStartTime,
-    lotteryParticipantDirectSignups: [],
-    lotterySignupProgramItems: [testProgramItem],
-    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
-  expect(list).toEqual([
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-  ]);
+  const expectedItem = listItem(1 + firstSignupBonus, 1);
+  expect(list).toEqual([expectedItem, expectedItem, expectedItem]);
 });
 
 // A sign-up naming a program item the run is not allocating - skipped for holding sign-ups,
@@ -119,13 +87,8 @@ test("should return list items for program items using parent startTime via 'sta
 // makes it reject the whole input
 test("leaves out lottery sign-ups for program items not in the run", () => {
   const users = getUsers({ count: 1 });
-
-  const list = getList({
-    attendeeGroups: [users],
-    assignmentTime,
-    lotteryParticipantDirectSignups: [],
+  const list = listFor([users], {
     lotterySignupProgramItems: [testProgramItem2],
-    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([]);
@@ -137,73 +100,120 @@ test("leaves out a batched program item not in the run, whose own start time sti
     30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   // Without the program item there is no parent to resolve, so an unguarded lookup compares
   // the raw times and keeps a preference the assigner cannot place
   const users = getUsers({ count: 1 });
-
-  const list = getList({
-    attendeeGroups: [users],
+  const list = listFor([users], {
     assignmentTime: testProgramItem.startTime,
-    lotteryParticipantDirectSignups: [],
     lotterySignupProgramItems: [],
-    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   expect(list).toEqual([]);
 });
 
+// Who holds a previous direct sign-up: a group member by index, or an attendee outside the
+// group, whose sign-up must not count against it
+type PreviousDirectSignupHolder = number | "outsider";
+
+interface BonusCase {
+  case: string;
+  users: Parameters<typeof getUsers>[0];
+  previousDirectSignupHolders?: PreviousDirectSignupHolder[];
+  gain: number;
+}
+
+const testBonusCases = (cases: BonusCase[]): void => {
+  test.each(cases)(
+    "$case",
+    ({ users: userOptions, previousDirectSignupHolders = [], gain }) => {
+      const users = getUsers(userOptions);
+      const list = listFor([users], {
+        lotteryParticipantDirectSignups: previousDirectSignupHolders.map(
+          (holder) =>
+            getPreviousDirectSignup({
+              username:
+                holder === "outsider" ? "foobar user" : users[holder].username,
+            }),
+        ),
+      });
+
+      expect(list).toEqual([listItem(gain, users.length)]);
+    },
+  );
+};
+
 describe("should give first time bonus", () => {
-  // Non-lottery direct sign-ups are filtered earlier so having them is the same as not having previous direct sign-ups
-  test("for single user when there are no direct sign-ups from previous lotteries", () => {
-    const users = getUsers({ count: 1 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
+  testBonusCases([
+    {
+      // Non-lottery direct sign-ups are filtered earlier so having them is the same as not
+      // having previous direct sign-ups
+      case: "for single user when there are no direct sign-ups from previous lotteries",
+      users: { count: 1 },
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      case: "for single user without previous direct sign-ups",
+      users: { count: 1 },
+      previousDirectSignupHolders: ["outsider"],
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      // The program item they were placed in before is gone, so that placement was not
+      // theirs to keep and must not cost them the first time bonus
+      case: "for single user with NEW_ASSIGNMENT event if program item cancelled",
+      users: {
+        count: 1,
+        pastLotterySignupUsers: 1,
+        pastSuccessLotterySignups: 1,
+        pastAssignmentProgramItemId: "cancelled-program-item",
       },
-    ]);
-  });
-
-  test("for single user without previous direct sign-ups", () => {
-    const users = getUsers({ count: 1 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({ username: "foobar user" }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      case: "for group without previous direct sign-ups",
+      users: { count: 2 },
+      previousDirectSignupHolders: ["outsider"],
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      case: "for group with half previous direct sign-ups",
+      users: { count: 2 },
+      previousDirectSignupHolders: [0],
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      case: "for group with half NEW_ASSIGNMENT events",
+      users: {
+        count: 2,
+        pastLotterySignupUsers: 1,
+        pastSuccessLotterySignups: 1,
       },
-    ]);
-  });
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      // First group member has NEW_ASSIGNMENT, second group member has direct sign-up
+      case: "for group with NEW_ASSIGNMENT event and previous direct sign-up",
+      users: {
+        count: 4,
+        pastLotterySignupUsers: 1,
+        pastSuccessLotterySignups: 1,
+      },
+      previousDirectSignupHolders: [1],
+      gain: 1 + firstSignupBonus,
+    },
+    {
+      case: "for group with NEW_ASSIGNMENT events if program item cancelled",
+      users: {
+        count: 4,
+        pastLotterySignupUsers: 3,
+        pastSuccessLotterySignups: 1,
+        pastAssignmentProgramItemId: "cancelled-program-item",
+      },
+      gain: 1 + firstSignupBonus,
+    },
+  ]);
 
   test("for single user with previous direct sign-up to a 'directSignupAlwaysOpenIds' program item", () => {
     vi.spyOn(config, "event").mockReturnValue({
@@ -212,11 +222,8 @@ describe("should give first time bonus", () => {
     });
 
     const users = getUsers({ count: 1 });
-    const attendeeGroups = [users];
     // Always-open direct sign-ups don't take part in lotteries, so they must not use up the first time bonus
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
+    const list = listFor([users], {
       lotteryParticipantDirectSignups: getLotteryParticipantDirectSignups(
         [
           getPreviousDirectSignup({
@@ -227,18 +234,9 @@ describe("should give first time bonus", () => {
         ],
         [testProgramItem, testProgramItem2],
       ),
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
-      },
-    ]);
+    expect(list).toEqual([listItem(1 + firstSignupBonus, 1)]);
   });
 
   test("for single user with previous direct sign-up to a pre-convention-week program item", () => {
@@ -248,11 +246,8 @@ describe("should give first time bonus", () => {
     };
 
     const users = getUsers({ count: 1 });
-    const attendeeGroups = [users];
     // Pre-convention-week items are always open for direct sign-up, so their sign-ups must not use up the first time bonus
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
+    const list = listFor([users], {
       lotteryParticipantDirectSignups: getLotteryParticipantDirectSignups(
         [
           getPreviousDirectSignup({
@@ -263,419 +258,102 @@ describe("should give first time bonus", () => {
         ],
         [testProgramItem, preConventionWeekProgramItem],
       ),
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
     });
 
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
-      },
-    ]);
-  });
-
-  test("for single user with NEW_ASSIGNMENT event if program item cancelled", () => {
-    const users = getUsers({
-      count: 1,
-      pastLotterySignupUsers: 1,
-      pastSuccessLotterySignups: 1,
-      // The program item they were placed in before is gone, so that placement was not
-      // theirs to keep and must not cost them the first time bonus
-      pastAssignmentProgramItemId: "cancelled-program-item",
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
-      },
-    ]);
-  });
-
-  test("for group without previous direct sign-ups", () => {
-    const users = getUsers({ count: 2 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({ username: "foobar user" }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 2,
-      },
-    ]);
-  });
-
-  test("for group with half previous direct sign-ups", () => {
-    // Group of two, one has previous direct sign-up
-    const users = getUsers({ count: 2 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({ username: users[0].username }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 2,
-      },
-    ]);
-  });
-
-  test("for group with half NEW_ASSIGNMENT events", () => {
-    const users = getUsers({
-      count: 2,
-      pastLotterySignupUsers: 1,
-      pastSuccessLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 2,
-      },
-    ]);
-  });
-
-  test("for group with NEW_ASSIGNMENT event and previous direct sign-up", () => {
-    // First group member has NEW_ASSIGNMENT, second group member has direct sign-up
-    const users = getUsers({
-      count: 4,
-      pastLotterySignupUsers: 1,
-      pastSuccessLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({ username: users[1].username }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 4,
-      },
-    ]);
-  });
-
-  test("for group with NEW_ASSIGNMENT events if program item cancelled", () => {
-    const users = getUsers({
-      count: 4,
-      pastLotterySignupUsers: 3,
-      pastSuccessLotterySignups: 1,
-      pastAssignmentProgramItemId: "cancelled-program-item",
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 4,
-      },
-    ]);
+    expect(list).toEqual([listItem(1 + firstSignupBonus, 1)]);
   });
 });
 
 describe("should NOT give first time bonus", () => {
-  test("for single user with previous direct sign-up", () => {
-    const users = getUsers({ count: 1 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({
-          username: users[0].username,
-        }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1,
-        id: groupCreatorGroupCode,
-        size: 1,
-      },
-    ]);
-  });
-
-  test("for group with more than half previous direct sign-ups", () => {
-    // Group of five, three have previous direct sign-up
-    const users = getUsers({ count: 5 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({
-          username: users[0].username,
-        }),
-        getPreviousDirectSignup({
-          username: users[1].username,
-        }),
-        getPreviousDirectSignup({
-          username: users[2].username,
-        }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1,
-        id: groupCreatorGroupCode,
-        size: 5,
-      },
-    ]);
-  });
+  testBonusCases([
+    {
+      case: "for single user with previous direct sign-up",
+      users: { count: 1 },
+      previousDirectSignupHolders: [0],
+      gain: 1,
+    },
+    {
+      case: "for group with more than half previous direct sign-ups",
+      users: { count: 5 },
+      previousDirectSignupHolders: [0, 1, 2],
+      gain: 1,
+    },
+  ]);
 });
 
 describe("should give additional bonus", () => {
-  test("for single user with previous failed lottery sign-ups", () => {
-    const users = getUsers({
-      count: 1,
-      pastLotterySignupUsers: 1,
-      pastFailureLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
+  testBonusCases([
+    {
+      case: "for single user with previous failed lottery sign-ups",
+      users: {
+        count: 1,
+        pastLotterySignupUsers: 1,
+        pastFailureLotterySignups: 1,
       },
-    ]);
-  });
-
-  test("for single user with multiple failed lottery sign-ups", () => {
-    const users = getUsers({
-      count: 1,
-      pastLotterySignupUsers: 1,
-      pastFailureLotterySignups: 4,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 1,
+      gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
+    },
+    {
+      case: "for single user with multiple failed lottery sign-ups",
+      users: {
+        count: 1,
+        pastLotterySignupUsers: 1,
+        pastFailureLotterySignups: 4,
       },
-    ]);
-  });
-
-  test("for group with half previous failed lottery sign-ups", () => {
-    const users = getUsers({
-      count: 4,
-      pastLotterySignupUsers: 2,
-      pastFailureLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 4,
+      gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
+    },
+    {
+      case: "for group with half previous failed lottery sign-ups",
+      users: {
+        count: 4,
+        pastLotterySignupUsers: 2,
+        pastFailureLotterySignups: 1,
       },
-    ]);
-  });
+      gain: 1 + firstSignupBonus + additionalFirstSignupBonus,
+    },
+  ]);
 });
 
 describe("should NOT give additional bonus", () => {
-  test("for single user with previous direct sign-up", () => {
-    // The failed lottery sign-up would otherwise grant the additional bonus,
-    // but the previous direct sign-up blocks it
-    const users = getUsers({
-      count: 1,
-      pastLotterySignupUsers: 1,
-      pastFailureLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({
-          username: users[0].username,
-        }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1,
-        id: groupCreatorGroupCode,
-        size: 1,
+  testBonusCases([
+    {
+      // The failed lottery sign-up would otherwise grant the additional bonus, but the
+      // previous direct sign-up blocks it
+      case: "for single user with previous direct sign-up",
+      users: {
+        count: 1,
+        pastLotterySignupUsers: 1,
+        pastFailureLotterySignups: 1,
       },
-    ]);
-  });
-
-  test("for single user with NEW_ASSIGNMENT event", () => {
-    const users = getUsers({
-      count: 1,
-      pastLotterySignupUsers: 1,
-      pastFailureLotterySignups: 1,
-      pastSuccessLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1,
-        id: groupCreatorGroupCode,
-        size: 1,
+      previousDirectSignupHolders: [0],
+      gain: 1,
+    },
+    {
+      case: "for single user with NEW_ASSIGNMENT event",
+      users: {
+        count: 1,
+        pastLotterySignupUsers: 1,
+        pastFailureLotterySignups: 1,
+        pastSuccessLotterySignups: 1,
       },
-    ]);
-  });
-
-  test("for single user without previous lottery sign-up", () => {
-    const users = getUsers({ count: 1 });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [
-        getPreviousDirectSignup({
-          username: users[0].username,
-        }),
-      ],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1,
-        id: groupCreatorGroupCode,
-        size: 1,
+      gain: 1,
+    },
+    {
+      case: "for single user without previous lottery sign-up",
+      users: { count: 1 },
+      previousDirectSignupHolders: [0],
+      gain: 1,
+    },
+    {
+      // Two of five members have a failed lottery sign-up, below the 0.5 threshold
+      case: "for group with less than half previous failed lottery sign-ups",
+      users: {
+        count: 5,
+        pastLotterySignupUsers: 2,
+        pastFailureLotterySignups: 1,
       },
-    ]);
-  });
-
-  test("for group with less than half previous failed lottery sign-ups", () => {
-    // Two of five members have a failed lottery sign-up -> below the 0.5 threshold
-    const users = getUsers({
-      count: 5,
-      pastLotterySignupUsers: 2,
-      pastFailureLotterySignups: 1,
-    });
-    const attendeeGroups = [users];
-    const list = getList({
-      attendeeGroups,
-      assignmentTime,
-      lotteryParticipantDirectSignups: [],
-      lotterySignupProgramItems: [testProgramItem],
-      allProgramItems: [testProgramItem, testProgramItem2],
-    });
-
-    expect(list).toEqual([
-      {
-        event: testProgramItem.programItemId,
-        gain: 1 + firstSignupBonus,
-        id: groupCreatorGroupCode,
-        size: 5,
-      },
-    ]);
-  });
+      gain: 1 + firstSignupBonus,
+    },
+  ]);
 });
 
 // A batched run's own time is the parent's, while the sign-ups it wrote record the hour each
@@ -687,17 +365,10 @@ test("treats this run's own win as current for a batched program item", () => {
     -30,
   ).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
-  });
+  stubParentStartTime(testProgramItem, parentStartTime);
 
   const users = getUsers({ count: 1 });
-
-  const list = getList({
-    attendeeGroups: [users],
+  const list = listFor([users], {
     assignmentTime: parentStartTime,
     // The spot this very run just gave them, recorded against the program item's own hour
     lotteryParticipantDirectSignups: getLotteryParticipantDirectSignups(
@@ -718,17 +389,8 @@ test("treats this run's own win as current for a batched program item", () => {
       ],
       [testProgramItem],
     ),
-    lotterySignupProgramItems: [testProgramItem],
-    allProgramItems: [testProgramItem, testProgramItem2],
   });
 
   // Recognised as this run's own, so it does not spend the first time bonus
-  expect(list).toEqual([
-    {
-      event: testProgramItem.programItemId,
-      gain: 1 + firstSignupBonus,
-      id: groupCreatorGroupCode,
-      size: 1,
-    },
-  ]);
+  expect(list).toEqual([listItem(1 + firstSignupBonus, 1)]);
 });

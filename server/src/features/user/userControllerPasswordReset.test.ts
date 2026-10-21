@@ -11,7 +11,7 @@ import {
 import { UserGroup } from "shared/types/models/user";
 import { saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
-import { getJWT } from "server/utils/jwt";
+import { authorizedAs } from "server/test/utils/authorizedAs";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -39,7 +39,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       .send({
         username: "testuser",
       })
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -54,10 +54,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -72,10 +69,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -90,7 +84,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      .set(authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
@@ -107,7 +101,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "admin")}`);
+      .set(authorizedAs(UserGroup.USER, "admin"));
     expect(response.status).toEqual(401);
   });
 
@@ -122,10 +116,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.HELPER, "desk-volunteer")}`,
-      );
+      .set(authorizedAs(UserGroup.HELPER, "desk-volunteer"));
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -142,7 +133,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -157,7 +148,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(adminRequestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordError;
@@ -172,7 +163,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(helperRequestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.HELPER, "helper")}`);
+      .set(authorizedAs(UserGroup.HELPER, "helper"));
     expect(response2.status).toEqual(200);
 
     const body2 = response2.body as PostUpdateUserPasswordError;
@@ -192,7 +183,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(adminRequestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordResult;
@@ -206,7 +197,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(helperRequestData)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response2.status).toEqual(200);
 
     const body2 = response2.body as PostUpdateUserPasswordResult;
@@ -224,10 +215,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
-      );
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordError;

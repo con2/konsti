@@ -1,7 +1,13 @@
-import { afterEach, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { EventConfig } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
-import { ProgramType, SignupType, Tag } from "shared/types/models/programItem";
+import {
+  ProgramItem,
+  ProgramType,
+  SignupType,
+  Tag,
+} from "shared/types/models/programItem";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 
 afterEach(() => {
@@ -86,104 +92,81 @@ test("program item with minAttendance bigger than maxAttendance is invalid", () 
   expect(validity.allValuesValid).toBe(false);
 });
 
-test("lottery program item not starting at even hour is invalid", () => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [testProgramItem.programType],
+describe("Program item starting at half hour", () => {
+  const halfHourStart = "2019-07-26T14:30:00.000Z";
+  const evenHourStart = "2019-07-26T14:00:00.000Z";
+
+  interface HalfHourCase {
+    case: string;
+    programItem?: Partial<ProgramItem>;
+    eventConfig?: Partial<EventConfig>;
+    invalid: boolean;
+  }
+
+  test.each<HalfHourCase>([
+    {
+      case: "lottery program item is invalid",
+      eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
+      },
+      invalid: true,
+    },
+    {
+      case: "direct sign-up program item is valid",
+      programItem: { programType: ProgramType.TOURNAMENT },
+      invalid: false,
+    },
+    {
+      case: "lottery program item without Konsti sign-up is valid",
+      programItem: { signupType: SignupType.OTHER },
+      invalid: false,
+    },
+    {
+      case: "pre-convention week program item is valid",
+      programItem: { tags: [Tag.PRE_CONVENTION_WEEK] },
+      invalid: false,
+    },
+    {
+      case: "lottery program item is valid when its parent start time is at even hour",
+      eventConfig: {
+        startTimesByParentIds: new Map([
+          [testProgramItem.parentId, evenHourStart],
+        ]),
+      },
+      invalid: false,
+    },
+    {
+      case: "lottery program item is valid when its parent start time is at half hour",
+      eventConfig: {
+        startTimesByParentIds: new Map([
+          [testProgramItem.parentId, halfHourStart],
+        ]),
+      },
+      invalid: false,
+    },
+    {
+      case: "lottery program item is invalid when its parentId has no configured start time",
+      eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
+        startTimesByParentIds: new Map([["other-parent", evenHourStart]]),
+      },
+      invalid: true,
+    },
+  ])("$case", ({ programItem, eventConfig, invalid }) => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      ...eventConfig,
+    });
+
+    const validity = getProgramItemValidity({
+      ...testProgramItem,
+      startTime: halfHourStart,
+      ...programItem,
+    });
+
+    expect(validity.lotteryItemNotStartingOnEvenHour).toBe(invalid);
+    expect(validity.allValuesValid).toBe(!invalid);
   });
-
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(true);
-  expect(validity.allValuesValid).toBe(false);
-});
-
-test("direct sign-up program item can start at half hour", () => {
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    programType: ProgramType.TOURNAMENT,
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
-  expect(validity.allValuesValid).toBe(true);
-});
-
-test("lottery program item without Konsti sign-up can start at half hour", () => {
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    signupType: SignupType.OTHER,
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
-  expect(validity.allValuesValid).toBe(true);
-});
-
-test("pre-convention week program item can start at half hour", () => {
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    tags: [Tag.PRE_CONVENTION_WEEK],
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
-  expect(validity.allValuesValid).toBe(true);
-});
-
-test("lottery program item can start at half hour when parent start time is at even hour", () => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, "2019-07-26T14:00:00.000Z"],
-    ]),
-  });
-
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
-  expect(validity.allValuesValid).toBe(true);
-});
-
-test("lottery program item can start at half hour when parent start time is at half hour", () => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, "2019-07-26T14:30:00.000Z"],
-    ]),
-  });
-
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(false);
-  expect(validity.allValuesValid).toBe(true);
-});
-
-test("lottery program item starting at half hour is invalid when parentId has no configured start time", () => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    twoPhaseSignupProgramTypes: [testProgramItem.programType],
-    startTimesByParentIds: new Map([
-      ["other-parent", "2019-07-26T14:00:00.000Z"],
-    ]),
-  });
-
-  const validity = getProgramItemValidity({
-    ...testProgramItem,
-    startTime: "2019-07-26T14:30:00.000Z",
-  });
-
-  expect(validity.lotteryItemNotStartingOnEvenHour).toBe(true);
-  expect(validity.allValuesValid).toBe(false);
 });
 
 test("minAttendance bigger than maxAttendance is not flagged when maxAttendance is 0", () => {

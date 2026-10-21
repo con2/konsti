@@ -2,6 +2,7 @@ import { Page, expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
 import { config } from "shared/config";
 import { testProgramItem } from "shared/tests/testProgramItem";
+import { PAST_POLL_TICK } from "playwright/clockTestUtils";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -63,7 +64,7 @@ test("Update banner appears once polls confirm a newer build and stays dismissed
   await expect(banner.container).toBeHidden();
 
   // The second poll confirms the version
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
   await expect(banner.container).toContainText(/konsti has been updated/i);
 
@@ -71,7 +72,7 @@ test("Update banner appears once polls confirm a newer build and stays dismissed
   // don't bring it back
   await banner.dismissButton.click();
   await expect(banner.container).toBeHidden();
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeHidden();
 });
 
@@ -101,7 +102,7 @@ test("A settings response with no build time at all is not an update", async ({
   // The load-time response plus the two polls a version needs to be confirmed
   await expect
     .poll(async () => {
-      await page.clock.fastForward("01:01");
+      await page.clock.fastForward(PAST_POLL_TICK);
       return settingsResponses;
     })
     .toBeGreaterThanOrEqual(3);
@@ -133,7 +134,7 @@ test("An instance still on the previous build is not an update", async ({
 
   await expect
     .poll(async () => {
-      await page.clock.fastForward("01:01");
+      await page.clock.fastForward(PAST_POLL_TICK);
       return settingsResponses;
     })
     .toBeGreaterThanOrEqual(3);
@@ -155,7 +156,7 @@ test("A further deploy notifies again after an earlier build was dismissed", asy
   await expect(programList.programTypeFilter).toBeVisible();
 
   const banner = new AppUpdateBanner(page);
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
 
   await banner.dismissButton.click();
@@ -169,7 +170,7 @@ test("A further deploy notifies again after an earlier build was dismissed", asy
   // fast-forwards needed to confirm a build is not fixed
   await expect
     .poll(async () => {
-      await page.clock.fastForward("01:01");
+      await page.clock.fastForward(PAST_POLL_TICK);
       return await banner.container.isVisible();
     })
     .toBe(true);
@@ -179,7 +180,6 @@ test("A later build gets a transparent reload of its own", async ({
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
@@ -199,7 +199,7 @@ test("A later build gets a transparent reload of its own", async ({
   await programList.waitForItems();
 
   const banner = new AppUpdateBanner(page);
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
 
   // Spend the guard on the first build
@@ -216,7 +216,7 @@ test("A later build gets a transparent reload of its own", async ({
   setServerBuildTime("2000");
   await expect
     .poll(async () => {
-      await page.clock.fastForward("01:01");
+      await page.clock.fastForward(PAST_POLL_TICK);
       return await banner.container.isVisible();
     })
     .toBe(true);
@@ -242,7 +242,7 @@ test("Update banner reload button reloads the page", async ({
   await expect(programList.programTypeFilter).toBeVisible();
 
   const banner = new AppUpdateBanner(page);
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
 
   await setPageMarker(page);
@@ -258,7 +258,6 @@ test("Update reloads transparently on the first navigation, but only once per bu
   page,
   request,
 }) => {
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
@@ -278,7 +277,7 @@ test("Update reloads transparently on the first navigation, but only once per bu
   await programList.waitForItems();
 
   const banner = new AppUpdateBanner(page);
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
 
   // A route navigation replaces the whole view, so the app uses it to apply
@@ -297,7 +296,7 @@ test("Update reloads transparently on the first navigation, but only once per bu
   // the fast-forwarded interval tick isn't dropped as concurrent.
   const programItemPage = new ProgramItemPage(page);
   await expect(programItemPage.title).toBeVisible();
-  await page.clock.fastForward("01:01");
+  await page.clock.fastForward(PAST_POLL_TICK);
   await expect(banner.container).toBeVisible();
 
   // ...but the automatic reload is attempted only once per version: a

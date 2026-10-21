@@ -87,94 +87,100 @@ describe("Locale independent formatting", () => {
   });
 });
 
-describe("EN locale formatting", () => {
+// The same instants in both languages, so a locale update rewording a weekday shows up here
+describe.each([
+  {
+    locale: Locale.EN,
+    getWeekdayAndTime: [
+      [WINTER, "Thursday 12:30"],
+      [SUMMER, "Wednesday 13:30"],
+      [MARCH_DST_BEFORE, "Sunday 02:59"],
+      [MARCH_DST_AFTER, "Sunday 04:00"],
+      [OCTOBER_DST_BEFORE, "Sunday 03:59"],
+      [OCTOBER_DST_AFTER, "Sunday 03:00"],
+      [MIDNIGHT, "Wednesday 00:00"],
+    ],
+    getShortDate: [
+      [WINTER, "Thu 15.1."],
+      [SUMMER, "Wed 15.7."],
+      [MARCH_DST_AFTER, "Sun 29.3."],
+      [MIDNIGHT, "Wed 11.2."],
+    ],
+    getShortWeekdayAndTime: [
+      [WINTER, "Thu 12:30"],
+      [SUMMER, "Wed 13:30"],
+      [OCTOBER_DST_AFTER, "Sun 03:00"],
+      [MIDNIGHT, "Wed 00:00"],
+    ],
+    getDateAndTime: [
+      [WINTER, "Thu 15.1.2026 12:30"],
+      [SUMMER, "Wed 15.7.2026 13:30"],
+      [OCTOBER_DST_AFTER, "Sun 25.10.2026 03:00"],
+      [YEAR_END, "Thu 31.12.2026 23:59"],
+    ],
+  },
+  {
+    locale: Locale.FI,
+    getWeekdayAndTime: [
+      [WINTER, "torstai 12:30"],
+      [SUMMER, "keskiviikko 13:30"],
+      [MARCH_DST_BEFORE, "sunnuntai 02:59"],
+      [MARCH_DST_AFTER, "sunnuntai 04:00"],
+      [OCTOBER_DST_BEFORE, "sunnuntai 03:59"],
+      [OCTOBER_DST_AFTER, "sunnuntai 03:00"],
+      [MIDNIGHT, "keskiviikko 00:00"],
+    ],
+    getShortDate: [
+      [WINTER, "to 15.1."],
+      [SUMMER, "ke 15.7."],
+      [MARCH_DST_AFTER, "su 29.3."],
+      [MIDNIGHT, "ke 11.2."],
+    ],
+    getShortWeekdayAndTime: [
+      [WINTER, "to 12:30"],
+      [SUMMER, "ke 13:30"],
+      [OCTOBER_DST_AFTER, "su 03:00"],
+      [MIDNIGHT, "ke 00:00"],
+    ],
+    getDateAndTime: [
+      [WINTER, "to 15.1.2026 12:30"],
+      [SUMMER, "ke 15.7.2026 13:30"],
+      [OCTOBER_DST_AFTER, "su 25.10.2026 03:00"],
+      [YEAR_END, "to 31.12.2026 23:59"],
+    ],
+  },
+])("$locale locale formatting", ({ locale, ...expectations }) => {
   beforeAll(() => {
-    setLocale(Locale.EN);
+    setLocale(locale);
   });
 
-  test.each([
-    [WINTER, "Thursday 12:30"],
-    [SUMMER, "Wednesday 13:30"],
-    [MARCH_DST_BEFORE, "Sunday 02:59"],
-    [MARCH_DST_AFTER, "Sunday 04:00"],
-    [OCTOBER_DST_BEFORE, "Sunday 03:59"],
-    [OCTOBER_DST_AFTER, "Sunday 03:00"],
-    [MIDNIGHT, "Wednesday 00:00"],
-  ])("getWeekdayAndTime(%s) is %s", (time, expected) => {
-    expect(getWeekdayAndTime(time)).toEqual(expected);
-  });
+  test.each(expectations.getWeekdayAndTime)(
+    "getWeekdayAndTime(%s) is %s",
+    (time, expected) => {
+      expect(getWeekdayAndTime(time)).toEqual(expected);
+    },
+  );
 
-  test.each([
-    [WINTER, "Thu 15.1."],
-    [SUMMER, "Wed 15.7."],
-    [MARCH_DST_AFTER, "Sun 29.3."],
-    [MIDNIGHT, "Wed 11.2."],
-  ])("getShortDate(%s) is %s", (time, expected) => {
-    expect(getShortDate(time)).toEqual(expected);
-  });
+  test.each(expectations.getShortDate)(
+    "getShortDate(%s) is %s",
+    (time, expected) => {
+      expect(getShortDate(time)).toEqual(expected);
+    },
+  );
 
-  test.each([
-    [WINTER, "Thu 12:30"],
-    [SUMMER, "Wed 13:30"],
-    [OCTOBER_DST_AFTER, "Sun 03:00"],
-    [MIDNIGHT, "Wed 00:00"],
-  ])("getShortWeekdayAndTime(%s) is %s", (time, expected) => {
-    expect(getShortWeekdayAndTime(time)).toEqual(expected);
-  });
+  test.each(expectations.getShortWeekdayAndTime)(
+    "getShortWeekdayAndTime(%s) is %s",
+    (time, expected) => {
+      expect(getShortWeekdayAndTime(time)).toEqual(expected);
+    },
+  );
 
-  test.each([
-    [WINTER, "Thu 15.1.2026 12:30"],
-    [SUMMER, "Wed 15.7.2026 13:30"],
-    [OCTOBER_DST_AFTER, "Sun 25.10.2026 03:00"],
-    [YEAR_END, "Thu 31.12.2026 23:59"],
-  ])("getDateAndTime(%s) is %s", (time, expected) => {
-    expect(getDateAndTime(time)).toEqual(expected);
-  });
-});
-
-describe("FI locale formatting", () => {
-  beforeAll(() => {
-    setLocale(Locale.FI);
-  });
-
-  test.each([
-    [WINTER, "torstai 12:30"],
-    [SUMMER, "keskiviikko 13:30"],
-    [MARCH_DST_BEFORE, "sunnuntai 02:59"],
-    [MARCH_DST_AFTER, "sunnuntai 04:00"],
-    [OCTOBER_DST_BEFORE, "sunnuntai 03:59"],
-    [OCTOBER_DST_AFTER, "sunnuntai 03:00"],
-    [MIDNIGHT, "keskiviikko 00:00"],
-  ])("getWeekdayAndTime(%s) is %s", (time, expected) => {
-    expect(getWeekdayAndTime(time)).toEqual(expected);
-  });
-
-  test.each([
-    [WINTER, "to 15.1."],
-    [SUMMER, "ke 15.7."],
-    [MARCH_DST_AFTER, "su 29.3."],
-    [MIDNIGHT, "ke 11.2."],
-  ])("getShortDate(%s) is %s", (time, expected) => {
-    expect(getShortDate(time)).toEqual(expected);
-  });
-
-  test.each([
-    [WINTER, "to 12:30"],
-    [SUMMER, "ke 13:30"],
-    [OCTOBER_DST_AFTER, "su 03:00"],
-    [MIDNIGHT, "ke 00:00"],
-  ])("getShortWeekdayAndTime(%s) is %s", (time, expected) => {
-    expect(getShortWeekdayAndTime(time)).toEqual(expected);
-  });
-
-  test.each([
-    [WINTER, "to 15.1.2026 12:30"],
-    [SUMMER, "ke 15.7.2026 13:30"],
-    [OCTOBER_DST_AFTER, "su 25.10.2026 03:00"],
-    [YEAR_END, "to 31.12.2026 23:59"],
-  ])("getDateAndTime(%s) is %s", (time, expected) => {
-    expect(getDateAndTime(time)).toEqual(expected);
-  });
+  test.each(expectations.getDateAndTime)(
+    "getDateAndTime(%s) is %s",
+    (time, expected) => {
+      expect(getDateAndTime(time)).toEqual(expected);
+    },
+  );
 });
 
 // Takes the locale as an argument rather than reading the global one, so it has
@@ -225,83 +231,88 @@ describe("Relative time", () => {
     return formatRelativeTime(timeNow, shifted(number, key));
   };
 
-  test("Format EN relative times correctly", () => {
-    setLocale(Locale.EN);
+  interface RelativeTimeCases {
+    locale: Locale;
+    past: [number, Unit, string][];
+    future: [number, Unit, string][];
+  }
 
-    expect(relativeTimePast(1, "second")).toEqual("less than a minute ago");
-    expect(relativeTimePast(2, "seconds")).toEqual("less than a minute ago");
+  const relativeTimeCases: RelativeTimeCases[] = [
+    {
+      locale: Locale.EN,
+      past: [
+        [1, "second", "less than a minute ago"],
+        [2, "seconds", "less than a minute ago"],
+        [1, "minute", "1 minute ago"],
+        [2, "minutes", "2 minutes ago"],
+        [1, "hour", "about 1 hour ago"],
+        [2, "hours", "about 2 hours ago"],
+        [1, "day", "1 day ago"],
+        [2, "days", "2 days ago"],
+        [1, "month", "about 1 month ago"],
+        [2, "months", "2 months ago"],
+        [1, "year", "about 1 year ago"],
+        [2, "years", "about 2 years ago"],
+      ],
+      future: [
+        [1, "second", "in less than a minute"],
+        [2, "seconds", "in less than a minute"],
+        [1, "minute", "in 1 minute"],
+        [2, "minutes", "in 2 minutes"],
+        [1, "hour", "in about 1 hour"],
+        [2, "hours", "in about 2 hours"],
+        [1, "day", "in 1 day"],
+        [2, "days", "in 2 days"],
+        [1, "month", "in about 1 month"],
+        [2, "months", "in 2 months"],
+        [1, "year", "in about 1 year"],
+        [2, "years", "in about 2 years"],
+      ],
+    },
+    {
+      locale: Locale.FI,
+      past: [
+        [1, "second", "alle minuutti sitten"],
+        [2, "seconds", "alle minuutti sitten"],
+        [1, "minute", "minuutti sitten"],
+        [2, "minutes", "2 minuuttia sitten"],
+        [1, "hour", "noin tunti sitten"],
+        [2, "hours", "noin 2 tuntia sitten"],
+        [1, "day", "päivä sitten"],
+        [2, "days", "2 päivää sitten"],
+        [1, "month", "noin kuukausi sitten"],
+        [2, "months", "2 kuukautta sitten"],
+        [1, "year", "noin vuosi sitten"],
+        [2, "years", "noin 2 vuotta sitten"],
+      ],
+      future: [
+        [1, "second", "alle minuutin kuluttua"],
+        [2, "seconds", "alle minuutin kuluttua"],
+        [1, "minute", "minuutin kuluttua"],
+        [2, "minutes", "2 minuutin kuluttua"],
+        [1, "hour", "noin tunnin kuluttua"],
+        [2, "hours", "noin 2 tunnin kuluttua"],
+        [1, "day", "päivän kuluttua"],
+        [2, "days", "2 päivän kuluttua"],
+        [1, "month", "noin kuukauden kuluttua"],
+        [2, "months", "2 kuukauden kuluttua"],
+        [1, "year", "noin vuoden kuluttua"],
+        [2, "years", "noin 2 vuoden kuluttua"],
+      ],
+    },
+  ];
 
-    expect(relativeTimePast(1, "minute")).toEqual("1 minute ago");
-    expect(relativeTimePast(2, "minutes")).toEqual("2 minutes ago");
+  describe.each(relativeTimeCases)("$locale", ({ locale, past, future }) => {
+    beforeAll(() => {
+      setLocale(locale);
+    });
 
-    expect(relativeTimePast(1, "hour")).toEqual("about 1 hour ago");
-    expect(relativeTimePast(2, "hours")).toEqual("about 2 hours ago");
+    test.each(past)("%s %s ago is '%s'", (number, unit, expected) => {
+      expect(relativeTimePast(number, unit)).toEqual(expected);
+    });
 
-    expect(relativeTimePast(1, "day")).toEqual("1 day ago");
-    expect(relativeTimePast(2, "days")).toEqual("2 days ago");
-
-    expect(relativeTimePast(1, "month")).toEqual("about 1 month ago");
-    expect(relativeTimePast(2, "months")).toEqual("2 months ago");
-
-    expect(relativeTimePast(1, "year")).toEqual("about 1 year ago");
-    expect(relativeTimePast(2, "years")).toEqual("about 2 years ago");
-
-    expect(relativeTimeFuture(1, "second")).toEqual("in less than a minute");
-    expect(relativeTimeFuture(2, "seconds")).toEqual("in less than a minute");
-
-    expect(relativeTimeFuture(1, "minute")).toEqual("in 1 minute");
-    expect(relativeTimeFuture(2, "minutes")).toEqual("in 2 minutes");
-
-    expect(relativeTimeFuture(1, "hour")).toEqual("in about 1 hour");
-    expect(relativeTimeFuture(2, "hours")).toEqual("in about 2 hours");
-
-    expect(relativeTimeFuture(1, "day")).toEqual("in 1 day");
-    expect(relativeTimeFuture(2, "days")).toEqual("in 2 days");
-
-    expect(relativeTimeFuture(1, "month")).toEqual("in about 1 month");
-    expect(relativeTimeFuture(2, "months")).toEqual("in 2 months");
-
-    expect(relativeTimeFuture(1, "year")).toEqual("in about 1 year");
-    expect(relativeTimeFuture(2, "years")).toEqual("in about 2 years");
-  });
-
-  test("Format FI relative times correctly", () => {
-    setLocale(Locale.FI);
-
-    expect(relativeTimePast(1, "second")).toEqual("alle minuutti sitten");
-    expect(relativeTimePast(2, "seconds")).toEqual("alle minuutti sitten");
-
-    expect(relativeTimePast(1, "minute")).toEqual("minuutti sitten");
-    expect(relativeTimePast(2, "minutes")).toEqual("2 minuuttia sitten");
-
-    expect(relativeTimePast(1, "hour")).toEqual("noin tunti sitten");
-    expect(relativeTimePast(2, "hours")).toEqual("noin 2 tuntia sitten");
-
-    expect(relativeTimePast(1, "day")).toEqual("päivä sitten");
-    expect(relativeTimePast(2, "days")).toEqual("2 päivää sitten");
-
-    expect(relativeTimePast(1, "month")).toEqual("noin kuukausi sitten");
-    expect(relativeTimePast(2, "months")).toEqual("2 kuukautta sitten");
-
-    expect(relativeTimePast(1, "year")).toEqual("noin vuosi sitten");
-    expect(relativeTimePast(2, "years")).toEqual("noin 2 vuotta sitten");
-
-    expect(relativeTimeFuture(1, "second")).toEqual("alle minuutin kuluttua");
-    expect(relativeTimeFuture(2, "seconds")).toEqual("alle minuutin kuluttua");
-
-    expect(relativeTimeFuture(1, "minute")).toEqual("minuutin kuluttua");
-    expect(relativeTimeFuture(2, "minutes")).toEqual("2 minuutin kuluttua");
-
-    expect(relativeTimeFuture(1, "hour")).toEqual("noin tunnin kuluttua");
-    expect(relativeTimeFuture(2, "hours")).toEqual("noin 2 tunnin kuluttua");
-
-    expect(relativeTimeFuture(1, "day")).toEqual("päivän kuluttua");
-    expect(relativeTimeFuture(2, "days")).toEqual("2 päivän kuluttua");
-
-    expect(relativeTimeFuture(1, "month")).toEqual("noin kuukauden kuluttua");
-    expect(relativeTimeFuture(2, "months")).toEqual("2 kuukauden kuluttua");
-
-    expect(relativeTimeFuture(1, "year")).toEqual("noin vuoden kuluttua");
-    expect(relativeTimeFuture(2, "years")).toEqual("noin 2 vuoden kuluttua");
+    test.each(future)("in %s %s is '%s'", (number, unit, expected) => {
+      expect(relativeTimeFuture(number, unit)).toEqual(expected);
+    });
   });
 });

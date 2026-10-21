@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelService";
+import { runWithFakeTimers } from "server/test/utils/runWithFakeTimers";
 import { logger } from "server/utils/logger";
 
 const buildEnvelope = (dsn: string): Buffer =>
@@ -21,18 +22,10 @@ const upstreamError = {
   errorId: "unknown",
 };
 
-// Runs the tunnel with fake timers so the retry delay doesn't slow tests down
 const runTunnel = async (
   envelope: Buffer,
 ): ReturnType<typeof resendSentryRequest> => {
-  vi.useFakeTimers();
-  try {
-    const promise = resendSentryRequest(envelope);
-    await vi.runAllTimersAsync();
-    return await promise;
-  } finally {
-    vi.useRealTimers();
-  }
+  return await runWithFakeTimers(() => resendSentryRequest(envelope));
 };
 
 afterEach(() => {

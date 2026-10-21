@@ -2,22 +2,30 @@ import { randomUUID } from "node:crypto";
 import { subHours } from "date-fns";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
+import { ProgramItem } from "shared/types/models/programItem";
+import { UserAssignmentResult } from "shared/types/models/result";
 import { LotterySignup, User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const assignmentTime = testProgramItem.startTime;
 export const groupCreatorGroupCode = "123-234-345";
 
+// A spot from an earlier lottery, an hour before the run's time unless given otherwise
 export const getPreviousDirectSignup = ({
   username,
   parentStartTime,
   programItemId = testProgramItem.programItemId,
   priority = 1,
+  signedToStartTime = subHours(
+    new Date(parentStartTime ?? assignmentTime),
+    1,
+  ).toISOString(),
 }: {
   username: string;
   parentStartTime?: string;
   programItemId?: string;
   priority?: number;
+  signedToStartTime?: string;
 }): DirectSignupsForProgramItem => {
   return {
     programItemId,
@@ -25,15 +33,51 @@ export const getPreviousDirectSignup = ({
       {
         username,
         priority,
-        signedToStartTime: subHours(
-          new Date(parentStartTime ?? assignmentTime),
-          1,
-        ).toISOString(),
+        signedToStartTime,
         signupTime: assignmentTime,
         message: "",
       },
     ],
-    count: 0,
+    count: 1,
+  };
+};
+
+// A lottery placing the user into the program item at its own start time
+export const getAssignmentResult = ({
+  username,
+  programItem = testProgramItem,
+  priority = 1,
+}: {
+  username: string;
+  programItem?: ProgramItem;
+  priority?: number;
+}): UserAssignmentResult => {
+  return {
+    username,
+    assignmentSignup: {
+      programItemId: programItem.programItemId,
+      priority,
+      signedToStartTime: programItem.startTime,
+    },
+  };
+};
+
+export const getEventLogItem = ({
+  action,
+  programItemId = testProgramItem.programItemId,
+  programItemStartTime = assignmentTime,
+}: {
+  action: EventLogAction;
+  programItemId?: string;
+  programItemStartTime?: string;
+}): EventLogItem => {
+  return {
+    eventLogItemId: randomUUID(),
+    action,
+    isSeen: false,
+    programItemId,
+    programItemStartTime,
+    createdAt: programItemStartTime,
   };
 };
 
@@ -156,4 +200,13 @@ export const getUsers = ({
   }
 
   return users;
+};
+
+export const usersWithEventLogAction = (
+  users: User[],
+  action: EventLogAction,
+): User[] => {
+  return users.filter((user) =>
+    user.eventLogItems.some((eventLogItem) => eventLogItem.action === action),
+  );
 };

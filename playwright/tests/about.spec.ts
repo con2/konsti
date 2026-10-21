@@ -3,7 +3,6 @@ import { AboutPage } from "playwright/pages/AboutPage";
 import { clearDb, login, populateDb } from "playwright/playwrightUtils";
 
 test("About page views content logged", async ({ page, request }) => {
-  await clearDb(request);
   await populateDb(request, {
     clean: true,
     users: true,

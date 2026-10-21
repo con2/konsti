@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -7,7 +6,7 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  clearDb,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -26,12 +25,8 @@ test("Pre-convention week program item uses direct sign-up even with lottery pro
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
-  await clearDb(request);
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     {
