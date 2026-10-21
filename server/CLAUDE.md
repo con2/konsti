@@ -24,7 +24,7 @@ Run from the repo root as `yarn workspace server <script>` (or via the root shor
 - **`utils/`** — cross-cutting helpers: `server.ts` (Express app assembly), `logger.ts` (winston), `instrument.ts` (Sentry), `applyPortOffset.ts` (per-worktree `PORT_OFFSET` preload, see Scripts above), `cron.ts` (scheduled jobs), `notificationQueue.ts` (email queue), `jwt.ts`, `bcrypt.ts`, `authHeader.ts`, `zodUtils.ts`, etc.
 - **`types/`** — server-only types (`assignmentTypes.ts`, `jwtTypes.ts`, `serialTypes.ts`, `userTypes.ts`, `resultTypes.ts`, `declarations/`). Domain models live in `shared/types/models/`.
 - **`kompassi/`** — Kompassi program-item import logic (fetch, zod parsing, mapping to `ProgramItem`). It is event-agnostic: every event shares one Kompassi schema, and per-event differences are config (`addToKonstiOther`, `eventNameToKompassiEventName`), not code. Kompassi _login_ lives in `features/kompassi-login/`, not here.
-- **`test/`** — `globalSetup.ts` + `setupTests.ts`, `mock-data/`, `utils/` (test helpers), `test-data-generation/`, `kompassi-mock-service/` (registered only in `development`), `test-settings/`, `scripts/`.
+- **`test/`** — `globalSetup.ts` + `setupTests.ts`, `mongoDbVersion.ts`, `mock-data/`, `utils/` (test helpers), `test-data-generation/`, `kompassi-mock-service/` (registered only in `development`), `test-settings/`, `scripts/`.
 
 ## Build & Run Model
 
@@ -272,7 +272,7 @@ When writing `signedToStartTime` for sign-ups, store the program item's own `sta
 
 ## Database
 
-MongoDB with Mongoose. Tests use `mongodb-memory-server` for an in-memory DB. Docker Compose config in `docker/`; the local dev DB container starts via `yarn workspace server docker:db` (port 27017).
+MongoDB with Mongoose. Tests use `mongodb-memory-server` for an in-memory DB. Docker Compose config in `docker/`; the local dev DB container starts via `yarn workspace server docker:db` (port 27017). Both take their MongoDB version from `src/test/mongoDbVersion.ts`, and the CI binary cache keys hash that file; `docker/docker-compose.yml` and `kubernetes/default.vars.yaml` carry their own copy of the image tag, so a bump touches all three.
 
 **Lifecycle:** each convention runs its own instance for the duration of the event only. After the event the DB is dumped to `server/src/features/statistics/datafiles/` and the instance is torn down. Because there is no long-lived production DB and no cross-event continuity, schema or enum-value changes don't need migration files — just change the code and let the next event start with a fresh DB. Do not add migration scripts, startup migration hooks, or backwards-compatibility shims.
 
