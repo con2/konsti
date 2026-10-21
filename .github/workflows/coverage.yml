@@ -41,7 +41,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ~/.cache/mongodb-binaries
-          key: mongodb-9.0.4
+          key: mongodb-${{ hashFiles('server/src/test/mongoDbVersion.ts') }}
 
       - name: Run vitest coverage
         run: |

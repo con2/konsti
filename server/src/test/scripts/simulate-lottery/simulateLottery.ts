@@ -23,6 +23,7 @@ import { runAssignment } from "server/features/assignment/run-assignment/runAssi
 import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { findUsers } from "server/features/user/userRepository";
+import { mongoDbVersion } from "server/test/mongoDbVersion";
 import {
   Baseline,
   compareToBaseline,
@@ -56,7 +57,6 @@ import { saveTestSettings } from "server/test/test-settings/testSettingsReposito
 import { seedMathRandom } from "server/test/utils/seededRandom";
 import { logger } from "server/utils/logger";
 
-const mongoDbVersion = "9.0.4";
 const maxReportedDiffs = 20;
 
 interface Replay {

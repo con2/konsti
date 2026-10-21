@@ -1,9 +1,8 @@
 import { execSync } from "node:child_process";
 import { setTimeout as sleep } from "node:timers/promises";
+import { mongoDbImage, mongoDbVersion } from "server/test/mongoDbVersion";
 import { logger } from "server/utils/logger";
 
-const mongoDbVersion = "9.0.4";
-const mongoDbImage = `mongo:${mongoDbVersion}-resolute`;
 const containerName = `konsti-mongodb-${mongoDbVersion}`;
 const stabilityCheckMs = 3000;
 
