@@ -36,10 +36,11 @@ import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 
 export const getBaseUrl = (): string => {
-  if (process.env.SETTINGS === "ci") {
-    return "http://server:5000";
-  }
-  const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
+  // The ci server serves the mock itself
+  const baseUrl =
+    process.env.SETTINGS === "ci"
+      ? "http://localhost:5000"
+      : (process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu");
   // The e2e Kompassi mock is served by this same backend on the default port
   // 5000. When PORT_OFFSET runs an instance on a shifted port, follow it so the
   // instance hits its own mock instead of another instance's port 5000. Real

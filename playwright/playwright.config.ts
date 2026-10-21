@@ -63,7 +63,8 @@ ENABLE_MOBILE_SAFARI &&
 
 // The per-worktree port offset shifts the client dev server port so the suite
 // targets its own worktree's local instance. PLAYWRIGHT_BASEURL still wins
-// when set (e.g. the Docker run points it at http://server:5000).
+// when set (the E2E runner points it at the server, which serves the built
+// client itself).
 const portOffset = resolvePortOffset();
 
 const config: PlaywrightTestConfig = {

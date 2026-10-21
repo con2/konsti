@@ -178,7 +178,11 @@ export const startServer = async ({
       return;
     }
 
-    res.sendFile(path.join(staticPath, "index.html"), {
+    // Sent relative to a root: given an absolute path, send applies its
+    // dotfile check to every segment, so a checkout under a dot-directory
+    // (such as a worktree) would 404 every app route
+    res.sendFile("index.html", {
+      root: staticPath,
       headers: { "Cache-Control": "no-cache" },
     });
   });

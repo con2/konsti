@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5]
+        shard: [1, 2, 3, 4, 5, 6, 7]
 
     env:
       CI: true
@@ -86,15 +86,24 @@ jobs:
         run: |
           YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
+      # Keyed by the Playwright version rather than yarn.lock, so an unrelated
+      # dependency bump doesn't throw the browsers away
+      - name: Read Playwright version
+        id: playwright-version
+        run: |
+          echo "version=$(node -p "require('./package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
+
       - name: Cache Playwright browsers
         uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-browsers-${{ hashFiles('yarn.lock') }}
+          key: playwright-browsers-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
 
+      # Only the browsers the enabled projects use; extend the list when an
+      # ENABLE_* flag in the Playwright config is flipped
       - name: Install Playwright browsers
         run: |
-          npx playwright install --with-deps
+          npx playwright install --with-deps chromium webkit
 
       - name: Run Playwright coverage shard
         run: |

@@ -40,11 +40,6 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-      - name: Run hadolint on Playwright Dockerfile
-        uses: hadolint/hadolint-action@v3.5.0
-        with:
-          dockerfile: playwright/Dockerfile
-
       - name: Use Node.js
         uses: actions/setup-node@v7
         with:
@@ -168,14 +163,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5]
+        shard: [1, 2, 3, 4, 5, 6, 7]
 
     env:
       CI: true
       HUSKY: 0
-      # Each shard runs an isolated docker-compose stack (own server + Mongo), so the
-      # shared-DB serial constraint holds within a shard while the suite parallelizes across runners
-      PLAYWRIGHT_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
 
     timeout-minutes: 30
 
@@ -189,22 +181,41 @@ jobs:
           node-version-file: ".node-version"
           cache: "yarn"
 
-      # Required even though the app is built inside Docker: Yarn 4 refuses to run any script
-      # without the node_modules install state file
       - name: Yarn install
         run: |
           YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
+      # Keyed by the Playwright version rather than yarn.lock, so an unrelated
+      # dependency bump doesn't throw the browsers away
+      - name: Read Playwright version
+        id: playwright-version
+        run: |
+          echo "version=$(node -p "require('./package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
+
+      # Only the browsers the enabled projects use; extend the list when an
+      # ENABLE_* flag in the Playwright config is flipped
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps chromium webkit
+
+      # Each shard runs its own server + Mongo on the runner, so the shared-DB
+      # serial constraint holds within a shard while the suite parallelizes across runners
       - name: Run Playwright tests
         run: |
-          yarn docker-compose:test
+          yarn e2e --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Upload blob report
         uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: blob-report-${{ matrix.shard }}
-          path: playwright/blob-report/
+          path: blob-report/
           retention-days: 1
 
       - name: Upload test results if Playwright tests failed
@@ -213,6 +224,22 @@ jobs:
         with:
           name: playwright-videos-${{ matrix.shard }}
           path: playwright/test-results/
+
+  # The e2e job no longer builds the image, so a PR still has to prove the
+  # Dockerfile builds. Main pushes build it in the Deploy workflow anyway
+  docker-build:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Build Docker image
+        run: |
+          docker build --build-arg env=prod .
 
   merge-reports:
     # Merge the per-shard blob reports into one HTML report. Runs even if a shard failed,
@@ -235,11 +262,6 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version"
-          cache: "yarn"
-
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
       - name: Download blob reports
         uses: actions/download-artifact@v8
@@ -248,9 +270,11 @@ jobs:
           pattern: blob-report-*
           merge-multiple: true
 
+      # Runs the pinned Playwright straight from the registry: a full yarn install
+      # would cost more than this whole job
       - name: Merge into HTML report
         run: |
-          npx playwright merge-reports --reporter html ./all-blob-reports
+          npx --yes "@playwright/test@$(node -p "require('./package.json').devDependencies['@playwright/test']")" merge-reports --reporter html ./all-blob-reports
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v7
