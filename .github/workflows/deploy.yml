@@ -18,9 +18,9 @@ on:
           - prod
         default: prod
 
-# One deploy per environment at a time, never cancelled mid-rollout. A queued
-# run is superseded by a newer one of the same ref, which is fine since the
-# newest run has the newest commit.
+# One deploy per environment and ref at a time, never cancelled mid-rollout. A
+# queued run is superseded by a newer one, which is fine since the newest run
+# has the newest commit. The ref keeps a no-op dispatch from another branch out.
 concurrency:
   group: deploy-${{ github.ref }}-${{ github.event_name == 'push' && 'staging' || inputs.environment }}
   cancel-in-progress: false
@@ -61,13 +61,14 @@ jobs:
         uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
 
       # Deploy time rather than commit time: a rollback is an older commit but the
-      # newest deployment, and clients have to pick it up, so roll back with a new
-      # run rather than a re-run. Also in the tag, so no tag is ever overwritten.
+      # newest deployment, and clients have to pick it up. A re-run would keep its
+      # old build time, so roll back with a new run.
       - name: Choose build time and image tag
         id: image
         run: |
           build_time=$(date -u +%s)
           echo "build-time=$build_time" >> "$GITHUB_OUTPUT"
+          # Unique per run, so no tag is ever overwritten
           echo "image=ghcr.io/con2/konsti:$GITHUB_SHA-$DEPLOY_ENV-$build_time" >> "$GITHUB_OUTPUT"
 
       - name: Build and push image

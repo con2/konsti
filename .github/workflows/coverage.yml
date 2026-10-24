@@ -11,7 +11,8 @@ on:
     branches:
       - main
 
-# Only the newest main commit's report matters
+# Only the newest main commit's report matters. This may also cancel a Pages
+# deploy midway, which the cancelling run then redoes.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
