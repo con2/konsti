@@ -45,15 +45,8 @@ jobs:
         with:
           dockerfile: playwright/Dockerfile
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: ".node-version"
-          cache: "yarn"
-
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
 
       - name: Restore lint caches
         uses: actions/cache@v6
@@ -101,15 +94,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: ".node-version"
-          cache: "yarn"
-
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
 
       - name: Restore TypeScript build info cache
         uses: actions/cache@v6
@@ -138,15 +124,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: ".node-version"
-          cache: "yarn"
-
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
 
       - name: Build front-end
         run: |
@@ -183,17 +162,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: ".node-version"
-          cache: "yarn"
-
       # Required even though the app is built inside Docker: Yarn 4 refuses to run any script
       # without the node_modules install state file
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
 
       - name: Run Playwright tests
         run: |
@@ -231,15 +203,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: ".node-version"
-          cache: "yarn"
-
-      - name: Yarn install
-        run: |
-          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
 
       - name: Download blob reports
         uses: actions/download-artifact@v8
