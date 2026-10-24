@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set actionlint problem matchers
         run: echo "::add-matcher::.github/actionlint-matcher.json"
@@ -28,12 +28,12 @@ jobs:
           args: -color
 
       - name: Run hadolint
-        uses: hadolint/hadolint-action@v3.5.0
+        uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0
         with:
           dockerfile: Dockerfile
 
       - name: Run hadolint on Playwright Dockerfile
-        uses: hadolint/hadolint-action@v3.5.0
+        uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0
         with:
           dockerfile: playwright/Dockerfile
 
@@ -41,7 +41,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Restore lint caches
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             client/.eslintcache
@@ -73,13 +73,13 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
 
       - name: Restore TypeScript build info cache
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             client/node_modules/.cache/tsbuildinfo
@@ -96,7 +96,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
@@ -105,7 +105,7 @@ jobs:
         run: yarn build-front:prod
 
       - name: Cache MongoDB binary
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.cache/mongodb-binaries
           key: mongodb-${{ hashFiles('server/src/test/mongoDbVersion.ts') }}
@@ -126,7 +126,7 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Required even though the app is built inside Docker: Yarn 4 refuses to run any script
       # without the node_modules install state file
@@ -137,7 +137,7 @@ jobs:
         run: yarn docker-compose:test
 
       - name: Upload blob report
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: ${{ !cancelled() }}
         with:
           name: blob-report-${{ matrix.shard }}
@@ -145,7 +145,7 @@ jobs:
           retention-days: 1
 
       - name: Upload test results if Playwright tests failed
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
           name: playwright-videos-${{ matrix.shard }}
@@ -160,13 +160,13 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
 
       - name: Download blob reports
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           path: all-blob-reports
           pattern: blob-report-*
@@ -176,7 +176,7 @@ jobs:
         run: npx playwright merge-reports --reporter html ./all-blob-reports
 
       - name: Upload HTML report
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: playwright-html-report
           path: playwright-report/
