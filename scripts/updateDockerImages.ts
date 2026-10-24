@@ -1,16 +1,24 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
+import path from "node:path";
 
-// Rewrites every tagged image reference on an ARG or FROM line of the files
-// below to tag@digest, resolving the tag's current digest from the registry.
-// The digest is the multi-arch index digest, so FROM still picks the platform.
-// Run after a base image tag has been republished to pick up the new build.
+// Rewrites every tagged image reference in the Dockerfile (ARG and FROM lines)
+// and the workflows (uses: docker:// lines) to tag@digest, resolving the tag's
+// current digest from the registry. The digest is the multi-arch index digest,
+// so the platform is still picked at pull time.
 
-const files = ["Dockerfile"];
+const workflowsDir = path.join(".github", "workflows");
+const files = [
+  "Dockerfile",
+  ...fs
+    .readdirSync(workflowsDir)
+    .filter((name) => name.endsWith(".yml"))
+    .map((name) => path.join(workflowsDir, name)),
+];
 
 // Group 1: the line prefix, group 2: the tagged reference, group 3: an existing digest
 const imageReference =
-  /^(ARG \w+=|FROM )([\w./-]+:[\w.-]+)(@sha256:[0-9a-f]{64})?/u;
+  /^(ARG \w+=|FROM |\s+uses: docker:\/\/)([\w./-]+:[\w.-]+)(@sha256:[0-9a-f]{64})?/u;
 
 const resolveDigest = (reference: string): string => {
   return execFileSync(
