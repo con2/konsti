@@ -23,6 +23,7 @@ jobs:
         run: echo "::add-matcher::.github/actionlint-matcher.json"
 
       - name: Run actionlint
+        # Built 2026-03-30 on Alpine 3.23.3
         uses: docker://rhysd/actionlint:1.7.12@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
         with:
           args: -color
