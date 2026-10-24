@@ -21,9 +21,7 @@ jobs:
     # Unit test coverage for all workspaces in one vitest run (see
     # "Combined Code Coverage" in CLAUDE.md)
     runs-on: ubuntu-24.04
-
     timeout-minutes: 15
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -38,8 +36,7 @@ jobs:
           key: mongodb-${{ hashFiles('server/src/test/mongoDbVersion.ts') }}
 
       - name: Run vitest coverage
-        run: |
-          yarn coverage:vitest
+        run: yarn coverage:vitest
 
       - name: Upload vitest coverage
         if: ${{ !cancelled() }}
@@ -54,14 +51,11 @@ jobs:
     # runs its own server + client + Mongo and uploads its slice of the
     # coverage data; coverage-report merges the slices
     runs-on: ubuntu-24.04
-
     strategy:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5]
-
     timeout-minutes: 30
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -76,12 +70,10 @@ jobs:
           key: playwright-browsers-${{ hashFiles('yarn.lock') }}
 
       - name: Install Playwright browsers
-        run: |
-          npx playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - name: Run Playwright coverage shard
-        run: |
-          yarn coverage:e2e --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        run: yarn coverage:e2e --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Upload shard coverage
         if: ${{ !cancelled() }}
@@ -100,9 +92,7 @@ jobs:
     needs: [coverage-vitest, coverage-e2e]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-24.04
-
     timeout-minutes: 15
-
     steps:
       # The merge script and the HTML report renderer read the source files, so
       # the repo must be checked out at the same path the coverage was recorded
@@ -145,8 +135,7 @@ jobs:
           done
 
       - name: Build combined coverage report
-        run: |
-          yarn coverage:report
+        run: yarn coverage:report
 
       # Shown in the run's Summary tab
       - name: Add coverage totals to job summary
@@ -174,21 +163,16 @@ jobs:
     needs: [coverage-vitest, coverage-e2e, coverage-report]
     if: ${{ needs.coverage-vitest.result == 'success' && needs.coverage-e2e.result == 'success' && needs.coverage-report.result == 'success' }}
     runs-on: ubuntu-24.04
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
-
     concurrency:
       group: github-pages
       cancel-in-progress: false
-
     timeout-minutes: 10
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
@@ -200,8 +184,7 @@ jobs:
 
       - name: Wait before retrying deployment
         if: ${{ steps.deployment.outcome == 'failure' }}
-        run: |
-          sleep 30
+        run: sleep 30
 
       - name: Retry deploy to GitHub Pages
         id: deployment-retry

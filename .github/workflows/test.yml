@@ -14,17 +14,13 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-24.04
-
     timeout-minutes: 15
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      - name: Set actionlint Problem Matchers
-        run: |
-          echo "::add-matcher::.github/actionlint-matcher.json"
-        shell: bash
+      - name: Set actionlint problem matchers
+        run: echo "::add-matcher::.github/actionlint-matcher.json"
 
       - name: Run actionlint
         uses: docker://rhysd/actionlint:1.7.12
@@ -58,30 +54,23 @@ jobs:
             lint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'yarn.lock') }}-
 
       - name: Run Prettier
-        run: |
-          yarn prettier:check
+        run: yarn prettier:check
 
       - name: Run ESLint
-        run: |
-          yarn eslint
+        run: yarn eslint
 
       - name: Run Knip
-        run: |
-          yarn knip
+        run: yarn knip
 
       - name: Run stylelint
-        run: |
-          yarn stylelint
+        run: yarn stylelint
 
       - name: Find unused translation keys
-        run: |
-          yarn find-unused-translation-keys
+        run: yarn find-unused-translation-keys
 
   type-check:
     runs-on: ubuntu-24.04
-
     timeout-minutes: 15
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -100,14 +89,11 @@ jobs:
             tsbuildinfo-${{ runner.os }}-${{ hashFiles('tsconfig.json', 'client/tsconfig.json', 'server/tsconfig.json', 'yarn.lock') }}-
 
       - name: TS type check
-        run: |
-          yarn type-check
+        run: yarn type-check
 
   build-and-test:
     runs-on: ubuntu-24.04
-
     timeout-minutes: 15
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -116,8 +102,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Build front-end
-        run: |
-          yarn build-front:prod
+        run: yarn build-front:prod
 
       - name: Cache MongoDB binary
         uses: actions/cache@v6
@@ -126,24 +111,19 @@ jobs:
           key: mongodb-${{ hashFiles('server/src/test/mongoDbVersion.ts') }}
 
       - name: Run Vitest tests
-        run: |
-          yarn test
+        run: yarn test
 
   e2e:
     runs-on: ubuntu-24.04
-
     strategy:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5]
-
     env:
       # Each shard runs an isolated docker-compose stack (own server + Mongo), so the
       # shared-DB serial constraint holds within a shard while the suite parallelizes across runners
       PLAYWRIGHT_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
-
     timeout-minutes: 30
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -154,8 +134,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run Playwright tests
-        run: |
-          yarn docker-compose:test
+        run: yarn docker-compose:test
 
       - name: Upload blob report
         uses: actions/upload-artifact@v7
@@ -178,9 +157,7 @@ jobs:
     needs: e2e
     if: ${{ !cancelled() }}
     runs-on: ubuntu-24.04
-
     timeout-minutes: 15
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -196,8 +173,7 @@ jobs:
           merge-multiple: true
 
       - name: Merge into HTML report
-        run: |
-          npx playwright merge-reports --reporter html ./all-blob-reports
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v7
