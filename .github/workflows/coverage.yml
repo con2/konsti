@@ -162,7 +162,7 @@ jobs:
     # coverage job to succeed so the published report always reflects a green
     # main (coverage-report alone also runs on failures)
     needs: [coverage-vitest, coverage-e2e, coverage-report]
-    if: ${{ needs.coverage-vitest.result == 'success' && needs.coverage-e2e.result == 'success' && needs.coverage-report.result == 'success' }}
+    if: needs.coverage-vitest.result == 'success' && needs.coverage-e2e.result == 'success' && needs.coverage-report.result == 'success'
     runs-on: ubuntu-24.04
     permissions:
       pages: write
@@ -185,12 +185,12 @@ jobs:
         continue-on-error: true
 
       - name: Wait before retrying deployment
-        if: ${{ steps.deployment.outcome == 'failure' }}
+        if: steps.deployment.outcome == 'failure'
         run: sleep 30
 
       - name: Retry deploy to GitHub Pages
         id: deployment-retry
-        if: ${{ steps.deployment.outcome == 'failure' }}
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
       - name: Add report link to job summary
