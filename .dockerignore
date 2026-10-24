@@ -3,7 +3,6 @@ Dockerfile
 .git
 .gitignore
 .github
-.husky
 docker
 # Build output, which the image produces for itself. Copying the host's in is
 # not just waste: COPY merges into a directory rather than replacing it, so a

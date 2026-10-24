@@ -53,9 +53,6 @@ secret
 !.yarn/versions
 .pnp.*
 
-# Husky
-.husky/_/
-
 # Playwright
 test-results
 blob-report
