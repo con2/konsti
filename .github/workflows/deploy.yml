@@ -19,6 +19,13 @@ on:
           - prod
         default: prod
 
+# One deploy per environment at a time, never cancelled mid-rollout. A queued
+# run is superseded by a newer one of the same ref, which is fine since the
+# newest run has the newest commit.
+concurrency:
+  group: deploy-${{ github.ref }}-${{ github.event_name == 'push' && 'staging' || inputs.environment }}
+  cancel-in-progress: false
+
 env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
   # Push to main auto-deploys staging, workflow_dispatch uses selected environment
@@ -30,6 +37,7 @@ jobs:
     # The jobs that need this one are skipped with it.
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
+    timeout-minutes: 30
     outputs:
       image: ${{ steps.image.outputs.ref }}
       digest: ${{ steps.build.outputs.digest }}
@@ -70,6 +78,7 @@ jobs:
   deploy:
     needs: build
     runs-on: qb-arc-runners
+    timeout-minutes: 30
     env:
       SKAFFOLD_VERSION: v2.24.0
       KUBECTL_VERSION: v1.36.2
