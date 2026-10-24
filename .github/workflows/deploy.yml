@@ -32,6 +32,7 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       image: ${{ steps.image.outputs.ref }}
+      digest: ${{ steps.build.outputs.digest }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -45,7 +46,7 @@ jobs:
         uses: docker/setup-buildx-action@v4
       # Deploy time rather than commit time: a rollback ships an older commit
       # but is still the newest deployment, and clients have to pick it up.
-      # In the tag too, so redeploying an unchanged commit still rolls out.
+      # In the tag too, so no tag is ever overwritten and old deploys stay pullable.
       - name: Name the image
         id: image
         run: |
@@ -53,6 +54,7 @@ jobs:
           echo "build-time=$build_time" >> "$GITHUB_OUTPUT"
           echo "ref=ghcr.io/con2/konsti:$GITHUB_SHA-$DEPLOY_ENV-$build_time" >> "$GITHUB_OUTPUT"
       - name: Build and push image
+        id: build
         uses: docker/build-push-action@v7
         with:
           context: .
@@ -99,11 +101,16 @@ jobs:
         env:
           SKAFFOLD_ENV: ${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }}
           IMAGE: ${{ needs.build.outputs.image }}
+          DIGEST: ${{ needs.build.outputs.digest }}
         run: |
+          : "${DIGEST:?build job produced no image digest}"
           python3 -m pip install setuptools emskaffolden
+          # Pinned by digest so the cluster pulls exactly the image this run built.
+          # Roll back with a new run rather than re-running an old one, which would
+          # redeploy its old build time and clients would never pick it up.
           emskaffolden -E "$SKAFFOLD_ENV" \
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
-            --images "konsti=$IMAGE"
+            --images "konsti=$IMAGE@$DIGEST"
 
   # Frontend source maps are injected with debug IDs and uploaded by the Sentry
   # Vite plugin during the Docker image build, so the deployed bundle matches
