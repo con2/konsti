@@ -12,7 +12,8 @@ on:
       - main
 
 # Only the newest main commit's report matters. This may also cancel a Pages
-# deploy midway, which the cancelling run then redoes.
+# deploy midway, and the site then keeps the last published report until the
+# next green run.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -169,6 +170,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
+    # Serializes against other Pages deploys only, the cancel above still applies
     concurrency:
       group: github-pages
       cancel-in-progress: false
