@@ -44,7 +44,7 @@ jobs:
       contents: read
       packages: write
     outputs:
-      image: ${{ steps.image.outputs.ref }}
+      image: ${{ steps.image.outputs.image }}
       digest: ${{ steps.build.outputs.digest }}
     steps:
       - name: Checkout code
@@ -63,12 +63,12 @@ jobs:
       # Deploy time rather than commit time: a rollback is an older commit but the
       # newest deployment, and clients have to pick it up, so roll back with a new
       # run rather than a re-run. Also in the tag, so no tag is ever overwritten.
-      - name: Name the image
+      - name: Choose build time and image tag
         id: image
         run: |
           build_time=$(date -u +%s)
           echo "build-time=$build_time" >> "$GITHUB_OUTPUT"
-          echo "ref=ghcr.io/con2/konsti:$GITHUB_SHA-$DEPLOY_ENV-$build_time" >> "$GITHUB_OUTPUT"
+          echo "image=ghcr.io/con2/konsti:$GITHUB_SHA-$DEPLOY_ENV-$build_time" >> "$GITHUB_OUTPUT"
 
       - name: Build and push image
         id: build
@@ -76,7 +76,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.image.outputs.ref }}
+          tags: ${{ steps.image.outputs.image }}
           build-args: |
             env=${{ env.DEPLOY_ENV }}
             APP_VERSION=${{ github.sha }}
@@ -132,7 +132,10 @@ jobs:
           IMAGE: ${{ needs.build.outputs.image }}
           DIGEST: ${{ needs.build.outputs.digest }}
         run: |
-          : "${DIGEST:?build job produced no image digest}"
+          if [ -z "$DIGEST" ]; then
+            echo "build job produced no image digest" >&2
+            exit 1
+          fi
           # Pinned by digest so the cluster pulls exactly the image this run built
           emskaffolden -E "$SKAFFOLD_ENV" \
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
