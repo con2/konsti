@@ -60,6 +60,7 @@
     "type-check:server": "tsc -p server --noEmit",
     "type-check:shared": "tsc -p shared --noEmit",
     "type-check:root": "tsc -p tsconfig.json --noEmit",
+    "update-actions": "actions-up",
     "update-yarn": "yarn set version stable"
   },
   "dependencies": {
@@ -88,6 +89,7 @@
     "@typescript-eslint/utils": "8.61.1",
     "@vitest/coverage-istanbul": "4.1.9",
     "@vitest/eslint-plugin": "1.6.20",
+    "actions-up": "1.21.0",
     "c8": "11.0.0",
     "eslint": "10.5.0",
     "eslint-config-prettier": "10.1.8",
