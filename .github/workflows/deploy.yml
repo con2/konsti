@@ -132,8 +132,8 @@ jobs:
           IMAGE: ${{ needs.build.outputs.image }}
           DIGEST: ${{ needs.build.outputs.digest }}
         run: |
-          if [ -z "$DIGEST" ]; then
-            echo "build job produced no image digest" >&2
+          if [ -z "$IMAGE" ] || [ -z "$DIGEST" ]; then
+            echo "build job produced no image name or digest" >&2
             exit 1
           fi
           # Pinned by digest so the cluster pulls exactly the image this run built
