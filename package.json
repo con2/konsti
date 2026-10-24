@@ -61,6 +61,7 @@
     "type-check:shared": "tsc -p shared --noEmit",
     "type-check:root": "tsc -p tsconfig.json --noEmit",
     "update-actions": "actions-up",
+    "update-images": "node scripts/updateDockerImages.ts",
     "update-yarn": "yarn set version stable"
   },
   "dependencies": {
