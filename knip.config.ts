@@ -2,7 +2,7 @@ import type { KnipConfig } from "knip";
 
 const config: KnipConfig = {
   // netstat/taskkill are the Windows orphan-process cleanup used by scripts/runE2eCoverage.ts
-  ignoreBinaries: ["husky", "netstat", "taskkill"],
+  ignoreBinaries: ["netstat", "taskkill"],
   ignoreDependencies: [
     // Invoked as `npx c8 report` inside scripts/runE2eCoverage.ts
     "c8",
