@@ -9,5 +9,7 @@ runs:
       with:
         node-version-file: .node-version
         cache: yarn
-    - run: YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+    - run: yarn --immutable
       shell: bash
+      env:
+        YARN_ENABLE_HARDENED_MODE: 1
