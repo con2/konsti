@@ -31,7 +31,7 @@ anything in that area.
 - **server/** — Express 5 backend (MongoDB/Mongoose, JWT auth, lottery assignment algorithms). See [server/CLAUDE.md](server/CLAUDE.md).
 - **shared/** — Types, constants, configs, and utilities imported by client and server (not a Yarn workspace, used as a TypeScript path). See [shared/CLAUDE.md](shared/CLAUDE.md).
 - **playwright/** — E2E tests. See [playwright/CLAUDE.md](playwright/CLAUDE.md).
-- **scripts/** — root Node scripts for the combined coverage pipeline (see Combined Code Coverage below). Run with plain `node`, so they must avoid TypeScript syntax that needs transformation (enums, path aliases).
+- **scripts/** — root Node scripts for the combined coverage pipeline (see Combined Code Coverage below) and for pinning Docker base images (see GitHub Actions below). Run with plain `node`, so they must avoid TypeScript syntax that needs transformation (enums, path aliases).
 
 **Workspace-specific guidance lives in each directory's own `CLAUDE.md`** (loaded automatically when you work in that directory). Keep workspace-level detail there and this file to cross-cutting concerns.
 
@@ -118,6 +118,7 @@ Three workflows in `.github/workflows/`: `test.yml` (lint, type check, unit and 
 - **Every job has `timeout-minutes` and every workflow a `concurrency` group.** A job that needs Node.js checks out and then calls the local `.github/actions/setup` action, which holds setup-node and the hardened `yarn --immutable` once — don't repeat those steps in a job.
 - **Actions are pinned to a commit sha** with the release version in a trailing comment. Bump them with `yarn update-actions` (actions-up), never by hand and never back to a tag. `docker://` references are the exception — actions-up does not track them, so they are bumped manually.
 - **Downloaded binaries in the deploy job are version-pinned but deliberately not checksum-verified.** The providers are trusted; don't add sha256 checks.
+- **The Node base image in the `Dockerfile` is pinned by digest.** `yarn update-images` resolves the tag's current digest and rewrites the `ARG NODE_IMAGE` line; commit the result. A republished base image therefore reaches production through a commit, not through a redeploy, which rebuilds the same bytes.
 - **A rollback is a fresh Deploy run via workflow_dispatch, never a re-run of an old run.** The image tag and `APP_BUILD_TIME` are chosen at deploy time so clients pick up a rollback as the newest deployment (see "App update notification" in [client/CLAUDE.md](client/CLAUDE.md)); re-running only the deploy job reuses the old build job's time and clients never see the change.
 - **Layout:** blank lines between steps and none between job keys; a job comment sits under the job key; `name` on every step; one-line `run` commands without a block scalar; `if` before `uses`; `${{ }}` around an `if` only when the expression starts with `!`, which YAML would otherwise read as a tag.
 - **actionlint** runs in the lint job and locally via Docker: `docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.12` (on Git Bash prefix with `MSYS_NO_PATHCONV=1` and pass `$(cygpath -w "$PWD")`).
