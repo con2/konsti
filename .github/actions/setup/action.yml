@@ -9,7 +9,8 @@ runs:
       with:
         node-version-file: .node-version
         cache: yarn
-    - run: yarn --immutable
+    - name: Install dependencies
+      run: yarn --immutable
       shell: bash
       env:
         YARN_ENABLE_HARDENED_MODE: 1
