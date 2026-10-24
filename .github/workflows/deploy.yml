@@ -92,6 +92,7 @@ jobs:
       SKAFFOLD_VERSION: v2.24.0
       KUBECTL_VERSION: v1.36.2
       EMSKAFFOLDEN_VERSION: 0.3.0
+      SETUPTOOLS_VERSION: 84.2.1
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -123,7 +124,7 @@ jobs:
         run: skaffold config set --global collect-metrics false
 
       - name: Install emskaffolden
-        run: python3 -m pip install setuptools "emskaffolden==$EMSKAFFOLDEN_VERSION"
+        run: python3 -m pip install "setuptools==$SETUPTOOLS_VERSION" "emskaffolden==$EMSKAFFOLDEN_VERSION"
 
       - name: Deploy with skaffold
         env:
