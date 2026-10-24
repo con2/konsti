@@ -11,6 +11,11 @@ on:
     branches:
       - main
 
+# Only the newest main commit's report matters
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   coverage-vitest:
     # Unit test coverage for all workspaces in one vitest run (see
