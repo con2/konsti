@@ -28,6 +28,8 @@ jobs:
   build:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
+    outputs:
+      image: ${{ steps.image.outputs.ref }}
     steps:
       - uses: actions/checkout@v7
       - uses: docker/login-action@v4
@@ -37,18 +39,22 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/setup-buildx-action@v4
       # Deploy time rather than commit time: a rollback ships an older commit
-      # but is still the newest deployment, and clients have to pick it up
-      - id: build-time
-        run: echo "value=$(date -u +%s)" >> "$GITHUB_OUTPUT"
+      # but is still the newest deployment, and clients have to pick it up.
+      # In the tag too, so redeploying an unchanged commit still rolls out.
+      - id: image
+        run: |
+          build_time=$(date -u +%s)
+          echo "build-time=$build_time" >> "$GITHUB_OUTPUT"
+          echo "ref=ghcr.io/con2/konsti:$GITHUB_SHA-$DEPLOY_ENV-$build_time" >> "$GITHUB_OUTPUT"
       - uses: docker/build-push-action@v7
         with:
           context: .
           push: true
-          tags: ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}
+          tags: ${{ steps.image.outputs.ref }}
           build-args: |
             env=${{ env.DEPLOY_ENV }}
             APP_VERSION=${{ github.sha }}
-            APP_BUILD_TIME=${{ steps.build-time.outputs.value }}
+            APP_BUILD_TIME=${{ steps.image.outputs.build-time }}
           secrets: |
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
 
@@ -96,7 +102,7 @@ jobs:
           python3 -m pip install setuptools emskaffolden
           emskaffolden -E "$SKAFFOLD_ENV" \
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
-            --images "konsti=ghcr.io/con2/konsti:${{ github.sha }}-${{ env.DEPLOY_ENV }}"
+            --images "konsti=${{ needs.build.outputs.image }}"
 
   # Frontend source maps are injected with debug IDs and uploaded by the Sentry
   # Vite plugin during the Docker image build (see Dockerfile / client/vite.config.ts),
