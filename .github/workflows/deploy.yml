@@ -26,7 +26,6 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
   # Push to main auto-deploys staging, workflow_dispatch uses selected environment.
   # run-name and concurrency cannot read env, so they repeat this expression.
   DEPLOY_ENV: ${{ github.event_name == 'push' && 'staging' || inputs.environment }}
