@@ -1,0 +1,13 @@
+name: Install Node.js and dependencies
+description: Installs the Node.js version from .node-version and the locked dependencies, with the yarn cache restored
+
+runs:
+  using: composite
+  steps:
+    - name: Install Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version-file: .node-version
+        cache: yarn
+    - run: YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
+      shell: bash
