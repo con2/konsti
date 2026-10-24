@@ -3,22 +3,29 @@ import fs from "node:fs";
 import path from "node:path";
 
 // Rewrites every tagged image reference in the Dockerfile (ARG and FROM lines)
-// and the workflows (uses: docker:// lines) to tag@digest, resolving the tag's
-// current digest from the registry. The digest is the multi-arch index digest,
-// so the platform is still picked at pull time.
+// and in the workflows and local actions (uses: docker:// lines) to tag@digest,
+// resolving the tag's current digest from the registry. The digest is the
+// multi-arch index digest, so the platform is still picked at pull time.
 
-const workflowsDir = path.join(".github", "workflows");
+const yamlFilesIn = (dir: string): string[] => {
+  return fs
+    .readdirSync(dir, { recursive: true, encoding: "utf8" })
+    .filter((name) => name.endsWith(".yml"))
+    .map((name) => path.join(dir, name));
+};
+
 const files = [
   "Dockerfile",
-  ...fs
-    .readdirSync(workflowsDir)
-    .filter((name) => name.endsWith(".yml"))
-    .map((name) => path.join(workflowsDir, name)),
+  ...yamlFilesIn(path.join(".github", "workflows")),
+  ...yamlFilesIn(path.join(".github", "actions")),
 ];
 
-// Group 1: the line prefix, group 2: the tagged reference, group 3: an existing digest
+// Group 1: the line prefix, group 2: the tagged reference, group 3: an existing
+// digest. The name needs a letter and the reference must end at a digest,
+// whitespace or the line end, so an ARG value like 5000:5000 is not taken for
+// an image. Registry ports and FROM --platform are not supported.
 const imageReference =
-  /^(ARG \w+=|FROM |\s+uses: docker:\/\/)([\w./-]+:[\w.-]+)(@sha256:[0-9a-f]{64})?/u;
+  /^(ARG \w+=|FROM |\s+(?:- )?uses: docker:\/\/)((?=[\w./-]*[a-z])[\w./-]+:[\w.-]+)(@sha256:[0-9a-f]{64})?(?=\s|$)/u;
 
 const resolveDigest = (reference: string): string => {
   return execFileSync(
@@ -29,12 +36,10 @@ const resolveDigest = (reference: string): string => {
       "inspect",
       reference,
       "--format",
-      "{{json .Manifest.Digest}}",
+      "{{.Manifest.Digest}}",
     ],
     { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] },
-  )
-    .trim()
-    .replaceAll('"', "");
+  ).trim();
 };
 
 const digests = new Map<string, string>();
