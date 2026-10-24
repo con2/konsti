@@ -61,7 +61,7 @@ jobs:
 
       # Deploy time rather than commit time: a rollback is an older commit but the
       # newest deployment, and clients have to pick it up. Re-running only the
-      # deploy job would reuse the old time, so roll back with a new run.
+      # deploy job would reuse the old time, so re-run all jobs or deploy again.
       - name: Choose build time and image tag
         id: image
         run: |
