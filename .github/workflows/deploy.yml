@@ -26,27 +26,34 @@ env:
 
 jobs:
   build:
+    # workflow_dispatch can be started from any branch, only main is deployable.
+    # The jobs that need this one are skipped with it.
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     outputs:
       image: ${{ steps.image.outputs.ref }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: docker/login-action@v4
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Log in to ghcr.io
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/setup-buildx-action@v4
+      - name: Set up buildx
+        uses: docker/setup-buildx-action@v4
       # Deploy time rather than commit time: a rollback ships an older commit
       # but is still the newest deployment, and clients have to pick it up.
       # In the tag too, so redeploying an unchanged commit still rolls out.
-      - id: image
+      - name: Name the image
+        id: image
         run: |
           build_time=$(date -u +%s)
           echo "build-time=$build_time" >> "$GITHUB_OUTPUT"
           echo "ref=ghcr.io/con2/konsti:$GITHUB_SHA-$DEPLOY_ENV-$build_time" >> "$GITHUB_OUTPUT"
-      - uses: docker/build-push-action@v7
+      - name: Build and push image
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: true
@@ -60,37 +67,30 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
     runs-on: qb-arc-runners
+    env:
+      SKAFFOLD_VERSION: v2.24.0
+      KUBECTL_VERSION: v1.36.2
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Install Python
+        uses: actions/setup-python@v7
         with:
           python-version: "3.x"
-      - name: Cache skaffold
-        id: cache-skaffold
+      - name: Cache skaffold and kubectl
+        id: cache-tools
         uses: actions/cache@v6
         with:
-          path: bin/skaffold
-          key: ${{ runner.os }}-skaffold-v2.24.0
-      - name: Download skaffold
-        if: steps.cache-skaffold.outputs.cache-hit != 'true'
+          path: bin
+          key: ${{ runner.os }}-skaffold-${{ env.SKAFFOLD_VERSION }}-kubectl-${{ env.KUBECTL_VERSION }}
+      - name: Download skaffold and kubectl
+        if: steps.cache-tools.outputs.cache-hit != 'true'
         run: |
           mkdir -p bin
-          curl -Lo bin/skaffold https://storage.googleapis.com/skaffold/releases/v2.24.0/skaffold-linux-amd64
-          chmod +x bin/skaffold
-      - name: Cache kubectl
-        id: cache-kubectl
-        uses: actions/cache@v6
-        with:
-          path: bin/kubectl
-          key: ${{ runner.os }}-kubectl-v1.36.2
-      - name: Download kubectl
-        if: steps.cache-kubectl.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p bin
-          curl -Lo bin/kubectl https://dl.k8s.io/release/v1.36.2/bin/linux/amd64/kubectl
-          chmod +x bin/kubectl
+          curl -fsSLo bin/skaffold "https://storage.googleapis.com/skaffold/releases/$SKAFFOLD_VERSION/skaffold-linux-amd64"
+          curl -fsSLo bin/kubectl "https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl"
+          chmod +x bin/skaffold bin/kubectl
       - name: Add skaffold and kubectl to PATH
         run: echo "$PWD/bin" >> "$GITHUB_PATH"
       - name: Disable skaffold telemetry
@@ -98,28 +98,23 @@ jobs:
       - name: Deploy with skaffold
         env:
           SKAFFOLD_ENV: ${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }}
+          IMAGE: ${{ needs.build.outputs.image }}
         run: |
           python3 -m pip install setuptools emskaffolden
           emskaffolden -E "$SKAFFOLD_ENV" \
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
-            --images "konsti=${{ needs.build.outputs.image }}"
+            --images "konsti=$IMAGE"
 
   # Frontend source maps are injected with debug IDs and uploaded by the Sentry
-  # Vite plugin during the Docker image build (see Dockerfile / client/vite.config.ts),
-  # so the deployed bundle matches the uploaded maps. This job only marks the
-  # backend release for deploy tracking
+  # Vite plugin during the Docker image build, so the deployed bundle matches
+  # the uploaded maps. This job only marks the backend release for deploy tracking.
   backend-sentry-release:
     needs: deploy
-    if: github.ref == 'refs/heads/main'
-
     runs-on: ubuntu-24.04
-
     timeout-minutes: 30
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-
       - name: Create backend Sentry release
         uses: getsentry/action-release@v3
         env:
