@@ -27,16 +27,19 @@ concurrency:
 
 env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
-  # Push to main auto-deploys staging, workflow_dispatch uses selected environment
+  # Push to main auto-deploys staging, workflow_dispatch uses selected environment.
+  # run-name and concurrency cannot read env, so they repeat this expression.
   DEPLOY_ENV: ${{ github.event_name == 'push' && 'staging' || inputs.environment }}
 
 jobs:
   build:
-    # workflow_dispatch can be started from any branch, only main is deployable.
-    # The jobs that need this one are skipped with it.
+    # workflow_dispatch can be started from any branch but only main is deployable.
+    # Skipping this job also skips the jobs that need it, so they carry no branch
+    # check of their own.
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    # A job-level block replaces the workflow-level one, so contents is repeated
     permissions:
       contents: read
       packages: write
@@ -57,9 +60,9 @@ jobs:
       - name: Set up buildx
         uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
 
-      # Deploy time rather than commit time: a rollback ships an older commit
-      # but is still the newest deployment, and clients have to pick it up.
-      # In the tag too, so no tag is ever overwritten and old deploys stay pullable.
+      # Deploy time rather than commit time: a rollback is an older commit but the
+      # newest deployment, and clients have to pick it up, so roll back with a new
+      # run rather than a re-run. Also in the tag, so no tag is ever overwritten.
       - name: Name the image
         id: image
         run: |
@@ -129,9 +132,7 @@ jobs:
           DIGEST: ${{ needs.build.outputs.digest }}
         run: |
           : "${DIGEST:?build job produced no image digest}"
-          # Pinned by digest so the cluster pulls exactly the image this run built.
-          # Roll back with a new run rather than re-running an old one, which would
-          # redeploy its old build time and clients would never pick it up.
+          # Pinned by digest so the cluster pulls exactly the image this run built
           emskaffolden -E "$SKAFFOLD_ENV" \
             -- deploy -n "konsti-$SKAFFOLD_ENV" \
             --images "konsti=$IMAGE@$DIGEST"

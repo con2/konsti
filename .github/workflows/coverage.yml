@@ -18,8 +18,7 @@ concurrency:
 
 jobs:
   coverage-vitest:
-    # Unit test coverage for all workspaces in one vitest run (see
-    # "Combined Code Coverage" in CLAUDE.md)
+    # Unit test coverage for all workspaces in one vitest run
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
