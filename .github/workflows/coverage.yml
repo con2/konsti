@@ -22,10 +22,6 @@ jobs:
     # "Combined Code Coverage" in CLAUDE.md)
     runs-on: ubuntu-24.04
 
-    env:
-      CI: true
-      HUSKY: 0
-
     timeout-minutes: 15
 
     steps:
@@ -63,10 +59,6 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5]
-
-    env:
-      CI: true
-      HUSKY: 0
 
     timeout-minutes: 30
 
@@ -108,10 +100,6 @@ jobs:
     needs: [coverage-vitest, coverage-e2e]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-24.04
-
-    env:
-      CI: true
-      HUSKY: 0
 
     timeout-minutes: 15
 

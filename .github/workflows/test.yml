@@ -15,10 +15,6 @@ jobs:
   lint:
     runs-on: ubuntu-24.04
 
-    env:
-      CI: true
-      HUSKY: 0
-
     timeout-minutes: 15
 
     steps:
@@ -84,10 +80,6 @@ jobs:
   type-check:
     runs-on: ubuntu-24.04
 
-    env:
-      CI: true
-      HUSKY: 0
-
     timeout-minutes: 15
 
     steps:
@@ -113,10 +105,6 @@ jobs:
 
   build-and-test:
     runs-on: ubuntu-24.04
-
-    env:
-      CI: true
-      HUSKY: 0
 
     timeout-minutes: 15
 
@@ -150,8 +138,6 @@ jobs:
         shard: [1, 2, 3, 4, 5]
 
     env:
-      CI: true
-      HUSKY: 0
       # Each shard runs an isolated docker-compose stack (own server + Mongo), so the
       # shared-DB serial constraint holds within a shard while the suite parallelizes across runners
       PLAYWRIGHT_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
@@ -192,10 +178,6 @@ jobs:
     needs: e2e
     if: ${{ !cancelled() }}
     runs-on: ubuntu-24.04
-
-    env:
-      CI: true
-      HUSKY: 0
 
     timeout-minutes: 15
 
