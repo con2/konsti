@@ -82,6 +82,7 @@ jobs:
     env:
       SKAFFOLD_VERSION: v2.24.0
       KUBECTL_VERSION: v1.36.2
+      EMSKAFFOLDEN_VERSION: 0.3.0
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -106,6 +107,8 @@ jobs:
         run: echo "$PWD/bin" >> "$GITHUB_PATH"
       - name: Disable skaffold telemetry
         run: skaffold config set --global collect-metrics false
+      - name: Install emskaffolden
+        run: python3 -m pip install setuptools "emskaffolden==$EMSKAFFOLDEN_VERSION"
       - name: Deploy with skaffold
         env:
           SKAFFOLD_ENV: ${{ env.DEPLOY_ENV == 'prod' && 'production' || env.DEPLOY_ENV }}
@@ -113,7 +116,6 @@ jobs:
           DIGEST: ${{ needs.build.outputs.digest }}
         run: |
           : "${DIGEST:?build job produced no image digest}"
-          python3 -m pip install setuptools emskaffolden
           # Pinned by digest so the cluster pulls exactly the image this run built.
           # Roll back with a new run rather than re-running an old one, which would
           # redeploy its old build time and clients would never pick it up.
