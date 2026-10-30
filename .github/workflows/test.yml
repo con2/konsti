@@ -152,6 +152,35 @@ jobs:
           name: playwright-videos-${{ matrix.shard }}
           path: playwright/test-results/
 
+  coverage-smoke:
+    # The coverage pipeline itself runs on main only (coverage.yml), so this
+    # takes one spec through all of it: the instrumented builds, the server
+    # coverage flush, the c8 conversion and the report merge break on tooling
+    # and runtime changes the suite cannot see
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ hashFiles('yarn.lock') }}
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run one spec through the coverage pipeline
+        run: yarn coverage:e2e logout
+
+      - name: Build combined coverage report
+        run: yarn coverage:report
+
   merge-reports:
     # Merge the per-shard blob reports into one HTML report. Runs even if a shard failed,
     # so a failing run still produces a browsable report
