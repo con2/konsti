@@ -2,8 +2,23 @@
 # Built 2026-10-28 on Alpine 3.24.3
 ARG NODE_IMAGE=node:26.13.0-alpine3.24@sha256:c6ad9e9c1d80f6eb607c26b4b0a132ff7a2344fad1c78ea3baa2a7d4c8de6d94
 
+### BASE
+FROM ${NODE_IMAGE} AS base
+
+# The image ships neither yarn nor corepack, so the vendored release becomes
+# the yarn command. The glob must match one file: with two, COPY refuses to
+# write a single file and the build fails there instead of running a stale yarn.
+# The copy is the yarnPath release itself, so yarnPath is ignored rather than
+# having it re-exec the same bytes as a child process on every yarn call.
+COPY .yarn/releases/yarn-*.cjs /usr/local/lib/yarn.cjs
+ENV YARN_IGNORE_PATH=1
+COPY --chmod=755 <<"EOF" /usr/local/bin/yarn
+#!/bin/sh
+exec node /usr/local/lib/yarn.cjs "$@"
+EOF
+
 ### BUILD CLIENT
-FROM ${NODE_IMAGE} AS client-builder
+FROM base AS client-builder
 
 ARG env
 # Git SHA baked into the bundle as the app version, also used as the Sentry
@@ -20,7 +35,6 @@ WORKDIR /usr/src/builder
 
 # Install dependencies first (cached unless package files change)
 COPY --chown=node:node package.json yarn.lock .yarnrc.yml tsconfig.json ./
-COPY --chown=node:node .yarn ./.yarn/
 COPY --chown=node:node client/package.json ./client/
 RUN yarn
 
@@ -38,7 +52,7 @@ RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     yarn workspace client build:$env
 
 ### BUILD APP IMAGE
-FROM ${NODE_IMAGE} AS runner
+FROM base AS runner
 
 # Git SHA reported as the app version in the settings response and as the
 # Sentry release at runtime, matching the release created in deploy.yml so
@@ -58,7 +72,6 @@ WORKDIR /usr/src/app
 
 # Install dependencies first (cached unless package files change)
 COPY --chown=node:node package.json yarn.lock .yarnrc.yml tsconfig.json ./
-COPY --chown=node:node .yarn ./.yarn/
 COPY --chown=node:node server/package.json ./server/
 RUN yarn workspaces focus --all --production
 
