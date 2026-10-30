@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml)
 
-[Test coverage report](https://con2.github.io/konsti/) — combined unit test and E2E coverage from the latest green main build.
+[Test coverage report](https://con2.github.io/konsti/)
 
 Event sign-up application Konsti. Supports direct sign-up (first-come-first-served) and lottery sign-up.
 
