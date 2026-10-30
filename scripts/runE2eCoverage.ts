@@ -149,6 +149,17 @@ const playwrightCli = path.join(
 );
 const c8Cli = path.join(repoRoot, "node_modules", "c8", "bin", "c8.js");
 
+// One retry: the readiness probe's pooled keep-alive socket is dead after the
+// synchronous Playwright run, undici's idle clock not having advanced, and
+// undici does not retry a POST on its own
+const postWithRetry = async (url: string): Promise<Response> => {
+  try {
+    return await fetch(url, { method: "POST" });
+  } catch {
+    return await fetch(url, { method: "POST" });
+  }
+};
+
 const main = async (): Promise<number> => {
   fs.rmSync(e2eCoverageDir, { recursive: true, force: true });
   fs.mkdirSync(v8CoverageDir, { recursive: true });
@@ -196,9 +207,7 @@ const main = async (): Promise<number> => {
     try {
       // ApiDevEndpoint.WRITE_COVERAGE (not imported: enums don't survive
       // node's type stripping)
-      const response = await fetch(`${serverUrl}/api/write-coverage`, {
-        method: "POST",
-      });
+      const response = await postWithRetry(`${serverUrl}/api/write-coverage`);
       if (!response.ok) {
         console.error(`Flushing server coverage failed: ${response.status}`);
       }
