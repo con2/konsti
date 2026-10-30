@@ -113,7 +113,7 @@ There is **no application-level rate limiting**, by design — see [server/CLAUD
 
 ### GitHub Actions
 
-Three workflows in `.github/workflows/`: `test.yml` (lint, type check, unit and E2E tests on PRs and main), `coverage.yml` (combined coverage report on main) and `deploy.yml` (image build and skaffold deploy to staging on push, to either environment via workflow_dispatch). Conventions that hold across them:
+Three workflows in `.github/workflows/`: `test.yml` (lint, type check, unit and E2E tests on PRs and main, plus one spec through the coverage pipeline as a smoke test), `coverage.yml` (combined coverage report on main) and `deploy.yml` (image build and skaffold deploy to staging on push, to either environment via workflow_dispatch). Conventions that hold across them:
 
 - **Every job has `timeout-minutes`.** `deploy.yml` and `coverage.yml` have `concurrency` groups; `test.yml` deliberately has none and must not cancel superseded runs: dependency updates are pushed one commit at a time without waiting for CI, and the per-commit results are what show which update broke it. A job that needs Node.js checks out and then calls the local `.github/actions/setup` action, which holds setup-node and the hardened `yarn --immutable` once — don't repeat those steps in a job.
 - **Actions are pinned to a commit sha** with the release version in a trailing comment. Bump them with `yarn update-actions` (actions-up), never by hand and never back to a tag. actions-up does not track `docker://` references; those are image references and belong to `yarn update-images` below.
