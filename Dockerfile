@@ -8,10 +8,11 @@ FROM ${NODE_IMAGE} AS base
 # The image ships neither yarn nor corepack, so the vendored release becomes
 # the yarn command. The glob must match one file: with two, COPY refuses to
 # write a single file and the build fails there instead of running a stale yarn.
-# The copy is the yarnPath release itself, so yarnPath is ignored rather than
-# having it re-exec the same bytes as a child process on every yarn call.
+# yarnPath is pointed at the copy, so yarn neither re-execs the release named
+# in .yarnrc.yml nor needs it present: the workspace command spawns a child
+# from yarnPath whether or not the path is marked ignored.
 COPY .yarn/releases/yarn-*.cjs /usr/local/lib/yarn.cjs
-ENV YARN_IGNORE_PATH=1
+ENV YARN_YARN_PATH=/usr/local/lib/yarn.cjs
 COPY --chmod=755 <<"EOF" /usr/local/bin/yarn
 #!/bin/sh
 exec node /usr/local/lib/yarn.cjs "$@"
