@@ -21,9 +21,10 @@ const mainEventProgramVisibleTime = new Date(
 );
 
 // The pre-convention week program is over before the main event program becomes visible,
-// and the main event program starts after it has
+// and the main event program starts after it has. The pre-week start sits a day before the
+// clock the first test sets, so nothing is asserted at the moment the item starts.
 const programPhaseTimes = {
-  preWeekStart: subDays(mainEventProgramVisibleTime, 1),
+  preWeekStart: subDays(mainEventProgramVisibleTime, 2),
   mainEventStart: new Date(hoursIntoEvent(3)),
 };
 
