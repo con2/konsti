@@ -46,16 +46,7 @@ import {
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 
-vi.mock<object>(
-  import("server/utils/notificationQueue"),
-  async (originalImport) => {
-    const actual = await originalImport();
-    return {
-      ...actual,
-      getGlobalNotificationQueueService: vi.fn(),
-    };
-  },
-);
+vi.mock(import("server/utils/notificationQueue"));
 
 let queueService: NotificationQueueService;
 
