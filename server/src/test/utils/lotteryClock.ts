@@ -3,15 +3,14 @@ import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 
-// Positive minutes fall before the lottery sign-up closes, negative ones after it
 const setClockRelativeToLotteryClose = async (
   programItem: ProgramItem,
-  minutesFromClose: number,
+  minutesBeforeClose: number,
 ): Promise<void> => {
   await saveTestSettings({
     testTime: subMinutes(
       new Date(programItem.startTime),
-      config.event().directSignupPhaseStart + minutesFromClose,
+      config.event().directSignupPhaseStart + minutesBeforeClose,
     ).toISOString(),
   });
 };
