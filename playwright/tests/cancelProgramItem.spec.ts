@@ -1,6 +1,5 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
 import { subHours } from "date-fns";
-import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -96,7 +95,6 @@ test("Show event log notification when program item with lottery sign-up is canc
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
@@ -119,13 +117,7 @@ test("Show event log notification when program item with lottery sign-up is canc
 
   // Cancel program item on background before lottery has run
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      state: State.CANCELLED,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime, { state: State.CANCELLED }),
   ]);
 
   await page.reload();
@@ -203,7 +195,6 @@ test("Show event log notification when program item with lottery sign-up doesn't
 }) => {
   await initDb(request);
   const startTime = getStartTime("lottery");
-  const endTime = endTimeFor(startTime);
 
   await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
 
@@ -226,13 +217,7 @@ test("Show event log notification when program item with lottery sign-up doesn't
 
   // Change sign-up type away from Konsti on background before lottery has run
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      signupType: SignupType.OTHER,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
+    twoPhaseProgramItem(startTime, { signupType: SignupType.OTHER }),
   ]);
 
   await page.reload();
