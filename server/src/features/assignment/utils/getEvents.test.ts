@@ -88,7 +88,12 @@ test("should return events for program items using parent startTime via 'startTi
 
   const events = getEvents(
     [testProgramItem, testProgramItem2],
-    [getPreviousDirectSignup({ username: "some username", parentStartTime })],
+    [
+      getPreviousDirectSignup({
+        username: "some username",
+        signedToStartTime: subHours(new Date(parentStartTime), 1).toISOString(),
+      }),
+    ],
   );
 
   expect(events).toEqual(
