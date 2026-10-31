@@ -275,15 +275,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: startTime1,
-      endTime: addMinutes(
-        new Date(startTime1),
-        testProgramItem.mins,
-      ).toISOString(),
-    },
+    twoPhaseProgramItem(startTime1),
     {
       ...testProgramItem2,
       programType: config.event().twoPhaseSignupProgramTypes[0],
