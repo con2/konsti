@@ -11,17 +11,19 @@ export const assignmentTime = testProgramItem.startTime;
 export const groupCreatorGroupCode = "123-234-345";
 
 // A direct sign-up held going into the run, whatever path produced it: by default a spot an
-// hour before the run's time, signed up for an hour before that
+// hour before the run's time, signed up for an hour before that unless the case says when
 export const getPreviousDirectSignup = ({
   username,
   programItemId = testProgramItem.programItemId,
   priority = 1,
   signedToStartTime = subHours(new Date(assignmentTime), 1).toISOString(),
+  signupTime = subHours(new Date(signedToStartTime), 1).toISOString(),
 }: {
   username: string;
   programItemId?: string;
   priority?: number;
   signedToStartTime?: string;
+  signupTime?: string;
 }): DirectSignupsForProgramItem => {
   return {
     programItemId,
@@ -30,7 +32,7 @@ export const getPreviousDirectSignup = ({
         username,
         priority,
         signedToStartTime,
-        signupTime: subHours(new Date(signedToStartTime), 1).toISOString(),
+        signupTime,
         message: "",
       },
     ],

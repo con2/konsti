@@ -42,6 +42,7 @@ test("should still give the first-time bonus when a member's only direct sign-up
       username: user.username,
       priority: 1,
       signedToStartTime: assignmentTime,
+      signupTime: assignmentTime,
     }),
   ];
 
@@ -64,6 +65,7 @@ test("should strip the first-time bonus for a first-come-first-served direct sig
       username: user.username,
       priority: DIRECT_SIGNUP_PRIORITY,
       signedToStartTime: assignmentTime,
+      signupTime: assignmentTime,
     }),
   ];
 
@@ -320,6 +322,7 @@ test("should strip the first-time bonus for another lottery's win at one of this
       programItemId: testProgramItem2.programItemId,
       priority: 1,
       signedToStartTime: assignmentTime,
+      signupTime: assignmentTime,
     }),
   ];
 
