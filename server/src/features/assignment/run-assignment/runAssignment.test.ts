@@ -188,13 +188,16 @@ describe("Assignment with valid data", () => {
 
 // Every algorithm places attendees, refuses an empty run and honours a batched start time the
 // same way, so the cases run once per algorithm. A per-algorithm file holds only what is
-// specific to one.
-describe.each(Object.values(AssignmentAlgorithm))(
-  "Assignment with the %s algorithm",
-  (assignmentAlgorithm) => {
+// specific to one. Randomness is seeded, so each algorithm places exactly this many of the
+// generated attendees; adjust if the fixtures change.
+describe.each([
+  { assignmentAlgorithm: AssignmentAlgorithm.PADG, placedAttendees: 24 },
+  { assignmentAlgorithm: AssignmentAlgorithm.RANDOM, placedAttendees: 29 },
+  { assignmentAlgorithm: AssignmentAlgorithm.RANDOM_PADG, placedAttendees: 29 },
+])(
+  "Assignment with the $assignmentAlgorithm algorithm",
+  ({ assignmentAlgorithm, placedAttendees }) => {
     test("should place attendees and leave them placed on a second run", async () => {
-      // The seeded data yields at least this many placements; adjust if the fixtures change
-      const minimumPlacedAttendees = 20;
       const newUsersCount = 20;
       const groupSize = 3;
       const numberOfGroups = 5;
@@ -225,9 +228,7 @@ describe.each(Object.values(AssignmentAlgorithm))(
       );
 
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
-      expect(assignResults.results.length).toBeGreaterThanOrEqual(
-        minimumPlacedAttendees,
-      );
+      expect(assignResults.results.length).toEqual(placedAttendees);
 
       const updatedUsers = assignResults.results.map(
         (result) => result.username,
