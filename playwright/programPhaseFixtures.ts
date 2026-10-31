@@ -1,12 +1,11 @@
 import { APIRequestContext } from "@playwright/test";
-import { addHours } from "date-fns";
-import { config } from "shared/config";
-import {
-  testProgramItem,
-  testProgramItem2,
-} from "shared/tests/testProgramItem";
+import { testProgramItem2 } from "shared/tests/testProgramItem";
 import { Tag } from "shared/types/models/programItem";
-import { addProgramItems, populateDb } from "playwright/playwrightUtils";
+import {
+  addProgramItems,
+  populateDb,
+  twoPhaseProgramItem,
+} from "playwright/playwrightUtils";
 
 interface ProgramPhaseTimes {
   preWeekStart: Date;
@@ -19,24 +18,15 @@ export const seedProgramPhases = async (
   request: APIRequestContext,
   { preWeekStart, mainEventStart }: ProgramPhaseTimes,
 ): Promise<void> => {
-  const programType = config.event().twoPhaseSignupProgramTypes[0];
-
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
+    twoPhaseProgramItem(preWeekStart.toISOString(), {
       title: "Pre-week program",
       tags: [Tag.PRE_CONVENTION_WEEK],
-      programType,
-      startTime: preWeekStart.toISOString(),
-      endTime: addHours(preWeekStart, 4).toISOString(),
-    },
-    {
-      ...testProgramItem2,
+    }),
+    twoPhaseProgramItem(mainEventStart.toISOString(), {
+      fixture: testProgramItem2,
       title: "Main event program",
-      programType,
-      startTime: mainEventStart.toISOString(),
-      endTime: addHours(mainEventStart, 4).toISOString(),
-    },
+    }),
   ]);
 };
