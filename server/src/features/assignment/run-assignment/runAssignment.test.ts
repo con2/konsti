@@ -57,6 +57,7 @@ import {
   mockUser3,
 } from "server/test/mock-data/mockUser";
 import { findProgramItemSignups } from "server/test/utils/findProgramItemSignups";
+import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
@@ -2346,12 +2347,7 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   );
 
   // Pin a single queue instance so queued emails can be asserted after the run
-  const queueService = createNotificationQueueService(
-    new EmailSender(),
-    1,
-    true,
-  );
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
+  const queueService = mockNotificationQueue();
 
   await saveSettings({
     emailNotificationTrigger: [
@@ -2440,15 +2436,10 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
 
 test("Should not fail assignment or skip overlap cleanup when email queueing fails", async () => {
   // Email notifications are enabled but pushing to the queue fails
-  const queueService = createNotificationQueueService(
-    new EmailSender(),
-    1,
-    true,
-  );
+  const queueService = mockNotificationQueue();
   const addNotificationsBulkSpy = vi
     .spyOn(queueService, "addNotificationsBulk")
     .mockReturnValue(makeErrorResult(QueueError.FAILED_TO_PUSH));
-  vi.mocked(getGlobalNotificationQueueService).mockReturnValue(queueService);
 
   await saveSettings({
     emailNotificationTrigger: [
