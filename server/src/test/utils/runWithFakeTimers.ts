@@ -8,11 +8,12 @@ export const runWithFakeTimers = async <T>(
   vi.useFakeTimers();
   try {
     const operation = run();
-    const timers = vi.runAllTimersAsync();
-    // Both settle before either is read, so a rejection while the timers fire is handled by
-    // the time real time returns instead of surfacing as unhandled
-    await Promise.allSettled([operation, timers]);
-    await timers;
+    // Handled before the timers run, so a rejection while they fire waits for the await below
+    // instead of surfacing as unhandled. The timers are awaited on their own, so an operation
+    // that keeps rescheduling fails with the timer runner's loop error rather than a hang.
+    const handled = Promise.allSettled([operation]);
+    await vi.runAllTimersAsync();
+    await handled;
     return await operation;
   } finally {
     vi.useRealTimers();
