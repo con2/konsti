@@ -187,7 +187,7 @@ describe("Assignment with valid data", () => {
 });
 
 // Randomness is seeded, so each algorithm places exactly this many of the generated
-// attendees; adjust if the fixtures change
+// attendees; adjust if the fixtures or this file's event config change
 describe.each([
   { assignmentAlgorithm: AssignmentAlgorithm.PADG, placedAttendees: 24 },
   { assignmentAlgorithm: AssignmentAlgorithm.RANDOM, placedAttendees: 29 },
