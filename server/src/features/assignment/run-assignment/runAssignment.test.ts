@@ -186,10 +186,8 @@ describe("Assignment with valid data", () => {
   });
 });
 
-// Every algorithm places attendees, refuses an empty run and honours a batched start time the
-// same way, so the cases run once per algorithm. A per-algorithm file holds only what is
-// specific to one. Randomness is seeded, so each algorithm places exactly this many of the
-// generated attendees; adjust if the fixtures change.
+// Randomness is seeded, so each algorithm places exactly this many of the generated
+// attendees; adjust if the fixtures change
 describe.each([
   { assignmentAlgorithm: AssignmentAlgorithm.PADG, placedAttendees: 24 },
   { assignmentAlgorithm: AssignmentAlgorithm.RANDOM, placedAttendees: 29 },
