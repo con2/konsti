@@ -434,7 +434,6 @@ test("Show limit message when three lottery sign-ups in time slot", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = endTimeFor(startTime);
 
   const titles = [
     "Lottery item Alpha",
@@ -446,14 +445,12 @@ test("Show limit message when three lottery sign-ups in time slot", async ({
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(
     request,
-    titles.map((title, index) => ({
-      ...testProgramItem,
-      programItemId: `lottery-item-${index}`,
-      title,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    })),
+    titles.map((title, index) =>
+      twoPhaseProgramItem(startTime, {
+        programItemId: `lottery-item-${index}`,
+        title,
+      }),
+    ),
   );
 
   await postSettings(request, {
@@ -547,18 +544,12 @@ test("Offer direct sign-up instead of a lottery for a program item that already 
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = endTimeFor(startTime);
-
   await populateDb(request, { clean: true, users: true, admin: true });
 
   // Sign-up always open, so it can take a spot before any lottery has run
-  const alwaysOpenProgramItem = {
-    ...testProgramItem,
-    programType: config.event().twoPhaseSignupProgramTypes[0],
+  const alwaysOpenProgramItem = twoPhaseProgramItem(startTime, {
     tags: [Tag.PRE_CONVENTION_WEEK],
-    startTime,
-    endTime,
-  };
+  });
   await addProgramItems(request, [alwaysOpenProgramItem]);
 
   await postSettings(request, {

@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
@@ -20,6 +19,7 @@ import {
   signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct sign-up is moved", async ({
@@ -88,10 +88,7 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
   page,
   request,
 }) => {
-  const lotteryProgramItem = {
-    ...testProgramItem,
-    programType: config.event().twoPhaseSignupProgramTypes[0],
-  };
+  const lotteryProgramItem = twoPhaseProgramItem(testProgramItem.startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -191,20 +188,15 @@ test("Keep lottery sign-ups a moved program item landed on and act on them", asy
 
   await populateDb(request, { clean: true, users: true, admin: true });
 
-  const lotteryProgramItem = {
-    ...testProgramItem,
-    programType: config.event().twoPhaseSignupProgramTypes[0],
-    startTime: lotteryStartTime,
+  const lotteryProgramItem = twoPhaseProgramItem(lotteryStartTime, {
     // Placeable with the single attendee this test signs up
     minAttendance: 1,
-  };
+  });
   // 'Sign-up always open', so the attendee can hold a spot in it before any lottery has run
-  const heldProgramItem = {
-    ...testProgramItem2,
-    programType: config.event().twoPhaseSignupProgramTypes[0],
+  const heldProgramItem = twoPhaseProgramItem(heldStartTime, {
+    programItem: testProgramItem2,
     tags: [Tag.PRE_CONVENTION_WEEK],
-    startTime: heldStartTime,
-  };
+  });
 
   await addProgramItems(request, [lotteryProgramItem, heldProgramItem]);
   await postSettings(request, {
@@ -270,11 +262,7 @@ test("Offer direct sign-up instead of a lottery for a program item moved after i
 
   await populateDb(request, { clean: true, users: true, admin: true });
 
-  const programItem = {
-    ...testProgramItem,
-    programType: config.event().twoPhaseSignupProgramTypes[0],
-    startTime: lotteryStartTime,
-  };
+  const programItem = twoPhaseProgramItem(lotteryStartTime);
   await addProgramItems(request, [programItem]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
