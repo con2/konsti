@@ -1,10 +1,14 @@
 import { addHours, addMinutes } from "date-fns";
-import { beforeEach, describe, expect, test } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { isStartTimeChanged } from "shared/utils/isStartTimeChanged";
 
 const startTime = "2023-07-29T15:00:00.000Z";
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe("isStartTimeChanged", () => {
   test("returns false when the direct sign-up records the program item's start time", () => {
