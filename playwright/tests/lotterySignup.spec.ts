@@ -508,7 +508,7 @@ test("Offer lottery sign-up even while a spot at the same time is held", async (
     // Lottery program type with the pre-convention week tag makes 'sign-up always open',
     // which is the only way to hold a spot at a time whose lottery hasn't run yet
     twoPhaseProgramItem(startTime, {
-      fixture: testProgramItem2,
+      programItem: testProgramItem2,
       title: alwaysOpenTitle,
       tags: [Tag.PRE_CONVENTION_WEEK],
     }),

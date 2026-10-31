@@ -436,7 +436,7 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
     // 'Sign-up always open', so its direct sign-up is open while the lottery for this
     // start time still hasn't run
     twoPhaseProgramItem(startTime, {
-      fixture: testProgramItem2,
+      programItem: testProgramItem2,
       // A title that is not a superstring of the other item's, so looking one up by title
       // doesn't match both
       title: alwaysOpenTitle,
@@ -499,7 +499,7 @@ test("Show no lottery warning on the direct sign-up form once the lottery is ove
   await addProgramItems(request, [
     twoPhaseProgramItem(startTime),
     twoPhaseProgramItem(startTime, {
-      fixture: testProgramItem2,
+      programItem: testProgramItem2,
       title: alwaysOpenTitle,
       tags: [Tag.PRE_CONVENTION_WEEK],
     }),

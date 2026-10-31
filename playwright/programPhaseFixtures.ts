@@ -25,7 +25,7 @@ export const seedProgramPhases = async (
       tags: [Tag.PRE_CONVENTION_WEEK],
     }),
     twoPhaseProgramItem(mainEventStart.toISOString(), {
-      fixture: testProgramItem2,
+      programItem: testProgramItem2,
       title: "Main event program",
     }),
   ]);

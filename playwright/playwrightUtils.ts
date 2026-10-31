@@ -340,14 +340,14 @@ export const endTimeFor = (startTime: string): string => {
 export const twoPhaseProgramItem = (
   startTime: string,
   {
-    fixture = testProgramItem,
+    programItem = testProgramItem,
     ...overrides
   }: Omit<Partial<ProgramItem>, "startTime" | "endTime"> & {
-    fixture?: ProgramItem;
+    programItem?: ProgramItem;
   } = {},
 ): ProgramItem => {
   return {
-    ...fixture,
+    ...programItem,
     programType: config.event().twoPhaseSignupProgramTypes[0],
     startTime,
     endTime: endTimeFor(startTime),
