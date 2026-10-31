@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { RemoveLotterySignupsStrategy } from "shared/config/eventConfigTypes";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -466,12 +467,12 @@ test("should not remove upcoming lottery sign-up with past parent startTime", as
   const timeNow = new Date(testProgramItem.startTime).toISOString();
   const parentStartTime = subMinutes(new Date(timeNow), 30).toISOString();
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
-    startTimesByParentIds: new Map([
-      [testProgramItem.parentId, parentStartTime],
-    ]),
+  mockParentStartTime({
+    programItem: testProgramItem,
+    parentStartTime,
+    eventConfig: {
+      removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.ALL_UPCOMING,
+    },
   });
 
   const resultProgramItemId = "lottery-result-program-item-id";

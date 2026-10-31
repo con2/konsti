@@ -1,6 +1,7 @@
 import { addMinutes } from "date-fns";
 import { afterEach, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import {
   testProgramItem,
   testProgramItem2,
@@ -26,13 +27,6 @@ const lotterySignupFor = (programItemId: string): LotterySignup => ({
   signedToStartTime: testProgramItem.startTime,
 });
 
-const mockBatch = (parentId: string): void => {
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([[parentId, parentStartTime]]),
-  });
-};
-
 test("picks the lottery sign-ups for the program items starting at the given time", () => {
   const later = {
     ...testProgramItem2,
@@ -56,7 +50,7 @@ test("picks the lottery sign-ups for the program items starting at the given tim
 // The run allocates the whole batch, so a preference for one of its program items belongs to
 // the run at the batch's time rather than the one at the program item's own
 test("picks a batched lottery sign-up by the parent start time, not the own one", () => {
-  mockBatch(testProgramItem.parentId);
+  mockParentStartTime({ programItem: testProgramItem, parentStartTime });
   const signup = lotterySignupFor(testProgramItem.programItemId);
 
   const lotterySignupsInRun = getLotterySignupsInRun(
@@ -69,7 +63,7 @@ test("picks a batched lottery sign-up by the parent start time, not the own one"
 });
 
 test("leaves a batched lottery sign-up out of the run for the own start time", () => {
-  mockBatch(testProgramItem.parentId);
+  mockParentStartTime({ programItem: testProgramItem, parentStartTime });
 
   const lotterySignupsInRun = getLotterySignupsInRun(
     [lotterySignupFor(testProgramItem.programItemId)],
