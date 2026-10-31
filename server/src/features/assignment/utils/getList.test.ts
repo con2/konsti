@@ -15,7 +15,10 @@ import {
   getUsers,
   groupCreatorGroupCode,
 } from "server/features/assignment/utils/assignmentTestUtils";
-import { getList } from "server/features/assignment/utils/getList";
+import {
+  GetListParams,
+  getList,
+} from "server/features/assignment/utils/getList";
 import { getLotteryParticipantDirectSignups } from "server/features/assignment/utils/prepareAssignmentParams";
 import { ListItem } from "server/types/assignmentTypes";
 
@@ -24,8 +27,6 @@ afterEach(() => {
 });
 
 const { firstSignupBonus, additionalFirstSignupBonus } = config.server();
-
-type GetListParams = Parameters<typeof getList>[0];
 
 const listFor = (
   attendeeGroups: User[][],

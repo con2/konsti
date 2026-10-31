@@ -13,7 +13,7 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 import { ListItem } from "server/types/assignmentTypes";
 import { logger } from "server/utils/logger";
 
-interface GetListParams {
+export interface GetListParams {
   attendeeGroups: readonly User[][];
   assignmentTime: string;
   lotteryParticipantDirectSignups: readonly DirectSignupsForProgramItem[];
