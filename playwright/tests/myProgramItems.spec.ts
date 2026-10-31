@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
@@ -12,6 +11,7 @@ import {
   postSettings,
   postTestSettings,
   signupsOpenTime,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const startTime = hoursIntoEvent(3);
@@ -19,14 +19,7 @@ const endTime = endTimeFor(startTime);
 
 test("Cancel lottery sign-up on My Program page", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
