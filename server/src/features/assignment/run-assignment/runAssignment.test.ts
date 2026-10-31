@@ -56,7 +56,7 @@ import {
   mockUser2,
   mockUser3,
 } from "server/test/mock-data/mockUser";
-import { findProgramItemSignups } from "server/test/utils/findProgramItemSignups";
+import { findSignupsByProgramItem } from "server/test/utils/findSignupsByProgramItem";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -434,12 +434,14 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
 
-    const previousLarpSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const previousLarpSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(previousLarpSignup?.userSignups).toHaveLength(0);
 
-    const assignmentSignup = await findProgramItemSignups(
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
@@ -506,11 +508,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const assignmentSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
 
-    const directSignupAlwaysOpenSignup = await findProgramItemSignups(
+    const directSignupAlwaysOpenSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
 
@@ -596,10 +600,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ),
     );
 
-    const assignmentSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
-    const directSignupAlwaysOpenSignup = await findProgramItemSignups(
+    const directSignupAlwaysOpenSignup = signupsByProgramItem.get(
       directSignupAlwaysOpenId,
     );
 
@@ -671,11 +677,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const assignmentSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
 
-    const directSignupAlwaysOpenSignup = await findProgramItemSignups(
+    const directSignupAlwaysOpenSignup = signupsByProgramItem.get(
       directSignupAlwaysOpenId,
     );
 
@@ -742,12 +750,14 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
 
-    const signupFromMovedProgramItem = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const signupFromMovedProgramItem = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(signupFromMovedProgramItem?.userSignups).toHaveLength(0);
 
-    const assignmentSignup = await findProgramItemSignups(
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
@@ -813,7 +823,9 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       );
     });
 
-    const previousSignupFromMovedProgramItem = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const previousSignupFromMovedProgramItem = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
@@ -821,7 +833,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       mockUser.username,
     );
 
-    const assignmentSignup = await findProgramItemSignups(
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
@@ -925,7 +937,9 @@ describe("Assignment with first time bonus", () => {
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
 
-    const assignmentSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
@@ -935,7 +949,7 @@ describe("Assignment with first time bonus", () => {
       priority: 3,
     });
 
-    const previousRpgSignup = await findProgramItemSignups(
+    const previousRpgSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
@@ -948,7 +962,7 @@ describe("Assignment with first time bonus", () => {
       priority: DIRECT_SIGNUP_PRIORITY,
     });
 
-    const previousTournamentSignup = await findProgramItemSignups(
+    const previousTournamentSignup = signupsByProgramItem.get(
       tournamentProgramItemId,
     );
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
@@ -961,7 +975,7 @@ describe("Assignment with first time bonus", () => {
       priority: DIRECT_SIGNUP_PRIORITY,
     });
 
-    const previousDirectSignupAlwaysOpenSignup = await findProgramItemSignups(
+    const previousDirectSignupAlwaysOpenSignup = signupsByProgramItem.get(
       directSignupAlwaysOpenId,
     );
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
@@ -1014,7 +1028,9 @@ describe("Assignment with first time bonus", () => {
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
 
-    const assignmentSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const assignmentSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
 
@@ -1071,7 +1087,9 @@ describe("The lottery for a start time runs once", () => {
     expect(secondRun.status).toEqual(AssignmentResultStatus.ALREADY_LOTTERIED);
     expect(secondRun.results).toHaveLength(0);
 
-    const programItemSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const programItemSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(
@@ -1137,12 +1155,14 @@ describe("The lottery for a start time runs once", () => {
     expect(secondRun.status).toEqual(AssignmentResultStatus.ALREADY_LOTTERIED);
     expect(secondRun.results).toHaveLength(0);
 
-    const firstItemSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const firstItemSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(firstItemSignup?.userSignups).toHaveLength(1);
     expect(firstItemSignup?.userSignups[0].username).toEqual(mockUser.username);
-    const secondItemSignup = await findProgramItemSignups(
+    const secondItemSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(secondItemSignup?.userSignups).toHaveLength(0);
@@ -1203,11 +1223,13 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem2.programItemId,
     );
 
-    const firstComeSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const firstComeSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(firstComeSignup?.userSignups).toHaveLength(0);
-    const preferenceSignup = await findProgramItemSignups(
+    const preferenceSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(preferenceSignup?.userSignups).toHaveLength(1);
@@ -1273,15 +1295,17 @@ describe("The lottery for a start time runs once", () => {
         ),
       );
 
+      const signupsByProgramItem = await findSignupsByProgramItem();
+
       // The whole group lands in the same program item
-      const programItemSignup = await findProgramItemSignups(
+      const programItemSignup = signupsByProgramItem.get(
         testProgramItem.programItemId,
       );
       expect(programItemSignup?.userSignups).toHaveLength(3);
       expect(programItemSignup?.count).toEqual(3);
 
       // The sign-up they held for this start time gave way to what they won
-      const alwaysOpenSignup = await findProgramItemSignups(alwaysOpenId);
+      const alwaysOpenSignup = signupsByProgramItem.get(alwaysOpenId);
       expect(alwaysOpenSignup?.userSignups).toHaveLength(0);
       expect(alwaysOpenSignup?.count).toEqual(0);
     },
@@ -1392,7 +1416,9 @@ describe("The lottery for a start time runs once", () => {
     // Its lottery already happened, so the free spot goes to direct sign-up instead
     expect(secondRun.results).toHaveLength(0);
 
-    const programItemSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const programItemSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(
@@ -1430,7 +1456,9 @@ describe("The lottery for a start time runs once", () => {
     );
     expect(assignResults.results).toHaveLength(0);
 
-    const programItemSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const programItemSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(
@@ -1665,7 +1693,9 @@ describe("The lottery for a start time runs once", () => {
     expect(secondRun.status).toEqual(AssignmentResultStatus.ALREADY_LOTTERIED);
     expect(secondRun.results).toHaveLength(0);
 
-    const programItemSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const programItemSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(programItemSignup?.userSignups).toHaveLength(0);
@@ -1753,7 +1783,8 @@ describe("The lottery for a start time runs once", () => {
     );
 
     // The half-written one keeps what it has, and its holder is neither moved nor re-decided
-    const skippedSignup = await findProgramItemSignups(
+    const signupsByProgramItem = await findSignupsByProgramItem();
+    const skippedSignup = signupsByProgramItem.get(
       testProgramItem.programItemId,
     );
     expect(
@@ -1861,9 +1892,9 @@ describe("The lottery for a start time runs once", () => {
       ),
     );
 
-    const wonSignup = await findProgramItemSignups(
-      testProgramItem2.programItemId,
-    );
+    const signupsByProgramItem = await findSignupsByProgramItem();
+
+    const wonSignup = signupsByProgramItem.get(testProgramItem2.programItemId);
     expect(wonSignup?.userSignups).toHaveLength(2);
   });
 
@@ -1942,11 +1973,10 @@ describe("The lottery for a start time runs once", () => {
     );
 
     // What they won replaces the spot the moved program item brought with it
-    const wonSignup = await findProgramItemSignups(
-      testProgramItem.programItemId,
-    );
+    const signupsByProgramItem = await findSignupsByProgramItem();
+    const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
     expect(wonSignup?.userSignups).toHaveLength(0);
-    const otherSignup = await findProgramItemSignups(
+    const otherSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(
@@ -2025,7 +2055,9 @@ test("Should not place anyone into a cancelled program item", async () => {
 
   expect(assignResults.results).toHaveLength(0);
 
-  const cancelledProgramItemSignup = await findProgramItemSignups(
+  const signupsByProgramItem = await findSignupsByProgramItem();
+
+  const cancelledProgramItemSignup = signupsByProgramItem.get(
     testProgramItem.programItemId,
   );
   expect(cancelledProgramItemSignup?.userSignups ?? []).toHaveLength(0);
@@ -2328,7 +2360,8 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   );
 
   // The won seat is persisted
-  const wonSignup = await findProgramItemSignups(testProgramItem.programItemId);
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
   expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
 
@@ -2408,7 +2441,8 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   );
 
   // The won seat is persisted
-  const wonSignup = await findProgramItemSignups(testProgramItem.programItemId);
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
   expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
 
@@ -2479,7 +2513,8 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   expect(addNotificationsBulkSpy).toHaveBeenCalled();
 
   // The won seat is persisted
-  const wonSignup = await findProgramItemSignups(testProgramItem.programItemId);
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
   expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
 
