@@ -114,17 +114,10 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: earlierStartTime,
-      endTime: addMinutes(
-        new Date(earlierStartTime),
-        testProgramItem.mins,
-      ).toISOString(),
+    twoPhaseProgramItem(earlierStartTime, {
       minAttendance: 1,
       maxAttendance: 1,
-    },
+    }),
     {
       ...testProgramItem2,
       programType: config.event().twoPhaseSignupProgramTypes[0],
