@@ -88,12 +88,8 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
   page,
   request,
 }) => {
-  const lotteryProgramItem = twoPhaseProgramItem(testProgramItem.startTime);
-
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [
-    { ...lotteryProgramItem, startTime: hoursIntoEvent(3) },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(hoursIntoEvent(3))]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
@@ -115,9 +111,7 @@ test("Remove an upcoming lottery sign-up when the program item moves", async ({
     helsinkiClockTime(hoursIntoEvent(3)),
   );
 
-  await addProgramItems(request, [
-    { ...lotteryProgramItem, startTime: hoursIntoEvent(5) },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(hoursIntoEvent(5))]);
   await page.reload();
   await programList.gotoMyProgram();
 
