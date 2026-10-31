@@ -10,6 +10,7 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -428,10 +429,7 @@ test("Direct sign-up keeps the lottery sign-ups for the same time", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -505,10 +503,7 @@ test("Show no lottery warning on the direct sign-up form once the lottery is ove
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
