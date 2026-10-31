@@ -24,7 +24,10 @@ import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { closeServer, startServer } from "server/utils/server";
 
-vi.mock(import("server/utils/notificationQueue"));
+const { mockNotificationQueueModule } = await vi.hoisted(
+  () => import("server/test/utils/mockNotificationQueueModule"),
+);
+vi.mock(import("server/utils/notificationQueue"), mockNotificationQueueModule);
 
 let server: Server;
 

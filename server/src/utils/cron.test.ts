@@ -44,7 +44,10 @@ const previousJobFinished = 31; // Seconds since last run
 const infoLoggerSpy = vi.spyOn(logger, "info");
 const errorLoggerSpy = vi.spyOn(logger, "error");
 
-vi.mock(import("server/utils/notificationQueue"));
+const { mockNotificationQueueModule } = await vi.hoisted(
+  () => import("server/test/utils/mockNotificationQueueModule"),
+);
+vi.mock(import("server/utils/notificationQueue"), mockNotificationQueueModule);
 
 beforeAll(() => {
   vi.setSystemTime(timeNow);
