@@ -501,21 +501,17 @@ test("Offer lottery sign-up even while a spot at the same time is held", async (
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     twoPhaseProgramItem(startTime),
-    {
-      // Lottery program type with the pre-convention week tag makes 'sign-up always open',
-      // which is the only way to hold a spot at a time whose lottery hasn't run yet
-      ...testProgramItem2,
+    // Lottery program type with the pre-convention week tag makes 'sign-up always open',
+    // which is the only way to hold a spot at a time whose lottery hasn't run yet
+    twoPhaseProgramItem(startTime, {
+      fixture: testProgramItem2,
       title: alwaysOpenTitle,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
       tags: [Tag.PRE_CONVENTION_WEEK],
-      startTime,
-      endTime,
-    },
+    }),
   ]);
 
   await postSettings(request, {

@@ -335,13 +335,19 @@ export const endTimeFor = (startTime: string): string => {
   return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();
 };
 
-// The fixture as a lottery program item at the given start time
+// A fixture as a lottery program item at the given start time, the first test program item
+// unless another is given
 export const twoPhaseProgramItem = (
   startTime: string,
-  overrides: Omit<Partial<ProgramItem>, "startTime" | "endTime"> = {},
+  {
+    fixture = testProgramItem,
+    ...overrides
+  }: Omit<Partial<ProgramItem>, "startTime" | "endTime"> & {
+    fixture?: ProgramItem;
+  } = {},
 ): ProgramItem => {
   return {
-    ...testProgramItem,
+    ...fixture,
     programType: config.event().twoPhaseSignupProgramTypes[0],
     startTime,
     endTime: endTimeFor(startTime),
