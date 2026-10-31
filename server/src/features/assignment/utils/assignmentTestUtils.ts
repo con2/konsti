@@ -10,8 +10,8 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 export const assignmentTime = testProgramItem.startTime;
 export const groupCreatorGroupCode = "123-234-345";
 
-// A spot from an earlier lottery, an hour before the run's time unless given otherwise, signed
-// up for an hour before the start it is held for, as a sign-up made before its lottery
+// A direct sign-up held going into the run, whatever path produced it: by default a spot an
+// hour before the run's time, signed up for an hour before that
 export const getPreviousDirectSignup = ({
   username,
   programItemId = testProgramItem.programItemId,
