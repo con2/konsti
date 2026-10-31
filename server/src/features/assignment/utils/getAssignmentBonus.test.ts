@@ -10,6 +10,7 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { State } from "shared/types/models/programItem";
 import {
   assignmentTime,
+  getEventLogItem,
   getPreviousDirectSignup,
   getUsers,
 } from "server/features/assignment/utils/assignmentTestUtils";
@@ -79,16 +80,7 @@ test("should still give the first-time bonus when a member's only NEW_ASSIGNMENT
   const [baseUser] = getUsers({ count: 1 });
   const user = {
     ...baseUser,
-    eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
-        action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
-        programItemId: testProgramItem.programItemId,
-        programItemStartTime: assignmentTime,
-        createdAt: assignmentTime,
-      },
-    ],
+    eventLogItems: [getEventLogItem({ action: EventLogAction.NEW_ASSIGNMENT })],
   };
 
   const bonus = getAssignmentBonus(
@@ -127,14 +119,11 @@ test("should add the additional first-time bonus for a member with a previous fa
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NO_ASSIGNMENT,
-        isSeen: false,
         programItemId: "",
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -202,14 +191,10 @@ test("should not add the additional first-time bonus for a NO_ASSIGNMENT from th
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NO_ASSIGNMENT,
-        isSeen: false,
         programItemId: "",
-        programItemStartTime: assignmentTime,
-        createdAt: assignmentTime,
-      },
+      }),
     ],
   };
 
@@ -229,14 +214,10 @@ test("should strip the first-time bonus for a member previously assigned to a mo
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
-        programItemId: testProgramItem.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -255,14 +236,11 @@ test("should strip the first-time bonus for a previous assignment to a program i
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
         programItemId: testProgramItem2.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -285,14 +263,11 @@ test("should keep the first-time bonus when the previously assigned program item
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
         programItemId: testProgramItem2.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 
@@ -315,14 +290,11 @@ test("should keep the first-time bonus when the previously assigned program item
   const user = {
     ...baseUser,
     eventLogItems: [
-      {
-        eventLogItemId: "event-log-item-id",
+      getEventLogItem({
         action: EventLogAction.NEW_ASSIGNMENT,
-        isSeen: false,
         programItemId: testProgramItem2.programItemId,
         programItemStartTime: earlierStartTime,
-        createdAt: earlierStartTime,
-      },
+      }),
     ],
   };
 

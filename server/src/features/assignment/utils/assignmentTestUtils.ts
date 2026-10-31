@@ -40,6 +40,25 @@ export const getPreviousDirectSignup = ({
   };
 };
 
+export const getEventLogItem = ({
+  action,
+  programItemId = testProgramItem.programItemId,
+  programItemStartTime = assignmentTime,
+}: {
+  action: EventLogAction;
+  programItemId?: string;
+  programItemStartTime?: string;
+}): EventLogItem => {
+  return {
+    eventLogItemId: randomUUID(),
+    action,
+    isSeen: false,
+    programItemId,
+    programItemStartTime,
+    createdAt: programItemStartTime,
+  };
+};
+
 const getLotterySignups = (): LotterySignup[] => {
   return [
     {
