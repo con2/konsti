@@ -4,7 +4,8 @@ import { EventConfig } from "shared/config/eventConfigTypes";
 import { ProgramItem } from "shared/types/models/programItem";
 
 // Puts the program item into a batch lotteried at the given time rather than at its own start,
-// alongside any other event config the test needs
+// alongside any other event config the test needs. The spy builds on what config.event()
+// returns at the time, so a file without a mock reset carries earlier overrides forward.
 export const mockParentStartTime = ({
   programItem,
   parentStartTime,
