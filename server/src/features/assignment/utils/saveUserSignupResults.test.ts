@@ -40,7 +40,7 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
-import { findProgramItemSignups } from "server/test/utils/findProgramItemSignups";
+import { findSignupsByProgramItem } from "server/test/utils/findSignupsByProgramItem";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
@@ -1139,7 +1139,8 @@ test("should drop a whole group whose program item no longer has room for all of
   });
 
   // Neither member is placed, rather than one of them taking the single spot
-  const wonProgramItemSignup = await findProgramItemSignups(
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  const wonProgramItemSignup = signupsByProgramItem.get(
     testProgramItem.programItemId,
   );
   expect(
@@ -1147,7 +1148,7 @@ test("should drop a whole group whose program item no longer has room for all of
   ).toEqual([mockUser3.username]);
 
   // The spot a dropped member holds is left in place, since nothing was given to replace it
-  const heldProgramItemSignup = await findProgramItemSignups(
+  const heldProgramItemSignup = signupsByProgramItem.get(
     testProgramItem2.programItemId,
   );
   expect(
@@ -1186,7 +1187,9 @@ test("should place a whole group that still has room for all of it", async () =>
     results,
   });
 
-  const wonProgramItemSignup = await findProgramItemSignups(
+  const signupsByProgramItem = await findSignupsByProgramItem();
+
+  const wonProgramItemSignup = signupsByProgramItem.get(
     testProgramItem.programItemId,
   );
   expect(
@@ -1236,7 +1239,9 @@ test("should place a winner whose username names an Object prototype member", as
     results,
   });
 
-  const wonProgramItemSignup = await findProgramItemSignups(
+  const signupsByProgramItem = await findSignupsByProgramItem();
+
+  const wonProgramItemSignup = signupsByProgramItem.get(
     testProgramItem.programItemId,
   );
   expect(
@@ -1244,7 +1249,7 @@ test("should place a winner whose username names an Object prototype member", as
   ).toEqual([username]);
 
   // Somebody else's spot at that hour is not theirs to give up
-  const heldProgramItemSignup = await findProgramItemSignups(
+  const heldProgramItemSignup = signupsByProgramItem.get(
     testProgramItem2.programItemId,
   );
   expect(
@@ -1292,7 +1297,8 @@ test("should drop a whole group whose room is taken by a spot the write has not 
 
   // The held spot is still taken when the spots are written, so there is room for one of the
   // two and the group goes without rather than landing half in
-  const groupProgramItemSignup = await findProgramItemSignups(
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  const groupProgramItemSignup = signupsByProgramItem.get(
     testProgramItem.programItemId,
   );
   expect(
