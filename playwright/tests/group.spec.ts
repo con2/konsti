@@ -10,7 +10,6 @@ import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -19,6 +18,7 @@ import {
   postTestSettings,
   signupsOpenTime,
   testPostDirectSignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Can create and join a group and receive a shared lottery result", async ({
@@ -26,19 +26,14 @@ test("Can create and join a group and receive a shared lottery result", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Adjust min/max so group will get the spot
       minAttendance: 2,
       maxAttendance: 2,
-    },
+    }),
   ]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -181,17 +176,9 @@ test("Group member cannot lottery sign-up but group creator can", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
@@ -231,18 +218,13 @@ test("Show error when group is bigger than the program item's maximum attendance
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       minAttendance: 1,
       maxAttendance: 1,
-    },
+    }),
   ]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
@@ -297,7 +279,10 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: startTime1,
-      endTime: endTimeFor(startTime1),
+      endTime: addMinutes(
+        new Date(startTime1),
+        testProgramItem.mins,
+      ).toISOString(),
     },
     {
       ...testProgramItem2,

@@ -14,6 +14,7 @@ import {
   postSettings,
   postTestSettings,
   signupsOpenTime,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Group member signing up to a 'sign-up always open' program item stays in the group", async ({
@@ -86,17 +87,9 @@ test("Group member direct signing up to a normal program item is removed from th
 }) => {
   // Program item is in the direct sign-up phase when sign-ups open
   const startTime = hoursIntoEvent(1);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
-  await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
-    },
-  ]);
+  await addProgramItems(request, [twoPhaseProgramItem(startTime)]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });

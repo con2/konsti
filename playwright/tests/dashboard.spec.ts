@@ -10,7 +10,6 @@ import { TIMEZONE } from "shared/utils/timezone";
 import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
-  endTimeFor,
   hoursIntoEvent,
   populateDb,
   postAssignment,
@@ -18,6 +17,7 @@ import {
   postTestSettings,
   signupsOpenTime,
   testPostLotterySignup,
+  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 // An oracle independent of the app's own formatter: asserting with that would
@@ -44,19 +44,14 @@ test("Show empty state when the lottery hasn't been run", async ({
 
 test("Show lottery results without login", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Adjust min/max so user will get the spot
       minAttendance: 1,
       maxAttendance: 1,
-    },
+    }),
   ]);
 
   await postSettings(request, {
@@ -91,19 +86,14 @@ test("Leave a lottery run that placed nobody out of the results", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
-    {
-      ...testProgramItem,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime,
-      endTime,
+    twoPhaseProgramItem(startTime, {
       // Needs two attendees to run, and only one enters the lottery
       minAttendance: 2,
       maxAttendance: 2,
-    },
+    }),
   ]);
 
   await postSettings(request, {
@@ -137,7 +127,10 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: earlierStartTime,
-      endTime: endTimeFor(earlierStartTime),
+      endTime: addMinutes(
+        new Date(earlierStartTime),
+        testProgramItem.mins,
+      ).toISOString(),
       minAttendance: 1,
       maxAttendance: 1,
     },

@@ -333,3 +333,17 @@ export const hoursIntoEvent = (hours: number): string =>
 export const endTimeFor = (startTime: string): string => {
   return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();
 };
+
+// The fixture as a lottery program item at the given start time
+export const twoPhaseProgramItem = (
+  startTime: string,
+  overrides: Partial<ProgramItem> = {},
+): ProgramItem => {
+  return {
+    ...testProgramItem,
+    programType: config.event().twoPhaseSignupProgramTypes[0],
+    startTime,
+    endTime: endTimeFor(startTime),
+    ...overrides,
+  };
+};
