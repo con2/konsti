@@ -119,11 +119,17 @@ describe("Program item starting at half hour", () => {
     {
       case: "lottery program item without Konsti sign-up is valid",
       programItem: { signupType: SignupType.OTHER },
+      eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
+      },
       invalid: false,
     },
     {
       case: "pre-convention week program item is valid",
       programItem: { tags: [Tag.PRE_CONVENTION_WEEK] },
+      eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
+      },
       invalid: false,
     },
     {
