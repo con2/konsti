@@ -12,7 +12,7 @@ export const mockParentStartTime = ({
 }: {
   programItem: ProgramItem;
   parentStartTime: string;
-  eventConfig?: Partial<EventConfig>;
+  eventConfig?: Omit<Partial<EventConfig>, "startTimesByParentIds">;
 }): void => {
   vi.spyOn(config, "event").mockReturnValue({
     ...config.event(),
