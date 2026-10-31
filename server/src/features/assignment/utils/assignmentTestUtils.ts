@@ -102,31 +102,28 @@ const getPastLotterySignupEvents = ({
 }): EventLogItem[] => {
   const eventLogItems: EventLogItem[] = [];
   for (let i = 0; i < pastFailureLotterySignups; i++) {
-    eventLogItems.push({
-      eventLogItemId: randomUUID(),
-      action: EventLogAction.NO_ASSIGNMENT,
-      isSeen: false,
-      programItemId: testProgramItem.programItemId,
-      programItemStartTime: subHours(
-        new Date(assignmentTime),
-        i + 1,
-      ).toISOString(),
-      createdAt: subHours(new Date(assignmentTime), 1).toISOString(),
-    });
+    eventLogItems.push(
+      getEventLogItem({
+        action: EventLogAction.NO_ASSIGNMENT,
+        programItemStartTime: subHours(
+          new Date(assignmentTime),
+          i + 1,
+        ).toISOString(),
+      }),
+    );
   }
 
   for (let i = 0; i < pastSuccessLotterySignups; i++) {
-    eventLogItems.push({
-      eventLogItemId: randomUUID(),
-      action: EventLogAction.NEW_ASSIGNMENT,
-      isSeen: false,
-      programItemId: pastAssignmentProgramItemId,
-      programItemStartTime: subHours(
-        new Date(assignmentTime),
-        i + 1,
-      ).toISOString(),
-      createdAt: subHours(new Date(assignmentTime), 1).toISOString(),
-    });
+    eventLogItems.push(
+      getEventLogItem({
+        action: EventLogAction.NEW_ASSIGNMENT,
+        programItemId: pastAssignmentProgramItemId,
+        programItemStartTime: subHours(
+          new Date(assignmentTime),
+          i + 1,
+        ).toISOString(),
+      }),
+    );
   }
 
   return eventLogItems;
