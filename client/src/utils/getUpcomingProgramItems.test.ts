@@ -1,6 +1,7 @@
 import { addHours, addMinutes, subMinutes } from "date-fns";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
+import { mockParentStartTime } from "shared/tests/mockParentStartTime";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   getLotterySignups,
@@ -40,16 +41,12 @@ const lotterySignupFor = (
 // A sub-session of a batch lotteried five hours before it starts, which is the gap that
 // separates the batch's hour from the program item's own
 const batchedProgramItem = (): typeof testProgramItem => {
-  const parentId = "parent";
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([[parentId, startTime]]),
-  });
-
-  return programItemAt("child", {
-    parentId,
+  const programItem = programItemAt("child", {
+    parentId: "parent",
     startTime: addHours(new Date(startTime), 5).toISOString(),
   });
+  mockParentStartTime({ programItem, parentStartTime: startTime });
+  return programItem;
 };
 
 const directSignupFor = (

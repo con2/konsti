@@ -91,10 +91,7 @@ test("picks every program item in a batch, whatever their own start times", () =
     ).toISOString(),
   };
 
-  vi.spyOn(config, "event").mockReturnValue({
-    ...config.event(),
-    startTimesByParentIds: new Map([[parentId, parentStartTime]]),
-  });
+  mockParentStartTime({ programItem: laterInSameBatch, parentStartTime });
 
   const startingProgramItems = getStartingProgramItems(
     [testProgramItem, laterInSameBatch],
