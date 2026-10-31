@@ -8,16 +8,22 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 export const assignmentTime = testProgramItem.startTime;
 export const groupCreatorGroupCode = "123-234-345";
 
+// A spot from an earlier lottery, an hour before the run's time unless given otherwise
 export const getPreviousDirectSignup = ({
   username,
   parentStartTime,
   programItemId = testProgramItem.programItemId,
   priority = 1,
+  signedToStartTime = subHours(
+    new Date(parentStartTime ?? assignmentTime),
+    1,
+  ).toISOString(),
 }: {
   username: string;
   parentStartTime?: string;
   programItemId?: string;
   priority?: number;
+  signedToStartTime?: string;
 }): DirectSignupsForProgramItem => {
   return {
     programItemId,
@@ -25,15 +31,12 @@ export const getPreviousDirectSignup = ({
       {
         username,
         priority,
-        signedToStartTime: subHours(
-          new Date(parentStartTime ?? assignmentTime),
-          1,
-        ).toISOString(),
+        signedToStartTime,
         signupTime: assignmentTime,
         message: "",
       },
     ],
-    count: 0,
+    count: 1,
   };
 };
 
