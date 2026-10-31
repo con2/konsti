@@ -46,7 +46,10 @@ import {
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 
-vi.mock(import("server/utils/notificationQueue"));
+const { mockNotificationQueueModule } = await vi.hoisted(
+  () => import("server/test/utils/mockNotificationQueueModule"),
+);
+vi.mock(import("server/utils/notificationQueue"), mockNotificationQueueModule);
 
 let queueService: NotificationQueueService;
 

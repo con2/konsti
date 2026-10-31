@@ -19,7 +19,10 @@ import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 
-vi.mock(import("server/utils/notificationQueue"));
+const { mockNotificationQueueModule } = await vi.hoisted(
+  () => import("server/test/utils/mockNotificationQueueModule"),
+);
+vi.mock(import("server/utils/notificationQueue"), mockNotificationQueueModule);
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
