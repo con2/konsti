@@ -129,6 +129,7 @@ describe("Program item starting at half hour", () => {
     {
       case: "lottery program item is valid when its parent start time is at even hour",
       eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
         startTimesByParentIds: new Map([
           [testProgramItem.parentId, evenHourStart],
         ]),
@@ -138,6 +139,7 @@ describe("Program item starting at half hour", () => {
     {
       case: "lottery program item is valid when its parent start time is at half hour",
       eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
         startTimesByParentIds: new Map([
           [testProgramItem.parentId, halfHourStart],
         ]),
