@@ -129,6 +129,8 @@ Vitest with the jsdom environment; setup in `client/src/test/setupTests.ts` (ini
 
 **Don't write component (rendering) tests** — there is no testing-library dependency, and rendered UI behavior is covered by the Playwright E2E suite instead (see [playwright/CLAUDE.md](../playwright/CLAUDE.md)). Keep client vitest tests to pure functions/utils/reducers (e.g. `programItemUtils.test.ts`, `adminSlice.test.ts`); when a fix changes what a component renders, add or extend an E2E spec.
 
+Mock the event config with `vi.spyOn(config, "event").mockReturnValue({ ...config.event(), ...overrides })` and restore it in `afterEach`; for a program item lotteried at its parent's start time use `mockParentStartTime` from `shared/tests/`, which also takes further overrides.
+
 For the combined-coverage flow (`yarn coverage`, see the root CLAUDE.md), starting the dev server with `COVERAGE=true` serves istanbul-instrumented code (`vite-plugin-istanbul`) and disables the react-compiler babel plugin (its rewrites break the coverage source positions). `client/src/vitePlugins/coverageCollectorPlugin.ts` then harvests the browser's `window.__coverage__` server-side: it injects a flush script into `index.html` and receives the data on a `/__coverage__` dev-server middleware, so the Playwright suite needs no coverage hooks of its own.
 
 ## Other Notes
