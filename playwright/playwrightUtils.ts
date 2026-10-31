@@ -350,12 +350,15 @@ export const twoPhaseProgramItem = (
     programItem?: ProgramItem;
   } = {},
 ): ProgramItem => {
-  return {
+  const lotteryProgramItem = {
     ...programItem,
     programType: config.event().twoPhaseSignupProgramTypes[0],
     startTime,
-    endTime: endTimeFor(startTime, programItem),
     ...overrides,
+  };
+  return {
+    ...lotteryProgramItem,
+    endTime: endTimeFor(startTime, lotteryProgramItem),
   };
 };
 
