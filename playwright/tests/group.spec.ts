@@ -275,7 +275,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     twoPhaseProgramItem(startTime1),
-    twoPhaseProgramItem(startTime2, { fixture: testProgramItem2 }),
+    twoPhaseProgramItem(startTime2, { programItem: testProgramItem2 }),
   ]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,

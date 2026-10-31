@@ -118,7 +118,7 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
       maxAttendance: 1,
     }),
     twoPhaseProgramItem(laterStartTime, {
-      fixture: testProgramItem2,
+      programItem: testProgramItem2,
       minAttendance: 1,
       maxAttendance: 1,
     }),
