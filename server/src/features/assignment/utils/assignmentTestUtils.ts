@@ -60,6 +60,7 @@ export const getAssignmentResult = ({
   };
 };
 
+// Written an hour before the program item starts, as a lottery's result is
 export const getEventLogItem = ({
   action,
   programItemId = testProgramItem.programItemId,
@@ -75,7 +76,7 @@ export const getEventLogItem = ({
     isSeen: false,
     programItemId,
     programItemStartTime,
-    createdAt: programItemStartTime,
+    createdAt: subHours(new Date(programItemStartTime), 1).toISOString(),
   };
 };
 
