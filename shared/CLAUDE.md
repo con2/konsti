@@ -18,7 +18,7 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
   - `models/` — domain models (`programItem.ts`, `user.ts`, `settings.ts`, `eventLog.ts`, `groups.ts`, `signupMessage.ts`) and their enums (`ProgramType`, `SignupType`, `UserGroup`, `Popularity`, `State`, …).
   - `errors.ts` lives under `api/`; `locale.ts` and `emailNotification.ts` are top-level.
 - **`test-types/`** — zod schemas and types for the **dev/test-only** endpoints (`api/`, `models/`), mirroring `types/` but never imported by production code (e.g. `TestSettings`, populate-db request schemas).
-- **`tests/`** — shared test fixtures, notably `testProgramItem.ts` (fully-populated objects used by both server and playwright tests).
+- **`tests/`** — shared test fixtures, notably `testProgramItem.ts` (fully-populated objects used by both server and playwright tests), and test helpers such as `mockParentStartTime.ts`. The helpers may import `vitest`, so only test files may import from here: `shared/*` is bundled into the client, and a production import would pull vitest into the bundle.
 - **`utils/`** — see below.
 - **`vitest.config.ts`** — `shared`'s own vitest setup (`environment: "node"`). There is no setup file: the time utilities need no global initialization.
 
