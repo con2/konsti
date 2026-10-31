@@ -11,7 +11,7 @@ export const assignmentTime = testProgramItem.startTime;
 export const groupCreatorGroupCode = "123-234-345";
 
 // A spot from an earlier lottery, an hour before the run's time unless given otherwise, signed
-// up for at the time it is held for
+// up for an hour before the start it is held for, as a sign-up made before its lottery
 export const getPreviousDirectSignup = ({
   username,
   programItemId = testProgramItem.programItemId,
@@ -30,7 +30,7 @@ export const getPreviousDirectSignup = ({
         username,
         priority,
         signedToStartTime,
-        signupTime: signedToStartTime,
+        signupTime: subHours(new Date(signedToStartTime), 1).toISOString(),
         message: "",
       },
     ],
