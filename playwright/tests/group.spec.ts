@@ -1,6 +1,5 @@
 import { expect, test } from "@playwright/test";
 import { addMinutes, subMinutes } from "date-fns";
-import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
@@ -276,15 +275,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
     twoPhaseProgramItem(startTime1),
-    {
-      ...testProgramItem2,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: startTime2,
-      endTime: addMinutes(
-        new Date(startTime2),
-        testProgramItem2.mins,
-      ).toISOString(),
-    },
+    twoPhaseProgramItem(startTime2, { fixture: testProgramItem2 }),
   ]);
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,

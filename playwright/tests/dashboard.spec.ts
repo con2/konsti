@@ -1,6 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, addMinutes } from "date-fns";
-import { config } from "shared/config";
+import { addHours } from "date-fns";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
   testProgramItem,
@@ -118,17 +117,11 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
       minAttendance: 1,
       maxAttendance: 1,
     }),
-    {
-      ...testProgramItem2,
-      programType: config.event().twoPhaseSignupProgramTypes[0],
-      startTime: laterStartTime,
-      endTime: addMinutes(
-        new Date(laterStartTime),
-        testProgramItem2.mins,
-      ).toISOString(),
+    twoPhaseProgramItem(laterStartTime, {
+      fixture: testProgramItem2,
       minAttendance: 1,
       maxAttendance: 1,
-    },
+    }),
   ]);
 
   await postSettings(request, {
