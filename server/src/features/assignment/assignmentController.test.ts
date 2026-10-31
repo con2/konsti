@@ -24,16 +24,7 @@ import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { closeServer, startServer } from "server/utils/server";
 
-vi.mock<object>(
-  import("server/utils/notificationQueue"),
-  async (originalImport) => {
-    const actual = await originalImport();
-    return {
-      ...actual,
-      getGlobalNotificationQueueService: vi.fn(),
-    };
-  },
-);
+vi.mock(import("server/utils/notificationQueue"));
 
 let server: Server;
 

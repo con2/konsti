@@ -59,16 +59,7 @@ const everySecond = "* * * * * *";
 // Re-established per test because the shared restore between them detaches it
 let infoLoggerSpy: MockInstance;
 
-vi.mock<object>(
-  import("server/utils/notificationQueue"),
-  async (originalImport) => {
-    const actual = await originalImport();
-    return {
-      ...actual,
-      getGlobalNotificationQueueService: vi.fn(),
-    };
-  },
-);
+vi.mock(import("server/utils/notificationQueue"));
 
 beforeEach(async () => {
   seedRandomness();

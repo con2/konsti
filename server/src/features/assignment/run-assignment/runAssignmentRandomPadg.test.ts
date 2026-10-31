@@ -19,16 +19,7 @@ import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 
-vi.mock<object>(
-  import("server/utils/notificationQueue"),
-  async (originalImport) => {
-    const actual = await originalImport();
-    return {
-      ...actual,
-      getGlobalNotificationQueueService: vi.fn(),
-    };
-  },
-);
+vi.mock(import("server/utils/notificationQueue"));
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
