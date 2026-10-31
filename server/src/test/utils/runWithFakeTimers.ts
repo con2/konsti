@@ -1,7 +1,8 @@
 import { vi } from "vitest";
 
 // Runs an operation under fake timers and fires every timer it schedules, so a retry delay
-// doesn't slow the test down
+// doesn't slow the test down. The operation has to schedule its first timer before awaiting
+// anything real: the timers are fired once, and one scheduled after that never fires.
 export const runWithFakeTimers = async <T>(
   run: () => PromiseLike<T>,
 ): Promise<T> => {
