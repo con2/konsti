@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { addHours, max, subDays } from "date-fns";
+import { addHours, max, startOfHour, subDays } from "date-fns";
 import { config } from "shared/config";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
@@ -22,13 +22,14 @@ const mainEventProgramVisibleTime = new Date(
 
 // The pre-convention week program is over before the main event program becomes visible,
 // and the main event program starts after it has. The pre-week start sits a day before the
-// clock the first test sets, and the main event start past the clock the second one sets,
-// whichever of the event and that clock comes later, so neither is asserted at a boundary.
+// clock the first test sets, and the main event start on a whole hour past the clock the
+// second one sets, whichever of the event and that clock comes later, so neither is asserted
+// at a boundary and a lottery item never lands off the hour.
 const programPhaseTimes = {
   preWeekStart: subDays(mainEventProgramVisibleTime, 2),
   mainEventStart: max([
     new Date(hoursIntoEvent(3)),
-    addHours(mainEventProgramVisibleTime, 2),
+    startOfHour(addHours(mainEventProgramVisibleTime, 3)),
   ]),
 };
 
