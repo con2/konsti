@@ -330,9 +330,13 @@ export const signupsOpenTime = (): string => {
 export const hoursIntoEvent = (hours: number): string =>
   startOfHour(addHours(new Date(signupsOpenTime()), hours)).toISOString();
 
-// When a program item starting at the given time ends, keeping the fixture's length
-export const endTimeFor = (startTime: string): string => {
-  return addMinutes(new Date(startTime), testProgramItem.mins).toISOString();
+// When a program item starting at the given time ends, keeping the length of the fixture, the
+// first test program item unless another is given
+export const endTimeFor = (
+  startTime: string,
+  programItem: ProgramItem = testProgramItem,
+): string => {
+  return addMinutes(new Date(startTime), programItem.mins).toISOString();
 };
 
 // A fixture as a lottery program item at the given start time, the first test program item
@@ -350,7 +354,7 @@ export const twoPhaseProgramItem = (
     ...programItem,
     programType: config.event().twoPhaseSignupProgramTypes[0],
     startTime,
-    endTime: endTimeFor(startTime),
+    endTime: endTimeFor(startTime, programItem),
     ...overrides,
   };
 };
