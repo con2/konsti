@@ -15,6 +15,7 @@ import { UserAssignmentResult } from "shared/types/models/result";
 import { makeErrorResult } from "shared/utils/result";
 import { db } from "server/db/mongodb";
 import { addAssignmentNotifications } from "server/features/assignment/utils/addAssignmentNotifications";
+import { usersWithEventLogAction } from "server/features/assignment/utils/assignmentTestUtils";
 import { saveUserSignupResults } from "server/features/assignment/utils/saveUserSignupResults";
 import {
   findDirectSignups,
@@ -149,20 +150,18 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -210,11 +209,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
@@ -229,11 +227,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
     testProgramItem.startTime,
   );
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -321,19 +318,17 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(0);
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(2);
 
@@ -401,11 +396,10 @@ test("should only add one event log item with multiple lottery sign-ups", async 
   });
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(mockUser.username);
@@ -414,11 +408,10 @@ test("should only add one event log item with multiple lottery sign-ups", async 
     EventLogAction.NEW_ASSIGNMENT,
   );
 
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithNoAssignEventLogItem).toHaveLength(1);
   expect(usersWithNoAssignEventLogItem[0].username).toEqual(mockUser2.username);
@@ -548,18 +541,16 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
   // The two users whose sign-ups were saved get a NEW_ASSIGNMENT message
-  const usersWithNewAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    ),
+  const usersWithNewAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
   );
   expect(usersWithNewAssignment).toHaveLength(2);
 
   // The two users whose sign-ups were dropped get a NO_ASSIGNMENT message instead of silence
-  const usersWithNoAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    ),
+  const usersWithNoAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
   );
   expect(usersWithNoAssignment).toHaveLength(2);
 
@@ -685,16 +676,14 @@ test("should not send notifications to users without email addresses but still c
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
 
-  const usersWithAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    );
-  });
-  const usersWithNoAssignEventLogItem = usersAfterSave.filter((user) => {
-    return user.eventLogItems.find(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NO_ASSIGNMENT,
-    );
-  });
+  const usersWithAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
+  );
+  const usersWithNoAssignEventLogItem = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NO_ASSIGNMENT,
+  );
 
   expect(usersWithAssignEventLogItem).toHaveLength(1);
   expect(usersWithAssignEventLogItem[0].username).toEqual(
@@ -1273,10 +1262,9 @@ test("should drop a whole group whose program item no longer has room for all of
   ).toEqual([mockUser.username]);
 
   const usersAfterSave = unsafelyUnwrap(await findUsers());
-  const usersWithNewAssignment = usersAfterSave.filter((user) =>
-    user.eventLogItems.some(
-      (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
-    ),
+  const usersWithNewAssignment = usersWithEventLogAction(
+    usersAfterSave,
+    EventLogAction.NEW_ASSIGNMENT,
   );
   expect(usersWithNewAssignment).toEqual([]);
 });
