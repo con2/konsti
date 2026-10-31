@@ -338,7 +338,7 @@ export const endTimeFor = (startTime: string): string => {
 // The fixture as a lottery program item at the given start time
 export const twoPhaseProgramItem = (
   startTime: string,
-  overrides: Partial<ProgramItem> = {},
+  overrides: Omit<Partial<ProgramItem>, "startTime" | "endTime"> = {},
 ): ProgramItem => {
   return {
     ...testProgramItem,
