@@ -10,6 +10,7 @@ import { TIMEZONE } from "shared/utils/timezone";
 import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   populateDb,
   postAssignment,
@@ -43,10 +44,7 @@ test("Show empty state when the lottery hasn't been run", async ({
 
 test("Show lottery results without login", async ({ page, request }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -93,10 +91,7 @@ test("Leave a lottery run that placed nobody out of the results", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(4);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -142,10 +137,7 @@ test("Sort assignment runs latest first", async ({ page, request }) => {
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: earlierStartTime,
-      endTime: addMinutes(
-        new Date(earlierStartTime),
-        testProgramItem.mins,
-      ).toISOString(),
+      endTime: endTimeFor(earlierStartTime),
       minAttendance: 1,
       maxAttendance: 1,
     },

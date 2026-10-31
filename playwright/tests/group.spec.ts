@@ -10,6 +10,7 @@ import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -25,10 +26,7 @@ test("Can create and join a group and receive a shared lottery result", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -183,10 +181,7 @@ test("Group member cannot lottery sign-up but group creator can", async ({
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -236,10 +231,7 @@ test("Show error when group is bigger than the program item's maximum attendance
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -305,10 +297,7 @@ test("Upcoming direct sign-ups block creating and joining a group", async ({
       ...testProgramItem,
       programType: config.event().twoPhaseSignupProgramTypes[0],
       startTime: startTime1,
-      endTime: addMinutes(
-        new Date(startTime1),
-        testProgramItem.mins,
-      ).toISOString(),
+      endTime: endTimeFor(startTime1),
     },
     {
       ...testProgramItem2,

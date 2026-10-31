@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -15,10 +15,7 @@ import {
 } from "playwright/playwrightUtils";
 
 const startTime = hoursIntoEvent(3);
-const endTime = addMinutes(
-  new Date(startTime),
-  testProgramItem.mins,
-).toISOString();
+const endTime = endTimeFor(startTime);
 
 test("Cancel lottery sign-up on My Program page", async ({ page, request }) => {
   await populateDb(request, { clean: true, users: true, admin: true });

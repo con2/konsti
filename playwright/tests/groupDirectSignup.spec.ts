@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { addMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { testProgramItem } from "shared/tests/testProgramItem";
@@ -8,6 +7,7 @@ import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
+  endTimeFor,
   hoursIntoEvent,
   login,
   populateDb,
@@ -21,10 +21,7 @@ test("Group member signing up to a 'sign-up always open' program item stays in t
   request,
 }) => {
   const startTime = hoursIntoEvent(3);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
@@ -89,10 +86,7 @@ test("Group member direct signing up to a normal program item is removed from th
 }) => {
   // Program item is in the direct sign-up phase when sign-ups open
   const startTime = hoursIntoEvent(1);
-  const endTime = addMinutes(
-    new Date(startTime),
-    testProgramItem.mins,
-  ).toISOString();
+  const endTime = endTimeFor(startTime);
 
   await populateDb(request, { clean: true, users: true, admin: true });
   await addProgramItems(request, [
