@@ -32,6 +32,7 @@ anything in that area.
 - **shared/** — Types, constants, configs, and utilities imported by client and server (not a Yarn workspace, used as a TypeScript path). See [shared/CLAUDE.md](shared/CLAUDE.md).
 - **playwright/** — E2E tests. See [playwright/CLAUDE.md](playwright/CLAUDE.md).
 - **scripts/** — root Node scripts for the combined coverage pipeline (see Combined Code Coverage below), for pinning Docker base images (see GitHub Actions below) and for pinning the supported browser versions (`yarn update-browsers`, see below). Run with plain `node`, so they must avoid TypeScript syntax that needs transformation (enums, path aliases).
+- **browserstack/** — real-device checks on BrowserStack, run in CI on pull requests touching the resume code and by hand, for what Playwright cannot reach: the client's page-resume handling on real iOS Safari (screen off, backgrounding, bfcache). A vitest run of its own driving real iPhones over WebDriver, plus plain-Node helper scripts, with its own lint block. See [browserstack/CLAUDE.md](browserstack/CLAUDE.md).
 
 **Workspace-specific guidance lives in each directory's own `CLAUDE.md`** (loaded automatically when you work in that directory). Keep workspace-level detail there and this file to cross-cutting concerns.
 
