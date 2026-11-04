@@ -2,6 +2,11 @@ import { expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
+import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
@@ -9,14 +14,11 @@ import { DashboardPage } from "playwright/pages/DashboardPage";
 import {
   addProgramItems,
   helsinkiClockTime,
-  hoursIntoEvent,
   populateDb,
   postAssignment,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
   testPostLotterySignup,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Show empty state when the lottery hasn't been run", async ({

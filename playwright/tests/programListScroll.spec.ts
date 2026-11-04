@@ -1,13 +1,15 @@
 import { APIRequestContext, Page, expect, test } from "@playwright/test";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Seed enough program items that the list is tall enough to scroll, and open

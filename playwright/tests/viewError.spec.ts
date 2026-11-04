@@ -1,11 +1,11 @@
 import { APIRequestContext, Page, expect, test } from "@playwright/test";
+import { signupsOpenTime } from "shared/tests/programItemFixtures";
 import { AboutPage } from "playwright/pages/AboutPage";
 import { AdminPage } from "playwright/pages/AdminPage";
 import {
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // The admin view carries a button that throws while rendering, next to the

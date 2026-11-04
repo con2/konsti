@@ -1,15 +1,14 @@
 import { TZDate } from "@date-fns/tz";
 import { expect, test } from "@playwright/test";
 import { subDays, subWeeks } from "date-fns";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { TIMEZONE } from "shared/utils/timezone";
 import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import {
-  hoursIntoEvent,
-  login,
-  postTestSettings,
-  signupsOpenTime,
-} from "playwright/playwrightUtils";
+import { login, postTestSettings } from "playwright/playwrightUtils";
 import { seedProgramPhases } from "playwright/programPhaseFixtures";
 
 // Program times show the weekday only during event week; further out the

@@ -3,6 +3,11 @@ import { addHours, addMinutes, subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
+import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
@@ -10,15 +15,12 @@ import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const alwaysOpenTitle = "Always open item";

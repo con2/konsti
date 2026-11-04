@@ -1,18 +1,20 @@
 import { expect, test } from "@playwright/test";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  endTimeFor,
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { Tag } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  endTimeFor,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test.skip(

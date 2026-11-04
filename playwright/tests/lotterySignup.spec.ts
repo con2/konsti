@@ -5,6 +5,12 @@ import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { getProgramTypePluralName } from "shared/constants/programTypeNames";
 import {
+  endTimeFor,
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
+import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
@@ -14,18 +20,14 @@ import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  endTimeFor,
   helsinkiClockTime,
-  hoursIntoEvent,
   login,
   populateDb,
   postAssignment,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const alwaysOpenTitle = "Always open item";

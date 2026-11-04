@@ -1,15 +1,17 @@
 import { expect, test } from "@playwright/test";
 import { config } from "shared/config";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
 

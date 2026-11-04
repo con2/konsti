@@ -1,13 +1,15 @@
 import { expect, test } from "@playwright/test";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Search filters the program list and shows the empty state", async ({

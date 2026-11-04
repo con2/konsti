@@ -1,6 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
+import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
@@ -10,16 +15,13 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
   helsinkiClockTime,
-  hoursIntoEvent,
   login,
   populateDb,
   postAssignment,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
   testPostDirectSignup,
   testPostLotterySignup,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct sign-up is moved", async ({
