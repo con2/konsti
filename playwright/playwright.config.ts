@@ -10,18 +10,18 @@ process.env.TZ = TIMEZONE;
 
 // CI installs a fixed set of browsers, so a project enabled here also needs its
 // own entries in the e2e job's matrix and its browser in the coverage workflow
-const ENABLE_CHROME = true;
-const ENABLE_FIREFOX = false;
-const ENABLE_SAFARI = false;
-const ENABLE_MOBILE_CHROME = true;
-const ENABLE_MOBILE_SAFARI = true;
+const ENABLE_CHROME_DESKTOP = true;
+const ENABLE_FIREFOX_DESKTOP = false;
+const ENABLE_SAFARI_DESKTOP = false;
+const ENABLE_CHROME_MOBILE = true;
+const ENABLE_SAFARI_MOBILE = true;
 
 const projects: Project[] = [];
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
-ENABLE_CHROME &&
+ENABLE_CHROME_DESKTOP &&
   projects.push({
-    name: "Chrome Stable",
+    name: "Chrome Desktop",
     use: {
       browserName: "chromium",
       // Needs Google Chrome, which `playwright install chromium` does not install
@@ -30,36 +30,36 @@ ENABLE_CHROME &&
   });
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
-ENABLE_FIREFOX &&
+ENABLE_FIREFOX_DESKTOP &&
   projects.push({
-    name: "Desktop Firefox",
+    name: "Firefox Desktop",
     use: {
       browserName: "firefox",
     },
   });
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
-ENABLE_SAFARI &&
+ENABLE_SAFARI_DESKTOP &&
   projects.push({
-    name: "Desktop Safari",
+    name: "Safari Desktop",
     use: {
       browserName: "webkit",
     },
   });
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
-ENABLE_MOBILE_CHROME &&
+ENABLE_CHROME_MOBILE &&
   projects.push({
-    name: "Mobile Chrome",
+    name: "Chrome Mobile",
     use: devices["Pixel 7"],
   });
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-unused-expressions
-ENABLE_MOBILE_SAFARI &&
+ENABLE_SAFARI_MOBILE &&
   projects.push({
     // iPhone SE (3rd gen) is the smallest supported viewport (375x667), so
     // this project covers both WebKit and the small-screen floor
-    name: "Mobile Safari",
+    name: "Safari Mobile",
     use: devices["iPhone SE (3rd gen)"],
   });
 
