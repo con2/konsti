@@ -5,6 +5,10 @@ import {
   EventSignupStrategy,
   LoginProvider,
 } from "shared/config/eventConfigTypes";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { AdminPage } from "playwright/pages/AdminPage";
@@ -13,12 +17,10 @@ import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Admin can open and close the app", async ({ page, request }) => {

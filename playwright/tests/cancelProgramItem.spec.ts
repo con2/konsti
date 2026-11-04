@@ -2,6 +2,12 @@ import { APIRequestContext, expect, test } from "@playwright/test";
 import { subHours } from "date-fns";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import {
+  endTimeFor,
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   ProgramType,
@@ -11,14 +17,10 @@ import {
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  endTimeFor,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Show event log notification when program item with direct sign-up is cancelled", async ({

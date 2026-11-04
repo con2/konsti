@@ -1,11 +1,8 @@
 import { APIRequestContext } from "@playwright/test";
+import { twoPhaseProgramItem } from "shared/tests/programItemFixtures";
 import { testProgramItem2 } from "shared/tests/testProgramItem";
 import { Tag } from "shared/types/models/programItem";
-import {
-  addProgramItems,
-  populateDb,
-  twoPhaseProgramItem,
-} from "playwright/playwrightUtils";
+import { addProgramItems, populateDb } from "playwright/playwrightUtils";
 
 interface ProgramPhaseTimes {
   preWeekStart: Date;

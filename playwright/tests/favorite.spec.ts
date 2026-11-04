@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
+import { signupsOpenTime } from "shared/tests/programItemFixtures";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Add favorite", async ({ page, request }) => {

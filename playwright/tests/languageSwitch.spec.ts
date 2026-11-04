@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test";
+import { hoursIntoEvent } from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,

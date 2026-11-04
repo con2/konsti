@@ -1,6 +1,7 @@
 import { Page, expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
 import { config } from "shared/config";
+import { signupsOpenTime } from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { PAST_POLL_TICK } from "playwright/clockTestUtils";
 import { AppUpdateBanner } from "playwright/pages/AppUpdateBanner";
@@ -12,7 +13,6 @@ import {
   populateDb,
   postTestSettings,
   reportServerBuildTime,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Program item starts an hour into the event so it is upcoming at the event

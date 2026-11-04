@@ -1,17 +1,19 @@
 import { expect, test } from "@playwright/test";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import {
+  endTimeFor,
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  endTimeFor,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 const startTime = hoursIntoEvent(3);

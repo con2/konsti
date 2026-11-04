@@ -2,6 +2,11 @@ import { expect, test } from "@playwright/test";
 import { addMinutes, subMinutes } from "date-fns";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import {
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
+import {
   testProgramItem,
   testProgramItem2,
 } from "shared/tests/testProgramItem";
@@ -9,15 +14,12 @@ import { GroupPage } from "playwright/pages/GroupPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postAssignment,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
   testPostDirectSignup,
-  twoPhaseProgramItem,
 } from "playwright/playwrightUtils";
 
 test("Can create and join a group and receive a shared lottery result", async ({

@@ -1,5 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramType } from "shared/types/models/programItem";
 import { LoginPage } from "playwright/pages/LoginPage";
@@ -8,11 +12,9 @@ import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import { RegistrationPage } from "playwright/pages/RegistrationPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 const programItemStartTime = hoursIntoEvent(1);

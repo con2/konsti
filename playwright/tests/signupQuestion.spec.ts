@@ -1,5 +1,9 @@
 import { APIRequestContext, expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   SignupQuestion,
@@ -10,12 +14,10 @@ import { ProgramItemPage } from "playwright/pages/ProgramItemPage";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 test("Admin adds a text sign-up question to a program item", async ({

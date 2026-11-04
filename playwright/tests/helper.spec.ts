@@ -3,18 +3,20 @@ import {
   EventSignupStrategy,
   LoginProvider,
 } from "shared/config/eventConfigTypes";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { HelperPage } from "playwright/pages/HelperPage";
 import { LoginPage } from "playwright/pages/LoginPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
   testPostDirectSignup,
 } from "playwright/playwrightUtils";
 

@@ -1,6 +1,7 @@
 import { Page, expect, test } from "@playwright/test";
 import { LoginProvider } from "shared/config/eventConfigTypes";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { signupsOpenTime } from "shared/tests/programItemFixtures";
 import {
   PAST_POLL_TICK,
   fastForwardUntilVisible,
@@ -14,7 +15,6 @@ import {
   populateDb,
   postSettings,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // The client suppresses the network error toast for failed background

@@ -1,14 +1,16 @@
 import { expect, test } from "@playwright/test";
 import { config } from "shared/config";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // The query param can only select a program type the event has

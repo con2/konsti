@@ -1,6 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
-import { config } from "shared/config";
+import {
+  endTimeFor,
+  hoursIntoEvent,
+  signupsOpenTime,
+  twoPhaseProgramItem,
+} from "shared/tests/programItemFixtures";
 import {
   testProgramItem,
   testProgramItem2,
@@ -12,34 +17,18 @@ import {
   login,
   populateDb,
   postTestSettings,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
-const programType = config.event().twoPhaseSignupProgramTypes[0];
 // Both program items start an hour into the event so they are upcoming at the
 // event start time the tests run at
-const programItemStartTime = addHours(
-  new Date(signupsOpenTime()),
-  1,
-).toISOString();
-const programItemEndTime = addHours(
-  new Date(programItemStartTime),
-  4,
-).toISOString();
-const initialProgramItem = {
-  ...testProgramItem,
+const programItemStartTime = hoursIntoEvent(1);
+const initialProgramItem = twoPhaseProgramItem(programItemStartTime, {
   title: "Initial program",
-  programType,
-  startTime: programItemStartTime,
-  endTime: programItemEndTime,
-};
-const addedProgramItem = {
-  ...testProgramItem2,
+});
+const addedProgramItem = twoPhaseProgramItem(programItemStartTime, {
+  programItem: testProgramItem2,
   title: "Added program",
-  programType,
-  startTime: programItemStartTime,
-  endTime: programItemEndTime,
-};
+});
 
 test("Periodic data poll picks up new program items without navigation", async ({
   page,
@@ -87,7 +76,7 @@ test("Periodic data poll hides sign-up when direct sign-up ends", async ({
     {
       ...testProgramItem,
       startTime,
-      endTime: programItemEndTime,
+      endTime: endTimeFor(startTime),
     },
   ]);
   await postTestSettings(request, {

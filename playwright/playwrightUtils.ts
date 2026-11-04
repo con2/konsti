@@ -1,11 +1,5 @@
 import { APIRequestContext, Page, expect } from "@playwright/test";
-import {
-  addHours,
-  addMinutes,
-  isAfter,
-  startOfHour,
-  subMinutes,
-} from "date-fns";
+import { subMinutes } from "date-fns";
 import { config } from "shared/config";
 import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import { localStorageStateKey } from "shared/constants/browserStorage";
@@ -15,7 +9,6 @@ import {
 } from "shared/test-types/api/testData";
 import { GetTestSettingsResponse } from "shared/test-types/api/testSettings";
 import { TestSettings } from "shared/test-types/models/testSettings";
-import { testProgramItem } from "shared/tests/testProgramItem";
 import { PostAssignmentResponse } from "shared/types/api/assignment";
 import {
   PostLoginRequest,
@@ -303,62 +296,6 @@ export const reportServerBuildTime = async (
   });
   return (nextBuildTime: string): void => {
     reportedBuildTime = nextBuildTime;
-  };
-};
-
-// The moment the suite treats as the start of the event: every spec's mocked
-// clock and every program item start time is built from this. It is the event
-// start unless the event holds direct sign-up back past it, because a spec
-// starting its clock before sign-ups open has nothing to sign up to.
-export const signupsOpenTime = (): string => {
-  const { eventStartTime, rollingDirectSignupEarliestStartTime } =
-    config.event();
-
-  return rollingDirectSignupEarliestStartTime &&
-    isAfter(
-      new Date(rollingDirectSignupEarliestStartTime),
-      new Date(eventStartTime),
-    )
-    ? rollingDirectSignupEarliestStartTime
-    : eventStartTime;
-};
-
-// Program item start times, built relative to the event start so a spec never
-// pins an absolute date. Truncated to a whole hour because lottery items are
-// only valid on one, and the hour is the event's own: the config pins this
-// process to that timezone.
-export const hoursIntoEvent = (hours: number): string =>
-  startOfHour(addHours(new Date(signupsOpenTime()), hours)).toISOString();
-
-// When a program item starting at the given time ends, keeping the length of the fixture, the
-// first test program item unless another is given
-export const endTimeFor = (
-  startTime: string,
-  programItem: ProgramItem = testProgramItem,
-): string => {
-  return addMinutes(new Date(startTime), programItem.mins).toISOString();
-};
-
-// A fixture as a lottery program item at the given start time, the first test program item
-// unless another is given
-export const twoPhaseProgramItem = (
-  startTime: string,
-  {
-    programItem = testProgramItem,
-    ...overrides
-  }: Omit<Partial<ProgramItem>, "startTime" | "endTime"> & {
-    programItem?: ProgramItem;
-  } = {},
-): ProgramItem => {
-  const lotteryProgramItem = {
-    ...programItem,
-    programType: config.event().twoPhaseSignupProgramTypes[0],
-    startTime,
-    ...overrides,
-  };
-  return {
-    ...lotteryProgramItem,
-    endTime: endTimeFor(startTime, lotteryProgramItem),
   };
 };
 

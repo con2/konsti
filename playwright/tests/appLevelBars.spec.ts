@@ -1,5 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { addHours } from "date-fns";
+import {
+  hoursIntoEvent,
+  signupsOpenTime,
+} from "shared/tests/programItemFixtures";
 import { testProgramItem } from "shared/tests/testProgramItem";
 import {
   PAST_POLL_TICK,
@@ -12,13 +16,11 @@ import { ErrorBar } from "playwright/pages/ErrorBar";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
 import {
   addProgramItems,
-  hoursIntoEvent,
   login,
   populateDb,
   postSettings,
   postTestSettings,
   reportServerBuildTime,
-  signupsOpenTime,
 } from "playwright/playwrightUtils";
 
 // Program item starts an hour into the event so it is upcoming at the event

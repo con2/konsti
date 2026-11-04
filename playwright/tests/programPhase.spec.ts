@@ -1,12 +1,9 @@
 import { expect, test } from "@playwright/test";
 import { addHours, max, startOfHour, subDays } from "date-fns";
 import { config } from "shared/config";
+import { hoursIntoEvent } from "shared/tests/programItemFixtures";
 import { ProgramListPage } from "playwright/pages/ProgramListPage";
-import {
-  hoursIntoEvent,
-  login,
-  postTestSettings,
-} from "playwright/playwrightUtils";
+import { login, postTestSettings } from "playwright/playwrightUtils";
 import { seedProgramPhases } from "playwright/programPhaseFixtures";
 
 test.skip(
