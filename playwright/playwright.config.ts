@@ -8,6 +8,8 @@ import { resolvePortOffset } from "scripts/portOffset";
 // marks every lottery item invalid and hides its sign-up controls.
 process.env.TZ = TIMEZONE;
 
+// CI installs a fixed set of browsers, so a project enabled here also needs its
+// own entries in the e2e job's matrix and its browser in the coverage workflow
 const ENABLE_CHROME = true;
 const ENABLE_FIREFOX = false;
 const ENABLE_SAFARI = false;
