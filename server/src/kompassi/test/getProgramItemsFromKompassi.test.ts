@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { config } from "shared/config";
 import { KompassiError } from "shared/types/api/errors";
-import { ProgramType } from "shared/types/models/programItem";
+import { ProgramType, State } from "shared/types/models/programItem";
 import { getProgramItemsForEvent } from "server/features/program-item/programItemService";
 import {
   getProgramFromServer,
@@ -100,6 +100,53 @@ describe("picking Konsti program items from the full program", () => {
 
     const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
     expect(programItems.map((p) => p.programType)).toEqual([ProgramType.OTHER]);
+  });
+});
+
+describe("mapping cancellation from Kompassi", () => {
+  test("should cancel only the schedule item cancelled in Kompassi", async () => {
+    const [scheduleItem] = mockKompassiProgramItem.scheduleItems;
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [
+        {
+          ...mockKompassiProgramItem,
+          scheduleItems: [
+            scheduleItem,
+            { ...scheduleItem, slug: "cancelled-run", isCancelled: true },
+          ],
+        },
+      ],
+    });
+
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+    expect(programItems.map((p) => [p.programItemId, p.state])).toEqual([
+      [scheduleItem.slug, State.ACCEPTED],
+      ["cancelled-run", State.CANCELLED],
+    ]);
+  });
+
+  test("should cancel every schedule item of a program item cancelled in Kompassi", async () => {
+    const [scheduleItem] = mockKompassiProgramItem.scheduleItems;
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [
+        {
+          ...mockKompassiProgramItem,
+          isCancelled: true,
+          scheduleItems: [
+            scheduleItem,
+            { ...scheduleItem, slug: "second-run" },
+          ],
+        },
+      ],
+    });
+
+    const programItems = unsafelyUnwrap(await getProgramItemsForEvent());
+    expect(programItems.map((p) => p.state)).toEqual([
+      State.CANCELLED,
+      State.CANCELLED,
+    ]);
   });
 });
 
