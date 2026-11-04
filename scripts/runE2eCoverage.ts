@@ -7,6 +7,8 @@ import {
   serverCoverageInclude,
 } from "./coverageGlobs.ts";
 import {
+  isServerPortFree,
+  killOnInterrupt,
   killPortListeners,
   killProcessTree,
   playwrightCli,
@@ -63,6 +65,10 @@ const postWithRetry = async (url: string): Promise<Response> => {
 };
 
 const main = async (): Promise<number> => {
+  if (!(await isServerPortFree(serverUrl))) {
+    return 1;
+  }
+
   fs.rmSync(e2eCoverageDir, { recursive: true, force: true });
   fs.mkdirSync(v8CoverageDir, { recursive: true });
 
@@ -80,6 +86,7 @@ const main = async (): Promise<number> => {
     COVERAGE: "true",
     ...portOffsetEnv,
   });
+  killOnInterrupt([client, server]);
 
   let playwrightStatus: number | undefined;
   try {
