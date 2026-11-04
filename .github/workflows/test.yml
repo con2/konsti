@@ -192,15 +192,14 @@ jobs:
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
 
-      # Only the browsers the enabled projects use; extend the list when an
-      # ENABLE_* flag in the Playwright config is flipped
+      # One project is enough to exercise the coverage tooling
       - name: Install Playwright browsers
         uses: ./.github/actions/playwright-browsers
         with:
-          browsers: chromium webkit
+          browsers: chromium
 
       - name: Run one spec through the coverage pipeline
-        run: yarn coverage:e2e logout
+        run: yarn coverage:e2e logout "--project=Chrome Stable"
 
       - name: Build combined coverage report
         run: yarn coverage:report
