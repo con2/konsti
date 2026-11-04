@@ -9,6 +9,7 @@
   "scripts": {
     "browserstack:build": "node browserstack/buildFront.ts",
     "browserstack:front": "node browserstack/frontServer.ts",
+    "browserstack:test": "vitest run --config browserstack/vitest.config.ts",
     "build-front:ci": "yarn workspace client build:ci && yarn copy-front",
     "build-front:dev": "yarn workspace client build:dev && yarn copy-front",
     "build-front:kube-dev": "yarn workspace client build:kube-dev && yarn copy-front",
