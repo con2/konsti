@@ -2,6 +2,8 @@ import { spawnSync } from "node:child_process";
 // The explicit .ts extensions are required: plain node resolves these imports
 // itself, without a bundler's extension guessing
 import {
+  isServerPortFree,
+  killOnInterrupt,
   killPortListeners,
   killProcessTree,
   playwrightCli,
@@ -26,6 +28,10 @@ const portOffsetEnv = { PORT_OFFSET: String(portOffset) };
 const serverUrl = `http://localhost:${5000 + portOffset}`;
 
 const main = async (): Promise<number> => {
+  if (!(await isServerPortFree(serverUrl))) {
+    return 1;
+  }
+
   console.log("Building client");
   const build = spawnSync("yarn build-front:ci", {
     cwd: repoRoot,
@@ -48,6 +54,7 @@ const main = async (): Promise<number> => {
     DB_NAME: `konsti-e2e-${portOffset}`,
     ...portOffsetEnv,
   });
+  killOnInterrupt([server]);
 
   try {
     const serverReady = await waitForUrl(

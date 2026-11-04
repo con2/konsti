@@ -43,7 +43,25 @@ export const killProcessTree = (child: ChildProcess): void => {
       stdio: "ignore",
     });
   } else {
-    process.kill(-child.pid, "SIGTERM");
+    try {
+      process.kill(-child.pid, "SIGTERM");
+    } catch {
+      // The group can be gone with exitCode still null, as the exit event
+      // waits for the event loop that a synchronous Playwright run blocks
+    }
+  }
+};
+
+// The detached process groups never see the terminal's Ctrl+C, so without this
+// an interrupted run leaves the app running on its ports
+export const killOnInterrupt = (children: ChildProcess[]): void => {
+  for (const signal of ["SIGINT", "SIGTERM"] as const) {
+    process.once(signal, () => {
+      for (const child of children) {
+        killProcessTree(child);
+      }
+      process.exit(signal === "SIGINT" ? 130 : 143);
+    });
   }
 };
 
@@ -69,6 +87,26 @@ export const killPortListeners = (port: number): void => {
   for (const pid of pids) {
     spawnSync("taskkill", ["/pid", pid, "/T", "/F"], { stdio: "ignore" });
   }
+};
+
+// Checked before starting the server: an instance already on the port would
+// answer the readiness probe before the new one fails to bind, and the suite
+// would run against it
+export const isServerPortFree = async (serverUrl: string): Promise<boolean> => {
+  try {
+    await fetch(`${serverUrl}/api/health`, {
+      signal: AbortSignal.timeout(5000),
+    });
+  } catch (error) {
+    // A listener that accepts the connection but never answers is in the way too
+    if (!(error instanceof Error && error.name === "TimeoutError")) {
+      return true;
+    }
+  }
+  console.error(
+    `${serverUrl} is already in use - stop the instance there first`,
+  );
+  return false;
 };
 
 export const waitForUrl = async (
