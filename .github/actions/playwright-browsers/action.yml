@@ -1,0 +1,46 @@
+name: Install Playwright browsers
+description: Installs Playwright browsers and their system packages, both restored from the cache when they can be
+
+inputs:
+  browsers:
+    description: Space-separated Playwright browser names, such as chromium webkit
+    required: true
+
+runs:
+  using: composite
+  steps:
+    # Keyed by the Playwright version rather than yarn.lock, so an unrelated
+    # dependency bump doesn't throw the browsers away, and by the Ubuntu release
+    # the browsers are built for. The month in the package key refreshes the
+    # cache as Ubuntu supersedes packages.
+    - name: Read cache keys
+      id: keys
+      shell: bash
+      run: echo "version=$(node -p "require('./package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT" && echo "os=$(. /etc/os-release && echo "$ID-$VERSION_ID")" >> "$GITHUB_OUTPUT" && echo "month=$(date -u +%Y-%m)" >> "$GITHUB_OUTPUT"
+
+    - name: Cache Playwright browsers
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ~/.cache/ms-playwright
+        key: playwright-browsers-${{ steps.keys.outputs.os }}-${{ steps.keys.outputs.version }}-${{ inputs.browsers }}
+
+    # The cache action restores files as the runner user
+    - name: Make the apt package directory writable
+      shell: bash
+      run: sudo chown "$USER" /var/cache/apt/archives
+
+    # Ubuntu mirror speed varies a lot between runners, so the system packages
+    # are cached too. apt checks a cached file against the signed package index
+    # before installing it.
+    - name: Cache browser system packages
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: /var/cache/apt/archives/*.deb
+        key: playwright-deps-${{ steps.keys.outputs.os }}-${{ steps.keys.outputs.version }}-${{ inputs.browsers }}-${{ steps.keys.outputs.month }}
+
+    # Unquoted so that each browser is its own argument
+    - name: Install Playwright browsers
+      shell: bash
+      env:
+        BROWSERS: ${{ inputs.browsers }}
+      run: npx playwright install --with-deps $BROWSERS
