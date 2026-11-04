@@ -22,3 +22,4 @@ client/.env.*.local
 server/.env.local
 server/.env.*.local
 server/.env.development
+browserstack/.env.browserstack

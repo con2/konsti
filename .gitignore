@@ -75,6 +75,7 @@ server/.env.local
 client/.env.sentry-build-plugin
 client/.env.local
 client/.env.development.local
+browserstack/.env.browserstack
 
 # claude
 settings.local.json
