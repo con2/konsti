@@ -114,7 +114,7 @@ instance by running `yarn populate-db:dummy` from its worktree.
 
 ## Documentation
 
-See [docs](docs/index.md) for additional documentation, including the domain [terminology glossary](docs/terminology.md), event deployment guides, the [datafiles guide](docs/en/datafiles-guide.md) and [aggregated statistics](docs/statistics.md) derived from past-event dumps, and style guide.
+See [docs](docs/index.md) for additional documentation, including the domain [terminology glossary](docs/terminology.md), event deployment guides, the [datafiles guide](docs/en/datafiles-guide.md) and [aggregated statistics](docs/statistics.md) derived from past-event dumps, and style guide. Real-device checks on BrowserStack, run in CI and by hand, are described in [browserstack/README.md](browserstack/README.md).
 
 ## Blog posts
 
