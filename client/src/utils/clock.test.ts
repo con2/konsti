@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { setPageHidden } from "client/test/pageVisibility";
 
 const CLOCK_TICK_MS = 60 * 1000;
 
@@ -12,14 +13,6 @@ const subscribe = (listener: () => void): (() => void) => {
   const unsubscribe = clock.subscribeToClock(listener);
   unsubscribes.push(unsubscribe);
   return unsubscribe;
-};
-
-const setPageHidden = (hidden: boolean): void => {
-  Object.defineProperty(document, "hidden", {
-    value: hidden,
-    configurable: true,
-  });
-  document.dispatchEvent(new Event("visibilitychange"));
 };
 
 beforeEach(async () => {
