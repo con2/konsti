@@ -158,8 +158,9 @@ const showNetworkErrorOrProbe = (): void => {
   }
   // While offline or hidden nothing is scheduled - otherwise a hidden but
   // still-running page would probe in a tight loop through an outage. The
-  // refresh triggered by the online event or page resume starts a new cycle
-  // if the problem persists.
+  // next load on a visible page starts a new cycle if the problem persists:
+  // the online event's refresh, a resume that finds the data stale, or the
+  // next poll tick.
 };
 
 export const onRequestFailure = (background: boolean): void => {
