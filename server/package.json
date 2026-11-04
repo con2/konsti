@@ -16,6 +16,7 @@
     "generate-serials": "tsx src/utils/generateSerials.ts",
     "remove-invalid-games": "NODE_ENV=development tsx src/test/scripts/removeInvalidGames.ts",
     "start": "tsx --import=./src/utils/instrument.ts src/index.ts",
+    "start:ci": "NODE_ENV=development SETTINGS=ci tsx --import=./src/utils/applyPortOffset.ts --import=./src/utils/instrument.ts src/index.ts",
     "start:dev": "NODE_ENV=development SETTINGS=development tsx watch --clear-screen=false --import=./src/utils/applyPortOffset.ts --import=./src/utils/instrument.ts -r dotenv/config src/index.ts dotenv_config_path=.env.development",
     "start:test": "NODE_ENV=development SETTINGS=development tsx watch --clear-screen=false --import=./src/utils/applyPortOffset.ts --import=./src/utils/instrument.ts -r dotenv/config src/index.ts dotenv_config_path=.env.test",
     "start:test:coverage": "NODE_ENV=development SETTINGS=development tsx --import=./src/utils/applyPortOffset.ts --import=./src/utils/instrument.ts -r dotenv/config src/index.ts dotenv_config_path=.env.test",

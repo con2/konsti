@@ -33,11 +33,6 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-      - name: Run hadolint on Playwright Dockerfile
-        uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0
-        with:
-          dockerfile: playwright/Dockerfile
-
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
 
@@ -114,35 +109,63 @@ jobs:
       - name: Run Vitest tests
         run: yarn test
 
+      # The e2e job runs the app on the runner, so a PR still has to prove the
+      # image builds and its server starts with only production dependencies.
+      # A push to main builds it again before deploying.
+      - name: Start the Docker image
+        if: github.event_name == 'pull_request'
+        run: APP_SETTINGS=ci docker compose -f docker/docker-compose.yml up --build --detach
+
+      - name: Wait for the image to serve the app
+        if: github.event_name == 'pull_request'
+        run: timeout 60 bash -c 'until curl -sf http://localhost:5000/api/health > /dev/null && curl -sf http://localhost:5000/ > /dev/null; do sleep 1; done'
+
+      - name: Show the image's server log
+        if: failure() && github.event_name == 'pull_request'
+        run: docker compose -f docker/docker-compose.yml logs server
+
   e2e:
+    # Each shard runs its own server + Mongo on the runner, so the shared-DB
+    # serial constraint holds within a shard while the suite parallelizes across runners
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5]
-    env:
-      # Each shard runs an isolated docker-compose stack (own server + Mongo), so the
-      # shared-DB serial constraint holds within a shard while the suite parallelizes across runners
-      PLAYWRIGHT_SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
+        shard: [1, 2, 3, 4, 5, 6, 7]
     timeout-minutes: 30
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # Required even though the app is built inside Docker: Yarn 4 refuses to run any script
-      # without the node_modules install state file
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
 
+      # Keyed by the Playwright version rather than yarn.lock, so an unrelated
+      # dependency bump doesn't throw the browsers away
+      - name: Read Playwright version
+        id: playwright-version
+        run: echo "version=$(node -p "require('./package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
+
+      # Only the browsers the enabled projects use; extend the list when an
+      # ENABLE_* flag in the Playwright config is flipped
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium webkit
+
       - name: Run Playwright tests
-        run: yarn docker-compose:test
+        run: yarn e2e --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Upload blob report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: blob-report-${{ matrix.shard }}
-          path: playwright/blob-report/
+          path: blob-report/
           retention-days: 1
 
       - name: Upload test results if Playwright tests failed
@@ -166,14 +189,22 @@ jobs:
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
 
+      # Keyed by the Playwright version rather than yarn.lock, so an unrelated
+      # dependency bump doesn't throw the browsers away
+      - name: Read Playwright version
+        id: playwright-version
+        run: echo "version=$(node -p "require('./package.json').devDependencies['@playwright/test']")" >> "$GITHUB_OUTPUT"
+
       - name: Cache Playwright browsers
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-browsers-${{ hashFiles('yarn.lock') }}
+          key: playwright-browsers-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
 
+      # Only the browsers the enabled projects use; extend the list when an
+      # ENABLE_* flag in the Playwright config is flipped
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run one spec through the coverage pipeline
         run: yarn coverage:e2e logout

@@ -22,7 +22,7 @@ ENABLE_CHROME &&
     name: "Chrome Stable",
     use: {
       browserName: "chromium",
-      // Needs an installed Chrome, which the E2E container lacks
+      // Needs Google Chrome, which `playwright install chromium` does not install
       // channel: "chrome",
     },
   });
@@ -63,7 +63,8 @@ ENABLE_MOBILE_SAFARI &&
 
 // The per-worktree port offset shifts the client dev server port so the suite
 // targets its own worktree's local instance. PLAYWRIGHT_BASEURL still wins
-// when set (e.g. the Docker run points it at http://server:5000).
+// when set (the E2E runner points it at the server, which serves the built
+// client itself).
 const portOffset = resolvePortOffset();
 
 const config: PlaywrightTestConfig = {
@@ -71,7 +72,7 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   outputDir: "./test-results",
   // In CI emit a blob report (one per shard) alongside the console list, so the shards can be
-  // merged into a single HTML report. The blob dir is volume-mounted out of the Docker container.
+  // merged into a single HTML report
   reporter: process.env.CI ? [["list"], ["blob"]] : [["list"]],
   workers: 1,
   use: {

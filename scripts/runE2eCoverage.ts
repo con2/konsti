@@ -94,7 +94,6 @@ const main = async (): Promise<number> => {
       return 1;
     }
 
-    runNodeCli(playwrightCli, ["install"]);
     console.log("Running Playwright suite");
     const playwright = runNodeCli(
       playwrightCli,
