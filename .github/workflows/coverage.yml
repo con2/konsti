@@ -48,14 +48,15 @@ jobs:
           retention-days: 1
 
   coverage-e2e:
-    # Playwright coverage, sharded like the e2e job in test.yml. Each shard
-    # runs its own server + client + Mongo and uploads its slice of the
-    # coverage data; coverage-report merges the slices
+    # Playwright coverage. Each shard runs its own server + client + Mongo and
+    # uploads its slice of the coverage data; coverage-report merges the slices.
+    # Few shards on purpose: main-only wall time matters less than the jobs
+    # this takes from the organization's concurrent job limit.
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7]
+        shard: [1, 2, 3]
     timeout-minutes: 30
     steps:
       - name: Checkout code
