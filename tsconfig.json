@@ -35,6 +35,7 @@
     "client/vite.config.ts",
     "playwright/**/*.ts",
     "scripts/**/*.ts",
+    "browserstack/**/*.ts",
     ".claude/hooks/**/*.ts"
   ]
 }

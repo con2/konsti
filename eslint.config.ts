@@ -457,6 +457,47 @@ export default defineConfig([
     },
   },
 
+  // ** BrowserStack real-device checks (browserstack/) **
+  {
+    files: ["browserstack/**/*.ts"],
+
+    rules: {
+      // Node CLI scripts: progress and report output goes to the console, and
+      // a failed step ends the run by throwing
+      "no-console": "off",
+      "no-restricted-syntax": [
+        "error",
+        ...restrictedSyntax.filter(
+          (rule) => rule.selector !== "ThrowStatement",
+        ),
+      ],
+      // Node run directly resolves no path aliases, so these scripts import
+      // the shared port offset helper relatively
+      "@typescript-eslint/no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            ...restrictedImportPaths,
+            restrictedFormatImport,
+            restrictedLocaleBarrelImport,
+          ],
+          patterns: [restrictedFormatImportPattern],
+        },
+      ],
+      // The in-page witness code runs in the phone's browser, where the
+      // global is the window and holding state on it across page lifecycle
+      // events is the point
+      "unicorn/prefer-global-this": "off",
+      "unicorn/no-global-object-property-assignment": "off",
+      // The real-device tests conclude each scenario through one helper that
+      // holds the assertion
+      "vitest/expect-expect": [
+        "error",
+        { assertFunctionNames: ["expect", "conclude", "inSession"] },
+      ],
+    },
+  },
+
   // ** MDX support **
   {
     ...eslintPluginMdx.flat,
