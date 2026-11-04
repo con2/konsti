@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 // The explicit .ts extensions are required: plain node resolves these imports
 // itself, without a bundler's extension guessing
 import {
+  installBrowsersOutsideCi,
   isServerPortFree,
   killOnInterrupt,
   killPortListeners,
@@ -66,6 +67,7 @@ const main = async (): Promise<number> => {
       return 1;
     }
 
+    installBrowsersOutsideCi();
     console.log("Running Playwright suite");
     const playwright = runNodeCli(
       playwrightCli,

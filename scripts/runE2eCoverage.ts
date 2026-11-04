@@ -7,6 +7,7 @@ import {
   serverCoverageInclude,
 } from "./coverageGlobs.ts";
 import {
+  installBrowsersOutsideCi,
   isServerPortFree,
   killOnInterrupt,
   killPortListeners,
@@ -101,6 +102,7 @@ const main = async (): Promise<number> => {
       return 1;
     }
 
+    installBrowsersOutsideCi();
     console.log("Running Playwright suite");
     const playwright = runNodeCli(
       playwrightCli,

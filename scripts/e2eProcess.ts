@@ -109,6 +109,13 @@ export const isServerPortFree = async (serverUrl: string): Promise<boolean> => {
   return false;
 };
 
+// CI installs only the browsers each job needs, ahead of the runner
+export const installBrowsersOutsideCi = (): void => {
+  if (!process.env.CI) {
+    runNodeCli(playwrightCli, ["install"]);
+  }
+};
+
 export const waitForUrl = async (
   url: string,
   child: ChildProcess,
