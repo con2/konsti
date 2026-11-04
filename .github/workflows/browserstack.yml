@@ -1,0 +1,92 @@
+name: BrowserStack
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    branches:
+      - main
+    # The client code that starts and runs the polling, and what the check
+    # itself is built from. Not package.json or yarn.lock: dependency bumps
+    # land one commit at a time and would each spend device minutes.
+    paths:
+      - client/src/app/App.tsx
+      - client/src/utils/api.ts
+      - client/src/utils/dataPolling.ts
+      - client/src/utils/fetchWithTimeout.ts
+      - client/src/utils/loadData.ts
+      - client/src/utils/localStorage.ts
+      - client/src/utils/pageLifecycle.ts
+      - client/src/utils/clock.ts
+      - client/src/utils/networkErrorPolicy.ts
+      - client/vite.config.ts
+      - shared/config/clientConfig.ts
+      - shared/config/eventConfig.ts
+      - shared/constants/apiEndpoints.ts
+      - shared/constants/browserStorage.ts
+      - shared/tests/programItemFixtures.ts
+      - shared/tests/testProgramItem.ts
+      - shared/utils/timezone.ts
+      - scripts/portOffset.ts
+      - browserstack/**
+      - "!browserstack/**/*.md"
+      - "!browserstack/.env.browserstack.sample"
+      - .github/workflows/browserstack.yml
+  workflow_dispatch:
+
+# One run at a time across all branches, and a running one is never cancelled:
+# each holds four of the account's five device sessions, and a cancelled run
+# leaves its sessions open until they idle out. GitHub keeps one waiting run per
+# group, so a newer run replaces a waiting one, which then needs a manual re-run.
+concurrency:
+  group: browserstack
+  cancel-in-progress: false
+
+jobs:
+  safari:
+    # The page-resume handling on real iPhones, run only when
+    # the code it guards changes or on demand: it holds four of the team's
+    # five BrowserStack sessions for minutes, so it stays out of the
+    # every-commit test workflow. Fork PRs get no secrets, so they skip it.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BROWSERSTACK_BUILD: Safari page resume ${{ github.run_id }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Node.js and dependencies
+        uses: ./.github/actions/setup
+
+      - name: Start MongoDB
+        run: yarn workspace server docker:db
+
+      - name: Build the client against the tunnel origin
+        run: yarn browserstack:build
+
+      - name: Start the test server
+        run: yarn server:test > server.log 2>&1 &
+
+      - name: Start the front server
+        run: yarn browserstack:front > front.log 2>&1 &
+
+      - name: Wait for both servers
+        run: timeout 180 bash -c 'until curl -sf http://127.0.0.1:5000/api/health && curl -sf http://127.0.0.1:8000/; do sleep 2; done'
+
+      - name: Run the Safari page resume check
+        run: yarn browserstack:test
+
+      - name: Upload server logs
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: browserstack-server-logs
+          path: |
+            server.log
+            front.log
+          retention-days: 7
