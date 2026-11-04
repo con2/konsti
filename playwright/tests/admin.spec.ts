@@ -123,6 +123,7 @@ test("Admin can set a temporary message that users can dismiss", async ({
   await adminPage.dismissAdminMessage();
   await expect(adminPage.adminMessageBanner).toBeHidden();
   await page.reload();
+  await expect(adminPage.main).toBeVisible();
   await expect(adminPage.adminMessageBanner).toBeHidden();
 
   // A new message shows again even after the earlier dismissal
