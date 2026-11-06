@@ -184,7 +184,13 @@ export default defineConfig(({ mode, command }) => {
       // moving the statements istanbul instrumented out from under the
       // positions it recorded
       env.COVERAGE !== "true" &&
-        babel({ presets: [reactCompilerPreset({ target: "19" })] }),
+        babel({
+          presets: [
+            // A function the compiler cannot compile is otherwise skipped
+            // silently and left unmemoized; a "use no memo" opt-out still works
+            reactCompilerPreset({ target: "19", panicThreshold: "all_errors" }),
+          ],
+        }),
       compression({
         algorithms: ["gzip", "brotliCompress"],
         include: /\.(js|html|svg)$/,
