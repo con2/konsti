@@ -66,7 +66,7 @@ export const genRpgPlayers = (): void => {
       }
 
       const { spotsByItem } = collectRpgSpotCounts(event, year);
-      const totalSpots = [...spotsByItem.values()].reduce((s, c) => s + c, 0);
+      const totalSpots = spotsByItem.values().reduce((s, c) => s + c, 0);
 
       rows.push({
         event,

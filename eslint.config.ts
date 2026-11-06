@@ -221,7 +221,6 @@ export default defineConfig([
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
       "unicorn/prefer-ternary": "off",
-      "unicorn/prefer-iterator-helpers": "off",
       "unicorn/prefer-default-parameters": "off",
 
       // @typescript-eslint
@@ -367,6 +366,7 @@ export default defineConfig([
       // eslint-plugin-unicorn
       "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
       "unicorn/prefer-promise-with-resolvers": "off", // Wait till Promise.withResolvers is more widely supported
+      "unicorn/prefer-iterator-helpers": "off", // Wait till iterator helpers are more widely supported
     },
   },
 
