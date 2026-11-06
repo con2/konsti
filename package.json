@@ -93,7 +93,7 @@
     "@types/istanbul-lib-source-maps": "4.0.4",
     "@types/istanbul-reports": "3.0.4",
     "@typescript-eslint/utils": "8.72.1",
-    "@vitest/coverage-istanbul": "4.1.12",
+    "@vitest/coverage-istanbul": "5.0.5",
     "@vitest/eslint-plugin": "1.6.28",
     "actions-up": "2.0.0",
     "browserstack-local": "1.5.16",
@@ -122,7 +122,8 @@
     "knip": "6.44.0",
     "prettier": "3.9.10",
     "typescript-eslint": "8.72.1",
-    "vitest": "4.1.12",
+    "vite": "8.3.5",
+    "vitest": "5.0.5",
     "webdriverio": "10.1.0"
   },
   "engines": {
