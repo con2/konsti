@@ -32,11 +32,16 @@ const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
 };
 
 // Auth token for Sentry source map upload. CI / shell env wins (set as a build
-// secret in the Docker build); otherwise fall back to the gitignored
-// client/.env.sentry-build-plugin file so local builds can upload too
-const readSentryAuthToken = (dir: string): string | undefined => {
+// secret in the Docker build); otherwise a development build falls back to the
+// gitignored client/.env.sentry-build-plugin file. Other modes ignore the file,
+// since a bare `vite build` is a production build and a laptop's maps match no
+// deployed bundle
+const readSentryAuthToken = (dir: string, mode: string): string | undefined => {
   if (process.env.SENTRY_AUTH_TOKEN) {
     return process.env.SENTRY_AUTH_TOKEN;
+  }
+  if (mode !== "development") {
+    return undefined;
   }
   const file = path.join(dir, ".env.sentry-build-plugin");
   if (!existsSync(file)) {
@@ -72,13 +77,13 @@ export default defineConfig(({ mode, command }) => {
       : env.API_SERVER_URL;
 
   // Gates the Sentry plugin's network work - creating the release and uploading
-  // source maps - on an auth token being available (CI build secret, or the
-  // local client/.env.sentry-build-plugin file). The development build only
-  // uploads when enableSentryInDev is set. The plugin itself runs either way:
+  // source maps - on an auth token being available (CI build secret, or for a
+  // development build the local client/.env.sentry-build-plugin file). The
+  // development build only uploads when enableSentryInDev is set. The plugin itself runs either way:
   // marking the app's own chunks is a pure build transform that needs no
   // credentials, and the SDK's injected-script filter depends on every build
   // carrying those marks
-  const sentryAuthToken = readSentryAuthToken(import.meta.dirname);
+  const sentryAuthToken = readSentryAuthToken(import.meta.dirname, mode);
   const sentryProject = SENTRY_PROJECT_BY_MODE[mode];
 
   // Said here rather than left to the Sentry plugin: its own "no auth token"
