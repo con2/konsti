@@ -180,8 +180,11 @@ jobs:
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
         # The Pages backend sometimes fails a deployment with a transient
         # "Deployment failed, try again later" error; retry once before
-        # failing the job
+        # failing the job. A deployment can also hang in the backend, so the
+        # timeout is short enough for both attempts to fit in the job timeout.
         continue-on-error: true
+        with:
+          timeout: 240000
 
       - name: Wait before retrying deployment
         if: steps.deployment.outcome == 'failure'
@@ -191,6 +194,8 @@ jobs:
         id: deployment-retry
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        with:
+          timeout: 240000
 
       - name: Add report link to job summary
         run: |
