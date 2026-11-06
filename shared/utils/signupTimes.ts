@@ -177,14 +177,15 @@ const getRollingDirectSignupStartTime = (
 
   // Sign-up can be held back past the event start, which is pulled early when
   // the lottery opens from it. Never before the event start, though.
-  const earliestStartTime =
+  const earliestStartTime = new Date(
     rollingDirectSignupEarliestStartTime &&
-    isAfter(
-      new Date(rollingDirectSignupEarliestStartTime),
-      new Date(eventStartTime),
-    )
-      ? new Date(rollingDirectSignupEarliestStartTime)
-      : new Date(eventStartTime);
+      isAfter(
+        new Date(rollingDirectSignupEarliestStartTime),
+        new Date(eventStartTime),
+      )
+      ? rollingDirectSignupEarliestStartTime
+      : eventStartTime,
+  );
 
   // Sign-up starts 4 hours before program item start time
   const rollingStartTime = subHours(new Date(programItem.startTime), 4);
