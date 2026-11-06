@@ -221,7 +221,6 @@ export default defineConfig([
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
       "unicorn/prefer-ternary": "off",
-      "unicorn/prefer-default-parameters": "off",
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
