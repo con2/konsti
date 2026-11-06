@@ -112,10 +112,7 @@ export const getAssignmentBonus = (
         },
       );
 
-      if (previousDirectSignup ?? newAssignmentEvent) {
-        return true;
-      }
-      return false;
+      return Boolean(previousDirectSignup ?? newAssignmentEvent);
     });
 
   // Give first time bonus to the whole group if half of the group members don't have previous direct sign-ups
