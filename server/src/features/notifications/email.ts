@@ -46,10 +46,12 @@ export class EmailSender {
   async sendEmail(message: EmailMessage): Promise<void> {
     const transporter = await this.getTransport();
     const info = await transporter.sendMail(message);
-    if (process.env.SETTINGS !== "production") {
-      this.sentMessages.push(message);
-      // eslint-disable-next-line no-console
-      console.log(getTestMessageUrl(info));
+    if (process.env.SETTINGS === "production") {
+      return;
     }
+
+    this.sentMessages.push(message);
+    // eslint-disable-next-line no-console
+    console.log(getTestMessageUrl(info));
   }
 }

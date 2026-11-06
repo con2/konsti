@@ -107,22 +107,22 @@ export const removeOverlapLotterySignups = async (
     }
 
     // Cancel all upcoming lottery sign-ups
-    if (strategy === RemoveLotterySignupsStrategy.ALL_UPCOMING) {
-      const upcomingLotterySignupProgramItemIds =
-        getUpcomingLotterySignupProgramItemIds(
-          signedUser.lotterySignups,
-          programItems,
-          new Date(assignmentTime),
-        ).filter(
-          (programItemId) => !lotteriedProgramItemIds.has(programItemId),
-        );
+    if (strategy !== RemoveLotterySignupsStrategy.ALL_UPCOMING) {
+      return;
+    }
 
-      if (upcomingLotterySignupProgramItemIds.length > 0) {
-        usersToUpdate.push({
-          username: signedUser.username,
-          lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
-        });
-      }
+    const upcomingLotterySignupProgramItemIds =
+      getUpcomingLotterySignupProgramItemIds(
+        signedUser.lotterySignups,
+        programItems,
+        new Date(assignmentTime),
+      ).filter((programItemId) => !lotteriedProgramItemIds.has(programItemId));
+
+    if (upcomingLotterySignupProgramItemIds.length > 0) {
+      usersToUpdate.push({
+        username: signedUser.username,
+        lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
+      });
     }
   });
 

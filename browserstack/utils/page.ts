@@ -64,15 +64,17 @@ const waitForItemGone = async (
 
 const waitForInitialItem = async (browser: Browser): Promise<void> => {
   const shown = await waitForItem(browser, "Initial program", 30000);
-  if (shown === null) {
-    const url: unknown = await browser.getUrl();
-    const text: unknown = await browser.execute(() => {
-      return document.body.textContent.slice(0, 600);
-    });
-    throw new Error(
-      `Initial program never rendered\nurl=${JSON.stringify(url)}\nbody=${JSON.stringify(text)}`,
-    );
+  if (shown !== null) {
+    return;
   }
+
+  const url: unknown = await browser.getUrl();
+  const text: unknown = await browser.execute(() => {
+    return document.body.textContent.slice(0, 600);
+  });
+  throw new Error(
+    `Initial program never rendered\nurl=${JSON.stringify(url)}\nbody=${JSON.stringify(text)}`,
+  );
 };
 
 // After a cross-site navigation and back, iOS 16 Safari has answered every
