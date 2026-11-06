@@ -75,8 +75,7 @@ interface PostSignupQuestionError extends ApiError {
 }
 
 export type PostSignupQuestionResponse =
-  | PostSignupQuestionResult
-  | PostSignupQuestionError;
+  PostSignupQuestionResult | PostSignupQuestionError;
 
 // DELETE sign-up question
 
@@ -95,8 +94,7 @@ interface DeleteSignupQuestionError extends ApiError {
 }
 
 export type DeleteSignupQuestionResponse =
-  | DeleteSignupQuestionResult
-  | DeleteSignupQuestionError;
+  DeleteSignupQuestionResult | DeleteSignupQuestionError;
 
 // POST settings
 

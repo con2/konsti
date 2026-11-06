@@ -239,8 +239,7 @@ interface QueueAssignmentEmailsParams {
   assignmentTime: string;
   notifications: NotificationTask[];
   emailKind:
-    | EmailNotificationTrigger.ACCEPTED
-    | EmailNotificationTrigger.REJECTED;
+    EmailNotificationTrigger.ACCEPTED | EmailNotificationTrigger.REJECTED;
 }
 
 const queueAssignmentEmails = ({

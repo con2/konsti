@@ -72,8 +72,7 @@ export interface PostUpdateUserPasswordError extends ApiError {
 }
 
 export type PostUpdateUserPasswordResponse =
-  | PostUpdateUserPasswordResult
-  | PostUpdateUserPasswordError;
+  PostUpdateUserPasswordResult | PostUpdateUserPasswordError;
 
 // GET user by serial
 
@@ -96,8 +95,7 @@ interface GetUserBySerialError extends ApiError {
 }
 
 export type GetUserBySerialResponse =
-  | GetUserBySerialResult
-  | GetUserBySerialError;
+  GetUserBySerialResult | GetUserBySerialError;
 
 // GET sign-up messages
 
@@ -110,5 +108,4 @@ interface GetSignupMessagesError extends ApiError {
 }
 
 export type GetSignupMessagesResponse =
-  | GetSignupMessagesResult
-  | GetSignupMessagesError;
+  GetSignupMessagesResult | GetSignupMessagesError;

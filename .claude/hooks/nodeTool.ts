@@ -20,11 +20,7 @@ export const getProjectRoot = (): string => {
 };
 
 export type ToolStatus =
-  | "ok"
-  | "findings"
-  | "crashed"
-  | "unavailable"
-  | "skipped";
+  "ok" | "findings" | "crashed" | "unavailable" | "skipped";
 
 export interface ToolResult {
   name: string;

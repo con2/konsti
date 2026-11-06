@@ -194,16 +194,14 @@ export const loadPastEventToDb = async ({
   const allDirectSignups = dump.directSignups.flatMap((directSignup) =>
     directSignup.userSignups
       .filter((userSignup) => userSignup.priority === DIRECT_SIGNUP_PRIORITY)
-      .map(
-        (userSignup): SignupRepositoryAddSignup => ({
-          username: userSignup.username,
-          directSignupProgramItemId: directSignup.programItemId,
-          message: userSignup.message,
-          priority: userSignup.priority,
-          signedToStartTime: userSignup.signedToStartTime,
-          signupTime: userSignup.signupTime,
-        }),
-      ),
+      .map((userSignup): SignupRepositoryAddSignup => ({
+        username: userSignup.username,
+        directSignupProgramItemId: directSignup.programItemId,
+        message: userSignup.message,
+        priority: userSignup.priority,
+        signedToStartTime: userSignup.signedToStartTime,
+        signupTime: userSignup.signupTime,
+      })),
   );
 
   const directSignupsToLoad = allDirectSignups.filter((directSignup) => {
