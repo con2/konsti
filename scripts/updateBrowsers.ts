@@ -119,18 +119,33 @@ const widened = pins
 const expected = [...browsers, ...widened].toSorted(byName);
 const resolved = browserslist(queries).toSorted(byName);
 if (JSON.stringify(resolved) === JSON.stringify(expected)) {
-  const previous = fs.existsSync(file)
-    ? fs
-        .readFileSync(file, "utf8")
-        .split("\n")
-        .map((line) => line.split("#", 1)[0].trim())
-        .filter((line) => line !== "")
-    : [];
-  for (const q of previous.filter((p) => !queries.includes(p))) {
-    console.log(`dropped ${q}`);
-  }
-  for (const q of queries.filter((p) => !previous.includes(p))) {
-    console.log(`added ${q}`);
+  const previous = new Map(
+    fs.existsSync(file)
+      ? fs
+          .readFileSync(file, "utf8")
+          .split("\n")
+          .map((line) => line.split("#", 1)[0].trim())
+          .filter((line) => line !== "")
+          .map((line) => line.split(" >= ", 2) as [string, string])
+      : [],
+  );
+  const current = new Map(pins.map((p) => [p.id, p.floor]));
+  const ids = [...new Set([...previous.keys(), ...current.keys()])].toSorted(
+    byName,
+  );
+  for (const id of ids) {
+    const before = previous.get(id);
+    const after = current.get(id);
+    if (before === after) {
+      continue;
+    }
+    if (after === undefined) {
+      console.log(`dropped ${id} >= ${before}`);
+    } else if (before === undefined) {
+      console.log(`added ${id} >= ${after}`);
+    } else {
+      console.log(`${id} ${before} -> ${after}`);
+    }
   }
   fs.writeFileSync(file, content);
   console.log(`${pins.length} browser families pinned in ${file}`);
