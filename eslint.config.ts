@@ -221,7 +221,6 @@ export default defineConfig([
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
       "unicorn/prefer-ternary": "off",
-      "unicorn/prefer-minimal-ternary": "off",
       "unicorn/prefer-early-return": "off",
       "unicorn/consistent-existence-index-check": "off",
       "unicorn/no-unused-builtin-method-return": "off",
