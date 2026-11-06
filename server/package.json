@@ -38,26 +38,26 @@
     "find-unused-translation-keys": "tsx src/test/scripts/findUnusedTranslationKeys.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "10.5.0",
-    "@sentry/node": "10.58.0",
+    "@faker-js/faker": "10.6.0",
+    "@sentry/node": "10.78.0",
     "bcryptjs": "3.0.3",
     "commander": "15.0.0",
     "croner": "10.0.1",
     "dotenv": "17.4.2",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.2",
-    "express": "5.2.1",
+    "express": "5.3.0",
     "express-static-gzip": "3.0.2",
     "fastest-levenshtein": "1.0.16",
     "fastq": "1.20.3",
     "generate-serial-number": "0.0.3",
-    "helmet": "8.2.0",
+    "helmet": "8.3.0",
     "jsonwebtoken": "9.0.3",
-    "mongoose": "9.7.1",
+    "mongoose": "9.11.4",
     "mongoose-lean-getters": "2.3.1",
     "mongoose-lean-virtuals": "2.1.0",
-    "nodemailer": "9.0.1",
-    "tsx": "4.22.4",
+    "nodemailer": "9.1.1",
+    "tsx": "4.23.15",
     "winston": "3.19.0",
     "winston-transport-sentry-node": "3.0.0"
   },
@@ -67,8 +67,8 @@
     "@types/node": "26.6.6",
     "@types/nodemailer": "8.0.2",
     "@types/supertest": "7.2.1",
-    "mongodb-memory-server": "11.2.0",
-    "supertest": "7.2.2"
+    "mongodb-memory-server": "11.3.0",
+    "supertest": "7.3.1"
   },
   "engines": {
     "node": ">=26.13.0"
