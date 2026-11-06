@@ -1,6 +1,7 @@
 import { addHours } from "date-fns";
 import { config } from "shared/config";
 import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { logger } from "server/utils/logger";
@@ -20,8 +21,8 @@ const testAssignment = async (
 
 const getAssignmentAlgorithm = (userParameter: string): AssignmentAlgorithm => {
   const algorithms = Object.values(AssignmentAlgorithm);
-  if (algorithms.includes(userParameter as AssignmentAlgorithm)) {
-    return userParameter as AssignmentAlgorithm;
+  if (isEnumValue(AssignmentAlgorithm, userParameter)) {
+    return userParameter;
   }
   // eslint-disable-next-line no-restricted-syntax -- Test script
   throw new Error(`Give valid algorithm parameter: ${algorithms.join(", ")}`);
