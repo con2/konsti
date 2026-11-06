@@ -10,6 +10,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { StyleSheetManager, ThemeProvider } from "styled-components";
 import { config } from "shared/config";
+import { sentryDataCollection } from "shared/config/sentryConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { setLocale } from "shared/utils/setLocale";
 import loaderImage from "assets/loading.gif";
@@ -93,6 +94,9 @@ init({
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
   maxValueLength: config.sentry().maxValueLength,
+  dataCollection: sentryDataCollection,
+  // A captured non-Error has no stack of its own, and a synthetic one would group it by call site
+  attachStacktrace: false,
 });
 
 // Suspend fallback element
