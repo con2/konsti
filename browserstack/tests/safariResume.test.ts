@@ -302,10 +302,9 @@ const inSession = (
 ): ((context: TestContext) => Promise<void>) => {
   return async (context) => {
     const previousTurn = session.turn;
-    let endTurn = (): void => undefined;
-    session.turn = new Promise((resolve) => {
-      endTurn = resolve;
-    });
+    const { promise, resolve: endTurn }: PromiseWithResolvers<void> =
+      Promise.withResolvers();
+    session.turn = promise;
     context.onTestFailed(() => {
       session.failures.push(scenarios[number].title);
     });
