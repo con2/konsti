@@ -220,6 +220,21 @@ export default defineConfig([
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
+      "unicorn/prefer-ternary": "off",
+      "unicorn/prefer-minimal-ternary": "off",
+      "unicorn/prefer-early-return": "off",
+      "unicorn/no-negated-condition": "off",
+      "unicorn/consistent-existence-index-check": "off",
+      "unicorn/no-unused-builtin-method-return": "off",
+      "unicorn/prefer-promise-with-resolvers": "off",
+      "unicorn/prefer-iterator-helpers": "off",
+      "unicorn/prefer-default-parameters": "off",
+      "unicorn/prefer-split-limit": "off",
+      "unicorn/prefer-simplified-conditions": "off",
+      "unicorn/prefer-boolean-return": "off",
+      "unicorn/no-useless-length-check": "off",
+      "unicorn/prefer-object-iterable-methods": "off",
+      "unicorn/no-useless-logical-operand": "off",
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
