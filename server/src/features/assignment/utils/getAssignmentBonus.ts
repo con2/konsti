@@ -86,12 +86,11 @@ export const getAssignmentBonus = (
               userSignup.username === groupMember.username &&
               // Exclude this run's own win (priority > 0), but keep first-come-first-served
               // (priority 0) sign-ups counting as "previous"
-              !(
-                isThisRunsOwn(
-                  directSignup.programItemId,
-                  userSignup.signedToStartTime,
-                ) && userSignup.priority !== DIRECT_SIGNUP_PRIORITY
-              ),
+              (!isThisRunsOwn(
+                directSignup.programItemId,
+                userSignup.signedToStartTime,
+              ) ||
+                userSignup.priority === DIRECT_SIGNUP_PRIORITY),
           );
         },
       );
