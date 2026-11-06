@@ -226,7 +226,6 @@ export default defineConfig([
       "unicorn/prefer-promise-with-resolvers": "off",
       "unicorn/prefer-iterator-helpers": "off",
       "unicorn/prefer-default-parameters": "off",
-      "unicorn/prefer-object-iterable-methods": "off",
       "unicorn/no-useless-logical-operand": "off",
 
       // @typescript-eslint
