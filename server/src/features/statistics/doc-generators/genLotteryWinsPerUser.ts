@@ -115,10 +115,7 @@ const renderYearSection = (dist: YearDistribution): string[] => {
     return [`### ${dist.year}`, "", DIRECT_SIGNUP_ONLY_TEXT, ""];
   }
 
-  const winners = [...dist.usersByWinCount.values()].reduce(
-    (sum, n) => sum + n,
-    0,
-  );
+  const winners = dist.usersByWinCount.values().reduce((sum, n) => sum + n, 0);
   const totalParticipants = winners + dist.zeroWins;
   // One scale for both charts: they describe the same users, so equal counts
   // must render equal bars
