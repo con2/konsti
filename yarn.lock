@@ -3917,18 +3917,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"actions-up@npm:1.21.0":
-  version: 1.21.0
-  resolution: "actions-up@npm:1.21.0"
+"actions-up@npm:2.0.0":
+  version: 2.0.0
+  resolution: "actions-up@npm:2.0.0"
   dependencies:
-    enquirer: "npm:^2.4.1"
-    nanospinner: "npm:^1.2.2"
-    picocolors: "npm:^1.1.1"
     semver: "npm:^7.8.5"
     yaml: "npm:^2.9.1"
   bin:
     actions-up: bin/actions-up.js
-  checksum: 10c0/9459a1d64ce5c3b269ffece6497d45ddf56085b92a5c5f8be122db46172b0007988b0fd631b587998519081430afba3cbeea1184d4c66ff04cc118f25c7f5fd9
+  checksum: 10c0/4d1333761f04c0000278f1bce1565594bef240175f1a8321a36e5eebc6b84bc2b83912f5c6b3b50a2285f92265456b49a58424e8d46919d7230fcc8dcaea23ff
   languageName: node
   linkType: hard
 
@@ -3976,13 +3973,6 @@ __metadata:
     json-schema-traverse: "npm:^1.0.0"
     require-from-string: "npm:^2.0.2"
   checksum: 10c0/5df9a1c8f83863cde1bd3a9ddb426f599718f88e3dc9153616c79fb28e0be455335830d7f21d745576519f057b371352daa31047b6a33d7036fe08777d60cf2a
-  languageName: node
-  linkType: hard
-
-"ansi-colors@npm:^4.1.1":
-  version: 4.1.3
-  resolution: "ansi-colors@npm:4.1.3"
-  checksum: 10c0/ec87a2f59902f74e61eada7f6e6fe20094a628dab765cfdbd03c3477599368768cffccdb5d3bb19a1b6c99126783a143b1fee31aab729b31ffe5836c7e5e28b9
   languageName: node
   linkType: hard
 
@@ -5825,16 +5815,6 @@ __metadata:
     graceful-fs: "npm:^4.2.4"
     tapable: "npm:^2.3.3"
   checksum: 10c0/6aa9c1248ef6ba49bf30b89dc8525b24a64caeb45442a4d0f0578d0fbd0456218801944f7b7c03ce1af47706448111890d3bfc82009bd868167abbf8cc7ebcbf
-  languageName: node
-  linkType: hard
-
-"enquirer@npm:^2.4.1":
-  version: 2.4.1
-  resolution: "enquirer@npm:2.4.1"
-  dependencies:
-    ansi-colors: "npm:^4.1.1"
-    strip-ansi: "npm:^6.0.1"
-  checksum: 10c0/43850479d7a51d36a9c924b518dcdc6373b5a8ae3401097d336b7b7e258324749d0ad37a1fcaa5706f04799baa05585cd7af19ebdf7667673e7694435fcea918
   languageName: node
   linkType: hard
 
@@ -8857,7 +8837,7 @@ __metadata:
     "@vitest/coverage-istanbul": "npm:4.1.12"
     "@vitest/eslint-plugin": "npm:1.6.28"
     "@yarnpkg/types": "npm:4.0.1"
-    actions-up: "npm:1.21.0"
+    actions-up: "npm:2.0.0"
     browserstack-local: "npm:1.5.16"
     c8: "npm:12.0.0"
     date-fns: "npm:4.4.0"
@@ -10435,15 +10415,6 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 10c0/856e8bf3bddb959d65997bd94908be030dbc5e6ed88fb3af2a638e51d1938f4d4f454c7c7231aba340775224f88b8cfd3ce1693c70471bfd05f5b6a2227c0c1e
-  languageName: node
-  linkType: hard
-
-"nanospinner@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "nanospinner@npm:1.2.2"
-  dependencies:
-    picocolors: "npm:^1.1.1"
-  checksum: 10c0/07264f63816a8ec24d84ffe216a605cf11dffd8b098d4c5e6790437304b47e10ce4fc341de8dbcfc1b59aa42107f9949c89bcc201239eb61a80e14b6b1a20c90
   languageName: node
   linkType: hard
 
