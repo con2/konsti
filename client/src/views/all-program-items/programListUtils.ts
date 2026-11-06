@@ -4,6 +4,7 @@ import {
   ProgramItem,
   Tag,
 } from "shared/types/models/programItem";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 import {
   getUpcomingProgramItems,
@@ -68,18 +69,27 @@ export const getTagFilteredProgramItems = (
       if (programItem.programType.includes(selectedTag)) {
         return true;
       }
-      if (programItem.tags.includes(selectedTag as Tag)) {
+      if (
+        isEnumValue(Tag, selectedTag) &&
+        programItem.tags.includes(selectedTag)
+      ) {
         return true;
       }
-      if (programItem.ageGroups.includes(selectedTag as AgeGroup)) {
+      if (
+        isEnumValue(AgeGroup, selectedTag) &&
+        programItem.ageGroups.includes(selectedTag)
+      ) {
         return true;
       }
-      if (programItem.languages.includes(selectedTag as Language)) {
+      if (
+        isEnumValue(Language, selectedTag) &&
+        programItem.languages.includes(selectedTag)
+      ) {
         return true;
       }
       if (
         programItem.languages.includes(Language.LANGUAGE_FREE) &&
-        Object.values(Language).includes(selectedTag as Language)
+        isEnumValue(Language, selectedTag)
       ) {
         return true;
       }
