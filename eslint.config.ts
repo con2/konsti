@@ -223,7 +223,6 @@ export default defineConfig([
       "unicorn/prefer-ternary": "off",
       "unicorn/prefer-minimal-ternary": "off",
       "unicorn/prefer-early-return": "off",
-      "unicorn/no-negated-condition": "off",
       "unicorn/consistent-existence-index-check": "off",
       "unicorn/no-unused-builtin-method-return": "off",
       "unicorn/prefer-promise-with-resolvers": "off",

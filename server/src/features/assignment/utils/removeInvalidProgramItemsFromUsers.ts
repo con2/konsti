@@ -99,14 +99,14 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
 
     const removeLotterySignups = classifiedLotterySignups.flatMap(
       (classified) =>
-        !classified.keep && classified.cancellationAction !== undefined
-          ? [
+        classified.keep || classified.cancellationAction === undefined
+          ? []
+          : [
               {
                 lotterySignup: classified.lotterySignup,
                 action: classified.cancellationAction,
               },
-            ]
-          : [],
+            ],
     );
 
     const changedLotterySignupsCount =
