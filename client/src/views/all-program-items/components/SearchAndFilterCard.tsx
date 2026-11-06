@@ -134,10 +134,10 @@ export const SearchAndFilterCard = ({
         <StyledLegend>{t("startingTime")}</StyledLegend>
         <RadioButtonGroup>
           {Object.entries(StartingTimeOption)
-            .filter(([_, val]) =>
-              config.event().enableRevolvingDoor
-                ? true
-                : val !== StartingTimeOption.REVOLVING_DOOR,
+            .filter(
+              ([_, val]) =>
+                config.event().enableRevolvingDoor ||
+                val !== StartingTimeOption.REVOLVING_DOOR,
             )
             .map(([key, val]) => {
               return (
