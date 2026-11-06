@@ -1,12 +1,7 @@
 import type { TransformableInfo } from "logform";
 import { createLogger, format, transports } from "winston";
-import _WinstonTransport from "winston-transport-sentry-node";
 import { config } from "shared/config";
-
-// Node.js ESM CJS interop: package uses exports.default, so the class is wrapped as { default: Class }
-const WinstonTransport = (
-  _WinstonTransport as unknown as { default: typeof _WinstonTransport }
-).default;
+import { SentryTransport } from "server/utils/sentryTransport";
 
 const SPLAT = Symbol.for("splat");
 const LEVEL = Symbol.for("level");
@@ -14,9 +9,9 @@ const LEVEL = Symbol.for("level");
 // Log errors by passing the Error directly: `logger.error(new Error("..."))`, or wrap an
 // underlying error as the cause: `logger.error(new Error("context", { cause: err }))`
 //
-// Surfaces the Error onto an enumerable `error` key because winston-transport-sentry-node
-// only captures a real exception when it finds an Error among `info`'s enumerable values,
-// and winston-transport's `Object.assign` copy drops an Error's non-enumerable `message`/`stack`
+// Surfaces the Error onto an enumerable `error` key, which is where the Sentry transport looks
+// for it, because winston-transport's `Object.assign` copy drops an Error's non-enumerable
+// `message`/`stack`
 const surfaceError = format((info) => {
   if (info instanceof Error) {
     // sole-arg Error: winston makes `info` the Error itself. Return a fresh info so we don't
@@ -94,21 +89,6 @@ export const logger = createLogger({
       format: consoleOutputFormat,
     }),
 
-    new WinstonTransport({
-      // Sentry SDK is already initialized in instrument.ts
-      skipSentryInit: true,
-      level: "error",
-      format: format.combine(
-        format.timestamp(),
-        format.splat(),
-        format.printf((info) => {
-          return JSON.stringify({
-            timestamp: info.timestamp,
-            level: info.level,
-            message: renderMessage(info),
-          });
-        }),
-      ),
-    }),
+    new SentryTransport({ level: "error" }),
   ],
 });

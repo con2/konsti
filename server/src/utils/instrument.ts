@@ -1,5 +1,6 @@
 import { init } from "@sentry/node";
 import { config } from "shared/config";
+import { sentryDataCollection } from "shared/config/sentryConfig";
 import { makeRetryingNodeTransport } from "server/utils/retryingSentryTransport";
 import { scrubIpAddress } from "server/utils/scrubIpAddress";
 
@@ -26,6 +27,9 @@ init({
   // deploy.yml so backend events are associated with it (undefined locally)
   release: process.env.APP_VERSION,
   maxValueLength: config.sentry().maxValueLength,
+  dataCollection: sentryDataCollection,
+  // A captured non-Error has no stack of its own, and a synthetic one would group it by call site
+  attachStacktrace: false,
   beforeSend: scrubIpAddress,
   transport: makeRetryingNodeTransport,
 });

@@ -1,7 +1,7 @@
 import { once } from "node:events";
 import http, { Server, ServerResponse } from "node:http";
 import path from "node:path";
-import { flush, setupExpressErrorHandler } from "@sentry/node";
+import { flush } from "@sentry/node";
 import express, { NextFunction, Request, Response } from "express";
 import expressStaticGzip from "express-static-gzip";
 import helmet from "helmet";
@@ -186,9 +186,6 @@ export const startServer = async ({
       headers: { "Cache-Control": "no-cache" },
     });
   });
-
-  // Sentry setup: add this after all routes and before other error-handling middlewares
-  setupExpressErrorHandler(app);
 
   app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
     // Once headers are sent the default Express handler is the only thing that can still

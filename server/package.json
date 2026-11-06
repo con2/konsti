@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "10.6.0",
-    "@sentry/node": "10.78.0",
+    "@sentry/node": "11.10.0",
     "bcryptjs": "3.0.3",
     "commander": "15.0.0",
     "croner": "11.0.0",
@@ -59,7 +59,7 @@
     "nodemailer": "10.3.1",
     "tsx": "4.23.15",
     "winston": "3.19.0",
-    "winston-transport-sentry-node": "3.0.0"
+    "winston-transport": "4.9.0"
   },
   "devDependencies": {
     "@types/express": "5.0.6",
