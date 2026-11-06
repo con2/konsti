@@ -56,7 +56,7 @@
     "mongoose": "9.11.4",
     "mongoose-lean-getters": "2.3.1",
     "mongoose-lean-virtuals": "2.1.0",
-    "nodemailer": "9.1.1",
+    "nodemailer": "10.3.1",
     "tsx": "4.23.15",
     "winston": "3.19.0",
     "winston-transport-sentry-node": "3.0.0"
@@ -65,7 +65,6 @@
     "@types/express": "5.0.6",
     "@types/jsonwebtoken": "9.0.10",
     "@types/node": "26.6.6",
-    "@types/nodemailer": "8.0.2",
     "@types/supertest": "7.2.1",
     "mongodb-memory-server": "11.3.0",
     "supertest": "7.3.1"

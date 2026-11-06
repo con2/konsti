@@ -3126,15 +3126,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/nodemailer@npm:8.0.2":
-  version: 8.0.2
-  resolution: "@types/nodemailer@npm:8.0.2"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/1ad3f83ac130cf9af65ce9eb7985b08b27b4723316c2be621522effc31c63d7d2d76880815490499fbe8b1aff3da889d24b54b3db892526d1166b12702404ff0
-  languageName: node
-  linkType: hard
-
 "@types/qs@npm:*":
   version: 6.15.1
   resolution: "@types/qs@npm:6.15.1"
@@ -10538,10 +10529,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:9.1.1":
-  version: 9.1.1
-  resolution: "nodemailer@npm:9.1.1"
-  checksum: 10c0/b213a2a906697a735f6eb21103629b7a77aeac297b6d843efd4588157999bf6d19381853ac1224e472f5a34aec2e2412444151a2c6ec6e8c52150afa3055039c
+"nodemailer@npm:10.3.1":
+  version: 10.3.1
+  resolution: "nodemailer@npm:10.3.1"
+  checksum: 10c0/a960ba9e7cb8f7135b828fb72bcdfd061bb914c6357578ed6613dd5303e8461710a1151210e95a92542461128e900038dd0794fc27bd74b297bd822013cfe8e8
   languageName: node
   linkType: hard
 
@@ -12352,7 +12343,6 @@ __metadata:
     "@types/express": "npm:5.0.6"
     "@types/jsonwebtoken": "npm:9.0.10"
     "@types/node": "npm:26.6.6"
-    "@types/nodemailer": "npm:8.0.2"
     "@types/supertest": "npm:7.2.1"
     bcryptjs: "npm:3.0.3"
     commander: "npm:15.0.0"
@@ -12371,7 +12361,7 @@ __metadata:
     mongoose: "npm:9.11.4"
     mongoose-lean-getters: "npm:2.3.1"
     mongoose-lean-virtuals: "npm:2.1.0"
-    nodemailer: "npm:9.1.1"
+    nodemailer: "npm:10.3.1"
     supertest: "npm:7.3.1"
     tsx: "npm:4.23.15"
     winston: "npm:3.19.0"
