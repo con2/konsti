@@ -134,10 +134,9 @@ let previousWrite: Promise<void> = Promise.resolve();
 
 const writeProgram = async (): Promise<void> => {
   const waitFor = previousWrite;
-  let finish = (): void => undefined;
-  previousWrite = new Promise((resolve) => {
-    finish = resolve;
-  });
+  const { promise, resolve: finish }: PromiseWithResolvers<void> =
+    Promise.withResolvers();
+  previousWrite = promise;
   try {
     await waitFor;
     await addProgramItems([initialItem, ...liveProbes.values()]);
