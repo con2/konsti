@@ -90,7 +90,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
     if (newHidden && programItemIndex === -1) {
       allHiddenProgramItems.push(programItem);
-    } else if (!newHidden && programItemIndex > -1) {
+    } else if (!newHidden && programItemIndex !== -1) {
       allHiddenProgramItems.splice(programItemIndex, 1);
     }
 
