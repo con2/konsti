@@ -226,7 +226,6 @@ export default defineConfig([
       "unicorn/prefer-promise-with-resolvers": "off",
       "unicorn/prefer-iterator-helpers": "off",
       "unicorn/prefer-default-parameters": "off",
-      "unicorn/prefer-split-limit": "off",
       "unicorn/prefer-simplified-conditions": "off",
       "unicorn/prefer-boolean-return": "off",
       "unicorn/no-useless-length-check": "off",

@@ -50,7 +50,7 @@ export const resolvePortOffset = (explicitValue?: string): number => {
       { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] },
     )
       .trim()
-      .split("\n");
+      .split("\n", 2);
     const toplevel = path.resolve(toplevelRaw.trim());
     const commonDir = path.resolve(commonDirRaw.trim());
 
