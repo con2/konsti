@@ -183,54 +183,53 @@ export const addAssignmentNotifications = async ({
   }
 
   // Add NO_ASSIGNMENT to user event logs
-  if (rejectedUsernames.length > 0) {
-    // A batched lottery decides several starting times at once, so a rejection names the span
-    // it took in rather than the hour the run was scheduled at, which for a batch is the
-    // parent's
-    const lotteriedSpan = getLotteriedSpan(
-      startingProgramItems,
-      assignmentTime,
-    );
+  if (rejectedUsernames.length === 0) {
+    return;
+  }
 
-    const noAssignmentEventLogItemsResult = await addEventLogItems(
-      rejectedUsernames.map((rejectedUsername) => ({
+  // A batched lottery decides several starting times at once, so a rejection names the span
+  // it took in rather than the hour the run was scheduled at, which for a batch is the
+  // parent's
+  const lotteriedSpan = getLotteriedSpan(startingProgramItems, assignmentTime);
+
+  const noAssignmentEventLogItemsResult = await addEventLogItems(
+    rejectedUsernames.map((rejectedUsername) => ({
+      username: rejectedUsername,
+      programItemId: "",
+      ...lotteriedSpan,
+      createdAt: new Date().toISOString(),
+      action: EventLogAction.NO_ASSIGNMENT,
+    })),
+  );
+  if (!noAssignmentEventLogItemsResult.ok) {
+    logger.error(
+      new Error(
+        `Assignment ${assignmentTime}: failed to add NO_ASSIGNMENT event log items: ${noAssignmentEventLogItemsResult.error}`,
+      ),
+    );
+  }
+
+  // Add SEND_EMAIL_REJECTED to notification queue
+  if (
+    settings?.emailNotificationTrigger.includes(
+      EmailNotificationTrigger.REJECTED,
+    )
+  ) {
+    queueAssignmentEmails({
+      queueService,
+      assignmentTime,
+      notifications: rejectedUsernames.map((rejectedUsername) => ({
+        type: NotificationTaskType.SEND_EMAIL_REJECTED,
         username: rejectedUsername,
         programItemId: "",
         ...lotteriedSpan,
-        createdAt: new Date().toISOString(),
-        action: EventLogAction.NO_ASSIGNMENT,
       })),
+      emailKind: EmailNotificationTrigger.REJECTED,
+    });
+  } else {
+    logger.info(
+      `Assignment ${assignmentTime}: ${EmailNotificationTrigger.REJECTED} emails not enabled in settings, none queued`,
     );
-    if (!noAssignmentEventLogItemsResult.ok) {
-      logger.error(
-        new Error(
-          `Assignment ${assignmentTime}: failed to add NO_ASSIGNMENT event log items: ${noAssignmentEventLogItemsResult.error}`,
-        ),
-      );
-    }
-
-    // Add SEND_EMAIL_REJECTED to notification queue
-    if (
-      settings?.emailNotificationTrigger.includes(
-        EmailNotificationTrigger.REJECTED,
-      )
-    ) {
-      queueAssignmentEmails({
-        queueService,
-        assignmentTime,
-        notifications: rejectedUsernames.map((rejectedUsername) => ({
-          type: NotificationTaskType.SEND_EMAIL_REJECTED,
-          username: rejectedUsername,
-          programItemId: "",
-          ...lotteriedSpan,
-        })),
-        emailKind: EmailNotificationTrigger.REJECTED,
-      });
-    } else {
-      logger.info(
-        `Assignment ${assignmentTime}: ${EmailNotificationTrigger.REJECTED} emails not enabled in settings, none queued`,
-      );
-    }
   }
 };
 

@@ -80,15 +80,17 @@ const warnAboutStaleE2eCoverage = (): void => {
   );
   const staleThresholdMs = 5 * 60 * 1000;
   if (
-    vitestMtime > 0 &&
-    e2eMtime > 0 &&
-    vitestMtime - e2eMtime > staleThresholdMs
+    vitestMtime === 0 ||
+    e2eMtime === 0 ||
+    vitestMtime - e2eMtime <= staleThresholdMs
   ) {
-    const minutes = Math.round((vitestMtime - e2eMtime) / 60_000);
-    console.warn(
-      `Playwright coverage data is ${minutes} minutes older than the vitest coverage - if sources changed in between, rerun \`yarn coverage:e2e\` to avoid misattributed hits`,
-    );
+    return;
   }
+
+  const minutes = Math.round((vitestMtime - e2eMtime) / 60_000);
+  console.warn(
+    `Playwright coverage data is ${minutes} minutes older than the vitest coverage - if sources changed in between, rerun \`yarn coverage:e2e\` to avoid misattributed hits`,
+  );
 };
 
 // Applies the source maps that vite-plugin-istanbul embeds into the coverage
