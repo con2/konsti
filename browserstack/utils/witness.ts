@@ -31,7 +31,7 @@ export const installWitness = async (browser: Browser): Promise<void> => {
     const events: WitnessEvent[] = [];
     window.__settingsLoads = loads;
     window.__events = events;
-    const originalFetch = window.fetch;
+    const originalFetch = window.fetch.bind(window);
     window.fetch = (input, init) => {
       const request = new Request(input, init);
       if (
