@@ -132,11 +132,11 @@ export const delLotterySignups = async (
 
     await UserModel.bulkWrite(bulkOps);
 
-    usersToUpdate.map((e) => {
+    for (const userToUpdate of usersToUpdate) {
       logger.debug(
-        `MongoDB: Deleted lottery signups ${e.lotterySignupProgramItemIds.join(", ")} from users: ${e.username}`,
+        `MongoDB: Deleted lottery signups ${userToUpdate.lotterySignupProgramItemIds.join(", ")} from users: ${userToUpdate.username}`,
       );
-    });
+    }
 
     return makeSuccessResult();
   } catch (error) {

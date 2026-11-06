@@ -46,7 +46,7 @@ export const removeOverlapLotterySignups = async (
     );
   }
 
-  results.flatMap((result) => {
+  for (const result of results) {
     const assignmentSignupProgramItem = programItems.find(
       (programItem) =>
         programItem.programItemId === result.assignmentSignup.programItemId,
@@ -58,7 +58,7 @@ export const removeOverlapLotterySignups = async (
           `removeOverlapLotterySignups: Error finding assignment signup: ${result.assignmentSignup.programItemId}`,
         ),
       );
-      return [];
+      continue;
     }
 
     const signedUser = usersResult.value.find(
@@ -70,7 +70,7 @@ export const removeOverlapLotterySignups = async (
           `removeOverlapLotterySignups: Error finding signed user: ${result.username}`,
         ),
       );
-      return [];
+      continue;
     }
 
     // Cancel all lottery sign-ups that start during the lottery direct sign-up
@@ -108,7 +108,7 @@ export const removeOverlapLotterySignups = async (
 
     // Cancel all upcoming lottery sign-ups
     if (strategy !== RemoveLotterySignupsStrategy.ALL_UPCOMING) {
-      return;
+      continue;
     }
 
     const upcomingLotterySignupProgramItemIds =
@@ -124,7 +124,7 @@ export const removeOverlapLotterySignups = async (
         lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
       });
     }
-  });
+  }
 
   if (usersToUpdate.length > 0) {
     const delLotterySignupsResult = await delLotterySignups(usersToUpdate);
