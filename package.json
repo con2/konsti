@@ -67,7 +67,7 @@
     "update-actions": "actions-up --yes",
     "update-browsers": "node scripts/updateBrowsers.ts",
     "update-images": "node scripts/updateDockerImages.ts",
-    "update-yarn": "yarn set version stable"
+    "update-yarn": "node scripts/updateYarn.ts"
   },
   "dependencies": {
     "@date-fns/tz": "1.5.0",
