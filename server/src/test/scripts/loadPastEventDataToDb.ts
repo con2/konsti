@@ -8,7 +8,7 @@ import { saveProgramItems } from "server/features/program-item/programItemReposi
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const updatePastEventProgramItems = async (): Promise<void> => {
   const { eventStartTime } = config.event();
@@ -60,16 +60,6 @@ const loadPastEventDataToDb = async (): Promise<void> => {
   // This will create default settings
   unsafelyUnwrap(await findOrCreateSettings());
   unsafelyUnwrap(await addSignupQuestions());
-
-  await db.gracefulExit();
 };
 
-try {
-  await loadPastEventDataToDb();
-} catch (error: unknown) {
-  logger.error(
-    new Error("Failed to load past event data to DB", { cause: error }),
-  );
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to load past event data to DB", loadPastEventDataToDb);

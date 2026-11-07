@@ -1,6 +1,7 @@
 import { db } from "server/db/mongodb";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const isInt = (n: string): boolean => Number.isInteger(Number(n));
 
@@ -20,13 +21,6 @@ const generateSerials = async (): Promise<void> => {
     // eslint-disable-next-line no-restricted-syntax -- Serial generation script
     throw new Error(`Saving serials failed: ${saveSerialsResult.error}`);
   }
-  await db.gracefulExit();
 };
 
-try {
-  await generateSerials();
-} catch (error: unknown) {
-  logger.error(new Error("Failed to generate serials", { cause: error }));
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to generate serials", generateSerials);

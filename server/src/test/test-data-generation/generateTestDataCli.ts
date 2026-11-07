@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import { db } from "server/db/mongodb";
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
-import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const generateTestDataCli = async (): Promise<void> => {
   const commander = new Command();
@@ -28,10 +28,4 @@ const generateTestDataCli = async (): Promise<void> => {
   await runGenerators(options, { closeDb: true });
 };
 
-try {
-  await generateTestDataCli();
-} catch (error: unknown) {
-  logger.error(new Error("Failed to generate test data", { cause: error }));
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to generate test data", generateTestDataCli);

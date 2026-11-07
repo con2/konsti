@@ -3,7 +3,7 @@ import { updateProgramItems } from "server/features/program-item/programItemServ
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const loadKompassiDataToDb = async (): Promise<void> => {
   await db.connectToDb();
@@ -16,16 +16,6 @@ const loadKompassiDataToDb = async (): Promise<void> => {
   // This will create default settings
   unsafelyUnwrap(await findOrCreateSettings());
   unsafelyUnwrap(await addSignupQuestions());
-
-  await db.gracefulExit();
 };
 
-try {
-  await loadKompassiDataToDb();
-} catch (error: unknown) {
-  logger.error(
-    new Error("Failed to load Kompassi data to DB", { cause: error }),
-  );
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to load Kompassi data to DB", loadKompassiDataToDb);

@@ -7,6 +7,7 @@ import { db } from "server/db/mongodb";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const checkStartTimes = async (): Promise<void> => {
   await db.connectToDb();
@@ -22,14 +23,6 @@ const checkStartTimes = async (): Promise<void> => {
       logger.info(`${getTime(rpg.startTime)} - ${rpg.title}`);
     }
   }
-
-  await db.gracefulExit();
 };
 
-try {
-  await checkStartTimes();
-} catch (error: unknown) {
-  logger.error(new Error("Failed to check start times", { cause: error }));
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to check start times", checkStartTimes);

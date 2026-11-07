@@ -1,18 +1,11 @@
 import { db } from "server/db/mongodb";
 import { verifyUserSignups } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const testVerifyResults = async (): Promise<void> => {
   await db.connectToDb();
   unsafelyUnwrap(await verifyUserSignups());
-  await db.gracefulExit();
 };
 
-try {
-  await testVerifyResults();
-} catch (error: unknown) {
-  logger.error(new Error("Failed to verify results", { cause: error }));
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to verify results", testVerifyResults);

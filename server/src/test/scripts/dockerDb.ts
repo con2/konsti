@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import { setTimeout as sleep } from "node:timers/promises";
 import { mongoDbImage, mongoDbVersion } from "server/test/mongoDbVersion";
 import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const containerName = `konsti-mongodb-${mongoDbVersion}`;
 const stabilityCheckMs = 3000;
@@ -72,11 +73,4 @@ const main = async (): Promise<void> => {
   await assertContainerStillRunning();
 };
 
-try {
-  await main();
-} catch (error: unknown) {
-  logger.error(
-    new Error("Docker: Failed to start MongoDB container", { cause: error }),
-  );
-  process.exitCode = 1;
-}
+await runScript("Docker: Failed to start MongoDB container", main);
