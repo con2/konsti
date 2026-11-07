@@ -56,6 +56,7 @@ import {
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { seedMathRandom } from "server/test/utils/seededRandom";
 import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const maxReportedDiffs = 20;
 
@@ -489,9 +490,6 @@ const simulateLottery = async (): Promise<number> => {
   return options.check && statuses.some((status) => status !== 0) ? 1 : 0;
 };
 
-try {
+await runScript("Failed to simulate lottery", async () => {
   process.exitCode = await simulateLottery();
-} catch (error: unknown) {
-  logger.error(new Error("Failed to simulate lottery", { cause: error }));
-  process.exitCode = 1;
-}
+});

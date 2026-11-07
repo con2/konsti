@@ -5,7 +5,7 @@ import { isEnumValue } from "shared/utils/isEnumValue";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const testAssignment = async (
   assignmentAlgorithm: AssignmentAlgorithm,
@@ -42,13 +42,6 @@ const init = async (): Promise<void> => {
 
   await db.connectToDb();
   await testAssignment(assignmentAlgorithm);
-  await db.gracefulExit();
 };
 
-try {
-  await init();
-} catch (error: unknown) {
-  logger.error(new Error("Failed to run test assignment", { cause: error }));
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Failed to run test assignment", init);

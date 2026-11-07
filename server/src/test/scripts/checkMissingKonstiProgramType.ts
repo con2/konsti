@@ -10,6 +10,7 @@ import {
 import { eventNameToKompassiEventName } from "server/kompassi/getProgramItemsFromKompassi";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 // Minimal schema for the raw full-program response: the full program item
 // schema uses catch() defaults which would fabricate annotation values on
@@ -164,11 +165,7 @@ const checkMissingKonstiProgramType = async (): Promise<void> => {
   }
 };
 
-try {
-  await checkMissingKonstiProgramType();
-} catch (error: unknown) {
-  logger.error(
-    new Error("Failed to check missing Konsti program types", { cause: error }),
-  );
-  process.exitCode = 1;
-}
+await runScript(
+  "Failed to check missing Konsti program types",
+  checkMissingKonstiProgramType,
+);

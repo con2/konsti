@@ -5,7 +5,7 @@ import { config } from "shared/config";
 import { getProgramFromServer } from "server/kompassi/getProgramItemsFromKompassi";
 import { KompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
-import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const isPlainObject = (val: unknown): val is Record<string, unknown> => {
   return (
@@ -74,11 +74,4 @@ const updateKompassiDataDump = async (): Promise<void> => {
   );
 };
 
-try {
-  await updateKompassiDataDump();
-} catch (error: unknown) {
-  logger.error(
-    new Error("Failed to update Kompassi data dump", { cause: error }),
-  );
-  process.exitCode = 1;
-}
+await runScript("Failed to update Kompassi data dump", updateKompassiDataDump);

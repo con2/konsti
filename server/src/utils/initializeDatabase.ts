@@ -11,6 +11,7 @@ import {
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { cleanupDatabase } from "server/utils/cleanupDatabase";
 import { logger } from "server/utils/logger";
+import { runScript } from "server/utils/runScript";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
@@ -55,14 +56,6 @@ const initializeDatabase = async (): Promise<void> => {
   // This will create default settings
   unsafelyUnwrap(await findOrCreateSettings());
   unsafelyUnwrap(await addSignupQuestions());
-
-  await db.gracefulExit();
 };
 
-try {
-  await initializeDatabase();
-} catch (error: unknown) {
-  logger.error(new Error("Script initializeDatabase failed", { cause: error }));
-  process.exitCode = 1;
-  await db.gracefulExit();
-}
+await runScript("Script initializeDatabase failed", initializeDatabase);
