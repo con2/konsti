@@ -31,7 +31,9 @@ const assertContainerStillRunning = async (): Promise<void> => {
   }
   const exitCode = inspect("{{.State.ExitCode}}") ?? "unknown";
   logger.error(
-    `Docker: MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:`,
+    new Error(
+      `Docker: MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:`,
+    ),
   );
   try {
     execSync(`docker logs --tail 20 ${containerName}`, { stdio: "inherit" });

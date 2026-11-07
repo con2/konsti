@@ -46,7 +46,9 @@ export async function emailNotificationWorker(
 
     if (!user) {
       logger.error(
-        `Trying to send email notification for unknown user ${notification.username}.`,
+        new Error(
+          `Trying to send email notification for unknown user ${notification.username}.`,
+        ),
       );
       return EmailNotificationOutcome.FAILED;
     }
@@ -120,7 +122,9 @@ async function generateAcceptedEmail(
   );
   if (!programItemResult.ok) {
     logger.error(
-      `Failed to found program for programItemId ${notification.programItemId}`,
+      new Error(
+        `Failed to found program for programItemId ${notification.programItemId}`,
+      ),
     );
     return null;
   }
@@ -146,7 +150,9 @@ function generateProgramItemCancelledEmail(
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
-      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      new Error(
+        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      ),
     );
     return null;
   }
@@ -164,7 +170,9 @@ function generateProgramItemDeletedEmail(
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
-      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      new Error(
+        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      ),
     );
     return null;
   }
@@ -182,7 +190,9 @@ function generateProgramItemNoKonstiSignupEmail(
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
-      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      new Error(
+        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      ),
     );
     return null;
   }
@@ -200,7 +210,9 @@ function generateProgramItemNoLotteryEmail(
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
-      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      new Error(
+        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      ),
     );
     return null;
   }
@@ -218,7 +230,9 @@ function generateProgramItemTimeChangedEmail(
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
-      `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      new Error(
+        `Missing programItemTitle for notification type ${notification.type}, username ${notification.username}`,
+      ),
     );
     return null;
   }
