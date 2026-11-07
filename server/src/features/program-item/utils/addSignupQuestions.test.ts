@@ -54,7 +54,7 @@ test("should save configured sign-up questions", async () => {
   // Create default settings so sign-up questions have a document to update
   await findOrCreateSettings();
 
-  await addSignupQuestions();
+  unsafelyUnwrap(await addSignupQuestions());
 
   const settings = unsafelyUnwrap(await findOrCreateSettings());
   expect(settings.signupQuestions).toHaveLength(1);
@@ -83,7 +83,7 @@ test("should add tournament sign-up question to tournaments except excluded ones
   // Create default settings so sign-up questions have a document to update
   await findOrCreateSettings();
 
-  await addSignupQuestions();
+  unsafelyUnwrap(await addSignupQuestions());
 
   const settings = unsafelyUnwrap(await findOrCreateSettings());
   expect(settings.signupQuestions).toHaveLength(1);
@@ -107,7 +107,7 @@ test("should not add tournament sign-up question to non-tournament program items
   // Create default settings so sign-up questions have a document to update
   await findOrCreateSettings();
 
-  await addSignupQuestions();
+  unsafelyUnwrap(await addSignupQuestions());
 
   const settings = unsafelyUnwrap(await findOrCreateSettings());
   expect(settings.signupQuestions).toHaveLength(0);
