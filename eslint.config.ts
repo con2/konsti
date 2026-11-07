@@ -361,7 +361,15 @@ export default defineConfig([
           ignoreArrowShorthand: true,
         },
       ],
+    },
+  },
 
+  // ** Code that runs in the browser **
+  {
+    // shared/ is bundled into the client too
+    files: [`client/${filetypesGlob}`, `shared/${filetypesGlob}`],
+
+    rules: {
       // eslint-plugin-unicorn
       "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
       "unicorn/prefer-promise-with-resolvers": "off", // Wait till Promise.withResolvers is more widely supported
