@@ -60,16 +60,18 @@ export const createDirectSignups = async (): Promise<void> => {
         currentIndex += usersCount;
 
         return usersChunk.map(async (user) => {
-          await saveDirectSignup({
-            username: user.username,
-            directSignupProgramItemId: randomProgramItem.programItemId,
-            signedToStartTime: randomProgramItem.startTime,
-            signupTime: randomProgramItem.startTime,
-            message: foundSignupQuestion?.questionFi
-              ? faker.lorem.words(4)
-              : "",
-            priority: DIRECT_SIGNUP_PRIORITY,
-          });
+          unsafelyUnwrap(
+            await saveDirectSignup({
+              username: user.username,
+              directSignupProgramItemId: randomProgramItem.programItemId,
+              signedToStartTime: randomProgramItem.startTime,
+              signupTime: randomProgramItem.startTime,
+              message: foundSignupQuestion?.questionFi
+                ? faker.lorem.words(4)
+                : "",
+              priority: DIRECT_SIGNUP_PRIORITY,
+            }),
+          );
         });
       });
     },

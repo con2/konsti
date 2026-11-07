@@ -44,7 +44,7 @@ export const createLotterySignups = async (): Promise<void> => {
     }
   }
 
-  await updateProgramItemPopularity();
+  unsafelyUnwrap(await updateProgramItemPopularity());
 };
 
 const getRandomLotterySignup = (
@@ -132,5 +132,5 @@ const lotterySignupGroup = async (
     lotterySignups: getRandomLotterySignup(programItems),
   };
 
-  await saveLotterySignups(signupData);
+  unsafelyUnwrap(await saveLotterySignups(signupData));
 };

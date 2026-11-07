@@ -19,6 +19,7 @@ import {
   createHelpUser,
 } from "server/test/test-data-generation/generators/createUsers";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { cleanupDatabase } from "server/utils/cleanupDatabase";
 import { logger } from "server/utils/logger";
 
@@ -58,10 +59,12 @@ export const runGenerators = async (
   if (options.users) {
     logger.info("* Generator: Generate users");
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeUsers());
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeResults());
+    if (!options.clean) {
+      unsafelyUnwrap(await removeUsers());
+    }
+    if (!options.clean) {
+      unsafelyUnwrap(await removeResults());
+    }
 
     await generateTestUsers(
       newUsersCount,
@@ -85,12 +88,14 @@ export const runGenerators = async (
   if (options.programItems) {
     logger.info("* Generator: Generate program items");
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeProgramItems());
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeResults());
+    if (!options.clean) {
+      unsafelyUnwrap(await removeProgramItems());
+    }
+    if (!options.clean) {
+      unsafelyUnwrap(await removeResults());
+    }
 
-    await createProgramItems(newProgramItemsCount);
+    unsafelyUnwrap(await createProgramItems(newProgramItemsCount));
     await createSettings();
 
     logger.info("* Generator: Completed generate program items");
@@ -99,10 +104,12 @@ export const runGenerators = async (
   if (options.lotterySignups) {
     logger.info("* Generator: Generate lottery signups");
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeLotterySignups());
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeResults());
+    if (!options.clean) {
+      unsafelyUnwrap(await removeLotterySignups());
+    }
+    if (!options.clean) {
+      unsafelyUnwrap(await removeResults());
+    }
 
     await createLotterySignups();
 
@@ -116,10 +123,12 @@ export const runGenerators = async (
 
     // It writes the winners' sign-ups and both lottery marks, so re-simulating has to clear
     // them - otherwise a program item is left decided by a lottery that no longer exists
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await resetDirectSignups());
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeLotteryMarks());
+    if (!options.clean) {
+      unsafelyUnwrap(await resetDirectSignups());
+    }
+    if (!options.clean) {
+      unsafelyUnwrap(await removeLotteryMarks());
+    }
 
     await createEventLogItems();
 
@@ -129,16 +138,19 @@ export const runGenerators = async (
   if (options.directSignups) {
     logger.info("* Generator: Generate direct signups");
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && !options.eventLog && (await resetDirectSignups());
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    !options.clean && (await removeResults());
+    if (!options.clean && !options.eventLog) {
+      unsafelyUnwrap(await resetDirectSignups());
+    }
+    if (!options.clean) {
+      unsafelyUnwrap(await removeResults());
+    }
 
     await createDirectSignups();
 
     logger.info("* Generator: Completed generate direct signups");
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  settings.closeDb && (await db.gracefulExit());
+  if (settings.closeDb) {
+    await db.gracefulExit();
+  }
 };
