@@ -31,11 +31,9 @@ const SENTRY_PROJECT_BY_MODE: Record<string, string> = {
   development: "konsti-frontend-dev",
 };
 
-// Auth token for Sentry source map upload. CI / shell env wins (set as a build
-// secret in the Docker build); otherwise a development build falls back to the
-// gitignored client/.env.sentry-build-plugin file. Other modes ignore the file,
-// since a bare `vite build` is a production build and a laptop's maps match no
-// deployed bundle
+// SENTRY_AUTH_TOKEN comes from the Docker build secret or the shell. Only a
+// development build falls back to the local token file: a bare `vite build` is
+// a production build, and its maps match no deployed bundle.
 const readSentryAuthToken = (dir: string, mode: string): string | undefined => {
   if (process.env.SENTRY_AUTH_TOKEN) {
     return process.env.SENTRY_AUTH_TOKEN;
@@ -76,13 +74,9 @@ export default defineConfig(({ mode, command }) => {
       ? `http://127.0.0.1:${5000 + portOffset}`
       : env.API_SERVER_URL;
 
-  // Gates the Sentry plugin's network work - creating the release and uploading
-  // source maps - on an auth token being available (CI build secret, or for a
-  // development build the local client/.env.sentry-build-plugin file). The
-  // development build only uploads when enableSentryInDev is set. The plugin itself runs either way:
-  // marking the app's own chunks is a pure build transform that needs no
-  // credentials, and the SDK's injected-script filter depends on every build
-  // carrying those marks
+  // Only the network work (creating the release, uploading source maps) needs a
+  // token, and a development build also needs enableSentryInDev. The plugin runs
+  // either way, since the SDK's injected-script filter needs every build's marks.
   const sentryAuthToken = readSentryAuthToken(import.meta.dirname, mode);
   const sentryProject = SENTRY_PROJECT_BY_MODE[mode];
 
