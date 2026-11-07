@@ -123,7 +123,7 @@ async function generateAcceptedEmail(
   if (!programItemResult.ok) {
     logger.error(
       new Error(
-        `Failed to found program for programItemId ${notification.programItemId}`,
+        `Failed to find program item for programItemId ${notification.programItemId}`,
       ),
     );
     return null;
