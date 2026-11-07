@@ -11,20 +11,28 @@ const LEVEL = Symbol.for("level");
 // logged on its own, the Error is `info` itself, and a transport with its own format gets a
 // copy of `info` that has lost the Error's non-enumerable `message`/`stack`.
 const surfaceError = format((info) => {
-  if (info instanceof Error) {
-    // sole-arg Error: winston makes `info` the Error itself. Return a fresh info so we don't
-    // mutate the caller's Error or create a circular self-reference through `error`.
-    const next: TransformableInfo = {
-      level: info.level,
-      message: info.message,
-      error: info,
-    };
-    (next as Record<symbol, unknown>)[LEVEL] = (
-      info as Record<symbol, unknown>
-    )[LEVEL];
-    return next;
+  // sole-arg Error: winston makes `info` the Error itself, unless its message is empty, in
+  // which case winston wraps it as `{ message: error }` instead
+  const error =
+    info instanceof Error
+      ? info
+      : info.message instanceof Error
+        ? info.message
+        : null;
+  if (!error) {
+    return info;
   }
-  return info;
+  // A fresh info, so we don't mutate the caller's Error or create a circular self-reference
+  // through `error`
+  const next: TransformableInfo = {
+    level: info.level,
+    message: error.message,
+    error,
+  };
+  (next as Record<symbol, unknown>)[LEVEL] = (info as Record<symbol, unknown>)[
+    LEVEL
+  ];
+  return next;
 });
 
 // Build the human-readable message for console/file logs: the full stack plus the whole
