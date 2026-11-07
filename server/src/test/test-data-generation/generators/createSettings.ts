@@ -22,7 +22,7 @@ const testQuestions = (): string[] => {
 export const createSettings = async (): Promise<void> => {
   logger.info("Generate settings data");
 
-  await findOrCreateSettings();
+  unsafelyUnwrap(await findOrCreateSettings());
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const shuffledProgramItems = shuffleArray(programItems);
@@ -34,14 +34,16 @@ export const createSettings = async (): Promise<void> => {
       `Add test question ${testQuestion} to program item ${randomProgramItem.title}`,
     );
 
-    await saveSignupQuestion({
-      programItemId: randomProgramItem.programItemId,
-      questionFi: testQuestion,
-      questionEn: testQuestion,
-      private: Math.random() < 0.5,
-      type: SignupQuestionType.TEXT,
-      selectOptions: [],
-    });
+    unsafelyUnwrap(
+      await saveSignupQuestion({
+        programItemId: randomProgramItem.programItemId,
+        questionFi: testQuestion,
+        questionEn: testQuestion,
+        private: Math.random() < 0.5,
+        type: SignupQuestionType.TEXT,
+        selectOptions: [],
+      }),
+    );
   });
 
   await Promise.all(promises);

@@ -46,7 +46,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
     emailNotificationPermitAsked: true,
   };
 
-  await saveUser(registrationData);
+  unsafelyUnwrap(await saveUser(registrationData));
 };
 
 export const createHelpUser = async (password?: string): Promise<void> => {
@@ -67,7 +67,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
     emailNotificationPermitAsked: true,
   };
 
-  await saveUser(registrationData);
+  unsafelyUnwrap(await saveUser(registrationData));
 };
 
 interface CreateTestUserParams {
@@ -91,7 +91,7 @@ const createTestUser = async ({
     emailNotificationPermitAsked: true,
   };
 
-  await saveUser(registrationData);
+  unsafelyUnwrap(await saveUser(registrationData));
 };
 
 interface CreateTestUsersParams {
@@ -135,7 +135,7 @@ const createUser = async ({
     emailNotificationPermitAsked: true,
   };
 
-  await saveUser(registrationData);
+  unsafelyUnwrap(await saveUser(registrationData));
 };
 
 interface CreateUsersInGroupParams {

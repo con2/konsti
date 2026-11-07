@@ -5,13 +5,14 @@ import { removeSerials } from "server/features/serial/serialRepository";
 import { removeSettings } from "server/features/settings/settingsRepository";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 export const cleanupDatabase = async (): Promise<void> => {
-  await removeUsers();
-  await removeDirectSignups();
-  await removeProgramItems();
-  await removeResults();
-  await removeSerials();
-  await removeSettings();
-  await removeTestSettings();
+  unsafelyUnwrap(await removeUsers());
+  unsafelyUnwrap(await removeDirectSignups());
+  unsafelyUnwrap(await removeProgramItems());
+  unsafelyUnwrap(await removeResults());
+  unsafelyUnwrap(await removeSerials());
+  unsafelyUnwrap(await removeSettings());
+  unsafelyUnwrap(await removeTestSettings());
 };

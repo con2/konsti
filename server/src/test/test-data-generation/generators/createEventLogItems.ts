@@ -135,16 +135,18 @@ export const createEventLogItems = async (): Promise<void> => {
   // Record the lottery, not only its effects. Without this the seeded program items hold
   // sign-ups while still reading as undecided, and the next programme import passes them
   // over for the lottery they have in fact already had.
-  await saveLotteryRanForStartTime(
-    programItems.filter(
-      (programItem) =>
-        isLotterySignupProgramItem(programItem) &&
-        lotteriedStartTimes.has(getLotteryRunTime(programItem)),
+  unsafelyUnwrap(
+    await saveLotteryRanForStartTime(
+      programItems.filter(
+        (programItem) =>
+          isLotterySignupProgramItem(programItem) &&
+          lotteriedStartTimes.has(getLotteryRunTime(programItem)),
+      ),
     ),
   );
 
-  await addEventLogItems(newAssignmentEventLogUpdates);
-  await addEventLogItems(noAssignmentEventLogUpdates);
+  unsafelyUnwrap(await addEventLogItems(newAssignmentEventLogUpdates));
+  unsafelyUnwrap(await addEventLogItems(noAssignmentEventLogUpdates));
 };
 
 const createdAtTimes = [
