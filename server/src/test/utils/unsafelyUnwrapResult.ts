@@ -4,7 +4,7 @@ import { Result } from "shared/utils/result";
 export function unsafelyUnwrap<T, Err>(result: Result<T, Err>): T | never {
   if (!result.ok) {
     // eslint-disable-next-line no-restricted-syntax -- Test helper
-    throw new Error("Result did not contain a value!");
+    throw new Error(`Result did not contain a value: ${String(result.error)}`);
   }
   return result.value;
 }
