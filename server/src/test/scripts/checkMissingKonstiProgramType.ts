@@ -174,4 +174,5 @@ try {
   logger.error(
     new Error("Failed to check missing Konsti program types", { cause: error }),
   );
+  process.exitCode = 1;
 }

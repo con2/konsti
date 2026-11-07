@@ -67,4 +67,6 @@ try {
   logger.error(
     new Error("Failed to load past event data to DB", { cause: error }),
   );
+  process.exitCode = 1;
+  await db.gracefulExit();
 }

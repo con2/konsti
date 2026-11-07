@@ -46,4 +46,6 @@ try {
   await init();
 } catch (error: unknown) {
   logger.error(new Error("Failed to run test assignment", { cause: error }));
+  process.exitCode = 1;
+  await db.gracefulExit();
 }
