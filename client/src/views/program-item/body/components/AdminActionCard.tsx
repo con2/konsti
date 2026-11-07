@@ -9,6 +9,7 @@ import {
   SignupQuestionSelectOption,
   SignupQuestionType,
 } from "shared/types/models/settings";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import loaderImage from "assets/loading.gif";
 import { Button } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
@@ -89,7 +90,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
     if (newHidden && programItemIndex === -1) {
       allHiddenProgramItems.push(programItem);
-    } else if (!newHidden && programItemIndex > -1) {
+    } else if (!newHidden && programItemIndex !== -1) {
       allHiddenProgramItems.splice(programItemIndex, 1);
     }
 
@@ -249,9 +250,12 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
                 title: t(`signupQuestionType.${type}`),
               }))}
               selectedValue={questionType}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                setQuestionType(event.target.value as SignupQuestionType)
-              }
+              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+                const { value } = event.target;
+                if (isEnumValue(SignupQuestionType, value)) {
+                  setQuestionType(value);
+                }
+              }}
             />
           </div>
 

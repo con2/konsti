@@ -86,12 +86,11 @@ export const getAssignmentBonus = (
               userSignup.username === groupMember.username &&
               // Exclude this run's own win (priority > 0), but keep first-come-first-served
               // (priority 0) sign-ups counting as "previous"
-              !(
-                isThisRunsOwn(
-                  directSignup.programItemId,
-                  userSignup.signedToStartTime,
-                ) && userSignup.priority !== DIRECT_SIGNUP_PRIORITY
-              ),
+              (!isThisRunsOwn(
+                directSignup.programItemId,
+                userSignup.signedToStartTime,
+              ) ||
+                userSignup.priority === DIRECT_SIGNUP_PRIORITY),
           );
         },
       );
@@ -113,10 +112,7 @@ export const getAssignmentBonus = (
         },
       );
 
-      if (previousDirectSignup ?? newAssignmentEvent) {
-        return true;
-      }
-      return false;
+      return Boolean(previousDirectSignup ?? newAssignmentEvent);
     });
 
   // Give first time bonus to the whole group if half of the group members don't have previous direct sign-ups

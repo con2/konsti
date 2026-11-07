@@ -4,20 +4,15 @@ import {
   createTransport,
   getTestMessageUrl,
 } from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
 import { config } from "shared/config";
 import { EmailMessage } from "server/features/notifications/senderCommon";
 
 export class EmailSender {
-  private transport:
-    | Transporter<SMTPTransport.SentMessageInfo, SMTPTransport.Options>
-    | undefined;
+  private transport: Transporter | undefined;
   // Used for testing
   private sentMessages: EmailMessage[] = [];
 
-  async getTransport(): Promise<
-    Transporter<SMTPTransport.SentMessageInfo, SMTPTransport.Options>
-  > {
+  async getTransport(): Promise<Transporter> {
     if (this.transport) {
       return this.transport;
     }
@@ -51,10 +46,12 @@ export class EmailSender {
   async sendEmail(message: EmailMessage): Promise<void> {
     const transporter = await this.getTransport();
     const info = await transporter.sendMail(message);
-    if (process.env.SETTINGS !== "production") {
-      this.sentMessages.push(message);
-      // eslint-disable-next-line no-console
-      console.log(getTestMessageUrl(info));
+    if (process.env.SETTINGS === "production") {
+      return;
     }
+
+    this.sentMessages.push(message);
+    // eslint-disable-next-line no-console
+    console.log(getTestMessageUrl(info));
   }
 }

@@ -9,15 +9,13 @@ export const getLotterySignups = (
   const lotterySignups: AssignmentLotterySignup[] = [];
 
   for (const user of users) {
-    if (user.lotterySignups.length > 0) {
-      for (const lotterySignup of user.lotterySignups) {
-        lotterySignups.push({
-          username: user.username,
-          programItemId: lotterySignup.programItemId,
-          priority: lotterySignup.priority,
-          signedToStartTime: lotterySignup.signedToStartTime,
-        });
-      }
+    for (const lotterySignup of user.lotterySignups) {
+      lotterySignups.push({
+        username: user.username,
+        programItemId: lotterySignup.programItemId,
+        priority: lotterySignup.priority,
+        signedToStartTime: lotterySignup.signedToStartTime,
+      });
     }
   }
 

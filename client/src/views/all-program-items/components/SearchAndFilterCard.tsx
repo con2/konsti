@@ -8,6 +8,7 @@ import {
   ProgramType,
   Tag,
 } from "shared/types/models/programItem";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { Checkbox } from "client/components/Checkbox";
 import { ControlledInput } from "client/components/ControlledInput";
 import { MultiSelectDropdown } from "client/components/MultiSelectDropdown";
@@ -82,8 +83,14 @@ export const SearchAndFilterCard = ({
     PROGRAM_TYPE: t(`programTypePlural.${programTypeForTexts}`),
   });
 
-  const toggleTag = (value: string): void => {
-    const tag = value as Tag | Language | AgeGroup;
+  const toggleTag = (tag: string): void => {
+    if (
+      !isEnumValue(Tag, tag) &&
+      !isEnumValue(Language, tag) &&
+      !isEnumValue(AgeGroup, tag)
+    ) {
+      return;
+    }
     const nextTags = selectedTags.includes(tag)
       ? selectedTags.filter((selected) => selected !== tag)
       : [...selectedTags, tag];
@@ -127,10 +134,10 @@ export const SearchAndFilterCard = ({
         <StyledLegend>{t("startingTime")}</StyledLegend>
         <RadioButtonGroup>
           {Object.entries(StartingTimeOption)
-            .filter(([_, val]) =>
-              config.event().enableRevolvingDoor
-                ? true
-                : val !== StartingTimeOption.REVOLVING_DOOR,
+            .filter(
+              ([_, val]) =>
+                config.event().enableRevolvingDoor ||
+                val !== StartingTimeOption.REVOLVING_DOOR,
             )
             .map(([key, val]) => {
               return (

@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { MultiSelectDropdown } from "client/components/MultiSelectDropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { saveSession } from "client/utils/localStorage";
@@ -41,11 +42,13 @@ export const ProgramTypeSelection = ({
       options={options}
       selectedValues={activeProgramTypes}
       onToggle={(value) => {
-        const programType = value as ProgramType;
+        if (!isEnumValue(ProgramType, value)) {
+          return;
+        }
         setProgramTypes(
-          activeProgramTypes.includes(programType)
-            ? activeProgramTypes.filter((selected) => selected !== programType)
-            : [...activeProgramTypes, programType],
+          activeProgramTypes.includes(value)
+            ? activeProgramTypes.filter((selected) => selected !== value)
+            : [...activeProgramTypes, value],
         );
       }}
       onClear={() => {

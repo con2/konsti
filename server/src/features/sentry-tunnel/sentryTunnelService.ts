@@ -16,8 +16,7 @@ interface ResendSentryError extends ApiError {
 }
 
 type ForwardAttempt =
-  | { delivered: true }
-  | { delivered: false; retryable: boolean; error: Error };
+  { delivered: true } | { delivered: false; retryable: boolean; error: Error };
 
 const attemptForward = async (
   sentryUrl: string,

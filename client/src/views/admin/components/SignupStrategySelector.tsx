@@ -1,6 +1,7 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetSignupStrategy } from "client/views/admin/adminThunks";
@@ -27,10 +28,12 @@ export const SignupStrategySelector = (): ReactElement => {
         options={strategies}
         selectedValue={signupStrategy}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
+          const { value } = event.target;
+          if (!isEnumValue(EventSignupStrategy, value)) {
+            return;
+          }
           setLoading(true);
-          await dispatch(
-            submitSetSignupStrategy(event.target.value as EventSignupStrategy),
-          );
+          await dispatch(submitSetSignupStrategy(value));
           setLoading(false);
         }}
         loading={loading}

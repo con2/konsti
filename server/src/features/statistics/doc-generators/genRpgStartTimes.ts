@@ -62,7 +62,7 @@ export const genRpgStartTimes = (): void => {
       for (const day of days) {
         const hours = byDayHour.get(day);
         if (!hours) continue;
-        const total = [...hours.values()].reduce((a, b) => a + b, 0);
+        const total = hours.values().reduce((a, b) => a + b, 0);
         const block: string[] = [
           "```",
           `${day} (${dayOfWeek(day)}, ${total} total)`,

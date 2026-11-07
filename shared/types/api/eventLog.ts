@@ -35,5 +35,4 @@ interface PostEventLogIsSeenError extends ApiError {
 }
 
 export type PostEventLogIsSeenResponse =
-  | PostEventLogIsSeenResult
-  | PostEventLogIsSeenError;
+  PostEventLogIsSeenResult | PostEventLogIsSeenError;

@@ -1,6 +1,7 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LoginProvider } from "shared/config/eventConfigTypes";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetLoginProvider } from "client/views/admin/adminThunks";
@@ -23,10 +24,12 @@ export const LoginProviderSelector = (): ReactElement => {
         options={strategies}
         selectedValue={loginProvider}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
+          const { value } = event.target;
+          if (!isEnumValue(LoginProvider, value)) {
+            return;
+          }
           setLoading(true);
-          await dispatch(
-            submitSetLoginProvider(event.target.value as LoginProvider),
-          );
+          await dispatch(submitSetLoginProvider(value));
           setLoading(false);
         }}
         loading={loading}

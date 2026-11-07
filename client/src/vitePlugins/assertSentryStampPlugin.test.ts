@@ -17,11 +17,11 @@ interface FakeChunk {
 // rather than built out in full
 const bundled = (
   fileName: string,
-  { name, code, facadeModuleId = null }: FakeChunk = {},
+  { name = fileName, code, facadeModuleId = null }: FakeChunk = {},
 ): unknown => ({
   type: "chunk",
   fileName,
-  name: name ?? fileName,
+  name,
   facadeModuleId,
   // Minified, where the injected `true` has become `!0`. The metadata global
   // belongs here too: the key on its own does not mean a chunk was stamped

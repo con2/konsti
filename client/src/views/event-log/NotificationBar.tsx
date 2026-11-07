@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router";
 import styled from "styled-components";
 import { config } from "shared/config";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import { AboutTab } from "client/app/routes";
 import { DismissibleBanner } from "client/components/DismissibleBanner";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -55,7 +56,7 @@ export const NotificationBar = (): ReactElement | null => {
   });
 
   if (config.client().showAboutPageInProgress) {
-    if (Object.values(AboutTab).includes(location.pathname as AboutTab)) {
+    if (isEnumValue(AboutTab, location.pathname)) {
       // Nothing to dismiss here, so it renders as a plain notice card
       notificationList.push(
         <InProgressNotice

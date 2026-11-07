@@ -36,8 +36,7 @@ export interface PostLotterySignupError extends ApiError {
 }
 
 export type PostLotterySignupResponse =
-  | PostLotterySignupResult
-  | PostLotterySignupError;
+  PostLotterySignupResult | PostLotterySignupError;
 
 // DELETE lottery sign-up
 
@@ -56,8 +55,7 @@ export interface DeleteLotterySignupError extends ApiError {
 }
 
 export type DeleteLotterySignupResponse =
-  | DeleteLotterySignupResult
-  | DeleteLotterySignupError;
+  DeleteLotterySignupResult | DeleteLotterySignupError;
 
 // POST direct sign-up
 
@@ -94,8 +92,7 @@ export interface PostDirectSignupError extends ApiError {
 }
 
 export type PostDirectSignupResponse =
-  | PostDirectSignupResult
-  | PostDirectSignupError;
+  PostDirectSignupResult | PostDirectSignupError;
 
 // DELETE direct sign-up
 
@@ -119,5 +116,4 @@ interface DeleteDirectSignupError extends ApiError {
 }
 
 export type DeleteDirectSignupResponse =
-  | DeleteDirectSignupResult
-  | DeleteDirectSignupError;
+  DeleteDirectSignupResult | DeleteDirectSignupError;

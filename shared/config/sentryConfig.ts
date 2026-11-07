@@ -27,3 +27,22 @@ export const sentryApplicationKeyPrefix = "_sentryBundlerPluginAppKey:";
 // Runtime code has to build it from the prefix instead: spelling it out would
 // put the quoted key in a chunk, which is half of what that check reads as proof
 export const sentryApplicationKeyProperty = `${sentryApplicationKeyPrefix}${sentryConfig.applicationKey}`;
+
+const forwardingKeys = ["forwarded", "-ip", "remote-", "via", "-user"];
+
+// Sentry 11 collects request bodies, cookies and user details unless told not to.
+// This is its documented equivalent of the restrictive version 10 defaults.
+export const sentryDataCollection = {
+  userInfo: false,
+  cookies: false,
+  httpHeaders: {
+    request: { deny: forwardingKeys },
+    response: { deny: forwardingKeys },
+  },
+  httpBodies: [],
+  urlQueryParams: { deny: forwardingKeys },
+  genAI: { inputs: false, outputs: false },
+  databaseQueryData: false,
+  queues: false,
+  graphQL: { document: false, variables: false },
+};

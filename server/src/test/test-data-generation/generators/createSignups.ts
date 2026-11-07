@@ -40,8 +40,8 @@ export const createDirectSignups = async (): Promise<void> => {
     (programItem) => programItem.programType,
   );
 
-  const promises = Object.entries(programItemsByProgramType).flatMap(
-    ([_programType, programItemsForProgamType]) => {
+  const promises = Object.values(programItemsByProgramType).flatMap(
+    (programItemsForProgamType) => {
       let currentIndex = 0;
 
       return programItemsForProgamType.flatMap((randomProgramItem) => {

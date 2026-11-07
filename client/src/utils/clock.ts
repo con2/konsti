@@ -66,12 +66,14 @@ export const subscribeToClock = (listener: () => void): (() => void) => {
 
   return () => {
     listeners.delete(listener);
-    if (listeners.size === 0) {
-      clearTimeout(clockTimer);
-      clockTimer = undefined;
-      stopListeningForPageResume?.();
-      stopListeningForPageResume = undefined;
+    if (listeners.size !== 0) {
+      return;
     }
+
+    clearTimeout(clockTimer);
+    clockTimer = undefined;
+    stopListeningForPageResume?.();
+    stopListeningForPageResume = undefined;
   };
 };
 

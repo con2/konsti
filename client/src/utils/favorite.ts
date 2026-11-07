@@ -30,7 +30,7 @@ export const updateFavorite = async (
 
   if (action === "add" && programItemIndex === -1) {
     favoriteProgramItemIds.push(programItem.programItemId);
-  } else if (action === "del" && programItemIndex > -1) {
+  } else if (action === "del" && programItemIndex !== -1) {
     favoriteProgramItemIds.splice(programItemIndex, 1);
   }
 

@@ -10,15 +10,11 @@ interface PostCreateGroupResult extends ApiResult {
 
 export interface PostCreateGroupError extends ApiError {
   errorId:
-    | "unknown"
-    | "groupExists"
-    | "upcomingDirectSignups"
-    | "errorFindingUser";
+    "unknown" | "groupExists" | "upcomingDirectSignups" | "errorFindingUser";
 }
 
 export type PostCreateGroupResponse =
-  | PostCreateGroupResult
-  | PostCreateGroupError;
+  PostCreateGroupResult | PostCreateGroupError;
 
 // POST: Join group
 

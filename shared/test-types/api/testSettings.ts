@@ -22,8 +22,7 @@ interface PostTestSettingsError extends ApiError {
 }
 
 export type PostTestSettingsResponse =
-  | PostTestSettingsResult
-  | PostTestSettingsError;
+  PostTestSettingsResult | PostTestSettingsError;
 
 // GET test settings
 
@@ -36,5 +35,4 @@ interface GetTestSettingsError extends ApiError {
 }
 
 export type GetTestSettingsResponse =
-  | GetTestSettingsResult
-  | GetTestSettingsError;
+  GetTestSettingsResult | GetTestSettingsError;

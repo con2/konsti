@@ -39,10 +39,11 @@ export const LocalLoginForm = (): ReactElement => {
     loginFormFields,
   ): Promise<void> => {
     const errorMessage = await dispatch(submitLogin(loginFormFields));
-    if (errorMessage) {
-      setServerError(errorMessage);
+    if (!errorMessage) {
       return;
     }
+
+    setServerError(errorMessage);
   };
 
   return (

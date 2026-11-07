@@ -220,6 +220,7 @@ export default defineConfig([
       "unicorn/numeric-separators-style": "off", // Don't want this
       "unicorn/no-lonely-if": "off", // Don't want this
       "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
+      "unicorn/prefer-ternary": "off", // Prefer early returns - it also flags guard clauses that return one of two values
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
@@ -363,6 +364,8 @@ export default defineConfig([
 
       // eslint-plugin-unicorn
       "unicorn/no-array-sort": "off", // Wait till toSorted is more widely supported
+      "unicorn/prefer-promise-with-resolvers": "off", // Wait till Promise.withResolvers is more widely supported
+      "unicorn/prefer-iterator-helpers": "off", // Wait till iterator helpers are more widely supported
     },
   },
 

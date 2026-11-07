@@ -28,7 +28,7 @@ export const clientConfig: ClientConfig = {
   // Environment dependent
   loadedSettings: process.env.SETTINGS ?? "development",
   apiServerUrl: process.env.API_SERVER_URL ?? "http://localhost:5000",
-  showTestValues: process.env.SHOW_TEST_VALUES === "true" || false,
+  showTestValues: process.env.SHOW_TEST_VALUES === "true",
   // eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary
   dataUpdateInterval: Number(process.env.DATA_UPDATE_INTERVAL)
     ? Number(process.env.DATA_UPDATE_INTERVAL)

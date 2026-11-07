@@ -8,5 +8,6 @@
     "incremental": true,
     "tsBuildInfoFile": "./node_modules/.cache/tsbuildinfo"
   },
-  "include": ["src/**/*", "../shared/**/*", "vitest.config.ts"]
+  // Vite applies the path aliases only to files listed here, so MDX imports need the explicit pattern
+  "include": ["src/**/*", "src/**/*.mdx", "../shared/**/*", "vitest.config.ts"]
 }

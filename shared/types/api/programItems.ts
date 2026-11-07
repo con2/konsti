@@ -15,8 +15,7 @@ interface PostUpdateProgramItemsError extends ApiError {
 }
 
 export type PostUpdateProgramItemsResponse =
-  | PostUpdateProgramItemsResult
-  | PostUpdateProgramItemsError;
+  PostUpdateProgramItemsResult | PostUpdateProgramItemsError;
 
 // GET program items
 
@@ -29,5 +28,4 @@ interface GetProgramItemsError extends ApiError {
 }
 
 export type GetProgramItemsResponse =
-  | GetProgramItemsResult
-  | GetProgramItemsError;
+  GetProgramItemsResult | GetProgramItemsError;

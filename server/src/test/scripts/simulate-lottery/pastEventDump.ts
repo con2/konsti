@@ -13,6 +13,7 @@ import {
 } from "shared/types/models/programItem";
 import { UserAssignmentResult } from "shared/types/models/result";
 import { LotterySignup, UserGroup } from "shared/types/models/user";
+import { isEnumValue } from "shared/utils/isEnumValue";
 import {
   Result,
   makeErrorResult,
@@ -155,8 +156,5 @@ export const readPastEventDump = (
 export const parseAssignmentAlgorithm = (
   algorithm: string,
 ): AssignmentAlgorithm | undefined => {
-  const algorithms: string[] = Object.values(AssignmentAlgorithm);
-  return algorithms.includes(algorithm)
-    ? (algorithm as AssignmentAlgorithm)
-    : undefined;
+  return isEnumValue(AssignmentAlgorithm, algorithm) ? algorithm : undefined;
 };

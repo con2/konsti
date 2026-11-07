@@ -53,8 +53,7 @@ export interface PostSessionRecoveryError extends ApiError {
 }
 
 export type PostSessionRecoveryResponse =
-  | PostLoginResult
-  | PostSessionRecoveryError;
+  PostLoginResult | PostSessionRecoveryError;
 
 // POST Kompassi login redirect
 
@@ -88,8 +87,7 @@ interface PostKompassiLoginError extends ApiError {
 }
 
 export type PostKompassiLoginResponse =
-  | PostKompassiLoginResult
-  | PostKompassiLoginError;
+  PostKompassiLoginResult | PostKompassiLoginError;
 
 // POST Verify Kompassi login
 
@@ -115,8 +113,7 @@ export interface PostVerifyKompassiLoginError extends ApiError {
 }
 
 export type PostVerifyKompassiLoginResponse =
-  | PostVerifyKompassiLoginResult
-  | PostVerifyKompassiLoginError;
+  PostVerifyKompassiLoginResult | PostVerifyKompassiLoginError;
 
 // POST Update user email address
 
@@ -142,8 +139,7 @@ interface PostUpdateUserEmailAddressError extends ApiError {
 }
 
 export type PostUpdateUserEmailAddressResponse =
-  | PostUpdateUserEmailAddressResult
-  | PostUpdateUserEmailAddressError;
+  PostUpdateUserEmailAddressResult | PostUpdateUserEmailAddressError;
 
 // Finalize login
 
