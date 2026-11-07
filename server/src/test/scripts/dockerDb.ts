@@ -24,6 +24,19 @@ const isMongoContainerRunning = (): boolean =>
 const doesMongoContainerExist = (): boolean =>
   inspect("{{.State.Status}}") !== null;
 
+const getContainerLogs = (): string => {
+  try {
+    // A crashing container writes to stderr, which `docker logs` replays on its own stderr
+    return execSync(`docker logs --tail 20 ${containerName} 2>&1`, {
+      stdio: "pipe",
+    })
+      .toString()
+      .trim();
+  } catch {
+    return "(logs unavailable)";
+  }
+};
+
 const assertContainerStillRunning = async (): Promise<void> => {
   await sleep(stabilityCheckMs);
   if (isMongoContainerRunning()) {
@@ -32,16 +45,10 @@ const assertContainerStillRunning = async (): Promise<void> => {
   const exitCode = inspect("{{.State.ExitCode}}") ?? "unknown";
   logger.error(
     new Error(
-      `Docker: MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:`,
+      `Docker: MongoDB container ${containerName} exited shortly after start (exit code ${exitCode}). Last logs:\n${getContainerLogs()}`,
     ),
   );
-  try {
-    execSync(`docker logs --tail 20 ${containerName}`, { stdio: "inherit" });
-  } catch {
-    // logs unavailable - already reported the exit
-  }
-  // eslint-disable-next-line unicorn/no-process-exit
-  process.exit(1);
+  process.exitCode = 1;
 };
 
 const main = async (): Promise<void> => {
@@ -71,6 +78,5 @@ try {
   logger.error(
     new Error("Docker: Failed to start MongoDB container", { cause: error }),
   );
-  // eslint-disable-next-line unicorn/no-process-exit
-  process.exit(1);
+  process.exitCode = 1;
 }
