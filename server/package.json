@@ -14,7 +14,7 @@
     "generate-data": "DOTENV_CONFIG_QUIET=false DOTENV_CONFIG_PATH=.env.development tsx --import=./src/utils/applyPortOffset.ts -r dotenv/config src/test/test-data-generation/generateTestDataCli.ts",
     "initialize-db": "tsx src/utils/initializeDatabase.ts",
     "generate-serials": "tsx src/utils/generateSerials.ts",
-    "remove-invalid-games": "NODE_ENV=development tsx src/test/scripts/removeInvalidGames.ts",
+    "remove-invalid-games": "NODE_ENV=development tsx src/test/scripts/removeInvalidProgramItems.ts",
     "start": "tsx --import=./src/utils/instrument.ts src/index.ts",
     "start:ci": "NODE_ENV=development SETTINGS=ci tsx --import=./src/utils/applyPortOffset.ts --import=./src/utils/instrument.ts src/index.ts",
     "start:dev": "NODE_ENV=development SETTINGS=development DOTENV_CONFIG_QUIET=false DOTENV_CONFIG_PATH=.env.development tsx watch --clear-screen=false --import=./src/utils/applyPortOffset.ts --import=./src/utils/instrument.ts -r dotenv/config src/index.ts",
