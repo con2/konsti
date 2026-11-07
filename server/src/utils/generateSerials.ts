@@ -15,7 +15,11 @@ const generateSerials = async (): Promise<void> => {
   }
 
   await db.connectToDb();
-  await saveSerials(Number(count));
+  const saveSerialsResult = await saveSerials(Number(count));
+  if (!saveSerialsResult.ok) {
+    // eslint-disable-next-line no-restricted-syntax -- Serial generation script
+    throw new Error(`Saving serials failed: ${saveSerialsResult.error}`);
+  }
   await db.gracefulExit();
 };
 

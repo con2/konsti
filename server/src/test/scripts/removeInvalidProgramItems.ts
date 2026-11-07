@@ -1,22 +1,21 @@
 import { db } from "server/db/mongodb";
 import { removeCancelledDeletedProgramItemsFromUsers } from "server/features/assignment/utils/removeInvalidProgramItemsFromUsers";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 const removeInvalidProgramItems = async (): Promise<void> => {
   await db.connectToDb();
 
-  const programItemsResult = await findProgramItems();
-  if (!programItemsResult.ok) {
-    // eslint-disable-next-line no-restricted-syntax -- Test script
-    throw new Error("Finding program items failed");
-  }
-  await removeCancelledDeletedProgramItemsFromUsers({
-    programItems: programItemsResult.value,
-    currentProgramItems: [],
-    notifyAffectedDirectSignups: [],
-    notify: false,
-  });
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  unsafelyUnwrap(
+    await removeCancelledDeletedProgramItemsFromUsers({
+      programItems,
+      currentProgramItems: [],
+      notifyAffectedDirectSignups: [],
+      notify: false,
+    }),
+  );
 
   await db.gracefulExit();
 };

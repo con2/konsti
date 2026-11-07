@@ -8,6 +8,7 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import { eventNameToKompassiEventName } from "server/kompassi/getProgramItemsFromKompassi";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 // Minimal schema for the raw full-program response: the full program item
@@ -81,12 +82,7 @@ const getFullProgramFromServer = async (): Promise<
 };
 
 const checkMissingKonstiProgramType = async (): Promise<void> => {
-  const eventProgramItemsResult = await getFullProgramFromServer();
-  if (!eventProgramItemsResult.ok) {
-    return;
-  }
-
-  const eventProgramItems = eventProgramItemsResult.value;
+  const eventProgramItems = unsafelyUnwrap(await getFullProgramFromServer());
 
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 

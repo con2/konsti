@@ -4,6 +4,7 @@ import { AssignmentAlgorithm } from "shared/config/eventConfigTypes";
 import { isEnumValue } from "shared/utils/isEnumValue";
 import { db } from "server/db/mongodb";
 import { runAssignment } from "server/features/assignment/run-assignment/runAssignment";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 const testAssignment = async (
@@ -13,10 +14,12 @@ const testAssignment = async (
     new Date(config.event().eventStartTime),
     3,
   ).toISOString();
-  await runAssignment({
-    assignmentAlgorithm,
-    assignmentTime,
-  });
+  unsafelyUnwrap(
+    await runAssignment({
+      assignmentAlgorithm,
+      assignmentTime,
+    }),
+  );
 };
 
 const getAssignmentAlgorithm = (userParameter: string): AssignmentAlgorithm => {

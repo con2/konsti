@@ -1,10 +1,11 @@
 import { db } from "server/db/mongodb";
 import { verifyUserSignups } from "server/features/assignment/run-assignment/runAssignmentTestUtils";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 const testVerifyResults = async (): Promise<void> => {
   await db.connectToDb();
-  await verifyUserSignups();
+  unsafelyUnwrap(await verifyUserSignups());
   await db.gracefulExit();
 };
 
