@@ -6,33 +6,23 @@ const isInt = (n: string): boolean => Number.isInteger(Number(n));
 
 const generateSerials = async (): Promise<void> => {
   const count = process.argv[2];
-  if (count && isInt(count)) {
-    try {
-      await db.connectToDb();
-    } catch (error) {
-      logger.error(new Error("Failed to connect to DB", { cause: error }));
-    }
-
-    try {
-      await saveSerials(Number(count));
-    } catch (error) {
-      logger.error(new Error("Error saving serials", { cause: error }));
-    }
-  } else {
+  if (!count || !isInt(count)) {
     logger.error(
       new Error('Give number parameter: "npm run generate-serials 10"'),
     );
+    process.exitCode = 1;
+    return;
   }
 
-  try {
-    await db.gracefulExit();
-  } catch (error) {
-    logger.error(new Error("Failed to close DB connection", { cause: error }));
-  }
+  await db.connectToDb();
+  await saveSerials(Number(count));
+  await db.gracefulExit();
 };
 
 try {
   await generateSerials();
 } catch (error: unknown) {
   logger.error(new Error("Failed to generate serials", { cause: error }));
+  process.exitCode = 1;
+  await db.gracefulExit();
 }

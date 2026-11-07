@@ -3,25 +3,9 @@ import { updateProgramItemPopularity } from "server/features/program-item-popula
 import { logger } from "server/utils/logger";
 
 const testUpdateProgramItemPopularity = async (): Promise<void> => {
-  try {
-    await db.connectToDb();
-  } catch (error) {
-    logger.error(new Error("Failed to connect to DB", { cause: error }));
-  }
-
-  try {
-    await updateProgramItemPopularity();
-  } catch (error) {
-    logger.error(
-      new Error("updateProgramItemPopularity error", { cause: error }),
-    );
-  }
-
-  try {
-    await db.gracefulExit();
-  } catch (error) {
-    logger.error(new Error("Failed to close DB connection", { cause: error }));
-  }
+  await db.connectToDb();
+  await updateProgramItemPopularity();
+  await db.gracefulExit();
 };
 
 try {
@@ -30,4 +14,6 @@ try {
   logger.error(
     new Error("Failed to update program item popularity", { cause: error }),
   );
+  process.exitCode = 1;
+  await db.gracefulExit();
 }

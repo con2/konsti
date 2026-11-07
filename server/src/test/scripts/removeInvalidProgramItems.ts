@@ -4,42 +4,21 @@ import { findProgramItems } from "server/features/program-item/programItemReposi
 import { logger } from "server/utils/logger";
 
 const removeInvalidProgramItems = async (): Promise<void> => {
-  try {
-    await db.connectToDb();
-  } catch (error) {
-    logger.error(new Error("Failed to connect to DB", { cause: error }));
-    // eslint-disable-next-line no-restricted-syntax -- Test script
-    throw error;
-  }
+  await db.connectToDb();
 
-  try {
-    const programItemsResult = await findProgramItems();
-    if (!programItemsResult.ok) {
-      // eslint-disable-next-line no-restricted-syntax -- Test script
-      throw new Error("Finding program items failed");
-    }
-    const programItems = programItemsResult.value;
-    await removeCancelledDeletedProgramItemsFromUsers({
-      programItems,
-      currentProgramItems: [],
-      notifyAffectedDirectSignups: [],
-      notify: false,
-    });
-  } catch (error) {
-    logger.error(
-      new Error("Error removing invalid program items", { cause: error }),
-    );
+  const programItemsResult = await findProgramItems();
+  if (!programItemsResult.ok) {
     // eslint-disable-next-line no-restricted-syntax -- Test script
-    throw error;
+    throw new Error("Finding program items failed");
   }
+  await removeCancelledDeletedProgramItemsFromUsers({
+    programItems: programItemsResult.value,
+    currentProgramItems: [],
+    notifyAffectedDirectSignups: [],
+    notify: false,
+  });
 
-  try {
-    await db.gracefulExit();
-  } catch (error) {
-    logger.error(new Error("Failed to close DB connection", { cause: error }));
-    // eslint-disable-next-line no-restricted-syntax -- Test script
-    throw error;
-  }
+  await db.gracefulExit();
 };
 
 try {
@@ -48,4 +27,6 @@ try {
   logger.error(
     new Error("Failed to remove invalid program items", { cause: error }),
   );
+  process.exitCode = 1;
+  await db.gracefulExit();
 }
