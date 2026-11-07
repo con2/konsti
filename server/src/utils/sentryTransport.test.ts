@@ -109,6 +109,24 @@ test("should report an Error whose causes loop back on themselves", async () => 
   expect(getCapturedEvents()).toHaveLength(1);
 });
 
+// winston wraps a sole Error with an empty message as `{ message: error }`
+test("should report an Error with an empty message through the app logger", async () => {
+  const { getCapturedEvents } = startRecording();
+  const { logger } = await vi.importActual<
+    typeof import("server/utils/logger")
+  >("server/utils/logger");
+
+  // eslint-disable-next-line unicorn/error-message -- The empty message is the case under test
+  logger.error(new Error("", { cause: new Error("Disk full") }));
+  await flush(2000);
+
+  const events = getCapturedEvents();
+  expect(events).toHaveLength(1);
+  expect(events[0].exception?.values?.map((value) => value.value)).toEqual([
+    "Disk full",
+    "",
+  ]);
+});
 
 test("should report a log without an Error as a message", async () => {
   const { getCapturedEvents } = startRecording();
