@@ -64,5 +64,7 @@ const loadPastEventDataToDb = async (): Promise<void> => {
 try {
   await loadPastEventDataToDb();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(
+    new Error("Failed to load past event data to DB", { cause: error }),
+  );
 }

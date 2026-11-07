@@ -77,5 +77,7 @@ const updateKompassiDataDump = async (): Promise<void> => {
 try {
   await updateKompassiDataDump();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(
+    new Error("Failed to update Kompassi data dump", { cause: error }),
+  );
 }

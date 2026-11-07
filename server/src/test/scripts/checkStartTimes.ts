@@ -29,5 +29,5 @@ const checkStartTimes = async (): Promise<void> => {
 try {
   await checkStartTimes();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(new Error("Failed to check start times", { cause: error }));
 }

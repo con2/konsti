@@ -7,7 +7,7 @@ const removeInvalidProgramItems = async (): Promise<void> => {
   try {
     await db.connectToDb();
   } catch (error) {
-    logger.error(error);
+    logger.error(new Error("Failed to connect to DB", { cause: error }));
     // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
@@ -36,7 +36,7 @@ const removeInvalidProgramItems = async (): Promise<void> => {
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error(new Error("Failed to close DB connection", { cause: error }));
     // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
@@ -45,5 +45,7 @@ const removeInvalidProgramItems = async (): Promise<void> => {
 try {
   await removeInvalidProgramItems();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(
+    new Error("Failed to remove invalid program items", { cause: error }),
+  );
 }
