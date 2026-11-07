@@ -98,7 +98,7 @@ describe("makeRetryingNodeTransport", () => {
 
     expect(response).toEqual({ statusCode: 503 });
     expect(sendMock).toHaveBeenCalledTimes(3);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual(
       "Sentry event dropped: upstream responded with 503",
     );
@@ -131,7 +131,7 @@ describe("makeRetryingNodeTransport", () => {
     expect((settledError as TypeError).message).toEqual("fetch failed");
 
     expect(sendMock).toHaveBeenCalledTimes(3);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual("Sentry event dropped: fetch failed");
   });
 

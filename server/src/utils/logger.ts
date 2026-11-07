@@ -1,14 +1,11 @@
 import type { TransformableInfo } from "logform";
-import { createLogger, format, transports } from "winston";
+import { type Logger, createLogger, format, transports } from "winston";
 import { config } from "shared/config";
 import { SentryTransport } from "server/utils/sentryTransport";
 
 const SPLAT = Symbol.for("splat");
 const LEVEL = Symbol.for("level");
 
-// Log errors by passing the Error directly: `logger.error(new Error("..."))`, or wrap an
-// underlying error as the cause: `logger.error(new Error("context", { cause: err }))`
-//
 // Surfaces the Error onto an enumerable `error` key, where the Sentry transport looks for it:
 // logged on its own, the Error is `info` itself, and a transport with its own format gets a
 // copy of `info` that has lost the Error's non-enumerable `message`/`stack`.
@@ -78,7 +75,13 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
       }),
     );
 
-export const logger = createLogger({
+// Requiring an Error makes Sentry group error logs by stack rather than by interpolated text.
+// The type cannot cover values thrown at runtime, such as the error middleware's `err`.
+type KonstiLogger = Omit<Logger, "error"> & {
+  error: (error: Error) => KonstiLogger;
+};
+
+export const logger: KonstiLogger = createLogger({
   handleExceptions: true,
   handleRejections: true,
   format: surfaceError(),

@@ -63,7 +63,7 @@ describe("resendSentryRequest", () => {
 
     expect(result).toEqual(upstreamError);
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream responded with 429",
     );
@@ -86,7 +86,7 @@ describe("resendSentryRequest", () => {
     expect(result).toEqual(upstreamError);
     expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream responded with 503: load shedding / upstream rejection reason",
     );
@@ -106,7 +106,7 @@ describe("resendSentryRequest", () => {
     const result = await runTunnel(testEnvelope);
 
     expect(result).toEqual(upstreamError);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream responded with 502",
     );
@@ -186,7 +186,7 @@ describe("resendSentryRequest", () => {
     expect(result).toEqual(upstreamError);
     expect(fetchMock).toHaveBeenCalledTimes(3);
     expect(errorLoggerSpy).toHaveBeenCalledTimes(1);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream request failed: fetch failed / read ECONNRESET",
     );
@@ -211,7 +211,7 @@ describe("resendSentryRequest", () => {
     const result = await runTunnel(testEnvelope);
 
     expect(result).toEqual(upstreamError);
-    const loggedError = errorLoggerSpy.mock.calls[0][0] as Error;
+    const loggedError = errorLoggerSpy.mock.calls[0][0];
     expect(loggedError.message).toEqual(
       "Sentry tunnel: upstream request failed: fetch failed / connect ETIMEDOUT 34.160.81.0:443 / connect ENETUNREACH 2600:1901:0:5e8a:::443",
     );
