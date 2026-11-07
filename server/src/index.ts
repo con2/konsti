@@ -1,4 +1,5 @@
 import { Server } from "node:http";
+import { flush } from "@sentry/node";
 import { config } from "shared/config";
 import { EmailSender } from "server/features/notifications/email";
 import { startCronJobs } from "server/utils/cron";
@@ -10,16 +11,10 @@ import {
 } from "./utils/notificationQueue";
 
 const startApp = async (): Promise<void> => {
-  let server: Server;
-  try {
-    server = await startServer({
-      dbConnString: config.server().dbConnString,
-      port: config.server().port,
-    });
-  } catch (error) {
-    logger.error(new Error("Starting server failed", { cause: error }));
-    return;
-  }
+  const server = await startServer({
+    dbConnString: config.server().dbConnString,
+    port: config.server().port,
+  });
 
   const enableCronjobs =
     config.server().onlyCronjobs ||
@@ -82,6 +77,11 @@ const init = async (): Promise<void> => {
     await startApp();
   } catch (error: unknown) {
     logger.error(new Error("Failed to start app", { cause: error }));
+    // Exits rather than setting the exit code, since an open DB connection or listener would
+    // keep a server that failed to start alive. Flushing first sends the error to Sentry.
+    await flush(5000);
+    // eslint-disable-next-line unicorn/no-process-exit -- Server startup
+    process.exit(1);
   }
 };
 
