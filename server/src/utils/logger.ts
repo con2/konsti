@@ -3,7 +3,6 @@ import { type Logger, createLogger, format, transports } from "winston";
 import { config } from "shared/config";
 import { SentryTransport } from "server/utils/sentryTransport";
 
-const SPLAT = Symbol.for("splat");
 const LEVEL = Symbol.for("level");
 
 // Surfaces the Error onto an enumerable `error` key, where the Sentry transport looks for it:
@@ -22,13 +21,6 @@ const surfaceError = format((info) => {
       info as Record<symbol, unknown>
     )[LEVEL];
     return next;
-  }
-  const args = (info as Record<symbol, unknown>)[SPLAT];
-  if (Array.isArray(args)) {
-    const error = args.find((arg: unknown) => arg instanceof Error);
-    if (error) {
-      info.error = error;
-    }
   }
   return info;
 });
