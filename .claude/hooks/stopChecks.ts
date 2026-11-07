@@ -168,7 +168,7 @@ if (runTypecheck) {
             runNodeTool({
               name,
               root,
-              pkg: "typescript",
+              pkg: "@typescript/native",
               relBin: "bin/tsc",
               args: PROJECT_ARGS[project],
               findingsExitCodes: [1, 2],
