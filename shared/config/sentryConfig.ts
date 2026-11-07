@@ -1,3 +1,5 @@
+import type { DataCollection } from "@sentry/core";
+
 export interface SentryConfig {
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -31,7 +33,8 @@ export const sentryApplicationKeyProperty = `${sentryApplicationKeyPrefix}${sent
 const forwardingKeys = ["forwarded", "-ip", "remote-", "via", "-user"];
 
 // Sentry 11 collects request bodies, cookies and user details unless told not to.
-// This is its documented equivalent of the restrictive version 10 defaults.
+// This is its documented equivalent of the restrictive version 10 defaults, and
+// `satisfies` turns a misspelled key, which Sentry would ignore, into a type error.
 export const sentryDataCollection = {
   userInfo: false,
   cookies: false,
@@ -45,4 +48,4 @@ export const sentryDataCollection = {
   databaseQueryData: false,
   queues: false,
   graphQL: { document: false, variables: false },
-};
+} satisfies DataCollection;
