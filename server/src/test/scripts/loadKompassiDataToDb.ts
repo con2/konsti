@@ -15,7 +15,7 @@ const loadKompassiDataToDb = async (): Promise<void> => {
 
   // This will create default settings
   unsafelyUnwrap(await findOrCreateSettings());
-  await addSignupQuestions();
+  unsafelyUnwrap(await addSignupQuestions());
 
   await db.gracefulExit();
 };
