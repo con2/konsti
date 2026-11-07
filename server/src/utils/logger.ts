@@ -1,6 +1,6 @@
 import { inspect } from "node:util";
 import type { TransformableInfo } from "logform";
-import { type Logger, createLogger, format, transports } from "winston";
+import { createLogger, format, transports } from "winston";
 import { config } from "shared/config";
 import { getCauseChain } from "server/utils/causeChain";
 import { SentryTransport } from "server/utils/sentryTransport";
@@ -82,10 +82,15 @@ const consoleOutputFormat = config.server().consoleLogFormatJson
     );
 
 // Requiring an Error makes Sentry group error logs by stack rather than by interpolated text.
-// The type cannot cover values thrown at runtime, such as the error middleware's `err`.
-type KonstiLogger = Omit<Logger, "error"> & {
-  error: (error: Error) => KonstiLogger;
-};
+// The type cannot cover values thrown at runtime, such as the error middleware's `err`. Only
+// these methods are exposed, since winston's others (`log`, `child`, the returned Logger)
+// would accept a string at error level.
+interface KonstiLogger {
+  error: (error: Error) => void;
+  warn: (message: string) => void;
+  info: (message: string) => void;
+  debug: (message: string) => void;
+}
 
 export const logger: KonstiLogger = createLogger({
   handleExceptions: true,
