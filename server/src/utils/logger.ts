@@ -1,6 +1,8 @@
+import { inspect } from "node:util";
 import type { TransformableInfo } from "logform";
 import { type Logger, createLogger, format, transports } from "winston";
 import { config } from "shared/config";
+import { getCauseChain } from "server/utils/causeChain";
 import { SentryTransport } from "server/utils/sentryTransport";
 
 const LEVEL = Symbol.for("level");
@@ -31,11 +33,15 @@ const surfaceError = format((info) => {
 const renderMessage = (info: TransformableInfo): string => {
   const error = info.error;
   if (error instanceof Error) {
-    let text = error.stack ?? String(error);
-    for (let cause = error.cause; cause instanceof Error; cause = cause.cause) {
-      text += `\nCaused by: ${cause.stack ?? String(cause)}`;
+    const { errors, nonErrorCause } = getCauseChain(error);
+    const lines = errors.map((chained) => {
+      return chained.stack ?? String(chained);
+    });
+    // A caught value can be anything, and it is the only record of what actually failed
+    if (nonErrorCause !== undefined) {
+      lines.push(inspect(nonErrorCause));
     }
-    return text;
+    return lines.join("\nCaused by: ");
   }
   const { message } = info;
   if (typeof message === "string") {
