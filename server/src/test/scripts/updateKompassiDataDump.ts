@@ -80,4 +80,5 @@ try {
   logger.error(
     new Error("Failed to update Kompassi data dump", { cause: error }),
   );
+  process.exitCode = 1;
 }

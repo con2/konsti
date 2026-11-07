@@ -30,4 +30,6 @@ try {
   await checkStartTimes();
 } catch (error: unknown) {
   logger.error(new Error("Failed to check start times", { cause: error }));
+  process.exitCode = 1;
+  await db.gracefulExit();
 }

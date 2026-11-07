@@ -62,4 +62,6 @@ try {
   await initializeDatabase();
 } catch (error: unknown) {
   logger.error(new Error("Script initializeDatabase failed", { cause: error }));
+  process.exitCode = 1;
+  await db.gracefulExit();
 }
