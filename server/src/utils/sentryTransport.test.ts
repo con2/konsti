@@ -33,16 +33,16 @@ test("should report the logged Error with its cause", async () => {
   ]);
 });
 
-test("should report a log without an Error from its message", async () => {
+test("should report a log without an Error as a message", async () => {
   const { getCapturedEvents } = startRecording();
   const logger = createLogger({ transports: [new SentryTransport()] });
 
   logger.error("Plain failure");
   await flush(2000);
 
-  expect(getCapturedEvents()[0].exception?.values?.[0]).toMatchObject({
-    type: "Error",
-    value: "Plain failure",
+  expect(getCapturedEvents()[0]).toMatchObject({
+    message: "Plain failure",
+    level: "error",
   });
 });
 
