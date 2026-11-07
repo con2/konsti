@@ -9,9 +9,9 @@ const LEVEL = Symbol.for("level");
 // Log errors by passing the Error directly: `logger.error(new Error("..."))`, or wrap an
 // underlying error as the cause: `logger.error(new Error("context", { cause: err }))`
 //
-// Surfaces the Error onto an enumerable `error` key, which is where the Sentry transport looks
-// for it, because winston-transport's `Object.assign` copy drops an Error's non-enumerable
-// `message`/`stack`
+// Surfaces the Error onto an enumerable `error` key, where the Sentry transport looks for it:
+// logged on its own, the Error is `info` itself, and a transport with its own format gets a
+// copy of `info` that has lost the Error's non-enumerable `message`/`stack`.
 const surfaceError = format((info) => {
   if (info instanceof Error) {
     // sole-arg Error: winston makes `info` the Error itself. Return a fresh info so we don't
