@@ -1,3 +1,4 @@
+import { getCauseChain } from "server/utils/causeChain";
 import { sleep } from "server/utils/sleep";
 
 // Shared retry policy for delivering envelopes to Sentry, used by both the
@@ -26,9 +27,11 @@ export const retryWithDelays = async <T>(
 // line. Attaching the original error as `cause` to a logged Error instead
 // would fingerprint each network failure mode into its own Sentry issue.
 export const flattenErrorMessageChain = (error: unknown): string => {
+  if (!(error instanceof Error)) {
+    return String(error);
+  }
   const messages: string[] = [];
-  let current: unknown = error;
-  while (current instanceof Error) {
+  for (const current of getCauseChain(error).errors) {
     if (current.message) {
       messages.push(current.message);
     }
@@ -37,7 +40,6 @@ export const flattenErrorMessageChain = (error: unknown): string => {
         messages.push(inner instanceof Error ? inner.message : String(inner));
       }
     }
-    current = current.cause;
   }
   return messages.length > 0 ? messages.join(" / ") : String(error);
 };

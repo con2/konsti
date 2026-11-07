@@ -68,4 +68,13 @@ describe("flattenErrorMessageChain", () => {
   test("should stringify non-Error values", () => {
     expect(flattenErrorMessageChain("boom")).toEqual("boom");
   });
+
+  test("should stop at a cause that loops back to an earlier error", () => {
+    const first = new Error("first");
+    const second = new Error("second", { cause: first });
+    // eslint-disable-next-line unicorn/no-error-property-assignment -- A loop needs a cause set after construction
+    first.cause = second;
+
+    expect(flattenErrorMessageChain(second)).toEqual("second / first");
+  });
 });
