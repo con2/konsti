@@ -28,7 +28,8 @@ init({
   release: process.env.APP_VERSION,
   maxValueLength: config.sentry().maxValueLength,
   dataCollection: sentryDataCollection,
-  // A captured non-Error has no stack of its own, and a synthetic one would group it by call site
+  // A captured non-Error has no stack of its own, and a synthetic one would group it by call
+  // site. Error logs without an Error are captured as messages and rely on this too.
   attachStacktrace: false,
   beforeSend: scrubIpAddress,
   transport: makeRetryingNodeTransport,
