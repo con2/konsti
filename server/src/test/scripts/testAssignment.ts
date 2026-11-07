@@ -33,8 +33,8 @@ const getAssignmentAlgorithm = (userParameter: string): AssignmentAlgorithm => {
 
 const init = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
-    logger.error(new Error("Attendee allocation not allowed in production"));
-    return;
+    // eslint-disable-next-line no-restricted-syntax -- Test script
+    throw new Error("Attendee allocation not allowed in production");
   }
 
   const userParameter = process.argv[2];
