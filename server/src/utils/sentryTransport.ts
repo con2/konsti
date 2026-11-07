@@ -2,8 +2,8 @@ import { captureException, captureMessage, withScope } from "@sentry/node";
 import TransportStream from "winston-transport";
 
 // Reports each log it receives to Sentry. The logger's format puts the logged
-// Error on `info.error`; a log without one is reported as a message, so Sentry
-// groups it by its text rather than by a stack that starts in this transport.
+// Error on `info.error`; a log without one is reported as a message, which Sentry
+// groups by its text only while the SDK is set not to attach stacks to messages.
 export class SentryTransport extends TransportStream {
   override log(info: Record<string, unknown>, next: () => void): void {
     setImmediate(() => {
