@@ -1,10 +1,11 @@
 import { db } from "server/db/mongodb";
 import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 const testUpdateProgramItemPopularity = async (): Promise<void> => {
   await db.connectToDb();
-  await updateProgramItemPopularity();
+  unsafelyUnwrap(await updateProgramItemPopularity());
   await db.gracefulExit();
 };
 

@@ -7,6 +7,7 @@ import { db } from "server/db/mongodb";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 
 const updatePastEventProgramItems = async (): Promise<void> => {
@@ -25,28 +26,30 @@ const updatePastEventProgramItems = async (): Promise<void> => {
 
   const programItems = JSON.parse(rawData) as ProgramItem[];
 
-  await saveProgramItems(
-    programItems.map((programItem) => {
-      // Fractional hours on purpose, so an item starting on a half hour keeps its
-      // offset from the event start instead of being rounded onto the hour
-      const timeDifference =
-        (new Date(programItem.startTime).getTime() -
-          new Date(oldStartTime).getTime()) /
-        (60 * 60 * 1000);
+  unsafelyUnwrap(
+    await saveProgramItems(
+      programItems.map((programItem) => {
+        // Fractional hours on purpose, so an item starting on a half hour keeps its
+        // offset from the event start instead of being rounded onto the hour
+        const timeDifference =
+          (new Date(programItem.startTime).getTime() -
+            new Date(oldStartTime).getTime()) /
+          (60 * 60 * 1000);
 
-      return {
-        ...programItem,
-        startTime: addHours(
-          new Date(eventStartTime),
-          timeDifference,
-        ).toISOString(),
-        endTime: addMinutes(
-          addHours(new Date(eventStartTime), timeDifference),
-          programItem.mins,
-        ).toISOString(),
-        parentId: programItem.parentId || programItem.programItemId,
-      };
-    }),
+        return {
+          ...programItem,
+          startTime: addHours(
+            new Date(eventStartTime),
+            timeDifference,
+          ).toISOString(),
+          endTime: addMinutes(
+            addHours(new Date(eventStartTime), timeDifference),
+            programItem.mins,
+          ).toISOString(),
+          parentId: programItem.parentId || programItem.programItemId,
+        };
+      }),
+    ),
   );
 };
 
@@ -55,7 +58,7 @@ const loadPastEventDataToDb = async (): Promise<void> => {
   await updatePastEventProgramItems();
 
   // This will create default settings
-  await findOrCreateSettings();
+  unsafelyUnwrap(await findOrCreateSettings());
   await addSignupQuestions();
 
   await db.gracefulExit();

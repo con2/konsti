@@ -8,6 +8,7 @@ import {
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
+import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { cleanupDatabase } from "server/utils/cleanupDatabase";
 import { logger } from "server/utils/logger";
 
@@ -48,11 +49,11 @@ const initializeDatabase = async (): Promise<void> => {
       // eslint-disable-next-line no-restricted-syntax -- Data generation script
       throw new Error("Unable to load Kompassi program items");
     }
-    await saveProgramItems(programItemsResult.value);
+    unsafelyUnwrap(await saveProgramItems(programItemsResult.value));
   }
 
   // This will create default settings
-  await findOrCreateSettings();
+  unsafelyUnwrap(await findOrCreateSettings());
   await addSignupQuestions();
 
   await db.gracefulExit();
