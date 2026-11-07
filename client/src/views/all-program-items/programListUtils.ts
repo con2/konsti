@@ -1,9 +1,4 @@
-import {
-  AgeGroup,
-  Language,
-  ProgramItem,
-  Tag,
-} from "shared/types/models/programItem";
+import { Language, ProgramItem } from "shared/types/models/programItem";
 import { isEnumValue } from "shared/utils/isEnumValue";
 import { isPreConventionWeekProgramItem } from "shared/utils/isPreConventionWeekProgramItem";
 import {
@@ -56,6 +51,12 @@ export const getVisibleProgramItems = (
   return phaseFilteredProgramItems;
 };
 
+// Runs on every item for each selected tag, so it takes the arrays as plain
+// strings instead of checking first that the tag is one of the enum's values
+const includesString = (values: readonly string[], value: string): boolean => {
+  return values.includes(value);
+};
+
 export const getTagFilteredProgramItems = (
   programItems: readonly ProgramItem[],
   selectedTags: readonly string[],
@@ -70,20 +71,9 @@ export const getTagFilteredProgramItems = (
         return true;
       }
       if (
-        isEnumValue(Tag, selectedTag) &&
-        programItem.tags.includes(selectedTag)
-      ) {
-        return true;
-      }
-      if (
-        isEnumValue(AgeGroup, selectedTag) &&
-        programItem.ageGroups.includes(selectedTag)
-      ) {
-        return true;
-      }
-      if (
-        isEnumValue(Language, selectedTag) &&
-        programItem.languages.includes(selectedTag)
+        includesString(programItem.tags, selectedTag) ||
+        includesString(programItem.ageGroups, selectedTag) ||
+        includesString(programItem.languages, selectedTag)
       ) {
         return true;
       }
