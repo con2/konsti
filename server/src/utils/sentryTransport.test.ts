@@ -53,6 +53,63 @@ test("should report an Error logged on its own through the app logger", async ()
   ]);
 });
 
+test("should attach a cause that is not an Error as extra data", async () => {
+  const { getCapturedEvents } = startRecording();
+  const testLogger = createLogger({ transports: [new SentryTransport()] });
+
+  testLogger.error("Saving failed", {
+    error: new Error("Saving failed", {
+      cause: new Error("Write failed", { cause: { code: 11000 } }),
+    }),
+  });
+  await flush(2000);
+
+  const events = getCapturedEvents();
+  expect(events).toHaveLength(1);
+  expect(events[0].extra).toMatchObject({ cause: "[object Object]" });
+});
+
+test("should describe a cause object that has no prototype", async () => {
+  const { getCapturedEvents } = startRecording();
+  const testLogger = createLogger({ transports: [new SentryTransport()] });
+
+  testLogger.error("Saving failed", {
+    error: new Error("Saving failed", { cause: Object.create(null) }),
+  });
+  await flush(2000);
+
+  const events = getCapturedEvents();
+  expect(events[0].extra).toMatchObject({ cause: "[object Object]" });
+});
+
+test("should send a primitive cause as its value", async () => {
+  const { getCapturedEvents } = startRecording();
+  const testLogger = createLogger({ transports: [new SentryTransport()] });
+
+  testLogger.error("Saving failed", {
+    error: new Error("Saving failed", { cause: "Disk full" }),
+  });
+  await flush(2000);
+
+  const events = getCapturedEvents();
+  expect(events[0].extra).toMatchObject({ cause: "Disk full" });
+});
+
+test("should report an Error whose causes loop back on themselves", async () => {
+  const { getCapturedEvents } = startRecording();
+  const testLogger = createLogger({ transports: [new SentryTransport()] });
+  const first = new Error("First");
+  const second = new Error("Second", { cause: first });
+  // eslint-disable-next-line unicorn/no-error-property-assignment -- A loop needs a cause set after construction
+  first.cause = second;
+
+  testLogger.error("Looping", { error: second });
+  await flush(2000);
+
+  expect(getCapturedEvents()).toHaveLength(1);
+});
+
+
 test("should report a log without an Error as a message", async () => {
   const { getCapturedEvents } = startRecording();
   const testLogger = createLogger({ transports: [new SentryTransport()] });
