@@ -242,7 +242,7 @@ export const closeServer = async (
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error(new Error("Failed to close DB connection", { cause: error }));
   }
 
   // Send buffered Sentry events before the process exits. The timeout leaves

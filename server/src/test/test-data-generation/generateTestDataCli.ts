@@ -31,5 +31,5 @@ const generateTestDataCli = async (): Promise<void> => {
 try {
   await generateTestDataCli();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(new Error("Failed to generate test data", { cause: error }));
 }

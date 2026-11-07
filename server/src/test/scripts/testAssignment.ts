@@ -45,5 +45,5 @@ const init = async (): Promise<void> => {
 try {
   await init();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(new Error("Failed to run test assignment", { cause: error }));
 }

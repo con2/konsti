@@ -492,6 +492,6 @@ const simulateLottery = async (): Promise<number> => {
 try {
   process.exitCode = await simulateLottery();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(new Error("Failed to simulate lottery", { cause: error }));
   process.exitCode = 1;
 }

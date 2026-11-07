@@ -171,5 +171,7 @@ const checkMissingKonstiProgramType = async (): Promise<void> => {
 try {
   await checkMissingKonstiProgramType();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(
+    new Error("Failed to check missing Konsti program types", { cause: error }),
+  );
 }

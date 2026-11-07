@@ -66,7 +66,7 @@ const handleShutdown = async (
   try {
     await closeServer(server, signal);
   } catch (error: unknown) {
-    logger.error(error);
+    logger.error(new Error("Failed to close server", { cause: error }));
   }
 };
 
@@ -81,7 +81,7 @@ const init = async (): Promise<void> => {
   try {
     await startApp();
   } catch (error: unknown) {
-    logger.error(error);
+    logger.error(new Error("Failed to start app", { cause: error }));
   }
 };
 

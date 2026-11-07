@@ -10,7 +10,7 @@ const generateSerials = async (): Promise<void> => {
     try {
       await db.connectToDb();
     } catch (error) {
-      logger.error(error);
+      logger.error(new Error("Failed to connect to DB", { cause: error }));
     }
 
     try {
@@ -27,12 +27,12 @@ const generateSerials = async (): Promise<void> => {
   try {
     await db.gracefulExit();
   } catch (error) {
-    logger.error(error);
+    logger.error(new Error("Failed to close DB connection", { cause: error }));
   }
 };
 
 try {
   await generateSerials();
 } catch (error: unknown) {
-  logger.error(error);
+  logger.error(new Error("Failed to generate serials", { cause: error }));
 }
