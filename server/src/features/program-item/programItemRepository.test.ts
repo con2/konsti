@@ -35,6 +35,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { getUserId } from "server/test/utils/getUserId";
 import {
   withLotteryJustRun,
   withLotteryStillAhead,
@@ -100,7 +101,7 @@ test("should remove lottery sign-ups and favorites when program item is deleted 
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
@@ -208,7 +209,7 @@ test("should remove lottery sign-ups but keep favorites when program item is can
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
@@ -372,7 +373,7 @@ test("should remove lottery sign-ups but not favorites when program item doesn't
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
@@ -518,7 +519,7 @@ test("should not add duplicate notification when program item is cancelled and u
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveFavorite({
@@ -547,7 +548,7 @@ test("should not add duplicate notification when signupType is changed away from
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveFavorite({
@@ -576,7 +577,7 @@ test("should not add any notification when programType is changed to non-lottery
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveFavorite({
@@ -598,7 +599,7 @@ test("should preserve lottery sign-up when program item is cancelled after its l
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -620,7 +621,7 @@ test("should preserve lottery sign-up when signupType is changed away from Konst
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -642,7 +643,7 @@ test("should remove lottery sign-up but keep favorites when programType is chang
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
@@ -693,7 +694,7 @@ test("should preserve lottery sign-up when programType is changed to non-lottery
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -715,7 +716,7 @@ test("should add event notification if user has lottery sign-up and program item
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -916,7 +917,7 @@ test("should remove lottery sign-ups made for a program item that stops taking p
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
 
@@ -937,7 +938,7 @@ test("should keep lottery sign-ups whose lottery has run when a program item sto
   await saveUser(mockUser);
   await saveDirectSignup(mockPostDirectSignupRequest);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
 

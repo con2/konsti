@@ -12,11 +12,11 @@ import { logger } from "server/utils/logger";
 export const saveLotterySignups = async (
   signupData: UserLotterySignups,
 ): Promise<Result<User, MongoDbError>> => {
-  const { lotterySignups, username } = signupData;
+  const { lotterySignups, userId } = signupData;
 
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       {
         lotterySignups,
       },
@@ -26,7 +26,7 @@ export const saveLotterySignups = async (
       logger.error(new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
-    logger.debug(`MongoDB: Signup data stored for user ${username}`);
+    logger.debug(`MongoDB: Signup data stored for user ${userId}`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -41,7 +41,7 @@ export const saveLotterySignups = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error storing signup data for user ${username}`, {
+      new Error(`MongoDB: Error storing signup data for user ${userId}`, {
         cause: error,
       }),
     );
@@ -51,16 +51,16 @@ export const saveLotterySignups = async (
 
 interface SaveLotterySignupParams {
   lotterySignup: LotterySignup;
-  username: string;
+  userId: string;
 }
 
 export const saveLotterySignup = async ({
   lotterySignup,
-  username,
+  userId,
 }: SaveLotterySignupParams): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       {
         $addToSet: {
           lotterySignups: {
@@ -75,13 +75,13 @@ export const saveLotterySignup = async ({
     if (!response) {
       logger.error(
         new Error(
-          `Error saving lottery signup ${lotterySignup.programItemId} for user ${username}, user not found`,
+          `Error saving lottery signup ${lotterySignup.programItemId} for user ${userId}, user not found`,
         ),
       );
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
     logger.debug(
-      `MongoDB: Lottery signup ${lotterySignup.programItemId} saved for user ${username}`,
+      `MongoDB: Lottery signup ${lotterySignup.programItemId} saved for user ${userId}`,
     );
 
     const result = UserSchemaDb.safeParse(response);
@@ -98,7 +98,7 @@ export const saveLotterySignup = async ({
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error saving lottery signup ${lotterySignup.programItemId} for user ${username}`,
+        `MongoDB: Error saving lottery signup ${lotterySignup.programItemId} for user ${userId}`,
         { cause: error },
       ),
     );
@@ -108,7 +108,7 @@ export const saveLotterySignup = async ({
 
 export interface DeleteLotterySignupsParams {
   lotterySignupProgramItemIds: string[];
-  username: string;
+  userId: string;
 }
 
 export const delLotterySignups = async (
@@ -116,9 +116,9 @@ export const delLotterySignups = async (
 ): Promise<Result<void, MongoDbError>> => {
   try {
     const bulkOps = usersToUpdate.map(
-      ({ username, lotterySignupProgramItemIds }) => ({
+      ({ userId, lotterySignupProgramItemIds }) => ({
         updateOne: {
-          filter: { username },
+          filter: { userId },
           update: {
             $pull: {
               lotterySignups: {
@@ -134,7 +134,7 @@ export const delLotterySignups = async (
 
     for (const userToUpdate of usersToUpdate) {
       logger.debug(
-        `MongoDB: Deleted lottery signups ${userToUpdate.lotterySignupProgramItemIds.join(", ")} from users: ${userToUpdate.username}`,
+        `MongoDB: Deleted lottery signups ${userToUpdate.lotterySignupProgramItemIds.join(", ")} from users: ${userToUpdate.userId}`,
       );
     }
 

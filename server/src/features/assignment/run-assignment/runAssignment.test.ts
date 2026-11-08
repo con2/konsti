@@ -57,6 +57,7 @@ import {
   mockUser3,
 } from "server/test/mock-data/mockUser";
 import { findSignupsByProgramItem } from "server/test/utils/findSignupsByProgramItem";
+import { getUserId } from "server/test/utils/getUserId";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
@@ -295,7 +296,7 @@ describe.each([
       ]);
       await saveUser(mockUser);
       await saveLotterySignups({
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
       });
 
@@ -345,7 +346,7 @@ describe.each([
       await saveUser({ ...mockUser2, groupCode: groupCreatorGroupCode });
 
       await saveLotterySignups({
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
       });
 
@@ -404,7 +405,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -471,11 +472,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
     });
 
@@ -546,7 +547,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -558,7 +559,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -635,7 +636,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -717,7 +718,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -799,7 +800,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     // User 2 has selected program item for assignment
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[1] }],
     });
 
@@ -878,12 +879,12 @@ describe("Assignment with first time bonus", () => {
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
     });
 
@@ -1011,11 +1012,11 @@ describe("Assignment with first time bonus", () => {
 
     // First user has higher priority but second user has additional first time bonus
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[1], priority: 1 }],
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[1], priority: 3 }],
     });
 
@@ -1057,7 +1058,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1074,7 +1075,7 @@ describe("The lottery for a start time runs once", () => {
     // A second attendee enters and the start time is run again with two of its three spots
     // still free, so the run has something it could hand out and refuses anyway
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1118,7 +1119,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
     });
 
@@ -1135,7 +1136,7 @@ describe("The lottery for a start time runs once", () => {
 
     // They now add the empty program item as their first preference
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -1198,7 +1199,7 @@ describe("The lottery for a start time runs once", () => {
 
     // ...but a lottery preference for testProgramItem2 at the same time
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1274,7 +1275,7 @@ describe("The lottery for a start time runs once", () => {
       });
 
       await saveLotterySignups({
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
       });
 
@@ -1334,7 +1335,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -1373,7 +1374,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1396,7 +1397,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -1444,7 +1445,7 @@ describe("The lottery for a start time runs once", () => {
     });
 
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1496,7 +1497,7 @@ describe("The lottery for a start time runs once", () => {
     });
 
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 1 },
         {
@@ -1534,7 +1535,7 @@ describe("The lottery for a start time runs once", () => {
     ]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
     await saveDirectSignup({
@@ -1566,7 +1567,7 @@ describe("The lottery for a start time runs once", () => {
     ]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1589,7 +1590,7 @@ describe("The lottery for a start time runs once", () => {
     ]);
     await saveUser(mockUser2);
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1632,7 +1633,7 @@ describe("The lottery for a start time runs once", () => {
       username: mockUser.username,
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1668,7 +1669,7 @@ describe("The lottery for a start time runs once", () => {
       username: mockUser.username,
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1713,7 +1714,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1754,7 +1755,7 @@ describe("The lottery for a start time runs once", () => {
       priority: 1,
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1765,7 +1766,7 @@ describe("The lottery for a start time runs once", () => {
     });
     // Two spots are free in the half-written program item, and this run must not hand them out
     await saveLotterySignups({
-      username: mockUser3.username,
+      userId: await getUserId(mockUser3.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1832,7 +1833,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser({ ...mockUser2, groupCode, isGroupCreator: false });
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1864,7 +1865,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1921,7 +1922,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1949,7 +1950,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -2032,7 +2033,7 @@ test("Should not place anyone into a cancelled program item", async () => {
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2072,7 +2073,7 @@ test("Should remove a lottery sign-up for a deleted program item before lotteryi
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       // testProgramItem2 was never saved, so this names a deleted program item
@@ -2099,7 +2100,7 @@ test("Should leave lottery sign-ups alone when no lottery program item starts at
   // users or sign-ups, so the cleanup above does not run either
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     // testProgramItem2 was never saved, so this names a deleted program item
     lotterySignups: [{ ...mockLotterySignups[1], priority: 1 }],
   });
@@ -2158,7 +2159,7 @@ test("Should write a results snapshot even when the lottery places nobody", asyn
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2191,7 +2192,7 @@ test("Should write a snapshot of the lottery groups to the results collection", 
 
   // Only the group creator stores lottery sign-ups; members inherit them
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2233,7 +2234,7 @@ test("Program item with parent startTime from 'startTimesByParentIds' should not
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2276,7 +2277,7 @@ test("Should keep a past lottery sign-up but not let it affect an upcoming lotte
 
   // User keeps a leftover lottery sign-up for the past item and also has one for the current item
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: pastProgramItem.programItemId,
@@ -2336,7 +2337,7 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       { ...mockLotterySignups[1], priority: 1 },
@@ -2407,14 +2408,14 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       { ...mockLotterySignups[1], priority: 1 },
     ],
   });
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       {
         programItemId: "under-min-attendance-item",
@@ -2489,7 +2490,7 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       { ...mockLotterySignups[1], priority: 1 },
@@ -2546,7 +2547,7 @@ test("Should mark a batched program item with its own start time, not the parent
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2577,7 +2578,7 @@ test("Should keep the lottery sign-ups of a program item added to a lotteried st
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2599,7 +2600,7 @@ test("Should keep the lottery sign-ups of a program item added to a lotteried st
     addedProgramItem,
   ]);
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       {
         programItemId: addedProgramItem.programItemId,

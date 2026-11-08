@@ -41,6 +41,7 @@ import {
   mockUser4,
 } from "server/test/mock-data/mockUser";
 import { findSignupsByProgramItem } from "server/test/utils/findSignupsByProgramItem";
+import { getUserId } from "server/test/utils/getUserId";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
@@ -122,11 +123,11 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
   ]);
 
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
   });
 
@@ -174,11 +175,11 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   ]);
 
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
   });
 
@@ -289,7 +290,7 @@ test("should add NO_ASSIGNMENT event log item to group members", async () => {
   ]);
 
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0] }],
   });
 
@@ -340,7 +341,7 @@ test("should only add one event log item with multiple lottery sign-ups", async 
   ]);
 
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       {
@@ -352,7 +353,7 @@ test("should only add one event log item with multiple lottery sign-ups", async 
   });
 
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 3 },
       {
@@ -463,7 +464,7 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
   // All four are real lottery participants for the starting program item
   for (const user of lotteryUsers) {
     await saveLotterySignups({
-      username: user.username,
+      userId: await getUserId(user.username),
       lotterySignups: [{ ...mockLotterySignups[0] }],
     });
   }
@@ -587,11 +588,11 @@ test("should not send notifications to users without email addresses but still c
   ]);
 
   await saveLotterySignups({
-    username: userWithoutEmail.username,
+    userId: await getUserId(userWithoutEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
   await saveLotterySignups({
-    username: userWithEmail.username,
+    userId: await getUserId(userWithEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
   });
 
@@ -654,11 +655,11 @@ test("should summarize sent and skipped emails once the queue drains", async () 
     { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
   ]);
   await saveLotterySignups({
-    username: userWithoutEmail.username,
+    userId: await getUserId(userWithoutEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
   await saveLotterySignups({
-    username: userWithEmail.username,
+    userId: await getUserId(userWithEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
   });
 
@@ -697,11 +698,11 @@ test("should respect email notification permissions based on email field", async
   ]);
 
   await saveLotterySignups({
-    username: userWithEmail.username,
+    userId: await getUserId(userWithEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
   await saveLotterySignups({
-    username: userWithoutEmail.username,
+    userId: await getUserId(userWithoutEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
   });
 
@@ -758,7 +759,7 @@ test("should handle mixed email permissions in groups", async () => {
   ]);
 
   await saveLotterySignups({
-    username: userWithEmail.username,
+    userId: await getUserId(userWithEmail.username),
     lotterySignups: [{ ...mockLotterySignups[0] }],
   });
 
@@ -808,7 +809,7 @@ test("should store the won slot's own start time on a batched program item's dir
     { ...testProgramItem, minAttendance: 1, maxAttendance: 1 },
   ]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -870,7 +871,7 @@ test("should keep a spot held at another hour when a batched lottery places the 
   });
 
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -968,7 +969,7 @@ const saveBatchedProgramItems = async (): Promise<{
   await saveUser(mockUser);
   await saveProgramItems([firstProgramItem, laterProgramItem]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -1022,7 +1023,7 @@ test("should not record a span when the lottery covered a single starting time",
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -1079,7 +1080,7 @@ test("should still tell the losers when the placed spots cannot be read", async 
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 

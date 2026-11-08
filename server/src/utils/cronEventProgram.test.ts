@@ -141,7 +141,7 @@ const seedAttendees = async (slots: ProgramItem[]): Promise<void> => {
         signedToStartTime: slot.startTime,
       };
     });
-    await saveLotterySignups({ username: user.username, lotterySignups });
+    await saveLotterySignups({ userId: user.userId, lotterySignups });
   }
 };
 

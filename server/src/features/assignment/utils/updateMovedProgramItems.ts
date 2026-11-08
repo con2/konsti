@@ -17,7 +17,9 @@ import {
 import { findUsers } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
-type UsersWithMovedLotterySignups = DeleteLotterySignupsParams[];
+type UsersWithMovedLotterySignups = (DeleteLotterySignupsParams & {
+  username: string;
+})[];
 
 export const updateMovedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
@@ -125,6 +127,7 @@ const removeMovedLotterySignupsAndNotify = async (
     );
 
     return {
+      userId: user.userId,
       username: user.username,
       lotterySignupProgramItemIds,
     };

@@ -52,6 +52,7 @@ import {
   mockUser5,
 } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { NewUser } from "server/types/userTypes";
 import { closeServer, startServer } from "server/utils/server";
@@ -747,7 +748,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     ]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           programItemId: testProgramItem2.programItemId,
@@ -792,7 +793,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           programItemId: testProgramItem2.programItemId,

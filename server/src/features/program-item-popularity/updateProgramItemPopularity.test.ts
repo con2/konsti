@@ -17,6 +17,7 @@ import {
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -52,7 +53,7 @@ test("Should update program item popularity", async () => {
         signedToStartTime: testProgramItem.startTime,
       },
     ],
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
   });
   await saveLotterySignups({
     lotterySignups: [
@@ -62,7 +63,7 @@ test("Should update program item popularity", async () => {
         signedToStartTime: testProgramItem.startTime,
       },
     ],
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
   });
 
   const programItems = unsafelyUnwrap(await findProgramItems());
@@ -130,7 +131,7 @@ test("Should only update program item popularity of upcoming program items", asy
         signedToStartTime: testProgramItem.startTime,
       },
     ],
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
   });
 
   // Upcoming program item
@@ -145,7 +146,7 @@ test("Should only update program item popularity of upcoming program items", asy
         ).toISOString(),
       },
     ],
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
   });
 
   const programItems = unsafelyUnwrap(await findProgramItems());
@@ -213,7 +214,7 @@ test("Should update popularity of upcoming program item with parent", async () =
         signedToStartTime: upcomingStartTime,
       },
     ],
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
   });
 
   const programItems = unsafelyUnwrap(await findProgramItems());
@@ -273,7 +274,7 @@ test("Should not update upcoming program item popularity if parent starTime in p
         signedToStartTime: upcomingStartTime,
       },
     ],
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
   });
 
   const programItems = unsafelyUnwrap(await findProgramItems());
@@ -322,7 +323,7 @@ test("Should not update popularity once the lottery sign-up has closed", async (
         signedToStartTime: testProgramItem.startTime,
       },
     ],
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
   });
 
   await updateProgramItemPopularity();

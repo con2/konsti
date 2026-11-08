@@ -26,6 +26,7 @@ import {
   mockUser2,
   mockUser3,
 } from "server/test/mock-data/mockUser";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
@@ -72,7 +73,7 @@ test("should remove overlapping lottery sign-ups from user", async () => {
   // User 1 received a direct sign-up and overlapping lottery sign-ups should be removed
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       mockLotterySignups[0],
       {
@@ -89,7 +90,7 @@ test("should remove overlapping lottery sign-ups from user", async () => {
   // User 2 received a direct sign-up but doesn't have overlapping lottery sign-ups
   await saveUser(mockUser2);
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       mockLotterySignups[0],
       {
@@ -106,7 +107,7 @@ test("should remove overlapping lottery sign-ups from user", async () => {
   // User 3 didn't receive a direct sign-up in lottery so lottery sign-ups are not removed
   await saveUser(mockUser3);
   await saveLotterySignups({
-    username: mockUser3.username,
+    userId: await getUserId(mockUser3.username),
     lotterySignups: [
       mockLotterySignups[0],
       {
@@ -223,7 +224,7 @@ test("should remove all upcoming lottery sign-ups from user", async () => {
   // User received a direct sign-up and has one past and two upcoming lottery sign-ups
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: resultProgramItemId,
@@ -259,7 +260,7 @@ test("should remove all upcoming lottery sign-ups from user", async () => {
   // User 2 didn't receive a direct sign-up so lottery sign-ups are not modified
   await saveUser(mockUser2);
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       {
         programItemId: pastProgramItemId,
@@ -342,7 +343,7 @@ test("should not remove upcoming lottery sign-ups when strategy is NONE", async 
   // User received a direct sign-up and has one upcoming lottery sign-up
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: resultProgramItemId,
@@ -426,7 +427,7 @@ test("should not remove an upcoming lottery sign-up whose lottery has already ru
 
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: resultProgramItemId,
@@ -497,7 +498,7 @@ test("should not remove upcoming lottery sign-up with past parent startTime", as
   // User received a direct sign-up and has one upcoming lottery sign-up with parent in past
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: resultProgramItemId,

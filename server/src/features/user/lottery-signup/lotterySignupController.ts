@@ -7,7 +7,7 @@ import {
   removeLotterySignup,
   storeLotterySignup,
 } from "server/features/user/lottery-signup/lotterySignupService";
-import { getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId } from "server/middleware/requireAuth";
 
 export const postLotterySignup = async (
   req: Request<unknown, unknown, PostLotterySignupRequest>,
@@ -16,7 +16,7 @@ export const postLotterySignup = async (
   const response = await storeLotterySignup({
     programItemId: req.body.programItemId,
     priority: req.body.priority,
-    username: getAuthUsername(req),
+    userId: getAuthUserId(req),
   });
 
   return res.json(response);
@@ -28,7 +28,7 @@ export const deleteLotterySignup = async (
 ): Promise<Response> => {
   const response = await removeLotterySignup(
     req.body.lotterySignupProgramItemId,
-    getAuthUsername(req),
+    getAuthUserId(req),
   );
   return res.json(response);
 };

@@ -35,6 +35,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -221,7 +222,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const user = unsafelyUnwrap(
       await saveLotterySignups({
         lotterySignups: [pastLotterySignup, upcomingLotterySignup],
-        username: mockUser2.username,
+        userId: await getUserId(mockUser2.username),
       }),
     );
     expect(user.lotterySignups.length).toEqual(2);
@@ -263,7 +264,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     };
     await saveLotterySignups({
       lotterySignups: [pastLotterySignup],
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
     });
 
     const groupRequest: PostJoinGroupRequest = {
@@ -316,7 +317,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     };
     await saveLotterySignups({
       lotterySignups: [lotterySignup],
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
     });
 
     const groupRequest: PostJoinGroupRequest = {
@@ -359,7 +360,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     };
     await saveLotterySignups({
       lotterySignups: [upcomingLotterySignup],
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
     });
 
     const groupRequest: PostJoinGroupRequest = {

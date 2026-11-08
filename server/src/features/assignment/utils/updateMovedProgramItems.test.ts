@@ -25,6 +25,7 @@ import {
   mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
+import { getUserId } from "server/test/utils/getUserId";
 import { withLotteryStillAhead } from "server/test/utils/lotteryClock";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
@@ -44,7 +45,7 @@ test("should remove lottery sign-ups for moved program items from users", async 
 
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   const insertedUser = await UserModel.findOne({
@@ -78,7 +79,7 @@ test("should notify a user about a moved lottery sign-up and a moved direct sign
   await saveUser(mockUser);
   // Lottery sign-up for item A
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
   // Direct sign-up for a different item B
@@ -136,7 +137,7 @@ test("should notify a user only once for a moved item they have both a lottery a
 
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveDirectSignup(mockPostDirectSignupRequest);
@@ -181,7 +182,7 @@ test("should keep lottery sign-ups for other program items when one moves onto t
   await saveUser(mockUser);
   await saveDirectSignup({ ...mockPostDirectSignupRequest, priority: 1 });
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: testProgramItem2.programItemId,
@@ -212,7 +213,7 @@ test("should keep lottery sign-ups whose lottery has already run when the progra
 
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -247,7 +248,7 @@ test("should keep lottery sign-ups of a lotteried program item moved to a later 
 
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 

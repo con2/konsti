@@ -26,6 +26,7 @@ import {
   mockUser2,
 } from "server/test/mock-data/mockUser";
 import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
@@ -43,7 +44,7 @@ test("every lottery sign-up slot gets either a newAssignment with a matching dir
   await saveProgramItems([testProgramItem, testProgramItem2]);
   // Lottery sign-ups in two different start time slots
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -106,7 +107,7 @@ test("a full program item produces a noAssignment entry instead of an assignment
     priority: DIRECT_SIGNUP_PRIORITY,
   });
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
 
@@ -129,7 +130,7 @@ test("records the lottery it simulates, so a later programme import does not pas
   await saveUser(mockUser2);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   // A spot the import can pass the program item over for, whichever way the simulated
@@ -180,7 +181,7 @@ test("a batched lottery decides one slot for the whole batch", async () => {
     { ...testProgramItem2, parentId, startTime: secondStartTime },
   ]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: testProgramItem.programItemId,
@@ -238,7 +239,7 @@ test("a rejection from a batched lottery names the span the lottery covered", as
     });
   }
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: testProgramItem.programItemId,

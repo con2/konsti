@@ -250,7 +250,7 @@ export const joinGroup = async (
     const saveLotterySignupsResult = await delLotterySignups([
       {
         lotterySignupProgramItemIds: lotteryNotYetRunProgramItemIds,
-        username,
+        userId: user.userId,
       },
     ]);
     if (!saveLotterySignupsResult.ok) {

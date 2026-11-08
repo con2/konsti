@@ -98,7 +98,7 @@ export const removeOverlapLotterySignups = async (
 
       if (overlappingLotterySignups.length > 0) {
         usersToUpdate.push({
-          username: signedUser.username,
+          userId: signedUser.userId,
           lotterySignupProgramItemIds: overlappingLotterySignups.map(
             (signup) => signup.programItemId,
           ),
@@ -120,7 +120,7 @@ export const removeOverlapLotterySignups = async (
 
     if (upcomingLotterySignupProgramItemIds.length > 0) {
       usersToUpdate.push({
-        username: signedUser.username,
+        userId: signedUser.userId,
         lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
       });
     }

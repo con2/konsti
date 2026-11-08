@@ -34,6 +34,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -443,7 +444,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -621,7 +622,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],

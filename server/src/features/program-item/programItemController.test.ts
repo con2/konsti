@@ -54,6 +54,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
@@ -300,7 +301,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
     await saveDirectSignup(mockPostDirectSignupRequest);
@@ -454,7 +455,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
     await saveDirectSignup(mockPostDirectSignupRequest);
