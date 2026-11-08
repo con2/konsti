@@ -173,7 +173,11 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
 
   test("should allow admin to change password for 'admin' or 'helper' users", async () => {
     await saveUser({ ...mockUser, username: "admin" });
-    await saveUser({ ...mockUser, username: "helper" });
+    await saveUser({
+      ...mockUser,
+      username: "helper",
+      serial: "helper-serial",
+    });
 
     const adminRequestData: PostUpdateUserPasswordRequest = {
       usernameToUpdate: "admin",

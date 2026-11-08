@@ -72,6 +72,15 @@ test("should not insert a second user with an existing username", async () => {
   expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
 });
 
+test("should not insert a second user with an existing serial", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+
+  await saveUser({ ...mockUser2, serial: mockUser.serial });
+
+  expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
+});
+
 test("should not insert a second user with an existing kompassiId", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser({ ...mockUser, kompassiId: "42" });

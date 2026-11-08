@@ -101,7 +101,7 @@ const userSchema = new mongoose.Schema(
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userGroup: { type: String, required: true },
-    serial: { type: String, required: true },
+    serial: { type: String, required: true, unique: true },
     isGroupCreator: { type: Boolean, required: true },
     groupCode: { type: String, required: true },
     favoriteProgramItemIds: { type: [String], required: true },
