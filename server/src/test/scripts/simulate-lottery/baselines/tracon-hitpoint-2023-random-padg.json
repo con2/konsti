@@ -4,10 +4,10 @@
   "totals": {
     "runs": 11,
     "entrants": 105,
-    "placed": 92,
-    "placedByPriority": [77, 13, 2],
+    "placed": 91,
+    "placedByPriority": [74, 15, 2],
     "spotsOffered": 140,
-    "programItemsUnderMinAttendance": 7
+    "programItemsUnderMinAttendance": 8
   },
   "runs": [
     {
@@ -102,12 +102,12 @@
       "assignmentTime": "2023-11-05T10:00:00Z",
       "status": "success",
       "entrants": 17,
-      "placed": 17,
-      "placedByPriority": [15, 2, 0],
+      "placed": 16,
+      "placedByPriority": [12, 4, 0],
       "programItemsLotteried": 7,
       "spotsOffered": 35,
-      "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "15b13f3aa0f2d679"
+      "programItemsUnderMinAttendance": 3,
+      "placementsDigest": "eb61c5dd4d59ae10"
     },
     {
       "assignmentTime": "2023-11-05T11:00:00Z",
