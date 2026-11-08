@@ -166,6 +166,22 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.errorId).toEqual("usernameNotFree");
   });
 
+  test("should return error if username is taken between the check and the update", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    await saveUser(mockUser2);
+    vi.spyOn(userRepository, "findUser").mockResolvedValueOnce(
+      makeSuccessResult(null),
+    );
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: mockUser2.username })
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.errorId).toEqual("usernameNotFree");
+  });
+
   test("should not check for existing username if username not changed", async () => {
     await saveUser({ ...mockUser, kompassiId: "10" });
 

@@ -354,6 +354,9 @@ export const updateUserKompassiLoginStatus = async (
         { cause: error },
       ),
     );
+    if (isDuplicateKeyError(error)) {
+      return makeErrorResult(MongoDbError.DUPLICATE_KEY);
+    }
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

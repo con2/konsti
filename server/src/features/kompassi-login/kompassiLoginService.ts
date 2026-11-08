@@ -342,6 +342,13 @@ export const verifyKompassiLogin = async (
         errorId: "loginFailed",
       };
     }
+    if (userResult.error === MongoDbError.DUPLICATE_KEY) {
+      return {
+        errorId: "usernameNotFree",
+        message: "Username in already registered",
+        status: "error",
+      };
+    }
     return {
       message: "Updating Kompassi login status failed",
       status: "error",
