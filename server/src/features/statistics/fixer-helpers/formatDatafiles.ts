@@ -13,7 +13,7 @@ const datatypes = [
   "serials",
 ];
 
-export const formatJson = async (
+export const formatDatafiles = async (
   event: string,
   year: number,
 ): Promise<void> => {
