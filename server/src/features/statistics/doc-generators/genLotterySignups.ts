@@ -68,25 +68,25 @@ const renderYearSection = (event: string, year: string): string[] => {
   // Own sign-ups, wins, and group participation all resolve to slot start
   // times, so every source lands in the same day-hour buckets
   const participantsByDayHour = new Map<string, Map<number, Set<string>>>();
-  const addSlots = (username: string, slots: ReadonlySet<string>): void => {
+  const addSlots = (userId: string, slots: ReadonlySet<string>): void => {
     for (const slot of slots) {
       const { day, hour } = bucketByHour(slot);
-      addToSet(participantsByDayHour, day, hour, username);
+      addToSet(participantsByDayHour, day, hour, userId);
     }
   };
-  for (const [username, slots] of ownSlotsByUser) addSlots(username, slots);
-  for (const [username, slots] of groupMemberSlotsByUser) {
-    addSlots(username, slots);
+  for (const [userId, slots] of ownSlotsByUser) addSlots(userId, slots);
+  for (const [userId, slots] of groupMemberSlotsByUser) {
+    addSlots(userId, slots);
   }
   // A winner participated in the hour they won even when their own sign-up is
   // missing from the data
-  for (const [username, slots] of wonSlotsByUser) addSlots(username, slots);
+  for (const [userId, slots] of wonSlotsByUser) addSlots(userId, slots);
 
   const winnersByDayHour = new Map<string, Map<number, Set<string>>>();
-  for (const [username, slots] of wonSlotsByUser) {
+  for (const [userId, slots] of wonSlotsByUser) {
     for (const slot of slots) {
       const { day, hour } = bucketByHour(slot);
-      addToSet(winnersByDayHour, day, hour, username);
+      addToSet(winnersByDayHour, day, hour, userId);
     }
   }
 

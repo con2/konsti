@@ -59,13 +59,13 @@ const collectDistribution = (event: string, year: string): YearDistribution => {
         // is not mistaken for a lottery-only event
         anyDirectSignup = true;
         if (rpgIds.has(entry.programItemId)) {
-          usersWithDirectSignup.add(signup.username);
+          usersWithDirectSignup.add(signup.userId);
         }
       }
       if (rpgIds.has(entry.programItemId)) {
         gamesByUser.set(
-          signup.username,
-          (gamesByUser.get(signup.username) ?? 0) + 1,
+          signup.userId,
+          (gamesByUser.get(signup.userId) ?? 0) + 1,
         );
       }
     }
@@ -73,10 +73,10 @@ const collectDistribution = (event: string, year: string): YearDistribution => {
 
   let zeroWins = 0;
   let zeroWinsWithDirect = 0;
-  for (const username of participants) {
-    if (wonSlotsByUser.has(username)) continue;
+  for (const userId of participants) {
+    if (wonSlotsByUser.has(userId)) continue;
     zeroWins++;
-    if (usersWithDirectSignup.has(username)) zeroWinsWithDirect++;
+    if (usersWithDirectSignup.has(userId)) zeroWinsWithDirect++;
   }
 
   const usersByWinCount = new Map<number, number>();
@@ -85,14 +85,14 @@ const collectDistribution = (event: string, year: string): YearDistribution => {
   }
 
   const usersByGameCount = new Map<number, number>();
-  for (const username of new Set([...participants, ...wonSlotsByUser.keys()])) {
-    const games = gamesByUser.get(username) ?? 0;
+  for (const userId of new Set([...participants, ...wonSlotsByUser.keys()])) {
+    const games = gamesByUser.get(userId) ?? 0;
     usersByGameCount.set(games, (usersByGameCount.get(games) ?? 0) + 1);
   }
 
   let winnersWithZeroGames = 0;
-  for (const username of wonSlotsByUser.keys()) {
-    if ((gamesByUser.get(username) ?? 0) === 0) winnersWithZeroGames++;
+  for (const userId of wonSlotsByUser.keys()) {
+    if ((gamesByUser.get(userId) ?? 0) === 0) winnersWithZeroGames++;
   }
 
   return {
