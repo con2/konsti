@@ -3,9 +3,9 @@
   "algorithm": "random+padg",
   "totals": {
     "runs": 11,
-    "entrants": 162,
-    "placed": 135,
-    "placedByPriority": [112, 12, 11],
+    "entrants": 164,
+    "placed": 133,
+    "placedByPriority": [114, 9, 10],
     "spotsOffered": 181,
     "programItemsUnderMinAttendance": 5
   },
@@ -91,23 +91,23 @@
       "assignmentTime": "2024-11-03T09:00:00Z",
       "status": "success",
       "entrants": 30,
-      "placed": 28,
-      "placedByPriority": [20, 4, 4],
+      "placed": 26,
+      "placedByPriority": [21, 2, 3],
       "programItemsLotteried": 8,
       "spotsOffered": 36,
       "programItemsUnderMinAttendance": 2,
-      "placementsDigest": "f4f57f7a976ad665"
+      "placementsDigest": "b0d86a3b95f2911e"
     },
     {
       "assignmentTime": "2024-11-03T10:00:00Z",
       "status": "success",
-      "entrants": 22,
+      "entrants": 24,
       "placed": 17,
-      "placedByPriority": [16, 1, 0],
+      "placedByPriority": [17, 0, 0],
       "programItemsLotteried": 5,
       "spotsOffered": 24,
       "programItemsUnderMinAttendance": 1,
-      "placementsDigest": "63d1d839e00e9812"
+      "placementsDigest": "ae408b7b0aca4e02"
     },
     {
       "assignmentTime": "2024-11-03T12:00:00Z",
