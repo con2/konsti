@@ -83,7 +83,7 @@ export const loginWithJwt = async (
       serial: user.serial,
       groupCode: user.groupCode,
       isGroupCreator: user.isGroupCreator,
-      jwt: getJWT(user.userGroup, user.username),
+      jwt: getJWT(user.userGroup, user),
       eventLogItems: user.eventLogItems,
       kompassiUsernameAccepted: user.kompassiUsernameAccepted,
       kompassiId: user.kompassiId,

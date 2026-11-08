@@ -1,25 +1,25 @@
 import { NextFunction, Request, Response } from "express";
 import { UserGroup } from "shared/types/models/user";
-import { getAuthorizedUsername } from "server/utils/authHeader";
+import { getAuthorizedUser } from "server/utils/authHeader";
 
 declare module "express-serve-static-core" {
   interface Request {
-    auth?: { username: string };
+    auth?: { userId: string; username: string };
   }
 }
 
 export const requireAuth =
   (allowedGroups: UserGroup | UserGroup[]) =>
   (req: Request, res: Response, next: NextFunction): void => {
-    const username = getAuthorizedUsername(
+    const authorizedUser = getAuthorizedUser(
       req.headers.authorization,
       allowedGroups,
     );
-    if (!username) {
+    if (!authorizedUser) {
       res.sendStatus(401);
       return;
     }
-    req.auth = { username };
+    req.auth = authorizedUser;
     next();
   };
 

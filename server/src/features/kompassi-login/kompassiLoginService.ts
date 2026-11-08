@@ -199,7 +199,7 @@ export const doKompassiLogin = async (
       serial: existingUser.serial,
       groupCode: existingUser.groupCode,
       isGroupCreator: existingUser.isGroupCreator,
-      jwt: getJWT(existingUser.userGroup, existingUser.username),
+      jwt: getJWT(existingUser.userGroup, existingUser),
       eventLogItems: existingUser.eventLogItems,
       kompassiUsernameAccepted: existingUser.kompassiUsernameAccepted,
       kompassiId: existingUser.kompassiId,
@@ -289,7 +289,7 @@ export const doKompassiLogin = async (
     serial: saveUserResponse.serial,
     groupCode: saveUserResponse.groupCode,
     isGroupCreator: saveUserResponse.isGroupCreator,
-    jwt: getJWT(saveUserResponse.userGroup, saveUserResponse.username),
+    jwt: getJWT(saveUserResponse.userGroup, saveUserResponse),
     eventLogItems: saveUserResponse.eventLogItems,
     kompassiUsernameAccepted: saveUserResponse.kompassiUsernameAccepted,
     kompassiId: saveUserResponse.kompassiId,
@@ -367,7 +367,7 @@ export const verifyKompassiLogin = async (
     status: "success",
     username: user.username,
     kompassiUsernameAccepted: user.kompassiUsernameAccepted,
-    jwt: getJWT(user.userGroup, user.username),
+    jwt: getJWT(user.userGroup, user),
   };
 };
 
@@ -391,6 +391,6 @@ export const verifyUpdateUserEmailAddress = async (
     status: "success",
     email: user.email,
     emailNotificationPermitAsked: user.emailNotificationPermitAsked,
-    jwt: getJWT(user.userGroup, user.username),
+    jwt: getJWT(user.userGroup, user),
   };
 };

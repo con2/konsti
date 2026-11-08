@@ -6,5 +6,6 @@ export const authorizedAs = (
   userGroup: UserGroup,
   username: string,
 ): { Authorization: string } => {
-  return { Authorization: `Bearer ${getJWT(userGroup, username)}` };
+  const jwt = getJWT(userGroup, { userId: `test-${username}`, username });
+  return { Authorization: `Bearer ${jwt}` };
 };
