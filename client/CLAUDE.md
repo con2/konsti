@@ -14,7 +14,7 @@ Note: `find-unused-translation-keys` is a **server** script (it scans `client/sr
 
 ## Directory Layout (`client/src`)
 
-- **`index.tsx`** — entry point: Sentry init, Redux `Provider`, styled-components `ThemeProvider`, then the lazily-loaded `App`.
+- **`index.tsx`** — entry point: Sentry init (its options built in `utils/sentryOptions.ts`, so the tests run against the same ones), Redux `Provider`, styled-components `ThemeProvider`, then the lazily-loaded `App`.
 - **`app/`** — `App.tsx` (initial data load + router wrapper), `AppRoutes.tsx` (all react-router routes), `lazyViews.ts` (the code-split views and their prefetch), `HistoryProvider.tsx` + `historyContext.ts` (tracks previous location for back buttons).
 - **`views/`** — one folder per page/feature: `about`, `admin`, `admission-ticket`, `all-program-items`, `dashboard`, `event-log`, `group`, `helper`, `login`, `logout`, `my-program-items`, `profile`, `program-item`, `registration`. A view folder typically holds `*View.tsx`, its Redux `*Slice.ts`, `*Thunks.ts`, and a local `components/`.
 - **`components/`** — shared UI primitives (Button, Input, Checkbox, Header, etc.) and `icons/` (FontAwesome). `componentStyles.ts` collects the style variant enums those primitives take as props (`ButtonStyle`, `HighlightStyle`, `InfoTextVariant`) — kept out of the `.tsx` files so Fast Refresh keeps working (see Build & Environment).
@@ -105,7 +105,7 @@ i18next, English + Finnish. Locale files: `client/src/locales/{en,fi}.ts` (deepl
 
 ## Error Reporting
 
-`Sentry.init()` in `index.tsx` has three filters available, in decreasing order of preference for a new exclusion: `ignoreErrors` (message substrings), `denyUrls` (script URL patterns), and `thirdPartyErrorFilterIntegration`, which drops on the shape of the stack. Only the last carries any rules today.
+`Sentry.init()` in `index.tsx`, with the options from `utils/sentryOptions.ts`, has three filters available, in decreasing order of preference for a new exclusion: `ignoreErrors` (message substrings), `denyUrls` (script URL patterns), and `thirdPartyErrorFilterIntegration`, which drops on the shape of the stack. Only the last carries any rules today.
 
 Most of what reaches the production project is not app code at all: in-app browsers (Instagram, Facebook, Brave) and mobile browsers' own autofill and translate features inject scripts into every page, and their errors are reported as the page's own. **`ignoreErrors` and `denyUrls` are both gone**, on the bet that the stack-shape filter now covers what the six accumulated message patterns and the one URL pattern used to. Two cases are known _not_ to be covered, so recognise them if they return: the Outlook link-scanner's `"Non-Error promise rejection captured with value: Object Not Found Matching Id:"` arrives with **no stacktrace at all**, which the filter leaves alone by design; and the in-app-browser bridge error (`"Error invoking post…"`) survives whenever the SDK's own wrapper frame sits at index 0 without `pre_context`, because `isSentryInternalFrame` then declines to strip it and its stamp makes the event read as first-party. **Add an entry back whenever a message or script URL identifies the source** — that is cheaper and more precise than widening the stack-shape filter — and give each one a comment naming the browser it came from. Keep the patterns short enough to survive a variant: the bridge one wants `"Error invoking post"`, not the full `"…: Method not found"`, because the same script also throws `postEvent` and `postMessage` forms.
 
