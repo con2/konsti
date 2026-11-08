@@ -3,6 +3,7 @@ import { closest, distance } from "fastest-levenshtein";
 import { sortBy } from "remeda";
 import { config } from "shared/config";
 import { User } from "shared/types/models/user";
+import { formatJson } from "server/utils/formatJson";
 import { logger } from "server/utils/logger";
 
 export const getSimilarUsernames = (event: string, year: number): void => {
@@ -63,6 +64,6 @@ export const getSimilarUsernames = (event: string, year: number): void => {
 
   const sortedResults = sortBy(filteredResults, (result) => result.username);
 
-  logger.info(JSON.stringify(sortedResults, null, 2));
+  logger.info(formatJson(sortedResults));
   logger.info(`Found ${sortedResults.length} similar usernames`);
 };
