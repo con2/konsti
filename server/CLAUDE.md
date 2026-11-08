@@ -328,7 +328,7 @@ afterEach(async () => await closeServer(server));
 const response = await request(server)
   .post(ApiEndpoint.X)
   .send(body)
-  .set(authorizedAs(UserGroup.USER, "username"));
+  .set(await authorizedAs(UserGroup.USER, "username"));
 ```
 
 **Tests that don't start a server connect with `db.connectToDb(globalThis.__MONGO_URI__, randomUUID())`, not a bare `mongoose.connect`.** Mongoose builds a model's indexes only once per process, so a plain connect leaves every database after the first without them — and each test gets its own. The unique keys would then be missing exactly where tests seed data, so a test could insert duplicate users or a second settings document that production would reject. `startServer` already routes through the same helper, so controller tests need nothing extra.
@@ -339,7 +339,7 @@ const response = await request(server)
 
 **Test helpers in `src/test/utils/`** — reach for these before writing the same setup inline:
 
-- **`authorizedAs(userGroup, username)`** — the supertest `Authorization` header for a role, as in the controller example above.
+- **`await authorizedAs(userGroup, username)`** — the supertest `Authorization` header for a role, as in the controller example above. It looks the user up so the token carries their real `userId`, so save the user first; a name with no saved user gets a placeholder id. It calls `findUser`, so build the header before a `vi.spyOn` on `findUser`, or it consumes the mock.
 - **`mockNotificationQueue()`** — points the mocked global queue lookup at a real in-process queue and returns it, so a test can read what was queued. The file must still `vi.mock` the module itself, since `vi.mock` is hoisted per file, and the factory it passes is the shared `mockNotificationQueueModule` (the real module with the lookup replaced by a `vi.fn()`). A hoisted `vi.mock` may not reference the file's own imports, so load the factory with `const { mockNotificationQueueModule } = await vi.hoisted(() => import("server/test/utils/mockNotificationQueueModule"))` first. Only a file that needs a queue to exist by default (as `runAssignment.test.ts` does) writes its own factory.
 - **`withLotteryStillAhead(programItem)`** / **`withLotteryJustRun(programItem)`** — set the mocked server clock a minute before or after the program item's lottery sign-up closes. Nothing automatic removes a lottery sign-up once its lottery has run, so a test of those removals needs the former; a test of what survives the lottery needs the latter.
 - **`runWithFakeTimers(run)`** — runs an operation under fake timers and fires every timer it schedules, so a retry delay costs no wall-clock time. The operation has to schedule its first timer before awaiting anything real: the timers are fired once, and one scheduled after that never fires.

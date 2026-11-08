@@ -280,7 +280,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
@@ -315,7 +315,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -352,7 +352,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -376,7 +376,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -417,7 +417,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -469,7 +469,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -531,7 +531,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -564,7 +564,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 

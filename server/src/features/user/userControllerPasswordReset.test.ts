@@ -39,7 +39,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
       .send({
         username: "testuser",
       })
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -54,7 +54,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -69,7 +69,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -84,7 +84,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
@@ -101,7 +101,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.USER, "admin"));
+      .set(await authorizedAs(UserGroup.USER, "admin"));
     expect(response.status).toEqual(401);
   });
 
@@ -116,7 +116,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.HELPER, "desk-volunteer"));
+      .set(await authorizedAs(UserGroup.HELPER, "desk-volunteer"));
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -133,7 +133,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(200);
     const body = response.body as PostUpdateUserPasswordResult;
     expect(body.status).toEqual("success");
@@ -148,7 +148,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(adminRequestData)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordError;
@@ -163,7 +163,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(helperRequestData)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
     expect(response2.status).toEqual(200);
 
     const body2 = response2.body as PostUpdateUserPasswordError;
@@ -183,7 +183,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(adminRequestData)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordResult;
@@ -197,7 +197,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response2 = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(helperRequestData)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response2.status).toEqual(200);
 
     const body2 = response2.body as PostUpdateUserPasswordResult;
@@ -215,7 +215,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostUpdateUserPasswordError;

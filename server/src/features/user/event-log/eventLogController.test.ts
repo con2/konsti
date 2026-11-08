@@ -43,7 +43,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -57,7 +57,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(authorizedAs(UserGroup.USER, "user_not_found"));
+      .set(await authorizedAs(UserGroup.USER, "user_not_found"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostEventLogIsSeenResult;
@@ -77,7 +77,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("error");
@@ -106,7 +106,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.EVENT_LOG_IS_SEEN)
       .send(data)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostEventLogIsSeenResult;
     expect(body.status).toEqual("success");

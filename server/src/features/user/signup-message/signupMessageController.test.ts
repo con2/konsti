@@ -50,7 +50,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   test("should return 401 with normal user authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set(authorizedAs(UserGroup.USER, "testUser"));
+      .set(await authorizedAs(UserGroup.USER, "testUser"));
     expect(response.status).toEqual(401);
   });
 
@@ -96,7 +96,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
 
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
 
     expect(response.status).toEqual(200);
 

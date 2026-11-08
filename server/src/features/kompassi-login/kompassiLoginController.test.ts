@@ -96,7 +96,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({})
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -104,7 +104,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({ username: "ab" })
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -115,7 +115,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(200);
   });
 
@@ -126,7 +126,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, "user-removed-from-db"));
+      .set(await authorizedAs(UserGroup.USER, "user-removed-from-db"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostVerifyKompassiLoginError;
@@ -144,7 +144,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     const body = response.body as PostVerifyKompassiLoginResult;
     expect(body.status).toEqual("success");
@@ -165,7 +165,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -177,6 +177,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
   test("should return error if username is taken between the check and the update", async () => {
     await saveUser({ ...mockUser, kompassiId: "10" });
     await saveUser(mockUser2);
+    const authHeader = await authorizedAs(UserGroup.USER, mockUser.username);
     vi.spyOn(userRepository, "findUser").mockResolvedValueOnce(
       makeSuccessResult(null),
     );
@@ -184,7 +185,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({ username: mockUser2.username })
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(authHeader);
 
     const body = response.body as PostVerifyKompassiLoginError;
     expect(body.errorId).toEqual("usernameNotFree");
@@ -200,7 +201,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostVerifyKompassiLoginResult;
@@ -220,11 +221,11 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostVerifyKompassiLoginResult;
     expect(body.status).toEqual("success");
@@ -235,12 +236,12 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({ username: mockUser.username })
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({ username: "second_name" })
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostVerifyKompassiLoginError;
     expect(body.errorId).toEqual("loginFailed");
@@ -253,7 +254,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({ username: "second_name" })
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     const body = response.body as PostVerifyKompassiLoginError;
     expect(body.errorId).toEqual("loginFailed");

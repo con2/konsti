@@ -53,7 +53,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
-      .set(authorizedAs(UserGroup.USER, "username"));
+      .set(await authorizedAs(UserGroup.USER, "username"));
     expect(response.status).toEqual(401);
   });
 
@@ -62,7 +62,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(422);
   });
 
@@ -73,7 +73,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
   });
 
@@ -88,7 +88,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
@@ -107,7 +107,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentResponse;
@@ -127,7 +127,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentError;
@@ -149,7 +149,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostAssignmentError;
@@ -175,7 +175,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
     expect((response.body as PostAssignmentResponse).status).toEqual("success");
@@ -190,7 +190,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const firstResponse = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect((firstResponse.body as PostAssignmentResponse).status).toEqual(
       "success",
     );
@@ -199,7 +199,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     const secondResponse = await request(server)
       .post(ApiEndpoint.ASSIGNMENT)
       .send(data)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect((secondResponse.body as PostAssignmentResponse).status).toEqual(
       "success",
     );

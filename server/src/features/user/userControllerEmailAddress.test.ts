@@ -36,7 +36,7 @@ describe(`POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS)
       .send({ email: "not-an-email" })
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(422);
     const body = response.body as { status: string; errorId: string };
@@ -53,7 +53,7 @@ describe(`POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as {
@@ -76,7 +76,7 @@ describe(`POST ${ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.UPDATE_USER_EMAIL_ADDRESS)
       .send({ email: "" })
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as { status: string };
