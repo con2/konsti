@@ -105,7 +105,7 @@ test("should remove lottery sign-ups and favorites when program item is deleted 
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [
       testProgramItem.programItemId,
       testProgramItem2.programItemId,
@@ -213,7 +213,7 @@ test("should remove lottery sign-ups but keep favorites when program item is can
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [
       testProgramItem.programItemId,
       testProgramItem2.programItemId,
@@ -377,7 +377,7 @@ test("should remove lottery sign-ups but not favorites when program item doesn't
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [
       testProgramItem.programItemId,
       testProgramItem2.programItemId,
@@ -523,7 +523,7 @@ test("should not add duplicate notification when program item is cancelled and u
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [testProgramItem.programItemId],
   });
 
@@ -552,7 +552,7 @@ test("should not add duplicate notification when signupType is changed away from
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [testProgramItem.programItemId],
   });
 
@@ -581,7 +581,7 @@ test("should not add any notification when programType is changed to non-lottery
     lotterySignups: [mockLotterySignups[0]],
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [testProgramItem.programItemId],
   });
 
@@ -647,7 +647,7 @@ test("should remove lottery sign-up but keep favorites when programType is chang
     lotterySignups: mockLotterySignups,
   });
   await saveFavorite({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     favoriteProgramItemIds: [
       testProgramItem.programItemId,
       testProgramItem2.programItemId,

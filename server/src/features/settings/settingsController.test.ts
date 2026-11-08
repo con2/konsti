@@ -221,7 +221,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest);
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,

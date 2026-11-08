@@ -28,8 +28,6 @@ export const FavoritesByStartTimes = ({
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const username = useAppSelector((state) => state.login.username);
-
   const groupedFavoriteProgramItems = groupBy(
     favoriteProgramItems,
     (favoriteProgramItem) => favoriteProgramItem.startTime,
@@ -40,7 +38,6 @@ export const FavoritesByStartTimes = ({
       programItem,
       action: "del",
       favoriteProgramItems,
-      username,
       dispatch,
     });
   };

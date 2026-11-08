@@ -37,7 +37,6 @@ const updateFavoriteHandler = async (
 interface Props {
   programItem: ProgramItem;
   signups: UserSignup[];
-  username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
   allValuesValid: boolean;
@@ -50,7 +49,6 @@ interface Props {
 export const ProgramItemHead = ({
   programItem,
   signups,
-  username,
   loggedIn,
   userGroup,
   allValuesValid,
@@ -175,7 +173,6 @@ export const ProgramItemHead = ({
                 programItem,
                 action: isFavorite ? "del" : "add",
                 favoriteProgramItems,
-                username,
                 dispatch,
               })
             }

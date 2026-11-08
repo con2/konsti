@@ -48,6 +48,6 @@ export interface UserProgramItems {
 }
 
 export interface NewFavorite {
-  username: string;
+  userId: string;
   favoriteProgramItemIds: string[];
 }
