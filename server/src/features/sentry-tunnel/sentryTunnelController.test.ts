@@ -82,4 +82,21 @@ describe(`GET ${ApiEndpoint.SENTRY_TEST}`, () => {
       .set(authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(500);
   });
+
+  test("should log a test error for each cause shape", async () => {
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+
+    await request(server)
+      .get(ApiEndpoint.SENTRY_TEST)
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+
+    const causes = errorLoggerSpy.mock.calls.map(([error]) => error.cause);
+    expect(causes).toEqual([
+      undefined,
+      new Error("Sentry test error: Error cause"),
+      "Sentry test error: string cause",
+      { code: "SENTRY_TEST" },
+      new Error("Sentry test error: uncaught exception cause"),
+    ]);
+  });
 });
