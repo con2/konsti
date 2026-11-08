@@ -15,7 +15,7 @@ const getAssignmentSignup = (
     return assignResults.find(
       (assignResult) =>
         (assignResult.id === attendee.groupCode ||
-          assignResult.id === attendee.serial) &&
+          assignResult.id === attendee.userId) &&
         assignResult.assignment === lotterySignup.programItemId,
     );
   });
@@ -49,7 +49,7 @@ export const formatResults = (
       return assignResults.find(
         (assignResult) =>
           (assignResult.id === firstMember.groupCode ||
-            assignResult.id === firstMember.serial) &&
+            assignResult.id === firstMember.userId) &&
           assignResult.assignment !== -1,
       );
     })

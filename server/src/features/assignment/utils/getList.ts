@@ -63,7 +63,7 @@ export const getList = ({
       return {
         id:
           firstMember.groupCode === "0"
-            ? firstMember.serial
+            ? firstMember.userId
             : firstMember.groupCode,
         size: attendeeGroup.length,
         event: lotterySignup.programItemId,
