@@ -13,7 +13,7 @@ import {
   storeUser,
   storeUserPassword,
 } from "server/features/user/userService";
-import { getAuthUserId, getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId } from "server/middleware/requireAuth";
 import { getAuthorizedUserGroup } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 

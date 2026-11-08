@@ -6,7 +6,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { AppRoute } from "client/app/routes";
 import { TertiaryButton } from "client/components/TertiaryButton";
 import { updateFavorite } from "client/utils/favorite";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { useAppDispatch } from "client/utils/hooks";
 import { useTimeFormatters } from "client/utils/useTimeFormatters";
 import {
   MyProgramButtonContainer,

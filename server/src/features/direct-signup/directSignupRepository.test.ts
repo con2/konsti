@@ -139,11 +139,12 @@ test("should not add multiple duplicate direct sign-ups for same user", async ()
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
 
+  const signup = await withUserId(mockPostDirectSignupRequest);
   await Promise.all([
-    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
-    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
-    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
-    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    saveDirectSignup(signup),
+    saveDirectSignup(signup),
+    saveDirectSignup(signup),
+    saveDirectSignup(signup),
   ]);
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
@@ -189,11 +190,12 @@ test("should not delete multiple times if delete called multiple times", async (
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
+  const signup = await withUserId(mockPostDirectSignupRequest);
   await Promise.all([
-    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
-    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
-    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
-    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    delDirectSignup(signup),
+    delDirectSignup(signup),
+    delDirectSignup(signup),
+    delDirectSignup(signup),
   ]);
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
