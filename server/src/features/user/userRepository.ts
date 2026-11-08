@@ -314,7 +314,13 @@ export const updateUserKompassiLoginStatus = async (
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username: oldUsername },
+      // The client allows no sign-ups until the name is accepted, and each direct sign-up stores a copy of it.
+      // Repeating the accepted name still matches, so a retried request succeeds.
+      {
+        username: oldUsername,
+        kompassiId: { $ne: "" },
+        $or: [{ kompassiUsernameAccepted: false }, { username: newUsername }],
+      },
       {
         username: newUsername,
         kompassiUsernameAccepted: true,

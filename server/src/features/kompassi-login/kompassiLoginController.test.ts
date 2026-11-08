@@ -186,6 +186,55 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(user?.kompassiId).toEqual("10");
     expect(user?.kompassiUsernameAccepted).toEqual(true);
   });
+
+  test("should succeed when the accepted username is submitted again", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    const requestBody: PostVerifyKompassiLoginRequest = {
+      username: mockUser.username,
+    };
+
+    await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send(requestBody)
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send(requestBody)
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostVerifyKompassiLoginResult;
+    expect(body.status).toEqual("success");
+  });
+
+  test("should not rename a user whose username is already accepted", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: mockUser.username })
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "second_name" })
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.errorId).toEqual("loginFailed");
+    expect(unsafelyUnwrap(await findUser("second_name"))).toBeNull();
+  });
+
+  test("should not rename a local account", async () => {
+    await saveUser(mockUser);
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "second_name" })
+      .set(authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.errorId).toEqual("loginFailed");
+    expect(unsafelyUnwrap(await findUser("second_name"))).toBeNull();
+  });
 });
 
 describe(`POST ${AuthEndpoint.KOMPASSI_LOGIN}`, () => {
