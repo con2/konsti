@@ -82,10 +82,10 @@ const recoverSession = async (): Promise<boolean> => {
 export const loadUser = async (): Promise<boolean> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
-  const { loggedIn, userGroup, username } = state.login;
+  const { loggedIn, userGroup } = state.login;
 
   if (loggedIn && userGroup === UserGroup.USER) {
-    return await dispatch(submitGetUser(username));
+    return await dispatch(submitGetUser());
   }
   return true;
 };

@@ -69,10 +69,7 @@ export enum PostJoinGroupErrorMessage {
 export const submitJoinGroup = (
   groupRequest: PostJoinGroupRequest,
 ): AppThunk<Promise<PostJoinGroupErrorMessage | undefined>> => {
-  return async (
-    dispatch,
-    getState,
-  ): Promise<PostJoinGroupErrorMessage | undefined> => {
+  return async (dispatch): Promise<PostJoinGroupErrorMessage | undefined> => {
     const joinGroupResponse = await postJoinGroup(groupRequest);
 
     if (joinGroupResponse.status === "error") {
@@ -106,7 +103,7 @@ export const submitJoinGroup = (
 
     // Joining removes the member's upcoming lottery sign-ups on the server, so refresh the
     // user's own program items instead of showing the now-deleted sign-ups until the next poll
-    await dispatch(submitGetUser(getState().login.username));
+    await dispatch(submitGetUser());
   };
 };
 

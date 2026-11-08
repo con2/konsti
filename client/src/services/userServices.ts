@@ -32,19 +32,8 @@ export const postRegistration = async (
   return response.data;
 };
 
-interface GetUserParams {
-  username: string;
-}
-
-export const getUser = async (username: string): Promise<GetUserResponse> => {
-  const response = await api.get<GetUserResponse, GetUserParams>(
-    ApiEndpoint.USERS,
-    {
-      params: {
-        username,
-      },
-    },
-  );
+export const getUser = async (): Promise<GetUserResponse> => {
+  const response = await api.get<GetUserResponse>(ApiEndpoint.USERS);
   return response.data;
 };
 

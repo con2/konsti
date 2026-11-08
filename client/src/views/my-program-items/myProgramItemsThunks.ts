@@ -31,9 +31,9 @@ import {
   submitUpdateFavoritesAsync,
 } from "client/views/my-program-items/myProgramItemsSlice";
 
-export const submitGetUser = (username: string): AppThunk<Promise<boolean>> => {
+export const submitGetUser = (): AppThunk<Promise<boolean>> => {
   return async (dispatch, useState): Promise<boolean> => {
-    const getUserResponse = await getUser(username);
+    const getUserResponse = await getUser();
 
     if (getUserResponse.status === "error") {
       return false;
