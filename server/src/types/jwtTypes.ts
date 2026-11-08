@@ -3,7 +3,6 @@ import { UserGroup } from "shared/types/models/user";
 
 export const JWTBodySchema = z.object({
   userId: z.string(),
-  username: z.string(),
   userGroup: z.enum(UserGroup),
   iat: z.number(),
   exp: z.number(),

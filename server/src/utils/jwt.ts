@@ -10,11 +10,10 @@ type SignOptions = jsonwebtoken.SignOptions;
 
 export const getJWT = (
   userGroup: UserGroup,
-  { userId, username }: { userId: string; username: string },
+  { userId }: { userId: string },
 ): string => {
   const payload = {
     userId,
-    username,
     userGroup,
   };
 
@@ -40,7 +39,6 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
         message: "Unknown JWT error",
         body: {
           userId: "",
-          username: "",
           userGroup: UserGroup.USER,
           iat: 0,
           exp: 0,
@@ -51,7 +49,6 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
     return {
       body: {
         userId: result.data.userId,
-        username: result.data.username,
         userGroup: result.data.userGroup,
         iat: result.data.iat,
         exp: result.data.exp,
@@ -66,7 +63,6 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
         message: "Expired JWT",
         body: {
           userId: "",
-          username: "",
           userGroup: UserGroup.USER,
           iat: 0,
           exp: 0,
@@ -79,7 +75,6 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
       message: "Unknown JWT error",
       body: {
         userId: "",
-        username: "",
         userGroup: UserGroup.USER,
         iat: 0,
         exp: 0,

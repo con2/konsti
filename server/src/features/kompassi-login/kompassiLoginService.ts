@@ -302,33 +302,30 @@ export const doKompassiLogin = async (
 
 export const verifyKompassiLogin = async (
   userId: string,
-  oldUsername: string,
   newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse> => {
-  if (oldUsername !== newUsername) {
-    // Check if username already taken
-    const findUserResult = await findUser(newUsername);
-    if (!findUserResult.ok) {
-      return {
-        errorId: "unknown",
-        message: "Finding user failed",
-        status: "error",
-      };
-    }
+  // Check if username already taken
+  const findUserResult = await findUser(newUsername);
+  if (!findUserResult.ok) {
+    return {
+      errorId: "unknown",
+      message: "Finding user failed",
+      status: "error",
+    };
+  }
 
-    const existingUser = findUserResult.value;
+  const existingUser = findUserResult.value;
 
-    // A retry after a successful rename finds the user's own account here
-    if (existingUser && existingUser.userId !== userId) {
-      logger.info(
-        `Kompassi verify: Username ${existingUser.username} is already registered`,
-      );
-      return {
-        errorId: "usernameNotFree",
-        message: "Username in already registered",
-        status: "error",
-      };
-    }
+  // A retry after a successful rename finds the user's own account here
+  if (existingUser && existingUser.userId !== userId) {
+    logger.info(
+      `Kompassi verify: Username ${existingUser.username} is already registered`,
+    );
+    return {
+      errorId: "usernameNotFree",
+      message: "Username in already registered",
+      status: "error",
+    };
   }
 
   const userResult = await updateUserKompassiLoginStatus(userId, newUsername);
@@ -359,7 +356,7 @@ export const verifyKompassiLogin = async (
   const user = userResult.value;
 
   logger.info(
-    `Kompassi login: username ${oldUsername} changed to ${newUsername}`,
+    `Kompassi login: user ${userId} accepted username ${newUsername}`,
   );
 
   return {

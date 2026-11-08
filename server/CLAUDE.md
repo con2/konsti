@@ -53,7 +53,7 @@ apiRoutes.post(
 
 For GETs with query strings, use `validateQuery(...)` instead of (or in addition to) `validateBody(...)`. Schemas live in `shared/types/api/...` (or `shared/test-types/api/...` for dev/test); routes import the schema, controllers import the inferred type only and read parsed data straight off `req.body` / `req.query` — don't re-parse in the controller. Both validators live in `server/src/middleware/validateRequest.ts`.
 
-Handler signature: `req: Request<unknown, unknown, RequestBody, RequestQuery>`. Handlers needing the authenticated user call `getAuthUserId(req)` from `server/middleware/requireAuth` to address the user, and `getAuthUsername(req)` only when they need the display name — the middleware sets `req.auth = { userId, username }` and the helper enforces presence at runtime (throws if `requireAuth` wasn't wired).
+Handler signature: `req: Request<unknown, unknown, RequestBody, RequestQuery>`. Handlers needing the authenticated user call `getAuthUserId(req)` from `server/middleware/requireAuth` — the middleware sets `req.auth = { userId }` and the helper enforces presence at runtime (throws if `requireAuth` wasn't wired).
 
 `requireAuth(group)` is an **explicit allow-list, not a role hierarchy** — `admin` is _not_ automatically granted helper/user routes. Pass an array to allow several roles (e.g. `requireAuth([UserGroup.HELPER, UserGroup.ADMIN])` on `getUserBySerialOrUsername`). Some routes are deliberately single-role: `getSignupMessages` is `requireAuth(UserGroup.HELPER)`, so an admin token gets 401 — list every role that needs access.
 

@@ -191,7 +191,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.errorId).toEqual("usernameNotFree");
   });
 
-  test("should not check for existing username if username not changed", async () => {
+  test("should accept an unchanged username", async () => {
     await saveUser({ ...mockUser, kompassiId: "10" });
 
     const requestBody: PostVerifyKompassiLoginRequest = {

@@ -11,6 +11,6 @@ export const authorizedAs = async (
 ): Promise<{ Authorization: string }> => {
   const user = unsafelyUnwrap(await findUser(username));
   const userId = user?.userId ?? `test-${username}`;
-  const jwt = getJWT(userGroup, { userId, username });
+  const jwt = getJWT(userGroup, { userId });
   return { Authorization: `Bearer ${jwt}` };
 };

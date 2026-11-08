@@ -10,7 +10,7 @@ import {
   verifyKompassiLogin,
 } from "server/features/kompassi-login/kompassiLoginService";
 import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
-import { getAuthUserId, getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId } from "server/middleware/requireAuth";
 
 export const postKompassiLoginRedirect = (
   req: Request<unknown, unknown, PostKompassiLoginRedirectRequest>,
@@ -44,11 +44,7 @@ export const postVerifyKompassiLogin = async (
   res: Response,
 ): Promise<Response> => {
   const { username } = req.body;
-  const response = await verifyKompassiLogin(
-    getAuthUserId(req),
-    getAuthUsername(req),
-    username,
-  );
+  const response = await verifyKompassiLogin(getAuthUserId(req), username);
   return res.json(response);
 };
 

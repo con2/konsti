@@ -10,7 +10,7 @@ import {
 } from "shared/types/api/users";
 import { UserGroup } from "shared/types/models/user";
 import { saveUser } from "server/features/user/userRepository";
-import { mockUser } from "server/test/mock-data/mockUser";
+import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
 import { getUserId } from "server/test/utils/getUserId";
 import { closeServer, startServer } from "server/utils/server";
@@ -91,14 +91,19 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
 
   test("should not allow a regular user named 'admin' to change another user's password", async () => {
     await saveUser(mockUser);
+    await saveUser({
+      ...mockUser2,
+      username: "admin",
+      userGroup: UserGroup.USER,
+    });
 
     const requestData: PostUpdateUserPasswordRequest = {
       userIdToUpdate: await getUserId(mockUser.username),
       password: "testpass",
     };
 
-    // Authorization must be by JWT userGroup, not by the username string - a USER-group
-    // token whose username happens to be "admin" must not gain reset rights
+    // Authorization must be by JWT userGroup, not by the account's name - a USER-group
+    // account that happens to be named "admin" must not gain reset rights
     const response = await request(server)
       .post(ApiEndpoint.USERS_PASSWORD)
       .send(requestData)
