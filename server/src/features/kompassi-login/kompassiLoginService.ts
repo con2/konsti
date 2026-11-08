@@ -372,10 +372,10 @@ export const verifyKompassiLogin = async (
 };
 
 export const verifyUpdateUserEmailAddress = async (
-  username: string,
+  userId: string,
   email: string,
 ): Promise<PostUpdateUserEmailAddressResponse> => {
-  const userResult = await updateUserEmailAddress(username, email);
+  const userResult = await updateUserEmailAddress(userId, email);
   if (!userResult.ok) {
     return {
       message: "Updating user email address failed",

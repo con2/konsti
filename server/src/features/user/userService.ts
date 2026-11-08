@@ -11,6 +11,7 @@ import { findSerial } from "server/features/serial/serialRepository";
 import {
   findUser,
   findUserBySerial,
+  findUserByUserId,
   findUserSerial,
   saveUser,
   updateUserPassword,
@@ -164,20 +165,31 @@ export const storeUser = async (
 const PASSWORD_CHANGE_NOT_ALLOWED = new Set(["admin", "helper"]);
 
 export const storeUserPassword = async (
-  username: string,
+  userId: string,
   password: string,
   requesterUserGroup: UserGroup | null,
 ): Promise<PostUpdateUserPasswordResponse> => {
   // Helpers may reset regular users but not the admin/helper accounts; admins may reset anyone
-  if (
-    requesterUserGroup === UserGroup.HELPER &&
-    PASSWORD_CHANGE_NOT_ALLOWED.has(username)
-  ) {
-    return {
-      message: "Password change not allowed",
-      status: "error",
-      errorId: "notAllowed",
-    };
+  if (requesterUserGroup === UserGroup.HELPER) {
+    const targetUserResult = await findUserByUserId(userId);
+    if (!targetUserResult.ok) {
+      return {
+        message: "Password change error",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+
+    if (
+      targetUserResult.value &&
+      PASSWORD_CHANGE_NOT_ALLOWED.has(targetUserResult.value.username)
+    ) {
+      return {
+        message: "Password change not allowed",
+        status: "error",
+        errorId: "notAllowed",
+      };
+    }
   }
 
   const passwordHashResult = await hashPassword(password);
@@ -190,7 +202,7 @@ export const storeUserPassword = async (
   }
 
   const updateUserPasswordResult = await updateUserPassword(
-    username,
+    userId,
     passwordHashResult.value,
   );
 
@@ -293,6 +305,7 @@ export const fetchUserBySerialOrUsername = async (
     return {
       message: "Getting user data success",
       status: "success",
+      userId: userBySerial.userId,
       serial: userBySerial.serial,
       username: userBySerial.username,
       createdAt: userBySerial.createdAt,
@@ -330,6 +343,7 @@ export const fetchUserBySerialOrUsername = async (
   return {
     message: "Getting user data success",
     status: "success",
+    userId: user.userId,
     serial: user.serial,
     username: user.username,
     createdAt: user.createdAt,

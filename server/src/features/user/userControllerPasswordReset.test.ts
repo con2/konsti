@@ -12,6 +12,7 @@ import { UserGroup } from "shared/types/models/user";
 import { saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -47,7 +48,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser(mockUser);
 
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: mockUser.username,
+      userIdToUpdate: await getUserId(mockUser.username),
       password: "",
     };
 
@@ -62,7 +63,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser(mockUser);
 
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: mockUser.username,
+      userIdToUpdate: await getUserId(mockUser.username),
       password: "testpass",
     };
 
@@ -77,7 +78,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
 
   test("should not allow user to change other user's password", async () => {
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: "another_user",
+      userIdToUpdate: "another-user-id",
       password: "testpass",
     };
 
@@ -92,7 +93,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser(mockUser);
 
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: mockUser.username,
+      userIdToUpdate: await getUserId(mockUser.username),
       password: "testpass",
     };
 
@@ -109,7 +110,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser(mockUser);
 
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: mockUser.username,
+      userIdToUpdate: await getUserId(mockUser.username),
       password: "testpass",
     };
 
@@ -126,7 +127,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser(mockUser);
 
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: mockUser.username,
+      userIdToUpdate: await getUserId(mockUser.username),
       password: "testpass",
     };
 
@@ -140,8 +141,15 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   });
 
   test("should not allow helper to change password for 'admin' or 'helper' users", async () => {
+    await saveUser({ ...mockUser, username: "admin" });
+    await saveUser({
+      ...mockUser,
+      username: "helper",
+      serial: "helper-serial",
+    });
+
     const adminRequestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: "admin",
+      userIdToUpdate: await getUserId("admin"),
       password: "testpass",
     };
 
@@ -156,7 +164,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     expect(body.errorId).toEqual("notAllowed");
 
     const helperRequestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: "helper",
+      userIdToUpdate: await getUserId("helper"),
       password: "testpass",
     };
 
@@ -180,7 +188,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     });
 
     const adminRequestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: "admin",
+      userIdToUpdate: await getUserId("admin"),
       password: "testpass",
     };
 
@@ -194,7 +202,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     expect(body.status).toEqual("success");
 
     const helperRequestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: "helper",
+      userIdToUpdate: await getUserId("helper"),
       password: "testpass",
     };
 
@@ -212,7 +220,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     await saveUser({ ...mockUser, kompassiId: "100" });
 
     const requestData: PostUpdateUserPasswordRequest = {
-      usernameToUpdate: mockUser.username,
+      userIdToUpdate: await getUserId(mockUser.username),
       password: "testpass",
     };
 

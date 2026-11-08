@@ -55,7 +55,7 @@ export type PostUserResponse = PostUserResult | PostUserError;
 // POST update user password
 
 export const PostUpdateUserPasswordRequestSchema = z.object({
-  usernameToUpdate: z.string(),
+  userIdToUpdate: z.string(),
   password: z.string().trim().min(PASSWORD_LENGTH_MIN).max(PASSWORD_LENGTH_MAX),
 });
 
@@ -85,6 +85,7 @@ export type GetUserBySerialRequest = z.infer<
 >;
 
 interface GetUserBySerialResult extends ApiResult {
+  userId: string;
   serial: string;
   username: string;
   createdAt: string;

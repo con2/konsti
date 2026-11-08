@@ -63,14 +63,14 @@ export const getUserBySerialOrUsername = async (
 };
 
 export const updateUserPassword = async (
-  usernameToUpdate: string,
+  userIdToUpdate: string,
   password: string,
 ): Promise<PostUpdateUserPasswordResponse> => {
   const response = await api.post<
     PostUpdateUserPasswordResponse,
     PostUpdateUserPasswordRequest
   >(ApiEndpoint.USERS_PASSWORD, {
-    usernameToUpdate,
+    userIdToUpdate,
     password,
   });
   return response.data;

@@ -15,7 +15,7 @@ export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
   const { getDateAndTime } = useTimeFormatters();
 
-  const [usernameToUpdate, setUsernameToUpdate] = useState<string>("");
+  const [userIdToUpdate, setUserIdToUpdate] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
     useState<boolean>(false);
@@ -61,7 +61,7 @@ export const PasswordManagement = (): ReactElement => {
         {getDateAndTime(response.createdAt)}
       </Message>,
     );
-    setUsernameToUpdate(response.username);
+    setUserIdToUpdate(response.userId);
     setChangePasswordInputVisible(true);
   };
 
@@ -99,7 +99,7 @@ export const PasswordManagement = (): ReactElement => {
 
       {changePasswordInputVisible && (
         <PasswordChangeForm
-          usernameToUpdate={usernameToUpdate}
+          userIdToUpdate={userIdToUpdate}
           isLocalLogin={true}
         />
       )}

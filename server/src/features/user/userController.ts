@@ -13,7 +13,7 @@ import {
   storeUser,
   storeUserPassword,
 } from "server/features/user/userService";
-import { getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId, getAuthUsername } from "server/middleware/requireAuth";
 import { getAuthorizedUserGroup } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 
@@ -30,9 +30,9 @@ export const postUserPassword = async (
   req: Request<unknown, unknown, PostUpdateUserPasswordRequest>,
   res: Response,
 ): Promise<Response> => {
-  const requesterUsername = getAuthUsername(req);
+  const requesterUserId = getAuthUserId(req);
   const requesterUserGroup = getAuthorizedUserGroup(req.headers.authorization);
-  const { usernameToUpdate, password } = req.body;
+  const { userIdToUpdate, password } = req.body;
 
   // Only the account owner, helpers, or admins may change a password - decided by the JWT
   // userGroup claim, never by the requester's username
@@ -40,12 +40,12 @@ export const postUserPassword = async (
     requesterUserGroup === UserGroup.ADMIN ||
     requesterUserGroup === UserGroup.HELPER;
 
-  if (requesterUsername !== usernameToUpdate && !isAdminOrHelper) {
+  if (requesterUserId !== userIdToUpdate && !isAdminOrHelper) {
     return res.sendStatus(401);
   }
 
   const response = await storeUserPassword(
-    usernameToUpdate,
+    userIdToUpdate,
     password,
     requesterUserGroup,
   );
@@ -95,7 +95,7 @@ export const postUpdateUserEmailAddress = async (
 
   const { email } = result.data;
   const response = await verifyUpdateUserEmailAddress(
-    getAuthUsername(req),
+    getAuthUserId(req),
     email,
   );
   return res.json(response);

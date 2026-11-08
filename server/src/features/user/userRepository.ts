@@ -117,13 +117,13 @@ export const updateUsersByUserId = async (
 };
 
 export const updateUserPassword = async (
-  username: string,
+  userId: string,
   password: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       // Don't update Kompassi login users
-      { username, kompassiId: "" },
+      { userId, kompassiId: "" },
       {
         password,
       },
@@ -132,7 +132,7 @@ export const updateUserPassword = async (
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    logger.debug(`MongoDB: Password for user ${username} updated`);
+    logger.debug(`MongoDB: Password for user ${userId} updated`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -146,7 +146,7 @@ export const updateUserPassword = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error updating password for user ${username}`, {
+      new Error(`MongoDB: Error updating password for user ${userId}`, {
         cause: error,
       }),
     );
@@ -399,12 +399,12 @@ export const updateUserKompassiLoginStatus = async (
 };
 
 export const updateUserEmailAddress = async (
-  username: string,
+  userId: string,
   email: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       {
         email,
         emailNotificationPermitAsked: true,
@@ -415,7 +415,7 @@ export const updateUserEmailAddress = async (
     if (!response) {
       logger.error(
         new Error(
-          `MongoDB: Error updating email address for user ${username}, user not found`,
+          `MongoDB: Error updating email address for user ${userId}, user not found`,
         ),
       );
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -433,7 +433,7 @@ export const updateUserEmailAddress = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error updating email address for user ${username}`, {
+      new Error(`MongoDB: Error updating email address for user ${userId}`, {
         cause: error,
       }),
     );
