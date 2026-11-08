@@ -76,6 +76,7 @@ export const submitLogin = (
         username: loginResponse.username,
         jwt: loginResponse.jwt,
         userGroup: loginResponse.userGroup,
+        userId: loginResponse.userId,
         serial: loginResponse.serial,
         eventLogItems: loginResponse.eventLogItems,
         kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
@@ -163,6 +164,7 @@ export const submitSessionRecovery = (
       username: loginResponse.username,
       jwt: loginResponse.jwt,
       userGroup: loginResponse.userGroup,
+      userId: loginResponse.userId,
       serial: loginResponse.serial,
       eventLogItems: loginResponse.eventLogItems,
       kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
@@ -240,6 +242,7 @@ export const submitKompassiLogin = (
         username: loginResponse.username,
         jwt: loginResponse.jwt,
         userGroup: loginResponse.userGroup,
+        userId: loginResponse.userId,
         serial: loginResponse.serial,
         eventLogItems: loginResponse.eventLogItems,
         kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
@@ -285,7 +288,7 @@ export const submitVerifyKompassiLogin = (
         case "usernameNotFree":
           return KompassiVerifyErrorMessage.USERNAME_TAKEN;
         case "loginFailed":
-          // The session JWT points to a username that no longer exists, so
+          // The account is gone or has already accepted another username, so
           // retrying cannot succeed - log out and let the user log in again
           dispatch(submitLogout());
           return KompassiVerifyErrorMessage.LOGIN_FAILED;

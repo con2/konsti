@@ -1,7 +1,7 @@
 import { PostSessionRecoveryResponse } from "shared/types/api/login";
 import { UserGroup } from "shared/types/models/user";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
-import { findUser } from "server/features/user/userRepository";
+import { findUserByUserId } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 
 export const loginWithJwt = async (
@@ -35,8 +35,8 @@ export const loginWithJwt = async (
     };
   }
 
-  if (typeof jwtResponse.body.username === "string") {
-    const userResult = await findUser(jwtResponse.body.username);
+  if (typeof jwtResponse.body.userId === "string") {
+    const userResult = await findUserByUserId(jwtResponse.body.userId);
     if (!userResult.ok) {
       return {
         message: "Session restore error",
@@ -80,6 +80,7 @@ export const loginWithJwt = async (
       status: "success",
       username: user.username,
       userGroup: user.userGroup,
+      userId: user.userId,
       serial: user.serial,
       groupCode: user.groupCode,
       isGroupCreator: user.isGroupCreator,
@@ -92,7 +93,7 @@ export const loginWithJwt = async (
     };
   }
 
-  // Reached when the verified token carries no username, i.e. the token is
+  // Reached when the verified token carries no user id, i.e. the token is
   // malformed rather than the server having a problem
   return {
     message: "Restoring session failed",

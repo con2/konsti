@@ -23,6 +23,16 @@ export const requireAuth =
     next();
   };
 
+export const getAuthUserId = (req: { auth?: { userId: string } }): string => {
+  if (!req.auth) {
+    // eslint-disable-next-line no-restricted-syntax -- programming error if requireAuth was not wired
+    throw new Error(
+      "requireAuth middleware did not run before this handler - wire requireAuth() in apiRoutes",
+    );
+  }
+  return req.auth.userId;
+};
+
 export const getAuthUsername = (req: {
   auth?: { username: string };
 }): string => {

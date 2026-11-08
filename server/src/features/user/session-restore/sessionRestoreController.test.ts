@@ -7,9 +7,14 @@ import {
   PostLoginResult,
   PostSessionRecoveryError,
 } from "shared/types/api/login";
-import { removeUsers, saveUser } from "server/features/user/userRepository";
+import {
+  removeUsers,
+  saveUser,
+  updateUserKompassiLoginStatus,
+} from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -75,6 +80,22 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
 
     const body = response.body as PostSessionRecoveryError;
     expect(body.errorId).toEqual("loginFailed");
+  });
+
+  test("should restore the renamed user from a token issued before the rename", async () => {
+    const user = unsafelyUnwrap(
+      await saveUser({ ...mockUser, kompassiId: "10" }),
+    );
+    const jwt = getJWT(user.userGroup, user);
+    await updateUserKompassiLoginStatus(user.userId, "new_username");
+
+    const response = await request(server)
+      .post(ApiEndpoint.SESSION_RESTORE)
+      .send({ jwt });
+
+    const body = response.body as PostLoginResult;
+    expect(body.username).toEqual("new_username");
+    expect(body.userId).toEqual(user.userId);
   });
 
   test("should return 200 and success with valid jwt parameter", async () => {

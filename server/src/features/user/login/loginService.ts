@@ -65,6 +65,7 @@ export const login = async (
       status: "success",
       username: user.username,
       userGroup: user.userGroup,
+      userId: user.userId,
       serial: user.serial,
       groupCode: user.groupCode,
       isGroupCreator: user.isGroupCreator,

@@ -178,6 +178,37 @@ export const findUser = async (
   }
 };
 
+export const findUserByUserId = async (
+  userId: string,
+): Promise<Result<User | null, MongoDbError>> => {
+  try {
+    const response = await UserModel.findOne({ userId }).lean();
+    if (!response) {
+      logger.info(`MongoDB: User with id ${userId} not found`);
+      return makeSuccessResult(null);
+    }
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        new Error(`Error validating findUserByUserId DB value`, {
+          cause: result.error,
+        }),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(result.data);
+  } catch (error) {
+    logger.error(
+      new Error(`MongoDB: Error finding user with id ${userId}`, {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 export const findUserBySerial = async (
   serial: string,
 ): Promise<Result<User | null, MongoDbError>> => {
@@ -309,7 +340,7 @@ export const findUsers = async (
 };
 
 export const updateUserKompassiLoginStatus = async (
-  oldUsername: string,
+  userId: string,
   newUsername: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
@@ -317,7 +348,7 @@ export const updateUserKompassiLoginStatus = async (
       // The client allows no sign-ups until the name is accepted, and each direct sign-up stores a copy of it.
       // Repeating the accepted name still matches, so a retried request succeeds.
       {
-        username: oldUsername,
+        userId,
         kompassiId: { $ne: "" },
         $or: [{ kompassiUsernameAccepted: false }, { username: newUsername }],
       },
@@ -331,7 +362,7 @@ export const updateUserKompassiLoginStatus = async (
     if (!response) {
       logger.error(
         new Error(
-          `MongoDB: Error updating Kompassi login status for user ${oldUsername}, user not found`,
+          `MongoDB: Error updating Kompassi login status for user id ${userId}, user not found`,
         ),
       );
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -350,7 +381,7 @@ export const updateUserKompassiLoginStatus = async (
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error updating Kompassi login status for user ${oldUsername}`,
+        `MongoDB: Error updating Kompassi login status for user id ${userId}`,
         { cause: error },
       ),
     );

@@ -196,6 +196,7 @@ export const doKompassiLogin = async (
       status: "success",
       username: existingUser.username,
       userGroup: existingUser.userGroup,
+      userId: existingUser.userId,
       serial: existingUser.serial,
       groupCode: existingUser.groupCode,
       isGroupCreator: existingUser.isGroupCreator,
@@ -286,6 +287,7 @@ export const doKompassiLogin = async (
     status: "success",
     username: saveUserResponse.username,
     userGroup: saveUserResponse.userGroup,
+    userId: saveUserResponse.userId,
     serial: saveUserResponse.serial,
     groupCode: saveUserResponse.groupCode,
     isGroupCreator: saveUserResponse.isGroupCreator,
@@ -299,6 +301,7 @@ export const doKompassiLogin = async (
 };
 
 export const verifyKompassiLogin = async (
+  userId: string,
   oldUsername: string,
   newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse> => {
@@ -315,7 +318,8 @@ export const verifyKompassiLogin = async (
 
     const existingUser = findUserResult.value;
 
-    if (existingUser) {
+    // A retry after a successful rename finds the user's own account here
+    if (existingUser && existingUser.userId !== userId) {
       logger.info(
         `Kompassi verify: Username ${existingUser.username} is already registered`,
       );
@@ -327,14 +331,10 @@ export const verifyKompassiLogin = async (
     }
   }
 
-  const userResult = await updateUserKompassiLoginStatus(
-    oldUsername,
-    newUsername,
-  );
+  const userResult = await updateUserKompassiLoginStatus(userId, newUsername);
   if (!userResult.ok) {
-    // A valid JWT for a username that no longer exists means the session is
-    // stale (the account was renamed by an earlier verify or removed), so
-    // tell the client to log out instead of inviting a retry
+    // No match means the account was removed or has already accepted another
+    // username, so tell the client to log out instead of inviting a retry
     if (userResult.error === MongoDbError.USER_NOT_FOUND) {
       return {
         message: "User of the current session not found",

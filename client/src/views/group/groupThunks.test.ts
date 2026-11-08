@@ -37,6 +37,7 @@ test("joining a group refreshes the user's own lottery sign-ups", async () => {
       loggedIn: true,
       jwt: "jwt",
       userGroup: UserGroup.USER,
+      userId: "test-user-id",
       serial: "1234",
       eventLogItems: [],
       kompassiUsernameAccepted: false,

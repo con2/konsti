@@ -23,6 +23,7 @@ export interface PostLoginResult extends ApiResult {
   groupCode: string;
   isGroupCreator: boolean;
   jwt: string;
+  userId: string;
   serial: string;
   userGroup: UserGroup;
   username: string;

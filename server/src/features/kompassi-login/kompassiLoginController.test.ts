@@ -231,6 +231,23 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.status).toEqual("success");
   });
 
+  test("should succeed when a rename is retried with the token from before it", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    const authHeader = await authorizedAs(UserGroup.USER, mockUser.username);
+    await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "new_username" })
+      .set(authHeader);
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "new_username" })
+      .set(authHeader);
+
+    const body = response.body as PostVerifyKompassiLoginResult;
+    expect(body.status).toEqual("success");
+  });
+
   test("should not rename a user whose username is already accepted", async () => {
     await saveUser({ ...mockUser, kompassiId: "10" });
     await request(server)
