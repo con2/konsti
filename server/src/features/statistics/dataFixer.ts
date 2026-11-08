@@ -2,8 +2,8 @@ import { Command } from "commander";
 import { getMatchingEmails } from "server/features/statistics/matchingEmails";
 import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
 import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
+import { formatDatafiles } from "./fixer-helpers/formatDatafiles";
 import { formatFields } from "./fixer-helpers/formatFields";
-import { formatJson } from "./fixer-helpers/formatJson";
 import { wildFix } from "./fixer-helpers/wildFix";
 
 const fixData = (): void => {
@@ -13,7 +13,7 @@ const fixData = (): void => {
     .command("format <event> <year>")
     .description("Format json files with prettier")
     .action(async (event: string, year: number) => {
-      await formatJson(event, year);
+      await formatDatafiles(event, year);
     });
 
   commander
