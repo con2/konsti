@@ -1,6 +1,7 @@
 import { GetSignupMessagesResponse } from "shared/types/api/users";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
+import { findUsernamesByUserIds } from "server/features/user/userRepository";
 
 export const fetchSignupMessages =
   async (): Promise<GetSignupMessagesResponse> => {
@@ -22,6 +23,19 @@ export const fetchSignupMessages =
       };
     }
 
+    const usernamesResult = await findUsernamesByUserIds(
+      signupsResult.value.flatMap((signup) =>
+        signup.userSignups.map((userSignup) => userSignup.userId),
+      ),
+    );
+    if (!usernamesResult.ok) {
+      return {
+        message: "Failed to load signup messages",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+
     const signupMessages = signupsResult.value.flatMap((signup) => {
       return signup.userSignups.flatMap((userSignup) => {
         if (userSignup.message) {
@@ -34,7 +48,7 @@ export const fetchSignupMessages =
 
           return {
             programItemId: signup.programItemId,
-            username: userSignup.username,
+            username: usernamesResult.value.get(userSignup.userId) ?? "",
             message: userSignup.message,
             private: signupQuestion.private,
           };

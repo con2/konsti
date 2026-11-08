@@ -55,7 +55,9 @@ test("should add new direct sign-up for user", async () => {
   );
 
   expect(response.programItemId).toEqual(testProgramItem.programItemId);
-  expect(response.userSignups[0].username).toEqual(mockUser.username);
+  expect(response.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 });
 
 test("should delete direct sign-up from user", async () => {
@@ -80,7 +82,9 @@ test("should fetch program item direct sign-ups", async () => {
   );
 
   expect(response[0].programItemId).toEqual(testProgramItem.programItemId);
-  expect(response[0].userSignups[0].username).toEqual(mockUser.username);
+  expect(response[0].userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 });
 
 test("should limit max attendees if too many passed to saveDirectSignups", async () => {
@@ -236,59 +240,7 @@ test("should find a parent-batched item's direct sign-ups by its own start time"
 
   expect(signups).toHaveLength(1);
   expect(signups[0].programItemId).toEqual(testProgramItem.programItemId);
-  expect(signups[0].username).toEqual(mockUser.username);
-});
-
-// Usernames are validated for length only, so one can start with "$". Inside an
-// aggregation pipeline that is a field path unless the value is marked as data.
-const dollarPrefixedUsername = "$admin";
-const dollarPrefixedUserId = "dollar-prefixed-user-id";
-
-test("should delete a direct sign-up from a user whose name starts with $", async () => {
-  await saveProgramItems([testProgramItem]);
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    userId: dollarPrefixedUserId,
-    username: dollarPrefixedUsername,
-  });
-
-  unsafelyUnwrap(
-    await delDirectSignup({
-      userId: dollarPrefixedUserId,
-      directSignupProgramItemId: testProgramItem.programItemId,
-    }),
-  );
-
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  expect(signups[0].userSignups).toHaveLength(0);
-  expect(signups[0].count).toEqual(0);
-});
-
-test("should bulk delete direct sign-ups from a user whose name starts with $", async () => {
-  await saveProgramItems([testProgramItem]);
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    userId: dollarPrefixedUserId,
-    username: dollarPrefixedUsername,
-  });
-
-  // The bulk delete reports success whether or not it matched, so prove there was something
-  // to remove - otherwise the assertions below hold with the pipeline never running
-  const savedSignups = unsafelyUnwrap(await findDirectSignups());
-  expect(savedSignups[0].userSignups).toHaveLength(1);
-
-  unsafelyUnwrap(
-    await delDirectSignups([
-      {
-        userId: dollarPrefixedUserId,
-        directSignupProgramItemId: testProgramItem.programItemId,
-      },
-    ]),
-  );
-
-  const signups = unsafelyUnwrap(await findDirectSignups());
-  expect(signups[0].userSignups).toHaveLength(0);
-  expect(signups[0].count).toEqual(0);
+  expect(signups[0].userId).toEqual(await getUserId(mockUser.username));
 });
 
 test("should count existing attendees against maxAttendance when appending", async () => {
@@ -334,7 +286,9 @@ test("should report the assignment's direct sign-ups as dropped when the program
     ),
   );
 
-  expect(response.droppedSignups).toMatchObject([mockPostDirectSignupRequest]);
+  expect(response.droppedSignups).toEqual([
+    await withUserId(mockPostDirectSignupRequest),
+  ]);
   expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
 });
 
@@ -478,10 +432,12 @@ test("should report an assignment's direct sign-up the attendance cap cut from a
     ]),
   );
 
-  expect(response.droppedSignups).toMatchObject([mockPostDirectSignupRequest]);
+  expect(response.droppedSignups).toEqual([
+    await withUserId(mockPostDirectSignupRequest),
+  ]);
 
   const signups = unsafelyUnwrap(await findDirectSignups());
-  expect(
-    signups[0].userSignups.map((userSignup) => userSignup.username),
-  ).toEqual([mockUser2.username]);
+  expect(signups[0].userSignups.map((userSignup) => userSignup.userId)).toEqual(
+    [await getUserId(mockUser2.username)],
+  );
 });

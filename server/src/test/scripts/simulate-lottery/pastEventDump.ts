@@ -25,6 +25,7 @@ import { jsonFileExists, readJson } from "server/features/statistics/statsUtil";
 // The dump's own shapes, which are not the models: they carry the DB metadata the models
 // leave out, and the oldest of them predate fields the models now require
 interface DumpUser {
+  userId: string;
   kompassiId: string;
   username: string;
   password: string;

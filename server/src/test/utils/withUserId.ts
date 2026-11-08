@@ -1,12 +1,15 @@
 import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import { getUserId } from "server/test/utils/getUserId";
 
-export type DirectSignupFixture = Omit<SignupRepositoryAddSignup, "userId">;
+export type DirectSignupFixture = Omit<SignupRepositoryAddSignup, "userId"> & {
+  username: string;
+};
 
 export const withUserId = async (
   signup: DirectSignupFixture,
 ): Promise<SignupRepositoryAddSignup> => {
-  return { ...signup, userId: await getUserId(signup.username) };
+  const { username, ...rest } = signup;
+  return { ...rest, userId: await getUserId(username) };
 };
 
 export const withUserIds = async (

@@ -456,8 +456,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(assignmentSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
   });
 
@@ -533,8 +533,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(1);
-    expect(directSignupAlwaysOpenSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
+    expect(directSignupAlwaysOpenSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser2.username),
     );
   });
 
@@ -706,8 +706,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(1);
-    expect(directSignupAlwaysOpenSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
+    expect(directSignupAlwaysOpenSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser2.username),
     );
   });
 
@@ -778,8 +778,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(assignmentSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
   });
 
@@ -846,16 +846,16 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       testProgramItem.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
-    expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(previousSignupFromMovedProgramItem?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
 
     const assignmentSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
+    expect(assignmentSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser2.username),
     );
   });
 });
@@ -966,7 +966,7 @@ describe("Assignment with first time bonus", () => {
       testProgramItem.programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: testProgramItem.startTime,
       message: "",
       priority: 3,
@@ -976,7 +976,7 @@ describe("Assignment with first time bonus", () => {
       testProgramItem2.programItemId,
     );
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       signedToStartTime: subHours(
         new Date(testProgramItem.startTime),
         1,
@@ -989,7 +989,7 @@ describe("Assignment with first time bonus", () => {
       tournamentProgramItemId,
     );
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: subHours(
         new Date(testProgramItem.startTime),
         1,
@@ -1002,7 +1002,7 @@ describe("Assignment with first time bonus", () => {
       directSignupAlwaysOpenId,
     );
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: subHours(
         new Date(testProgramItem.startTime),
         2,
@@ -1061,7 +1061,7 @@ describe("Assignment with first time bonus", () => {
       mockLotterySignups[1].programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: testProgramItem2.startTime,
       message: "",
       priority: 3,
@@ -1116,8 +1116,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
 
     // The second run decided nothing, so it told nobody anything
     const user2 = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -1184,7 +1184,9 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(firstItemSignup?.userSignups).toHaveLength(1);
-    expect(firstItemSignup?.userSignups[0].username).toEqual(mockUser.username);
+    expect(firstItemSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
     const secondItemSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
@@ -1258,8 +1260,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem2.programItemId,
     );
     expect(preferenceSignup?.userSignups).toHaveLength(1);
-    expect(preferenceSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(preferenceSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
   });
 
@@ -1449,8 +1451,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
   });
 
   test("leaves a program item holding first-come-first-served sign-ups out of the lottery", async () => {
@@ -1491,8 +1493,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
 
     // They took part and heard the outcome, so they know to go and take a spot themselves
     const user2 = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -1827,8 +1829,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      skippedSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      skippedSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
     expect(skippedSignup?.userSignups[0].priority).toEqual(1);
 
     // The hopeful took part and heard the outcome rather than being placed into it
@@ -2019,8 +2021,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem2.programItemId,
     );
     expect(
-      otherSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      otherSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
   });
 });
 
@@ -2408,7 +2410,9 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   const signupsByProgramItem = await findSignupsByProgramItem();
   const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
-  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+  expect(wonSignup?.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 
   // The overlapping lottery sign-up was removed despite the queue failure
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2480,7 +2484,9 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   const assignResults = unsafelyUnwrap(assignResultsResult);
   expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
   expect(assignResults.results).toHaveLength(1);
-  expect(assignResults.results[0].username).toEqual(mockUser.username);
+  expect(assignResults.results[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
   expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
     testProgramItem.programItemId,
   );
@@ -2489,7 +2495,9 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   const signupsByProgramItem = await findSignupsByProgramItem();
   const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
-  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+  expect(wonSignup?.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 
   // The overlapping lottery sign-up was removed despite the event log failures
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2565,7 +2573,9 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   const signupsByProgramItem = await findSignupsByProgramItem();
   const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
-  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+  expect(wonSignup?.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 
   // The overlapping lottery sign-up was removed despite the queueing failure
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));

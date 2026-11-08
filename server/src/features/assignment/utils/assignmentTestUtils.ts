@@ -32,7 +32,6 @@ export const getPreviousDirectSignup = ({
     userSignups: [
       {
         userId,
-        username,
         priority,
         signedToStartTime,
         signupTime,

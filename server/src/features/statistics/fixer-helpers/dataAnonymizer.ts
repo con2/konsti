@@ -57,11 +57,6 @@ export const anonymizeData = async (
       }
     }
   }
-  for (const signup of directSignups) {
-    for (const userSignup of signup.userSignups) {
-      rowUsernames.add(userSignup.username);
-    }
-  }
 
   // Every row username must be attributable to exactly one account before
   // anything is overwritten, so the operator can resolve problems while the
@@ -149,7 +144,6 @@ export const anonymizeData = async (
   }
   for (const signup of directSignups) {
     for (const userSignup of signup.userSignups) {
-      userSignup.username = anonymize(userSignup.username);
       // Remove sign-up message answers
       if (userSignup.message !== "") {
         userSignup.message = "<redacted>";

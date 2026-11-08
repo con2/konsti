@@ -63,7 +63,6 @@ export const createDirectSignups = async (): Promise<void> => {
           unsafelyUnwrap(
             await saveDirectSignup({
               userId: user.userId,
-              username: user.username,
               directSignupProgramItemId: randomProgramItem.programItemId,
               signedToStartTime: randomProgramItem.startTime,
               signupTime: randomProgramItem.startTime,

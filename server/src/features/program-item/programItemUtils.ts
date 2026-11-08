@@ -1,4 +1,5 @@
 import { isAfter } from "date-fns";
+import { unique } from "remeda";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
@@ -34,6 +35,7 @@ import { queueCancelledDeletedEmails } from "server/features/notifications/queue
 import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { findUsernamesByUserIds } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
 const getCancelledProgramItems = (
@@ -228,6 +230,16 @@ export const enrichProgramItems = async (
   if (!signupsResult.ok) {
     return signupsResult;
   }
+  const usernamesResult = await findUsernamesByUserIds(
+    unique(
+      signupsResult.value.flatMap((signup) =>
+        signup.userSignups.map((userSignup) => userSignup.userId),
+      ),
+    ),
+  );
+  if (!usernamesResult.ok) {
+    return usernamesResult;
+  }
   const currentTimeResult = await getTimeNow();
   if (!currentTimeResult.ok) {
     return currentTimeResult;
@@ -249,6 +261,7 @@ export const enrichProgramItems = async (
       },
       users: getDirectSignupsForProgramItem(
         signupsResult.value,
+        usernamesResult.value,
         programItem.programItemId,
         programItem.programType,
         userGroup,
@@ -305,6 +318,7 @@ const getSignupStrategyForProgramItem = (
 
 const getDirectSignupsForProgramItem = (
   directSignups: DirectSignupsForProgramItem[],
+  usernamesByUserId: ReadonlyMap<string, string>,
   programItemId: string,
   programType: ProgramType,
   userGroup: UserGroup | null,
@@ -329,7 +343,7 @@ const getDirectSignupsForProgramItem = (
           };
         }
         return {
-          username: userSignups.username,
+          username: usernamesByUserId.get(userSignups.userId) ?? "",
           signupMessage: getSignupMessage(signupQuestion, userSignups.message),
         };
       });

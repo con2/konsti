@@ -247,7 +247,9 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
       await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups.length).toEqual(1);
-    expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
+    expect(signups[0].userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
   });
 
   test("should clean but not remove direct sign-up document when program item is hidden", async () => {

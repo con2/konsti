@@ -30,7 +30,7 @@ export const saveUser = async (
   newUserData: NewUser,
 ): Promise<Result<User, MongoDbError>> => {
   const newUser: Omit<User, "createdAt"> = {
-    userId: randomUUID(),
+    userId: newUserData.userId ?? randomUUID(),
     kompassiId: newUserData.kompassiId,
     kompassiUsernameAccepted: false,
     username: newUserData.username,
@@ -215,6 +215,28 @@ export const findUserByUserId = async (
   }
 };
 
+export const findUsernamesByUserIds = async (
+  userIds: readonly string[],
+): Promise<Result<Map<string, string>, MongoDbError>> => {
+  try {
+    const response = await UserModel.find(
+      { userId: { $in: userIds } },
+      { userId: 1, username: 1 },
+    ).lean();
+
+    return makeSuccessResult(
+      new Map(response.map((user) => [user.userId, user.username])),
+    );
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error finding usernames by user id", {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 export const findUserBySerial = async (
   serial: string,
 ): Promise<Result<User | null, MongoDbError>> => {
@@ -351,7 +373,7 @@ export const updateUserKompassiLoginStatus = async (
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      // The client allows no sign-ups until the name is accepted, and each direct sign-up stores a copy of it.
+      // An account accepts its username once.
       // Repeating the accepted name still matches, so a retried request succeeds.
       {
         userId,

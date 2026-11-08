@@ -7,16 +7,13 @@ import {
   removeDirectSignup,
   storeDirectSignup,
 } from "server/features/direct-signup/directSignupService";
-import { getAuthUserId, getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId } from "server/middleware/requireAuth";
 
 export const postDirectSignup = async (
   req: Request<unknown, unknown, PostDirectSignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  const response = await storeDirectSignup(req.body, {
-    userId: getAuthUserId(req),
-    username: getAuthUsername(req),
-  });
+  const response = await storeDirectSignup(req.body, getAuthUserId(req));
   return res.json(response);
 };
 

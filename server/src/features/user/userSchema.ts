@@ -94,8 +94,8 @@ const userSchema = new mongoose.Schema(
     // would reject every local account. The default covers the undefined case.
     kompassiId: { type: String, default: "" },
     kompassiUsernameAccepted: { type: Boolean, required: true },
-    // Unique because login finds an account by this field. References to a user
-    // use userId; a copy of this name beside it is for display only.
+    // Unique because login finds an account by this field. Everything that refers
+    // to a user stores userId and reads the name from here.
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userGroup: { type: String, required: true },

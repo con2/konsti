@@ -36,7 +36,11 @@ import {
 } from "server/features/settings/settingsRepository";
 import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { findUser, saveUser } from "server/features/user/userRepository";
+import {
+  findUser,
+  saveUser,
+  updateUserKompassiLoginStatus,
+} from "server/features/user/userRepository";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   KompassiGamestyle,
@@ -126,6 +130,23 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
     expect(sortedProgramItems[0].users[0].signupMessage).toEqual(publicMessage);
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
+  });
+
+  test("should list a direct sign-up under the user's current username", async () => {
+    await createSettings();
+    await saveProgramItems([testProgramItem]);
+    const user = unsafelyUnwrap(
+      await saveUser({ ...mockUser, kompassiId: "10" }),
+    );
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await updateUserKompassiLoginStatus(user.userId, "new_username");
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+
+    const body = response.body as GetProgramItemsResult;
+    expect(body.programItems[0].users).toEqual([
+      { username: "new_username", signupMessage: "" },
+    ]);
   });
 
   test("should not return direct sign-up users for hideParticipantListProgramTypes", async () => {
@@ -501,8 +522,12 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(2);
-    expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
-    expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
+    expect(signups[0].userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
+    expect(signups[1].userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
   });
 
   test("should add program item even if program item contains unknown fields or enum values", async () => {

@@ -1000,6 +1000,6 @@ test("should mark a program item holding direct sign-ups that moves onto a slot 
       directSignup.programItemId === testProgramItem.programItemId,
   );
   expect(
-    programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-  ).toEqual([mockUser.username]);
+    programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+  ).toEqual([await getUserId(mockUser.username)]);
 });

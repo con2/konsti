@@ -154,6 +154,7 @@ export const loadPastEventToDb = async ({
   const users: User[] = [];
   for (const dumpUser of dump.users) {
     const saveUserResult = await saveUser({
+      userId: dumpUser.userId,
       // Every Kompassi account in a dump carries the same redacted id, which the unique
       // index rejects. Stored as a local account instead: nothing in a replay logs in, and
       // the lottery never reads the field.
@@ -191,17 +192,11 @@ export const loadPastEventToDb = async ({
     ]),
   );
 
-  const userIdByUsername = new Map(
-    users.map((user) => [user.username, user.userId]),
-  );
-
   const allDirectSignups = dump.directSignups.flatMap((directSignup) =>
     directSignup.userSignups
       .filter((userSignup) => userSignup.priority === DIRECT_SIGNUP_PRIORITY)
       .map((userSignup): SignupRepositoryAddSignup => ({
-        // Every username in a dump's direct sign-ups belongs to a user in the same dump
-        userId: userIdByUsername.get(userSignup.username) ?? "",
-        username: userSignup.username,
+        userId: userSignup.userId,
         directSignupProgramItemId: directSignup.programItemId,
         message: userSignup.message,
         priority: userSignup.priority,

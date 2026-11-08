@@ -90,7 +90,6 @@ export const saveUserSignupResults = async ({
     (result) => {
       return {
         userId: result.userId,
-        username: result.username,
         directSignupProgramItemId: result.assignmentSignup.programItemId,
         // The hour of the slot they won, which for a batched program item is not the hour its
         // lottery ran: a spot belongs to when the attendee turns up

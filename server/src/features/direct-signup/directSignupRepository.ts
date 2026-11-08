@@ -232,7 +232,6 @@ export const saveDirectSignup = async (
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const {
     userId,
-    username,
     directSignupProgramItemId,
     signedToStartTime,
     signupTime,
@@ -258,7 +257,6 @@ export const saveDirectSignup = async (
         $addToSet: {
           userSignups: {
             userId,
-            username,
             priority,
             signedToStartTime,
             signupTime,
@@ -284,7 +282,7 @@ export const saveDirectSignup = async (
 
       if (!signup) {
         logger.warn(
-          `Saving direct signup for user '${username}' failed: program item '${directSignupProgramItemId}' not found`,
+          `Saving direct signup for user '${userId}' failed: program item '${directSignupProgramItemId}' not found`,
         );
         return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
       }
@@ -293,7 +291,7 @@ export const saveDirectSignup = async (
     }
 
     logger.info(
-      `MongoDB: Direct signup to '${directSignupProgramItemId}' saved for user "${username}"`,
+      `MongoDB: Direct signup to '${directSignupProgramItemId}' saved for user "${userId}"`,
     );
 
     const result = DirectSignupSchemaDb.safeParse(response);
@@ -309,7 +307,7 @@ export const saveDirectSignup = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error saving direct signup for user '${username}'`, {
+      new Error(`MongoDB: Error saving direct signup for user '${userId}'`, {
         cause: error,
       }),
     );
@@ -396,7 +394,6 @@ const appendSignupsPipeline = (
   const appendedSignups = {
     $literal: directSignups.map((signup) => ({
       userId: signup.userId,
-      username: signup.username,
       priority: signup.priority,
       signedToStartTime: new Date(signup.signedToStartTime),
       signupTime: new Date(signup.signupTime),
