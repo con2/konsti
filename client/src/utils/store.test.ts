@@ -5,6 +5,7 @@ import {
   fakeDsn,
 } from "shared/tests/sentryTestHelpers";
 import { UserGroup } from "shared/types/models/user";
+import { SUBMIT_LOGOUT } from "client/types/logoutActionsTypes";
 import { getSentryOptions } from "client/utils/sentryOptions";
 import { store } from "client/utils/store";
 import { updateServerAppBuildTime } from "client/views/admin/adminSlice";
@@ -14,7 +15,7 @@ afterEach(async () => {
   await close();
 });
 
-test("should send Sentry only the Redux action types", async () => {
+test("should send Sentry the Redux action types and the account, not the state", async () => {
   const { transport, getCapturedEvents } = createRecordingTransport();
   init({ ...getSentryOptions(), dsn: fakeDsn, transport });
   const jwt = "secret-jwt";
@@ -50,8 +51,23 @@ test("should send Sentry only the Redux action types", async () => {
     { type: submitLoginAsync.type },
   ]);
   expect(events[0].contexts?.state).toBeUndefined();
+  expect(events[0].user).toEqual({ id: serial, username: "test1" });
   const sent = JSON.stringify(events[0]);
-  for (const privateValue of [jwt, email, serial, "test1"]) {
+  for (const privateValue of [jwt, email]) {
     expect(sent).not.toContain(privateValue);
   }
+});
+
+test("should clear the Sentry user on logout", async () => {
+  const { transport, getCapturedEvents } = createRecordingTransport();
+  init({ ...getSentryOptions(), dsn: fakeDsn, transport });
+
+  store.dispatch({ type: SUBMIT_LOGOUT });
+  captureException(new Error("Test error"));
+  await flush(2000);
+
+  // A cleared user is kept as an object whose fields are all unset
+  const { user } = getCapturedEvents()[0];
+  expect(user?.id).toBeUndefined();
+  expect(user?.username).toBeUndefined();
 });

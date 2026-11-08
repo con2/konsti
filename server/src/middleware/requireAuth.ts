@@ -1,3 +1,4 @@
+import { getIsolationScope } from "@sentry/node";
 import { NextFunction, Request, Response } from "express";
 import { UserGroup } from "shared/types/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
@@ -20,6 +21,8 @@ export const requireAuth =
       return;
     }
     req.auth = { username };
+    // Ties the request's errors to the account, as the client's do
+    getIsolationScope().setUser({ username });
     next();
   };
 

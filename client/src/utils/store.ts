@@ -60,6 +60,11 @@ const sentryReduxEnhancer = createReduxEnhancer({
     return { type: String(action.type) };
   },
   stateTransformer: () => null,
+  // Ties a user's errors together; the serial identifies the account until accounts get an ID
+  configureScopeWithState: (scope, state: RootState) => {
+    const { serial, username } = state.login;
+    scope.setUser(serial ? { id: serial, username } : null);
+  },
 });
 
 export const store = configureStore({
