@@ -90,9 +90,9 @@ const dropRetiredValues = (
   return { ...dumpProgramItem, ...Object.fromEntries(kept) };
 };
 
-// Everything a program item needs that a dump may not carry. `parentId` arrived with Tracon
-// 2025 and the lottery reads it on every item; the two marks are the lottery's own work and
-// the replay has to start without them, whatever a re-dumped file might hold.
+// Everything a program item needs that a dump may not carry. Most dumps have no `parentId`
+// and the lottery reads it on every item; the two marks are the lottery's own work and the
+// replay has to start without them, whatever a re-dumped file might hold.
 const toProgramItem = (dumpProgramItem: unknown): ProgramItem => {
   const withDefaults = {
     parentId: (dumpProgramItem as ProgramItem).programItemId,
