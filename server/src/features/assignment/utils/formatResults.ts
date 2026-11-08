@@ -60,6 +60,7 @@ export const formatResults = (
       const assignmentSignup = getAssignmentSignup(assignResults, attendee);
       if (assignmentSignup) {
         acc.push({
+          userId: attendee.userId,
           username: attendee.username,
           assignmentSignup,
         });

@@ -31,14 +31,22 @@ afterEach(async () => {
 
 test("should insert new result into collection", async () => {
   const signupResults: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
-    getAssignmentResult({ username: mockUser2.username }),
+    getAssignmentResult({
+      userId: `${mockUser.username}-id`,
+      username: mockUser.username,
+    }),
+    getAssignmentResult({
+      userId: `${mockUser2.username}-id`,
+      username: mockUser2.username,
+    }),
   ];
   const groups: AssignmentResultGroup[] = [
     {
       groupCode: "123-234-345",
       groupCreator: mockUser.username,
       groupMembers: [mockUser.username, mockUser2.username],
+      groupCreatorId: `${mockUser.username}-id`,
+      groupMemberIds: [`${mockUser.username}-id`, `${mockUser2.username}-id`],
     },
   ];
   const assignmentTime = testProgramItem.startTime;
@@ -80,6 +88,7 @@ const makeResult = (
   username: string,
   programItemId: string,
 ): UserAssignmentResult => ({
+  userId: `${username}-id`,
   username,
   assignmentSignup: {
     programItemId,
@@ -100,11 +109,15 @@ test("should record a group that took part but was placed nowhere", async () => 
         groupCode: "placed-group",
         groupCreator: mockUser.username,
         groupMembers: [mockUser.username],
+        groupCreatorId: `${mockUser.username}-id`,
+        groupMemberIds: [`${mockUser.username}-id`],
       },
       {
         groupCode: "unplaced-group",
         groupCreator: mockUser2.username,
         groupMembers: [mockUser2.username],
+        groupCreatorId: `${mockUser2.username}-id`,
+        groupMemberIds: [`${mockUser2.username}-id`],
       },
     ],
     assignmentTime,

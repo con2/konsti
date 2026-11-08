@@ -35,5 +35,8 @@ export const getAssignmentResultGroups = (
     groupCreator:
       members.find((member) => member.isGroupCreator)?.username ?? "",
     groupMembers: members.map((member) => member.username),
+    groupCreatorId:
+      members.find((member) => member.isGroupCreator)?.userId ?? "",
+    groupMemberIds: members.map((member) => member.userId),
   }));
 };

@@ -84,6 +84,7 @@ test("should remove overlapping lottery sign-ups from user", async () => {
     ],
   });
   const user1Result: UserAssignmentResult = getAssignmentResult({
+    userId: await getUserId(mockUser.username),
     username: mockUser.username,
   });
 
@@ -101,6 +102,7 @@ test("should remove overlapping lottery sign-ups from user", async () => {
     ],
   });
   const user2Result: UserAssignmentResult = getAssignmentResult({
+    userId: await getUserId(mockUser2.username),
     username: mockUser2.username,
   });
 
@@ -249,6 +251,7 @@ test("should remove all upcoming lottery sign-ups from user", async () => {
     ],
   });
   const userResult: UserAssignmentResult = {
+    userId: await getUserId(mockUser.username),
     username: mockUser.username,
     assignmentSignup: {
       programItemId: resultProgramItemId,
@@ -358,6 +361,7 @@ test("should not remove upcoming lottery sign-ups when strategy is NONE", async 
     ],
   });
   const userResult: UserAssignmentResult = {
+    userId: await getUserId(mockUser.username),
     username: mockUser.username,
     assignmentSignup: {
       programItemId: resultProgramItemId,
@@ -442,6 +446,7 @@ test("should not remove an upcoming lottery sign-up whose lottery has already ru
     ],
   });
   const userResult: UserAssignmentResult = {
+    userId: await getUserId(mockUser.username),
     username: mockUser.username,
     assignmentSignup: {
       programItemId: resultProgramItemId,
@@ -513,6 +518,7 @@ test("should not remove upcoming lottery sign-up with past parent startTime", as
     ],
   });
   const userResult: UserAssignmentResult = {
+    userId: await getUserId(mockUser.username),
     username: mockUser.username,
     assignmentSignup: {
       programItemId: resultProgramItemId,

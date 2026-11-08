@@ -43,6 +43,7 @@ describe(`GET ${ApiEndpoint.RESULTS}`, () => {
     const assignmentTime = "2023-05-07T14:00:00.000Z";
     const results: UserAssignmentResult[] = [
       {
+        userId: "testuser-id",
         username: "testuser",
         assignmentSignup: {
           programItemId: testProgramItem.programItemId,
@@ -56,6 +57,8 @@ describe(`GET ${ApiEndpoint.RESULTS}`, () => {
         groupCode: "1234",
         groupCreator: "testuser",
         groupMembers: ["testuser", "testuser2"],
+        groupCreatorId: "testuser-id",
+        groupMemberIds: ["testuser-id", "testuser2-id"],
       },
     ];
     await saveResult(

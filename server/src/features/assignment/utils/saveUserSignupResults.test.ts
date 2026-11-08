@@ -132,7 +132,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser.username),
+      username: mockUser.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -184,7 +187,10 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser.username),
+      username: mockUser.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -365,7 +371,10 @@ test("should only add one event log item with multiple lottery sign-ups", async 
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser.username),
+      username: mockUser.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -418,10 +427,22 @@ test("should not add event log items after assignment if a direct sign-up is dro
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 3 }]);
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
-    getAssignmentResult({ username: mockUser2.username }),
-    getAssignmentResult({ username: mockUser3.username }),
-    getAssignmentResult({ username: mockUser4.username }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser.username),
+      username: mockUser.username,
+    }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser2.username),
+      username: mockUser2.username,
+    }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser3.username),
+      username: mockUser3.username,
+    }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser4.username),
+      username: mockUser4.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -469,8 +490,13 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
     });
   }
 
-  const results: UserAssignmentResult[] = lotteryUsers.map((user) =>
-    getAssignmentResult({ username: user.username }),
+  const results: UserAssignmentResult[] = await Promise.all(
+    lotteryUsers.map(async (user) =>
+      getAssignmentResult({
+        userId: await getUserId(user.username),
+        username: user.username,
+      }),
+    ),
   );
 
   await saveAndNotify({
@@ -558,7 +584,10 @@ test("should remove all of a winner's existing same-time direct sign-ups, not ju
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser.username),
+      username: mockUser.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -597,7 +626,10 @@ test("should not send notifications to users without email addresses but still c
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: userWithoutEmail.username }),
+    getAssignmentResult({
+      userId: await getUserId(userWithoutEmail.username),
+      username: userWithoutEmail.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -667,7 +699,12 @@ test("should summarize sent and skipped emails once the queue drains", async () 
   // email is the only one sent
   await saveAndNotify({
     assignmentTime: testProgramItem.startTime,
-    results: [getAssignmentResult({ username: userWithoutEmail.username })],
+    results: [
+      getAssignmentResult({
+        userId: await getUserId(userWithoutEmail.username),
+        username: userWithoutEmail.username,
+      }),
+    ],
   });
 
   queueService.getQueue().resume();
@@ -707,7 +744,10 @@ test("should respect email notification permissions based on email field", async
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: userWithEmail.username }),
+    getAssignmentResult({
+      userId: await getUserId(userWithEmail.username),
+      username: userWithEmail.username,
+    }),
   ];
 
   await saveAndNotify({
@@ -814,7 +854,10 @@ test("should store the won slot's own start time on a batched program item's dir
   });
 
   const results: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
+    getAssignmentResult({
+      userId: await getUserId(mockUser.username),
+      username: mockUser.username,
+    }),
   ];
 
   unsafelyUnwrap(
@@ -878,7 +921,12 @@ test("should keep a spot held at another hour when a batched lottery places the 
   unsafelyUnwrap(
     await saveUserSignupResults({
       assignmentTime: parentStartTime,
-      results: [getAssignmentResult({ username: mockUser.username })],
+      results: [
+        getAssignmentResult({
+          userId: await getUserId(mockUser.username),
+          username: mockUser.username,
+        }),
+      ],
       users: unsafelyUnwrap(await findUsers()),
       programItems: unsafelyUnwrap(await findProgramItems()),
     }),
@@ -912,8 +960,13 @@ test("should replace a winner's own direct sign-up for the program item they win
     username: mockUser.username,
   });
 
-  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) =>
-    getAssignmentResult({ username: user.username }),
+  const results: UserAssignmentResult[] = await Promise.all(
+    [mockUser, mockUser2].map(async (user) =>
+      getAssignmentResult({
+        userId: await getUserId(user.username),
+        username: user.username,
+      }),
+    ),
   );
 
   await saveAndNotify({
@@ -1124,8 +1177,13 @@ test("should drop a whole group whose program item no longer has room for all of
     directSignupProgramItemId: testProgramItem2.programItemId,
   });
 
-  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) =>
-    getAssignmentResult({ username: user.username }),
+  const results: UserAssignmentResult[] = await Promise.all(
+    [mockUser, mockUser2].map(async (user) =>
+      getAssignmentResult({
+        userId: await getUserId(user.username),
+        username: user.username,
+      }),
+    ),
   );
 
   await saveAndNotify({
@@ -1173,8 +1231,13 @@ test("should place a whole group that still has room for all of it", async () =>
     username: mockUser3.username,
   });
 
-  const results: UserAssignmentResult[] = [mockUser, mockUser2].map((user) =>
-    getAssignmentResult({ username: user.username }),
+  const results: UserAssignmentResult[] = await Promise.all(
+    [mockUser, mockUser2].map(async (user) =>
+      getAssignmentResult({
+        userId: await getUserId(user.username),
+        username: user.username,
+      }),
+    ),
   );
 
   await saveAndNotify({
@@ -1220,6 +1283,7 @@ test("should place a winner whose username names an Object prototype member", as
 
   const results: UserAssignmentResult[] = [
     {
+      userId: await getUserId(username),
       username,
       assignmentSignup: {
         programItemId: testProgramItem.programItemId,
@@ -1273,6 +1337,7 @@ test("should drop a whole group whose room is taken by a spot the write has not 
 
   const results: UserAssignmentResult[] = [
     {
+      userId: await getUserId(mockUser3.username),
       username: mockUser3.username,
       assignmentSignup: {
         programItemId: testProgramItem2.programItemId,
@@ -1280,9 +1345,14 @@ test("should drop a whole group whose room is taken by a spot the write has not 
         signedToStartTime: testProgramItem.startTime,
       },
     },
-    ...[mockUser, mockUser2].map((user) =>
-      getAssignmentResult({ username: user.username }),
-    ),
+    ...(await Promise.all(
+      [mockUser, mockUser2].map(async (user) =>
+        getAssignmentResult({
+          userId: await getUserId(user.username),
+          username: user.username,
+        }),
+      ),
+    )),
   ];
 
   await saveAndNotify({
@@ -1372,8 +1442,12 @@ test("should displace spots at every hour a batched lottery placed somebody at",
     await saveUserSignupResults({
       assignmentTime: parentStartTime,
       results: [
-        getAssignmentResult({ username: mockUser.username }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser.username),
+          username: mockUser.username,
+        }),
         {
+          userId: await getUserId(mockUser2.username),
           username: mockUser2.username,
           assignmentSignup: {
             programItemId: testProgramItem2.programItemId,

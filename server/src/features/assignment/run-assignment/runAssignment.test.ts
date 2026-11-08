@@ -310,7 +310,10 @@ describe.each([
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
       expect(assignResults.results).toHaveLength(1);
       expect(assignResults.results[0]).toMatchObject(
-        getAssignmentResult({ username: mockUser.username }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser.username),
+          username: mockUser.username,
+        }),
       );
 
       const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
@@ -360,8 +363,14 @@ describe.each([
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
       expect(assignResults.results).toHaveLength(2);
       expect(assignResults.results).toMatchObject([
-        getAssignmentResult({ username: mockUser.username }),
-        getAssignmentResult({ username: mockUser2.username }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser.username),
+          username: mockUser.username,
+        }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser2.username),
+          username: mockUser2.username,
+        }),
       ]);
 
       const user1AfterSave = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2211,6 +2220,11 @@ test("Should write a snapshot of the lottery groups to the results collection", 
       groupCode,
       groupCreator: mockUser.username,
       groupMembers: [mockUser.username, mockUser2.username],
+      groupCreatorId: await getUserId(mockUser.username),
+      groupMemberIds: [
+        await getUserId(mockUser.username),
+        await getUserId(mockUser2.username),
+      ],
     },
   ]);
 });
@@ -2304,6 +2318,7 @@ test("Should keep a past lottery sign-up but not let it affect an upcoming lotte
   expect(assignResults.results).toHaveLength(1);
   expect(assignResults.results[0]).toMatchObject(
     getAssignmentResult({
+      userId: await getUserId(mockUser.username),
       username: mockUser.username,
       programItem: currentProgramItem,
     }),

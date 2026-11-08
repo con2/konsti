@@ -106,6 +106,7 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
     "message": "Padg Assignment Result - Attendees: 41/85 (48%), Program items: 9/9 (100%)",
     "results": [
       {
+        "userId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42", // Present from the next event onward
         "username": "123456",
         "assignmentSignup": {
           "programItemId": "example-program",
@@ -120,6 +121,11 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
         "groupCode": "abc-def-ghi",
         "groupCreator": "123456", // Username of the group creator
         "groupMembers": ["123456", "654321"], // All members, creator included
+        "groupCreatorId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42", // Present from the next event onward, like groupMemberIds
+        "groupMemberIds": [
+          "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42",
+          "2b8e4f10-93ad-4c6e-8f21-7d1c5a9e3b60",
+        ],
       },
     ],
   },

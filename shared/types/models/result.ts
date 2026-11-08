@@ -3,6 +3,7 @@ import { LotterySignup } from "shared/types/models/user";
 export type AssignmentSignup = LotterySignup;
 
 export interface UserAssignmentResult {
+  userId: string;
   username: string;
   assignmentSignup: AssignmentSignup;
 }
@@ -12,6 +13,8 @@ export interface AssignmentResultGroup {
   groupCode: string;
   groupCreator: string;
   groupMembers: string[];
+  groupCreatorId: string;
+  groupMemberIds: string[];
 }
 
 // Metadata of a single lottery run, without the per-user results or group snapshots
