@@ -52,59 +52,14 @@ const rootReducer = (
   return combinedReducer(state, action);
 };
 
-const ignoredActions = new Set([
-  "allProgramItems/submitGetProgramItemsAsync", // Program items is huge
-  "admin/submitGetSignupMessagesAsync", // Private
-]);
-
+// Only the action types go to Sentry: the state and the payloads hold the user's JWT, their
+// identifiers and their sign-up answers, and the timeline is what a crash report needs
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const sentryReduxEnhancer = createReduxEnhancer({
   actionTransformer: (action) => {
-    // Don't send large payloads or private data to sentry
-    if (ignoredActions.has(action.type as string)) {
-      return null;
-    }
-
-    return action;
+    return { type: String(action.type) };
   },
-
-  stateTransformer: (state: RootState) => {
-    // Reduce state that is too large, private or unnecessary to send
-
-    /* eslint-disable @typescript-eslint/no-unnecessary-condition -- No idea what state the app state is in */
-    const transformedState = {
-      ...state,
-      allProgramItems: {
-        ...state?.allProgramItems,
-        // Whole program items, too large to send
-        programItems: `Program items count: ${state?.allProgramItems?.programItems?.length}`,
-        // Whole program items, too large to send
-        directSignups: `Direct signups count: ${state?.allProgramItems?.directSignups?.length}`,
-      },
-      admin: {
-        ...state?.admin,
-        // Config data - not interesting
-        hiddenProgramItemIds: `Hidden program items count: ${state?.admin?.hiddenProgramItemIds?.length}`,
-        // Config data - not interesting
-        signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
-        // Contains user sign-up messages - helper user only
-        signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
-      },
-      myProgramItems: {
-        ...state?.myProgramItems,
-        directSignups: state?.myProgramItems?.directSignups?.map(
-          (directSignup) => ({
-            ...directSignup,
-            // Remove sign-up question answers
-            message: "<Message hidden>",
-          }),
-        ),
-      },
-    };
-    /* eslint-enable @typescript-eslint/no-unnecessary-condition */
-
-    return transformedState;
-  },
+  stateTransformer: () => null,
 });
 
 export const store = configureStore({
