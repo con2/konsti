@@ -19,7 +19,7 @@ import { queueCancelledDeletedEmails } from "server/features/notifications/queue
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import {
   findUsers,
-  updateUsersByUsername,
+  updateUsersByUserId,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
@@ -158,7 +158,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
     return [];
   });
 
-  const updateUsersResult = await updateUsersByUsername(usersToUpdate);
+  const updateUsersResult = await updateUsersByUserId(usersToUpdate);
   if (!updateUsersResult.ok) {
     return updateUsersResult;
   }

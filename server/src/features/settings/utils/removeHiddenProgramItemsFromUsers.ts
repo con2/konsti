@@ -4,7 +4,7 @@ import { Result, makeSuccessResult } from "shared/utils/result";
 import { resetDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import {
   findUsers,
-  updateUsersByUsername,
+  updateUsersByUserId,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
@@ -51,7 +51,7 @@ export const removeHiddenProgramItemsFromUsers = async (
     return [];
   });
 
-  const updateUsersResult = await updateUsersByUsername(usersToUpdate);
+  const updateUsersResult = await updateUsersByUserId(usersToUpdate);
   if (!updateUsersResult.ok) {
     return updateUsersResult;
   }

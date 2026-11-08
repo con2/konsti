@@ -82,14 +82,14 @@ export const saveUser = async (
   }
 };
 
-export const updateUsersByUsername = async (
+export const updateUsersByUserId = async (
   users: User[],
 ): Promise<Result<void, MongoDbError>> => {
   const bulkOps = users.map((user) => {
     return {
       updateOne: {
         filter: {
-          username: user.username,
+          userId: user.userId,
         },
         update: {
           userGroup: user.userGroup,

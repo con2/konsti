@@ -16,7 +16,7 @@ import {
 } from "server/features/settings/settingsRepository";
 import {
   saveUser,
-  updateUsersByUsername,
+  updateUsersByUserId,
 } from "server/features/user/userRepository";
 import { PastEventDump } from "server/test/scripts/simulate-lottery/pastEventDump";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
@@ -179,7 +179,7 @@ export const loadPastEventToDb = async ({
     });
   }
 
-  const updateUsersResult = await updateUsersByUsername(users);
+  const updateUsersResult = await updateUsersByUserId(users);
   if (!updateUsersResult.ok) {
     return updateUsersResult;
   }
