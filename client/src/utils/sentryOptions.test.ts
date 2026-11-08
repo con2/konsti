@@ -49,6 +49,34 @@ const fetchUrls = (breadcrumbs: Breadcrumb[]): unknown[] => {
     .map((breadcrumb): unknown => breadcrumb.data?.url);
 };
 
+test("should send only the query parameters known to be harmless", async () => {
+  respondWith.mockReturnValue(new Response("{}", { status: 500 }));
+
+  const breadcrumbs = await recordBreadcrumbs(async () => {
+    await fetch("http://localhost/api/group?groupCode=secret&programType=larp");
+  });
+
+  expect(fetchUrls(breadcrumbs)).toEqual([
+    "http://localhost/api/group?groupCode=[Filtered]&programType=larp",
+  ]);
+});
+
+test("should filter the Kompassi callback's code and state from navigation", async () => {
+  respondWith.mockReturnValue(new Response("{}"));
+
+  const breadcrumbs = await recordBreadcrumbs(async () => {
+    history.pushState({}, "", "/auth/kompassi/callback?code=c1&state=s1");
+    await Promise.resolve();
+  });
+
+  const navigation = breadcrumbs.find((breadcrumb) => {
+    return breadcrumb.category === "navigation";
+  });
+  expect(navigation?.data?.to).toEqual(
+    "/auth/kompassi/callback?code=[Filtered]&state=[Filtered]",
+  );
+});
+
 // The polling loop repeats these every interval
 test("should keep a polled request only when it fails", async () => {
   const breadcrumbs = await recordBreadcrumbs(async () => {
