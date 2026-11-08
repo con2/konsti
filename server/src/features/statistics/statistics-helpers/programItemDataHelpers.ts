@@ -3,6 +3,7 @@ import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import { getDateAndTime } from "shared/utils/timeFormatter";
 import { toPercent } from "server/features/statistics/statsUtil";
+import { formatJson } from "server/utils/formatJson";
 import { logger } from "server/utils/logger";
 import { getMaximumNumberOfAttendeesByTime } from "./resultDataHelpers";
 
@@ -15,7 +16,7 @@ export const getProgramItemsByStartTime = (
   );
 
   logger.info(
-    `Number of program items for each start time: \n${JSON.stringify(programItemsByTime, null, 2)}`,
+    `Number of program items for each start time:\n${formatJson(programItemsByTime)}`,
   );
   return programItemsByTime;
 };
@@ -159,5 +160,5 @@ export const getDemandByProgramItem = (
     priority3: t.byPriority[3],
   }));
 
-  logger.info(JSON.stringify(output, null, 2));
+  logger.info(formatJson(output));
 };

@@ -1,6 +1,7 @@
 import { ProgramItem } from "shared/types/models/programItem";
 import { toPercent } from "server/features/statistics/statsUtil";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
+import { formatJson } from "server/utils/formatJson";
 import { logger } from "server/utils/logger";
 
 export const getSignupsByTime = (
@@ -15,7 +16,7 @@ export const getSignupsByTime = (
   );
 
   logger.debug(
-    `Number of people entering to program items by start times: \n${JSON.stringify(signupsByTime, null, 2)}`,
+    `Number of people entering to program items by start times:\n${formatJson(signupsByTime)}`,
   );
 
   return signupsByTime;
@@ -37,7 +38,7 @@ export const getMaximumNumberOfAttendeesByTime = (
   }
 
   logger.debug(
-    `Maximum number of seats by start times: \n${JSON.stringify(maxNumberOfAttendeesByTime, null, 2)}`,
+    `Maximum number of seats by start times:\n${formatJson(maxNumberOfAttendeesByTime)}`,
   );
 
   return maxNumberOfAttendeesByTime;
