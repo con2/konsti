@@ -14,11 +14,13 @@ export const groupCreatorGroupCode = "123-234-345";
 // hour before the run's time, signed up for an hour before that unless the case says when
 export const getPreviousDirectSignup = ({
   username,
+  userId = `${username}-id`,
   programItemId = testProgramItem.programItemId,
   priority = 1,
   signedToStartTime = subHours(new Date(assignmentTime), 1).toISOString(),
   signupTime = subHours(new Date(signedToStartTime), 1).toISOString(),
 }: {
+  userId?: string;
   username: string;
   programItemId?: string;
   priority?: number;
@@ -29,6 +31,7 @@ export const getPreviousDirectSignup = ({
     programItemId,
     userSignups: [
       {
+        userId,
         username,
         priority,
         signedToStartTime,

@@ -37,6 +37,7 @@ import { saveTestSettings } from "server/test/test-settings/testSettingsReposito
 import { authorizedAs } from "server/test/utils/authorizedAs";
 import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -74,10 +75,12 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       isGroupCreator: true,
     });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser2.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      }),
+    );
 
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
@@ -398,10 +401,12 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       isGroupCreator: true,
     });
     await saveUser(mockUser2);
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser2.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      }),
+    );
 
     const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,

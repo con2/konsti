@@ -62,6 +62,7 @@ export const createDirectSignups = async (): Promise<void> => {
         return usersChunk.map(async (user) => {
           unsafelyUnwrap(
             await saveDirectSignup({
+              userId: user.userId,
               username: user.username,
               directSignupProgramItemId: randomProgramItem.programItemId,
               signedToStartTime: randomProgramItem.startTime,

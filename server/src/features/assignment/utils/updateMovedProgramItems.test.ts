@@ -28,6 +28,7 @@ import {
 import { getUserId } from "server/test/utils/getUserId";
 import { withLotteryStillAhead } from "server/test/utils/lotteryClock";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
@@ -83,7 +84,7 @@ test("should notify a user about a moved lottery sign-up and a moved direct sign
     lotterySignups: [mockLotterySignups[0]],
   });
   // Direct sign-up for a different item B
-  await saveDirectSignup(mockPostDirectSignupRequest2);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
   // Move both items
   await ProgramItemModel.updateOne(
@@ -140,7 +141,7 @@ test("should notify a user only once for a moved item they have both a lottery a
     userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   await ProgramItemModel.updateOne(
     { programItemId: testProgramItem.programItemId },
@@ -180,7 +181,9 @@ test("should keep lottery sign-ups for other program items when one moves onto t
     { ...testProgramItem2, startTime: lotteryStartTime },
   ]);
   await saveUser(mockUser);
-  await saveDirectSignup({ ...mockPostDirectSignupRequest, priority: 1 });
+  await saveDirectSignup(
+    await withUserId({ ...mockPostDirectSignupRequest, priority: 1 }),
+  );
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
     lotterySignups: [

@@ -9,7 +9,7 @@ import { UserGroup } from "shared/types/models/user";
 import { verifyUpdateUserEmailAddress } from "server/features/kompassi-login/kompassiLoginService";
 import {
   fetchUserBySerialOrUsername,
-  fetchUserByUsername,
+  fetchUserByUserId,
   storeUser,
   storeUserPassword,
 } from "server/features/user/userService";
@@ -56,7 +56,7 @@ export const getUser = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  const response = await fetchUserByUsername(getAuthUsername(req));
+  const response = await fetchUserByUserId(getAuthUserId(req));
   return res.json(response);
 };
 

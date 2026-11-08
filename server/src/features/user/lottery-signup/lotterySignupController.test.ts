@@ -36,6 +36,7 @@ import {
 import { authorizedAs } from "server/test/utils/authorizedAs";
 import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -119,11 +120,13 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       { ...testProgramItem2, startTime: testProgramItem.startTime },
     ]);
     await saveUser(mockUser);
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      directSignupProgramItemId: testProgramItem2.programItemId,
-      signedToStartTime: testProgramItem.startTime,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        directSignupProgramItemId: testProgramItem2.programItemId,
+        signedToStartTime: testProgramItem.startTime,
+      }),
+    );
 
     const signup: PostLotterySignupRequest = {
       programItemId: testProgramItem.programItemId,
@@ -163,11 +166,13 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       { ...testProgramItem2, startTime: earlierStartTime },
     ]);
     await saveUser(mockUser);
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      directSignupProgramItemId: testProgramItem2.programItemId,
-      signedToStartTime: earlierStartTime,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        directSignupProgramItemId: testProgramItem2.programItemId,
+        signedToStartTime: earlierStartTime,
+      }),
+    );
 
     const signup: PostLotterySignupRequest = {
       programItemId: testProgramItem.programItemId,

@@ -17,7 +17,6 @@ import {
   saveDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import { SignupModel } from "server/features/direct-signup/directSignupSchema";
-import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
 import {
   findProgramItems,
   saveProgramItems,
@@ -30,7 +29,13 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import {
+  DirectSignupFixture,
+  withUserId,
+  withUserIds,
+} from "server/test/utils/withUserId";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
@@ -46,7 +51,7 @@ test("should add new direct sign-up for user", async () => {
   await saveProgramItems([testProgramItem]);
 
   const response = unsafelyUnwrap(
-    await saveDirectSignup(mockPostDirectSignupRequest),
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
   );
 
   expect(response.programItemId).toEqual(testProgramItem.programItemId);
@@ -56,10 +61,10 @@ test("should add new direct sign-up for user", async () => {
 test("should delete direct sign-up from user", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   const response = unsafelyUnwrap(
-    await delDirectSignup(mockPostDirectSignupRequest),
+    await delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
   );
 
   expect(response.userSignups.length).toEqual(0);
@@ -68,7 +73,7 @@ test("should delete direct sign-up from user", async () => {
 test("should fetch program item direct sign-ups", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   const response = unsafelyUnwrap(
     await findDirectSignupsByProgramItemIds([testProgramItem.programItemId]),
@@ -85,7 +90,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
   await saveUser(mockUser4);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
-  const signups: SignupRepositoryAddSignup[] = [
+  const signups: DirectSignupFixture[] = [
     mockPostDirectSignupRequest,
     { ...mockPostDirectSignupRequest, username: mockUser2.username },
     { ...mockPostDirectSignupRequest, username: mockUser3.username },
@@ -94,7 +99,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const response = unsafelyUnwrap(
-    await saveDirectSignups(signups, programItems),
+    await saveDirectSignups(await withUserIds(signups), programItems),
   );
   expect(response.modifiedCount).toEqual(1);
   expect(response.droppedSignups).toHaveLength(2);
@@ -111,15 +116,17 @@ test("should set count to total userSignups when appending to a program item tha
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 5 }]);
 
   // Pre-existing sign-up, e.g. a non-lottery sign-up or one left over from a moved program item
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   const programItems = unsafelyUnwrap(await findProgramItems());
 
   // Assignment appends a new sign-up to the same program item document
-  const signups: SignupRepositoryAddSignup[] = [
+  const signups: DirectSignupFixture[] = [
     { ...mockPostDirectSignupRequest, username: mockUser2.username },
   ];
-  unsafelyUnwrap(await saveDirectSignups(signups, programItems));
+  unsafelyUnwrap(
+    await saveDirectSignups(await withUserIds(signups), programItems),
+  );
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
@@ -133,10 +140,10 @@ test("should not add multiple duplicate direct sign-ups for same user", async ()
   await saveProgramItems([testProgramItem]);
 
   await Promise.all([
-    saveDirectSignup(mockPostDirectSignupRequest),
-    saveDirectSignup(mockPostDirectSignupRequest),
-    saveDirectSignup(mockPostDirectSignupRequest),
-    saveDirectSignup(mockPostDirectSignupRequest),
+    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    saveDirectSignup(await withUserId(mockPostDirectSignupRequest)),
   ]);
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
@@ -150,20 +157,22 @@ test("should remove several users' direct sign-ups in one delDirectSignups call"
   await saveUser(mockUser2);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 5 }]);
 
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser2.username,
-  });
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser2.username,
+    }),
+  );
 
   unsafelyUnwrap(
     await delDirectSignups([
       {
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         directSignupProgramItemId: testProgramItem.programItemId,
       },
       {
-        username: mockUser2.username,
+        userId: await getUserId(mockUser2.username),
         directSignupProgramItemId: testProgramItem.programItemId,
       },
     ]),
@@ -178,13 +187,13 @@ test("should remove several users' direct sign-ups in one delDirectSignups call"
 test("should not delete multiple times if delete called multiple times", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   await Promise.all([
-    delDirectSignup(mockPostDirectSignupRequest),
-    delDirectSignup(mockPostDirectSignupRequest),
-    delDirectSignup(mockPostDirectSignupRequest),
-    delDirectSignup(mockPostDirectSignupRequest),
+    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
+    delDirectSignup(await withUserId(mockPostDirectSignupRequest)),
   ]);
 
   const signupsAfterSave = unsafelyUnwrap(await findDirectSignups());
@@ -205,7 +214,7 @@ test("should find a parent-batched item's direct sign-ups by its own start time"
 
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   const programItems = unsafelyUnwrap(await findProgramItems());
 
@@ -231,17 +240,19 @@ test("should find a parent-batched item's direct sign-ups by its own start time"
 // Usernames are validated for length only, so one can start with "$". Inside an
 // aggregation pipeline that is a field path unless the value is marked as data.
 const dollarPrefixedUsername = "$admin";
+const dollarPrefixedUserId = "dollar-prefixed-user-id";
 
 test("should delete a direct sign-up from a user whose name starts with $", async () => {
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
+    userId: dollarPrefixedUserId,
     username: dollarPrefixedUsername,
   });
 
   unsafelyUnwrap(
     await delDirectSignup({
-      username: dollarPrefixedUsername,
+      userId: dollarPrefixedUserId,
       directSignupProgramItemId: testProgramItem.programItemId,
     }),
   );
@@ -255,6 +266,7 @@ test("should bulk delete direct sign-ups from a user whose name starts with $", 
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
+    userId: dollarPrefixedUserId,
     username: dollarPrefixedUsername,
   });
 
@@ -266,7 +278,7 @@ test("should bulk delete direct sign-ups from a user whose name starts with $", 
   unsafelyUnwrap(
     await delDirectSignups([
       {
-        username: dollarPrefixedUsername,
+        userId: dollarPrefixedUserId,
         directSignupProgramItemId: testProgramItem.programItemId,
       },
     ]),
@@ -284,15 +296,15 @@ test("should count existing attendees against maxAttendance when appending", asy
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
   // One spot already taken, so only one of the two new sign-ups fits
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const response = unsafelyUnwrap(
     await saveDirectSignups(
-      [
+      await withUserIds([
         { ...mockPostDirectSignupRequest, username: mockUser2.username },
         { ...mockPostDirectSignupRequest, username: mockUser3.username },
-      ],
+      ]),
       programItems,
     ),
   );
@@ -314,10 +326,13 @@ test("should report the assignment's direct sign-ups as dropped when the program
 
   const programItems = unsafelyUnwrap(await findProgramItems());
   const response = unsafelyUnwrap(
-    await saveDirectSignups([mockPostDirectSignupRequest], programItems),
+    await saveDirectSignups(
+      await withUserIds([mockPostDirectSignupRequest]),
+      programItems,
+    ),
   );
 
-  expect(response.droppedSignups).toEqual([mockPostDirectSignupRequest]);
+  expect(response.droppedSignups).toMatchObject([mockPostDirectSignupRequest]);
   expect(unsafelyUnwrap(await findDirectSignups())).toEqual([]);
 });
 
@@ -338,7 +353,9 @@ test("should treat an assignment's direct sign-ups as saved when the sign-up doc
   });
 
   const response = unsafelyUnwrap(
-    await saveDirectSignups([mockPostDirectSignupRequest], [programItem]),
+    await saveDirectSignups(await withUserIds([mockPostDirectSignupRequest]), [
+      programItem,
+    ]),
   );
 
   expect(response.droppedSignups).toEqual([]);
@@ -354,7 +371,7 @@ test("should treat an assignment's direct sign-ups as saved when the sign-up doc
 test("should keep existing direct sign-ups when the empty sign-up document is created again", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   unsafelyUnwrap(
     await createEmptyDirectSignupDocumentForProgramItems([
@@ -443,22 +460,23 @@ test("should report an assignment's direct sign-up the attendance cap cut from a
   await saveUser(mockUser2);
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser2.username,
-  });
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser2.username,
+    }),
+  );
 
   // The lottery places somebody already in the program item, so the write rewrites their entry
   // rather than adding one, and drops nothing on its own
   const response = unsafelyUnwrap(
-    await saveDirectSignups(
-      [mockPostDirectSignupRequest],
-      [{ ...testProgramItem, maxAttendance: 1 }],
-    ),
+    await saveDirectSignups(await withUserIds([mockPostDirectSignupRequest]), [
+      { ...testProgramItem, maxAttendance: 1 },
+    ]),
   );
 
-  expect(response.droppedSignups).toEqual([mockPostDirectSignupRequest]);
+  expect(response.droppedSignups).toMatchObject([mockPostDirectSignupRequest]);
 
   const signups = unsafelyUnwrap(await findDirectSignups());
   expect(

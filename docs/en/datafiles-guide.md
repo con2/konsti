@@ -26,6 +26,7 @@ Confirmed sign-ups (both lottery-assigned and direct sign-ups).
     "programItemId": "example-program",
     "userSignups": [
       {
+        "userId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42", // Present from the next event onward
         "username": "123456",
         "priority": 1, // See "Priority values" below
         "signedToStartTime": "2024-07-19T15:00:00Z",
@@ -229,4 +230,4 @@ Application settings dump. Not required for statistics.
 - **Lottery preference satisfaction**: In `direct-signups.json` or `results.json`, check how many users got their 1st choice (priority 1) vs 2nd or 3rd.
 - **Group sign-ups**: Users with matching non-zero `groupCode` in `users.json` signed up as a group and were assigned together.
 - **Filter cancelled programs**: Exclude program items where `state` is `"cancelled"` in `program-items.json`.
-- **Join data**: Use `programItemId` to join between files, and `username` to join users with their sign-ups and results.
+- **Join data**: Use `programItemId` to join between files, and `username` to join users with their sign-ups and results. `userId` works too in dumps that have it.

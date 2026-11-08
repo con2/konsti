@@ -44,7 +44,18 @@ const checkUpcomingDirectSignups = async (
   programItems: ProgramItem[],
   timeNow: Date,
 ): Promise<PostCreateGroupError | PostJoinGroupError | null> => {
-  const userDirectSignupsResult = await findUserDirectSignups(username);
+  const userForSignupsResult = await findUser(username);
+  if (!userForSignupsResult.ok || !userForSignupsResult.value) {
+    return {
+      message: "Error finding user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const userDirectSignupsResult = await findUserDirectSignups(
+    userForSignupsResult.value.userId,
+  );
   if (!userDirectSignupsResult.ok) {
     return {
       message: "Error finding signups",

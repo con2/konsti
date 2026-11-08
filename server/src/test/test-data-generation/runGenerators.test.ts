@@ -53,7 +53,7 @@ test("event log phase empties the sign-up documents an earlier import created in
     (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
   );
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   expect(newAssignments).toHaveLength(1);
   expect(directSignups).toHaveLength(1);

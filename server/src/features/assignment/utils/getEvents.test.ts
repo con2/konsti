@@ -32,6 +32,7 @@ test("should not produce negative max or min greater than max when existing dire
       programItemId: programItem.programItemId,
       count: 3,
       userSignups: ["user1", "user2", "user3"].map((username) => ({
+        userId: `${username}-id`,
         username,
         priority: DIRECT_SIGNUP_PRIORITY,
         signedToStartTime: changedStartTime,
@@ -124,6 +125,7 @@ test("should count a direct sign-up made for this same start time against capaci
       count: 1,
       userSignups: [
         {
+          userId: "user-id",
           username: "some username",
           priority: 1,
           signedToStartTime: testProgramItem.startTime,

@@ -49,6 +49,7 @@ import {
 import { authorizedAs } from "server/test/utils/authorizedAs";
 import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -218,8 +219,8 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
       userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
     await saveFavorite({
       userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
@@ -243,7 +244,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
@@ -252,7 +253,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   test("should clean but not remove direct sign-up document when program item is hidden", async () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     const signupsBefore = unsafelyUnwrap(await findDirectSignups());
     expect(signupsBefore).toHaveLength(1);

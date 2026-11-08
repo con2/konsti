@@ -89,6 +89,7 @@ export const saveUserSignupResults = async ({
   const newSignups: SignupRepositoryAddSignup[] = resultsToSave.map(
     (result) => {
       return {
+        userId: result.userId,
         username: result.username,
         directSignupProgramItemId: result.assignmentSignup.programItemId,
         // The hour of the slot they won, which for a batched program item is not the hour its
@@ -132,7 +133,11 @@ export const saveUserSignupResults = async ({
 interface RemoveReplacedSignupsParams {
   assignmentTime: string;
   finalResults: readonly UserAssignmentResult[];
-  existingSignups: readonly { username: string; programItemId: string }[];
+  existingSignups: readonly {
+    userId: string;
+    username: string;
+    programItemId: string;
+  }[];
   startTimeByProgramItemId: ReadonlyMap<string, string>;
 }
 
@@ -170,7 +175,7 @@ const removeReplacedSignups = async ({
         );
       })
       .map((signup) => ({
-        username: signup.username,
+        userId: signup.userId,
         directSignupProgramItemId: signup.programItemId,
       })),
   );
@@ -190,7 +195,11 @@ const removeReplacedSignups = async ({
 interface DropResultsThatDoNotFitParams {
   results: readonly UserAssignmentResult[];
   assignmentTime: string;
-  existingSignups: readonly { username: string; programItemId: string }[];
+  existingSignups: readonly {
+    userId: string;
+    username: string;
+    programItemId: string;
+  }[];
   programItems: readonly ProgramItem[];
   groupCodeByUsername: ReadonlyMap<string, string>;
 }

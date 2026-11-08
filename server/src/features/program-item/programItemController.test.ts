@@ -56,6 +56,7 @@ import { saveTestSettings } from "server/test/test-settings/testSettingsReposito
 import { authorizedAs } from "server/test/utils/authorizedAs";
 import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -84,14 +85,18 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveUser(mockUser);
 
     const publicMessage = "Answer to public message";
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      message: publicMessage,
-    });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      message: "Answer to private message",
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        message: publicMessage,
+      }),
+    );
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        message: "Answer to private message",
+      }),
+    );
 
     await saveSignupQuestion({
       programItemId: testProgramItem.programItemId,
@@ -136,8 +141,8 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     ]);
     await saveUser(mockUser);
 
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
@@ -304,8 +309,8 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
     await saveFavorite({
       userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
@@ -335,7 +340,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
 
     const updatedSignups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(updatedSignups).toHaveLength(1);
     expect(updatedSignups[0].programItemId).toEqual(
@@ -458,8 +463,8 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
       userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
     await saveFavorite({
       userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
@@ -493,7 +498,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);

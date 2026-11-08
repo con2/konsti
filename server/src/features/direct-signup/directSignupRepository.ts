@@ -205,21 +205,21 @@ export const findDirectSignupsByStartTimes = async (
 };
 
 export const findUserDirectSignups = async (
-  username: string,
+  userId: string,
 ): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
   try {
     const response = await SignupModel.find({
-      "userSignups.username": username,
+      "userSignups.userId": userId,
     }).lean();
 
-    logger.debug(`MongoDB: Found signups for user ${username}`);
+    logger.debug(`MongoDB: Found signups for user ${userId}`);
 
     return makeSuccessResult(
       parseSignupDocuments(response, "findUserDirectSignups"),
     );
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error finding signups for user ${username}`, {
+      new Error(`MongoDB: Error finding signups for user ${userId}`, {
         cause: error,
       }),
     );
@@ -231,6 +231,7 @@ export const saveDirectSignup = async (
   signupsRequest: SignupRepositoryAddSignup,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const {
+    userId,
     username,
     directSignupProgramItemId,
     signedToStartTime,
@@ -251,11 +252,12 @@ export const saveDirectSignup = async (
       {
         programItemId: directSignupProgramItemId,
         count: { $lt: programItemResult.value.maxAttendance },
-        "userSignups.username": { $ne: username },
+        "userSignups.userId": { $ne: userId },
       },
       {
         $addToSet: {
           userSignups: {
+            userId,
             username,
             priority,
             signedToStartTime,
@@ -330,19 +332,19 @@ const findSignupsNotSaved = async (
   }
   const { signups, presentProgramItemIds } = documentsResult.value;
 
-  const savedUsernamesByProgramItemId = new Map(
+  const savedUserIdsByProgramItemId = new Map(
     signups.map((signup) => [
       signup.programItemId,
-      new Set(signup.userSignups.map((userSignup) => userSignup.username)),
+      new Set(signup.userSignups.map((userSignup) => userSignup.userId)),
     ]),
   );
   const notSaved = Object.values(signupsByProgramItems)
     .flat()
     .filter((signup) => {
-      const savedUsernames = savedUsernamesByProgramItemId.get(
+      const savedUserIds = savedUserIdsByProgramItemId.get(
         signup.directSignupProgramItemId,
       );
-      if (!savedUsernames) {
+      if (!savedUserIds) {
         // No document to update and the write does not create one, so nothing was stored.
         // Saying otherwise would send an acceptance email for a spot that does not exist.
         if (!presentProgramItemIds.has(signup.directSignupProgramItemId)) {
@@ -364,7 +366,7 @@ const findSignupsNotSaved = async (
         return false;
       }
 
-      return !savedUsernames.has(signup.username);
+      return !savedUserIds.has(signup.userId);
     });
 
   if (notSaved.length > 0) {
@@ -387,13 +389,13 @@ const appendSignupsPipeline = (
   directSignups: readonly SignupRepositoryAddSignup[],
   maxAttendance: number,
 ): object[] => {
-  // $literal: a username is data, and one starting with "$" would otherwise be read as a field
-  // path and match nothing
-  const appendedUsernames = {
-    $literal: directSignups.map((signup) => signup.username),
+  // $literal: the ids are data, and must never be read as an expression
+  const appendedUserIds = {
+    $literal: directSignups.map((signup) => signup.userId),
   };
   const appendedSignups = {
     $literal: directSignups.map((signup) => ({
+      userId: signup.userId,
       username: signup.username,
       priority: signup.priority,
       signedToStartTime: new Date(signup.signedToStartTime),
@@ -415,7 +417,7 @@ const appendSignupsPipeline = (
                 $filter: {
                   input: { $ifNull: ["$userSignups", []] },
                   cond: {
-                    $not: [{ $in: ["$$this.username", appendedUsernames] }],
+                    $not: [{ $in: ["$$this.userId", appendedUserIds] }],
                   },
                 },
               },
@@ -497,23 +499,22 @@ export const saveDirectSignups = async (
 
 interface DelDirectSignupParams {
   directSignupProgramItemId: string;
-  username: string;
+  userId: string;
 }
 
 // Drop the user's sign-ups and recompute count from what is left, rather than decrementing it.
 // count gates the sign-up endpoint's capacity check, and a decrement drifts from the array
 // whenever it removes more than one entry
-const removeUsernamePipeline = (username: string): object[] => [
+const removeUserIdPipeline = (userId: string): object[] => [
   {
     $set: {
       userSignups: {
         $filter: {
           input: "$userSignups",
           as: "userSignup",
-          // $literal: a username is data, and one starting with "$" would
-          // otherwise be read as a field path and match nothing
+          // $literal: the id is data, and must never be read as an expression
           cond: {
-            $ne: ["$$userSignup.username", { $literal: username }],
+            $ne: ["$$userSignup.userId", { $literal: userId }],
           },
         },
       },
@@ -526,7 +527,7 @@ const removeUsernamePipeline = (username: string): object[] => [
 
 export const delDirectSignup = async ({
   directSignupProgramItemId,
-  username,
+  userId,
 }: DelDirectSignupParams): Promise<
   Result<DirectSignupsForProgramItem, MongoDbError>
 > => {
@@ -534,29 +535,29 @@ export const delDirectSignup = async ({
     const signup = await SignupModel.findOneAndUpdate(
       {
         programItemId: directSignupProgramItemId,
-        "userSignups.username": username,
+        "userSignups.userId": userId,
       },
-      removeUsernamePipeline(username),
+      removeUserIdPipeline(userId),
       { returnDocument: "after", updatePipeline: true },
     ).lean();
 
     if (!signup) {
       logger.error(
         new Error(
-          `Signups to program item ${directSignupProgramItemId} for user ${username} not found`,
+          `Signups to program item ${directSignupProgramItemId} for user ${userId} not found`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
     const signupStillRemaining = signup.userSignups.some(
-      (userSignup) => userSignup.username === username,
+      (userSignup) => userSignup.userId === userId,
     );
 
     if (signupStillRemaining) {
       logger.error(
         new Error(
-          `Error removing signup to program item ${directSignupProgramItemId} from user ${username}`,
+          `Error removing signup to program item ${directSignupProgramItemId} from user ${userId}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -565,7 +566,7 @@ export const delDirectSignup = async ({
     logger.info(
       `MongoDB: Direct signup to '${
         directSignupProgramItemId
-      }' removed from user '${username}'`,
+      }' removed from user '${userId}'`,
     );
 
     const result = DirectSignupSchemaDb.safeParse(signup);
@@ -582,7 +583,7 @@ export const delDirectSignup = async ({
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${username}`,
+        `MongoDB: Error deleting signup to program item ${directSignupProgramItemId} from user ${userId}`,
         { cause: error },
       ),
     );
@@ -600,13 +601,13 @@ export const delDirectSignups = async (
 
   try {
     await SignupModel.bulkWrite(
-      signups.map(({ directSignupProgramItemId, username }) => ({
+      signups.map(({ directSignupProgramItemId, userId }) => ({
         updateOne: {
           filter: {
             programItemId: directSignupProgramItemId,
-            "userSignups.username": username,
+            "userSignups.userId": userId,
           },
-          update: removeUsernamePipeline(username),
+          update: removeUserIdPipeline(userId),
         },
       })),
     );

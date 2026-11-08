@@ -34,6 +34,7 @@ const directSignup = (
   programItemId: programItem.programItemId,
   count: userCount,
   userSignups: Array.from({ length: userCount }, (_, index) => ({
+    userId: "user-id",
     username: `user${index}`,
     priority: 0,
     signedToStartTime: ITEM_START,
@@ -96,6 +97,7 @@ const signupsAt = (signupTimes: string[]): DirectSignupsForProgramItem => ({
   programItemId: programItem.programItemId,
   count: signupTimes.length,
   userSignups: signupTimes.map((signupTime, index) => ({
+    userId: "user-id",
     username: `user${index}`,
     priority: 0,
     signedToStartTime: ITEM_START,

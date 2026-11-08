@@ -94,6 +94,7 @@ export const createEventLogItems = async (): Promise<void> => {
       }
 
       const saveResult = await saveDirectSignup({
+        userId: user.userId,
         username: user.username,
         directSignupProgramItemId: wonSignup.programItemId,
         // A spot is held for the hour its attendee turns up, so the program item's own start

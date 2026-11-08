@@ -29,7 +29,7 @@ import { logger } from "server/utils/logger";
 
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
-  username: string,
+  { userId, username }: { userId: string; username: string },
 ): Promise<PostDirectSignupResponse> => {
   const { directSignupProgramItemId } = signupRequest;
 
@@ -137,6 +137,7 @@ export const storeDirectSignup = async (
 
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
+    userId,
     username,
     // User-made direct sign-ups are always first-come-first-served; the priority is set
     // here rather than trusted from the request
@@ -171,7 +172,7 @@ export const storeDirectSignup = async (
 
   // The user missing from the stored sign-ups means the program item was full
   const newSignup = signup.userSignups.find(
-    (userSignup) => userSignup.username === username,
+    (userSignup) => userSignup.userId === userId,
   );
 
   if (newSignup) {
@@ -218,7 +219,7 @@ export const storeDirectSignup = async (
 
 export const removeDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
-  username: string,
+  userId: string,
 ): Promise<DeleteDirectSignupResponse> => {
   const { directSignupProgramItemId } = signupRequest;
 
@@ -261,7 +262,7 @@ export const removeDirectSignup = async (
 
   const signupResult = await delDirectSignup({
     directSignupProgramItemId: signupRequest.directSignupProgramItemId,
-    username,
+    userId,
   });
   if (!signupResult.ok) {
     return {

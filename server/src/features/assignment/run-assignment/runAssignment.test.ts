@@ -61,6 +61,7 @@ import { getUserId } from "server/test/utils/getUserId";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import {
   NotificationTaskType,
@@ -424,7 +425,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // User has previous direct LARP sign-up at the same start time
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const programItemsWithSignups = signupsBeforeUpdate.filter(
@@ -490,11 +491,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // This sign-up should not be removed even if start time is same as assignment time
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      username: mockUser2.username,
-      signedToStartTime: testProgramItem.startTime,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        username: mockUser2.username,
+        signedToStartTime: testProgramItem.startTime,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -582,11 +585,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     // An always-open spot is first-come-first-served, so it doesn't settle mockUser: they
     // stay in the lottery and the spot it gives them takes the place of this one
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      signedToStartTime: testProgramItem.startTime,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        signedToStartTime: testProgramItem.startTime,
+        directSignupProgramItemId: directSignupAlwaysOpenId,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -658,12 +663,14 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // This sign-up should not be removed even if start time is same as assignment time
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      username: mockUser2.username,
-      signedToStartTime: testProgramItem.startTime,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        username: mockUser2.username,
+        signedToStartTime: testProgramItem.startTime,
+        directSignupProgramItemId: directSignupAlwaysOpenId,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -736,7 +743,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // User has previous sign-up from the moved program item
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     await ProgramItemModel.updateOne(
       { programItemId: testProgramItem.programItemId },
@@ -798,7 +805,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     // User 1 has previous sign-up from moved program item - this sign-up should not be removed
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     await ProgramItemModel.updateOne(
       { programItemId: testProgramItem.programItemId },
@@ -897,40 +904,46 @@ describe("Assignment with first time bonus", () => {
       lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
     });
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      username: mockUser.username,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        1,
-      ).toISOString(),
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        username: mockUser.username,
+        signedToStartTime: subHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
+      }),
+    );
 
     // Non-lottery sign-up (tournament) should not affect the bonus
-    await saveDirectSignup({
-      username: mockUser2.username,
-      directSignupProgramItemId: tournamentProgramItemId,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        1,
-      ).toISOString(),
-      signupTime: testProgramItem.startTime,
-      message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        username: mockUser2.username,
+        directSignupProgramItemId: tournamentProgramItemId,
+        signedToStartTime: subHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
+        signupTime: testProgramItem.startTime,
+        message: "",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      }),
+    );
 
     // 'directSignupAlwaysOpen' sign-up should not affect the bonus
-    await saveDirectSignup({
-      username: mockUser2.username,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        2,
-      ).toISOString(),
-      signupTime: testProgramItem.startTime,
-      message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        username: mockUser2.username,
+        directSignupProgramItemId: directSignupAlwaysOpenId,
+        signedToStartTime: subHours(
+          new Date(testProgramItem.startTime),
+          2,
+        ).toISOString(),
+        signupTime: testProgramItem.startTime,
+        message: "",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
     const programItemsWithSignups = signupsBeforeUpdate.filter(
@@ -1201,10 +1214,12 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     // First-come-first-served spot on testProgramItem...
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
 
     // ...but a lottery preference for testProgramItem2 at the same time
     await saveLotterySignups({
@@ -1276,12 +1291,14 @@ describe("The lottery for a start time runs once", () => {
       await saveUser({ ...mockUser2, groupCode, isGroupCreator: false });
       await saveUser({ ...mockUser3, groupCode, isGroupCreator: false });
 
-      await saveDirectSignup({
-        ...mockPostDirectSignupRequest,
-        directSignupProgramItemId: alwaysOpenId,
-        signedToStartTime: testProgramItem.startTime,
-        username,
-      });
+      await saveDirectSignup(
+        await withUserId({
+          ...mockPostDirectSignupRequest,
+          directSignupProgramItemId: alwaysOpenId,
+          signedToStartTime: testProgramItem.startTime,
+          username,
+        }),
+      );
 
       await saveLotterySignups({
         userId: await getUserId(mockUser.username),
@@ -1448,10 +1465,12 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
 
     await saveLotterySignups({
       userId: await getUserId(mockUser2.username),
@@ -1500,10 +1519,12 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
 
     await saveLotterySignups({
       userId: await getUserId(mockUser2.username),
@@ -1547,11 +1568,13 @@ describe("The lottery for a start time runs once", () => {
       userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-      priority: 1,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+        priority: 1,
+      }),
+    );
 
     unsafelyUnwrap(
       await runAssignment({
@@ -1637,10 +1660,12 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
     await saveLotterySignups({
       userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
@@ -1673,10 +1698,12 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
     await saveLotterySignups({
       userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
@@ -1690,7 +1717,7 @@ describe("The lottery for a start time runs once", () => {
     );
 
     await delDirectSignup({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       directSignupProgramItemId: testProgramItem.programItemId,
     });
 
@@ -1758,11 +1785,13 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser2);
     await saveUser(mockUser3);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-      priority: 1,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+        priority: 1,
+      }),
+    );
     await saveLotterySignups({
       userId: await getUserId(mockUser2.username),
       lotterySignups: [
@@ -1856,7 +1885,7 @@ describe("The lottery for a start time runs once", () => {
 
     // One member gives their spot up, then the program item moves onto the group's next slot
     await delDirectSignup({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       directSignupProgramItemId: testProgramItem.programItemId,
     });
     await saveProgramItems([

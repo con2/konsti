@@ -42,6 +42,7 @@ import {
 } from "server/test/utils/lotteryClock";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import {
   NotificationQueueService,
   NotificationTaskType,
@@ -158,8 +159,8 @@ test("should remove lottery sign-ups and favorites when program item is deleted 
 test("should remove direct sign-ups when program item is deleted and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup(mockPostDirectSignupRequest2);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
   // This will delete program items
   await saveProgramItems([]);
@@ -269,8 +270,8 @@ test("should remove lottery sign-ups but keep favorites when program item is can
 test("should remove direct sign-ups when program item is cancelled and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup(mockPostDirectSignupRequest2);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
   await saveProgramItems([
     { ...testProgramItem, state: State.CANCELLED },
@@ -283,7 +284,7 @@ test("should remove direct sign-ups when program item is cancelled and add notif
 
   // Should have removed direct sign-ups
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   expect(directSignups).toHaveLength(0);
 
@@ -326,7 +327,7 @@ test("should remove direct sign-ups when program item is cancelled and add notif
 test("should send email when program item is cancelled", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   await saveProgramItems([{ ...testProgramItem, state: State.CANCELLED }]);
 
@@ -339,7 +340,7 @@ test("should send email when program item is cancelled", async () => {
 test("should send email when program item is deleted", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   // This will delete the program item
   await saveProgramItems([]);
@@ -353,7 +354,7 @@ test("should send email when program item is deleted", async () => {
 test("should send email when program item start time changes", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   await saveProgramItems([
     {
@@ -437,7 +438,7 @@ test("should remove lottery sign-ups but not favorites when program item doesn't
 test("should keep direct sign-up when program item programType is changed to non-lottery type and don't add notification", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   await saveProgramItems([
     { ...testProgramItem, programType: ProgramType.OTHER },
@@ -445,7 +446,7 @@ test("should keep direct sign-up when program item programType is changed to non
 
   // Direct sign-up remains valid - the item still exists and still uses Konsti sign-up
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   expect(directSignups).toHaveLength(1);
 
@@ -460,8 +461,8 @@ test("should keep direct sign-up when program item programType is changed to non
 test("should remove direct sign-ups when program item doesn't use Konsti sign-up anymore and add notification", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup(mockPostDirectSignupRequest2);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
   await saveProgramItems([
     { ...testProgramItem, signupType: SignupType.OTHER },
@@ -470,7 +471,7 @@ test("should remove direct sign-ups when program item doesn't use Konsti sign-up
 
   // Should have removed direct sign-ups
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   expect(directSignups).toHaveLength(0);
 
@@ -517,7 +518,7 @@ test("should remove direct sign-ups when program item doesn't use Konsti sign-up
 test("should not add duplicate notification when program item is cancelled and user has direct sign-up, lottery sign-up and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
@@ -546,7 +547,7 @@ test("should not add duplicate notification when program item is cancelled and u
 test("should not add duplicate notification when signupType is changed away from Konsti and user has direct sign-up, lottery sign-up and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
@@ -575,7 +576,7 @@ test("should not add duplicate notification when signupType is changed away from
 test("should not add any notification when programType is changed to non-lottery type and user has direct sign-up, lottery sign-up and favorite", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
@@ -789,8 +790,8 @@ test("should add event notification if user has lottery sign-up and program item
 test("should add event notification if user has direct sign-up and program item start time changes", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
-  await saveDirectSignup(mockPostDirectSignupRequest2);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
   await saveProgramItems([
     {
@@ -861,7 +862,7 @@ test("should mark a lottery program item that already holds direct sign-ups as n
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
   await saveProgramItems([testProgramItem]);
 
@@ -889,11 +890,11 @@ test("should keep a program item out of the lottery after its direct sign-ups ar
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
   await saveProgramItems([testProgramItem]);
 
   await delDirectSignup({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     directSignupProgramItemId: testProgramItem.programItemId,
   });
   await saveProgramItems([testProgramItem]);
@@ -915,7 +916,7 @@ test("should remove lottery sign-ups made for a program item that stops taking p
   await withLotteryStillAhead(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
@@ -936,7 +937,7 @@ test("should keep lottery sign-ups whose lottery has run when a program item sto
   await withLotteryJustRun(testProgramItem);
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup(mockPostDirectSignupRequest);
+  await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
@@ -970,10 +971,12 @@ test("should mark a program item holding direct sign-ups that moves onto a slot 
   const earlyProgramItem = { ...testProgramItem, startTime: earlyStartTime };
   await saveProgramItems([earlyProgramItem]);
   await saveUser(mockUser);
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    signedToStartTime: earlyStartTime,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      signedToStartTime: earlyStartTime,
+    }),
+  );
 
   // Nothing to take away at the early slot: its direct sign-up is open on the schedule, so the
   // save leaves it unmarked and the mark below can only come from the move

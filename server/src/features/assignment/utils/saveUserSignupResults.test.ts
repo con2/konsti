@@ -44,6 +44,7 @@ import { findSignupsByProgramItem } from "server/test/utils/findSignupsByProgram
 import { getUserId } from "server/test/utils/getUserId";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { logger } from "server/utils/logger";
 import {
   NotificationQueueService,
@@ -572,16 +573,20 @@ test("should remove all of a winner's existing same-time direct sign-ups, not ju
   ]);
 
   // Two existing direct sign-ups for the same start time
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    directSignupProgramItemId: alwaysOpenId1,
-    signedToStartTime: testProgramItem.startTime,
-  });
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    directSignupProgramItemId: alwaysOpenId2,
-    signedToStartTime: testProgramItem.startTime,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: alwaysOpenId1,
+      signedToStartTime: testProgramItem.startTime,
+    }),
+  );
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: alwaysOpenId2,
+      signedToStartTime: testProgramItem.startTime,
+    }),
+  );
 
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
@@ -907,11 +912,13 @@ test("should keep a spot held at another hour when a batched lottery places the 
   ]);
 
   // They already hold a spot in the later sub-session
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    directSignupProgramItemId: testProgramItem2.programItemId,
-    signedToStartTime: laterStartTime,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+      signedToStartTime: laterStartTime,
+    }),
+  );
 
   await saveLotterySignups({
     userId: await getUserId(mockUser.username),
@@ -955,10 +962,12 @@ test("should replace a winner's own direct sign-up for the program item they win
   // state, since it skips a program item holding sign-ups, so the case is driven here directly
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
 
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser.username,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+    }),
+  );
 
   const results: UserAssignmentResult[] = await Promise.all(
     [mockUser, mockUser2].map(async (user) =>
@@ -1166,16 +1175,20 @@ test("should drop a whole group whose program item no longer has room for all of
     { ...testProgramItem2, startTime: testProgramItem.startTime },
   ]);
 
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser3.username,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser3.username,
+    }),
+  );
   // Held at the hour the group is being placed at, so a placement would replace it
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser.username,
-    directSignupProgramItemId: testProgramItem2.programItemId,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser.username,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+    }),
+  );
 
   const results: UserAssignmentResult[] = await Promise.all(
     [mockUser, mockUser2].map(async (user) =>
@@ -1226,10 +1239,12 @@ test("should place a whole group that still has room for all of it", async () =>
   // One spot more than the case above, so the same group fits
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 3 }]);
 
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser3.username,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser3.username,
+    }),
+  );
 
   const results: UserAssignmentResult[] = await Promise.all(
     [mockUser, mockUser2].map(async (user) =>
@@ -1275,11 +1290,13 @@ test("should place a winner whose username names an Object prototype member", as
   ]);
 
   // Held by somebody else, so the winner being looked up has nothing of their own
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser2.username,
-    directSignupProgramItemId: testProgramItem2.programItemId,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser2.username,
+      directSignupProgramItemId: testProgramItem2.programItemId,
+    }),
+  );
 
   const results: UserAssignmentResult[] = [
     {
@@ -1330,10 +1347,12 @@ test("should drop a whole group whose room is taken by a spot the write has not 
     { ...testProgramItem2, startTime: testProgramItem.startTime },
   ]);
 
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser3.username,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser3.username,
+    }),
+  );
 
   const results: UserAssignmentResult[] = [
     {
@@ -1427,16 +1446,20 @@ test("should displace spots at every hour a batched lottery placed somebody at",
     },
   ]);
 
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    directSignupProgramItemId: heldAtFirstHourId,
-  });
-  await saveDirectSignup({
-    ...mockPostDirectSignupRequest,
-    username: mockUser2.username,
-    directSignupProgramItemId: heldAtLaterHourId,
-    signedToStartTime: laterStartTime,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      directSignupProgramItemId: heldAtFirstHourId,
+    }),
+  );
+  await saveDirectSignup(
+    await withUserId({
+      ...mockPostDirectSignupRequest,
+      username: mockUser2.username,
+      directSignupProgramItemId: heldAtLaterHourId,
+      signedToStartTime: laterStartTime,
+    }),
+  );
 
   unsafelyUnwrap(
     await saveUserSignupResults({

@@ -54,6 +54,7 @@ import {
 import { authorizedAs } from "server/test/utils/authorizedAs";
 import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { NewUser } from "server/types/userTypes";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -140,7 +141,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(200);
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups[0].userSignups[0].priority).toEqual(DIRECT_SIGNUP_PRIORITY);
   });
@@ -208,7 +209,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.errorId).toEqual("hidden");
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(0);
   });
@@ -253,7 +254,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.errorId).toEqual("invalidProgramItem");
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(0);
   });
@@ -318,7 +319,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.status).toEqual("success");
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(1);
   });
@@ -383,7 +384,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.status).toEqual("success");
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(1);
   });
@@ -419,7 +420,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
 
     const nonModifiedSignups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(nonModifiedSignups.length).toEqual(0);
 
@@ -439,7 +440,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.status).toEqual("success");
 
     const modifiedSignups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
 
     expect(modifiedSignups[0].programItemId).toEqual(
@@ -525,7 +526,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.status).toEqual("success");
 
     const modifiedSignups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
 
     expect(
@@ -574,7 +575,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser3);
 
     // Save on sign-up -> one seat left
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     // Save two more sign-ups at the same time -> one should fail and only one sign-up collection should exist
     await Promise.all([
@@ -664,10 +665,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveGroupCode("group-123", mockUser2.username);
 
     // Fill the single seat so the group creator's sign-up below fails
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser3.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser3.username,
+      }),
+    );
 
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
@@ -804,10 +807,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     });
 
     // Fill the single spot so mockUser's sign-up below can't land
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser2.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      }),
+    );
 
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
@@ -889,10 +894,10 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     const nonModifiedSignup = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
 
     expect(nonModifiedSignup[0].programItemId).toEqual(
@@ -915,7 +920,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(body.status).toEqual("success");
 
     const modifiedSignup = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(modifiedSignup.length).toEqual(0);
   });

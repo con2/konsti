@@ -220,10 +220,10 @@ export const storeUserPassword = async (
   };
 };
 
-export const fetchUserByUsername = async (
-  username: string,
+export const fetchUserByUserId = async (
+  userId: string,
 ): Promise<GetUserResponse> => {
-  const userResult = await findUser(username);
+  const userResult = await findUserByUserId(userId);
   if (!userResult.ok) {
     return {
       message: "Getting user data failed",
@@ -235,13 +235,13 @@ export const fetchUserByUsername = async (
   const user = userResult.value;
   if (!user) {
     return {
-      message: `User ${username} not found`,
+      message: `User ${userId} not found`,
       status: "error",
       errorId: "unknown",
     };
   }
 
-  const signupsResult = await findUserDirectSignups(username);
+  const signupsResult = await findUserDirectSignups(userId);
   if (!signupsResult.ok) {
     return {
       message: "Getting user data failed",
@@ -253,7 +253,7 @@ export const fetchUserByUsername = async (
   const directSignups: DirectSignup[] = signupsResult.value.flatMap(
     (signup) => {
       const signupForUser = signup.userSignups.find(
-        (userSignup) => userSignup.username === username,
+        (userSignup) => userSignup.userId === userId,
       );
       if (!signupForUser) {
         return [];
