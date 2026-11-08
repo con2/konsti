@@ -44,7 +44,6 @@ describe(`GET ${ApiEndpoint.RESULTS}`, () => {
     const results: UserAssignmentResult[] = [
       {
         userId: "testuser-id",
-        username: "testuser",
         assignmentSignup: {
           programItemId: testProgramItem.programItemId,
           priority: 1,
@@ -55,8 +54,6 @@ describe(`GET ${ApiEndpoint.RESULTS}`, () => {
     const groups: AssignmentResultGroup[] = [
       {
         groupCode: "1234",
-        groupCreator: "testuser",
-        groupMembers: ["testuser", "testuser2"],
         groupCreatorId: "testuser-id",
         groupMemberIds: ["testuser-id", "testuser2-id"],
       },

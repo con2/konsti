@@ -61,7 +61,6 @@ export const formatResults = (
       if (assignmentSignup) {
         acc.push({
           userId: attendee.userId,
-          username: attendee.username,
           assignmentSignup,
         });
       }

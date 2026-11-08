@@ -12,7 +12,7 @@ export interface HistoryComparison {
 const placementKeys = (results: readonly UserAssignmentResult[]): Set<string> =>
   new Set(
     results.map(
-      (result) => `${result.username}:${result.assignmentSignup.programItemId}`,
+      (result) => `${result.userId}:${result.assignmentSignup.programItemId}`,
     ),
   );
 

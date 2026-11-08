@@ -284,7 +284,7 @@ describe("Assignment cronjob", () => {
     // Everybody got something they had ranked, and heard about it once
     unsafelyUnwrap(await verifyUserSignups());
     await assertUserUpdatedCorrectly(
-      unsafelyUnwrap(await findUsers()).map((user) => user.username),
+      unsafelyUnwrap(await findUsers()).map((user) => user.userId),
     );
     await assertAssignmentInvariants(batchStartTime);
   });

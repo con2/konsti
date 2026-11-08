@@ -67,7 +67,7 @@ export const removeOverlapLotterySignups = async (
     if (!signedUser) {
       logger.error(
         new Error(
-          `removeOverlapLotterySignups: Error finding signed user: ${result.username}`,
+          `removeOverlapLotterySignups: Error finding signed user: ${result.userId}`,
         ),
       );
       continue;

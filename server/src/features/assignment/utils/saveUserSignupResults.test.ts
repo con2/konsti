@@ -135,7 +135,6 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items and email noti
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
     }),
   ];
 
@@ -194,7 +193,6 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
     }),
   ];
 
@@ -386,7 +384,6 @@ test("should only add one event log item with multiple lottery sign-ups", async 
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
     }),
   ];
 
@@ -450,19 +447,15 @@ test("should not add event log items after assignment if a direct sign-up is dro
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
     }),
     getAssignmentResult({
       userId: await getUserId(mockUser2.username),
-      username: mockUser2.username,
     }),
     getAssignmentResult({
       userId: await getUserId(mockUser3.username),
-      username: mockUser3.username,
     }),
     getAssignmentResult({
       userId: await getUserId(mockUser4.username),
-      username: mockUser4.username,
     }),
   ];
 
@@ -515,7 +508,6 @@ test("should give users a NO_ASSIGNMENT message when multiple direct sign-ups ar
     lotteryUsers.map(async (user) =>
       getAssignmentResult({
         userId: await getUserId(user.username),
-        username: user.username,
       }),
     ),
   );
@@ -611,7 +603,6 @@ test("should remove all of a winner's existing same-time direct sign-ups, not ju
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
     }),
   ];
 
@@ -654,7 +645,6 @@ test("should not send notifications to users without email addresses but still c
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(userWithoutEmail.username),
-      username: userWithoutEmail.username,
     }),
   ];
 
@@ -732,7 +722,6 @@ test("should summarize sent and skipped emails once the queue drains", async () 
     results: [
       getAssignmentResult({
         userId: await getUserId(userWithoutEmail.username),
-        username: userWithoutEmail.username,
       }),
     ],
   });
@@ -776,7 +765,6 @@ test("should respect email notification permissions based on email field", async
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(userWithEmail.username),
-      username: userWithEmail.username,
     }),
   ];
 
@@ -886,7 +874,6 @@ test("should store the won slot's own start time on a batched program item's dir
   const results: UserAssignmentResult[] = [
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
     }),
   ];
 
@@ -957,7 +944,6 @@ test("should keep a spot held at another hour when a batched lottery places the 
       results: [
         getAssignmentResult({
           userId: await getUserId(mockUser.username),
-          username: mockUser.username,
         }),
       ],
       users: unsafelyUnwrap(await findUsers()),
@@ -998,7 +984,6 @@ test("should replace a winner's own direct sign-up for the program item they win
     [mockUser, mockUser2].map(async (user) =>
       getAssignmentResult({
         userId: await getUserId(user.username),
-        username: user.username,
       }),
     ),
   );
@@ -1223,7 +1208,6 @@ test("should drop a whole group whose program item no longer has room for all of
     [mockUser, mockUser2].map(async (user) =>
       getAssignmentResult({
         userId: await getUserId(user.username),
-        username: user.username,
       }),
     ),
   );
@@ -1279,7 +1263,6 @@ test("should place a whole group that still has room for all of it", async () =>
     [mockUser, mockUser2].map(async (user) =>
       getAssignmentResult({
         userId: await getUserId(user.username),
-        username: user.username,
       }),
     ),
   );
@@ -1329,7 +1312,6 @@ test("should drop a whole group whose room is taken by a spot the write has not 
   const results: UserAssignmentResult[] = [
     {
       userId: await getUserId(mockUser3.username),
-      username: mockUser3.username,
       assignmentSignup: {
         programItemId: testProgramItem2.programItemId,
         priority: 1,
@@ -1340,7 +1322,6 @@ test("should drop a whole group whose room is taken by a spot the write has not 
       [mockUser, mockUser2].map(async (user) =>
         getAssignmentResult({
           userId: await getUserId(user.username),
-          username: user.username,
         }),
       ),
     )),
@@ -1437,11 +1418,9 @@ test("should displace spots at every hour a batched lottery placed somebody at",
       results: [
         getAssignmentResult({
           userId: await getUserId(mockUser.username),
-          username: mockUser.username,
         }),
         {
           userId: await getUserId(mockUser2.username),
-          username: mockUser2.username,
           assignmentSignup: {
             programItemId: testProgramItem2.programItemId,
             priority: 1,

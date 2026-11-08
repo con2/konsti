@@ -261,7 +261,7 @@ const dropResultsThatDoNotFit = ({
     if (!fits) {
       logger.error(
         new Error(
-          `Assignment ${assignmentTime}: dropping ${groupResults.length} result(s) that no longer fit, leaving the attendees' existing sign-ups in place: ${groupResults.map((result) => result.username).join(", ")}`,
+          `Assignment ${assignmentTime}: dropping ${groupResults.length} result(s) that no longer fit, leaving the attendees' existing sign-ups in place: ${groupResults.map((result) => result.userId).join(", ")}`,
         ),
       );
       return [];

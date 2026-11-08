@@ -25,8 +25,7 @@ test("should give every generated user a username of their own", async () => {
   const groupCount = 2;
 
   // Force the collision the random names only produce once in a few thousand
-  // runs: two users sharing a username both take part in the assignment, but
-  // every username-filtered write lands on whichever was stored first
+  // runs: the unique index would reject the second user and fail the whole run
   vi.spyOn(faker.internet, "username").mockReturnValue("sameName");
 
   await createIndividualUsers(individualCount);

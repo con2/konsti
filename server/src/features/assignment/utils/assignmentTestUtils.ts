@@ -45,18 +45,15 @@ export const getPreviousDirectSignup = ({
 // A lottery placing the user into the program item at its own start time
 export const getAssignmentResult = ({
   userId,
-  username,
   programItem = testProgramItem,
   priority = 1,
 }: {
   userId: string;
-  username: string;
   programItem?: ProgramItem;
   priority?: number;
 }): UserAssignmentResult => {
   return {
     userId,
-    username,
     assignmentSignup: {
       programItemId: programItem.programItemId,
       priority,

@@ -133,9 +133,12 @@ export const verifyUserSignups = async (): Promise<
 };
 
 export const assertUserUpdatedCorrectly = async (
-  usernames: string[],
+  userIds: string[],
 ): Promise<void> => {
-  const users = unsafelyUnwrap(await findUsers(usernames));
+  const users = unsafelyUnwrap(await findUsers()).filter((user) =>
+    userIds.includes(user.userId),
+  );
+  expect(users).toHaveLength(userIds.length);
 
   for (const user of users) {
     const newAssignmentEventLogItems = user.eventLogItems.filter(

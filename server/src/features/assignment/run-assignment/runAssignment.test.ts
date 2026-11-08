@@ -158,7 +158,7 @@ describe("Assignment with valid data", () => {
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(expectedResultsCount);
 
-    const updatedUsers = assignResults.results.map((result) => result.username);
+    const updatedUsers = assignResults.results.map((result) => result.userId);
     await assertUserUpdatedCorrectly(updatedUsers);
     await assertAssignmentInvariants(assignmentTime);
 
@@ -180,9 +180,7 @@ describe("Assignment with valid data", () => {
 
     expect(assignResults2.results.length).toEqual(expectedResultsCount);
 
-    const updatedUsers2 = assignResults2.results.map(
-      (result) => result.username,
-    );
+    const updatedUsers2 = assignResults2.results.map((result) => result.userId);
     await assertUserUpdatedCorrectly(updatedUsers2);
     await assertAssignmentInvariants(startTime2);
   });
@@ -230,9 +228,7 @@ describe.each([
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
       expect(assignResults.results.length).toEqual(placedAttendees);
 
-      const updatedUsers = assignResults.results.map(
-        (result) => result.username,
-      );
+      const updatedUsers = assignResults.results.map((result) => result.userId);
       await assertUserUpdatedCorrectly(updatedUsers);
       await assertAssignmentInvariants(assignmentTime);
 
@@ -313,7 +309,6 @@ describe.each([
       expect(assignResults.results[0]).toMatchObject(
         getAssignmentResult({
           userId: await getUserId(mockUser.username),
-          username: mockUser.username,
         }),
       );
 
@@ -366,11 +361,9 @@ describe.each([
       expect(assignResults.results).toMatchObject([
         getAssignmentResult({
           userId: await getUserId(mockUser.username),
-          username: mockUser.username,
         }),
         getAssignmentResult({
           userId: await getUserId(mockUser2.username),
-          username: mockUser2.username,
         }),
       ]);
 
@@ -607,12 +600,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(
       assignResults.results
-        .map((result) => result.username)
+        .map((result) => result.userId)
         .toSorted((a, b) => a.localeCompare(b)),
     ).toEqual(
-      [mockUser.username, mockUser2.username].toSorted((a, b) =>
-        a.localeCompare(b),
-      ),
+      [
+        await getUserId(mockUser.username),
+        await getUserId(mockUser2.username),
+      ].toSorted((a, b) => a.localeCompare(b)),
     );
 
     const signupsByProgramItem = await findSignupsByProgramItem();
@@ -1090,8 +1084,8 @@ describe("The lottery for a start time runs once", () => {
         assignmentTime: testProgramItem.startTime,
       }),
     );
-    expect(firstRun.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(firstRun.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
 
     // A second attendee enters and the start time is run again with two of its three spots
@@ -1315,13 +1309,15 @@ describe("The lottery for a start time runs once", () => {
       );
 
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
-      const placedUsernames = assignResults.results.map(
-        (result) => result.username,
+      const placedUserIds = assignResults.results.map(
+        (result) => result.userId,
       );
-      expect(placedUsernames.toSorted((a, b) => a.localeCompare(b))).toEqual(
-        [mockUser.username, mockUser2.username, mockUser3.username].toSorted(
-          (a, b) => a.localeCompare(b),
-        ),
+      expect(placedUserIds.toSorted((a, b) => a.localeCompare(b))).toEqual(
+        [
+          await getUserId(mockUser.username),
+          await getUserId(mockUser2.username),
+          await getUserId(mockUser3.username),
+        ].toSorted((a, b) => a.localeCompare(b)),
       );
 
       const signupsByProgramItem = await findSignupsByProgramItem();
@@ -1380,8 +1376,8 @@ describe("The lottery for a start time runs once", () => {
       }),
     );
 
-    expect(assignResults.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(assignResults.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
     expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
       testProgramItem.programItemId,
@@ -1762,8 +1758,8 @@ describe("The lottery for a start time runs once", () => {
         assignmentTime: testProgramItem.startTime,
       }),
     );
-    expect(assignResults.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(assignResults.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
   });
 
@@ -1925,12 +1921,13 @@ describe("The lottery for a start time runs once", () => {
     // Both of them, together, rather than neither
     expect(
       laterRun.results
-        .map((result) => result.username)
+        .map((result) => result.userId)
         .toSorted((a, b) => a.localeCompare(b)),
     ).toEqual(
-      [mockUser.username, mockUser2.username].toSorted((a, b) =>
-        a.localeCompare(b),
-      ),
+      [
+        await getUserId(mockUser.username),
+        await getUserId(mockUser2.username),
+      ].toSorted((a, b) => a.localeCompare(b)),
     );
 
     const signupsByProgramItem = await findSignupsByProgramItem();
@@ -2006,8 +2003,8 @@ describe("The lottery for a start time runs once", () => {
         assignmentTime: laterStartTime,
       }),
     );
-    expect(laterRun.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(laterRun.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
     expect(laterRun.results[0].assignmentSignup.programItemId).toEqual(
       testProgramItem2.programItemId,
@@ -2249,8 +2246,6 @@ test("Should write a snapshot of the lottery groups to the results collection", 
   expect(savedResults[0].groups).toEqual([
     {
       groupCode,
-      groupCreator: mockUser.username,
-      groupMembers: [mockUser.username, mockUser2.username],
       groupCreatorId: await getUserId(mockUser.username),
       groupMemberIds: [
         await getUserId(mockUser.username),
@@ -2350,7 +2345,6 @@ test("Should keep a past lottery sign-up but not let it affect an upcoming lotte
   expect(assignResults.results[0]).toMatchObject(
     getAssignmentResult({
       userId: await getUserId(mockUser.username),
-      username: mockUser.username,
       programItem: currentProgramItem,
     }),
   );

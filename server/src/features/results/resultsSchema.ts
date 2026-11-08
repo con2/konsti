@@ -9,7 +9,6 @@ export const ResultsSchemaDb = z
     results: z.array(
       z.object({
         userId: z.string(),
-        username: z.string(),
         assignmentSignup: z.object({
           programItemId: z.string(),
           priority: z.number(),
@@ -21,8 +20,6 @@ export const ResultsSchemaDb = z
     groups: z.array(
       z.object({
         groupCode: z.string(),
-        groupCreator: z.string(),
-        groupMembers: z.array(z.string()),
         groupCreatorId: z.string(),
         groupMemberIds: z.array(z.string()),
       }),
@@ -45,14 +42,11 @@ const assignmentSignupSchema = new mongoose.Schema({
 
 const resultsArraySchema = new mongoose.Schema({
   userId: { type: String, required: true },
-  username: { type: String, required: true },
   assignmentSignup: { type: assignmentSignupSchema, required: true },
 });
 
 const groupSchema = new mongoose.Schema({
   groupCode: { type: String, required: true },
-  groupCreator: { type: String, required: true },
-  groupMembers: { type: [String], required: true },
   groupCreatorId: { type: String, required: true },
   groupMemberIds: { type: [String], required: true },
 });
