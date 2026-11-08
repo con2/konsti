@@ -458,7 +458,6 @@ export const fetchGroup = async (
     groupCode: result.groupCode,
     isGroupCreator: result.isGroupCreator,
     lotterySignups: result.lotterySignups,
-    serial: result.serial,
     username: result.username,
   }));
 
