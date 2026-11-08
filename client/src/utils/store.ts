@@ -55,7 +55,6 @@ const rootReducer = (
 const ignoredActions = new Set([
   "allProgramItems/submitGetProgramItemsAsync", // Program items is huge
   "admin/submitGetSignupMessagesAsync", // Private
-  "admin/updateServerAppBuildTime", // Dispatched on every poll, would crowd out useful breadcrumbs
 ]);
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

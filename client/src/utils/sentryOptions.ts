@@ -1,14 +1,16 @@
 import {
+  type Breadcrumb,
   type BrowserOptions,
   thirdPartyErrorFilterIntegration,
 } from "@sentry/react";
 import { config } from "shared/config";
 import { sentryDataCollection } from "shared/config/sentryConfig";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { ApiDevEndpoint, ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   injectedScriptFilterOptions,
   isBundleStamped,
 } from "client/utils/injectedScriptFilter";
+import { updateServerAppBuildTime } from "client/views/admin/adminSlice";
 
 const getDsn = (): string | undefined => {
   switch (process.env.SETTINGS) {
@@ -23,6 +25,36 @@ const getDsn = (): string | undefined => {
     default:
       return undefined;
   }
+};
+
+// The requests the data polling loop repeats every interval
+const polledPaths = new Set<string>([
+  ApiEndpoint.SETTINGS,
+  ApiDevEndpoint.TEST_SETTINGS,
+  ApiEndpoint.PROGRAM_ITEMS,
+  ApiEndpoint.USERS,
+  ApiEndpoint.GROUP,
+  ApiEndpoint.SIGNUP_MESSAGE,
+]);
+
+const isPolledRequest = (data: Breadcrumb["data"]): boolean => {
+  if (data?.method !== "GET" || typeof data.url !== "string") {
+    return false;
+  }
+  return polledPaths.has(new URL(data.url, location.href).pathname);
+};
+
+// A poll that succeeded, or one that found nothing new, would crowd the useful breadcrumbs out
+// of the buffer, so only a failed one is kept
+const isPollNoise = (breadcrumb: Breadcrumb): boolean => {
+  if (breadcrumb.category === "redux.action") {
+    return breadcrumb.data?.type === updateServerAppBuildTime.type;
+  }
+  if (breadcrumb.category !== "fetch" || !isPolledRequest(breadcrumb.data)) {
+    return false;
+  }
+  const status: unknown = breadcrumb.data?.status_code;
+  return typeof status === "number" && status < 400;
 };
 
 export const getSentryOptions = (): BrowserOptions => {
@@ -48,5 +80,8 @@ export const getSentryOptions = (): BrowserOptions => {
     dataCollection: sentryDataCollection,
     // A captured non-Error has no stack of its own, and a synthetic one would group it by call site
     attachStacktrace: false,
+    beforeBreadcrumb: (breadcrumb) => {
+      return isPollNoise(breadcrumb) ? null : breadcrumb;
+    },
   };
 };
