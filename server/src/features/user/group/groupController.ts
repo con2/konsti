@@ -11,13 +11,13 @@ import {
   joinGroup,
   leaveGroup,
 } from "server/features/user/group/groupService";
-import { getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId } from "server/middleware/requireAuth";
 
 export const postCreateGroup = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  const response = await createGroup(getAuthUsername(req));
+  const response = await createGroup(getAuthUserId(req));
   return res.json(response);
 };
 
@@ -26,7 +26,7 @@ export const postJoinGroup = async (
   res: Response,
 ): Promise<Response> => {
   const { groupCode } = req.body;
-  const response = await joinGroup(getAuthUsername(req), groupCode);
+  const response = await joinGroup(getAuthUserId(req), groupCode);
   return res.json(response);
 };
 
@@ -34,7 +34,7 @@ export const postLeaveGroup = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  const response = await leaveGroup(getAuthUsername(req));
+  const response = await leaveGroup(getAuthUserId(req));
   return res.json(response);
 };
 
@@ -43,7 +43,7 @@ export const postCloseGroup = async (
   res: Response,
 ): Promise<Response> => {
   const { groupCode } = req.body;
-  const response = await closeGroup(groupCode, getAuthUsername(req));
+  const response = await closeGroup(groupCode, getAuthUserId(req));
   return res.json(response);
 };
 
@@ -52,6 +52,6 @@ export const getGroup = async (
   res: Response,
 ): Promise<Response> => {
   const { groupCode } = req.query;
-  const response = await fetchGroup(groupCode, getAuthUsername(req));
+  const response = await fetchGroup(groupCode, getAuthUserId(req));
   return res.json(response);
 };

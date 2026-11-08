@@ -598,7 +598,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
-    await saveGroupCode("group-123", mockUser.username);
+    await saveGroupCode("group-123", await getUserId(mockUser.username));
 
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
@@ -625,8 +625,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
-    await saveGroupCreator("group-123", true, mockUser.username);
-    await saveGroupCode("group-123", mockUser2.username);
+    await saveGroupCreator(
+      "group-123",
+      true,
+      await getUserId(mockUser.username),
+    );
+    await saveGroupCode("group-123", await getUserId(mockUser2.username));
 
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
@@ -661,8 +665,12 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
-    await saveGroupCreator("group-123", true, mockUser.username);
-    await saveGroupCode("group-123", mockUser2.username);
+    await saveGroupCreator(
+      "group-123",
+      true,
+      await getUserId(mockUser.username),
+    );
+    await saveGroupCode("group-123", await getUserId(mockUser2.username));
 
     // Fill the single seat so the group creator's sign-up below fails
     await saveDirectSignup(
@@ -709,7 +717,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
-    await saveGroupCode("group-123", mockUser.username);
+    await saveGroupCode("group-123", await getUserId(mockUser.username));
 
     const signup: PostDirectSignupRequest = {
       directSignupProgramItemId: testProgramItem.programItemId,
