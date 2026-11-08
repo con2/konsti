@@ -3,34 +3,34 @@
   "algorithm": "random",
   "totals": {
     "runs": 2,
-    "entrants": 357,
-    "placed": 260,
-    "placedByPriority": [198, 33, 29],
-    "spotsOffered": 260,
+    "entrants": 1809,
+    "placed": 1800,
+    "placedByPriority": [715, 546, 539],
+    "spotsOffered": 2730,
     "programItemsUnderMinAttendance": 0
   },
   "runs": [
     {
       "assignmentTime": "2024-09-06T12:00:00Z",
       "status": "success",
-      "entrants": 220,
-      "placed": 130,
-      "placedByPriority": [101, 17, 12],
-      "programItemsLotteried": 1,
-      "spotsOffered": 130,
+      "entrants": 953,
+      "placed": 972,
+      "placedByPriority": [377, 282, 313],
+      "programItemsLotteried": 13,
+      "spotsOffered": 1690,
       "programItemsUnderMinAttendance": 0,
-      "placementsDigest": "fd98b660f74d8972"
+      "placementsDigest": "1629b629f16cb61b"
     },
     {
       "assignmentTime": "2024-09-07T06:30:00Z",
       "status": "success",
-      "entrants": 137,
-      "placed": 130,
-      "placedByPriority": [97, 16, 17],
-      "programItemsLotteried": 1,
-      "spotsOffered": 130,
+      "entrants": 856,
+      "placed": 828,
+      "placedByPriority": [338, 264, 226],
+      "programItemsLotteried": 8,
+      "spotsOffered": 1040,
       "programItemsUnderMinAttendance": 0,
-      "placementsDigest": "98e512917eaf4d27"
+      "placementsDigest": "ab3b65fd2a906180"
     }
   ]
 }
