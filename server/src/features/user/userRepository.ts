@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { MongoDbError } from "shared/types/api/errors";
 import { User, UserGroup } from "shared/types/models/user";
 import {
@@ -26,6 +27,7 @@ export const saveUser = async (
   newUserData: NewUser,
 ): Promise<Result<User, MongoDbError>> => {
   const newUser: Omit<User, "createdAt"> = {
+    userId: randomUUID(),
     kompassiId: newUserData.kompassiId,
     kompassiUsernameAccepted: false,
     username: newUserData.username,

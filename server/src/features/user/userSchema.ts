@@ -30,6 +30,7 @@ const EventLogItemSchemaDb = z.object({
 
 export const UserSchemaDb = z
   .object({
+    userId: z.string(),
     kompassiId: z.string(),
     kompassiUsernameAccepted: z.boolean(),
     username: z.string(),
@@ -86,6 +87,7 @@ const eventLogItemSchema = new mongoose.Schema(
 
 const userSchema = new mongoose.Schema(
   {
+    userId: { type: String, required: true, unique: true },
     // No `required`: "" is the meaningful value for a local account, and the
     // global validator override that lets empty strings satisfy `required`
     // only loads with the Express app - tests connecting straight to the DB

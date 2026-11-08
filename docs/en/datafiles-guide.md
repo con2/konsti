@@ -145,6 +145,7 @@ In Ropecon 2023-2024 and Tracon 2024, a handful of direct sign-up rows (12 in to
 ```jsonc
 [
   {
+    "userId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42", // Present from the next event onward, random per event
     "kompassiId": "", // See "kompassiId values" below
     "kompassiUsernameAccepted": false, // true once a Kompassi login user has accepted their Konsti username
     "username": "123456",
@@ -204,6 +205,7 @@ Application settings dump. Not required for statistics.
 ## Conventions to know
 
 - **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018-2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
+- **`userId` values**: random and generated per event, so anonymization leaves them as they are and they cannot link a user across events. Dumps taken before the field existed do not have it.
 - **`kompassiId` values**: always a string. `""` means the user signed up with a registration code; `"<redacted>"` means they used a Kompassi account. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method. This matches the live DB, which stores the Kompassi OIDC `sub` claim, or `""` for a local account.
 - **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.

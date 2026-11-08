@@ -102,6 +102,8 @@ When the unwrapped value is used **once**, inline `usersResult.value` at the use
 
 Local login (bcryptjs) and Kompassi OIDC (authorization code flow against `{KOMPASSI_BASE_URL}/oidc/authorize/` → `/oidc/token/` → `/oidc/userinfo/`; the `sub` claim is stored as `kompassiId`).
 
+`userId`, a UUID generated in `saveUser`, is a user's stable identity. `username` is the login handle and display name.
+
 **`kompassiId` must only ever meet a fresh database.** It holds the OIDC `sub` as a **string**, where the pre-OIDC code stored the legacy `/api/v2/people/me` numeric `id`. Both halves of that change break matching against rows written by the older code: Mongo queries are type-strict, so `findOne({kompassiId: "12"})` does not match a stored `12`, and `UserSchemaDb` now rejects a numeric `kompassiId` on every read — which fails `findUser`/`findUserByKompassiId`/session restore for **all** users, not just Kompassi ones. (Kompassi's own docs also call `sub` a different ID space from the legacy Person id, though the two values coincide in practice.) The per-event DB lifecycle already guarantees this, but a mid-event deploy against a populated DB, or a restored older dump, would silently re-create every Kompassi account with a fresh serial. Reset the local dev DB after pulling this. JWTs are signed/verified in `server/src/utils/jwt.ts` (per-role secret keys); the `Authorization: Bearer <jwt>` header is parsed in `utils/authHeader.ts` and enforced by `requireAuth`. User roles: admin, helper, regular user (`UserGroup` in `shared/types/models/user.ts`). The client stores the JWT in localStorage — see [client/CLAUDE.md](../client/CLAUDE.md).
 
 ## Rate Limiting

@@ -36,6 +36,18 @@ test("should insert new user into collection", async () => {
   });
 });
 
+test("should give each new user a distinct userId that reads back unchanged", async () => {
+  await saveProgramItems([testProgramItem]);
+  const firstUser = unsafelyUnwrap(await saveUser(mockUser));
+  const secondUser = unsafelyUnwrap(await saveUser(mockUser2));
+
+  expect(firstUser.userId).not.toEqual("");
+  expect(firstUser.userId).not.toEqual(secondUser.userId);
+
+  const storedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(storedUser?.userId).toEqual(firstUser.userId);
+});
+
 test("should find all users", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
