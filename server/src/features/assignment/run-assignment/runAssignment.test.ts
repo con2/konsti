@@ -1024,7 +1024,7 @@ describe("Assignment with first time bonus", () => {
 
     await addEventLogItems([
       {
-        username: mockUser2.username,
+        userId: await getUserId(mockUser2.username),
         programItemId: testProgramItem.programItemId,
         programItemStartTime: testProgramItem.startTime,
         createdAt: new Date().toISOString(),
@@ -2507,9 +2507,13 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
     (task) => task.type === NotificationTaskType.SEND_EMAIL_REJECTED,
   );
   expect(acceptedNotifications).toHaveLength(1);
-  expect(acceptedNotifications[0].username).toEqual(mockUser.username);
+  expect(acceptedNotifications[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
   expect(rejectedNotifications).toHaveLength(1);
-  expect(rejectedNotifications[0].username).toEqual(mockUser2.username);
+  expect(rejectedNotifications[0].userId).toEqual(
+    await getUserId(mockUser2.username),
+  );
 });
 
 test("Should not fail assignment or skip overlap cleanup when email queueing fails", async () => {

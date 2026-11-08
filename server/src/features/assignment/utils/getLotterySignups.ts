@@ -11,7 +11,7 @@ export const getLotterySignups = (
   for (const user of users) {
     for (const lotterySignup of user.lotterySignups) {
       lotterySignups.push({
-        username: user.username,
+        userId: user.userId,
         programItemId: lotterySignup.programItemId,
         priority: lotterySignup.priority,
         signedToStartTime: lotterySignup.signedToStartTime,

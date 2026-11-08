@@ -84,7 +84,7 @@ export const createEventLogItems = async (): Promise<void> => {
 
       if (!wonSignup || !wonProgramItem) {
         noAssignmentEventLogUpdates.push({
-          username: user.username,
+          userId: user.userId,
           programItemId: "",
           ...lotteriedSpan,
           createdAt,
@@ -110,11 +110,11 @@ export const createEventLogItems = async (): Promise<void> => {
       const userGotIn =
         saveResult.ok &&
         saveResult.value.userSignups.some(
-          (userSignup) => userSignup.username === user.username,
+          (userSignup) => userSignup.userId === user.userId,
         );
       if (!userGotIn) {
         noAssignmentEventLogUpdates.push({
-          username: user.username,
+          userId: user.userId,
           programItemId: "",
           ...lotteriedSpan,
           createdAt,
@@ -124,7 +124,7 @@ export const createEventLogItems = async (): Promise<void> => {
       }
 
       newAssignmentEventLogUpdates.push({
-        username: user.username,
+        userId: user.userId,
         programItemId: wonSignup.programItemId,
         programItemStartTime: wonSignup.signedToStartTime,
         createdAt,

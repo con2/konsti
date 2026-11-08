@@ -14,6 +14,7 @@ import { addEventLogItems } from "server/features/user/event-log/eventLogReposit
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -88,7 +89,7 @@ describe(`POST ${ApiEndpoint.EVENT_LOG_IS_SEEN}`, () => {
     await saveUser(mockUser);
     await addEventLogItems([
       {
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: "123",
         programItemStartTime: new Date().toISOString(),
         createdAt: new Date().toISOString(),

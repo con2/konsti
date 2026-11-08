@@ -2,9 +2,10 @@ import { config } from "shared/config";
 import { EMAIL_REGEX } from "shared/constants/validation";
 import { EmailSender } from "server/features/notifications/email";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { findUser } from "server/features/user/userRepository";
+import { findUserByUserId } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import {
+  EmailNotification,
   NotificationTask,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
@@ -32,11 +33,11 @@ export async function emailNotificationWorker(
   notification: NotificationTask,
 ): Promise<EmailNotificationOutcome> {
   try {
-    const userResult = await findUser(notification.username);
+    const userResult = await findUserByUserId(notification.userId);
     if (!userResult.ok) {
       logger.error(
         new Error(
-          `Failed to fetch user to send email notification ${notification.username}`,
+          `Failed to fetch user to send email notification ${notification.userId}`,
         ),
       );
       return EmailNotificationOutcome.FAILED;
@@ -47,7 +48,7 @@ export async function emailNotificationWorker(
     if (!user) {
       logger.error(
         new Error(
-          `Trying to send email notification for unknown user ${notification.username}.`,
+          `Trying to send email notification for unknown user ${notification.userId}.`,
         ),
       );
       return EmailNotificationOutcome.FAILED;
@@ -57,7 +58,10 @@ export async function emailNotificationWorker(
       return EmailNotificationOutcome.SKIPPED;
     }
 
-    const message = await generateEmail(user.email, notification);
+    const message = await generateEmail(user.email, {
+      ...notification,
+      username: user.username,
+    });
     if (message === null) {
       return EmailNotificationOutcome.FAILED;
     }
@@ -75,7 +79,7 @@ export async function emailNotificationWorker(
 
 async function generateEmail(
   email: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): Promise<EmailMessage | null> {
   const fromAddress = config.server().emailSendFromAddress;
   switch (notification.type) {
@@ -115,7 +119,7 @@ async function generateEmail(
 async function generateAcceptedEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): Promise<EmailMessage | null> {
   const programItemResult = await findProgramItemById(
     notification.programItemId,
@@ -138,7 +142,7 @@ async function generateAcceptedEmail(
 function generateRejectedEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailMessage {
   return buildEmail(getRejectedEmailTemplate(notification), email, fromAddress);
 }
@@ -146,7 +150,7 @@ function generateRejectedEmail(
 function generateProgramItemCancelledEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
@@ -166,7 +170,7 @@ function generateProgramItemCancelledEmail(
 function generateProgramItemDeletedEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
@@ -186,7 +190,7 @@ function generateProgramItemDeletedEmail(
 function generateProgramItemNoKonstiSignupEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
@@ -206,7 +210,7 @@ function generateProgramItemNoKonstiSignupEmail(
 function generateProgramItemNoLotteryEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(
@@ -226,7 +230,7 @@ function generateProgramItemNoLotteryEmail(
 function generateProgramItemTimeChangedEmail(
   email: string,
   fromAddress: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailMessage | null {
   if (!notification.programItemTitle) {
     logger.error(

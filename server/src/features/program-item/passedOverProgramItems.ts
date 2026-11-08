@@ -99,24 +99,23 @@ export const removePassedOverLotterySignups = async (
     return usersResult;
   }
 
-  const usersToUpdate: (DeleteLotterySignupsParams & {
-    username: string;
-  })[] = usersResult.value.flatMap((user) => {
-    const lotterySignupProgramItemIds = user.lotterySignups
-      .filter((lotterySignup) =>
-        passedOverProgramItemIds.has(lotterySignup.programItemId),
-      )
-      .map((lotterySignup) => lotterySignup.programItemId);
+  const usersToUpdate: DeleteLotterySignupsParams[] = usersResult.value.flatMap(
+    (user) => {
+      const lotterySignupProgramItemIds = user.lotterySignups
+        .filter((lotterySignup) =>
+          passedOverProgramItemIds.has(lotterySignup.programItemId),
+        )
+        .map((lotterySignup) => lotterySignup.programItemId);
 
-    if (lotterySignupProgramItemIds.length === 0) {
-      return [];
-    }
-    return {
-      userId: user.userId,
-      username: user.username,
-      lotterySignupProgramItemIds,
-    };
-  });
+      if (lotterySignupProgramItemIds.length === 0) {
+        return [];
+      }
+      return {
+        userId: user.userId,
+        lotterySignupProgramItemIds,
+      };
+    },
+  );
 
   if (usersToUpdate.length === 0) {
     return makeSuccessResult();
@@ -141,7 +140,7 @@ export const removePassedOverLotterySignups = async (
         return [];
       }
       return {
-        username: user.username,
+        userId: user.userId,
         programItemId: programItem.programItemId,
         programItemStartTime: programItem.startTime,
         createdAt: new Date().toISOString(),

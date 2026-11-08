@@ -22,7 +22,7 @@ export const addEventLogItems = async (
       return {
         updateOne: {
           filter: {
-            username: newEventLogItem.username,
+            userId: newEventLogItem.userId,
           },
           update: {
             $addToSet: {
@@ -50,8 +50,8 @@ export const addEventLogItems = async (
     },
   );
 
-  const usernames = unique(
-    newEventLogItems.map((newEventLogItem) => newEventLogItem.username),
+  const userIds = unique(
+    newEventLogItems.map((newEventLogItem) => newEventLogItem.userId),
   );
   const actions = unique(
     newEventLogItems.map((newEventLogItem) => newEventLogItem.action),
@@ -60,14 +60,14 @@ export const addEventLogItems = async (
   try {
     await UserModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Added ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users`,
+      `MongoDB: Added ${newEventLogItems.length} event log items (${String(actions)}) for ${userIds.length} users`,
     );
-    logger.debug(`Event log items added for users: ${String(usernames)}`);
+    logger.debug(`Event log items added for users: ${String(userIds)}`);
     return makeSuccessResult();
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error adding ${newEventLogItems.length} event log items (${String(actions)}) for ${usernames.length} users ${String(usernames)}`,
+        `MongoDB: Error adding ${newEventLogItems.length} event log items (${String(actions)}) for ${userIds.length} users ${String(userIds)}`,
         { cause: error },
       ),
     );
@@ -77,12 +77,12 @@ export const addEventLogItems = async (
 
 export const updateEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
-  username: string,
+  userId: string,
 ): Promise<Result<EventLogItem[], MongoDbError>> => {
   const { eventLogItemId, isSeen } = request;
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username, "eventLogItems._id": eventLogItemId },
+      { userId, "eventLogItems._id": eventLogItemId },
       {
         $set: { "eventLogItems.$[logItem].isSeen": isSeen },
       },
@@ -93,9 +93,7 @@ export const updateEventLogItemIsSeen = async (
     ).lean();
 
     if (!response) {
-      logger.info(
-        `MongoDB: updateEventLogItemIsSeen user ${username} not found`,
-      );
+      logger.info(`MongoDB: updateEventLogItemIsSeen user ${userId} not found`);
       return makeErrorResult(MongoDbError.USER_OR_LOG_ITEM_NOT_FOUND);
     }
 
@@ -112,7 +110,7 @@ export const updateEventLogItemIsSeen = async (
     return makeSuccessResult(result.data.eventLogItems);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error updating event log item for user ${username}`, {
+      new Error(`MongoDB: Error updating event log item for user ${userId}`, {
         cause: error,
       }),
     );

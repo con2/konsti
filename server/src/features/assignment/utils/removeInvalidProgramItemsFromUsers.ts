@@ -29,7 +29,7 @@ interface InvalidLotterySignup {
 }
 
 interface UserToNofify {
-  username: string;
+  userId: string;
   invalidLotterySignups: InvalidLotterySignup[];
   invalidFavoriteProgramItemIds: FavoriteProgramItemId[];
 }
@@ -143,7 +143,7 @@ export const removeCancelledDeletedProgramItemsFromUsers = async ({
       changedFavoriteProgramItemIdsCount > 0
     ) {
       usersToNofify.push({
-        username: user.username,
+        userId: user.userId,
         invalidLotterySignups: removeLotterySignups,
         invalidFavoriteProgramItemIds,
       });
@@ -213,7 +213,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
     const userDirectSignups = new Set(
       affectedDirectSignups.flatMap((directSignup) => {
         const found = directSignup.userSignups.some(
-          (userSignup) => userSignup.username === user.username,
+          (userSignup) => userSignup.userId === user.userId,
         );
         if (found) {
           return directSignup.programItemId;
@@ -228,7 +228,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
           return [];
         }
         return {
-          username: user.username,
+          userId: user.userId,
           programItemId: lotterySignup.programItemId,
           programItemStartTime: lotterySignup.signedToStartTime,
           createdAt: new Date().toISOString(),
@@ -243,7 +243,7 @@ const notifyUsersWithLotterySignupOrFavorite = async (
         }
         // Favorites are removed only when the program item is deleted
         return {
-          username: user.username,
+          userId: user.userId,
           programItemId: favorite,
           programItemStartTime: new Date().toISOString(),
           createdAt: new Date().toISOString(),

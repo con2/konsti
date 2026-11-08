@@ -142,13 +142,13 @@ test("should remove lottery sign-ups and favorites when program item is deleted 
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
       }),
@@ -191,13 +191,13 @@ test("should remove direct sign-ups when program item is deleted and add notific
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
       }),
@@ -253,13 +253,13 @@ test("should remove lottery sign-ups but keep favorites when program item is can
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
       }),
@@ -310,13 +310,13 @@ test("should remove direct sign-ups when program item is cancelled and add notif
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
       }),
@@ -417,13 +417,13 @@ test("should remove lottery sign-ups but not favorites when program item doesn't
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
       }),
@@ -497,13 +497,13 @@ test("should remove direct sign-ups when program item doesn't use Konsti sign-up
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
       }),
@@ -679,7 +679,7 @@ test("should remove lottery sign-up but keep favorites when programType is chang
   expect(queuedNotifications3[0]).toEqual(
     expect.objectContaining({
       type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       programItemId: testProgramItem.programItemId,
       programItemTitle: testProgramItem.title,
     }),
@@ -765,7 +765,7 @@ test("should add event notification if user has lottery sign-up and program item
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
         programItemStartTime: addHours(
@@ -775,7 +775,7 @@ test("should add event notification if user has lottery sign-up and program item
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
         programItemStartTime: addHours(
@@ -836,7 +836,7 @@ test("should add event notification if user has direct sign-up and program item 
     expect.arrayContaining([
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem.programItemId,
         programItemTitle: testProgramItem.title,
         programItemStartTime: addHours(
@@ -846,7 +846,7 @@ test("should add event notification if user has direct sign-up and program item 
       }),
       expect.objectContaining({
         type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         programItemId: testProgramItem2.programItemId,
         programItemTitle: testProgramItem2.title,
         programItemStartTime: addHours(

@@ -13,7 +13,7 @@ export interface NewUser {
 }
 
 export interface AssignmentLotterySignup {
-  username: string;
+  userId: string;
   programItemId: string;
   priority: number;
   signedToStartTime: string;

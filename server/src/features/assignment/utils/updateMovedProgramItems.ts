@@ -17,9 +17,7 @@ import {
 import { findUsers } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
-type UsersWithMovedLotterySignups = (DeleteLotterySignupsParams & {
-  username: string;
-})[];
+type UsersWithMovedLotterySignups = DeleteLotterySignupsParams[];
 
 export const updateMovedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
@@ -128,7 +126,6 @@ const removeMovedLotterySignupsAndNotify = async (
 
     return {
       userId: user.userId,
-      username: user.username,
       lotterySignupProgramItemIds,
     };
   });
@@ -149,7 +146,7 @@ const removeMovedLotterySignupsAndNotify = async (
       }
 
       return {
-        username: user.username,
+        userId: user.userId,
         programItemId,
         programItemStartTime: movedProgramItem.startTime,
         createdAt: new Date().toISOString(),
@@ -195,14 +192,14 @@ const notifyUsersWithDirectSignups = async (
       // Different moved item must still notify
       const alreadyNotifiedForThisItem = usersWithMovedLotterySignups.some(
         (user) =>
-          user.username === userSignup.username &&
+          user.userId === userSignup.userId &&
           user.lotterySignupProgramItemIds.includes(directSignup.programItemId),
       );
       if (alreadyNotifiedForThisItem) {
         return [];
       }
       return {
-        username: userSignup.username,
+        userId: userSignup.userId,
         programItemId: directSignup.programItemId,
         programItemStartTime: movedProgramItem.startTime,
         createdAt: new Date().toISOString(),

@@ -94,10 +94,8 @@ export const addAssignmentNotifications = async ({
     startingProgramItemIds.has(lotterySignup.programItemId),
   );
 
-  const lotterySignupUsernames = unique(
-    lotterySignupsForStartingTime.map(
-      (lotterySignup) => lotterySignup.username,
-    ),
+  const lotterySignupUserIds = unique(
+    lotterySignupsForStartingTime.map((lotterySignup) => lotterySignup.userId),
   );
 
   // An attendee holding a lottery-placed spot in one of this run's own program items was placed
@@ -118,33 +116,31 @@ export const addAssignmentNotifications = async ({
       ),
     );
   }
-  const placedByLotteryUsernames = new Set(
+  const placedByLotteryUserIds = new Set(
     placedByLotteryResult.ok
       ? placedByLotteryResult.value.flatMap((directSignup) =>
           directSignup.userSignups
             .filter(
               (userSignup) => userSignup.priority !== DIRECT_SIGNUP_PRIORITY,
             )
-            .map((userSignup) => userSignup.username),
+            .map((userSignup) => userSignup.userId),
         )
       : [],
   );
 
   // Use finalResults so users whose sign-up was dropped are treated as not assigned
-  const placedNowUsernames = new Set(
-    finalResults.map((result) => result.username),
-  );
+  const placedNowUserIds = new Set(finalResults.map((result) => result.userId));
 
-  const rejectedUsernames = lotterySignupUsernames.filter(
-    (lotterySignupUsername) =>
-      !placedNowUsernames.has(lotterySignupUsername) &&
-      !placedByLotteryUsernames.has(lotterySignupUsername),
+  const rejectedUserIds = lotterySignupUserIds.filter(
+    (lotterySignupUserId) =>
+      !placedNowUserIds.has(lotterySignupUserId) &&
+      !placedByLotteryUserIds.has(lotterySignupUserId),
   );
 
   // Add NEW_ASSIGNMENT to user event logs
   const newAssignmentEventLogItemsResult = await addEventLogItems(
     finalResults.map((result) => ({
-      username: result.username,
+      userId: result.userId,
       programItemId: result.assignmentSignup.programItemId,
       programItemStartTime: result.assignmentSignup.signedToStartTime,
       createdAt: new Date().toISOString(),
@@ -170,7 +166,7 @@ export const addAssignmentNotifications = async ({
       assignmentTime,
       notifications: finalResults.map((result) => ({
         type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
-        username: result.username,
+        userId: result.userId,
         programItemId: result.assignmentSignup.programItemId,
         programItemStartTime: result.assignmentSignup.signedToStartTime,
       })),
@@ -183,7 +179,7 @@ export const addAssignmentNotifications = async ({
   }
 
   // Add NO_ASSIGNMENT to user event logs
-  if (rejectedUsernames.length === 0) {
+  if (rejectedUserIds.length === 0) {
     return;
   }
 
@@ -193,8 +189,8 @@ export const addAssignmentNotifications = async ({
   const lotteriedSpan = getLotteriedSpan(startingProgramItems, assignmentTime);
 
   const noAssignmentEventLogItemsResult = await addEventLogItems(
-    rejectedUsernames.map((rejectedUsername) => ({
-      username: rejectedUsername,
+    rejectedUserIds.map((rejectedUserId) => ({
+      userId: rejectedUserId,
       programItemId: "",
       ...lotteriedSpan,
       createdAt: new Date().toISOString(),
@@ -218,9 +214,9 @@ export const addAssignmentNotifications = async ({
     queueAssignmentEmails({
       queueService,
       assignmentTime,
-      notifications: rejectedUsernames.map((rejectedUsername) => ({
+      notifications: rejectedUserIds.map((rejectedUserId) => ({
         type: NotificationTaskType.SEND_EMAIL_REJECTED,
-        username: rejectedUsername,
+        userId: rejectedUserId,
         programItemId: "",
         ...lotteriedSpan,
       })),

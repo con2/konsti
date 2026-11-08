@@ -375,7 +375,7 @@ const notifyUsersWithDirectSignups = async (
         return [];
       }
       return directSignup.userSignups.map((userSignup) => ({
-        username: userSignup.username,
+        userId: userSignup.userId,
         programItemId,
         programItemStartTime: userSignup.signedToStartTime,
         createdAt: new Date().toISOString(),

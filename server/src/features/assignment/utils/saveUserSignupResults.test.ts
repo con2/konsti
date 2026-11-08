@@ -241,11 +241,15 @@ test("should add NEW_ASSIGNMENT and NO_ASSIGNMENT event log items for 'startTime
   const queueAfterUserSignup = queueService.getItems();
 
   expect(queueAfterUserSignup).toHaveLength(2);
-  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
+  expect(queueAfterUserSignup[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
   expect(queueAfterUserSignup[0].type).toEqual(
     NotificationTaskType.SEND_EMAIL_ACCEPTED,
   );
-  expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username);
+  expect(queueAfterUserSignup[1].userId).toEqual(
+    await getUserId(mockUser2.username),
+  );
   expect(queueAfterUserSignup[1].type).toEqual(
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
@@ -410,11 +414,15 @@ test("should only add one event log item with multiple lottery sign-ups", async 
 
   const queueAfterUserSignup = queueService.getItems();
   expect(queueAfterUserSignup).toHaveLength(2);
-  expect(queueAfterUserSignup[0].username).toEqual(mockUser.username);
+  expect(queueAfterUserSignup[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
   expect(queueAfterUserSignup[0].type).toEqual(
     NotificationTaskType.SEND_EMAIL_ACCEPTED,
   );
-  expect(queueAfterUserSignup[1].username).toEqual(mockUser2.username);
+  expect(queueAfterUserSignup[1].userId).toEqual(
+    await getUserId(mockUser2.username),
+  );
   expect(queueAfterUserSignup[1].type).toEqual(
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
@@ -665,11 +673,15 @@ test("should not send notifications to users without email addresses but still c
   const queueAfterUserSignup = queueService.getItems();
 
   expect(queueAfterUserSignup).toHaveLength(2);
-  expect(queueAfterUserSignup[0].username).toEqual(userWithoutEmail.username);
+  expect(queueAfterUserSignup[0].userId).toEqual(
+    await getUserId(userWithoutEmail.username),
+  );
   expect(queueAfterUserSignup[0].type).toEqual(
     NotificationTaskType.SEND_EMAIL_ACCEPTED,
   );
-  expect(queueAfterUserSignup[1].username).toEqual(userWithEmail.username);
+  expect(queueAfterUserSignup[1].userId).toEqual(
+    await getUserId(userWithEmail.username),
+  );
   expect(queueAfterUserSignup[1].type).toEqual(
     NotificationTaskType.SEND_EMAIL_REJECTED,
   );
