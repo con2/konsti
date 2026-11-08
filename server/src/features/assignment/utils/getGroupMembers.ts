@@ -16,7 +16,7 @@ export const getGroupMembersWithCreatorLotterySignups = (
         // User is in the group but is not the creator
         if (
           user.groupCode === groupCreator.groupCode &&
-          user.username !== groupCreator.username
+          user.userId !== groupCreator.userId
         ) {
           // Group member gets group creator's lottery sign-ups
           selectedAttendeesWithSignups.push(

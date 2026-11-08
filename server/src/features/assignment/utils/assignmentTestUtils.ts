@@ -154,7 +154,6 @@ export const getUsers = ({
 
   for (let i = 0; i < count; i++) {
     const defaultUserValues = {
-      userId: `user-id-${i}`,
       kompassiId: "",
       kompassiUsernameAccepted: false,
       password: "password",
@@ -170,6 +169,7 @@ export const getUsers = ({
     if (i === 0) {
       users.push({
         ...defaultUserValues,
+        userId: "group-creator-with-lottery-signup-id",
         username: "group-creator-with-lottery-signup",
         isGroupCreator: true,
         lotterySignups: noLotterySignups ? [] : getLotterySignups(),
@@ -185,6 +185,7 @@ export const getUsers = ({
     } else {
       users.push({
         ...defaultUserValues,
+        userId: `group-member-${i}-id`,
         username: `group-member-${i}`,
         isGroupCreator: false,
         lotterySignups: [],

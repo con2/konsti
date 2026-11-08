@@ -39,7 +39,7 @@ test("should still give the first-time bonus when a member's only direct sign-up
   // result on a re-run - it must not strip the first-time bonus
   const directSignups = [
     getPreviousDirectSignup({
-      userId: "user-id",
+      userId: user.userId,
       username: user.username,
       priority: 1,
       signedToStartTime: assignmentTime,
@@ -63,7 +63,7 @@ test("should strip the first-time bonus for a first-come-first-served direct sig
   // this lottery's output, so it should still count as "previous" even at the current time
   const directSignups = [
     getPreviousDirectSignup({
-      userId: "user-id",
+      userId: user.userId,
       username: user.username,
       priority: DIRECT_SIGNUP_PRIORITY,
       signedToStartTime: assignmentTime,
@@ -102,7 +102,7 @@ test("should strip the first-time bonus for a genuine previous direct sign-up at
 
   const directSignups = [
     getPreviousDirectSignup({
-      userId: "user-id",
+      userId: user.userId,
       username: user.username,
       priority: DIRECT_SIGNUP_PRIORITY,
       signedToStartTime: earlierStartTime,
@@ -150,7 +150,7 @@ test("should still give the first-time bonus when exactly half of the group has 
   const earlierStartTime = subHours(new Date(assignmentTime), 2).toISOString();
   const directSignups = [
     getPreviousDirectSignup({
-      userId: "user-id",
+      userId: users[0].userId,
       username: users[0].username,
       priority: DIRECT_SIGNUP_PRIORITY,
       signedToStartTime: earlierStartTime,
@@ -174,7 +174,7 @@ test("should give no bonus when more than half of the group has a previous direc
       programItemId: testProgramItem.programItemId,
       count: 2,
       userSignups: users.map((user) => ({
-        userId: "user-id",
+        userId: user.userId,
         username: user.username,
         priority: DIRECT_SIGNUP_PRIORITY,
         signedToStartTime: earlierStartTime,

@@ -62,7 +62,7 @@ export const removeOverlapLotterySignups = async (
     }
 
     const signedUser = usersResult.value.find(
-      (user) => user.username === result.username,
+      (user) => user.userId === result.userId,
     );
     if (!signedUser) {
       logger.error(

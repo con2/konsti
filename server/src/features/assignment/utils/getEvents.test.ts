@@ -125,7 +125,7 @@ test("should count a direct sign-up made for this same start time against capaci
       count: 1,
       userSignups: [
         {
-          userId: "user-id",
+          userId: "some username-id",
           username: "some username",
           priority: 1,
           signedToStartTime: testProgramItem.startTime,

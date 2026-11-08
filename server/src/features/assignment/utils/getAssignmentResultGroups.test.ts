@@ -26,8 +26,12 @@ test("should snapshot the group and its members that took part in the lottery", 
         "group-member-1",
         "group-member-2",
       ],
-      groupCreatorId: "user-id-0",
-      groupMemberIds: ["user-id-0", "user-id-1", "user-id-2"],
+      groupCreatorId: "group-creator-with-lottery-signup-id",
+      groupMemberIds: [
+        "group-creator-with-lottery-signup-id",
+        "group-member-1-id",
+        "group-member-2-id",
+      ],
     },
   ]);
 });
@@ -53,8 +57,11 @@ test("should exclude individual users not in a group", () => {
       groupCode: groupCreatorGroupCode,
       groupCreator: "group-creator-with-lottery-signup",
       groupMembers: ["group-creator-with-lottery-signup", "group-member-1"],
-      groupCreatorId: "user-id-0",
-      groupMemberIds: ["user-id-0", "user-id-1"],
+      groupCreatorId: "group-creator-with-lottery-signup-id",
+      groupMemberIds: [
+        "group-creator-with-lottery-signup-id",
+        "group-member-1-id",
+      ],
     },
   ]);
 });

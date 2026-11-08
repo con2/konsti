@@ -83,7 +83,7 @@ export const getAssignmentBonus = (
         (directSignup) => {
           return directSignup.userSignups.find(
             (userSignup) =>
-              userSignup.username === groupMember.username &&
+              userSignup.userId === groupMember.userId &&
               // Exclude this run's own win (priority > 0), but keep first-come-first-served
               // (priority 0) sign-ups counting as "previous"
               (!isThisRunsOwn(
