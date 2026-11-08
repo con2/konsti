@@ -1,5 +1,9 @@
 import { z } from "zod";
-import { StoredEmailSchema } from "shared/constants/validation";
+import {
+  StoredEmailSchema,
+  USERNAME_LENGTH_MAX,
+  USERNAME_LENGTH_MIN,
+} from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
 import { EventLogItem } from "shared/types/models/eventLog";
 import { UserGroup } from "shared/types/models/user";
@@ -92,7 +96,7 @@ export type PostKompassiLoginResponse =
 // POST Verify Kompassi login
 
 export const PostVerifyKompassiLoginRequestSchema = z.object({
-  username: z.string().trim(),
+  username: z.string().trim().min(USERNAME_LENGTH_MIN).max(USERNAME_LENGTH_MAX),
 });
 
 export type PostVerifyKompassiLoginRequest = z.infer<

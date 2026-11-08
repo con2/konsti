@@ -100,6 +100,14 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(response.status).toEqual(422);
   });
 
+  test("should return 422 with a username too short to register", async () => {
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "ab" })
+      .set(authorizedAs(UserGroup.USER, "testuser"));
+    expect(response.status).toEqual(422);
+  });
+
   test("should return 200 with valid authorization and body", async () => {
     const requestBody: PostVerifyKompassiLoginRequest = {
       username: "new_username",
