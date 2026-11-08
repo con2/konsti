@@ -19,9 +19,10 @@ export enum MongoDbError {
   USER_OR_LOG_ITEM_NOT_FOUND = "userOrLogItemNotFound",
   ASSIGNMENT_LOCK_HELD = "assignmentLockHeld",
   // A unique index rejected the write. Distinct from UNKNOWN_ERROR because it
-  // is the one write failure that means "nothing was stored", so a caller can
-  // safely retry with a different value.
+  // means nothing was stored, so a caller can safely retry with a different value.
   DUPLICATE_KEY = "duplicateKey",
+  // A new user's serial is already taken, which retrying with another username cannot fix
+  DUPLICATE_SERIAL = "duplicateSerial",
 }
 
 export enum KompassiError {

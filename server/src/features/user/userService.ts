@@ -1,3 +1,4 @@
+import { MongoDbError } from "shared/types/api/errors";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
@@ -122,6 +123,21 @@ export const storeUser = async (
           serial,
         });
         if (!saveUserResponseResult.ok) {
+          // The checks above can both pass for two simultaneous registrations
+          if (saveUserResponseResult.error === MongoDbError.DUPLICATE_SERIAL) {
+            return {
+              errorId: "invalidSerial",
+              message: "Invalid serial",
+              status: "error",
+            };
+          }
+          if (saveUserResponseResult.error === MongoDbError.DUPLICATE_KEY) {
+            return {
+              errorId: "usernameNotFree",
+              message: "Username in already registered",
+              status: "error",
+            };
+          }
           return {
             errorId: "unknown",
             message: "User registration failed",

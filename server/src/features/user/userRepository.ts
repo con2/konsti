@@ -6,7 +6,10 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { isDuplicateKeyError } from "server/db/duplicateKeyError";
+import {
+  isDuplicateKeyError,
+  isDuplicateKeyOnField,
+} from "server/db/duplicateKeyError";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { Serial } from "server/types/serialTypes";
 import { NewUser } from "server/types/userTypes";
@@ -67,8 +70,11 @@ export const saveUser = async (
         cause: error,
       }),
     );
-    // A unique index rejection means nothing was written, so callers can retry
-    // with a different username. Every other failure may have stored the row.
+    // A unique index rejection means nothing was written, which the callers
+    // act on. Every other failure may have stored the row.
+    if (isDuplicateKeyOnField(error, "serial")) {
+      return makeErrorResult(MongoDbError.DUPLICATE_SERIAL);
+    }
     if (isDuplicateKeyError(error)) {
       return makeErrorResult(MongoDbError.DUPLICATE_KEY);
     }
