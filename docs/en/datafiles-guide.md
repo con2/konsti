@@ -27,7 +27,6 @@ Confirmed sign-ups (both lottery-assigned and direct sign-ups).
     "userSignups": [
       {
         "userId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42",
-        "username": "123456",
         "priority": 1, // See "Priority values" below
         "signedToStartTime": "2024-07-19T15:00:00Z",
         "signupTime": "2024-07-17T18:34:56.789Z", // When the sign-up was stored, see below
@@ -108,7 +107,6 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
     "results": [
       {
         "userId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42",
-        "username": "123456",
         "assignmentSignup": {
           "programItemId": "example-program",
           "priority": 2, // Which preference (1st, 2nd, 3rd) was assigned
@@ -120,9 +118,7 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
       // Snapshot of the groups that took part in this lottery run
       {
         "groupCode": "abc-def-ghi",
-        "groupCreator": "123456", // Username of the group creator
-        "groupMembers": ["123456", "654321"], // All members, creator included
-        "groupCreatorId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42", // "" where groupCreator is ""
+        "groupCreatorId": "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42", // userId of the group creator
         "groupMemberIds": [
           "6f1c2f3e-7a54-4c1b-9d55-0a8f7d9b1e42",
           "2b8e4f10-93ad-4c6e-8f21-7d1c5a9e3b60",
@@ -135,7 +131,7 @@ Lottery assignment run results. Each entry represents one assignment run (the lo
 
 The same assignment data is also reflected in `direct-signups.json` (with priority > 0). This file provides the additional context of which algorithm was used and the assignment run metadata.
 
-From Ropecon 2026 onward, `groups` is a live snapshot recorded when the run happened. For older events the field was added after they ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery sign-up for the run's start time or one of its members won in that run. Backfilled group membership reflects the dump's final state, which may differ from the moment the lottery actually ran. In Ropecon 2018, 12 of the 189 backfilled group snapshots have an empty `groupCreator` (`""`) because the creator could not be reconstructed; those groups were included via a member's win.
+From Ropecon 2026 onward, `groups` is a live snapshot recorded when the run happened. For older events the field was added after they ran, so it is backfilled per run from each event's final `users.json` state: a group is included when its creator had a lottery sign-up for the run's start time or one of its members won in that run. Backfilled group membership reflects the dump's final state, which may differ from the moment the lottery actually ran. In Ropecon 2018, 12 of the 189 backfilled group snapshots have an empty `groupCreatorId` (`""`) because the creator could not be reconstructed; those groups were included via a member's win.
 
 **Wins can reference program items missing from `program-items.json`:** items deleted after their lottery keep their result rows even though the live cleanup removes every user-side reference. Joining `results.json` to `program-items.json` on `programItemId` drops these rows: 9 in Tracon Hitpoint 2023, 6 in Tracon Hitpoint 2024, and 5 in Ropecon 2026.
 
@@ -212,7 +208,7 @@ Application settings dump. Not required for statistics.
 ## Conventions to know
 
 - **Group creator identification**: a user is the group creator iff `user.isGroupCreator === true` (a creator's `groupCode` is the group's own code). Regular members have `isGroupCreator: false`. In 2018-2023 dumps the `groupCode` equals the creator's `serial`; from 2024 onward it's an unrelated UUID-style string.
-- **`userId` values**: random and generated per event, so anonymization leaves them as they are and they cannot link a user across events. Events that ran before the field existed had one generated for each user afterwards, and their sign-ups, results and group snapshots were pointed at it.
+- **`userId` values**: random and generated per event, so anonymization leaves them as they are and they cannot link a user across events. Events that ran before the field existed had one generated for each user afterwards, and their sign-ups, results and group snapshots refer to it.
 - **`kompassiId` values**: always a string. `""` means the user signed up with a registration code; `"<redacted>"` means they used a Kompassi account. Both forms only co-exist in events whose `settings.json` has `loginProvider: "local+kompassi"` (Ropecon 2025 onward). Earlier events have a single value across all rows depending on the active login method. This matches the live DB, which stores the Kompassi OIDC `sub` claim, or `""` for a local account.
 - **Popularity scale history**: Ropecon 2025 introduced the 5-bucket enum (`notSet`/`low`/`medium`/`high`/`veryHigh`/`extreme`). Pre-2025 dumps used a numeric scale that encoded only 3 buckets (`low` = under min attendance, `medium` = between min and max, `high` = at max), so normalized older dumps never carry `veryHigh` or `extreme`.
 - **Algorithm naming history**: `results.json` `algorithm` field is canonicalized to current names. `Opa` (in older `message` strings) was the older name for `padg`; `Group` was the older name for `random`. 2017 used `hungarian` (no longer in the codebase enum), and 2018 used `random`.
@@ -230,4 +226,4 @@ Application settings dump. Not required for statistics.
 - **Lottery preference satisfaction**: In `direct-signups.json` or `results.json`, check how many users got their 1st choice (priority 1) vs 2nd or 3rd.
 - **Group sign-ups**: Users with matching non-zero `groupCode` in `users.json` signed up as a group and were assigned together.
 - **Filter cancelled programs**: Exclude program items where `state` is `"cancelled"` in `program-items.json`.
-- **Join data**: Use `programItemId` to join between files, and `username` to join users with their sign-ups and results. `userId` joins them too.
+- **Join data**: Use `programItemId` to join between files, and `userId` to join users with their sign-ups and results. Only `users.json` holds usernames.
