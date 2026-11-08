@@ -2,6 +2,7 @@
   {
     "results": [
       {
+        "userId": "b789792b-bf71-4584-9bf8-5f1189aed86e",
         "username": "937874",
         "assignmentSignup": {
           "programItemId": "8359",
@@ -10,6 +11,7 @@
         }
       },
       {
+        "userId": "bf40ab1b-39e3-4841-8035-1110ea632903",
         "username": "929122",
         "assignmentSignup": {
           "programItemId": "8359",
@@ -18,6 +20,7 @@
         }
       },
       {
+        "userId": "963646ae-ffce-4869-8994-2f03926c6648",
         "username": "568609",
         "assignmentSignup": {
           "programItemId": "8359",
@@ -26,6 +29,7 @@
         }
       },
       {
+        "userId": "7288bdc3-eb35-41be-a178-e7b78bfad742",
         "username": "461959",
         "assignmentSignup": {
           "programItemId": "8359",
@@ -34,6 +38,7 @@
         }
       },
       {
+        "userId": "24486a4a-fabb-445b-bc87-7fefaa6f0c12",
         "username": "71859",
         "assignmentSignup": {
           "programItemId": "8359",
@@ -42,6 +47,7 @@
         }
       },
       {
+        "userId": "eb97c4dc-7512-411c-87ef-ccbada89c046",
         "username": "190718",
         "assignmentSignup": {
           "programItemId": "8325",
@@ -50,6 +56,7 @@
         }
       },
       {
+        "userId": "67730c01-a698-4965-9fa5-0478d692c9e7",
         "username": "973465",
         "assignmentSignup": {
           "programItemId": "8325",
@@ -58,6 +65,7 @@
         }
       },
       {
+        "userId": "4b9060cd-fec8-4fee-928d-24923426995b",
         "username": "807858",
         "assignmentSignup": {
           "programItemId": "8325",
@@ -66,6 +74,7 @@
         }
       },
       {
+        "userId": "35d1f1f1-9f5b-4989-8fe6-195bd455999a",
         "username": "601249",
         "assignmentSignup": {
           "programItemId": "8363",
@@ -74,6 +83,7 @@
         }
       },
       {
+        "userId": "b1a59d83-0509-4f47-8c20-8408df21a90a",
         "username": "82198",
         "assignmentSignup": {
           "programItemId": "8363",
@@ -82,6 +92,7 @@
         }
       },
       {
+        "userId": "0cdb3162-c1a4-4bf5-8fa0-8958a721b4a4",
         "username": "420650",
         "assignmentSignup": {
           "programItemId": "8363",
@@ -90,6 +101,7 @@
         }
       },
       {
+        "userId": "bc1560cf-d411-4c6a-827f-cddf4e7291c2",
         "username": "141399",
         "assignmentSignup": {
           "programItemId": "8363",
@@ -98,6 +110,7 @@
         }
       },
       {
+        "userId": "0ac764bc-6b23-4cae-8698-641868f10942",
         "username": "661183",
         "assignmentSignup": {
           "programItemId": "8363",
@@ -106,6 +119,7 @@
         }
       },
       {
+        "userId": "423cda16-b534-4687-b0f9-d79caf02ee19",
         "username": "896984",
         "assignmentSignup": {
           "programItemId": "8363",
@@ -114,6 +128,7 @@
         }
       },
       {
+        "userId": "c7811dc0-1bba-45bd-9740-b479c59b33dc",
         "username": "762393",
         "assignmentSignup": {
           "programItemId": "8303",
@@ -122,6 +137,7 @@
         }
       },
       {
+        "userId": "af0fb350-5449-4b0c-81b8-dfdcb58d0ad5",
         "username": "142553",
         "assignmentSignup": {
           "programItemId": "8303",
@@ -130,6 +146,7 @@
         }
       },
       {
+        "userId": "46c3b1cc-b51d-4d06-a22e-20b12404d2bc",
         "username": "222883",
         "assignmentSignup": {
           "programItemId": "8303",
@@ -138,6 +155,7 @@
         }
       },
       {
+        "userId": "aeeaebf5-65f4-4666-a8ea-8e1483b26867",
         "username": "577962",
         "assignmentSignup": {
           "programItemId": "8303",
@@ -146,6 +164,7 @@
         }
       },
       {
+        "userId": "6cfddbff-6683-4f17-99ff-416758575c7a",
         "username": "202803",
         "assignmentSignup": {
           "programItemId": "8301",
@@ -154,6 +173,7 @@
         }
       },
       {
+        "userId": "d962a4c7-e8aa-4c8d-87b9-77352783db80",
         "username": "114240",
         "assignmentSignup": {
           "programItemId": "8301",
@@ -162,6 +182,7 @@
         }
       },
       {
+        "userId": "43454abe-4a2c-4135-bdaa-04f5533c524b",
         "username": "338703",
         "assignmentSignup": {
           "programItemId": "8301",
@@ -170,6 +191,7 @@
         }
       },
       {
+        "userId": "232a6047-a447-4dc7-b566-7adc69b45fdc",
         "username": "84842",
         "assignmentSignup": {
           "programItemId": "8301",
@@ -178,6 +200,7 @@
         }
       },
       {
+        "userId": "c367b6a3-dce4-4773-8c97-d363197aef09",
         "username": "403133",
         "assignmentSignup": {
           "programItemId": "8458",
@@ -186,6 +209,7 @@
         }
       },
       {
+        "userId": "5baf5101-5f04-4e99-981e-597fce3db678",
         "username": "176292",
         "assignmentSignup": {
           "programItemId": "8458",
@@ -194,6 +218,7 @@
         }
       },
       {
+        "userId": "efaba786-4442-4547-961d-195a7e99ed2b",
         "username": "136801",
         "assignmentSignup": {
           "programItemId": "8458",
@@ -202,6 +227,7 @@
         }
       },
       {
+        "userId": "b3636626-96aa-44e7-a362-a0be1d0593ce",
         "username": "188019",
         "assignmentSignup": {
           "programItemId": "8465",
@@ -210,6 +236,7 @@
         }
       },
       {
+        "userId": "afd7a959-88fa-429f-9205-5af99dfb4b71",
         "username": "224520",
         "assignmentSignup": {
           "programItemId": "8465",
@@ -218,6 +245,7 @@
         }
       },
       {
+        "userId": "ce8f341f-4040-4e12-8f51-8b1e0c1e0e14",
         "username": "58904",
         "assignmentSignup": {
           "programItemId": "8465",
@@ -226,6 +254,7 @@
         }
       },
       {
+        "userId": "a92cdd30-8949-42a7-a28f-c083e5e82252",
         "username": "171619",
         "assignmentSignup": {
           "programItemId": "8465",
@@ -234,6 +263,7 @@
         }
       },
       {
+        "userId": "76851db1-1636-40c4-9e31-e275f5ab4e58",
         "username": "491948",
         "assignmentSignup": {
           "programItemId": "8465",
@@ -252,6 +282,7 @@
   {
     "results": [
       {
+        "userId": "e537b78e-c556-41b3-9358-688f1e07eed3",
         "username": "252424",
         "assignmentSignup": {
           "programItemId": "8319",
@@ -260,6 +291,7 @@
         }
       },
       {
+        "userId": "043a4192-f33d-4255-9352-29f6ce463f55",
         "username": "904107",
         "assignmentSignup": {
           "programItemId": "8319",
@@ -268,6 +300,7 @@
         }
       },
       {
+        "userId": "6a7f47b9-80f9-4906-8c03-4c1f034a2ec5",
         "username": "798825",
         "assignmentSignup": {
           "programItemId": "8319",
@@ -276,6 +309,7 @@
         }
       },
       {
+        "userId": "bbad4725-2777-469f-acb1-058d77f1c21a",
         "username": "647978",
         "assignmentSignup": {
           "programItemId": "8398",
@@ -284,6 +318,7 @@
         }
       },
       {
+        "userId": "1e0790a9-5532-4537-b2e0-c317d9fe373d",
         "username": "707921",
         "assignmentSignup": {
           "programItemId": "8398",
@@ -292,6 +327,7 @@
         }
       },
       {
+        "userId": "6cb57bc2-e166-41ed-98a5-5d212b3ca9fe",
         "username": "114324",
         "assignmentSignup": {
           "programItemId": "8398",
@@ -300,6 +336,7 @@
         }
       },
       {
+        "userId": "6e553487-68f7-44be-93f8-b1c610f146a7",
         "username": "732508",
         "assignmentSignup": {
           "programItemId": "8398",
@@ -308,6 +345,7 @@
         }
       },
       {
+        "userId": "017131cd-b14d-453d-ad7b-af4a7f749943",
         "username": "500200",
         "assignmentSignup": {
           "programItemId": "8398",
@@ -316,6 +354,7 @@
         }
       },
       {
+        "userId": "6c29698b-00e7-466c-be14-684ebccacc6a",
         "username": "495397",
         "assignmentSignup": {
           "programItemId": "8367",
@@ -324,6 +363,7 @@
         }
       },
       {
+        "userId": "4ade36c5-808d-408e-8b41-e9ff8b571240",
         "username": "349033",
         "assignmentSignup": {
           "programItemId": "8367",
@@ -332,6 +372,7 @@
         }
       },
       {
+        "userId": "7c8fd4c7-6e00-490f-a16c-ae8690158259",
         "username": "434769",
         "assignmentSignup": {
           "programItemId": "8367",
@@ -340,6 +381,7 @@
         }
       },
       {
+        "userId": "b83654ca-d1f7-4719-9340-20ec0b4546e8",
         "username": "896070",
         "assignmentSignup": {
           "programItemId": "8367",
@@ -348,6 +390,7 @@
         }
       },
       {
+        "userId": "e55979bb-d0af-4e0f-a607-813b05cd98df",
         "username": "1487",
         "assignmentSignup": {
           "programItemId": "8367",
@@ -356,6 +399,7 @@
         }
       },
       {
+        "userId": "527e5a4e-558d-4405-bc6d-51ae88fd490b",
         "username": "525678",
         "assignmentSignup": {
           "programItemId": "8423",
@@ -364,6 +408,7 @@
         }
       },
       {
+        "userId": "5be2aabc-ff68-4e0b-8ebe-dee1cfbb4209",
         "username": "953936",
         "assignmentSignup": {
           "programItemId": "8423",
@@ -372,6 +417,7 @@
         }
       },
       {
+        "userId": "a71cabf3-9553-40b9-8f39-8f2a9e086f8a",
         "username": "950858",
         "assignmentSignup": {
           "programItemId": "8423",
@@ -380,6 +426,7 @@
         }
       },
       {
+        "userId": "5c501c7d-4f98-448b-9265-5c1656d21481",
         "username": "378632",
         "assignmentSignup": {
           "programItemId": "8423",
@@ -388,6 +435,7 @@
         }
       },
       {
+        "userId": "96ff1a14-074b-4824-9eaa-f110a2661c8a",
         "username": "407208",
         "assignmentSignup": {
           "programItemId": "8423",
@@ -396,6 +444,7 @@
         }
       },
       {
+        "userId": "075cd312-c113-47cc-a126-b1fbceb8d791",
         "username": "357793",
         "assignmentSignup": {
           "programItemId": "8399",
@@ -404,6 +453,7 @@
         }
       },
       {
+        "userId": "1df73a18-5441-4178-9216-0455f3c3f9e9",
         "username": "325005",
         "assignmentSignup": {
           "programItemId": "8399",
@@ -412,6 +462,7 @@
         }
       },
       {
+        "userId": "3ca7a246-ccd9-4935-bcf6-e82ee40bdcaa",
         "username": "823890",
         "assignmentSignup": {
           "programItemId": "8399",
@@ -420,6 +471,7 @@
         }
       },
       {
+        "userId": "524490aa-fe65-44c8-aa16-f3891db2c4e6",
         "username": "987228",
         "assignmentSignup": {
           "programItemId": "8399",
@@ -428,6 +480,7 @@
         }
       },
       {
+        "userId": "8a1663d9-6540-4772-877f-9a97ea79829d",
         "username": "521649",
         "assignmentSignup": {
           "programItemId": "8452",
@@ -436,6 +489,7 @@
         }
       },
       {
+        "userId": "68229015-7ff7-4d49-8dd0-e31f94cd168d",
         "username": "473497",
         "assignmentSignup": {
           "programItemId": "8452",
@@ -444,6 +498,7 @@
         }
       },
       {
+        "userId": "2b444769-46f8-4073-9e57-66f745caba4f",
         "username": "291435",
         "assignmentSignup": {
           "programItemId": "8452",
@@ -452,6 +507,7 @@
         }
       },
       {
+        "userId": "e9b17c88-3b41-4f6f-ad1a-bf24c2f54787",
         "username": "457214",
         "assignmentSignup": {
           "programItemId": "8452",
@@ -460,6 +516,7 @@
         }
       },
       {
+        "userId": "ea336a3d-5f59-43a1-9d3f-5650c9f4eeb8",
         "username": "216673",
         "assignmentSignup": {
           "programItemId": "8452",
@@ -468,6 +525,7 @@
         }
       },
       {
+        "userId": "d09c84f6-7e9e-4980-9a16-d7feac36903c",
         "username": "590057",
         "assignmentSignup": {
           "programItemId": "8452",
@@ -486,6 +544,7 @@
   {
     "results": [
       {
+        "userId": "b8c01f51-c645-4475-ba8b-575ee4d80290",
         "username": "475375",
         "assignmentSignup": {
           "programItemId": "8365",
@@ -494,6 +553,7 @@
         }
       },
       {
+        "userId": "7cb85918-66ab-4f49-b590-4cf6a7cd111a",
         "username": "645282",
         "assignmentSignup": {
           "programItemId": "8365",
@@ -502,6 +562,7 @@
         }
       },
       {
+        "userId": "dd1a73b7-bc40-48c8-ae60-066af78b62a7",
         "username": "135866",
         "assignmentSignup": {
           "programItemId": "8365",
@@ -510,6 +571,7 @@
         }
       },
       {
+        "userId": "79ad51d3-e1a0-48dd-bc77-aeeca9231d82",
         "username": "466924",
         "assignmentSignup": {
           "programItemId": "8365",
@@ -518,6 +580,7 @@
         }
       },
       {
+        "userId": "2ed8df19-cdaa-4774-bb38-2e01d9c0a408",
         "username": "672192",
         "assignmentSignup": {
           "programItemId": "8320",
@@ -526,6 +589,7 @@
         }
       },
       {
+        "userId": "5098434e-76e1-45b5-8721-879bd40796bd",
         "username": "709863",
         "assignmentSignup": {
           "programItemId": "8320",
@@ -534,6 +598,7 @@
         }
       },
       {
+        "userId": "c3da7d34-f803-448b-be34-ae1fb236f206",
         "username": "487830",
         "assignmentSignup": {
           "programItemId": "8320",
@@ -542,6 +607,7 @@
         }
       },
       {
+        "userId": "faf0d3e6-64d0-4de7-894b-8c078b9d4d8d",
         "username": "222882",
         "assignmentSignup": {
           "programItemId": "8320",
@@ -550,6 +616,7 @@
         }
       },
       {
+        "userId": "8a77d355-2fe7-4c12-94c8-d786d6968938",
         "username": "757859",
         "assignmentSignup": {
           "programItemId": "8320",
@@ -558,6 +625,7 @@
         }
       },
       {
+        "userId": "8d8638cb-a013-41ec-ba26-1f22292531ab",
         "username": "307681",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -566,6 +634,7 @@
         }
       },
       {
+        "userId": "8f03f3af-0cf4-43e7-9ed5-0dc3211a5e1d",
         "username": "799528",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -574,6 +643,7 @@
         }
       },
       {
+        "userId": "c922c807-0b10-481f-80af-a89ec20a1ace",
         "username": "552632",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -582,6 +652,7 @@
         }
       },
       {
+        "userId": "27709195-a469-43ee-be76-c27446aebb46",
         "username": "801388",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -590,6 +661,7 @@
         }
       },
       {
+        "userId": "0ed6d952-6012-4861-81d1-b19bb2f83b16",
         "username": "51116",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -598,6 +670,7 @@
         }
       },
       {
+        "userId": "7434448e-52d6-4b39-83e7-1033f3cf165d",
         "username": "91702",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -606,6 +679,7 @@
         }
       },
       {
+        "userId": "59932046-3650-424c-b772-fdf88033f32a",
         "username": "677903",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -614,6 +688,7 @@
         }
       },
       {
+        "userId": "6bc38898-8db0-4492-8184-ee2df164c95e",
         "username": "697728",
         "assignmentSignup": {
           "programItemId": "8420",
@@ -622,6 +697,7 @@
         }
       },
       {
+        "userId": "6d5da4e7-a583-4d1d-9527-ad3a516c3c50",
         "username": "81398",
         "assignmentSignup": {
           "programItemId": "8474",
@@ -630,6 +706,7 @@
         }
       },
       {
+        "userId": "2d7828d7-9532-4f2f-9ad6-a9c919bfa844",
         "username": "37933",
         "assignmentSignup": {
           "programItemId": "8474",
@@ -638,6 +715,7 @@
         }
       },
       {
+        "userId": "4b2e644c-8dc7-43b0-9c0e-f20be8ab9d1e",
         "username": "782158",
         "assignmentSignup": {
           "programItemId": "8474",
@@ -646,6 +724,7 @@
         }
       },
       {
+        "userId": "a57f0aa9-1aeb-4654-bf09-ded3c3e0ebfb",
         "username": "770603",
         "assignmentSignup": {
           "programItemId": "8474",
@@ -654,6 +733,7 @@
         }
       },
       {
+        "userId": "a3f7ebb5-00fd-444a-9a6f-c286108ef7ec",
         "username": "675454",
         "assignmentSignup": {
           "programItemId": "8474",
@@ -662,6 +742,7 @@
         }
       },
       {
+        "userId": "2ca12895-63ef-402c-9b58-fffaf4c3c6c1",
         "username": "978820",
         "assignmentSignup": {
           "programItemId": "8474",
@@ -670,6 +751,7 @@
         }
       },
       {
+        "userId": "5329b54a-cc36-4312-8c68-bd71d2eab5a3",
         "username": "425259",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -678,6 +760,7 @@
         }
       },
       {
+        "userId": "d6d8a34b-1d3e-4e2d-a024-bf4add4e405d",
         "username": "640106",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -686,6 +769,7 @@
         }
       },
       {
+        "userId": "de358168-e1ad-4b67-af30-b6eb79ed2f5a",
         "username": "359934",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -694,6 +778,7 @@
         }
       },
       {
+        "userId": "a161925b-112a-47fa-b502-c542ae6aeaf6",
         "username": "958916",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -702,6 +787,7 @@
         }
       },
       {
+        "userId": "83af6d8f-0e34-4178-85b5-59178872fd02",
         "username": "683409",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -710,6 +796,7 @@
         }
       },
       {
+        "userId": "696427f9-2917-473d-8218-16bb78b9614b",
         "username": "709546",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -718,6 +805,7 @@
         }
       },
       {
+        "userId": "2a1d5b00-4d0d-4fa1-98cc-24582a49b135",
         "username": "347318",
         "assignmentSignup": {
           "programItemId": "8400",
@@ -726,6 +814,7 @@
         }
       },
       {
+        "userId": "05056968-2cda-416b-877a-44ba706fa4e5",
         "username": "854769",
         "assignmentSignup": {
           "programItemId": "8416",
@@ -734,6 +823,7 @@
         }
       },
       {
+        "userId": "0c3ea935-b84d-43c4-bedc-12075a7def39",
         "username": "238132",
         "assignmentSignup": {
           "programItemId": "8416",
@@ -742,6 +832,7 @@
         }
       },
       {
+        "userId": "7c8fd4c7-6e00-490f-a16c-ae8690158259",
         "username": "434769",
         "assignmentSignup": {
           "programItemId": "8416",
@@ -750,6 +841,7 @@
         }
       },
       {
+        "userId": "afa75674-e311-45a2-b697-1c0985ccbb2e",
         "username": "810076",
         "assignmentSignup": {
           "programItemId": "8333",
@@ -758,6 +850,7 @@
         }
       },
       {
+        "userId": "43aacb3c-e245-4696-ac83-e06b544b28ac",
         "username": "201874",
         "assignmentSignup": {
           "programItemId": "8333",
@@ -766,6 +859,7 @@
         }
       },
       {
+        "userId": "323c6827-ff35-4d4a-9f6e-652a90e6ff20",
         "username": "404001",
         "assignmentSignup": {
           "programItemId": "8333",
@@ -774,6 +868,7 @@
         }
       },
       {
+        "userId": "d78b1f7b-93c7-45c4-8681-edade331ff5e",
         "username": "14739",
         "assignmentSignup": {
           "programItemId": "8333",
@@ -782,6 +877,7 @@
         }
       },
       {
+        "userId": "bc60c5b0-3261-47ba-92cf-0aa100618a68",
         "username": "331018",
         "assignmentSignup": {
           "programItemId": "8333",
@@ -790,6 +886,7 @@
         }
       },
       {
+        "userId": "224d3fea-9d2c-4796-a0d3-2ed09bc61afd",
         "username": "692629",
         "assignmentSignup": {
           "programItemId": "8317",
@@ -798,6 +895,7 @@
         }
       },
       {
+        "userId": "c6eff6d0-3f31-4b71-973b-cb2e3b144e68",
         "username": "587418",
         "assignmentSignup": {
           "programItemId": "8317",
@@ -806,6 +904,7 @@
         }
       },
       {
+        "userId": "d3e34789-bbad-4003-88df-99ab879fb6fb",
         "username": "348786",
         "assignmentSignup": {
           "programItemId": "8317",
@@ -814,6 +913,7 @@
         }
       },
       {
+        "userId": "c69396bd-69e3-4d26-b5b5-447361c1612e",
         "username": "766167",
         "assignmentSignup": {
           "programItemId": "8317",
@@ -822,6 +922,7 @@
         }
       },
       {
+        "userId": "dd8ea88e-7ca9-4cf1-bfc1-5649be8104f1",
         "username": "363615",
         "assignmentSignup": {
           "programItemId": "8317",
@@ -830,6 +931,7 @@
         }
       },
       {
+        "userId": "3ba73111-6d9b-4793-9603-686fea346912",
         "username": "205898",
         "assignmentSignup": {
           "programItemId": "8317",
@@ -848,6 +950,7 @@
   {
     "results": [
       {
+        "userId": "c3c0e35d-b406-4b6f-a6cc-bd980401c66c",
         "username": "905388",
         "assignmentSignup": {
           "programItemId": "8453",
@@ -856,6 +959,7 @@
         }
       },
       {
+        "userId": "fb2f8c28-41e7-45d1-b220-cffdb5fee003",
         "username": "434853",
         "assignmentSignup": {
           "programItemId": "8453",
@@ -864,6 +968,7 @@
         }
       },
       {
+        "userId": "4e3d7fe8-80a9-40e1-b51c-a89e681f97ad",
         "username": "689838",
         "assignmentSignup": {
           "programItemId": "8453",
@@ -872,6 +977,7 @@
         }
       },
       {
+        "userId": "d94f6c3f-1bf3-4349-b7eb-4eb80bc45b0b",
         "username": "422641",
         "assignmentSignup": {
           "programItemId": "8356",
@@ -880,6 +986,7 @@
         }
       },
       {
+        "userId": "f1f0c4b2-a3da-46d0-9bea-0872cce37bd0",
         "username": "428528",
         "assignmentSignup": {
           "programItemId": "8356",
@@ -888,6 +995,7 @@
         }
       },
       {
+        "userId": "c2990276-9535-4146-9785-e9df19295f56",
         "username": "601755",
         "assignmentSignup": {
           "programItemId": "8356",
@@ -896,6 +1004,7 @@
         }
       },
       {
+        "userId": "25255b4a-fb6e-46ec-bb15-05f06116b2ba",
         "username": "363252",
         "assignmentSignup": {
           "programItemId": "8356",
@@ -904,6 +1013,7 @@
         }
       },
       {
+        "userId": "30ce8532-214b-49ec-8e11-2ffbdae3ffea",
         "username": "91230",
         "assignmentSignup": {
           "programItemId": "8336",
@@ -912,6 +1022,7 @@
         }
       },
       {
+        "userId": "144358bc-5b8d-4052-b2a1-38e624dd59aa",
         "username": "539800",
         "assignmentSignup": {
           "programItemId": "8336",
@@ -920,6 +1031,7 @@
         }
       },
       {
+        "userId": "d016c10f-d930-412d-8807-0e02bc1f2549",
         "username": "48677",
         "assignmentSignup": {
           "programItemId": "8318",
@@ -928,6 +1040,7 @@
         }
       },
       {
+        "userId": "d3ad0a69-3400-4ee6-a00d-68d57469bac7",
         "username": "828370",
         "assignmentSignup": {
           "programItemId": "8318",
@@ -936,6 +1049,7 @@
         }
       },
       {
+        "userId": "b1a59d83-0509-4f47-8c20-8408df21a90a",
         "username": "82198",
         "assignmentSignup": {
           "programItemId": "8318",
@@ -944,6 +1058,7 @@
         }
       },
       {
+        "userId": "0cdb3162-c1a4-4bf5-8fa0-8958a721b4a4",
         "username": "420650",
         "assignmentSignup": {
           "programItemId": "8318",
@@ -952,6 +1067,7 @@
         }
       },
       {
+        "userId": "075fc59a-c3de-4533-8c0e-344d8805d79a",
         "username": "811708",
         "assignmentSignup": {
           "programItemId": "8334",
@@ -960,6 +1076,7 @@
         }
       },
       {
+        "userId": "2b87e34c-5354-4344-b856-b3fc4370b4d4",
         "username": "746",
         "assignmentSignup": {
           "programItemId": "8334",
@@ -968,6 +1085,7 @@
         }
       },
       {
+        "userId": "b3636626-96aa-44e7-a362-a0be1d0593ce",
         "username": "188019",
         "assignmentSignup": {
           "programItemId": "8334",
@@ -976,6 +1094,7 @@
         }
       },
       {
+        "userId": "afd7a959-88fa-429f-9205-5af99dfb4b71",
         "username": "224520",
         "assignmentSignup": {
           "programItemId": "8334",
@@ -984,6 +1103,7 @@
         }
       },
       {
+        "userId": "ce8f341f-4040-4e12-8f51-8b1e0c1e0e14",
         "username": "58904",
         "assignmentSignup": {
           "programItemId": "8334",
@@ -1002,6 +1122,7 @@
   {
     "results": [
       {
+        "userId": "c367b6a3-dce4-4773-8c97-d363197aef09",
         "username": "403133",
         "assignmentSignup": {
           "programItemId": "8331",
@@ -1010,6 +1131,7 @@
         }
       },
       {
+        "userId": "92a5f7f7-737c-491f-b79d-b413271f8eb5",
         "username": "96640",
         "assignmentSignup": {
           "programItemId": "8331",
@@ -1018,6 +1140,7 @@
         }
       },
       {
+        "userId": "d8151d01-d67e-454a-a83c-61cfc5ece85e",
         "username": "390588",
         "assignmentSignup": {
           "programItemId": "8331",
@@ -1026,6 +1149,7 @@
         }
       },
       {
+        "userId": "8ab8d210-54fc-4de1-ba8d-54deff5c7751",
         "username": "701010",
         "assignmentSignup": {
           "programItemId": "8331",
@@ -1034,6 +1158,7 @@
         }
       },
       {
+        "userId": "d69a98a8-b9bd-4714-a488-9c9060892f38",
         "username": "586801",
         "assignmentSignup": {
           "programItemId": "8331",
@@ -1042,6 +1167,7 @@
         }
       },
       {
+        "userId": "7288bdc3-eb35-41be-a178-e7b78bfad742",
         "username": "461959",
         "assignmentSignup": {
           "programItemId": "8331",
@@ -1050,6 +1176,7 @@
         }
       },
       {
+        "userId": "8b7751f8-f887-49db-b0cb-e2e93db6a237",
         "username": "572774",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1058,6 +1185,7 @@
         }
       },
       {
+        "userId": "c219f78e-384b-4689-b871-1455aaf0020a",
         "username": "274415",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1066,6 +1194,7 @@
         }
       },
       {
+        "userId": "5fb1dfd9-c8c7-417b-a73f-a1b57990d7fa",
         "username": "252610",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1074,6 +1203,7 @@
         }
       },
       {
+        "userId": "80b9733e-dce8-45ac-8582-21f9d8d49a30",
         "username": "646355",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1082,6 +1212,7 @@
         }
       },
       {
+        "userId": "38c853e0-046d-46d9-8e24-fd7bf0b12f59",
         "username": "134679",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1090,6 +1221,7 @@
         }
       },
       {
+        "userId": "62af7434-0a4c-42a4-864e-d84c50d83203",
         "username": "102327",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1098,6 +1230,7 @@
         }
       },
       {
+        "userId": "b8612182-eb47-4e0b-8417-95b3200bbf13",
         "username": "502897",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1106,6 +1239,7 @@
         }
       },
       {
+        "userId": "c2cd049c-fbe9-4cfe-af0e-7978e302d219",
         "username": "321019",
         "assignmentSignup": {
           "programItemId": "8445",
@@ -1114,6 +1248,7 @@
         }
       },
       {
+        "userId": "1f1a3a56-56e7-4193-bb48-aa6eb1e79b19",
         "username": "27105",
         "assignmentSignup": {
           "programItemId": "8326",
@@ -1122,6 +1257,7 @@
         }
       },
       {
+        "userId": "834b3c0c-0f63-47bb-bb4d-693662fa0780",
         "username": "86371",
         "assignmentSignup": {
           "programItemId": "8326",
@@ -1130,6 +1266,7 @@
         }
       },
       {
+        "userId": "641ba3b5-339a-4bf6-bfdd-5843892d83c0",
         "username": "709981",
         "assignmentSignup": {
           "programItemId": "8326",
@@ -1138,6 +1275,7 @@
         }
       },
       {
+        "userId": "b188ce91-1011-45e9-841b-c601ec203f47",
         "username": "602265",
         "assignmentSignup": {
           "programItemId": "8326",
@@ -1146,6 +1284,7 @@
         }
       },
       {
+        "userId": "96c59c46-71d0-49b4-bd34-6e5f1f5938a7",
         "username": "564848",
         "assignmentSignup": {
           "programItemId": "8326",
@@ -1154,6 +1293,7 @@
         }
       },
       {
+        "userId": "77551d21-7101-430c-a7cf-7f8cc2258462",
         "username": "671039",
         "assignmentSignup": {
           "programItemId": "8364",
@@ -1162,6 +1302,7 @@
         }
       },
       {
+        "userId": "d992df39-8a30-428a-953a-c9439e77307e",
         "username": "865825",
         "assignmentSignup": {
           "programItemId": "8364",
@@ -1170,6 +1311,7 @@
         }
       },
       {
+        "userId": "76851db1-1636-40c4-9e31-e275f5ab4e58",
         "username": "491948",
         "assignmentSignup": {
           "programItemId": "8364",
@@ -1178,6 +1320,7 @@
         }
       },
       {
+        "userId": "cfa833a1-98bb-4c83-9ec5-5f1267871c81",
         "username": "124784",
         "assignmentSignup": {
           "programItemId": "8364",
@@ -1186,6 +1329,7 @@
         }
       },
       {
+        "userId": "c8e9023d-4f50-4f89-a774-5e0db89c82c7",
         "username": "404855",
         "assignmentSignup": {
           "programItemId": "8364",
@@ -1194,6 +1338,7 @@
         }
       },
       {
+        "userId": "6d5da4e7-a583-4d1d-9527-ad3a516c3c50",
         "username": "81398",
         "assignmentSignup": {
           "programItemId": "8364",
@@ -1202,6 +1347,7 @@
         }
       },
       {
+        "userId": "c5afc3b9-1322-4234-8c28-9651c15c3763",
         "username": "293909",
         "assignmentSignup": {
           "programItemId": "8305",
@@ -1210,6 +1356,7 @@
         }
       },
       {
+        "userId": "af0fb350-5449-4b0c-81b8-dfdcb58d0ad5",
         "username": "142553",
         "assignmentSignup": {
           "programItemId": "8305",
@@ -1218,6 +1365,7 @@
         }
       },
       {
+        "userId": "43454abe-4a2c-4135-bdaa-04f5533c524b",
         "username": "338703",
         "assignmentSignup": {
           "programItemId": "8305",
@@ -1226,6 +1374,7 @@
         }
       },
       {
+        "userId": "96debf5f-4510-4162-9d43-07c0d9a8a36c",
         "username": "789587",
         "assignmentSignup": {
           "programItemId": "8305",
@@ -1234,6 +1383,7 @@
         }
       },
       {
+        "userId": "180ece07-2796-4316-94f9-7552805e0f47",
         "username": "248767",
         "assignmentSignup": {
           "programItemId": "8428",
@@ -1242,6 +1392,7 @@
         }
       },
       {
+        "userId": "01499f2e-b1e3-4f26-8177-b8819e2b08b6",
         "username": "115259",
         "assignmentSignup": {
           "programItemId": "8428",
@@ -1250,6 +1401,7 @@
         }
       },
       {
+        "userId": "e6e1c8bb-e0c1-4c83-a36d-7a8e74df3346",
         "username": "232092",
         "assignmentSignup": {
           "programItemId": "8428",
@@ -1258,6 +1410,7 @@
         }
       },
       {
+        "userId": "bc1c85c2-f17e-45cd-a742-91a9a8c450aa",
         "username": "422454",
         "assignmentSignup": {
           "programItemId": "8428",
@@ -1266,6 +1419,7 @@
         }
       },
       {
+        "userId": "c494a22e-2337-475a-9c61-a24a7cea2340",
         "username": "278573",
         "assignmentSignup": {
           "programItemId": "8428",
@@ -1274,6 +1428,7 @@
         }
       },
       {
+        "userId": "52b453cf-2496-42b5-b7a2-824df48e188b",
         "username": "767879",
         "assignmentSignup": {
           "programItemId": "8306",
@@ -1282,6 +1437,7 @@
         }
       },
       {
+        "userId": "c7811dc0-1bba-45bd-9740-b479c59b33dc",
         "username": "762393",
         "assignmentSignup": {
           "programItemId": "8306",
@@ -1290,6 +1446,7 @@
         }
       },
       {
+        "userId": "705ee8bd-49c5-4f19-aeda-9285999d4531",
         "username": "715378",
         "assignmentSignup": {
           "programItemId": "8306",
@@ -1298,6 +1455,7 @@
         }
       },
       {
+        "userId": "6a235a14-689a-494e-b664-a7a45496ae76",
         "username": "31419",
         "assignmentSignup": {
           "programItemId": "8332",
@@ -1306,6 +1464,7 @@
         }
       },
       {
+        "userId": "ecbfc6a2-6723-40f3-a0d7-c89988445ff2",
         "username": "82135",
         "assignmentSignup": {
           "programItemId": "8332",
@@ -1314,6 +1473,7 @@
         }
       },
       {
+        "userId": "05a33ddf-6478-480f-82ea-aaa730e7a15b",
         "username": "571464",
         "assignmentSignup": {
           "programItemId": "8332",
@@ -1322,6 +1482,7 @@
         }
       },
       {
+        "userId": "4afaee5d-41a7-4efb-a372-3c685998fcb5",
         "username": "870662",
         "assignmentSignup": {
           "programItemId": "8454",
@@ -1330,6 +1491,7 @@
         }
       },
       {
+        "userId": "5cd8fb71-9788-42d6-b85d-566e742c35f9",
         "username": "624921",
         "assignmentSignup": {
           "programItemId": "8454",
@@ -1338,6 +1500,7 @@
         }
       },
       {
+        "userId": "14bd3965-d98a-4eb0-b5e4-086f802287e2",
         "username": "96583",
         "assignmentSignup": {
           "programItemId": "8454",
@@ -1346,6 +1509,7 @@
         }
       },
       {
+        "userId": "6cfddbff-6683-4f17-99ff-416758575c7a",
         "username": "202803",
         "assignmentSignup": {
           "programItemId": "8454",
@@ -1354,6 +1518,7 @@
         }
       },
       {
+        "userId": "24486a4a-fabb-445b-bc87-7fefaa6f0c12",
         "username": "71859",
         "assignmentSignup": {
           "programItemId": "8454",
@@ -1362,6 +1527,7 @@
         }
       },
       {
+        "userId": "d9b1349c-f24f-4c2d-a41f-3b75264604a8",
         "username": "678717",
         "assignmentSignup": {
           "programItemId": "8454",
@@ -1370,6 +1536,7 @@
         }
       },
       {
+        "userId": "55a71137-f8d0-4fba-8a7c-5e8479d77f6f",
         "username": "879103",
         "assignmentSignup": {
           "programItemId": "8360",
@@ -1378,6 +1545,7 @@
         }
       },
       {
+        "userId": "2c0ba4cf-456b-4d66-8689-ac0e870d7190",
         "username": "626187",
         "assignmentSignup": {
           "programItemId": "8360",
@@ -1386,6 +1554,7 @@
         }
       },
       {
+        "userId": "043a4192-f33d-4255-9352-29f6ce463f55",
         "username": "904107",
         "assignmentSignup": {
           "programItemId": "8304",
@@ -1394,6 +1563,7 @@
         }
       },
       {
+        "userId": "89fb0625-f0c3-48dc-8285-a62c7dffd678",
         "username": "425689",
         "assignmentSignup": {
           "programItemId": "8304",
@@ -1402,6 +1572,7 @@
         }
       },
       {
+        "userId": "232a6047-a447-4dc7-b566-7adc69b45fdc",
         "username": "84842",
         "assignmentSignup": {
           "programItemId": "8304",
@@ -1410,6 +1581,7 @@
         }
       },
       {
+        "userId": "390adb43-c394-4695-922d-539619fbed13",
         "username": "705274",
         "assignmentSignup": {
           "programItemId": "8304",
@@ -1418,6 +1590,7 @@
         }
       },
       {
+        "userId": "43cf402b-cc24-4137-84c6-be519ed286fe",
         "username": "8285",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1426,6 +1599,7 @@
         }
       },
       {
+        "userId": "d06ed201-8012-4df0-962f-f233d1d7530f",
         "username": "95820",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1434,6 +1608,7 @@
         }
       },
       {
+        "userId": "3b8e46c2-1d03-4b17-b84b-b87453a3a08d",
         "username": "538741",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1442,6 +1617,7 @@
         }
       },
       {
+        "userId": "e9804758-89c2-4e53-827b-cdfda1d4ece9",
         "username": "739390",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1450,6 +1626,7 @@
         }
       },
       {
+        "userId": "b02abaae-e9c8-4c1d-8a9b-9eb325a85b47",
         "username": "278521",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1458,6 +1635,7 @@
         }
       },
       {
+        "userId": "ffa0a306-00dd-4032-9d60-dfed4f97b369",
         "username": "135184",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1466,6 +1644,7 @@
         }
       },
       {
+        "userId": "aee48ecc-7f8f-473c-98ba-05534bfdac1d",
         "username": "507234",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1474,6 +1653,7 @@
         }
       },
       {
+        "userId": "3b28e018-d02a-4e7e-89b2-e2fad42566c4",
         "username": "253147",
         "assignmentSignup": {
           "programItemId": "8442",
@@ -1492,6 +1672,7 @@
   {
     "results": [
       {
+        "userId": "8d76a7c1-a315-4617-8b37-d7aaad159b0e",
         "username": "703878",
         "assignmentSignup": {
           "programItemId": "8388",
@@ -1500,6 +1681,7 @@
         }
       },
       {
+        "userId": "05612442-25ef-45bf-a013-1c86628636fb",
         "username": "677739",
         "assignmentSignup": {
           "programItemId": "8388",
@@ -1508,6 +1690,7 @@
         }
       },
       {
+        "userId": "8f7f6400-cbbe-4179-8083-7f985aa27f6c",
         "username": "571504",
         "assignmentSignup": {
           "programItemId": "8388",
@@ -1516,6 +1699,7 @@
         }
       },
       {
+        "userId": "f52d1ba0-8ba1-4f04-9592-d9a8bbc4af8e",
         "username": "723927",
         "assignmentSignup": {
           "programItemId": "8388",
@@ -1524,6 +1708,7 @@
         }
       },
       {
+        "userId": "9e5b1372-ad94-4dfa-ae21-4fba1bf2d8dc",
         "username": "693070",
         "assignmentSignup": {
           "programItemId": "8388",
@@ -1532,6 +1717,7 @@
         }
       },
       {
+        "userId": "535530cf-e761-43bc-9596-e2db09ef1f25",
         "username": "733260",
         "assignmentSignup": {
           "programItemId": "8337",
@@ -1540,6 +1726,7 @@
         }
       },
       {
+        "userId": "6ea9be0f-afed-4f75-91de-61892d45b8f6",
         "username": "136292",
         "assignmentSignup": {
           "programItemId": "8337",
@@ -1548,6 +1735,7 @@
         }
       },
       {
+        "userId": "5038c59b-ee2d-43a9-a218-d4ffead7ee91",
         "username": "857245",
         "assignmentSignup": {
           "programItemId": "8337",
@@ -1556,6 +1744,7 @@
         }
       },
       {
+        "userId": "60a9234f-001d-402f-bce8-f5663ba8f6f8",
         "username": "39095",
         "assignmentSignup": {
           "programItemId": "8378",
@@ -1564,6 +1753,7 @@
         }
       },
       {
+        "userId": "e349aa76-5352-4bff-8564-2a162399f9b4",
         "username": "688895",
         "assignmentSignup": {
           "programItemId": "8378",
@@ -1572,6 +1762,7 @@
         }
       },
       {
+        "userId": "7b2818b8-9742-47f2-80bd-100dacf2261f",
         "username": "390599",
         "assignmentSignup": {
           "programItemId": "8378",
@@ -1580,6 +1771,7 @@
         }
       },
       {
+        "userId": "96c59c46-71d0-49b4-bd34-6e5f1f5938a7",
         "username": "564848",
         "assignmentSignup": {
           "programItemId": "8378",
@@ -1588,6 +1780,7 @@
         }
       },
       {
+        "userId": "36b300c0-1525-43a0-beed-7017b329cd52",
         "username": "278902",
         "assignmentSignup": {
           "programItemId": "8378",
@@ -1596,6 +1789,7 @@
         }
       },
       {
+        "userId": "67730c01-a698-4965-9fa5-0478d692c9e7",
         "username": "973465",
         "assignmentSignup": {
           "programItemId": "8344",
@@ -1604,6 +1798,7 @@
         }
       },
       {
+        "userId": "05767e30-f19f-4ad6-ba04-c4463e8738b6",
         "username": "607670",
         "assignmentSignup": {
           "programItemId": "8344",
@@ -1612,6 +1807,7 @@
         }
       },
       {
+        "userId": "d992df39-8a30-428a-953a-c9439e77307e",
         "username": "865825",
         "assignmentSignup": {
           "programItemId": "8344",
@@ -1620,6 +1816,7 @@
         }
       },
       {
+        "userId": "7288bdc3-eb35-41be-a178-e7b78bfad742",
         "username": "461959",
         "assignmentSignup": {
           "programItemId": "8344",
@@ -1628,6 +1825,7 @@
         }
       },
       {
+        "userId": "4b9060cd-fec8-4fee-928d-24923426995b",
         "username": "807858",
         "assignmentSignup": {
           "programItemId": "8344",
@@ -1636,6 +1834,7 @@
         }
       },
       {
+        "userId": "704bdd43-c123-431d-b9e3-43e409498566",
         "username": "720445",
         "assignmentSignup": {
           "programItemId": "8456",
@@ -1644,6 +1843,7 @@
         }
       },
       {
+        "userId": "950a107f-b725-4454-bad3-21d8ed3400ec",
         "username": "89017",
         "assignmentSignup": {
           "programItemId": "8456",
@@ -1652,6 +1852,7 @@
         }
       },
       {
+        "userId": "085baa0d-563d-476e-9bee-cbfbbae1395f",
         "username": "137793",
         "assignmentSignup": {
           "programItemId": "8456",
@@ -1660,6 +1861,7 @@
         }
       },
       {
+        "userId": "b5300cfc-3d66-4591-bc74-bb4097849c76",
         "username": "232907",
         "assignmentSignup": {
           "programItemId": "8468",
@@ -1668,6 +1870,7 @@
         }
       },
       {
+        "userId": "f2feeced-73c3-4ac1-8e05-5b280d763875",
         "username": "41946",
         "assignmentSignup": {
           "programItemId": "8468",
@@ -1676,6 +1879,7 @@
         }
       },
       {
+        "userId": "c99ac56e-9207-4517-97f8-834c9c4f5719",
         "username": "307768",
         "assignmentSignup": {
           "programItemId": "8468",
@@ -1684,6 +1888,7 @@
         }
       },
       {
+        "userId": "68229015-7ff7-4d49-8dd0-e31f94cd168d",
         "username": "473497",
         "assignmentSignup": {
           "programItemId": "8468",
@@ -1692,6 +1897,7 @@
         }
       },
       {
+        "userId": "b188ce91-1011-45e9-841b-c601ec203f47",
         "username": "602265",
         "assignmentSignup": {
           "programItemId": "8468",
@@ -1700,6 +1906,7 @@
         }
       },
       {
+        "userId": "6cfddbff-6683-4f17-99ff-416758575c7a",
         "username": "202803",
         "assignmentSignup": {
           "programItemId": "8468",
@@ -1708,6 +1915,7 @@
         }
       },
       {
+        "userId": "433f09c1-3871-4d57-9d41-4ff04b6ce111",
         "username": "527034",
         "assignmentSignup": {
           "programItemId": "8432",
@@ -1716,6 +1924,7 @@
         }
       },
       {
+        "userId": "43c8b7c3-3112-45b9-99f0-ccfe41ebdcb3",
         "username": "762480",
         "assignmentSignup": {
           "programItemId": "8432",
@@ -1724,6 +1933,7 @@
         }
       },
       {
+        "userId": "01499f2e-b1e3-4f26-8177-b8819e2b08b6",
         "username": "115259",
         "assignmentSignup": {
           "programItemId": "8432",
@@ -1732,6 +1942,7 @@
         }
       },
       {
+        "userId": "7c8fd4c7-6e00-490f-a16c-ae8690158259",
         "username": "434769",
         "assignmentSignup": {
           "programItemId": "8432",
@@ -1740,6 +1951,7 @@
         }
       },
       {
+        "userId": "b3636626-96aa-44e7-a362-a0be1d0593ce",
         "username": "188019",
         "assignmentSignup": {
           "programItemId": "8432",
@@ -1748,6 +1960,7 @@
         }
       },
       {
+        "userId": "afd7a959-88fa-429f-9205-5af99dfb4b71",
         "username": "224520",
         "assignmentSignup": {
           "programItemId": "8432",
@@ -1756,6 +1969,7 @@
         }
       },
       {
+        "userId": "0eeae3d1-7fd1-4e7a-917a-566d0587e049",
         "username": "523621",
         "assignmentSignup": {
           "programItemId": "8371",
@@ -1764,6 +1978,7 @@
         }
       },
       {
+        "userId": "8744b5ba-6525-4f78-9ed9-8240e4499e28",
         "username": "782344",
         "assignmentSignup": {
           "programItemId": "8371",
@@ -1772,6 +1987,7 @@
         }
       },
       {
+        "userId": "a619e038-467b-488a-98e4-97be46f46e4a",
         "username": "858561",
         "assignmentSignup": {
           "programItemId": "8371",
@@ -1780,6 +1996,7 @@
         }
       },
       {
+        "userId": "017131cd-b14d-453d-ad7b-af4a7f749943",
         "username": "500200",
         "assignmentSignup": {
           "programItemId": "8371",
@@ -1798,6 +2015,7 @@
   {
     "results": [
       {
+        "userId": "f4d4c7b6-e3d2-455d-b6b9-ce12b51cd5c3",
         "username": "126673",
         "assignmentSignup": {
           "programItemId": "8406",
@@ -1806,6 +2024,7 @@
         }
       },
       {
+        "userId": "cf0405f9-6b3d-4a5a-b991-c24ea5d71c16",
         "username": "446139",
         "assignmentSignup": {
           "programItemId": "8406",
@@ -1814,6 +2033,7 @@
         }
       },
       {
+        "userId": "2ed8df19-cdaa-4774-bb38-2e01d9c0a408",
         "username": "672192",
         "assignmentSignup": {
           "programItemId": "8406",
@@ -1822,6 +2042,7 @@
         }
       },
       {
+        "userId": "5098434e-76e1-45b5-8721-879bd40796bd",
         "username": "709863",
         "assignmentSignup": {
           "programItemId": "8406",
@@ -1830,6 +2051,7 @@
         }
       },
       {
+        "userId": "8a77d355-2fe7-4c12-94c8-d786d6968938",
         "username": "757859",
         "assignmentSignup": {
           "programItemId": "8406",
@@ -1838,6 +2060,7 @@
         }
       },
       {
+        "userId": "0407f5c5-783d-490e-96b3-96493bb1f451",
         "username": "812077",
         "assignmentSignup": {
           "programItemId": "8384",
@@ -1846,6 +2069,7 @@
         }
       },
       {
+        "userId": "20b3c882-db2f-4ba7-9370-968f607e1008",
         "username": "200394",
         "assignmentSignup": {
           "programItemId": "8384",
@@ -1854,6 +2078,7 @@
         }
       },
       {
+        "userId": "84cd7e35-ede5-48da-9ef5-528fb586927d",
         "username": "258215",
         "assignmentSignup": {
           "programItemId": "8384",
@@ -1862,6 +2087,7 @@
         }
       },
       {
+        "userId": "7cb85918-66ab-4f49-b590-4cf6a7cd111a",
         "username": "645282",
         "assignmentSignup": {
           "programItemId": "8384",
@@ -1870,6 +2096,7 @@
         }
       },
       {
+        "userId": "b6b7120e-b56d-4dcd-a9a4-6a9ef34ab5a8",
         "username": "372680",
         "assignmentSignup": {
           "programItemId": "8384",
@@ -1878,6 +2105,7 @@
         }
       },
       {
+        "userId": "45053051-bcc7-4d72-aad1-31804d374029",
         "username": "79986",
         "assignmentSignup": {
           "programItemId": "8431",
@@ -1886,6 +2114,7 @@
         }
       },
       {
+        "userId": "c922c807-0b10-481f-80af-a89ec20a1ace",
         "username": "552632",
         "assignmentSignup": {
           "programItemId": "8431",
@@ -1894,6 +2123,7 @@
         }
       },
       {
+        "userId": "79ad51d3-e1a0-48dd-bc77-aeeca9231d82",
         "username": "466924",
         "assignmentSignup": {
           "programItemId": "8431",
@@ -1902,6 +2132,7 @@
         }
       },
       {
+        "userId": "59932046-3650-424c-b772-fdf88033f32a",
         "username": "677903",
         "assignmentSignup": {
           "programItemId": "8431",
@@ -1910,6 +2141,7 @@
         }
       },
       {
+        "userId": "6bc38898-8db0-4492-8184-ee2df164c95e",
         "username": "697728",
         "assignmentSignup": {
           "programItemId": "8431",
@@ -1918,6 +2150,7 @@
         }
       },
       {
+        "userId": "46c3b1cc-b51d-4d06-a22e-20b12404d2bc",
         "username": "222883",
         "assignmentSignup": {
           "programItemId": "8431",
@@ -1926,6 +2159,7 @@
         }
       },
       {
+        "userId": "8ae295de-6d91-4eba-ba6c-2a9cf3baa576",
         "username": "28081",
         "assignmentSignup": {
           "programItemId": "8447",
@@ -1934,6 +2168,7 @@
         }
       },
       {
+        "userId": "144006c2-b5b5-414c-8caf-639d768bffa7",
         "username": "451292",
         "assignmentSignup": {
           "programItemId": "8447",
@@ -1942,6 +2177,7 @@
         }
       },
       {
+        "userId": "b347b20d-37de-42e7-82a5-1cf2866eb263",
         "username": "509222",
         "assignmentSignup": {
           "programItemId": "8447",
@@ -1950,6 +2186,7 @@
         }
       },
       {
+        "userId": "868d7df3-c2f1-4c7a-98e1-2136275c8383",
         "username": "707613",
         "assignmentSignup": {
           "programItemId": "8447",
@@ -1958,6 +2195,7 @@
         }
       },
       {
+        "userId": "bbad4725-2777-469f-acb1-058d77f1c21a",
         "username": "647978",
         "assignmentSignup": {
           "programItemId": "8447",
@@ -1966,6 +2204,7 @@
         }
       },
       {
+        "userId": "d9b1349c-f24f-4c2d-a41f-3b75264604a8",
         "username": "678717",
         "assignmentSignup": {
           "programItemId": "8447",
@@ -1984,6 +2223,7 @@
   {
     "results": [
       {
+        "userId": "23e3bb10-c146-47b2-a760-451a9cad1b4f",
         "username": "555074",
         "assignmentSignup": {
           "programItemId": "8448",
@@ -1992,6 +2232,7 @@
         }
       },
       {
+        "userId": "e1913d5b-3695-4cbe-8e6d-50dcec6704c9",
         "username": "964034",
         "assignmentSignup": {
           "programItemId": "8448",
@@ -2000,6 +2241,7 @@
         }
       },
       {
+        "userId": "d012c29c-be5d-420a-93df-d8cde15216f6",
         "username": "466237",
         "assignmentSignup": {
           "programItemId": "8448",
@@ -2008,6 +2250,7 @@
         }
       },
       {
+        "userId": "364f3ba3-1e4b-4f75-9d3a-b7f61ce17e24",
         "username": "854852",
         "assignmentSignup": {
           "programItemId": "8448",
@@ -2016,6 +2259,7 @@
         }
       },
       {
+        "userId": "fbdcdb89-b461-4625-9e52-0614110966ea",
         "username": "798979",
         "assignmentSignup": {
           "programItemId": "8448",
@@ -2024,6 +2268,7 @@
         }
       },
       {
+        "userId": "241104fc-74ae-40f9-87b6-05d6b0814e1c",
         "username": "710936",
         "assignmentSignup": {
           "programItemId": "8401",
@@ -2032,6 +2277,7 @@
         }
       },
       {
+        "userId": "7ed8c1bd-2139-44bb-856f-1c0b5f16e245",
         "username": "121827",
         "assignmentSignup": {
           "programItemId": "8401",
@@ -2040,6 +2286,7 @@
         }
       },
       {
+        "userId": "d256bbe4-15ca-4797-a828-b45cd7163425",
         "username": "322266",
         "assignmentSignup": {
           "programItemId": "8401",
@@ -2048,6 +2295,7 @@
         }
       },
       {
+        "userId": "0ec1e873-0696-4c44-a876-e32f7431d0bc",
         "username": "606037",
         "assignmentSignup": {
           "programItemId": "8401",
@@ -2056,6 +2304,7 @@
         }
       },
       {
+        "userId": "536cb255-57b9-49c3-8696-4a869c8367dd",
         "username": "496490",
         "assignmentSignup": {
           "programItemId": "8342",
@@ -2064,6 +2313,7 @@
         }
       },
       {
+        "userId": "f43e8139-ac38-4180-837d-46eb7baa8e9c",
         "username": "631850",
         "assignmentSignup": {
           "programItemId": "8342",
@@ -2072,6 +2322,7 @@
         }
       },
       {
+        "userId": "9c4f1a15-b4d6-4a5b-8509-d29a2e32fb9d",
         "username": "773239",
         "assignmentSignup": {
           "programItemId": "8342",
@@ -2080,6 +2331,7 @@
         }
       },
       {
+        "userId": "3f56a705-bfea-4aae-bdff-030000b6b6e7",
         "username": "935360",
         "assignmentSignup": {
           "programItemId": "8342",
@@ -2088,6 +2340,7 @@
         }
       },
       {
+        "userId": "c2990276-9535-4146-9785-e9df19295f56",
         "username": "601755",
         "assignmentSignup": {
           "programItemId": "8342",
@@ -2096,6 +2349,7 @@
         }
       },
       {
+        "userId": "323c6827-ff35-4d4a-9f6e-652a90e6ff20",
         "username": "404001",
         "assignmentSignup": {
           "programItemId": "8342",
@@ -2104,6 +2358,7 @@
         }
       },
       {
+        "userId": "741e7ab1-0833-41f9-b194-24a618b58f21",
         "username": "665397",
         "assignmentSignup": {
           "programItemId": "8386",
@@ -2112,6 +2367,7 @@
         }
       },
       {
+        "userId": "4a27df11-2dda-4c2c-a225-b8924cb464cb",
         "username": "826224",
         "assignmentSignup": {
           "programItemId": "8386",
@@ -2120,6 +2376,7 @@
         }
       },
       {
+        "userId": "9ee5d990-46b6-445a-9aad-029169907c3c",
         "username": "278700",
         "assignmentSignup": {
           "programItemId": "8386",
@@ -2128,6 +2385,7 @@
         }
       },
       {
+        "userId": "51cd590d-94bb-4813-902f-66e18cae6eb7",
         "username": "183384",
         "assignmentSignup": {
           "programItemId": "8386",
@@ -2136,6 +2394,7 @@
         }
       },
       {
+        "userId": "4a074e0f-b88b-4734-93d2-69a2479fe363",
         "username": "856073",
         "assignmentSignup": {
           "programItemId": "8386",
@@ -2144,6 +2403,7 @@
         }
       },
       {
+        "userId": "bbc95145-c1af-4dc5-aa44-ea9e8ff429c4",
         "username": "973454",
         "assignmentSignup": {
           "programItemId": "8386",
@@ -2162,6 +2422,7 @@
   {
     "results": [
       {
+        "userId": "08efc1e8-e0b8-4fe8-ba1a-2fcc0eede0b1",
         "username": "84463",
         "assignmentSignup": {
           "programItemId": "8372",
@@ -2170,6 +2431,7 @@
         }
       },
       {
+        "userId": "efaba786-4442-4547-961d-195a7e99ed2b",
         "username": "136801",
         "assignmentSignup": {
           "programItemId": "8372",
@@ -2178,6 +2440,7 @@
         }
       },
       {
+        "userId": "d9b1349c-f24f-4c2d-a41f-3b75264604a8",
         "username": "678717",
         "assignmentSignup": {
           "programItemId": "8372",
@@ -2186,6 +2449,7 @@
         }
       },
       {
+        "userId": "60b80e67-f2f5-4deb-b10b-e183e84fef00",
         "username": "579962",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2194,6 +2458,7 @@
         }
       },
       {
+        "userId": "bbb4d07c-802b-4399-a5f8-c0e675887a2d",
         "username": "301263",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2202,6 +2467,7 @@
         }
       },
       {
+        "userId": "180ece07-2796-4316-94f9-7552805e0f47",
         "username": "248767",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2210,6 +2476,7 @@
         }
       },
       {
+        "userId": "5be2aabc-ff68-4e0b-8ebe-dee1cfbb4209",
         "username": "953936",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2218,6 +2485,7 @@
         }
       },
       {
+        "userId": "368f7756-b08a-4a50-bf7e-d283a0e1ca87",
         "username": "292693",
         "assignmentSignup": {
           "programItemId": "8411",
@@ -2226,6 +2494,7 @@
         }
       },
       {
+        "userId": "ab47028e-4feb-4593-8e87-0bd292d048bd",
         "username": "790024",
         "assignmentSignup": {
           "programItemId": "8411",
@@ -2234,6 +2503,7 @@
         }
       },
       {
+        "userId": "2565ce4d-9abd-4dd4-be44-4f986729bfc3",
         "username": "176031",
         "assignmentSignup": {
           "programItemId": "8411",
@@ -2242,6 +2512,7 @@
         }
       },
       {
+        "userId": "0931c5f3-6a4e-4888-963f-f08a8e24bff3",
         "username": "647478",
         "assignmentSignup": {
           "programItemId": "8411",
@@ -2250,6 +2521,7 @@
         }
       },
       {
+        "userId": "0407f5c5-783d-490e-96b3-96493bb1f451",
         "username": "812077",
         "assignmentSignup": {
           "programItemId": "8382",
@@ -2258,6 +2530,7 @@
         }
       },
       {
+        "userId": "7cb85918-66ab-4f49-b590-4cf6a7cd111a",
         "username": "645282",
         "assignmentSignup": {
           "programItemId": "8382",
@@ -2266,6 +2539,7 @@
         }
       },
       {
+        "userId": "20b3c882-db2f-4ba7-9370-968f607e1008",
         "username": "200394",
         "assignmentSignup": {
           "programItemId": "8382",
@@ -2274,6 +2548,7 @@
         }
       },
       {
+        "userId": "3f5d673e-a948-4fdf-b66d-360af6db74b2",
         "username": "970868",
         "assignmentSignup": {
           "programItemId": "8295",
@@ -2282,6 +2557,7 @@
         }
       },
       {
+        "userId": "29a59fb1-c9be-4495-9141-1a2e903a69ec",
         "username": "671084",
         "assignmentSignup": {
           "programItemId": "8295",
@@ -2290,6 +2566,7 @@
         }
       },
       {
+        "userId": "77551d21-7101-430c-a7cf-7f8cc2258462",
         "username": "671039",
         "assignmentSignup": {
           "programItemId": "8295",
@@ -2298,6 +2575,7 @@
         }
       },
       {
+        "userId": "e5b0a703-659f-405a-a60f-e783d360200a",
         "username": "358638",
         "assignmentSignup": {
           "programItemId": "8295",
@@ -2306,6 +2584,7 @@
         }
       },
       {
+        "userId": "187fd492-6fd7-4b58-a2c3-b06c14f84366",
         "username": "708079",
         "assignmentSignup": {
           "programItemId": "8295",
@@ -2314,6 +2593,7 @@
         }
       },
       {
+        "userId": "a71cabf3-9553-40b9-8f39-8f2a9e086f8a",
         "username": "950858",
         "assignmentSignup": {
           "programItemId": "8374",
@@ -2322,6 +2602,7 @@
         }
       },
       {
+        "userId": "eb97c4dc-7512-411c-87ef-ccbada89c046",
         "username": "190718",
         "assignmentSignup": {
           "programItemId": "8374",
@@ -2330,6 +2611,7 @@
         }
       },
       {
+        "userId": "67b94fb3-380b-4b2f-8046-8c98e34fb4d0",
         "username": "14100",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2338,6 +2620,7 @@
         }
       },
       {
+        "userId": "13d0966d-e9e9-4e4b-b57f-20b06f8d0a73",
         "username": "189711",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2346,6 +2629,7 @@
         }
       },
       {
+        "userId": "d181f524-9728-4e8c-89c2-f30e113b2720",
         "username": "358953",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2354,6 +2638,7 @@
         }
       },
       {
+        "userId": "af7b146d-51ca-4014-bcfb-a48c4c59cc50",
         "username": "961115",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2362,6 +2647,7 @@
         }
       },
       {
+        "userId": "b347b20d-37de-42e7-82a5-1cf2866eb263",
         "username": "509222",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2370,6 +2656,7 @@
         }
       },
       {
+        "userId": "01b56090-bfdd-4f03-a2b4-3775a0aac4d3",
         "username": "811026",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2378,6 +2665,7 @@
         }
       },
       {
+        "userId": "bc1c85c2-f17e-45cd-a742-91a9a8c450aa",
         "username": "422454",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2386,6 +2674,7 @@
         }
       },
       {
+        "userId": "bbad4725-2777-469f-acb1-058d77f1c21a",
         "username": "647978",
         "assignmentSignup": {
           "programItemId": "8449",
@@ -2394,6 +2683,7 @@
         }
       },
       {
+        "userId": "e20ca841-4ec7-4ae1-b103-172aa78f6b25",
         "username": "349378",
         "assignmentSignup": {
           "programItemId": "8340",
@@ -2402,6 +2692,7 @@
         }
       },
       {
+        "userId": "144358bc-5b8d-4052-b2a1-38e624dd59aa",
         "username": "539800",
         "assignmentSignup": {
           "programItemId": "8340",
@@ -2410,6 +2701,7 @@
         }
       },
       {
+        "userId": "506b9688-7bfe-4e61-8a65-4603b5314e05",
         "username": "775670",
         "assignmentSignup": {
           "programItemId": "8340",
@@ -2418,6 +2710,7 @@
         }
       },
       {
+        "userId": "043a4192-f33d-4255-9352-29f6ce463f55",
         "username": "904107",
         "assignmentSignup": {
           "programItemId": "8340",
@@ -2426,6 +2719,7 @@
         }
       },
       {
+        "userId": "a49ac8e7-4d6f-4156-84e0-138ba7ecdeb3",
         "username": "334099",
         "assignmentSignup": {
           "programItemId": "8424",
@@ -2434,6 +2728,7 @@
         }
       },
       {
+        "userId": "7807cf92-3058-410d-b9eb-c3c5a677d168",
         "username": "865601",
         "assignmentSignup": {
           "programItemId": "8424",
@@ -2442,6 +2737,7 @@
         }
       },
       {
+        "userId": "0750bc0f-cfcd-4708-b5a4-270dcaf5538f",
         "username": "119591",
         "assignmentSignup": {
           "programItemId": "8424",
@@ -2450,6 +2746,7 @@
         }
       },
       {
+        "userId": "9ee5d990-46b6-445a-9aad-029169907c3c",
         "username": "278700",
         "assignmentSignup": {
           "programItemId": "8424",
@@ -2458,6 +2755,7 @@
         }
       },
       {
+        "userId": "464a7555-b353-4c52-9d83-dbb98fe7f97e",
         "username": "67599",
         "assignmentSignup": {
           "programItemId": "8424",
@@ -2476,6 +2774,7 @@
   {
     "results": [
       {
+        "userId": "a8b4c31c-dcd2-4d07-8c63-fdd944ddd082",
         "username": "899998",
         "assignmentSignup": {
           "programItemId": "8347",
@@ -2484,6 +2783,7 @@
         }
       },
       {
+        "userId": "53124c98-dce6-49f8-8525-0819d7be830a",
         "username": "712625",
         "assignmentSignup": {
           "programItemId": "8347",
@@ -2492,6 +2792,7 @@
         }
       },
       {
+        "userId": "2b444769-46f8-4073-9e57-66f745caba4f",
         "username": "291435",
         "assignmentSignup": {
           "programItemId": "8347",
@@ -2500,6 +2801,7 @@
         }
       },
       {
+        "userId": "b789792b-bf71-4584-9bf8-5f1189aed86e",
         "username": "937874",
         "assignmentSignup": {
           "programItemId": "8347",
@@ -2508,6 +2810,7 @@
         }
       },
       {
+        "userId": "834b3c0c-0f63-47bb-bb4d-693662fa0780",
         "username": "86371",
         "assignmentSignup": {
           "programItemId": "8347",
@@ -2516,6 +2819,7 @@
         }
       },
       {
+        "userId": "d64c832c-54e1-4f61-b652-e6caedcf5aa8",
         "username": "274707",
         "assignmentSignup": {
           "programItemId": "8346",
@@ -2524,6 +2828,7 @@
         }
       },
       {
+        "userId": "1e0790a9-5532-4537-b2e0-c317d9fe373d",
         "username": "707921",
         "assignmentSignup": {
           "programItemId": "8346",
@@ -2532,6 +2837,7 @@
         }
       },
       {
+        "userId": "043a4192-f33d-4255-9352-29f6ce463f55",
         "username": "904107",
         "assignmentSignup": {
           "programItemId": "8346",
@@ -2540,6 +2846,7 @@
         }
       },
       {
+        "userId": "8744b5ba-6525-4f78-9ed9-8240e4499e28",
         "username": "782344",
         "assignmentSignup": {
           "programItemId": "8346",
@@ -2548,6 +2855,7 @@
         }
       },
       {
+        "userId": "700dec69-ad4f-422d-a079-e4285bc6b0de",
         "username": "100749",
         "assignmentSignup": {
           "programItemId": "8346",
@@ -2556,6 +2864,7 @@
         }
       },
       {
+        "userId": "bbb4d07c-802b-4399-a5f8-c0e675887a2d",
         "username": "301263",
         "assignmentSignup": {
           "programItemId": "8346",
@@ -2564,6 +2873,7 @@
         }
       },
       {
+        "userId": "d838f520-43f2-47c3-8b88-ace21f02f966",
         "username": "23602",
         "assignmentSignup": {
           "programItemId": "8345",
@@ -2572,6 +2882,7 @@
         }
       },
       {
+        "userId": "6e553487-68f7-44be-93f8-b1c610f146a7",
         "username": "732508",
         "assignmentSignup": {
           "programItemId": "8345",
@@ -2580,6 +2891,7 @@
         }
       },
       {
+        "userId": "bc1560cf-d411-4c6a-827f-cddf4e7291c2",
         "username": "141399",
         "assignmentSignup": {
           "programItemId": "8345",
@@ -2588,6 +2900,7 @@
         }
       },
       {
+        "userId": "8800519b-e996-4d42-85b0-a795bf30e7a7",
         "username": "342597",
         "assignmentSignup": {
           "programItemId": "8345",
@@ -2596,6 +2909,7 @@
         }
       },
       {
+        "userId": "60b80e67-f2f5-4deb-b10b-e183e84fef00",
         "username": "579962",
         "assignmentSignup": {
           "programItemId": "8345",
@@ -2604,6 +2918,7 @@
         }
       },
       {
+        "userId": "7499b4b8-1399-4bd1-82fe-bd172e8b7973",
         "username": "789585",
         "assignmentSignup": {
           "programItemId": "8408",
@@ -2612,6 +2927,7 @@
         }
       },
       {
+        "userId": "67730c01-a698-4965-9fa5-0478d692c9e7",
         "username": "973465",
         "assignmentSignup": {
           "programItemId": "8408",
@@ -2620,6 +2936,7 @@
         }
       },
       {
+        "userId": "2f3ad568-c45d-49e6-b19a-d39babcbef9e",
         "username": "400494",
         "assignmentSignup": {
           "programItemId": "8408",
@@ -2628,6 +2945,7 @@
         }
       },
       {
+        "userId": "4b9060cd-fec8-4fee-928d-24923426995b",
         "username": "807858",
         "assignmentSignup": {
           "programItemId": "8408",
@@ -2636,6 +2954,7 @@
         }
       },
       {
+        "userId": "e9b17c88-3b41-4f6f-ad1a-bf24c2f54787",
         "username": "457214",
         "assignmentSignup": {
           "programItemId": "8376",
@@ -2644,6 +2963,7 @@
         }
       },
       {
+        "userId": "f8b01d0f-558d-4011-96dd-6e00b1f46eb0",
         "username": "436648",
         "assignmentSignup": {
           "programItemId": "8376",
@@ -2652,6 +2972,7 @@
         }
       },
       {
+        "userId": "7413877c-46e4-4066-87df-a75ddb244c95",
         "username": "17964",
         "assignmentSignup": {
           "programItemId": "8376",
@@ -2660,6 +2981,7 @@
         }
       },
       {
+        "userId": "8f886d28-119d-4fb5-bbf5-9baa8fc3cc50",
         "username": "383241",
         "assignmentSignup": {
           "programItemId": "8376",
@@ -2668,6 +2990,7 @@
         }
       },
       {
+        "userId": "0c3ea935-b84d-43c4-bedc-12075a7def39",
         "username": "238132",
         "assignmentSignup": {
           "programItemId": "8376",
@@ -2676,6 +2999,7 @@
         }
       },
       {
+        "userId": "62af7434-0a4c-42a4-864e-d84c50d83203",
         "username": "102327",
         "assignmentSignup": {
           "programItemId": "8418",
@@ -2684,6 +3008,7 @@
         }
       },
       {
+        "userId": "96c59c46-71d0-49b4-bd34-6e5f1f5938a7",
         "username": "564848",
         "assignmentSignup": {
           "programItemId": "8418",
@@ -2692,6 +3017,7 @@
         }
       },
       {
+        "userId": "1cf3b863-802c-45ab-beb0-2301d8c2a373",
         "username": "70853",
         "assignmentSignup": {
           "programItemId": "8418",
@@ -2700,6 +3026,7 @@
         }
       },
       {
+        "userId": "0ac764bc-6b23-4cae-8698-641868f10942",
         "username": "661183",
         "assignmentSignup": {
           "programItemId": "8418",
@@ -2718,6 +3045,7 @@
   {
     "results": [
       {
+        "userId": "60b80e67-f2f5-4deb-b10b-e183e84fef00",
         "username": "579962",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2726,6 +3054,7 @@
         }
       },
       {
+        "userId": "a49ac8e7-4d6f-4156-84e0-138ba7ecdeb3",
         "username": "334099",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2734,6 +3063,7 @@
         }
       },
       {
+        "userId": "67b94fb3-380b-4b2f-8046-8c98e34fb4d0",
         "username": "14100",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2742,6 +3072,7 @@
         }
       },
       {
+        "userId": "13d0966d-e9e9-4e4b-b57f-20b06f8d0a73",
         "username": "189711",
         "assignmentSignup": {
           "programItemId": "8410",
@@ -2750,6 +3081,7 @@
         }
       },
       {
+        "userId": "f54f566e-1f7e-43d9-b59e-4a286dba9860",
         "username": "170412",
         "assignmentSignup": {
           "programItemId": "8383",
@@ -2758,6 +3090,7 @@
         }
       },
       {
+        "userId": "085baa0d-563d-476e-9bee-cbfbbae1395f",
         "username": "137793",
         "assignmentSignup": {
           "programItemId": "8383",
@@ -2766,6 +3099,7 @@
         }
       },
       {
+        "userId": "d94f6c3f-1bf3-4349-b7eb-4eb80bc45b0b",
         "username": "422641",
         "assignmentSignup": {
           "programItemId": "8383",
@@ -2774,6 +3108,7 @@
         }
       },
       {
+        "userId": "f1f0c4b2-a3da-46d0-9bea-0872cce37bd0",
         "username": "428528",
         "assignmentSignup": {
           "programItemId": "8383",
@@ -2782,6 +3117,7 @@
         }
       },
       {
+        "userId": "d016c10f-d930-412d-8807-0e02bc1f2549",
         "username": "48677",
         "assignmentSignup": {
           "programItemId": "8417",
@@ -2790,6 +3126,7 @@
         }
       },
       {
+        "userId": "b76cd474-3ca5-49e4-bd2e-ccf6f14838c7",
         "username": "912146",
         "assignmentSignup": {
           "programItemId": "8417",
@@ -2798,6 +3135,7 @@
         }
       },
       {
+        "userId": "d3ad0a69-3400-4ee6-a00d-68d57469bac7",
         "username": "828370",
         "assignmentSignup": {
           "programItemId": "8417",
@@ -2806,6 +3144,7 @@
         }
       },
       {
+        "userId": "8a734af7-b521-4af6-ac43-9c068b17cedf",
         "username": "717371",
         "assignmentSignup": {
           "programItemId": "8357",
@@ -2814,6 +3153,7 @@
         }
       },
       {
+        "userId": "89de5a24-a6d9-4bab-9460-9c691dbd3559",
         "username": "781204",
         "assignmentSignup": {
           "programItemId": "8357",
@@ -2822,6 +3162,7 @@
         }
       },
       {
+        "userId": "05a6a729-d2f9-4c49-a4db-be3898532859",
         "username": "292007",
         "assignmentSignup": {
           "programItemId": "8357",
@@ -2830,6 +3171,7 @@
         }
       },
       {
+        "userId": "08bbabcc-d5ad-48b7-8655-7219140712de",
         "username": "68460",
         "assignmentSignup": {
           "programItemId": "8357",
@@ -2838,6 +3180,7 @@
         }
       },
       {
+        "userId": "f465200f-cb7d-46dc-a12c-503326a009a6",
         "username": "836372",
         "assignmentSignup": {
           "programItemId": "8369",
@@ -2846,6 +3189,7 @@
         }
       },
       {
+        "userId": "a57f0aa9-1aeb-4654-bf09-ded3c3e0ebfb",
         "username": "770603",
         "assignmentSignup": {
           "programItemId": "8369",
@@ -2854,6 +3198,7 @@
         }
       },
       {
+        "userId": "14bd3965-d98a-4eb0-b5e4-086f802287e2",
         "username": "96583",
         "assignmentSignup": {
           "programItemId": "8369",
@@ -2862,6 +3207,7 @@
         }
       },
       {
+        "userId": "d3e34789-bbad-4003-88df-99ab879fb6fb",
         "username": "348786",
         "assignmentSignup": {
           "programItemId": "8369",
@@ -2870,6 +3216,7 @@
         }
       },
       {
+        "userId": "403029c3-47fc-43b5-b53c-5e87d139503a",
         "username": "789183",
         "assignmentSignup": {
           "programItemId": "8369",
@@ -2878,6 +3225,7 @@
         }
       },
       {
+        "userId": "96ff1a14-074b-4824-9eaa-f110a2661c8a",
         "username": "407208",
         "assignmentSignup": {
           "programItemId": "8369",
@@ -2886,6 +3234,7 @@
         }
       },
       {
+        "userId": "0c340294-84c4-4767-9238-ffb58aae2f5c",
         "username": "577974",
         "assignmentSignup": {
           "programItemId": "8330",
@@ -2894,6 +3243,7 @@
         }
       },
       {
+        "userId": "4197dd7c-a3e3-4cb1-93ef-c572ae7c1b23",
         "username": "444594",
         "assignmentSignup": {
           "programItemId": "8330",
@@ -2902,6 +3252,7 @@
         }
       },
       {
+        "userId": "3d44a79b-da19-40dd-b9a3-e47b5829d013",
         "username": "830810",
         "assignmentSignup": {
           "programItemId": "8330",
@@ -2910,6 +3261,7 @@
         }
       },
       {
+        "userId": "535530cf-e761-43bc-9596-e2db09ef1f25",
         "username": "733260",
         "assignmentSignup": {
           "programItemId": "8330",
@@ -2918,6 +3270,7 @@
         }
       },
       {
+        "userId": "5038c59b-ee2d-43a9-a218-d4ffead7ee91",
         "username": "857245",
         "assignmentSignup": {
           "programItemId": "8330",
@@ -2926,6 +3279,7 @@
         }
       },
       {
+        "userId": "b4803f66-8124-4142-8685-b12fc8322b1e",
         "username": "551573",
         "assignmentSignup": {
           "programItemId": "8379",
@@ -2934,6 +3288,7 @@
         }
       },
       {
+        "userId": "15075c51-d9a4-4ef4-9c86-d9c8843878f1",
         "username": "436303",
         "assignmentSignup": {
           "programItemId": "8379",
@@ -2942,6 +3297,7 @@
         }
       },
       {
+        "userId": "24741df3-732a-4691-a9ee-c4e168c864a5",
         "username": "883126",
         "assignmentSignup": {
           "programItemId": "8379",
@@ -2950,6 +3306,7 @@
         }
       },
       {
+        "userId": "e89ae8ee-a3cc-48d7-9f15-ca67eee2cb43",
         "username": "691146",
         "assignmentSignup": {
           "programItemId": "8379",
@@ -2958,6 +3315,7 @@
         }
       },
       {
+        "userId": "0709b8f8-a041-49a7-bbdc-b18941c31af2",
         "username": "22069",
         "assignmentSignup": {
           "programItemId": "8379",
@@ -2966,6 +3324,7 @@
         }
       },
       {
+        "userId": "50918576-cbde-4d5b-833e-f03f825bd8cf",
         "username": "388012",
         "assignmentSignup": {
           "programItemId": "8379",
@@ -2974,6 +3333,7 @@
         }
       },
       {
+        "userId": "d0512bfa-b963-4b32-94a1-f2d167e5560b",
         "username": "985491",
         "assignmentSignup": {
           "programItemId": "8402",
@@ -2982,6 +3342,7 @@
         }
       },
       {
+        "userId": "68229015-7ff7-4d49-8dd0-e31f94cd168d",
         "username": "473497",
         "assignmentSignup": {
           "programItemId": "8402",
@@ -2990,6 +3351,7 @@
         }
       },
       {
+        "userId": "de358168-e1ad-4b67-af30-b6eb79ed2f5a",
         "username": "359934",
         "assignmentSignup": {
           "programItemId": "8402",
@@ -2998,6 +3360,7 @@
         }
       },
       {
+        "userId": "83af6d8f-0e34-4178-85b5-59178872fd02",
         "username": "683409",
         "assignmentSignup": {
           "programItemId": "8402",
@@ -3006,6 +3369,7 @@
         }
       },
       {
+        "userId": "7288bdc3-eb35-41be-a178-e7b78bfad742",
         "username": "461959",
         "assignmentSignup": {
           "programItemId": "8402",
@@ -3024,6 +3388,7 @@
   {
     "results": [
       {
+        "userId": "536cb255-57b9-49c3-8696-4a869c8367dd",
         "username": "496490",
         "assignmentSignup": {
           "programItemId": "8435",
@@ -3032,6 +3397,7 @@
         }
       },
       {
+        "userId": "2b87e34c-5354-4344-b856-b3fc4370b4d4",
         "username": "746",
         "assignmentSignup": {
           "programItemId": "8435",
@@ -3040,6 +3406,7 @@
         }
       },
       {
+        "userId": "b188ce91-1011-45e9-841b-c601ec203f47",
         "username": "602265",
         "assignmentSignup": {
           "programItemId": "8435",
@@ -3048,6 +3415,7 @@
         }
       },
       {
+        "userId": "b1a59d83-0509-4f47-8c20-8408df21a90a",
         "username": "82198",
         "assignmentSignup": {
           "programItemId": "8435",
@@ -3056,6 +3424,7 @@
         }
       },
       {
+        "userId": "d431431b-a71b-4509-b50a-483683735415",
         "username": "869080",
         "assignmentSignup": {
           "programItemId": "8450",
@@ -3064,6 +3433,7 @@
         }
       },
       {
+        "userId": "3363d4cf-3ec7-4945-95cf-052a323255b7",
         "username": "487309",
         "assignmentSignup": {
           "programItemId": "8450",
@@ -3072,6 +3442,7 @@
         }
       },
       {
+        "userId": "1207c85e-a28a-4c31-9b1a-9f4c57f3e500",
         "username": "226320",
         "assignmentSignup": {
           "programItemId": "8450",
@@ -3080,6 +3451,7 @@
         }
       },
       {
+        "userId": "c963a960-429a-4b64-919b-943ccea04aa1",
         "username": "807258",
         "assignmentSignup": {
           "programItemId": "8450",
@@ -3088,6 +3460,7 @@
         }
       },
       {
+        "userId": "0ec1e873-0696-4c44-a876-e32f7431d0bc",
         "username": "606037",
         "assignmentSignup": {
           "programItemId": "8387",
@@ -3096,6 +3469,7 @@
         }
       },
       {
+        "userId": "d219c6c6-4edb-47cc-b599-ad9f1b3434ee",
         "username": "307817",
         "assignmentSignup": {
           "programItemId": "8387",
@@ -3104,6 +3478,7 @@
         }
       },
       {
+        "userId": "e7d0c450-c343-47dc-a87a-dc3c8fcf4dae",
         "username": "155419",
         "assignmentSignup": {
           "programItemId": "8387",
@@ -3112,6 +3487,7 @@
         }
       },
       {
+        "userId": "3d0a43bb-d399-4b0d-8189-f34747dddbed",
         "username": "184396",
         "assignmentSignup": {
           "programItemId": "8387",
@@ -3120,6 +3496,7 @@
         }
       },
       {
+        "userId": "7b2818b8-9742-47f2-80bd-100dacf2261f",
         "username": "390599",
         "assignmentSignup": {
           "programItemId": "8387",
@@ -3128,6 +3505,7 @@
         }
       },
       {
+        "userId": "950a107f-b725-4454-bad3-21d8ed3400ec",
         "username": "89017",
         "assignmentSignup": {
           "programItemId": "8433",
@@ -3136,6 +3514,7 @@
         }
       },
       {
+        "userId": "b4803f66-8124-4142-8685-b12fc8322b1e",
         "username": "551573",
         "assignmentSignup": {
           "programItemId": "8338",
@@ -3144,6 +3523,7 @@
         }
       },
       {
+        "userId": "ee4dc964-ba75-4b4b-b703-c8c918c96f63",
         "username": "944109",
         "assignmentSignup": {
           "programItemId": "8338",
@@ -3152,6 +3532,7 @@
         }
       },
       {
+        "userId": "171d35a7-88a0-4504-9185-0a02ba13beb8",
         "username": "564573",
         "assignmentSignup": {
           "programItemId": "8338",
@@ -3160,6 +3541,7 @@
         }
       },
       {
+        "userId": "bdfad9f0-3eb7-4133-97e8-b97b3fcac735",
         "username": "818981",
         "assignmentSignup": {
           "programItemId": "8338",
@@ -3168,6 +3550,7 @@
         }
       },
       {
+        "userId": "741e7ab1-0833-41f9-b194-24a618b58f21",
         "username": "665397",
         "assignmentSignup": {
           "programItemId": "8338",
@@ -3176,6 +3559,7 @@
         }
       },
       {
+        "userId": "50918576-cbde-4d5b-833e-f03f825bd8cf",
         "username": "388012",
         "assignmentSignup": {
           "programItemId": "8338",
@@ -3184,6 +3568,7 @@
         }
       },
       {
+        "userId": "d0154ade-6a7f-483f-bd76-959abda2d91c",
         "username": "809516",
         "assignmentSignup": {
           "programItemId": "8475",
@@ -3192,6 +3577,7 @@
         }
       },
       {
+        "userId": "565bdac3-6b26-449a-be29-5889fc29ca17",
         "username": "738304",
         "assignmentSignup": {
           "programItemId": "8475",
@@ -3200,6 +3586,7 @@
         }
       },
       {
+        "userId": "aeb3d993-4e11-427e-9721-ac924a834b2a",
         "username": "279994",
         "assignmentSignup": {
           "programItemId": "8475",
@@ -3208,6 +3595,7 @@
         }
       },
       {
+        "userId": "b02abaae-e9c8-4c1d-8a9b-9eb325a85b47",
         "username": "278521",
         "assignmentSignup": {
           "programItemId": "8475",
@@ -3216,6 +3604,7 @@
         }
       },
       {
+        "userId": "4b2e644c-8dc7-43b0-9c0e-f20be8ab9d1e",
         "username": "782158",
         "assignmentSignup": {
           "programItemId": "8475",
@@ -3224,6 +3613,7 @@
         }
       },
       {
+        "userId": "a57f0aa9-1aeb-4654-bf09-ded3c3e0ebfb",
         "username": "770603",
         "assignmentSignup": {
           "programItemId": "8475",
@@ -3242,6 +3632,7 @@
   {
     "results": [
       {
+        "userId": "725aa259-8e94-48d1-a24c-a5bc99698e80",
         "username": "970366",
         "assignmentSignup": {
           "programItemId": "8381",
@@ -3250,6 +3641,7 @@
         }
       },
       {
+        "userId": "10c49f80-427a-4600-abb1-eb2b0c7e29d4",
         "username": "689583",
         "assignmentSignup": {
           "programItemId": "8381",
@@ -3258,6 +3650,7 @@
         }
       },
       {
+        "userId": "180ece07-2796-4316-94f9-7552805e0f47",
         "username": "248767",
         "assignmentSignup": {
           "programItemId": "8381",
@@ -3266,6 +3659,7 @@
         }
       },
       {
+        "userId": "2ed8df19-cdaa-4774-bb38-2e01d9c0a408",
         "username": "672192",
         "assignmentSignup": {
           "programItemId": "8381",
@@ -3274,6 +3668,7 @@
         }
       },
       {
+        "userId": "5098434e-76e1-45b5-8721-879bd40796bd",
         "username": "709863",
         "assignmentSignup": {
           "programItemId": "8381",
@@ -3282,6 +3677,7 @@
         }
       },
       {
+        "userId": "70da40a7-9ec6-4942-9a33-cbb4aa3f1799",
         "username": "182053",
         "assignmentSignup": {
           "programItemId": "8370",
@@ -3290,6 +3686,7 @@
         }
       },
       {
+        "userId": "ee779030-e00b-4ad9-bf9e-996bafd59e4c",
         "username": "839656",
         "assignmentSignup": {
           "programItemId": "8370",
@@ -3298,6 +3695,7 @@
         }
       },
       {
+        "userId": "2668ff11-2fb7-4d2d-ac39-0417cebab59a",
         "username": "471622",
         "assignmentSignup": {
           "programItemId": "8370",
@@ -3306,6 +3704,7 @@
         }
       },
       {
+        "userId": "eaa267aa-c8a1-45d3-bc46-1e0fff52103d",
         "username": "370980",
         "assignmentSignup": {
           "programItemId": "8370",
@@ -3314,6 +3713,7 @@
         }
       },
       {
+        "userId": "e3a4e18d-d2dc-42e3-8556-fa82215eaf6f",
         "username": "979076",
         "assignmentSignup": {
           "programItemId": "8370",
@@ -3322,6 +3722,7 @@
         }
       },
       {
+        "userId": "d4f6bdbf-ed7d-417c-a1d8-9d22cda861fa",
         "username": "429102",
         "assignmentSignup": {
           "programItemId": "8422",
@@ -3330,6 +3731,7 @@
         }
       },
       {
+        "userId": "50073b49-5695-4e3f-b2a0-5f4e6071d68f",
         "username": "455250",
         "assignmentSignup": {
           "programItemId": "8422",
@@ -3338,6 +3740,7 @@
         }
       },
       {
+        "userId": "4a27df11-2dda-4c2c-a225-b8924cb464cb",
         "username": "826224",
         "assignmentSignup": {
           "programItemId": "8422",
@@ -3346,6 +3749,7 @@
         }
       },
       {
+        "userId": "353da178-22fc-49b9-afa1-244252d4f762",
         "username": "352719",
         "assignmentSignup": {
           "programItemId": "8385",
@@ -3354,6 +3758,7 @@
         }
       },
       {
+        "userId": "a232c4f0-c0a9-4702-89bc-e0e4853dc8d2",
         "username": "817251",
         "assignmentSignup": {
           "programItemId": "8385",
@@ -3362,6 +3767,7 @@
         }
       },
       {
+        "userId": "afa75674-e311-45a2-b697-1c0985ccbb2e",
         "username": "810076",
         "assignmentSignup": {
           "programItemId": "8385",
@@ -3370,6 +3776,7 @@
         }
       },
       {
+        "userId": "b720f93f-bb38-4a8c-8ed8-2b71f2338e73",
         "username": "858317",
         "assignmentSignup": {
           "programItemId": "8385",
@@ -3378,6 +3785,7 @@
         }
       },
       {
+        "userId": "addb9272-8549-4109-aab5-991f971517de",
         "username": "102872",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3386,6 +3794,7 @@
         }
       },
       {
+        "userId": "93b09ec1-5682-4a4e-b0f7-cc0771cf324e",
         "username": "371916",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3394,6 +3803,7 @@
         }
       },
       {
+        "userId": "9420ca8b-6f05-4ecb-a369-59f7adbfd0ec",
         "username": "79206",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3402,6 +3812,7 @@
         }
       },
       {
+        "userId": "bbad4725-2777-469f-acb1-058d77f1c21a",
         "username": "647978",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3410,6 +3821,7 @@
         }
       },
       {
+        "userId": "bf40ab1b-39e3-4841-8035-1110ea632903",
         "username": "929122",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3418,6 +3830,7 @@
         }
       },
       {
+        "userId": "963646ae-ffce-4869-8994-2f03926c6648",
         "username": "568609",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3426,6 +3839,7 @@
         }
       },
       {
+        "userId": "d9b1349c-f24f-4c2d-a41f-3b75264604a8",
         "username": "678717",
         "assignmentSignup": {
           "programItemId": "8457",
@@ -3444,6 +3858,7 @@
   {
     "results": [
       {
+        "userId": "3bdf48c8-0bc2-4401-ae66-89068fc6312c",
         "username": "943703",
         "assignmentSignup": {
           "programItemId": "8373",
@@ -3452,6 +3867,7 @@
         }
       },
       {
+        "userId": "fe010ead-2b26-4880-a3e2-80e2a2356e6d",
         "username": "160931",
         "assignmentSignup": {
           "programItemId": "8373",
@@ -3460,6 +3876,7 @@
         }
       },
       {
+        "userId": "77551d21-7101-430c-a7cf-7f8cc2258462",
         "username": "671039",
         "assignmentSignup": {
           "programItemId": "8373",
@@ -3468,6 +3885,7 @@
         }
       },
       {
+        "userId": "12d407a9-9d14-406a-8758-eb79b195aacc",
         "username": "60308",
         "assignmentSignup": {
           "programItemId": "8375",
@@ -3476,6 +3894,7 @@
         }
       },
       {
+        "userId": "66206333-6be7-4c0d-8560-8c5a66741c9f",
         "username": "31374",
         "assignmentSignup": {
           "programItemId": "8375",
@@ -3484,6 +3903,7 @@
         }
       },
       {
+        "userId": "b5300cfc-3d66-4591-bc74-bb4097849c76",
         "username": "232907",
         "assignmentSignup": {
           "programItemId": "8375",
@@ -3492,6 +3912,7 @@
         }
       },
       {
+        "userId": "c7167f0a-ce12-4fa9-82ec-8923853f0d88",
         "username": "442262",
         "assignmentSignup": {
           "programItemId": "8375",
@@ -3500,6 +3921,7 @@
         }
       },
       {
+        "userId": "8c96295e-072f-42e5-affa-6d1b4f524ce2",
         "username": "83710",
         "assignmentSignup": {
           "programItemId": "8375",
@@ -3508,6 +3930,7 @@
         }
       },
       {
+        "userId": "05056968-2cda-416b-877a-44ba706fa4e5",
         "username": "854769",
         "assignmentSignup": {
           "programItemId": "8375",
@@ -3516,6 +3939,7 @@
         }
       },
       {
+        "userId": "e89ae8ee-a3cc-48d7-9f15-ca67eee2cb43",
         "username": "691146",
         "assignmentSignup": {
           "programItemId": "8341",
@@ -3524,6 +3948,7 @@
         }
       },
       {
+        "userId": "6a235a14-689a-494e-b664-a7a45496ae76",
         "username": "31419",
         "assignmentSignup": {
           "programItemId": "8341",
@@ -3532,6 +3957,7 @@
         }
       },
       {
+        "userId": "8f91f075-c602-4970-9781-8e3c20dbc839",
         "username": "163380",
         "assignmentSignup": {
           "programItemId": "8341",
@@ -3540,6 +3966,7 @@
         }
       },
       {
+        "userId": "910e4e88-a179-4349-9f48-d40280b89fe8",
         "username": "232165",
         "assignmentSignup": {
           "programItemId": "8341",
@@ -3548,6 +3975,7 @@
         }
       },
       {
+        "userId": "ea336a3d-5f59-43a1-9d3f-5650c9f4eeb8",
         "username": "216673",
         "assignmentSignup": {
           "programItemId": "8341",
@@ -3556,6 +3984,7 @@
         }
       },
       {
+        "userId": "aafd5034-7f21-4a6d-bc2e-bff2fb49bf1e",
         "username": "413902",
         "assignmentSignup": {
           "programItemId": "8412",
@@ -3564,6 +3993,7 @@
         }
       },
       {
+        "userId": "a27035e8-2266-4efb-bd0e-0e0c6f09833b",
         "username": "431158",
         "assignmentSignup": {
           "programItemId": "8412",
@@ -3572,6 +4002,7 @@
         }
       },
       {
+        "userId": "256d2d3e-f992-40fb-bfe6-fe61042a28d1",
         "username": "772756",
         "assignmentSignup": {
           "programItemId": "8412",
@@ -3580,6 +4011,7 @@
         }
       },
       {
+        "userId": "29c5c115-5f3c-4866-b706-a39645fa20f4",
         "username": "514008",
         "assignmentSignup": {
           "programItemId": "8419",
@@ -3588,6 +4020,7 @@
         }
       },
       {
+        "userId": "b67487f0-3bbf-4a44-ba15-4c7489176a90",
         "username": "418386",
         "assignmentSignup": {
           "programItemId": "8419",
@@ -3596,6 +4029,7 @@
         }
       },
       {
+        "userId": "60a9234f-001d-402f-bce8-f5663ba8f6f8",
         "username": "39095",
         "assignmentSignup": {
           "programItemId": "8419",
@@ -3604,6 +4038,7 @@
         }
       },
       {
+        "userId": "017131cd-b14d-453d-ad7b-af4a7f749943",
         "username": "500200",
         "assignmentSignup": {
           "programItemId": "8419",
@@ -3612,6 +4047,7 @@
         }
       },
       {
+        "userId": "8a77d355-2fe7-4c12-94c8-d786d6968938",
         "username": "757859",
         "assignmentSignup": {
           "programItemId": "8419",
@@ -3630,6 +4066,7 @@
   {
     "results": [
       {
+        "userId": "0bcaa8b6-d482-440b-8d0b-9d4c2148400a",
         "username": "373194",
         "assignmentSignup": {
           "programItemId": "8409",
@@ -3638,6 +4075,7 @@
         }
       },
       {
+        "userId": "b39cc9f1-f00f-4bca-a851-23df3fe6c73a",
         "username": "494824",
         "assignmentSignup": {
           "programItemId": "8409",
@@ -3646,6 +4084,7 @@
         }
       },
       {
+        "userId": "fdbcb06c-e50d-4a28-8193-dd75c19a3062",
         "username": "415745",
         "assignmentSignup": {
           "programItemId": "8409",
@@ -3654,6 +4093,7 @@
         }
       },
       {
+        "userId": "f9c5c5a9-8a94-4be1-be96-a762c931c84b",
         "username": "775675",
         "assignmentSignup": {
           "programItemId": "8409",
@@ -3662,6 +4102,7 @@
         }
       },
       {
+        "userId": "efd5dc7c-972f-4a3a-9988-2a0b9b509736",
         "username": "635618",
         "assignmentSignup": {
           "programItemId": "8409",
@@ -3670,6 +4111,7 @@
         }
       },
       {
+        "userId": "22f5f2a1-c5b6-4d30-ae37-786fa558149a",
         "username": "365645",
         "assignmentSignup": {
           "programItemId": "8425",
@@ -3678,6 +4120,7 @@
         }
       },
       {
+        "userId": "5ae9bd0a-47b5-4c7b-80c3-72510581a0be",
         "username": "251285",
         "assignmentSignup": {
           "programItemId": "8425",
@@ -3686,6 +4129,7 @@
         }
       },
       {
+        "userId": "b4adee0d-1eda-4077-aa22-a388bc4deb88",
         "username": "428813",
         "assignmentSignup": {
           "programItemId": "8425",
@@ -3694,6 +4138,7 @@
         }
       },
       {
+        "userId": "05767e30-f19f-4ad6-ba04-c4463e8738b6",
         "username": "607670",
         "assignmentSignup": {
           "programItemId": "8425",
@@ -3702,6 +4147,7 @@
         }
       },
       {
+        "userId": "a71cabf3-9553-40b9-8f39-8f2a9e086f8a",
         "username": "950858",
         "assignmentSignup": {
           "programItemId": "8425",
@@ -3710,6 +4156,7 @@
         }
       },
       {
+        "userId": "b6b7120e-b56d-4dcd-a9a4-6a9ef34ab5a8",
         "username": "372680",
         "assignmentSignup": {
           "programItemId": "8425",
@@ -3718,6 +4165,7 @@
         }
       },
       {
+        "userId": "eb162027-02a1-4d76-9e0b-0cbe63820c9f",
         "username": "477602",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3726,6 +4174,7 @@
         }
       },
       {
+        "userId": "b6c5706a-c76a-4288-8d42-3e25b5cd850a",
         "username": "378047",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3734,6 +4183,7 @@
         }
       },
       {
+        "userId": "ee1f504c-f048-4cc5-9ced-9e7039d61325",
         "username": "901937",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3742,6 +4192,7 @@
         }
       },
       {
+        "userId": "754d1963-4f52-48e5-b965-a8758f2dabbd",
         "username": "271214",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3750,6 +4201,7 @@
         }
       },
       {
+        "userId": "e6fa07e9-e88e-46f3-8676-33f19ece0721",
         "username": "577003",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3758,6 +4210,7 @@
         }
       },
       {
+        "userId": "84cd7e35-ede5-48da-9ef5-528fb586927d",
         "username": "258215",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3766,6 +4219,7 @@
         }
       },
       {
+        "userId": "8b7751f8-f887-49db-b0cb-e2e93db6a237",
         "username": "572774",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3774,6 +4228,7 @@
         }
       },
       {
+        "userId": "1af32e0d-1279-4aa0-a343-67364d0ea482",
         "username": "788883",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3782,6 +4237,7 @@
         }
       },
       {
+        "userId": "d013d157-b174-4704-8f35-b24d42f94068",
         "username": "869560",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3790,6 +4246,7 @@
         }
       },
       {
+        "userId": "bbad4725-2777-469f-acb1-058d77f1c21a",
         "username": "647978",
         "assignmentSignup": {
           "programItemId": "8349",
@@ -3798,6 +4255,7 @@
         }
       },
       {
+        "userId": "f539c9ef-9e16-4e75-bb5f-f809ee0bace3",
         "username": "478877",
         "assignmentSignup": {
           "programItemId": "8308",
@@ -3806,6 +4264,7 @@
         }
       },
       {
+        "userId": "17b99b1f-c5ed-4366-aa98-7cd711ef3601",
         "username": "328164",
         "assignmentSignup": {
           "programItemId": "8308",
@@ -3814,6 +4273,7 @@
         }
       },
       {
+        "userId": "9cf7bc5b-dfcc-43d8-b891-f8847016dea7",
         "username": "535554",
         "assignmentSignup": {
           "programItemId": "8308",
@@ -3822,6 +4282,7 @@
         }
       },
       {
+        "userId": "6cfddbff-6683-4f17-99ff-416758575c7a",
         "username": "202803",
         "assignmentSignup": {
           "programItemId": "8308",
@@ -3830,6 +4291,7 @@
         }
       },
       {
+        "userId": "89fb0625-f0c3-48dc-8285-a62c7dffd678",
         "username": "425689",
         "assignmentSignup": {
           "programItemId": "8308",
@@ -3838,6 +4300,7 @@
         }
       },
       {
+        "userId": "c5afc3b9-1322-4234-8c28-9651c15c3763",
         "username": "293909",
         "assignmentSignup": {
           "programItemId": "8308",
@@ -3846,6 +4309,7 @@
         }
       },
       {
+        "userId": "7b9d2972-a866-404f-852d-e5a977eef1cc",
         "username": "117866",
         "assignmentSignup": {
           "programItemId": "8309",
@@ -3854,6 +4318,7 @@
         }
       },
       {
+        "userId": "036d14b4-0679-4b87-b320-bd7f5cf7960f",
         "username": "620291",
         "assignmentSignup": {
           "programItemId": "8309",
@@ -3862,6 +4327,7 @@
         }
       },
       {
+        "userId": "94de5bf6-b41c-4989-9ba5-bc7146fe1eff",
         "username": "884453",
         "assignmentSignup": {
           "programItemId": "8309",
@@ -3870,6 +4336,7 @@
         }
       },
       {
+        "userId": "4e3d7fe8-80a9-40e1-b51c-a89e681f97ad",
         "username": "689838",
         "assignmentSignup": {
           "programItemId": "8309",
@@ -3878,6 +4345,7 @@
         }
       },
       {
+        "userId": "af0fb350-5449-4b0c-81b8-dfdcb58d0ad5",
         "username": "142553",
         "assignmentSignup": {
           "programItemId": "8309",
@@ -3886,6 +4354,7 @@
         }
       },
       {
+        "userId": "232a6047-a447-4dc7-b566-7adc69b45fdc",
         "username": "84842",
         "assignmentSignup": {
           "programItemId": "8309",
@@ -3894,6 +4363,7 @@
         }
       },
       {
+        "userId": "0389b41f-4148-407c-99c1-4d325701248c",
         "username": "669549",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3902,6 +4372,7 @@
         }
       },
       {
+        "userId": "4898f8a2-1547-4dfe-b923-ae6ff1826c45",
         "username": "444602",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3910,6 +4381,7 @@
         }
       },
       {
+        "userId": "f43e8139-ac38-4180-837d-46eb7baa8e9c",
         "username": "631850",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3918,6 +4390,7 @@
         }
       },
       {
+        "userId": "9c4f1a15-b4d6-4a5b-8509-d29a2e32fb9d",
         "username": "773239",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3926,6 +4399,7 @@
         }
       },
       {
+        "userId": "bc1c85c2-f17e-45cd-a742-91a9a8c450aa",
         "username": "422454",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3934,6 +4408,7 @@
         }
       },
       {
+        "userId": "d69a98a8-b9bd-4714-a488-9c9060892f38",
         "username": "586801",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3942,6 +4417,7 @@
         }
       },
       {
+        "userId": "075cd312-c113-47cc-a126-b1fbceb8d791",
         "username": "357793",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3950,6 +4426,7 @@
         }
       },
       {
+        "userId": "c367b6a3-dce4-4773-8c97-d363197aef09",
         "username": "403133",
         "assignmentSignup": {
           "programItemId": "8460",
@@ -3958,6 +4435,7 @@
         }
       },
       {
+        "userId": "4a198593-e623-4a21-a2e1-74909b00397b",
         "username": "436624",
         "assignmentSignup": {
           "programItemId": "8310",
@@ -3966,6 +4444,7 @@
         }
       },
       {
+        "userId": "52b453cf-2496-42b5-b7a2-824df48e188b",
         "username": "767879",
         "assignmentSignup": {
           "programItemId": "8310",
@@ -3974,6 +4453,7 @@
         }
       },
       {
+        "userId": "b16e42b5-f708-45dc-a40a-0700aa3ffb75",
         "username": "532337",
         "assignmentSignup": {
           "programItemId": "8310",
@@ -3982,6 +4462,7 @@
         }
       },
       {
+        "userId": "347d0abc-12cf-4ccf-a9b8-0b138049f51f",
         "username": "980464",
         "assignmentSignup": {
           "programItemId": "8310",
@@ -3990,6 +4471,7 @@
         }
       },
       {
+        "userId": "43454abe-4a2c-4135-bdaa-04f5533c524b",
         "username": "338703",
         "assignmentSignup": {
           "programItemId": "8310",
@@ -3998,6 +4480,7 @@
         }
       },
       {
+        "userId": "705ee8bd-49c5-4f19-aeda-9285999d4531",
         "username": "715378",
         "assignmentSignup": {
           "programItemId": "8310",
@@ -4006,6 +4489,7 @@
         }
       },
       {
+        "userId": "56558d75-110c-4f33-9811-e9c7526be898",
         "username": "689790",
         "assignmentSignup": {
           "programItemId": "8459",
@@ -4014,6 +4498,7 @@
         }
       },
       {
+        "userId": "e3e263be-046b-45b7-9476-c76352d80430",
         "username": "894275",
         "assignmentSignup": {
           "programItemId": "8459",
@@ -4022,6 +4507,7 @@
         }
       },
       {
+        "userId": "51cd590d-94bb-4813-902f-66e18cae6eb7",
         "username": "183384",
         "assignmentSignup": {
           "programItemId": "8459",
@@ -4030,6 +4516,7 @@
         }
       },
       {
+        "userId": "27709195-a469-43ee-be76-c27446aebb46",
         "username": "801388",
         "assignmentSignup": {
           "programItemId": "8459",
@@ -4038,6 +4525,7 @@
         }
       },
       {
+        "userId": "bbc95145-c1af-4dc5-aa44-ea9e8ff429c4",
         "username": "973454",
         "assignmentSignup": {
           "programItemId": "8459",
@@ -4046,6 +4534,7 @@
         }
       },
       {
+        "userId": "0c8a903e-f6c6-49b1-9349-4062c6b1bbbf",
         "username": "532922",
         "assignmentSignup": {
           "programItemId": "8311",
@@ -4054,6 +4543,7 @@
         }
       },
       {
+        "userId": "c5fe7aca-a636-4eee-bc10-7ee03c4de088",
         "username": "286139",
         "assignmentSignup": {
           "programItemId": "8311",
@@ -4062,6 +4552,7 @@
         }
       },
       {
+        "userId": "3a9f2eb5-2c5f-4bb5-afb2-36a4b8297f27",
         "username": "501070",
         "assignmentSignup": {
           "programItemId": "8311",
@@ -4070,6 +4561,7 @@
         }
       },
       {
+        "userId": "dd182fcc-583e-4145-8b9b-7c902f6bfa5d",
         "username": "948604",
         "assignmentSignup": {
           "programItemId": "8311",
@@ -4078,6 +4570,7 @@
         }
       },
       {
+        "userId": "c8e9023d-4f50-4f89-a774-5e0db89c82c7",
         "username": "404855",
         "assignmentSignup": {
           "programItemId": "8311",
@@ -4086,6 +4579,7 @@
         }
       },
       {
+        "userId": "323c6827-ff35-4d4a-9f6e-652a90e6ff20",
         "username": "404001",
         "assignmentSignup": {
           "programItemId": "8311",
@@ -4104,6 +4598,7 @@
   {
     "results": [
       {
+        "userId": "cba80440-2eb0-48f9-8f7a-b9c8c6acbb3a",
         "username": "19843",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4112,6 +4607,7 @@
         }
       },
       {
+        "userId": "7f545ba7-3595-4e6b-b367-75b90f165509",
         "username": "370185",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4120,6 +4616,7 @@
         }
       },
       {
+        "userId": "53124c98-dce6-49f8-8525-0819d7be830a",
         "username": "712625",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4128,6 +4625,7 @@
         }
       },
       {
+        "userId": "a49ac8e7-4d6f-4156-84e0-138ba7ecdeb3",
         "username": "334099",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4136,6 +4634,7 @@
         }
       },
       {
+        "userId": "f6ca69b6-6889-482d-b55c-b1c6fbaf0a62",
         "username": "200581",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4144,6 +4643,7 @@
         }
       },
       {
+        "userId": "7cac9b69-9242-417e-b269-55f272bf708b",
         "username": "917283",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4152,6 +4652,7 @@
         }
       },
       {
+        "userId": "0fbaeaa3-8f85-46ce-9b93-c9b2fa54511f",
         "username": "647984",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4160,6 +4661,7 @@
         }
       },
       {
+        "userId": "97ad9eb1-1e08-4570-a633-45bf089b3a50",
         "username": "481419",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4168,6 +4670,7 @@
         }
       },
       {
+        "userId": "62af7434-0a4c-42a4-864e-d84c50d83203",
         "username": "102327",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4176,6 +4679,7 @@
         }
       },
       {
+        "userId": "e9b17c88-3b41-4f6f-ad1a-bf24c2f54787",
         "username": "457214",
         "assignmentSignup": {
           "programItemId": "8389",
@@ -4184,6 +4688,7 @@
         }
       },
       {
+        "userId": "1967a16b-723e-4377-9822-901da4d2b70a",
         "username": "915758",
         "assignmentSignup": {
           "programItemId": "8377",
@@ -4192,6 +4697,7 @@
         }
       },
       {
+        "userId": "7288bdc3-eb35-41be-a178-e7b78bfad742",
         "username": "461959",
         "assignmentSignup": {
           "programItemId": "8377",
@@ -4200,6 +4706,7 @@
         }
       },
       {
+        "userId": "2b444769-46f8-4073-9e57-66f745caba4f",
         "username": "291435",
         "assignmentSignup": {
           "programItemId": "8377",
@@ -4208,6 +4715,7 @@
         }
       },
       {
+        "userId": "c67f90c7-00ff-4457-9e39-311e8e72bddd",
         "username": "797485",
         "assignmentSignup": {
           "programItemId": "8377",
@@ -4216,6 +4724,7 @@
         }
       },
       {
+        "userId": "efcbba8d-db6c-4930-89db-1c5a78f19e68",
         "username": "994532",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4224,6 +4733,7 @@
         }
       },
       {
+        "userId": "ba371a82-7887-4342-a5c1-432ca92a904f",
         "username": "844706",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4232,6 +4742,7 @@
         }
       },
       {
+        "userId": "3060cf2a-38e4-40f0-8ac2-1cc9d72cb186",
         "username": "975406",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4240,6 +4751,7 @@
         }
       },
       {
+        "userId": "b02abaae-e9c8-4c1d-8a9b-9eb325a85b47",
         "username": "278521",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4248,6 +4760,7 @@
         }
       },
       {
+        "userId": "11af49fb-a28b-4a5e-a27d-2ec4e712cc67",
         "username": "161349",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4256,6 +4769,7 @@
         }
       },
       {
+        "userId": "700dec69-ad4f-422d-a079-e4285bc6b0de",
         "username": "100749",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4264,6 +4778,7 @@
         }
       },
       {
+        "userId": "5329b54a-cc36-4312-8c68-bd71d2eab5a3",
         "username": "425259",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4272,6 +4787,7 @@
         }
       },
       {
+        "userId": "24ec84b1-e322-4931-8a06-4504818d1ba6",
         "username": "588277",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4280,6 +4796,7 @@
         }
       },
       {
+        "userId": "7c8fd4c7-6e00-490f-a16c-ae8690158259",
         "username": "434769",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4288,6 +4805,7 @@
         }
       },
       {
+        "userId": "dd8ea88e-7ca9-4cf1-bfc1-5649be8104f1",
         "username": "363615",
         "assignmentSignup": {
           "programItemId": "8451",
@@ -4296,6 +4814,7 @@
         }
       },
       {
+        "userId": "41a15949-5987-4447-b561-66bd8ee77de1",
         "username": "217040",
         "assignmentSignup": {
           "programItemId": "8463",
@@ -4304,6 +4823,7 @@
         }
       },
       {
+        "userId": "b060cb44-f105-49de-a900-0235c0de34d2",
         "username": "754171",
         "assignmentSignup": {
           "programItemId": "8463",
@@ -4312,6 +4832,7 @@
         }
       },
       {
+        "userId": "696427f9-2917-473d-8218-16bb78b9614b",
         "username": "709546",
         "assignmentSignup": {
           "programItemId": "8463",
@@ -4320,6 +4841,7 @@
         }
       },
       {
+        "userId": "b3636626-96aa-44e7-a362-a0be1d0593ce",
         "username": "188019",
         "assignmentSignup": {
           "programItemId": "8463",
@@ -4328,6 +4850,7 @@
         }
       },
       {
+        "userId": "0cdb3162-c1a4-4bf5-8fa0-8958a721b4a4",
         "username": "420650",
         "assignmentSignup": {
           "programItemId": "8463",
@@ -4336,6 +4859,7 @@
         }
       },
       {
+        "userId": "fda1b3f4-7623-4000-9b1c-b72f735248f7",
         "username": "740687",
         "assignmentSignup": {
           "programItemId": "8343",
@@ -4344,6 +4868,7 @@
         }
       },
       {
+        "userId": "a799f0da-31de-457f-8b13-18629981545d",
         "username": "951399",
         "assignmentSignup": {
           "programItemId": "8343",
@@ -4352,6 +4877,7 @@
         }
       },
       {
+        "userId": "dd1a73b7-bc40-48c8-ae60-066af78b62a7",
         "username": "135866",
         "assignmentSignup": {
           "programItemId": "8343",
@@ -4360,6 +4886,7 @@
         }
       },
       {
+        "userId": "c3c0e35d-b406-4b6f-a6cc-bd980401c66c",
         "username": "905388",
         "assignmentSignup": {
           "programItemId": "8343",
@@ -4368,6 +4895,7 @@
         }
       },
       {
+        "userId": "60b80e67-f2f5-4deb-b10b-e183e84fef00",
         "username": "579962",
         "assignmentSignup": {
           "programItemId": "8343",
@@ -4376,6 +4904,7 @@
         }
       },
       {
+        "userId": "b76cd474-3ca5-49e4-bd2e-ccf6f14838c7",
         "username": "912146",
         "assignmentSignup": {
           "programItemId": "8343",
@@ -4384,6 +4913,7 @@
         }
       },
       {
+        "userId": "340aff10-aab1-4355-8d1c-240934a96c68",
         "username": "188516",
         "assignmentSignup": {
           "programItemId": "8437",
@@ -4392,6 +4922,7 @@
         }
       },
       {
+        "userId": "e2a27905-4c15-4881-9b35-5fd50c89ffe6",
         "username": "260352",
         "assignmentSignup": {
           "programItemId": "8437",
@@ -4400,6 +4931,7 @@
         }
       },
       {
+        "userId": "4b42e811-86f4-48ed-85dc-879d31123ad0",
         "username": "462902",
         "assignmentSignup": {
           "programItemId": "8437",
@@ -4408,6 +4940,7 @@
         }
       },
       {
+        "userId": "ed570827-f754-4fbc-8a5a-02080950beb1",
         "username": "864261",
         "assignmentSignup": {
           "programItemId": "8437",
@@ -4416,6 +4949,7 @@
         }
       },
       {
+        "userId": "b188ce91-1011-45e9-841b-c601ec203f47",
         "username": "602265",
         "assignmentSignup": {
           "programItemId": "8437",
@@ -4424,6 +4958,7 @@
         }
       },
       {
+        "userId": "56558d75-110c-4f33-9811-e9c7526be898",
         "username": "689790",
         "assignmentSignup": {
           "programItemId": "8339",
@@ -4432,6 +4967,7 @@
         }
       },
       {
+        "userId": "faf0d3e6-64d0-4de7-894b-8c078b9d4d8d",
         "username": "222882",
         "assignmentSignup": {
           "programItemId": "8339",
@@ -4440,6 +4976,7 @@
         }
       },
       {
+        "userId": "2b87e34c-5354-4344-b856-b3fc4370b4d4",
         "username": "746",
         "assignmentSignup": {
           "programItemId": "8339",
@@ -4458,6 +4995,7 @@
   {
     "results": [
       {
+        "userId": "b01c098f-6054-4820-a4fb-6c9595552cb5",
         "username": "474964",
         "assignmentSignup": {
           "programItemId": "8413",
@@ -4466,6 +5004,7 @@
         }
       },
       {
+        "userId": "79ad51d3-e1a0-48dd-bc77-aeeca9231d82",
         "username": "466924",
         "assignmentSignup": {
           "programItemId": "8413",
@@ -4474,6 +5013,7 @@
         }
       },
       {
+        "userId": "421c2b3c-f3b4-481b-8d1b-db4a7933030a",
         "username": "775236",
         "assignmentSignup": {
           "programItemId": "8413",
@@ -4482,6 +5022,7 @@
         }
       },
       {
+        "userId": "ea570012-970f-4939-9cd5-1d4c1b277947",
         "username": "535230",
         "assignmentSignup": {
           "programItemId": "8413",
@@ -4490,6 +5031,7 @@
         }
       },
       {
+        "userId": "c9755044-bce5-4567-8b70-ba88661b8a11",
         "username": "709669",
         "assignmentSignup": {
           "programItemId": "8405",
@@ -4498,6 +5040,7 @@
         }
       },
       {
+        "userId": "c2245a3e-e9c1-4fce-b13c-fcc4b261448f",
         "username": "626398",
         "assignmentSignup": {
           "programItemId": "8405",
@@ -4506,6 +5049,7 @@
         }
       },
       {
+        "userId": "2565ce4d-9abd-4dd4-be44-4f986729bfc3",
         "username": "176031",
         "assignmentSignup": {
           "programItemId": "8405",
@@ -4514,6 +5058,7 @@
         }
       },
       {
+        "userId": "0931c5f3-6a4e-4888-963f-f08a8e24bff3",
         "username": "647478",
         "assignmentSignup": {
           "programItemId": "8405",
@@ -4522,6 +5067,7 @@
         }
       },
       {
+        "userId": "addb9272-8549-4109-aab5-991f971517de",
         "username": "102872",
         "assignmentSignup": {
           "programItemId": "8476",
@@ -4530,6 +5076,7 @@
         }
       },
       {
+        "userId": "20b3c882-db2f-4ba7-9370-968f607e1008",
         "username": "200394",
         "assignmentSignup": {
           "programItemId": "8476",
@@ -4538,6 +5085,7 @@
         }
       },
       {
+        "userId": "db1a0e04-2d86-4f89-9a58-bb256f85e750",
         "username": "485888",
         "assignmentSignup": {
           "programItemId": "8352",
@@ -4546,6 +5094,7 @@
         }
       },
       {
+        "userId": "c7167f0a-ce12-4fa9-82ec-8923853f0d88",
         "username": "442262",
         "assignmentSignup": {
           "programItemId": "8352",
@@ -4554,6 +5103,7 @@
         }
       },
       {
+        "userId": "8c96295e-072f-42e5-affa-6d1b4f524ce2",
         "username": "83710",
         "assignmentSignup": {
           "programItemId": "8352",
@@ -4562,6 +5112,7 @@
         }
       },
       {
+        "userId": "8a1663d9-6540-4772-877f-9a97ea79829d",
         "username": "521649",
         "assignmentSignup": {
           "programItemId": "8352",
@@ -4570,6 +5121,7 @@
         }
       },
       {
+        "userId": "8d76a7c1-a315-4617-8b37-d7aaad159b0e",
         "username": "703878",
         "assignmentSignup": {
           "programItemId": "8466",
@@ -4578,6 +5130,7 @@
         }
       },
       {
+        "userId": "af7b146d-51ca-4014-bcfb-a48c4c59cc50",
         "username": "961115",
         "assignmentSignup": {
           "programItemId": "8466",
@@ -4586,6 +5139,7 @@
         }
       },
       {
+        "userId": "2a6e73b0-2665-4738-bc1e-742aad65ed71",
         "username": "736093",
         "assignmentSignup": {
           "programItemId": "8466",
@@ -4594,6 +5148,7 @@
         }
       },
       {
+        "userId": "0ec1e873-0696-4c44-a876-e32f7431d0bc",
         "username": "606037",
         "assignmentSignup": {
           "programItemId": "8466",
@@ -4602,6 +5157,7 @@
         }
       },
       {
+        "userId": "96c59c46-71d0-49b4-bd34-6e5f1f5938a7",
         "username": "564848",
         "assignmentSignup": {
           "programItemId": "8466",
@@ -4610,6 +5166,7 @@
         }
       },
       {
+        "userId": "b6b7120e-b56d-4dcd-a9a4-6a9ef34ab5a8",
         "username": "372680",
         "assignmentSignup": {
           "programItemId": "8414",
@@ -4618,6 +5175,7 @@
         }
       },
       {
+        "userId": "05612442-25ef-45bf-a013-1c86628636fb",
         "username": "677739",
         "assignmentSignup": {
           "programItemId": "8414",
@@ -4626,6 +5184,7 @@
         }
       },
       {
+        "userId": "f52d1ba0-8ba1-4f04-9592-d9a8bbc4af8e",
         "username": "723927",
         "assignmentSignup": {
           "programItemId": "8414",
@@ -4634,6 +5193,7 @@
         }
       },
       {
+        "userId": "d992df39-8a30-428a-953a-c9439e77307e",
         "username": "865825",
         "assignmentSignup": {
           "programItemId": "8414",
@@ -4642,6 +5202,7 @@
         }
       },
       {
+        "userId": "a161925b-112a-47fa-b502-c542ae6aeaf6",
         "username": "958916",
         "assignmentSignup": {
           "programItemId": "8414",
@@ -4650,6 +5211,7 @@
         }
       },
       {
+        "userId": "506b9688-7bfe-4e61-8a65-4603b5314e05",
         "username": "775670",
         "assignmentSignup": {
           "programItemId": "8414",
@@ -4658,6 +5220,7 @@
         }
       },
       {
+        "userId": "4898f8a2-1547-4dfe-b923-ae6ff1826c45",
         "username": "444602",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4666,6 +5229,7 @@
         }
       },
       {
+        "userId": "75843ddf-81b6-4247-8370-8cd14fe52cfc",
         "username": "818836",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4674,6 +5238,7 @@
         }
       },
       {
+        "userId": "027ecbfd-ff85-4841-9dfe-99bb906325a0",
         "username": "66745",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4682,6 +5247,7 @@
         }
       },
       {
+        "userId": "424ef9a2-a016-41f0-b957-7dd4c407d0e8",
         "username": "617336",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4690,6 +5256,7 @@
         }
       },
       {
+        "userId": "b3636626-96aa-44e7-a362-a0be1d0593ce",
         "username": "188019",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4698,6 +5265,7 @@
         }
       },
       {
+        "userId": "bc1560cf-d411-4c6a-827f-cddf4e7291c2",
         "username": "141399",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4706,6 +5274,7 @@
         }
       },
       {
+        "userId": "afd7a959-88fa-429f-9205-5af99dfb4b71",
         "username": "224520",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4714,6 +5283,7 @@
         }
       },
       {
+        "userId": "ce8f341f-4040-4e12-8f51-8b1e0c1e0e14",
         "username": "58904",
         "assignmentSignup": {
           "programItemId": "8427",
@@ -4722,6 +5292,7 @@
         }
       },
       {
+        "userId": "7567224d-fc20-45da-abb9-1be391f162a6",
         "username": "859285",
         "assignmentSignup": {
           "programItemId": "8394",
@@ -4730,6 +5301,7 @@
         }
       },
       {
+        "userId": "8d92f050-77a9-4af9-9ef6-fa9541e64d6f",
         "username": "10610",
         "assignmentSignup": {
           "programItemId": "8394",
@@ -4738,6 +5310,7 @@
         }
       },
       {
+        "userId": "3bb7a4b8-9672-4224-b823-16a922448e1e",
         "username": "51585",
         "assignmentSignup": {
           "programItemId": "8394",
@@ -4746,6 +5319,7 @@
         }
       },
       {
+        "userId": "67730c01-a698-4965-9fa5-0478d692c9e7",
         "username": "973465",
         "assignmentSignup": {
           "programItemId": "8394",
@@ -4754,6 +5328,7 @@
         }
       },
       {
+        "userId": "4b9060cd-fec8-4fee-928d-24923426995b",
         "username": "807858",
         "assignmentSignup": {
           "programItemId": "8394",
@@ -4762,6 +5337,7 @@
         }
       },
       {
+        "userId": "0657cebf-d106-4b0c-a0b1-bba74ed1ed12",
         "username": "888388",
         "assignmentSignup": {
           "programItemId": "8415",
@@ -4770,6 +5346,7 @@
         }
       },
       {
+        "userId": "ea797482-bd44-4188-92ca-525a5f3b09b3",
         "username": "771176",
         "assignmentSignup": {
           "programItemId": "8415",
@@ -4778,6 +5355,7 @@
         }
       },
       {
+        "userId": "b02abaae-e9c8-4c1d-8a9b-9eb325a85b47",
         "username": "278521",
         "assignmentSignup": {
           "programItemId": "8415",
@@ -4786,6 +5364,7 @@
         }
       },
       {
+        "userId": "eb97c4dc-7512-411c-87ef-ccbada89c046",
         "username": "190718",
         "assignmentSignup": {
           "programItemId": "8415",
@@ -4794,6 +5373,7 @@
         }
       },
       {
+        "userId": "b76cd474-3ca5-49e4-bd2e-ccf6f14838c7",
         "username": "912146",
         "assignmentSignup": {
           "programItemId": "8461",
@@ -4802,6 +5382,7 @@
         }
       },
       {
+        "userId": "3d44a79b-da19-40dd-b9a3-e47b5829d013",
         "username": "830810",
         "assignmentSignup": {
           "programItemId": "8461",
@@ -4810,6 +5391,7 @@
         }
       },
       {
+        "userId": "b188ce91-1011-45e9-841b-c601ec203f47",
         "username": "602265",
         "assignmentSignup": {
           "programItemId": "8461",
@@ -4818,6 +5400,7 @@
         }
       },
       {
+        "userId": "a71cabf3-9553-40b9-8f39-8f2a9e086f8a",
         "username": "950858",
         "assignmentSignup": {
           "programItemId": "8461",
@@ -4826,6 +5409,7 @@
         }
       },
       {
+        "userId": "efaba786-4442-4547-961d-195a7e99ed2b",
         "username": "136801",
         "assignmentSignup": {
           "programItemId": "8461",
@@ -4844,6 +5428,7 @@
   {
     "results": [
       {
+        "userId": "4f3f0726-6f6e-47a9-bf03-d9a424781a7f",
         "username": "335885",
         "assignmentSignup": {
           "programItemId": "8392",
@@ -4852,6 +5437,7 @@
         }
       },
       {
+        "userId": "4da2a40b-834d-4820-8282-1930e43be7df",
         "username": "341520",
         "assignmentSignup": {
           "programItemId": "8392",
@@ -4860,6 +5446,7 @@
         }
       },
       {
+        "userId": "05767e30-f19f-4ad6-ba04-c4463e8738b6",
         "username": "607670",
         "assignmentSignup": {
           "programItemId": "8392",
@@ -4868,6 +5455,7 @@
         }
       },
       {
+        "userId": "7b6ff203-6cf7-4831-9fa1-a858c7087534",
         "username": "282697",
         "assignmentSignup": {
           "programItemId": "8440",
@@ -4876,6 +5464,7 @@
         }
       },
       {
+        "userId": "afa75674-e311-45a2-b697-1c0985ccbb2e",
         "username": "810076",
         "assignmentSignup": {
           "programItemId": "8440",
@@ -4884,6 +5473,7 @@
         }
       },
       {
+        "userId": "83af6d8f-0e34-4178-85b5-59178872fd02",
         "username": "683409",
         "assignmentSignup": {
           "programItemId": "8440",
@@ -4892,6 +5482,7 @@
         }
       },
       {
+        "userId": "d9b1349c-f24f-4c2d-a41f-3b75264604a8",
         "username": "678717",
         "assignmentSignup": {
           "programItemId": "8440",
@@ -4900,6 +5491,7 @@
         }
       },
       {
+        "userId": "f43e8139-ac38-4180-837d-46eb7baa8e9c",
         "username": "631850",
         "assignmentSignup": {
           "programItemId": "8395",
@@ -4908,6 +5500,7 @@
         }
       },
       {
+        "userId": "9c4f1a15-b4d6-4a5b-8509-d29a2e32fb9d",
         "username": "773239",
         "assignmentSignup": {
           "programItemId": "8395",
@@ -4916,6 +5509,7 @@
         }
       },
       {
+        "userId": "a8a81ac3-fe64-4b39-92d3-588e91b3f8e6",
         "username": "916096",
         "assignmentSignup": {
           "programItemId": "8354",
@@ -4924,6 +5518,7 @@
         }
       },
       {
+        "userId": "b8c01f51-c645-4475-ba8b-575ee4d80290",
         "username": "475375",
         "assignmentSignup": {
           "programItemId": "8354",
@@ -4932,6 +5527,7 @@
         }
       },
       {
+        "userId": "6cfddbff-6683-4f17-99ff-416758575c7a",
         "username": "202803",
         "assignmentSignup": {
           "programItemId": "8354",
@@ -4940,6 +5536,7 @@
         }
       },
       {
+        "userId": "24486a4a-fabb-445b-bc87-7fefaa6f0c12",
         "username": "71859",
         "assignmentSignup": {
           "programItemId": "8354",
@@ -4948,6 +5545,7 @@
         }
       },
       {
+        "userId": "7413877c-46e4-4066-87df-a75ddb244c95",
         "username": "17964",
         "assignmentSignup": {
           "programItemId": "8296",
@@ -4956,6 +5554,7 @@
         }
       },
       {
+        "userId": "bc1c85c2-f17e-45cd-a742-91a9a8c450aa",
         "username": "422454",
         "assignmentSignup": {
           "programItemId": "8296",
@@ -4964,6 +5563,7 @@
         }
       },
       {
+        "userId": "e813a96f-9fe6-499a-9208-a8df5cda5a8d",
         "username": "330003",
         "assignmentSignup": {
           "programItemId": "8296",
@@ -4972,6 +5572,7 @@
         }
       },
       {
+        "userId": "96c59c46-71d0-49b4-bd34-6e5f1f5938a7",
         "username": "564848",
         "assignmentSignup": {
           "programItemId": "8296",
@@ -4990,6 +5591,7 @@
   {
     "results": [
       {
+        "userId": "30de94f0-4fc3-4989-8333-2f8529f6fbfa",
         "username": "97638",
         "assignmentSignup": {
           "programItemId": "8480",
@@ -4998,6 +5600,7 @@
         }
       },
       {
+        "userId": "3ba37c56-54e9-4a64-b214-a3121bc9ab0c",
         "username": "791020",
         "assignmentSignup": {
           "programItemId": "8480",
@@ -5006,6 +5609,7 @@
         }
       },
       {
+        "userId": "0773a8a2-19e6-4751-90d3-727cac8c9c98",
         "username": "115789",
         "assignmentSignup": {
           "programItemId": "8480",
@@ -5014,6 +5618,7 @@
         }
       },
       {
+        "userId": "1207c85e-a28a-4c31-9b1a-9f4c57f3e500",
         "username": "226320",
         "assignmentSignup": {
           "programItemId": "8480",
@@ -5022,6 +5627,7 @@
         }
       },
       {
+        "userId": "c2990276-9535-4146-9785-e9df19295f56",
         "username": "601755",
         "assignmentSignup": {
           "programItemId": "8480",
@@ -5030,6 +5636,7 @@
         }
       },
       {
+        "userId": "3f4ab32a-9fd9-4839-93ce-3ea8d3dd9fca",
         "username": "352328",
         "assignmentSignup": {
           "programItemId": "8444",
@@ -5038,6 +5645,7 @@
         }
       },
       {
+        "userId": "5038c59b-ee2d-43a9-a218-d4ffead7ee91",
         "username": "857245",
         "assignmentSignup": {
           "programItemId": "8444",
@@ -5046,6 +5654,7 @@
         }
       },
       {
+        "userId": "bce241b0-f2d4-4a08-8260-497e652b4386",
         "username": "429618",
         "assignmentSignup": {
           "programItemId": "8444",
@@ -5054,6 +5663,7 @@
         }
       },
       {
+        "userId": "7f545ba7-3595-4e6b-b367-75b90f165509",
         "username": "370185",
         "assignmentSignup": {
           "programItemId": "8444",
@@ -5062,6 +5672,7 @@
         }
       },
       {
+        "userId": "043a4192-f33d-4255-9352-29f6ce463f55",
         "username": "904107",
         "assignmentSignup": {
           "programItemId": "8444",
@@ -5070,6 +5681,7 @@
         }
       },
       {
+        "userId": "7288bdc3-eb35-41be-a178-e7b78bfad742",
         "username": "461959",
         "assignmentSignup": {
           "programItemId": "8444",
@@ -5078,6 +5690,7 @@
         }
       },
       {
+        "userId": "783d68ff-b2a2-40a3-a1d5-c91047bc0e77",
         "username": "625451",
         "assignmentSignup": {
           "programItemId": "8314",
@@ -5086,6 +5699,7 @@
         }
       },
       {
+        "userId": "c963a960-429a-4b64-919b-943ccea04aa1",
         "username": "807258",
         "assignmentSignup": {
           "programItemId": "8314",
@@ -5094,6 +5708,7 @@
         }
       },
       {
+        "userId": "d6012135-ebd0-432b-a8eb-5eda52ff6cb3",
         "username": "434548",
         "assignmentSignup": {
           "programItemId": "8314",
@@ -5102,6 +5717,7 @@
         }
       },
       {
+        "userId": "0cc8f940-9d60-445f-80d4-a3b139ec25b1",
         "username": "294185",
         "assignmentSignup": {
           "programItemId": "8314",
@@ -5110,6 +5726,7 @@
         }
       },
       {
+        "userId": "c5a8989a-edbc-4325-99cb-4986e8695ee3",
         "username": "971520",
         "assignmentSignup": {
           "programItemId": "8314",
@@ -5118,6 +5735,7 @@
         }
       },
       {
+        "userId": "bbad4725-2777-469f-acb1-058d77f1c21a",
         "username": "647978",
         "assignmentSignup": {
           "programItemId": "8314",
@@ -5126,6 +5744,7 @@
         }
       },
       {
+        "userId": "53d99069-260e-4ad4-84e7-a94df143fc1e",
         "username": "904136",
         "assignmentSignup": {
           "programItemId": "8393",
@@ -5134,6 +5753,7 @@
         }
       },
       {
+        "userId": "f504ed06-41f9-4687-9b21-6f725a0a6f7c",
         "username": "954836",
         "assignmentSignup": {
           "programItemId": "8393",
@@ -5142,6 +5762,7 @@
         }
       },
       {
+        "userId": "83af6d8f-0e34-4178-85b5-59178872fd02",
         "username": "683409",
         "assignmentSignup": {
           "programItemId": "8393",
@@ -5150,6 +5771,7 @@
         }
       },
       {
+        "userId": "0ec1e873-0696-4c44-a876-e32f7431d0bc",
         "username": "606037",
         "assignmentSignup": {
           "programItemId": "8393",
@@ -5158,6 +5780,7 @@
         }
       },
       {
+        "userId": "b789792b-bf71-4584-9bf8-5f1189aed86e",
         "username": "937874",
         "assignmentSignup": {
           "programItemId": "8393",
@@ -5166,6 +5789,7 @@
         }
       },
       {
+        "userId": "650decc5-2dff-450c-b69b-f44f3b6f2cf9",
         "username": "64414",
         "assignmentSignup": {
           "programItemId": "8312",
@@ -5174,6 +5798,7 @@
         }
       },
       {
+        "userId": "66550bf2-cdaf-4a8b-9b9e-a16f63bb1afc",
         "username": "417680",
         "assignmentSignup": {
           "programItemId": "8312",
@@ -5182,6 +5807,7 @@
         }
       },
       {
+        "userId": "91be371a-ea58-4a97-b6c6-b2e69858ae8f",
         "username": "86088",
         "assignmentSignup": {
           "programItemId": "8312",
@@ -5190,6 +5816,7 @@
         }
       },
       {
+        "userId": "0c8a903e-f6c6-49b1-9349-4062c6b1bbbf",
         "username": "532922",
         "assignmentSignup": {
           "programItemId": "8312",
@@ -5198,6 +5825,7 @@
         }
       },
       {
+        "userId": "036d14b4-0679-4b87-b320-bd7f5cf7960f",
         "username": "620291",
         "assignmentSignup": {
           "programItemId": "8312",
@@ -5206,6 +5834,7 @@
         }
       },
       {
+        "userId": "c5fe7aca-a636-4eee-bc10-7ee03c4de088",
         "username": "286139",
         "assignmentSignup": {
           "programItemId": "8312",
@@ -5214,6 +5843,7 @@
         }
       },
       {
+        "userId": "b1908eb7-1b0c-410e-b616-7c72b4dbfbba",
         "username": "616791",
         "assignmentSignup": {
           "programItemId": "8426",
@@ -5222,6 +5852,7 @@
         }
       },
       {
+        "userId": "7f432918-bda9-4c13-82b3-ba8b361517f2",
         "username": "114615",
         "assignmentSignup": {
           "programItemId": "8426",
@@ -5230,6 +5861,7 @@
         }
       },
       {
+        "userId": "fe010ead-2b26-4880-a3e2-80e2a2356e6d",
         "username": "160931",
         "assignmentSignup": {
           "programItemId": "8426",
@@ -5238,6 +5870,7 @@
         }
       },
       {
+        "userId": "180ece07-2796-4316-94f9-7552805e0f47",
         "username": "248767",
         "assignmentSignup": {
           "programItemId": "8426",
@@ -5246,6 +5879,7 @@
         }
       },
       {
+        "userId": "6a7f47b9-80f9-4906-8c03-4c1f034a2ec5",
         "username": "798825",
         "assignmentSignup": {
           "programItemId": "8426",
@@ -5254,6 +5888,7 @@
         }
       },
       {
+        "userId": "2b444769-46f8-4073-9e57-66f745caba4f",
         "username": "291435",
         "assignmentSignup": {
           "programItemId": "8426",
@@ -5262,6 +5897,7 @@
         }
       },
       {
+        "userId": "2a58a15c-bb3a-47fb-be3b-2bb2ce490025",
         "username": "653852",
         "assignmentSignup": {
           "programItemId": "8315",
@@ -5270,6 +5906,7 @@
         }
       },
       {
+        "userId": "f539c9ef-9e16-4e75-bb5f-f809ee0bace3",
         "username": "478877",
         "assignmentSignup": {
           "programItemId": "8315",
@@ -5278,6 +5915,7 @@
         }
       },
       {
+        "userId": "eac514f6-6388-404f-b4fc-33190db627a0",
         "username": "957268",
         "assignmentSignup": {
           "programItemId": "8315",
@@ -5286,6 +5924,7 @@
         }
       },
       {
+        "userId": "52b453cf-2496-42b5-b7a2-824df48e188b",
         "username": "767879",
         "assignmentSignup": {
           "programItemId": "8315",
@@ -5294,6 +5933,7 @@
         }
       },
       {
+        "userId": "c5afc3b9-1322-4234-8c28-9651c15c3763",
         "username": "293909",
         "assignmentSignup": {
           "programItemId": "8315",
@@ -5302,6 +5942,7 @@
         }
       },
       {
+        "userId": "3648af3b-91ea-4372-8efd-6d4c64bd9691",
         "username": "221570",
         "assignmentSignup": {
           "programItemId": "8315",
@@ -5310,6 +5951,7 @@
         }
       },
       {
+        "userId": "d445f895-0568-44be-b496-a7e27a4dfa0d",
         "username": "968951",
         "assignmentSignup": {
           "programItemId": "8324",
@@ -5318,6 +5960,7 @@
         }
       },
       {
+        "userId": "950a107f-b725-4454-bad3-21d8ed3400ec",
         "username": "89017",
         "assignmentSignup": {
           "programItemId": "8313",
@@ -5326,6 +5969,7 @@
         }
       },
       {
+        "userId": "b16e42b5-f708-45dc-a40a-0700aa3ffb75",
         "username": "532337",
         "assignmentSignup": {
           "programItemId": "8313",
@@ -5334,6 +5978,7 @@
         }
       },
       {
+        "userId": "89fb0625-f0c3-48dc-8285-a62c7dffd678",
         "username": "425689",
         "assignmentSignup": {
           "programItemId": "8313",
@@ -5342,6 +5987,7 @@
         }
       },
       {
+        "userId": "347d0abc-12cf-4ccf-a9b8-0b138049f51f",
         "username": "980464",
         "assignmentSignup": {
           "programItemId": "8313",
@@ -5350,6 +5996,7 @@
         }
       },
       {
+        "userId": "232a6047-a447-4dc7-b566-7adc69b45fdc",
         "username": "84842",
         "assignmentSignup": {
           "programItemId": "8313",
@@ -5358,6 +6005,7 @@
         }
       },
       {
+        "userId": "aeeaebf5-65f4-4666-a8ea-8e1483b26867",
         "username": "577962",
         "assignmentSignup": {
           "programItemId": "8313",
@@ -5366,6 +6014,7 @@
         }
       },
       {
+        "userId": "b67487f0-3bbf-4a44-ba15-4c7489176a90",
         "username": "418386",
         "assignmentSignup": {
           "programItemId": "8462",
@@ -5374,6 +6023,7 @@
         }
       },
       {
+        "userId": "60a9234f-001d-402f-bce8-f5663ba8f6f8",
         "username": "39095",
         "assignmentSignup": {
           "programItemId": "8462",
@@ -5382,6 +6032,7 @@
         }
       },
       {
+        "userId": "256d2d3e-f992-40fb-bfe6-fe61042a28d1",
         "username": "772756",
         "assignmentSignup": {
           "programItemId": "8462",
@@ -5390,6 +6041,7 @@
         }
       },
       {
+        "userId": "01b56090-bfdd-4f03-a2b4-3775a0aac4d3",
         "username": "811026",
         "assignmentSignup": {
           "programItemId": "8462",
@@ -5398,6 +6050,7 @@
         }
       },
       {
+        "userId": "b1fec56f-03f3-4f7c-a28e-0bfcf286593f",
         "username": "486902",
         "assignmentSignup": {
           "programItemId": "8462",
@@ -5406,6 +6059,7 @@
         }
       },
       {
+        "userId": "075cd312-c113-47cc-a126-b1fbceb8d791",
         "username": "357793",
         "assignmentSignup": {
           "programItemId": "8462",
