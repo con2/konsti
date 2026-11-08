@@ -21,9 +21,28 @@ export const postSentryTunnel = (
   return res.sendStatus(200);
 };
 
+// Each log is its own Sentry event, one per cause shape, so the shapes can be checked
+// separately: an Error cause becomes a linked exception, a non-Error one the `cause` extra
 export const getSentryTest = (_req: Request, _res: Response): Response => {
   logger.error(new Error("Sentry test error: logger.error()"));
+  logger.error(
+    new Error("Sentry test error: logger.error() with Error cause", {
+      cause: new Error("Sentry test error: Error cause"),
+    }),
+  );
+  logger.error(
+    new Error("Sentry test error: logger.error() with string cause", {
+      cause: "Sentry test error: string cause",
+    }),
+  );
+  logger.error(
+    new Error("Sentry test error: logger.error() with object cause", {
+      cause: { code: "SENTRY_TEST" },
+    }),
+  );
 
   // eslint-disable-next-line no-restricted-syntax -- Test error
-  throw new Error("Sentry test error: uncaught exception");
+  throw new Error("Sentry test error: uncaught exception", {
+    cause: new Error("Sentry test error: uncaught exception cause"),
+  });
 };
