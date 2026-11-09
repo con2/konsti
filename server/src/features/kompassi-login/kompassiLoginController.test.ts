@@ -248,7 +248,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.status).toEqual("success");
   });
 
-  test("should not rename a user whose username is already accepted", async () => {
+  test("should keep the accepted username when another name is submitted afterwards", async () => {
     await saveUser({ ...mockUser, kompassiId: "10" });
     await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
@@ -260,8 +260,11 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
       .send({ username: "second_name" })
       .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
-    const body = response.body as PostVerifyKompassiLoginError;
-    expect(body.errorId).toEqual("loginFailed");
+    expect(response.body).toMatchObject({
+      status: "success",
+      username: mockUser.username,
+      kompassiUsernameAccepted: true,
+    });
     expect(unsafelyUnwrap(await findUser("second_name"))).toBeNull();
   });
 

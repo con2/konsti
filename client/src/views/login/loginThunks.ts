@@ -288,8 +288,8 @@ export const submitVerifyKompassiLogin = (
         case "usernameNotFree":
           return KompassiVerifyErrorMessage.USERNAME_TAKEN;
         case "loginFailed":
-          // The account is gone or has already accepted another username, so
-          // retrying cannot succeed - log out and let the user log in again
+          // The account cannot accept this name, so retrying cannot succeed -
+          // log out and let the user log in again
           dispatch(submitLogout());
           return KompassiVerifyErrorMessage.LOGIN_FAILED;
         case "unknown":

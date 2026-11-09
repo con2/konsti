@@ -374,7 +374,7 @@ export const updateUserKompassiLoginStatus = async (
   try {
     const response = await UserModel.findOneAndUpdate(
       // An account accepts its username once.
-      // Repeating the accepted name still matches, so a retried request succeeds.
+      // A simultaneous duplicate of the accepted name still matches, so a double submit succeeds.
       {
         userId,
         kompassiId: { $ne: "" },

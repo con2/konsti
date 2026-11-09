@@ -6,7 +6,7 @@ import {
   PostUpdateUserEmailAddressResponse,
   PostVerifyKompassiLoginResponse,
 } from "shared/types/api/login";
-import { UserGroup } from "shared/types/models/user";
+import { User, UserGroup } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
@@ -27,6 +27,7 @@ import {
 import {
   findUser,
   findUserByKompassiId,
+  findUserByUserId,
   saveUser,
   updateUserEmailAddress,
   updateUserKompassiLoginStatus,
@@ -300,10 +301,38 @@ export const doKompassiLogin = async (
   };
 };
 
+const getVerifiedLoginResponse = (
+  user: User,
+): PostVerifyKompassiLoginResponse => {
+  return {
+    message: "Kompassi login status updated",
+    status: "success",
+    username: user.username,
+    kompassiUsernameAccepted: user.kompassiUsernameAccepted,
+    jwt: getJWT(user.userGroup, user),
+  };
+};
+
 export const verifyKompassiLogin = async (
   userId: string,
   newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse> => {
+  const currentUserResult = await findUserByUserId(userId);
+  if (!currentUserResult.ok) {
+    return {
+      errorId: "unknown",
+      message: "Finding user failed",
+      status: "error",
+    };
+  }
+
+  // A form left open in another tab can submit after the name is accepted, and the accepted name
+  // stands. The session is still valid, so answer with that name instead of logging the user out.
+  const currentUser = currentUserResult.value;
+  if (currentUser?.kompassiUsernameAccepted) {
+    return getVerifiedLoginResponse(currentUser);
+  }
+
   // Check if username already taken
   const findUserResult = await findUser(newUsername);
   if (!findUserResult.ok) {
@@ -316,7 +345,7 @@ export const verifyKompassiLogin = async (
 
   const existingUser = findUserResult.value;
 
-  // A retry after a successful rename finds the user's own account here
+  // A user keeping their generated name finds their own account here
   if (existingUser && existingUser.userId !== userId) {
     logger.info(
       `Kompassi verify: Username ${existingUser.username} is already registered`,
@@ -330,8 +359,8 @@ export const verifyKompassiLogin = async (
 
   const userResult = await updateUserKompassiLoginStatus(userId, newUsername);
   if (!userResult.ok) {
-    // No match means the account was removed or has already accepted another
-    // username, so tell the client to log out instead of inviting a retry
+    // No match means the account was removed, is a local one, or lost a simultaneous
+    // rename, so tell the client to log out instead of inviting a retry
     if (userResult.error === MongoDbError.USER_NOT_FOUND) {
       return {
         message: "User of the current session not found",
@@ -353,19 +382,11 @@ export const verifyKompassiLogin = async (
     };
   }
 
-  const user = userResult.value;
-
   logger.info(
     `Kompassi login: user ${userId} accepted username ${newUsername}`,
   );
 
-  return {
-    message: "Kompassi login status updated",
-    status: "success",
-    username: user.username,
-    kompassiUsernameAccepted: user.kompassiUsernameAccepted,
-    jwt: getJWT(user.userGroup, user),
-  };
+  return getVerifiedLoginResponse(userResult.value);
 };
 
 export const verifyUpdateUserEmailAddress = async (
