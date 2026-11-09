@@ -7,8 +7,13 @@ import {
   PostDirectSignupResponse,
   PostDirectSignupResult,
 } from "shared/types/api/myProgramItems";
-import { SignupType, State } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
+import { UserGroup } from "shared/types/models/user";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
@@ -26,7 +31,11 @@ import {
   SignupRepositoryAddSignup,
 } from "server/features/direct-signup/directSignupTypes";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { getSignupMessage } from "server/features/program-item/programItemUtils";
+import {
+  REDACTED_SIGNUP_VALUE,
+  getSignupMessage,
+  isParticipantListHidden,
+} from "server/features/program-item/programItemUtils";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { leaveOrCloseGroup } from "server/features/user/group/groupService";
 import { findUsernamesByUserIds } from "server/features/user/userRepository";
@@ -36,7 +45,19 @@ import { logger } from "server/utils/logger";
 const getAllSignups = async (
   signup: DirectSignupsForProgramItem,
   signupQuestion: SignupQuestion | undefined,
+  programType: ProgramType,
 ): Promise<PostDirectSignupResult["allSignups"]> => {
+  // These endpoints only accept regular users, who never see a hidden participant list
+  if (isParticipantListHidden(programType, UserGroup.USER)) {
+    return {
+      programItemId: signup.programItemId,
+      userSignups: signup.userSignups.map(() => ({
+        username: REDACTED_SIGNUP_VALUE,
+        message: REDACTED_SIGNUP_VALUE,
+      })),
+    };
+  }
+
   const usernamesResult = await findUsernamesByUserIds(
     signup.userSignups.map((userSignup) => userSignup.userId),
   );
@@ -188,7 +209,11 @@ export const storeDirectSignup = async (
     (message) => message.programItemId === programItem.programItemId,
   );
 
-  const allSignups = await getAllSignups(signup, signupQuestion);
+  const allSignups = await getAllSignups(
+    signup,
+    signupQuestion,
+    programItem.programType,
+  );
 
   // The user missing from the stored sign-ups means the program item was full
   const newSignup = signup.userSignups.find(
@@ -308,6 +333,10 @@ export const removeDirectSignup = async (
   return {
     message: "Delete signup success",
     status: "success",
-    allSignups: await getAllSignups(signup, signupQuestion),
+    allSignups: await getAllSignups(
+      signup,
+      signupQuestion,
+      programItem.programType,
+    ),
   };
 };

@@ -484,6 +484,32 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     ]);
   });
 
+  test("should redact the attendees of a hidden participant list in the direct sign-up response", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      hideParticipantListProgramTypes: [testProgramItem.programType],
+    });
+
+    await createSettings();
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+
+    const signup: PostDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+      message: "",
+    };
+    const response = await request(server)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
+      .send(signup)
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.allSignups.userSignups).toEqual([
+      { username: "redacted", message: "redacted" },
+    ]);
+  });
+
   test("should store the own start time as signedToStartTime when program item has parent start time override", async () => {
     // The parent batches a lottery, and a spot belongs to the hour the attendee turns up
     const parentStartTime = addHours(
@@ -895,6 +921,38 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const body = response.body as PostDirectSignupError;
     expect(body.status).toEqual("error");
     expect(body.message).toEqual("Delete signup failure");
+  });
+
+  test("should redact the remaining attendees of a hidden participant list after a cancellation", async () => {
+    vi.setSystemTime(testProgramItem.startTime);
+    vi.spyOn(config, "event").mockReturnValue({
+      ...config.event(),
+      hideParticipantListProgramTypes: [testProgramItem.programType],
+    });
+
+    await saveProgramItems([testProgramItem]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      }),
+    );
+
+    const deleteRequest: DeleteDirectSignupRequest = {
+      directSignupProgramItemId: testProgramItem.programItemId,
+    };
+    const response = await request(server)
+      .delete(ApiEndpoint.DIRECT_SIGNUP)
+      .send(deleteRequest)
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostDirectSignupResult;
+    expect(body.allSignups.userSignups).toEqual([
+      { username: "redacted", message: "redacted" },
+    ]);
   });
 
   test("should return success when user and program item are found", async () => {

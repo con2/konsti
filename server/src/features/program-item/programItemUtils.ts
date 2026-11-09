@@ -316,6 +316,18 @@ const getSignupStrategyForProgramItem = (
   return ProgramItemSignupStrategy.LOTTERY;
 };
 
+export const REDACTED_SIGNUP_VALUE = "redacted";
+
+export const isParticipantListHidden = (
+  programType: ProgramType,
+  userGroup: UserGroup | null,
+): boolean => {
+  return (
+    config.event().hideParticipantListProgramTypes.includes(programType) &&
+    !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELPER)
+  );
+};
+
 const getDirectSignupsForProgramItem = (
   directSignups: DirectSignupsForProgramItem[],
   usernamesByUserId: ReadonlyMap<string, string>,
@@ -324,7 +336,7 @@ const getDirectSignupsForProgramItem = (
   userGroup: UserGroup | null,
   signupQuestion?: SignupQuestion,
 ): UserSignup[] => {
-  const { hideParticipantListProgramTypes } = config.event();
+  const participantListHidden = isParticipantListHidden(programType, userGroup);
 
   const directSignupsForProgramItem = directSignups.filter(
     (signup) => signup.programItemId === programItemId,
@@ -333,13 +345,10 @@ const getDirectSignupsForProgramItem = (
   const formattedDirectSignupsForProgramItem =
     directSignupsForProgramItem.flatMap((directSignupForProgramItem) => {
       return directSignupForProgramItem.userSignups.map((userSignups) => {
-        if (
-          hideParticipantListProgramTypes.includes(programType) &&
-          !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELPER)
-        ) {
+        if (participantListHidden) {
           return {
-            username: "redacted",
-            signupMessage: "redacted",
+            username: REDACTED_SIGNUP_VALUE,
+            signupMessage: REDACTED_SIGNUP_VALUE,
           };
         }
         return {
