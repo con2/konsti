@@ -162,8 +162,6 @@ export const storeUser = async (
   };
 };
 
-const PASSWORD_CHANGE_NOT_ALLOWED = new Set(["admin", "helper"]);
-
 export const storeUserPassword = async (
   userId: string,
   password: string,
@@ -180,10 +178,8 @@ export const storeUserPassword = async (
       };
     }
 
-    if (
-      targetUserResult.value &&
-      PASSWORD_CHANGE_NOT_ALLOWED.has(targetUserResult.value.username)
-    ) {
+    const targetUser = targetUserResult.value;
+    if (targetUser && targetUser.userGroup !== UserGroup.USER) {
       return {
         message: "Password change not allowed",
         status: "error",

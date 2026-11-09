@@ -145,12 +145,36 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     expect(body.status).toEqual("success");
   });
 
+  test("should not allow a helper to reset a staff account under any name", async () => {
+    await saveUser({
+      ...mockUser,
+      username: "staff_account",
+      userGroup: UserGroup.ADMIN,
+    });
+
+    const response = await request(server)
+      .post(ApiEndpoint.USERS_PASSWORD)
+      .send({
+        userIdToUpdate: await getUserId("staff_account"),
+        password: "testpass",
+      })
+      .set(await authorizedAs(UserGroup.HELPER, "desk-volunteer"));
+
+    const body = response.body as PostUpdateUserPasswordError;
+    expect(body.errorId).toEqual("notAllowed");
+  });
+
   test("should not allow helper to change password for 'admin' or 'helper' users", async () => {
-    await saveUser({ ...mockUser, username: "admin" });
+    await saveUser({
+      ...mockUser,
+      username: "admin",
+      userGroup: UserGroup.ADMIN,
+    });
     await saveUser({
       ...mockUser,
       username: "helper",
       serial: "helper-serial",
+      userGroup: UserGroup.HELPER,
     });
 
     const adminRequestData: PostUpdateUserPasswordRequest = {
