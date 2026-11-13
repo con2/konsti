@@ -379,7 +379,7 @@ test("treats this run's own win as current for a batched program item", () => {
           count: 1,
           userSignups: [
             {
-              username: users[0].username,
+              userId: users[0].userId,
               priority: 1,
               signedToStartTime: testProgramItem.startTime,
               signupTime: testProgramItem.startTime,

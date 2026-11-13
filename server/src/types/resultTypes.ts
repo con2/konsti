@@ -7,7 +7,7 @@ import {
 import { LotterySignup, User } from "shared/types/models/user";
 
 export interface UserLotterySignups {
-  username: string;
+  userId: string;
   lotterySignups: readonly LotterySignup[];
 }
 

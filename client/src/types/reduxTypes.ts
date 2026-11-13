@@ -52,6 +52,7 @@ export interface LoginState {
   loggedIn: boolean;
   jwt: string;
   userGroup: UserGroup;
+  userId: string;
   serial: string;
   eventLogItems: EventLogItem[];
   kompassiUsernameAccepted: boolean;

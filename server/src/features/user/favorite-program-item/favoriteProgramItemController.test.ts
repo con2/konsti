@@ -29,7 +29,7 @@ describe(`POST ${ApiEndpoint.FAVORITE}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.FAVORITE)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 });

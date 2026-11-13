@@ -40,7 +40,6 @@ interface Props {
   lotterySignups: readonly LotterySignupWithProgramItem[];
   directSignups: readonly DirectSignupWithProgramItem[];
   isAlwaysExpanded: boolean;
-  username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
   publicSignupQuestion: SignupQuestion | undefined;
@@ -54,7 +53,6 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
   lotterySignups,
   directSignups,
   isAlwaysExpanded,
-  username,
   loggedIn,
   userGroup,
   publicSignupQuestion,
@@ -133,7 +131,6 @@ export const ProgramItemEntry = memo(function ProgramItemEntryComponent({
       <ProgramItemHead
         programItem={programItem}
         signups={signups}
-        username={username}
         loggedIn={loggedIn}
         userGroup={userGroup}
         allValuesValid={allValuesValid}

@@ -1,5 +1,5 @@
 export interface UserDirectSignup {
-  username: string;
+  userId: string;
   priority: number;
   signedToStartTime: string;
   signupTime: string;
@@ -13,7 +13,7 @@ export interface DirectSignupsForProgramItem {
 }
 
 export interface SignupRepositoryAddSignup {
-  username: string;
+  userId: string;
   directSignupProgramItemId: string;
   message: string;
   priority: number;

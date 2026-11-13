@@ -15,6 +15,7 @@ export const ProfileView = (): ReactElement => {
   const navigate = useNavigate();
 
   const username = useAppSelector((state) => state.login.username);
+  const userId = useAppSelector((state) => state.login.userId);
   const serial = useAppSelector((state) => state.login.serial);
   const email = useAppSelector((state) => state.login.email);
 
@@ -40,10 +41,7 @@ export const ProfileView = (): ReactElement => {
         </StyledButton>
       </UserInfoContainer>
       <EmailSettingsForm email={email} />
-      <PasswordChangeForm
-        isLocalLogin={isLocalLogin}
-        usernameToUpdate={username}
-      />
+      <PasswordChangeForm isLocalLogin={isLocalLogin} userIdToUpdate={userId} />
     </Container>
   );
 };

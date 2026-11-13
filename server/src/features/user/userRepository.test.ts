@@ -36,6 +36,18 @@ test("should insert new user into collection", async () => {
   });
 });
 
+test("should give each new user a distinct userId that reads back unchanged", async () => {
+  await saveProgramItems([testProgramItem]);
+  const firstUser = unsafelyUnwrap(await saveUser(mockUser));
+  const secondUser = unsafelyUnwrap(await saveUser(mockUser2));
+
+  expect(firstUser.userId).not.toEqual("");
+  expect(firstUser.userId).not.toEqual(secondUser.userId);
+
+  const storedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(storedUser?.userId).toEqual(firstUser.userId);
+});
+
 test("should find all users", async () => {
   await saveProgramItems([testProgramItem]);
   await saveUser(mockUser);
@@ -57,6 +69,15 @@ test("should not insert a second user with an existing username", async () => {
   // Reported distinctly from a generic failure so callers can tell that
   // nothing was written and retry under a different username
   expect(duplicateResult).toEqual(makeErrorResult(MongoDbError.DUPLICATE_KEY));
+  expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
+});
+
+test("should not insert a second user with an existing serial", async () => {
+  await saveProgramItems([testProgramItem]);
+  await saveUser(mockUser);
+
+  await saveUser({ ...mockUser2, serial: mockUser.serial });
+
   expect(unsafelyUnwrap(await findUsers())).toHaveLength(1);
 });
 

@@ -31,14 +31,18 @@ afterEach(async () => {
 
 test("should insert new result into collection", async () => {
   const signupResults: UserAssignmentResult[] = [
-    getAssignmentResult({ username: mockUser.username }),
-    getAssignmentResult({ username: mockUser2.username }),
+    getAssignmentResult({
+      userId: `${mockUser.username}-id`,
+    }),
+    getAssignmentResult({
+      userId: `${mockUser2.username}-id`,
+    }),
   ];
   const groups: AssignmentResultGroup[] = [
     {
       groupCode: "123-234-345",
-      groupCreator: mockUser.username,
-      groupMembers: [mockUser.username, mockUser2.username],
+      groupCreatorId: `${mockUser.username}-id`,
+      groupMemberIds: [`${mockUser.username}-id`, `${mockUser2.username}-id`],
     },
   ];
   const assignmentTime = testProgramItem.startTime;
@@ -58,7 +62,6 @@ test("should insert new result into collection", async () => {
           priority: 1,
           signedToStartTime: testProgramItem.startTime,
         },
-        username: mockUser.username,
       },
       {
         assignmentSignup: {
@@ -66,7 +69,6 @@ test("should insert new result into collection", async () => {
           priority: 1,
           signedToStartTime: testProgramItem.startTime,
         },
-        username: mockUser2.username,
       },
     ],
     groups,
@@ -80,7 +82,7 @@ const makeResult = (
   username: string,
   programItemId: string,
 ): UserAssignmentResult => ({
-  username,
+  userId: `${username}-id`,
   assignmentSignup: {
     programItemId,
     priority: 1,
@@ -98,13 +100,13 @@ test("should record a group that took part but was placed nowhere", async () => 
     [
       {
         groupCode: "placed-group",
-        groupCreator: mockUser.username,
-        groupMembers: [mockUser.username],
+        groupCreatorId: `${mockUser.username}-id`,
+        groupMemberIds: [`${mockUser.username}-id`],
       },
       {
         groupCode: "unplaced-group",
-        groupCreator: mockUser2.username,
-        groupMembers: [mockUser2.username],
+        groupCreatorId: `${mockUser2.username}-id`,
+        groupMemberIds: [`${mockUser2.username}-id`],
       },
     ],
     assignmentTime,
@@ -146,8 +148,11 @@ test("should keep one document per start time when the times differ only in seco
   const results = unsafelyUnwrap(await findResults());
   expect(results).toHaveLength(1);
   expect(results[0].results).toHaveLength(2);
-  expect(results[0].results.map((result) => result.username)).toEqual(
-    expect.arrayContaining([mockUser.username, mockUser2.username]),
+  expect(results[0].results.map((result) => result.userId)).toEqual(
+    expect.arrayContaining([
+      `${mockUser.username}-id`,
+      `${mockUser2.username}-id`,
+    ]),
   );
 });
 
@@ -195,8 +200,11 @@ test("should keep an earlier attempt's placements when a start time is run again
 
   expect(results).toHaveLength(1);
   expect(results[0].results).toHaveLength(2);
-  expect(results[0].results.map((result) => result.username)).toEqual(
-    expect.arrayContaining([mockUser.username, mockUser2.username]),
+  expect(results[0].results.map((result) => result.userId)).toEqual(
+    expect.arrayContaining([
+      `${mockUser.username}-id`,
+      `${mockUser2.username}-id`,
+    ]),
   );
 });
 

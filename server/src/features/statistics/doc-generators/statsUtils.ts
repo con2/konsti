@@ -188,13 +188,13 @@ const participationCache = new Map<string, RpgLotteryParticipation>();
 
 const addSlot = (
   map: Map<string, Set<string>>,
-  username: string,
+  userId: string,
   slot: string,
 ): void => {
-  let slots = map.get(username);
+  let slots = map.get(userId);
   if (!slots) {
     slots = new Set();
-    map.set(username, slots);
+    map.set(userId, slots);
   }
   slots.add(slot);
 };
@@ -227,7 +227,7 @@ export const collectRpgLotteryParticipation = (
   for (const u of users) {
     for (const ls of u.lotterySignups) {
       if (rpgIds.has(ls.programItemId)) {
-        addSlot(ownSlotsByUser, u.username, ls.signedToStartTime);
+        addSlot(ownSlotsByUser, u.userId, ls.signedToStartTime);
       }
     }
   }
@@ -248,8 +248,8 @@ export const collectRpgLotteryParticipation = (
         // Key wins by the run's assignment time - by definition the slot the
         // run assigned; the sign-up's own stamp legitimately diverges only
         // for parent-batched non-RPG items
-        addSlot(wonSlotsByUser, result.username, run.assignmentTime);
-        addSlot(runWinSlotsByUser, result.username, run.assignmentTime);
+        addSlot(wonSlotsByUser, result.userId, run.assignmentTime);
+        addSlot(runWinSlotsByUser, result.userId, run.assignmentTime);
       }
 
       // A run's group snapshots cover every two-phase program type, so gate
@@ -259,16 +259,16 @@ export const collectRpgLotteryParticipation = (
       // deleted after a run erase the matching sign-ups even in live records)
       for (const group of run.groups) {
         const slots = new Set<string>();
-        for (const slot of ownSlotsByUser.get(group.groupCreator) ?? []) {
+        for (const slot of ownSlotsByUser.get(group.groupCreatorId) ?? []) {
           if (slot === run.assignmentTime) slots.add(slot);
         }
-        for (const member of group.groupMembers) {
+        for (const member of group.groupMemberIds) {
           for (const slot of runWinSlotsByUser.get(member) ?? []) {
             slots.add(slot);
           }
         }
         if (slots.size === 0) continue;
-        for (const member of group.groupMembers) {
+        for (const member of group.groupMemberIds) {
           for (const slot of slots) {
             addSlot(groupMemberSlotsByUser, member, slot);
           }
@@ -339,7 +339,7 @@ export const collectRpgSpotCounts = (
       for (const result of run.results) {
         const id = result.assignmentSignup.programItemId;
         if (!rpgIds.has(id)) continue;
-        const key = `${result.username}|${id}`;
+        const key = `${result.userId}|${id}`;
         if (seen.has(key)) continue;
         seen.add(key);
         spotsByItem.set(id, (spotsByItem.get(id) ?? 0) + 1);

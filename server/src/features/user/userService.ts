@@ -1,3 +1,4 @@
+import { MongoDbError } from "shared/types/api/errors";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
@@ -10,6 +11,7 @@ import { findSerial } from "server/features/serial/serialRepository";
 import {
   findUser,
   findUserBySerial,
+  findUserByUserId,
   findUserSerial,
   saveUser,
   updateUserPassword,
@@ -122,6 +124,21 @@ export const storeUser = async (
           serial,
         });
         if (!saveUserResponseResult.ok) {
+          // The checks above can both pass for two simultaneous registrations
+          if (saveUserResponseResult.error === MongoDbError.DUPLICATE_SERIAL) {
+            return {
+              errorId: "invalidSerial",
+              message: "Invalid serial",
+              status: "error",
+            };
+          }
+          if (saveUserResponseResult.error === MongoDbError.DUPLICATE_KEY) {
+            return {
+              errorId: "usernameNotFree",
+              message: "Username in already registered",
+              status: "error",
+            };
+          }
           return {
             errorId: "unknown",
             message: "User registration failed",
@@ -145,23 +162,30 @@ export const storeUser = async (
   };
 };
 
-const PASSWORD_CHANGE_NOT_ALLOWED = new Set(["admin", "helper"]);
-
 export const storeUserPassword = async (
-  username: string,
+  userId: string,
   password: string,
   requesterUserGroup: UserGroup | null,
 ): Promise<PostUpdateUserPasswordResponse> => {
   // Helpers may reset regular users but not the admin/helper accounts; admins may reset anyone
-  if (
-    requesterUserGroup === UserGroup.HELPER &&
-    PASSWORD_CHANGE_NOT_ALLOWED.has(username)
-  ) {
-    return {
-      message: "Password change not allowed",
-      status: "error",
-      errorId: "notAllowed",
-    };
+  if (requesterUserGroup === UserGroup.HELPER) {
+    const targetUserResult = await findUserByUserId(userId);
+    if (!targetUserResult.ok) {
+      return {
+        message: "Password change error",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+
+    const targetUser = targetUserResult.value;
+    if (targetUser && targetUser.userGroup !== UserGroup.USER) {
+      return {
+        message: "Password change not allowed",
+        status: "error",
+        errorId: "notAllowed",
+      };
+    }
   }
 
   const passwordHashResult = await hashPassword(password);
@@ -174,7 +198,7 @@ export const storeUserPassword = async (
   }
 
   const updateUserPasswordResult = await updateUserPassword(
-    username,
+    userId,
     passwordHashResult.value,
   );
 
@@ -192,10 +216,10 @@ export const storeUserPassword = async (
   };
 };
 
-export const fetchUserByUsername = async (
-  username: string,
+export const fetchUserByUserId = async (
+  userId: string,
 ): Promise<GetUserResponse> => {
-  const userResult = await findUser(username);
+  const userResult = await findUserByUserId(userId);
   if (!userResult.ok) {
     return {
       message: "Getting user data failed",
@@ -207,13 +231,13 @@ export const fetchUserByUsername = async (
   const user = userResult.value;
   if (!user) {
     return {
-      message: `User ${username} not found`,
+      message: `User ${userId} not found`,
       status: "error",
       errorId: "unknown",
     };
   }
 
-  const signupsResult = await findUserDirectSignups(username);
+  const signupsResult = await findUserDirectSignups(userId);
   if (!signupsResult.ok) {
     return {
       message: "Getting user data failed",
@@ -225,7 +249,7 @@ export const fetchUserByUsername = async (
   const directSignups: DirectSignup[] = signupsResult.value.flatMap(
     (signup) => {
       const signupForUser = signup.userSignups.find(
-        (userSignup) => userSignup.username === username,
+        (userSignup) => userSignup.userId === userId,
       );
       if (!signupForUser) {
         return [];
@@ -277,6 +301,7 @@ export const fetchUserBySerialOrUsername = async (
     return {
       message: "Getting user data success",
       status: "success",
+      userId: userBySerial.userId,
       serial: userBySerial.serial,
       username: userBySerial.username,
       createdAt: userBySerial.createdAt,
@@ -314,6 +339,7 @@ export const fetchUserBySerialOrUsername = async (
   return {
     message: "Getting user data success",
     status: "success",
+    userId: user.userId,
     serial: user.serial,
     username: user.username,
     createdAt: user.createdAt,

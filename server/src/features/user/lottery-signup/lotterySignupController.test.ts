@@ -34,7 +34,9 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -72,7 +74,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -94,7 +96,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -118,11 +120,13 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       { ...testProgramItem2, startTime: testProgramItem.startTime },
     ]);
     await saveUser(mockUser);
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      directSignupProgramItemId: testProgramItem2.programItemId,
-      signedToStartTime: testProgramItem.startTime,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        directSignupProgramItemId: testProgramItem2.programItemId,
+        signedToStartTime: testProgramItem.startTime,
+      }),
+    );
 
     const signup: PostLotterySignupRequest = {
       programItemId: testProgramItem.programItemId,
@@ -131,7 +135,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -162,11 +166,13 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
       { ...testProgramItem2, startTime: earlierStartTime },
     ]);
     await saveUser(mockUser);
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      directSignupProgramItemId: testProgramItem2.programItemId,
-      signedToStartTime: earlierStartTime,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        directSignupProgramItemId: testProgramItem2.programItemId,
+        signedToStartTime: earlierStartTime,
+      }),
+    );
 
     const signup: PostLotterySignupRequest = {
       programItemId: testProgramItem.programItemId,
@@ -175,7 +181,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -215,7 +221,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -248,7 +254,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -275,7 +281,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -297,7 +303,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -316,7 +322,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -343,7 +349,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -367,7 +373,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -394,7 +400,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -422,7 +428,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, "user_not_found"));
+      .set(await authorizedAs(UserGroup.USER, "user_not_found"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -443,7 +449,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -459,7 +465,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -475,7 +481,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupError;
@@ -506,7 +512,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -537,7 +543,7 @@ describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLotterySignupResult;
@@ -564,7 +570,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(deleteRequest)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -582,7 +588,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -603,7 +609,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(signup)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as DeleteLotterySignupError;
@@ -621,7 +627,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -640,7 +646,7 @@ describe(`DELETE ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.LOTTERY_SIGNUP)
       .send(deleteRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as DeleteLotterySignupResponse;

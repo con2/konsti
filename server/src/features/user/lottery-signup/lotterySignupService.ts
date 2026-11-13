@@ -18,7 +18,7 @@ import {
   delLotterySignups,
   saveLotterySignup,
 } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { findUser } from "server/features/user/userRepository";
+import { findUserByUserId } from "server/features/user/userRepository";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import { logger } from "server/utils/logger";
 
@@ -27,13 +27,13 @@ const validPriorities = new Set([1, 2, 3]);
 interface StoreLotterySignupParams {
   programItemId: string;
   priority: number;
-  username: string;
+  userId: string;
 }
 
 export const storeLotterySignup = async ({
   programItemId,
   priority,
-  username,
+  userId,
 }: StoreLotterySignupParams): Promise<PostLotterySignupResponse> => {
   if (!validPriorities.has(priority)) {
     return {
@@ -146,7 +146,7 @@ export const storeLotterySignup = async ({
     };
   }
 
-  const userResult = await findUser(username);
+  const userResult = await findUserByUserId(userId);
   if (!userResult.ok) {
     return {
       message: "Error finding user",
@@ -197,7 +197,7 @@ export const storeLotterySignup = async ({
 
   const responseResult = await saveLotterySignup({
     lotterySignup,
-    username,
+    userId,
   });
 
   if (!responseResult.ok) {
@@ -217,7 +217,7 @@ export const storeLotterySignup = async ({
 
 export const removeLotterySignup = async (
   lotterySignupProgramItemId: string,
-  username: string,
+  userId: string,
 ): Promise<DeleteLotterySignupResponse> => {
   const programItemResult = await findProgramItemById(
     lotterySignupProgramItemId,
@@ -255,7 +255,7 @@ export const removeLotterySignup = async (
   const responseResult = await delLotterySignups([
     {
       lotterySignupProgramItemIds: [lotterySignupProgramItemId],
-      username,
+      userId,
     },
   ]);
 

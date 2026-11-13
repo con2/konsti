@@ -47,7 +47,9 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -101,7 +103,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
   test("should return 401 without admin authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SETTINGS)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
@@ -109,7 +111,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send({ appOpen: "not boolean" })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(422);
   });
@@ -145,7 +147,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const fullUpdateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send(testSettings)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(fullUpdateResponse.status).toEqual(200);
     expect(fullUpdateResponse.body).toEqual({
@@ -162,7 +164,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const partialUpdateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send(partialSettings)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(partialUpdateResponse.status).toEqual(200);
     expect(partialUpdateResponse.body).toEqual({
@@ -179,7 +181,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     const updateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send({ adminMessageFi, adminMessageEn })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(updateResponse.status).toEqual(200);
     expect((updateResponse.body as PostSettingsResponse).status).toEqual(
@@ -195,7 +197,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send({ adminMessageFi: "", adminMessageEn: "" })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     const clearedResponse = await request(server).get(ApiEndpoint.SETTINGS);
     const clearedSettings = clearedResponse.body as SettingsPayload;
@@ -214,13 +216,13 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
     await saveFavorite({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,
@@ -230,7 +232,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
       .send({ hiddenProgramItemIds: [testProgramItem.programItemId] })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
@@ -242,16 +244,18 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(updatedUser?.favoriteProgramItemIds.length).toEqual(1);
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups.length).toEqual(1);
-    expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
+    expect(signups[0].userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
   });
 
   test("should clean but not remove direct sign-up document when program item is hidden", async () => {
     await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     const signupsBefore = unsafelyUnwrap(await findDirectSignups());
     expect(signupsBefore).toHaveLength(1);
@@ -261,7 +265,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await request(server)
       .post(ApiEndpoint.HIDDEN)
       .send({ hiddenProgramItemIds: [testProgramItem.programItemId] })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     const signupsAfter = unsafelyUnwrap(await findDirectSignups());
     expect(signupsAfter).toHaveLength(1);
@@ -276,7 +280,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
       .send({ hiddenProgramItemIds: [] })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 
@@ -297,14 +301,14 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
   test("should return 401 with helper authorization", async () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(401);
   });
 
@@ -323,7 +327,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
   });
 
@@ -344,7 +348,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     const settings = unsafelyUnwrap(await findOrCreateSettings());
 
@@ -375,7 +379,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     await request(server)
       .post(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     const settings = unsafelyUnwrap(await findOrCreateSettings());
 
@@ -395,14 +399,14 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(401);
   });
 
   test("should return 401 with helper authorization", async () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(401);
   });
 
@@ -412,7 +416,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
       .send(requestData)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
   });
 
@@ -440,7 +444,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     await request(server)
       .delete(ApiEndpoint.SIGNUP_QUESTION)
       .send({ programItemId: "123" })
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     const updatedSettings = unsafelyUnwrap(await findOrCreateSettings());
     expect(updatedSettings.signupQuestions).toHaveLength(0);

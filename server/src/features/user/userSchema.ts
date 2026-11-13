@@ -30,6 +30,7 @@ const EventLogItemSchemaDb = z.object({
 
 export const UserSchemaDb = z
   .object({
+    userId: z.string(),
     kompassiId: z.string(),
     kompassiUsernameAccepted: z.boolean(),
     username: z.string(),
@@ -86,20 +87,19 @@ const eventLogItemSchema = new mongoose.Schema(
 
 const userSchema = new mongoose.Schema(
   {
+    userId: { type: String, required: true, unique: true },
     // No `required`: "" is the meaningful value for a local account, and the
     // global validator override that lets empty strings satisfy `required`
     // only loads with the Express app - tests connecting straight to the DB
     // would reject every local account. The default covers the undefined case.
     kompassiId: { type: String, default: "" },
     kompassiUsernameAccepted: { type: Boolean, required: true },
-    // Usernames identify a user everywhere: sign-ups, event log writes and
-    // assignment results all match on this field, and a username-filtered update
-    // only ever reaches one document. A second document with the same name would
-    // silently collect writes meant for the other.
+    // Unique because login finds an account by this field. Everything that refers
+    // to a user stores userId and reads the name from here.
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userGroup: { type: String, required: true },
-    serial: { type: String, required: true },
+    serial: { type: String, required: true, unique: true },
     isGroupCreator: { type: Boolean, required: true },
     groupCode: { type: String, required: true },
     favoriteProgramItemIds: { type: [String], required: true },

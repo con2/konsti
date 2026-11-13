@@ -26,6 +26,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -50,7 +51,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   test("should return 401 with normal user authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set(authorizedAs(UserGroup.USER, "testUser"));
+      .set(await authorizedAs(UserGroup.USER, "testUser"));
     expect(response.status).toEqual(401);
   });
 
@@ -85,18 +86,22 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      message: "Answer to public message",
-    });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      message: "Select Option 1",
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        message: "Answer to public message",
+      }),
+    );
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        message: "Select Option 1",
+      }),
+    );
 
     const response = await request(server)
       .get(ApiEndpoint.SIGNUP_MESSAGE)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
 
     expect(response.status).toEqual(200);
 

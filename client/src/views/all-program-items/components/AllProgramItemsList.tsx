@@ -94,7 +94,6 @@ export const AllProgramItemsList = ({
   const groupMembers = useAppSelector(selectGroupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
-  const username = useAppSelector((state) => state.login.username);
   const timeNow = useTimeNow();
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
@@ -423,7 +422,6 @@ export const AllProgramItemsList = ({
                   }
                   lotterySignups={ownOrGroupCreatorLotterySignups}
                   directSignups={directSignups}
-                  username={username}
                   loggedIn={loggedIn}
                   userGroup={userGroup}
                   publicSignupQuestion={publicSignupQuestionByProgramItemId.get(

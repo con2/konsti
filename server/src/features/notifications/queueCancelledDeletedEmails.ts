@@ -10,7 +10,7 @@ import {
 } from "server/utils/notificationQueue";
 
 interface ProgramItemChangeUpdate {
-  username: string;
+  userId: string;
   programItemId: string;
   programItemStartTime: string;
   action: EventLogAction;
@@ -28,7 +28,7 @@ export const queueCancelledDeletedEmails = async (
 
   const emailTasks = updates.flatMap((update): NotificationTask[] => {
     const base = {
-      username: update.username,
+      userId: update.userId,
       programItemId: update.programItemId,
       programItemStartTime: update.programItemStartTime,
       programItemTitle: programItemTitlesById.get(update.programItemId) ?? "",

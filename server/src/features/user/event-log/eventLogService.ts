@@ -6,11 +6,11 @@ import { updateEventLogItemIsSeen } from "server/features/user/event-log/eventLo
 
 export const storeEventLogItemIsSeen = async (
   request: PostEventLogIsSeenRequest,
-  username: string,
+  userId: string,
 ): Promise<PostEventLogIsSeenResponse> => {
   const updateEventLogItemResult = await updateEventLogItemIsSeen(
     request,
-    username,
+    userId,
   );
   if (!updateEventLogItemResult.ok) {
     return {

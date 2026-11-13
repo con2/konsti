@@ -93,7 +93,7 @@ const doLotterySignup = async (
 
   const updatedUser = unsafelyUnwrap(
     await saveLotterySignups({
-      username: user.username,
+      userId: user.userId,
       lotterySignups,
     }),
   );
@@ -128,7 +128,7 @@ const lotterySignupGroup = async (
   }
 
   const signupData = {
-    username: groupCreator.username,
+    userId: groupCreator.userId,
     lotterySignups: getRandomLotterySignup(programItems),
   };
 

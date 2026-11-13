@@ -43,26 +43,26 @@ export const genRpgPlayers = (): void => {
       const playersWithSpot = new Set<string>();
       for (const u of users) {
         for (const ls of u.lotterySignups) {
-          if (rpgIds.has(ls.programItemId)) allParticipants.add(u.username);
+          if (rpgIds.has(ls.programItemId)) allParticipants.add(u.userId);
         }
       }
       for (const e of ds) {
         if (!rpgIds.has(e.programItemId)) continue;
         for (const u of e.userSignups) {
-          allParticipants.add(u.username);
-          playersWithSpot.add(u.username);
+          allParticipants.add(u.userId);
+          playersWithSpot.add(u.userId);
         }
       }
       // Group members and lottery winners can be missing from users.json and
       // the final sign-ups; every winner got a spot even if they later gave it
       // up, and the assignment results are complete where the final sign-up
       // data can be lossy
-      for (const username of wonSlotsByUser.keys()) {
-        allParticipants.add(username);
-        playersWithSpot.add(username);
+      for (const userId of wonSlotsByUser.keys()) {
+        allParticipants.add(userId);
+        playersWithSpot.add(userId);
       }
-      for (const username of groupMemberSlotsByUser.keys()) {
-        allParticipants.add(username);
+      for (const userId of groupMemberSlotsByUser.keys()) {
+        allParticipants.add(userId);
       }
 
       const { spotsByItem } = collectRpgSpotCounts(event, year);

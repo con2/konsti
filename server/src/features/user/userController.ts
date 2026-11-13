@@ -9,11 +9,11 @@ import { UserGroup } from "shared/types/models/user";
 import { verifyUpdateUserEmailAddress } from "server/features/kompassi-login/kompassiLoginService";
 import {
   fetchUserBySerialOrUsername,
-  fetchUserByUsername,
+  fetchUserByUserId,
   storeUser,
   storeUserPassword,
 } from "server/features/user/userService";
-import { getAuthUsername } from "server/middleware/requireAuth";
+import { getAuthUserId } from "server/middleware/requireAuth";
 import { getAuthorizedUserGroup } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 
@@ -30,22 +30,22 @@ export const postUserPassword = async (
   req: Request<unknown, unknown, PostUpdateUserPasswordRequest>,
   res: Response,
 ): Promise<Response> => {
-  const requesterUsername = getAuthUsername(req);
+  const requesterUserId = getAuthUserId(req);
   const requesterUserGroup = getAuthorizedUserGroup(req.headers.authorization);
-  const { usernameToUpdate, password } = req.body;
+  const { userIdToUpdate, password } = req.body;
 
   // Only the account owner, helpers, or admins may change a password - decided by the JWT
-  // userGroup claim, never by the requester's username
+  // userGroup claim, never by the name of the requester's account
   const isAdminOrHelper =
     requesterUserGroup === UserGroup.ADMIN ||
     requesterUserGroup === UserGroup.HELPER;
 
-  if (requesterUsername !== usernameToUpdate && !isAdminOrHelper) {
+  if (requesterUserId !== userIdToUpdate && !isAdminOrHelper) {
     return res.sendStatus(401);
   }
 
   const response = await storeUserPassword(
-    usernameToUpdate,
+    userIdToUpdate,
     password,
     requesterUserGroup,
   );
@@ -56,7 +56,7 @@ export const getUser = async (
   req: Request,
   res: Response,
 ): Promise<Response> => {
-  const response = await fetchUserByUsername(getAuthUsername(req));
+  const response = await fetchUserByUserId(getAuthUserId(req));
   return res.json(response);
 };
 
@@ -95,7 +95,7 @@ export const postUpdateUserEmailAddress = async (
 
   const { email } = result.data;
   const response = await verifyUpdateUserEmailAddress(
-    getAuthUsername(req),
+    getAuthUserId(req),
     email,
   );
   return res.json(response);

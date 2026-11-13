@@ -2,7 +2,7 @@ import { capitalize } from "remeda";
 import { getProgramTypePluralName } from "shared/constants/programTypeNames";
 import { Locale } from "shared/types/locale";
 import { getDateAndTime } from "shared/utils/timeFormatter";
-import { NotificationTask } from "server/utils/notificationQueue";
+import { EmailNotification } from "server/utils/notificationQueue";
 
 export interface EmailMessage {
   from: string;
@@ -37,7 +37,7 @@ const buildEmailTemplate = (
 });
 
 export function getRejectedEmailTemplate(
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   // One lottery can cover several starting times at once, and naming only the first would point
   // at one hour out of the several the attendee was competing across. Both ends carry their date,
@@ -69,7 +69,7 @@ Unfortunately you did not get a spot in the lottery sign-up.`;
 
 export function getAcceptedEmailTemplate(
   programItemTitle: string,
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
@@ -90,7 +90,7 @@ The program will start at ${programStartTimeEn}.`;
 }
 
 export function getProgramItemCancelledEmailTemplate(
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
@@ -111,7 +111,7 @@ Program was supposed to start at ${programStartTimeEn}.`;
 }
 
 export function getProgramItemDeletedEmailTemplate(
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,
@@ -132,7 +132,7 @@ Program was supposed to start at ${programStartTimeEn}.`;
 }
 
 export function getProgramItemNoKonstiSignupEmailTemplate(
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   const bodyFi = `Hei ${notification.username}!
 Ohjelma ${notification.programItemTitle} ei enää käytä Konsti-ilmoittautumista.
@@ -144,7 +144,7 @@ Your sign-up for the program has been removed.`;
 }
 
 export function getProgramItemNoLotteryEmailTemplate(
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   const bodyFi = `Hei ${notification.username}!
 Ohjelma ${notification.programItemTitle} ei enää käytä arvontailmoittautumista.
@@ -156,7 +156,7 @@ Your lottery sign-up for the program has been removed.`;
 }
 
 export function getProgramItemTimeChangedEmailTemplate(
-  notification: NotificationTask,
+  notification: EmailNotification,
 ): EmailTemplate {
   const programStartTimeFi = getDateAndTime(
     notification.programItemStartTime,

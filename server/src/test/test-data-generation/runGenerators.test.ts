@@ -16,6 +16,7 @@ import { saveLotterySignups } from "server/features/user/lottery-signup/lotteryS
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
+import { getUserId } from "server/test/utils/getUserId";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
@@ -37,7 +38,7 @@ test("event log phase empties the sign-up documents an earlier import created in
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -52,7 +53,7 @@ test("event log phase empties the sign-up documents an earlier import created in
     (eventLogItem) => eventLogItem.action === EventLogAction.NEW_ASSIGNMENT,
   );
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   expect(newAssignments).toHaveLength(1);
   expect(directSignups).toHaveLength(1);

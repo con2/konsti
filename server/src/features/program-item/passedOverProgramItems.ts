@@ -110,7 +110,10 @@ export const removePassedOverLotterySignups = async (
       if (lotterySignupProgramItemIds.length === 0) {
         return [];
       }
-      return { username: user.username, lotterySignupProgramItemIds };
+      return {
+        userId: user.userId,
+        lotterySignupProgramItemIds,
+      };
     },
   );
 
@@ -137,7 +140,7 @@ export const removePassedOverLotterySignups = async (
         return [];
       }
       return {
-        username: user.username,
+        userId: user.userId,
         programItemId: programItem.programItemId,
         programItemStartTime: programItem.startTime,
         createdAt: new Date().toISOString(),

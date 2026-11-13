@@ -26,7 +26,9 @@ import {
   mockUser2,
 } from "server/test/mock-data/mockUser";
 import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 
 beforeEach(async () => {
   await db.connectToDb(globalThis.__MONGO_URI__, randomUUID());
@@ -43,7 +45,7 @@ test("every lottery sign-up slot gets either a newAssignment with a matching dir
   await saveProgramItems([testProgramItem, testProgramItem2]);
   // Lottery sign-ups in two different start time slots
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
 
@@ -64,7 +66,7 @@ test("every lottery sign-up slot gets either a newAssignment with a matching dir
   // Won slots reference a lottery-signed program item and have the direct
   // sign-up the real assignment would create
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   const directSignupProgramItemIds = new Set(
     directSignups.map((signup) => signup.programItemId),
@@ -97,16 +99,18 @@ test("a full program item produces a noAssignment entry instead of an assignment
   await saveUser(mockUser2);
   // The only lottery-signed item is already full of other attendees
   await saveProgramItems([{ ...testProgramItem, maxAttendance: 1 }]);
-  await saveDirectSignup({
-    username: mockUser2.username,
-    directSignupProgramItemId: testProgramItem.programItemId,
-    signedToStartTime: testProgramItem.startTime,
-    signupTime: testProgramItem.startTime,
-    message: "",
-    priority: DIRECT_SIGNUP_PRIORITY,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      username: mockUser2.username,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      signedToStartTime: testProgramItem.startTime,
+      signupTime: testProgramItem.startTime,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    }),
+  );
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [mockLotterySignups[0]],
   });
 
@@ -129,19 +133,21 @@ test("records the lottery it simulates, so a later programme import does not pas
   await saveUser(mockUser2);
   await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: mockLotterySignups,
   });
   // A spot the import can pass the program item over for, whichever way the simulated
   // lottery's coin flip lands
-  await saveDirectSignup({
-    username: mockUser2.username,
-    directSignupProgramItemId: testProgramItem.programItemId,
-    signedToStartTime: testProgramItem.startTime,
-    signupTime: testProgramItem.startTime,
-    message: "",
-    priority: DIRECT_SIGNUP_PRIORITY,
-  });
+  await saveDirectSignup(
+    await withUserId({
+      username: mockUser2.username,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      signedToStartTime: testProgramItem.startTime,
+      signupTime: testProgramItem.startTime,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    }),
+  );
 
   await createEventLogItems();
 
@@ -180,7 +186,7 @@ test("a batched lottery decides one slot for the whole batch", async () => {
     { ...testProgramItem2, parentId, startTime: secondStartTime },
   ]);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: testProgramItem.programItemId,
@@ -228,17 +234,19 @@ test("a rejection from a batched lottery names the span the lottery covered", as
   ].map((programItem) => ({ ...programItem, maxAttendance: 1 }));
   await saveProgramItems(batchProgramItems);
   for (const programItem of batchProgramItems) {
-    await saveDirectSignup({
-      username: mockUser2.username,
-      directSignupProgramItemId: programItem.programItemId,
-      signedToStartTime: programItem.startTime,
-      signupTime: programItem.startTime,
-      message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        username: mockUser2.username,
+        directSignupProgramItemId: programItem.programItemId,
+        signedToStartTime: programItem.startTime,
+        signupTime: programItem.startTime,
+        message: "",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      }),
+    );
   }
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: testProgramItem.programItemId,
@@ -275,7 +283,7 @@ test("users without lottery sign-ups get no assignment event log entries", async
   expect(user?.eventLogItems).toEqual([]);
 
   const directSignups = unsafelyUnwrap(
-    await findUserDirectSignups(mockUser.username),
+    await findUserDirectSignups(await getUserId(mockUser.username)),
   );
   expect(directSignups).toEqual([]);
 });

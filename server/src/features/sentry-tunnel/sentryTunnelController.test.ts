@@ -45,7 +45,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SENTRY_TUNNEL)
       .send(envelope)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     expect(errorLoggerSpy).not.toHaveBeenCalled();
   });
@@ -57,7 +57,7 @@ describe(`POST ${ApiEndpoint.SENTRY_TUNNEL}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.SENTRY_TUNNEL)
       .send(envelope)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     expect(errorLoggerSpy).toHaveBeenCalled();
   });
@@ -72,14 +72,14 @@ describe(`GET ${ApiEndpoint.SENTRY_TEST}`, () => {
   test("should return 401 with user authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SENTRY_TEST)
-      .set(authorizedAs(UserGroup.USER, "username"));
+      .set(await authorizedAs(UserGroup.USER, "username"));
     expect(response.status).toEqual(401);
   });
 
   test("should return 500 with admin authorization", async () => {
     const response = await request(server)
       .get(ApiEndpoint.SENTRY_TEST)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(500);
   });
 
@@ -88,7 +88,7 @@ describe(`GET ${ApiEndpoint.SENTRY_TEST}`, () => {
 
     await request(server)
       .get(ApiEndpoint.SENTRY_TEST)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     const causes = errorLoggerSpy.mock.calls.map(([error]) => error.cause);
     expect(causes).toEqual([

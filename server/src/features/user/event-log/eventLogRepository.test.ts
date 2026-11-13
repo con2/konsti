@@ -9,6 +9,7 @@ import { addEventLogItems } from "server/features/user/event-log/eventLogReposit
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { mockUser, mockUser2, mockUser3 } from "server/test/mock-data/mockUser";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
@@ -27,14 +28,14 @@ test("should insert new event log items to user", async () => {
 
   await addEventLogItems([
     {
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       programItemId: testProgramItem.programItemId,
       programItemStartTime: testProgramItem.startTime,
       createdAt: "2019-07-26T17:00:00.000Z",
       action: EventLogAction.NEW_ASSIGNMENT,
     },
     {
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       programItemId: testProgramItem.programItemId,
       programItemStartTime: testProgramItem.startTime,
       createdAt: "2020-07-26T17:00:00.000Z",
@@ -44,14 +45,14 @@ test("should insert new event log items to user", async () => {
 
   await addEventLogItems([
     {
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       programItemId: "",
       programItemStartTime: testProgramItem.startTime,
       createdAt: "2019-07-26T17:00:00.000Z",
       action: EventLogAction.NO_ASSIGNMENT,
     },
     {
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       programItemId: "",
       programItemStartTime: testProgramItem.startTime,
       createdAt: "2020-07-26T17:00:00.000Z",

@@ -35,7 +35,9 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;
@@ -61,7 +63,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(422);
   });
 
@@ -73,10 +75,12 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       isGroupCreator: true,
     });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser2.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      }),
+    );
 
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
@@ -84,7 +88,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
         username: mockUser2.username,
         groupCode: mockUser.serial,
       })
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupResult;
@@ -99,7 +103,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
       .query({ groupCode: "0" })
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -117,7 +121,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .get(ApiEndpoint.GROUP)
       .query({ groupCode: mockUser.serial })
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -138,7 +142,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.GROUP)
       .send({})
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -159,7 +163,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.GROUP)
       .send({})
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostCreateGroupError;
@@ -182,7 +186,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(422);
   });
 
@@ -221,7 +225,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const user = unsafelyUnwrap(
       await saveLotterySignups({
         lotterySignups: [pastLotterySignup, upcomingLotterySignup],
-        username: mockUser2.username,
+        userId: await getUserId(mockUser2.username),
       }),
     );
     expect(user.lotterySignups.length).toEqual(2);
@@ -233,7 +237,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -263,7 +267,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     };
     await saveLotterySignups({
       lotterySignups: [pastLotterySignup],
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
     });
 
     const groupRequest: PostJoinGroupRequest = {
@@ -273,7 +277,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -316,7 +320,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     };
     await saveLotterySignups({
       lotterySignups: [lotterySignup],
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
     });
 
     const groupRequest: PostJoinGroupRequest = {
@@ -326,7 +330,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -359,7 +363,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     };
     await saveLotterySignups({
       lotterySignups: [upcomingLotterySignup],
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
     });
 
     const groupRequest: PostJoinGroupRequest = {
@@ -369,7 +373,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -397,10 +401,12 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       isGroupCreator: true,
     });
     await saveUser(mockUser2);
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser2.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      }),
+    );
 
     const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
@@ -409,7 +415,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as GetGroupError;
@@ -427,7 +433,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostJoinGroupError;
@@ -457,7 +463,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostJoinGroupError;
@@ -485,7 +491,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.LEAVE_GROUP)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -501,7 +507,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.LEAVE_GROUP)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostLeaveGroupError;
@@ -524,7 +530,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(422);
   });
 
@@ -541,7 +547,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -563,7 +569,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
       .send(groupRequest)
-      .set(authorizedAs(UserGroup.USER, mockUser2.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser2.username));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostCloseGroupResponse;

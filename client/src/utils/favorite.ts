@@ -6,14 +6,13 @@ export interface UpdateFavoriteOpts {
   programItem: ProgramItem;
   action: string;
   favoriteProgramItems: readonly ProgramItem[];
-  username: string;
   dispatch: AppDispatch;
 }
 
 export const updateFavorite = async (
   updateFavoriteOpts: UpdateFavoriteOpts,
 ): Promise<void> => {
-  const { programItem, action, favoriteProgramItems, username, dispatch } =
+  const { programItem, action, favoriteProgramItems, dispatch } =
     updateFavoriteOpts;
 
   if (!programItem.programItemId) {
@@ -39,7 +38,6 @@ export const updateFavorite = async (
   // nothing here a caller could tell apart or act on
   await dispatch(
     submitUpdateFavorites({
-      username,
       favoriteProgramItemIds,
     }),
   );

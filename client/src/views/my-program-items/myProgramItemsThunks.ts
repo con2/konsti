@@ -1,11 +1,11 @@
 import { isDeepEqual } from "remeda";
+import { PostFavoriteRequest } from "shared/types/api/favorite";
 import {
   DeleteDirectSignupRequest,
   DeleteLotterySignupRequest,
   PostDirectSignupRequest,
   PostLotterySignupRequest,
 } from "shared/types/api/myProgramItems";
-import { NewFavorite } from "shared/types/models/user";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { postFavorite } from "client/services/favoriteServices";
 import {
@@ -31,9 +31,9 @@ import {
   submitUpdateFavoritesAsync,
 } from "client/views/my-program-items/myProgramItemsSlice";
 
-export const submitGetUser = (username: string): AppThunk<Promise<boolean>> => {
+export const submitGetUser = (): AppThunk<Promise<boolean>> => {
   return async (dispatch, useState): Promise<boolean> => {
-    const getUserResponse = await getUser(username);
+    const getUserResponse = await getUser();
 
     if (getUserResponse.status === "error") {
       return false;
@@ -77,7 +77,7 @@ export const submitGetUser = (username: string): AppThunk<Promise<boolean>> => {
 };
 
 export const submitUpdateFavorites = (
-  newFavorite: NewFavorite,
+  newFavorite: PostFavoriteRequest,
 ): AppThunk<Promise<string | undefined>> => {
   return async (dispatch): Promise<string | undefined> => {
     const updateFavoriteResponse = await postFavorite(newFavorite);

@@ -41,7 +41,7 @@ export const logApiCall = (
   const start = Date.now();
   res.on("finish", () => {
     const ms = Date.now() - start;
-    const user = req.auth?.username ?? "anon";
+    const user = req.auth?.userId ?? "anon";
     const ip = req.ip?.replace(/^::ffff:/, "") ?? "-";
     const size = formatSize(res.get("Content-Length"));
     logger.info(

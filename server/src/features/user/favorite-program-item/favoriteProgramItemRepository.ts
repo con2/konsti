@@ -11,11 +11,11 @@ import { logger } from "server/utils/logger";
 export const saveFavorite = async (
   newFavorite: NewFavorite,
 ): Promise<Result<readonly FavoriteProgramItemId[], MongoDbError>> => {
-  const { username, favoriteProgramItemIds } = newFavorite;
+  const { userId, favoriteProgramItemIds } = newFavorite;
 
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       {
         favoriteProgramItemIds,
       },
@@ -23,13 +23,11 @@ export const saveFavorite = async (
     ).lean();
 
     if (!response) {
-      logger.error(new Error(`MongoDB: User ${username} not found`));
+      logger.error(new Error(`MongoDB: User ${userId} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
-    logger.info(
-      `MongoDB: Favorite data stored for user ${newFavorite.username}`,
-    );
+    logger.info(`MongoDB: Favorite data stored for user ${newFavorite.userId}`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -45,7 +43,7 @@ export const saveFavorite = async (
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error storing favorite data for user ${newFavorite.username}`,
+        `MongoDB: Error storing favorite data for user ${newFavorite.userId}`,
         { cause: error },
       ),
     );

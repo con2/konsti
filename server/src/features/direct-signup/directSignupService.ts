@@ -5,8 +5,15 @@ import {
   DeleteDirectSignupResponse,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
+  PostDirectSignupResult,
 } from "shared/types/api/myProgramItems";
-import { SignupType, State } from "shared/types/models/programItem";
+import {
+  ProgramType,
+  SignupType,
+  State,
+} from "shared/types/models/programItem";
+import { SignupQuestion } from "shared/types/models/settings";
+import { UserGroup } from "shared/types/models/user";
 import { getProgramItemValidity } from "shared/utils/getProgramItemValidity";
 import { isLotterySignupProgramItem } from "shared/utils/isLotterySignupProgramItem";
 import {
@@ -19,17 +26,58 @@ import {
   delDirectSignup,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import {
+  DirectSignupsForProgramItem,
+  SignupRepositoryAddSignup,
+} from "server/features/direct-signup/directSignupTypes";
 import { findProgramItemById } from "server/features/program-item/programItemRepository";
-import { getSignupMessage } from "server/features/program-item/programItemUtils";
+import {
+  REDACTED_SIGNUP_VALUE,
+  getSignupMessage,
+  isParticipantListHidden,
+} from "server/features/program-item/programItemUtils";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { leaveOrCloseGroup } from "server/features/user/group/groupService";
+import { findUsernamesByUserIds } from "server/features/user/userRepository";
 import { hasSignupEnded } from "server/features/user/userUtils";
 import { logger } from "server/utils/logger";
 
+const getAllSignups = async (
+  signup: DirectSignupsForProgramItem,
+  signupQuestion: SignupQuestion | undefined,
+  programType: ProgramType,
+): Promise<PostDirectSignupResult["allSignups"]> => {
+  // These endpoints only accept regular users, who never see a hidden participant list
+  if (isParticipantListHidden(programType, UserGroup.USER)) {
+    return {
+      programItemId: signup.programItemId,
+      userSignups: signup.userSignups.map(() => ({
+        username: REDACTED_SIGNUP_VALUE,
+        message: REDACTED_SIGNUP_VALUE,
+      })),
+    };
+  }
+
+  const usernamesResult = await findUsernamesByUserIds(
+    signup.userSignups.map((userSignup) => userSignup.userId),
+  );
+  // The change is already stored, so a failed name lookup must not report it as failed
+  const usernames = usernamesResult.ok
+    ? usernamesResult.value
+    : new Map<string, string>();
+
+  return {
+    programItemId: signup.programItemId,
+    userSignups: signup.userSignups.map((userSignup) => ({
+      username: usernames.get(userSignup.userId) ?? "",
+      message: getSignupMessage(signupQuestion, userSignup.message),
+    })),
+  };
+};
+
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
-  username: string,
+  userId: string,
 ): Promise<PostDirectSignupResponse> => {
   const { directSignupProgramItemId } = signupRequest;
 
@@ -137,7 +185,7 @@ export const storeDirectSignup = async (
 
   const newDirectSignup: SignupRepositoryAddSignup = {
     ...signupRequest,
-    username,
+    userId,
     // User-made direct sign-ups are always first-come-first-served; the priority is set
     // here rather than trusted from the request
     priority: DIRECT_SIGNUP_PRIORITY,
@@ -161,17 +209,15 @@ export const storeDirectSignup = async (
     (message) => message.programItemId === programItem.programItemId,
   );
 
-  const allSignups = {
-    programItemId: signup.programItemId,
-    userSignups: signup.userSignups.map((userSignup) => ({
-      username: userSignup.username,
-      message: getSignupMessage(signupQuestion, userSignup.message),
-    })),
-  };
+  const allSignups = await getAllSignups(
+    signup,
+    signupQuestion,
+    programItem.programType,
+  );
 
   // The user missing from the stored sign-ups means the program item was full
   const newSignup = signup.userSignups.find(
-    (userSignup) => userSignup.username === username,
+    (userSignup) => userSignup.userId === userId,
   );
 
   if (newSignup) {
@@ -180,13 +226,13 @@ export const storeDirectSignup = async (
     // persisted, so a group-leave failure is logged rather than failing the request.
     let leftGroup = false;
     if (isLotterySignupProgramItem(programItem)) {
-      const leaveOrCloseGroupResult = await leaveOrCloseGroup(username);
+      const leaveOrCloseGroupResult = await leaveOrCloseGroup(userId);
       if (leaveOrCloseGroupResult.ok) {
         leftGroup = leaveOrCloseGroupResult.value;
       } else {
         logger.error(
           new Error(
-            `leaveOrCloseGroup failed after direct signup for ${username}: ${leaveOrCloseGroupResult.error}`,
+            `leaveOrCloseGroup failed after direct signup for ${userId}: ${leaveOrCloseGroupResult.error}`,
           ),
         );
       }
@@ -218,7 +264,7 @@ export const storeDirectSignup = async (
 
 export const removeDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
-  username: string,
+  userId: string,
 ): Promise<DeleteDirectSignupResponse> => {
   const { directSignupProgramItemId } = signupRequest;
 
@@ -261,7 +307,7 @@ export const removeDirectSignup = async (
 
   const signupResult = await delDirectSignup({
     directSignupProgramItemId: signupRequest.directSignupProgramItemId,
-    username,
+    userId,
   });
   if (!signupResult.ok) {
     return {
@@ -287,12 +333,10 @@ export const removeDirectSignup = async (
   return {
     message: "Delete signup success",
     status: "success",
-    allSignups: {
-      programItemId: signup.programItemId,
-      userSignups: signup.userSignups.map((userSignup) => ({
-        username: userSignup.username,
-        message: getSignupMessage(signupQuestion, userSignup.message),
-      })),
-    },
+    allSignups: await getAllSignups(
+      signup,
+      signupQuestion,
+      programItem.programType,
+    ),
   };
 };

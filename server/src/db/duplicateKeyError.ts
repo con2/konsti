@@ -10,6 +10,22 @@ export const isDuplicateKeyError = (error: unknown): boolean =>
   "code" in error &&
   error.code === DUPLICATE_KEY_ERROR_CODE;
 
+// The driver names the violated index's fields in `keyPattern`
+export const isDuplicateKeyOnField = (
+  error: unknown,
+  field: string,
+): boolean => {
+  return (
+    isDuplicateKeyError(error) &&
+    typeof error === "object" &&
+    error !== null &&
+    "keyPattern" in error &&
+    typeof error.keyPattern === "object" &&
+    error.keyPattern !== null &&
+    field in error.keyPattern
+  );
+};
+
 // A bulk write collects per-operation failures instead of throwing on the first one, so it counts
 // as a duplicate key error only when every operation that failed was one - an unrelated failure
 // alongside them still has to be reported

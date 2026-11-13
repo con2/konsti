@@ -4,7 +4,7 @@ import {
   testProgramItem2,
 } from "shared/tests/testProgramItem";
 import { LotterySignup, UserGroup } from "shared/types/models/user";
-import { SignupRepositoryAddSignup } from "server/features/direct-signup/directSignupTypes";
+import { DirectSignupFixture } from "server/test/utils/withUserId";
 import { NewUser } from "server/types/userTypes";
 
 export const mockUser: NewUser = {
@@ -69,7 +69,7 @@ export const mockLotterySignups: readonly LotterySignup[] = [
   },
 ];
 
-export const mockPostDirectSignupRequest: SignupRepositoryAddSignup = {
+export const mockPostDirectSignupRequest: DirectSignupFixture = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem.programItemId,
   signedToStartTime: testProgramItem.startTime,
@@ -78,7 +78,7 @@ export const mockPostDirectSignupRequest: SignupRepositoryAddSignup = {
   priority: DIRECT_SIGNUP_PRIORITY,
 };
 
-export const mockPostDirectSignupRequest2: SignupRepositoryAddSignup = {
+export const mockPostDirectSignupRequest2: DirectSignupFixture = {
   username: mockUser.username,
   directSignupProgramItemId: testProgramItem2.programItemId,
   signedToStartTime: testProgramItem2.startTime,

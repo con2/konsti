@@ -62,12 +62,12 @@ export const removeOverlapLotterySignups = async (
     }
 
     const signedUser = usersResult.value.find(
-      (user) => user.username === result.username,
+      (user) => user.userId === result.userId,
     );
     if (!signedUser) {
       logger.error(
         new Error(
-          `removeOverlapLotterySignups: Error finding signed user: ${result.username}`,
+          `removeOverlapLotterySignups: Error finding signed user: ${result.userId}`,
         ),
       );
       continue;
@@ -98,7 +98,7 @@ export const removeOverlapLotterySignups = async (
 
       if (overlappingLotterySignups.length > 0) {
         usersToUpdate.push({
-          username: signedUser.username,
+          userId: signedUser.userId,
           lotterySignupProgramItemIds: overlappingLotterySignups.map(
             (signup) => signup.programItemId,
           ),
@@ -120,7 +120,7 @@ export const removeOverlapLotterySignups = async (
 
     if (upcomingLotterySignupProgramItemIds.length > 0) {
       usersToUpdate.push({
-        username: signedUser.username,
+        userId: signedUser.userId,
         lotterySignupProgramItemIds: upcomingLotterySignupProgramItemIds,
       });
     }

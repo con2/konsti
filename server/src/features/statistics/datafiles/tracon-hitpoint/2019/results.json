@@ -2,7 +2,7 @@
   {
     "results": [
       {
-        "username": "224769",
+        "userId": "01378e14-82e9-4072-b5ac-9027f024d0e1",
         "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
@@ -10,7 +10,7 @@
         }
       },
       {
-        "username": "963305",
+        "userId": "16be02e4-4591-43b1-ab1c-7a564a0af3d7",
         "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
@@ -18,7 +18,7 @@
         }
       },
       {
-        "username": "362060",
+        "userId": "c8356745-2d82-4b76-9ce6-c2763c050c97",
         "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
@@ -26,7 +26,7 @@
         }
       },
       {
-        "username": "261670",
+        "userId": "ed7f8155-7949-4a3f-88b4-94683cc87971",
         "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 2,
@@ -34,7 +34,7 @@
         }
       },
       {
-        "username": "351774",
+        "userId": "a1179642-528a-4225-a1c6-413ceedca589",
         "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 2,
@@ -42,7 +42,7 @@
         }
       },
       {
-        "username": "802638",
+        "userId": "bcfa909f-db0d-4a6a-ac58-64e4e1b4d7e7",
         "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
@@ -50,7 +50,7 @@
         }
       },
       {
-        "username": "25319",
+        "userId": "71f75521-df5d-4748-9e66-95ccee1e059b",
         "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
@@ -58,7 +58,7 @@
         }
       },
       {
-        "username": "562584",
+        "userId": "adf7915d-b90e-490f-9ca1-092e8e4dd676",
         "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
@@ -66,7 +66,7 @@
         }
       },
       {
-        "username": "846747",
+        "userId": "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
         "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 1,
@@ -74,7 +74,7 @@
         }
       },
       {
-        "username": "844182",
+        "userId": "6c089ebf-c23d-4222-8aab-90501cfa57b1",
         "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 3,
@@ -82,7 +82,7 @@
         }
       },
       {
-        "username": "158866",
+        "userId": "e1d6328f-0008-436d-8282-3c0974dde251",
         "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
@@ -90,7 +90,7 @@
         }
       },
       {
-        "username": "10753",
+        "userId": "f0112d51-7c78-49ec-9748-eb76e7e448de",
         "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 1,
@@ -98,7 +98,7 @@
         }
       },
       {
-        "username": "546302",
+        "userId": "e51b2990-3318-4561-b17f-17fa4f45fb59",
         "assignmentSignup": {
           "programItemId": "p4038",
           "priority": 2,
@@ -106,7 +106,7 @@
         }
       },
       {
-        "username": "398250",
+        "userId": "bf180958-ab81-40d2-83a1-869b53254589",
         "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
@@ -114,7 +114,7 @@
         }
       },
       {
-        "username": "594488",
+        "userId": "ebc5ea33-5803-473e-b394-a617032a3d6f",
         "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
@@ -122,7 +122,7 @@
         }
       },
       {
-        "username": "199718",
+        "userId": "f4472c5d-233d-4fc4-9107-f15c0fa657e6",
         "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
@@ -130,7 +130,7 @@
         }
       },
       {
-        "username": "443481",
+        "userId": "e411cb20-422d-46c5-9620-f708ff62fafe",
         "assignmentSignup": {
           "programItemId": "p3994",
           "priority": 1,
@@ -138,7 +138,7 @@
         }
       },
       {
-        "username": "650130",
+        "userId": "478d79e8-4322-4363-884d-ef8b55a68895",
         "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 1,
@@ -146,7 +146,7 @@
         }
       },
       {
-        "username": "209553",
+        "userId": "901a5cf5-86f8-456c-bc31-beaf38783ea1",
         "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 3,
@@ -154,7 +154,7 @@
         }
       },
       {
-        "username": "852796",
+        "userId": "1a89cb71-ed5e-428b-b7a0-65c26e4d9f57",
         "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
@@ -162,7 +162,7 @@
         }
       },
       {
-        "username": "154753",
+        "userId": "47c9b42e-d5b1-4ae8-a72a-9ddfee42caed",
         "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
@@ -170,7 +170,7 @@
         }
       },
       {
-        "username": "921995",
+        "userId": "469aef13-0642-4570-abe1-8cca9f8f7ab0",
         "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
@@ -178,7 +178,7 @@
         }
       },
       {
-        "username": "123498",
+        "userId": "cfee928d-9c5c-47b9-b633-d36922928383",
         "assignmentSignup": {
           "programItemId": "p4071",
           "priority": 1,
@@ -186,7 +186,7 @@
         }
       },
       {
-        "username": "84899",
+        "userId": "9327f117-6401-43e5-8679-4c3da07b1a0f",
         "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
@@ -194,7 +194,7 @@
         }
       },
       {
-        "username": "261992",
+        "userId": "1c5aeee4-f887-4e9f-bcf1-128ccaf3c0a2",
         "assignmentSignup": {
           "programItemId": "p3983",
           "priority": 1,
@@ -202,7 +202,7 @@
         }
       },
       {
-        "username": "748511",
+        "userId": "7e9356fd-0bc3-484d-83c3-b9ae2f152c2c",
         "assignmentSignup": {
           "programItemId": "p3974",
           "priority": 1,
@@ -210,7 +210,7 @@
         }
       },
       {
-        "username": "248050",
+        "userId": "67224b6c-a9cd-4dd4-b6ae-a51530804ba7",
         "assignmentSignup": {
           "programItemId": "p4038",
           "priority": 1,
@@ -218,7 +218,7 @@
         }
       },
       {
-        "username": "912525",
+        "userId": "8e43d9e4-9954-4b22-8e8e-fc04a0bfe159",
         "assignmentSignup": {
           "programItemId": "p4038",
           "priority": 1,
@@ -226,7 +226,7 @@
         }
       },
       {
-        "username": "60212",
+        "userId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
         "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 1,
@@ -234,7 +234,7 @@
         }
       },
       {
-        "username": "7111",
+        "userId": "b0c50602-46d8-4df1-9694-a88b12b52402",
         "assignmentSignup": {
           "programItemId": "p4041",
           "priority": 1,
@@ -242,7 +242,7 @@
         }
       },
       {
-        "username": "659117",
+        "userId": "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
         "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
@@ -250,7 +250,7 @@
         }
       },
       {
-        "username": "228215",
+        "userId": "10ecab98-4fee-4074-876f-df6f6b60897a",
         "assignmentSignup": {
           "programItemId": "p3963",
           "priority": 1,
@@ -261,33 +261,53 @@
     "groups": [
       {
         "groupCode": "9050391540",
-        "groupCreator": "795913",
-        "groupMembers": ["795913", "922246"]
+        "groupCreatorId": "514a992d-7720-47c7-8103-4504318565a1",
+        "groupMemberIds": [
+          "514a992d-7720-47c7-8103-4504318565a1",
+          "7577e8c4-1895-420a-8098-5f0edee6f74c"
+        ]
       },
       {
         "groupCode": "7131608155",
-        "groupCreator": "248050",
-        "groupMembers": ["248050", "912525", "261992"]
+        "groupCreatorId": "67224b6c-a9cd-4dd4-b6ae-a51530804ba7",
+        "groupMemberIds": [
+          "67224b6c-a9cd-4dd4-b6ae-a51530804ba7",
+          "8e43d9e4-9954-4b22-8e8e-fc04a0bfe159",
+          "1c5aeee4-f887-4e9f-bcf1-128ccaf3c0a2"
+        ]
       },
       {
         "groupCode": "7493269596",
-        "groupCreator": "60212",
-        "groupMembers": ["60212", "7111"]
+        "groupCreatorId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
+        "groupMemberIds": [
+          "0c59b6aa-b900-4895-b426-e0b7b156b584",
+          "b0c50602-46d8-4df1-9694-a88b12b52402"
+        ]
       },
       {
         "groupCode": "9325036227",
-        "groupCreator": "659117",
-        "groupMembers": ["659117", "228215"]
+        "groupCreatorId": "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
+        "groupMemberIds": [
+          "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
+          "10ecab98-4fee-4074-876f-df6f6b60897a"
+        ]
       },
       {
         "groupCode": "0785198748",
-        "groupCreator": "846747",
-        "groupMembers": ["846747", "716482"]
+        "groupCreatorId": "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
+        "groupMemberIds": [
+          "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
+          "4eef81ae-d1dd-49c3-aa44-d71eb2a70b0f"
+        ]
       },
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       }
     ],
     "assignmentTime": "2019-11-23T10:00:00.000Z",
@@ -299,7 +319,7 @@
   {
     "results": [
       {
-        "username": "966736",
+        "userId": "f45ddbd5-c394-413f-8846-7517c7c0ba26",
         "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
@@ -307,7 +327,7 @@
         }
       },
       {
-        "username": "723760",
+        "userId": "20b43b6f-c860-4483-bf8e-a1dd621f8e7c",
         "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
@@ -315,7 +335,7 @@
         }
       },
       {
-        "username": "738758",
+        "userId": "32146502-58ea-4b9b-afaf-1ff426d89e4c",
         "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
@@ -323,7 +343,7 @@
         }
       },
       {
-        "username": "427445",
+        "userId": "caead3a1-0d0c-48ba-a64f-f41316e4f1bf",
         "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
@@ -331,7 +351,7 @@
         }
       },
       {
-        "username": "741992",
+        "userId": "53494a6e-361f-4b59-8706-352a820e046e",
         "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
@@ -339,7 +359,7 @@
         }
       },
       {
-        "username": "310218",
+        "userId": "02db5fdd-7dcd-4188-a6d5-6c59d92b8332",
         "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
@@ -347,7 +367,7 @@
         }
       },
       {
-        "username": "861764",
+        "userId": "0f9b561c-6ae7-40ac-b778-b2fb232ed882",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
@@ -355,7 +375,7 @@
         }
       },
       {
-        "username": "234093",
+        "userId": "c213fc29-3258-4629-a734-bcf58641dc03",
         "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 1,
@@ -363,7 +383,7 @@
         }
       },
       {
-        "username": "643134",
+        "userId": "65b3c967-36e3-4c58-910a-943666eaa028",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
@@ -371,7 +391,7 @@
         }
       },
       {
-        "username": "445485",
+        "userId": "dad4df11-72b2-44f6-84c5-e5c6f7069735",
         "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 2,
@@ -379,7 +399,7 @@
         }
       },
       {
-        "username": "517920",
+        "userId": "23a910a8-9cac-4049-873e-82a5a22c9da4",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
@@ -387,7 +407,7 @@
         }
       },
       {
-        "username": "739339",
+        "userId": "e624589d-e4fc-4306-8cef-8809582e8f82",
         "assignmentSignup": {
           "programItemId": "p4017",
           "priority": 2,
@@ -395,7 +415,7 @@
         }
       },
       {
-        "username": "296219",
+        "userId": "620ae04b-be7d-4d17-956a-ea7f39201cd4",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 2,
@@ -403,7 +423,7 @@
         }
       },
       {
-        "username": "910850",
+        "userId": "db1a918b-482c-45cd-aeac-82a3a1f88ede",
         "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
@@ -411,7 +431,7 @@
         }
       },
       {
-        "username": "304534",
+        "userId": "c74fd04e-68ff-426e-a284-ecd8602a685f",
         "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
@@ -419,7 +439,7 @@
         }
       },
       {
-        "username": "94605",
+        "userId": "ad7076be-37c0-42da-b89f-c8d2e486f6dc",
         "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
@@ -427,7 +447,7 @@
         }
       },
       {
-        "username": "184561",
+        "userId": "379aa162-3e73-4d69-ad91-88474b72fefd",
         "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
@@ -435,7 +455,7 @@
         }
       },
       {
-        "username": "221831",
+        "userId": "55e520e9-af07-405b-99d1-a78ebd00a7f5",
         "assignmentSignup": {
           "programItemId": "p3985",
           "priority": 1,
@@ -443,7 +463,7 @@
         }
       },
       {
-        "username": "403440",
+        "userId": "0e319bf1-890d-4a52-b405-ebfdc07ad9e1",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
@@ -451,7 +471,7 @@
         }
       },
       {
-        "username": "661687",
+        "userId": "59504fad-64fc-4dbc-8fe9-b15f66cc9db4",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
@@ -459,7 +479,7 @@
         }
       },
       {
-        "username": "756592",
+        "userId": "9571bf05-4456-43bf-9a20-4f78a0448030",
         "assignmentSignup": {
           "programItemId": "p3947",
           "priority": 1,
@@ -467,7 +487,7 @@
         }
       },
       {
-        "username": "175872",
+        "userId": "fbddded9-d2a5-4d8d-ace4-5f3d95f73cec",
         "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
@@ -475,7 +495,7 @@
         }
       },
       {
-        "username": "810673",
+        "userId": "ee97cbed-700f-4e09-b487-fa4311e97c3b",
         "assignmentSignup": {
           "programItemId": "p4001",
           "priority": 1,
@@ -486,30 +506,40 @@
     "groups": [
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       },
       {
         "groupCode": "5478494544",
-        "groupCreator": "175872",
-        "groupMembers": ["175872", "810673"]
+        "groupCreatorId": "fbddded9-d2a5-4d8d-ace4-5f3d95f73cec",
+        "groupMemberIds": [
+          "fbddded9-d2a5-4d8d-ace4-5f3d95f73cec",
+          "ee97cbed-700f-4e09-b487-fa4311e97c3b"
+        ]
       },
       {
         "groupCode": "0099566986",
-        "groupCreator": "915840",
-        "groupMembers": [
-          "915840",
-          "807733",
-          "437989",
-          "87449",
-          "504178",
-          "934897"
+        "groupCreatorId": "beb0fb96-ee52-4294-addd-66226aca2f77",
+        "groupMemberIds": [
+          "beb0fb96-ee52-4294-addd-66226aca2f77",
+          "436b6764-66c5-4279-9bed-2cc571bf4f6f",
+          "5ffa2f83-5428-4bdb-a0db-95831c51d3de",
+          "90e7f447-a49d-423c-b27f-eeb71876a29c",
+          "a78ae9d0-9029-4f21-b61e-333b0bc54378",
+          "2de6be2d-487c-426f-bebb-877e1bce531e"
         ]
       },
       {
         "groupCode": "4356076549",
-        "groupCreator": "967510",
-        "groupMembers": ["967510", "935201"]
+        "groupCreatorId": "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+        "groupMemberIds": [
+          "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+          "9a506337-4bf5-4499-8306-9a08551ce04a"
+        ]
       }
     ],
     "assignmentTime": "2019-11-23T11:00:00.000Z",
@@ -521,7 +551,7 @@
   {
     "results": [
       {
-        "username": "224769",
+        "userId": "01378e14-82e9-4072-b5ac-9027f024d0e1",
         "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
@@ -529,7 +559,7 @@
         }
       },
       {
-        "username": "484114",
+        "userId": "6f395843-6e47-4e7d-be97-1158b2fe9af9",
         "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
@@ -537,7 +567,7 @@
         }
       },
       {
-        "username": "261670",
+        "userId": "ed7f8155-7949-4a3f-88b4-94683cc87971",
         "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
@@ -545,7 +575,7 @@
         }
       },
       {
-        "username": "505502",
+        "userId": "04060815-4ff8-44b3-83f7-f3a59f2469cd",
         "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
@@ -553,7 +583,7 @@
         }
       },
       {
-        "username": "678400",
+        "userId": "72f9607d-e801-4ac3-8c05-978e669bfe0c",
         "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
@@ -561,7 +591,7 @@
         }
       },
       {
-        "username": "168609",
+        "userId": "d3b764a9-56ac-4042-8c5d-7209c68a321e",
         "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
@@ -569,7 +599,7 @@
         }
       },
       {
-        "username": "979986",
+        "userId": "c089bc91-dc8a-4dcc-a239-b470adaac014",
         "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
@@ -577,7 +607,7 @@
         }
       },
       {
-        "username": "184561",
+        "userId": "379aa162-3e73-4d69-ad91-88474b72fefd",
         "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
@@ -585,7 +615,7 @@
         }
       },
       {
-        "username": "777072",
+        "userId": "11e19964-577e-45f4-abb7-b3bd78352448",
         "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
@@ -593,7 +623,7 @@
         }
       },
       {
-        "username": "50252",
+        "userId": "7b58b7c5-1bc4-4422-86bf-eb7c3daf24a8",
         "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 3,
@@ -601,7 +631,7 @@
         }
       },
       {
-        "username": "718112",
+        "userId": "947d82db-65b3-4587-997c-b6cf7d359c2c",
         "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 1,
@@ -609,7 +639,7 @@
         }
       },
       {
-        "username": "69770",
+        "userId": "b1aacfc2-91d7-4744-9ae5-c305822b9771",
         "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
@@ -617,7 +647,7 @@
         }
       },
       {
-        "username": "453871",
+        "userId": "570e665f-1f22-4cdc-8e39-9e1060ff8332",
         "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 2,
@@ -625,7 +655,7 @@
         }
       },
       {
-        "username": "490276",
+        "userId": "8836ff30-25b4-453b-8871-c0bf121a1b68",
         "assignmentSignup": {
           "programItemId": "p4099",
           "priority": 1,
@@ -633,7 +663,7 @@
         }
       },
       {
-        "username": "561874",
+        "userId": "fc6b5e0d-4b61-4b10-afa3-758976665106",
         "assignmentSignup": {
           "programItemId": "p3975",
           "priority": 2,
@@ -641,7 +671,7 @@
         }
       },
       {
-        "username": "681392",
+        "userId": "42e73146-b889-45a2-b23d-ef938356f5c6",
         "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
@@ -649,7 +679,7 @@
         }
       },
       {
-        "username": "832790",
+        "userId": "e50d4010-74be-4f06-b708-77b928b63cd5",
         "assignmentSignup": {
           "programItemId": "p4002",
           "priority": 1,
@@ -660,35 +690,48 @@
     "groups": [
       {
         "groupCode": "7493269596",
-        "groupCreator": "60212",
-        "groupMembers": ["60212", "7111"]
+        "groupCreatorId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
+        "groupMemberIds": [
+          "0c59b6aa-b900-4895-b426-e0b7b156b584",
+          "b0c50602-46d8-4df1-9694-a88b12b52402"
+        ]
       },
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       },
       {
         "groupCode": "0099566986",
-        "groupCreator": "915840",
-        "groupMembers": [
-          "915840",
-          "807733",
-          "437989",
-          "87449",
-          "504178",
-          "934897"
+        "groupCreatorId": "beb0fb96-ee52-4294-addd-66226aca2f77",
+        "groupMemberIds": [
+          "beb0fb96-ee52-4294-addd-66226aca2f77",
+          "436b6764-66c5-4279-9bed-2cc571bf4f6f",
+          "5ffa2f83-5428-4bdb-a0db-95831c51d3de",
+          "90e7f447-a49d-423c-b27f-eeb71876a29c",
+          "a78ae9d0-9029-4f21-b61e-333b0bc54378",
+          "2de6be2d-487c-426f-bebb-877e1bce531e"
         ]
       },
       {
         "groupCode": "4356076549",
-        "groupCreator": "967510",
-        "groupMembers": ["967510", "935201"]
+        "groupCreatorId": "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+        "groupMemberIds": [
+          "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+          "9a506337-4bf5-4499-8306-9a08551ce04a"
+        ]
       },
       {
         "groupCode": "2447190097",
-        "groupCreator": "913097",
-        "groupMembers": ["913097", "89746"]
+        "groupCreatorId": "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+        "groupMemberIds": [
+          "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+          "cc3b7c27-833f-4ba7-8e12-9a297a07b8bd"
+        ]
       }
     ],
     "assignmentTime": "2019-11-23T13:00:00.000Z",
@@ -700,7 +743,7 @@
   {
     "results": [
       {
-        "username": "963305",
+        "userId": "16be02e4-4591-43b1-ab1c-7a564a0af3d7",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -708,7 +751,7 @@
         }
       },
       {
-        "username": "362060",
+        "userId": "c8356745-2d82-4b76-9ce6-c2763c050c97",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -716,7 +759,7 @@
         }
       },
       {
-        "username": "261670",
+        "userId": "ed7f8155-7949-4a3f-88b4-94683cc87971",
         "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
@@ -724,7 +767,7 @@
         }
       },
       {
-        "username": "427445",
+        "userId": "caead3a1-0d0c-48ba-a64f-f41316e4f1bf",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -732,7 +775,7 @@
         }
       },
       {
-        "username": "844182",
+        "userId": "6c089ebf-c23d-4222-8aab-90501cfa57b1",
         "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
@@ -740,7 +783,7 @@
         }
       },
       {
-        "username": "158866",
+        "userId": "e1d6328f-0008-436d-8282-3c0974dde251",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -748,7 +791,7 @@
         }
       },
       {
-        "username": "445485",
+        "userId": "dad4df11-72b2-44f6-84c5-e5c6f7069735",
         "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
@@ -756,7 +799,7 @@
         }
       },
       {
-        "username": "678400",
+        "userId": "72f9607d-e801-4ac3-8c05-978e669bfe0c",
         "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 1,
@@ -764,7 +807,7 @@
         }
       },
       {
-        "username": "10753",
+        "userId": "f0112d51-7c78-49ec-9748-eb76e7e448de",
         "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
@@ -772,7 +815,7 @@
         }
       },
       {
-        "username": "181695",
+        "userId": "b9a87aa8-0a2b-4604-a313-c7cfc456f809",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -780,7 +823,7 @@
         }
       },
       {
-        "username": "55040",
+        "userId": "c06d07c1-3a97-489e-a578-a660a5229a9d",
         "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 1,
@@ -788,7 +831,7 @@
         }
       },
       {
-        "username": "910850",
+        "userId": "db1a918b-482c-45cd-aeac-82a3a1f88ede",
         "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 1,
@@ -796,7 +839,7 @@
         }
       },
       {
-        "username": "304534",
+        "userId": "c74fd04e-68ff-426e-a284-ecd8602a685f",
         "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 1,
@@ -804,7 +847,7 @@
         }
       },
       {
-        "username": "50252",
+        "userId": "7b58b7c5-1bc4-4422-86bf-eb7c3daf24a8",
         "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 3,
@@ -812,7 +855,7 @@
         }
       },
       {
-        "username": "504684",
+        "userId": "e3e424f0-515b-4a32-a238-87f8551bec58",
         "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 2,
@@ -820,7 +863,7 @@
         }
       },
       {
-        "username": "69770",
+        "userId": "b1aacfc2-91d7-4744-9ae5-c305822b9771",
         "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 1,
@@ -828,7 +871,7 @@
         }
       },
       {
-        "username": "681392",
+        "userId": "42e73146-b889-45a2-b23d-ef938356f5c6",
         "assignmentSignup": {
           "programItemId": "p4051",
           "priority": 2,
@@ -836,7 +879,7 @@
         }
       },
       {
-        "username": "176868",
+        "userId": "f4c4b93c-cc3d-431b-9f16-0d0c113bfaac",
         "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
@@ -844,7 +887,7 @@
         }
       },
       {
-        "username": "993288",
+        "userId": "4fceaf58-9c00-4e27-9057-9414f195fe71",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -852,7 +895,7 @@
         }
       },
       {
-        "username": "121812",
+        "userId": "d735eb74-8511-4cc0-bd9b-0ee4aceb68b0",
         "assignmentSignup": {
           "programItemId": "p4011",
           "priority": 1,
@@ -860,7 +903,7 @@
         }
       },
       {
-        "username": "60212",
+        "userId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
         "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
@@ -868,7 +911,7 @@
         }
       },
       {
-        "username": "7111",
+        "userId": "b0c50602-46d8-4df1-9694-a88b12b52402",
         "assignmentSignup": {
           "programItemId": "p3969",
           "priority": 1,
@@ -876,7 +919,7 @@
         }
       },
       {
-        "username": "846747",
+        "userId": "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
         "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
@@ -884,7 +927,7 @@
         }
       },
       {
-        "username": "25319",
+        "userId": "71f75521-df5d-4748-9e66-95ccee1e059b",
         "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
@@ -892,7 +935,7 @@
         }
       },
       {
-        "username": "875033",
+        "userId": "bdd6e5aa-2736-48df-99ab-c5f723b4a624",
         "assignmentSignup": {
           "programItemId": "p4015",
           "priority": 1,
@@ -900,7 +943,7 @@
         }
       },
       {
-        "username": "267806",
+        "userId": "7b760240-1eaf-4563-929a-247ae5cfbbc2",
         "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 2,
@@ -908,7 +951,7 @@
         }
       },
       {
-        "username": "116365",
+        "userId": "5aa18fd9-ed6a-4da4-bb25-d73e7db64d04",
         "assignmentSignup": {
           "programItemId": "p4012",
           "priority": 2,
@@ -919,48 +962,76 @@
     "groups": [
       {
         "groupCode": "7493269596",
-        "groupCreator": "60212",
-        "groupMembers": ["60212", "7111"]
+        "groupCreatorId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
+        "groupMemberIds": [
+          "0c59b6aa-b900-4895-b426-e0b7b156b584",
+          "b0c50602-46d8-4df1-9694-a88b12b52402"
+        ]
       },
       {
         "groupCode": "9325036227",
-        "groupCreator": "659117",
-        "groupMembers": ["659117", "228215"]
+        "groupCreatorId": "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
+        "groupMemberIds": [
+          "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
+          "10ecab98-4fee-4074-876f-df6f6b60897a"
+        ]
       },
       {
         "groupCode": "0785198748",
-        "groupCreator": "846747",
-        "groupMembers": ["846747", "716482"]
+        "groupCreatorId": "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
+        "groupMemberIds": [
+          "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
+          "4eef81ae-d1dd-49c3-aa44-d71eb2a70b0f"
+        ]
       },
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       },
       {
         "groupCode": "7707487588",
-        "groupCreator": "942120",
-        "groupMembers": ["942120", "870780"]
+        "groupCreatorId": "46082690-d1d1-4749-a979-34de82944171",
+        "groupMemberIds": [
+          "46082690-d1d1-4749-a979-34de82944171",
+          "80126489-917b-40ad-b6dc-c9d294f5fa71"
+        ]
       },
       {
         "groupCode": "4356076549",
-        "groupCreator": "967510",
-        "groupMembers": ["967510", "935201"]
+        "groupCreatorId": "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+        "groupMemberIds": [
+          "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+          "9a506337-4bf5-4499-8306-9a08551ce04a"
+        ]
       },
       {
         "groupCode": "2447190097",
-        "groupCreator": "913097",
-        "groupMembers": ["913097", "89746"]
+        "groupCreatorId": "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+        "groupMemberIds": [
+          "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+          "cc3b7c27-833f-4ba7-8e12-9a297a07b8bd"
+        ]
       },
       {
         "groupCode": "9418906617",
-        "groupCreator": "267806",
-        "groupMembers": ["267806", "116365"]
+        "groupCreatorId": "7b760240-1eaf-4563-929a-247ae5cfbbc2",
+        "groupMemberIds": [
+          "7b760240-1eaf-4563-929a-247ae5cfbbc2",
+          "5aa18fd9-ed6a-4da4-bb25-d73e7db64d04"
+        ]
       },
       {
         "groupCode": "6303242181",
-        "groupCreator": "795536",
-        "groupMembers": ["795536", "714443"]
+        "groupCreatorId": "e9f10e4f-df1e-46b8-bc0f-4b518abc5fd3",
+        "groupMemberIds": [
+          "e9f10e4f-df1e-46b8-bc0f-4b518abc5fd3",
+          "5de97e0c-58ea-4842-b2c0-d03e678aeea5"
+        ]
       }
     ],
     "assignmentTime": "2019-11-23T15:00:00.000Z",
@@ -972,7 +1043,7 @@
   {
     "results": [
       {
-        "username": "802638",
+        "userId": "bcfa909f-db0d-4a6a-ac58-64e4e1b4d7e7",
         "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
@@ -980,7 +1051,7 @@
         }
       },
       {
-        "username": "310218",
+        "userId": "02db5fdd-7dcd-4188-a6d5-6c59d92b8332",
         "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
@@ -988,7 +1059,7 @@
         }
       },
       {
-        "username": "517920",
+        "userId": "23a910a8-9cac-4049-873e-82a5a22c9da4",
         "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
@@ -996,7 +1067,7 @@
         }
       },
       {
-        "username": "398250",
+        "userId": "bf180958-ab81-40d2-83a1-869b53254589",
         "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
@@ -1004,7 +1075,7 @@
         }
       },
       {
-        "username": "443481",
+        "userId": "e411cb20-422d-46c5-9620-f708ff62fafe",
         "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
@@ -1012,7 +1083,7 @@
         }
       },
       {
-        "username": "209553",
+        "userId": "901a5cf5-86f8-456c-bc31-beaf38783ea1",
         "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
@@ -1020,7 +1091,7 @@
         }
       },
       {
-        "username": "296219",
+        "userId": "620ae04b-be7d-4d17-956a-ea7f39201cd4",
         "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
@@ -1028,7 +1099,7 @@
         }
       },
       {
-        "username": "184561",
+        "userId": "379aa162-3e73-4d69-ad91-88474b72fefd",
         "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
@@ -1036,7 +1107,7 @@
         }
       },
       {
-        "username": "453871",
+        "userId": "570e665f-1f22-4cdc-8e39-9e1060ff8332",
         "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
@@ -1044,7 +1115,7 @@
         }
       },
       {
-        "username": "490276",
+        "userId": "8836ff30-25b4-453b-8871-c0bf121a1b68",
         "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
@@ -1052,7 +1123,7 @@
         }
       },
       {
-        "username": "772525",
+        "userId": "1e5a723c-14a4-4bbc-9b7d-e67700f02cd4",
         "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 2,
@@ -1060,7 +1131,7 @@
         }
       },
       {
-        "username": "439607",
+        "userId": "8a07f094-4ba8-4ab4-bbd7-55765663d6c6",
         "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
@@ -1068,7 +1139,7 @@
         }
       },
       {
-        "username": "415207",
+        "userId": "38455e2f-97cd-4636-a4f2-e0a07431f226",
         "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
@@ -1076,7 +1147,7 @@
         }
       },
       {
-        "username": "384501",
+        "userId": "03975935-a543-4f56-b794-418ed747b8ed",
         "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
@@ -1084,7 +1155,7 @@
         }
       },
       {
-        "username": "374688",
+        "userId": "0e781a63-7e7e-4ac3-a47e-e710c33db99c",
         "assignmentSignup": {
           "programItemId": "p4007",
           "priority": 1,
@@ -1092,7 +1163,7 @@
         }
       },
       {
-        "username": "913097",
+        "userId": "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
         "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
@@ -1100,7 +1171,7 @@
         }
       },
       {
-        "username": "89746",
+        "userId": "cc3b7c27-833f-4ba7-8e12-9a297a07b8bd",
         "assignmentSignup": {
           "programItemId": "p4070",
           "priority": 1,
@@ -1108,7 +1179,7 @@
         }
       },
       {
-        "username": "967510",
+        "userId": "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
         "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
@@ -1116,7 +1187,7 @@
         }
       },
       {
-        "username": "935201",
+        "userId": "9a506337-4bf5-4499-8306-9a08551ce04a",
         "assignmentSignup": {
           "programItemId": "p4013",
           "priority": 1,
@@ -1124,7 +1195,7 @@
         }
       },
       {
-        "username": "204871",
+        "userId": "5d2df411-e0f8-4892-af9f-4276019c5d6f",
         "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
@@ -1132,7 +1203,7 @@
         }
       },
       {
-        "username": "891283",
+        "userId": "ae925809-7b16-424b-80a2-917d4845df8e",
         "assignmentSignup": {
           "programItemId": "p3999",
           "priority": 1,
@@ -1143,33 +1214,52 @@
     "groups": [
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       },
       {
         "groupCode": "7707487588",
-        "groupCreator": "942120",
-        "groupMembers": ["942120", "870780"]
+        "groupCreatorId": "46082690-d1d1-4749-a979-34de82944171",
+        "groupMemberIds": [
+          "46082690-d1d1-4749-a979-34de82944171",
+          "80126489-917b-40ad-b6dc-c9d294f5fa71"
+        ]
       },
       {
         "groupCode": "4356076549",
-        "groupCreator": "967510",
-        "groupMembers": ["967510", "935201"]
+        "groupCreatorId": "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+        "groupMemberIds": [
+          "362e4513-58c8-43ca-97d4-70cdd8cefd5c",
+          "9a506337-4bf5-4499-8306-9a08551ce04a"
+        ]
       },
       {
         "groupCode": "2447190097",
-        "groupCreator": "913097",
-        "groupMembers": ["913097", "89746"]
+        "groupCreatorId": "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+        "groupMemberIds": [
+          "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+          "cc3b7c27-833f-4ba7-8e12-9a297a07b8bd"
+        ]
       },
       {
         "groupCode": "0787862358",
-        "groupCreator": "204871",
-        "groupMembers": ["204871", "891283"]
+        "groupCreatorId": "5d2df411-e0f8-4892-af9f-4276019c5d6f",
+        "groupMemberIds": [
+          "5d2df411-e0f8-4892-af9f-4276019c5d6f",
+          "ae925809-7b16-424b-80a2-917d4845df8e"
+        ]
       },
       {
         "groupCode": "6303242181",
-        "groupCreator": "795536",
-        "groupMembers": ["795536", "714443"]
+        "groupCreatorId": "e9f10e4f-df1e-46b8-bc0f-4b518abc5fd3",
+        "groupMemberIds": [
+          "e9f10e4f-df1e-46b8-bc0f-4b518abc5fd3",
+          "5de97e0c-58ea-4842-b2c0-d03e678aeea5"
+        ]
       }
     ],
     "assignmentTime": "2019-11-23T16:00:00.000Z",
@@ -1181,7 +1271,7 @@
   {
     "results": [
       {
-        "username": "861764",
+        "userId": "0f9b561c-6ae7-40ac-b778-b2fb232ed882",
         "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 1,
@@ -1189,7 +1279,7 @@
         }
       },
       {
-        "username": "853614",
+        "userId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
         "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
@@ -1197,7 +1287,7 @@
         }
       },
       {
-        "username": "688782",
+        "userId": "cfcd24ef-77db-4aca-a144-930507fe1c4e",
         "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
@@ -1205,7 +1295,7 @@
         }
       },
       {
-        "username": "160466",
+        "userId": "f22a47b4-c223-4546-b3eb-c23042406b2c",
         "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
@@ -1213,7 +1303,7 @@
         }
       },
       {
-        "username": "479680",
+        "userId": "3c64a0b4-e616-4fa2-8473-2203f79afc37",
         "assignmentSignup": {
           "programItemId": "p4005",
           "priority": 3,
@@ -1224,8 +1314,12 @@
     "groups": [
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       }
     ],
     "assignmentTime": "2019-11-23T17:00:00.000Z",
@@ -1237,7 +1331,7 @@
   {
     "results": [
       {
-        "username": "723760",
+        "userId": "20b43b6f-c860-4483-bf8e-a1dd621f8e7c",
         "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
@@ -1245,7 +1339,7 @@
         }
       },
       {
-        "username": "441643",
+        "userId": "d26a5c6b-22f9-484a-aeb5-c6de55f0367b",
         "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
@@ -1253,7 +1347,7 @@
         }
       },
       {
-        "username": "25319",
+        "userId": "71f75521-df5d-4748-9e66-95ccee1e059b",
         "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
@@ -1261,7 +1355,7 @@
         }
       },
       {
-        "username": "10753",
+        "userId": "f0112d51-7c78-49ec-9748-eb76e7e448de",
         "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
@@ -1269,7 +1363,7 @@
         }
       },
       {
-        "username": "398250",
+        "userId": "bf180958-ab81-40d2-83a1-869b53254589",
         "assignmentSignup": {
           "programItemId": "p4006",
           "priority": 2,
@@ -1277,7 +1371,7 @@
         }
       },
       {
-        "username": "154753",
+        "userId": "47c9b42e-d5b1-4ae8-a72a-9ddfee42caed",
         "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
@@ -1285,7 +1379,7 @@
         }
       },
       {
-        "username": "403440",
+        "userId": "0e319bf1-890d-4a52-b405-ebfdc07ad9e1",
         "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
@@ -1293,7 +1387,7 @@
         }
       },
       {
-        "username": "921995",
+        "userId": "469aef13-0642-4570-abe1-8cca9f8f7ab0",
         "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
@@ -1301,7 +1395,7 @@
         }
       },
       {
-        "username": "123498",
+        "userId": "cfee928d-9c5c-47b9-b633-d36922928383",
         "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
@@ -1309,7 +1403,7 @@
         }
       },
       {
-        "username": "118972",
+        "userId": "ecad5aab-3ee7-4a5e-aa61-2850ec74b22d",
         "assignmentSignup": {
           "programItemId": "p3954",
           "priority": 1,
@@ -1317,7 +1411,7 @@
         }
       },
       {
-        "username": "234646",
+        "userId": "8ec52ffe-d344-4ada-b5d6-edc82a3e4230",
         "assignmentSignup": {
           "programItemId": "p4006",
           "priority": 1,
@@ -1325,7 +1419,7 @@
         }
       },
       {
-        "username": "993288",
+        "userId": "4fceaf58-9c00-4e27-9057-9414f195fe71",
         "assignmentSignup": {
           "programItemId": "p4006",
           "priority": 1,
@@ -1333,7 +1427,7 @@
         }
       },
       {
-        "username": "515948",
+        "userId": "b001abae-52f4-486f-80a7-45a319ff5f9f",
         "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
@@ -1341,7 +1435,7 @@
         }
       },
       {
-        "username": "384501",
+        "userId": "03975935-a543-4f56-b794-418ed747b8ed",
         "assignmentSignup": {
           "programItemId": "p3976",
           "priority": 1,
@@ -1352,18 +1446,28 @@
     "groups": [
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       },
       {
         "groupCode": "1031070509",
-        "groupCreator": "429617",
-        "groupMembers": ["429617", "746036"]
+        "groupCreatorId": "e42493c4-4fa2-4698-9ab0-6a843519ad42",
+        "groupMemberIds": [
+          "e42493c4-4fa2-4698-9ab0-6a843519ad42",
+          "42154979-737f-412b-bb61-47ff310e4979"
+        ]
       },
       {
         "groupCode": "7707487588",
-        "groupCreator": "942120",
-        "groupMembers": ["942120", "870780"]
+        "groupCreatorId": "46082690-d1d1-4749-a979-34de82944171",
+        "groupMemberIds": [
+          "46082690-d1d1-4749-a979-34de82944171",
+          "80126489-917b-40ad-b6dc-c9d294f5fa71"
+        ]
       }
     ],
     "assignmentTime": "2019-11-24T09:00:00.000Z",
@@ -1375,7 +1479,7 @@
   {
     "results": [
       {
-        "username": "224769",
+        "userId": "01378e14-82e9-4072-b5ac-9027f024d0e1",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
@@ -1383,7 +1487,7 @@
         }
       },
       {
-        "username": "966736",
+        "userId": "f45ddbd5-c394-413f-8846-7517c7c0ba26",
         "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
@@ -1391,7 +1495,7 @@
         }
       },
       {
-        "username": "688782",
+        "userId": "cfcd24ef-77db-4aca-a144-930507fe1c4e",
         "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
@@ -1399,7 +1503,7 @@
         }
       },
       {
-        "username": "678400",
+        "userId": "72f9607d-e801-4ac3-8c05-978e669bfe0c",
         "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
@@ -1407,7 +1511,7 @@
         }
       },
       {
-        "username": "199718",
+        "userId": "f4472c5d-233d-4fc4-9107-f15c0fa657e6",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
@@ -1415,7 +1519,7 @@
         }
       },
       {
-        "username": "128635",
+        "userId": "14ec38bf-e95d-4c34-b112-9714191da835",
         "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 1,
@@ -1423,7 +1527,7 @@
         }
       },
       {
-        "username": "852796",
+        "userId": "1a89cb71-ed5e-428b-b7a0-65c26e4d9f57",
         "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 1,
@@ -1431,7 +1535,7 @@
         }
       },
       {
-        "username": "84899",
+        "userId": "9327f117-6401-43e5-8679-4c3da07b1a0f",
         "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 2,
@@ -1439,7 +1543,7 @@
         }
       },
       {
-        "username": "910850",
+        "userId": "db1a918b-482c-45cd-aeac-82a3a1f88ede",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 2,
@@ -1447,7 +1551,7 @@
         }
       },
       {
-        "username": "811618",
+        "userId": "c030327b-1f19-43aa-ac62-739e8eea7eb9",
         "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
@@ -1455,7 +1559,7 @@
         }
       },
       {
-        "username": "50252",
+        "userId": "7b58b7c5-1bc4-4422-86bf-eb7c3daf24a8",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 1,
@@ -1463,7 +1567,7 @@
         }
       },
       {
-        "username": "381256",
+        "userId": "257efa03-30a1-4fce-b114-29f30dcb485f",
         "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
@@ -1471,7 +1575,7 @@
         }
       },
       {
-        "username": "69770",
+        "userId": "b1aacfc2-91d7-4744-9ae5-c305822b9771",
         "assignmentSignup": {
           "programItemId": "p3956",
           "priority": 1,
@@ -1479,7 +1583,7 @@
         }
       },
       {
-        "username": "453871",
+        "userId": "570e665f-1f22-4cdc-8e39-9e1060ff8332",
         "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 2,
@@ -1487,7 +1591,7 @@
         }
       },
       {
-        "username": "490276",
+        "userId": "8836ff30-25b4-453b-8871-c0bf121a1b68",
         "assignmentSignup": {
           "programItemId": "p4049",
           "priority": 1,
@@ -1495,7 +1599,7 @@
         }
       },
       {
-        "username": "681392",
+        "userId": "42e73146-b889-45a2-b23d-ef938356f5c6",
         "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
@@ -1503,7 +1607,7 @@
         }
       },
       {
-        "username": "761762",
+        "userId": "2e642486-182a-45e0-aa36-1649e0d9eefe",
         "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
@@ -1511,7 +1615,7 @@
         }
       },
       {
-        "username": "330939",
+        "userId": "96437a45-50ed-4051-9ea9-0d8c2aa1f398",
         "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 1,
@@ -1519,7 +1623,7 @@
         }
       },
       {
-        "username": "429617",
+        "userId": "e42493c4-4fa2-4698-9ab0-6a843519ad42",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 1,
@@ -1527,7 +1631,7 @@
         }
       },
       {
-        "username": "746036",
+        "userId": "42154979-737f-412b-bb61-47ff310e4979",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 1,
@@ -1535,7 +1639,7 @@
         }
       },
       {
-        "username": "913097",
+        "userId": "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
         "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
@@ -1543,7 +1647,7 @@
         }
       },
       {
-        "username": "89746",
+        "userId": "cc3b7c27-833f-4ba7-8e12-9a297a07b8bd",
         "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 1,
@@ -1551,7 +1655,7 @@
         }
       },
       {
-        "username": "60212",
+        "userId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
         "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 3,
@@ -1559,7 +1663,7 @@
         }
       },
       {
-        "username": "7111",
+        "userId": "b0c50602-46d8-4df1-9694-a88b12b52402",
         "assignmentSignup": {
           "programItemId": "p3984",
           "priority": 3,
@@ -1567,7 +1671,7 @@
         }
       },
       {
-        "username": "659117",
+        "userId": "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
         "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 3,
@@ -1575,7 +1679,7 @@
         }
       },
       {
-        "username": "228215",
+        "userId": "10ecab98-4fee-4074-876f-df6f6b60897a",
         "assignmentSignup": {
           "programItemId": "p3980",
           "priority": 3,
@@ -1583,7 +1687,7 @@
         }
       },
       {
-        "username": "846747",
+        "userId": "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
         "assignmentSignup": {
           "programItemId": "p3956",
           "priority": 1,
@@ -1591,7 +1695,7 @@
         }
       },
       {
-        "username": "716482",
+        "userId": "4eef81ae-d1dd-49c3-aa44-d71eb2a70b0f",
         "assignmentSignup": {
           "programItemId": "p3956",
           "priority": 1,
@@ -1599,7 +1703,7 @@
         }
       },
       {
-        "username": "942120",
+        "userId": "46082690-d1d1-4749-a979-34de82944171",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
@@ -1607,7 +1711,7 @@
         }
       },
       {
-        "username": "870780",
+        "userId": "80126489-917b-40ad-b6dc-c9d294f5fa71",
         "assignmentSignup": {
           "programItemId": "p3950",
           "priority": 3,
@@ -1615,7 +1719,7 @@
         }
       },
       {
-        "username": "307275",
+        "userId": "6e05aa31-a747-41e9-b770-3acfc3ebf324",
         "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
@@ -1623,7 +1727,7 @@
         }
       },
       {
-        "username": "551140",
+        "userId": "690e8978-23a4-4c80-b226-5e81601bb971",
         "assignmentSignup": {
           "programItemId": "p4000",
           "priority": 1,
@@ -1634,53 +1738,85 @@
     "groups": [
       {
         "groupCode": "7131608155",
-        "groupCreator": "248050",
-        "groupMembers": ["248050", "912525", "261992"]
+        "groupCreatorId": "67224b6c-a9cd-4dd4-b6ae-a51530804ba7",
+        "groupMemberIds": [
+          "67224b6c-a9cd-4dd4-b6ae-a51530804ba7",
+          "8e43d9e4-9954-4b22-8e8e-fc04a0bfe159",
+          "1c5aeee4-f887-4e9f-bcf1-128ccaf3c0a2"
+        ]
       },
       {
         "groupCode": "7493269596",
-        "groupCreator": "60212",
-        "groupMembers": ["60212", "7111"]
+        "groupCreatorId": "0c59b6aa-b900-4895-b426-e0b7b156b584",
+        "groupMemberIds": [
+          "0c59b6aa-b900-4895-b426-e0b7b156b584",
+          "b0c50602-46d8-4df1-9694-a88b12b52402"
+        ]
       },
       {
         "groupCode": "9325036227",
-        "groupCreator": "659117",
-        "groupMembers": ["659117", "228215"]
+        "groupCreatorId": "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
+        "groupMemberIds": [
+          "74f1aebd-639f-4a35-8b3f-dc3d6cb91357",
+          "10ecab98-4fee-4074-876f-df6f6b60897a"
+        ]
       },
       {
         "groupCode": "0785198748",
-        "groupCreator": "846747",
-        "groupMembers": ["846747", "716482"]
+        "groupCreatorId": "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
+        "groupMemberIds": [
+          "9dac8cdc-b994-43e4-bd43-0eea6c0a9eff",
+          "4eef81ae-d1dd-49c3-aa44-d71eb2a70b0f"
+        ]
       },
       {
         "groupCode": "5376017348",
-        "groupCreator": "853614",
-        "groupMembers": ["853614", "160466", "479680"]
+        "groupCreatorId": "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+        "groupMemberIds": [
+          "7fbe6000-7ca9-43fb-8083-c88f59cc7312",
+          "f22a47b4-c223-4546-b3eb-c23042406b2c",
+          "3c64a0b4-e616-4fa2-8473-2203f79afc37"
+        ]
       },
       {
         "groupCode": "1031070509",
-        "groupCreator": "429617",
-        "groupMembers": ["429617", "746036"]
+        "groupCreatorId": "e42493c4-4fa2-4698-9ab0-6a843519ad42",
+        "groupMemberIds": [
+          "e42493c4-4fa2-4698-9ab0-6a843519ad42",
+          "42154979-737f-412b-bb61-47ff310e4979"
+        ]
       },
       {
         "groupCode": "7707487588",
-        "groupCreator": "942120",
-        "groupMembers": ["942120", "870780"]
+        "groupCreatorId": "46082690-d1d1-4749-a979-34de82944171",
+        "groupMemberIds": [
+          "46082690-d1d1-4749-a979-34de82944171",
+          "80126489-917b-40ad-b6dc-c9d294f5fa71"
+        ]
       },
       {
         "groupCode": "2447190097",
-        "groupCreator": "913097",
-        "groupMembers": ["913097", "89746"]
+        "groupCreatorId": "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+        "groupMemberIds": [
+          "8362f3c7-090f-4368-8ebf-fe2cd46294cd",
+          "cc3b7c27-833f-4ba7-8e12-9a297a07b8bd"
+        ]
       },
       {
         "groupCode": "2494082726",
-        "groupCreator": "406688",
-        "groupMembers": ["406688", "761262"]
+        "groupCreatorId": "fa2b8671-8aed-4d50-85e9-f1d143c8f1f8",
+        "groupMemberIds": [
+          "fa2b8671-8aed-4d50-85e9-f1d143c8f1f8",
+          "f90a1350-3db2-4cdf-9e13-e32e1b3a542a"
+        ]
       },
       {
         "groupCode": "5409558573",
-        "groupCreator": "307275",
-        "groupMembers": ["307275", "551140"]
+        "groupCreatorId": "6e05aa31-a747-41e9-b770-3acfc3ebf324",
+        "groupMemberIds": [
+          "6e05aa31-a747-41e9-b770-3acfc3ebf324",
+          "690e8978-23a4-4c80-b226-5e81601bb971"
+        ]
       }
     ],
     "assignmentTime": "2019-11-24T10:00:00.000Z",

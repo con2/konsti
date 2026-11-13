@@ -14,11 +14,13 @@ export const groupCreatorGroupCode = "123-234-345";
 // hour before the run's time, signed up for an hour before that unless the case says when
 export const getPreviousDirectSignup = ({
   username,
+  userId = `${username}-id`,
   programItemId = testProgramItem.programItemId,
   priority = 1,
   signedToStartTime = subHours(new Date(assignmentTime), 1).toISOString(),
   signupTime = subHours(new Date(signedToStartTime), 1).toISOString(),
 }: {
+  userId?: string;
   username: string;
   programItemId?: string;
   priority?: number;
@@ -29,7 +31,7 @@ export const getPreviousDirectSignup = ({
     programItemId,
     userSignups: [
       {
-        username,
+        userId,
         priority,
         signedToStartTime,
         signupTime,
@@ -42,16 +44,16 @@ export const getPreviousDirectSignup = ({
 
 // A lottery placing the user into the program item at its own start time
 export const getAssignmentResult = ({
-  username,
+  userId,
   programItem = testProgramItem,
   priority = 1,
 }: {
-  username: string;
+  userId: string;
   programItem?: ProgramItem;
   priority?: number;
 }): UserAssignmentResult => {
   return {
-    username,
+    userId,
     assignmentSignup: {
       programItemId: programItem.programItemId,
       priority,
@@ -163,6 +165,7 @@ export const getUsers = ({
     if (i === 0) {
       users.push({
         ...defaultUserValues,
+        userId: "group-creator-with-lottery-signup-id",
         username: "group-creator-with-lottery-signup",
         isGroupCreator: true,
         lotterySignups: noLotterySignups ? [] : getLotterySignups(),
@@ -178,6 +181,7 @@ export const getUsers = ({
     } else {
       users.push({
         ...defaultUserValues,
+        userId: `group-member-${i}-id`,
         username: `group-member-${i}`,
         isGroupCreator: false,
         lotterySignups: [],

@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { MongoDbError } from "shared/types/api/errors";
 import { User, UserGroup } from "shared/types/models/user";
 import {
@@ -5,7 +6,10 @@ import {
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { isDuplicateKeyError } from "server/db/duplicateKeyError";
+import {
+  isDuplicateKeyError,
+  isDuplicateKeyOnField,
+} from "server/db/duplicateKeyError";
 import { UserModel, UserSchemaDb } from "server/features/user/userSchema";
 import { Serial } from "server/types/serialTypes";
 import { NewUser } from "server/types/userTypes";
@@ -26,6 +30,7 @@ export const saveUser = async (
   newUserData: NewUser,
 ): Promise<Result<User, MongoDbError>> => {
   const newUser: Omit<User, "createdAt"> = {
+    userId: newUserData.userId ?? randomUUID(),
     kompassiId: newUserData.kompassiId,
     kompassiUsernameAccepted: false,
     username: newUserData.username,
@@ -65,8 +70,11 @@ export const saveUser = async (
         cause: error,
       }),
     );
-    // A unique index rejection means nothing was written, so callers can retry
-    // with a different username. Every other failure may have stored the row.
+    // A unique index rejection means nothing was written, which the callers
+    // act on. Every other failure may have stored the row.
+    if (isDuplicateKeyOnField(error, "serial")) {
+      return makeErrorResult(MongoDbError.DUPLICATE_SERIAL);
+    }
     if (isDuplicateKeyError(error)) {
       return makeErrorResult(MongoDbError.DUPLICATE_KEY);
     }
@@ -74,14 +82,14 @@ export const saveUser = async (
   }
 };
 
-export const updateUsersByUsername = async (
+export const updateUsersByUserId = async (
   users: User[],
 ): Promise<Result<void, MongoDbError>> => {
   const bulkOps = users.map((user) => {
     return {
       updateOne: {
         filter: {
-          username: user.username,
+          userId: user.userId,
         },
         update: {
           userGroup: user.userGroup,
@@ -109,13 +117,13 @@ export const updateUsersByUsername = async (
 };
 
 export const updateUserPassword = async (
-  username: string,
+  userId: string,
   password: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       // Don't update Kompassi login users
-      { username, kompassiId: "" },
+      { userId, kompassiId: "" },
       {
         password,
       },
@@ -124,7 +132,7 @@ export const updateUserPassword = async (
     if (!response) {
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    logger.debug(`MongoDB: Password for user ${username} updated`);
+    logger.debug(`MongoDB: Password for user ${userId} updated`);
 
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -138,7 +146,7 @@ export const updateUserPassword = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error updating password for user ${username}`, {
+      new Error(`MongoDB: Error updating password for user ${userId}`, {
         cause: error,
       }),
     );
@@ -171,6 +179,59 @@ export const findUser = async (
   } catch (error) {
     logger.error(
       new Error(`MongoDB: Error finding user ${username}`, { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const findUserByUserId = async (
+  userId: string,
+): Promise<Result<User | null, MongoDbError>> => {
+  try {
+    const response = await UserModel.findOne({ userId }).lean();
+    if (!response) {
+      logger.info(`MongoDB: User with id ${userId} not found`);
+      return makeSuccessResult(null);
+    }
+
+    const result = UserSchemaDb.safeParse(response);
+    if (!result.success) {
+      logger.error(
+        new Error(`Error validating findUserByUserId DB value`, {
+          cause: result.error,
+        }),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(result.data);
+  } catch (error) {
+    logger.error(
+      new Error(`MongoDB: Error finding user with id ${userId}`, {
+        cause: error,
+      }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const findUsernamesByUserIds = async (
+  userIds: readonly string[],
+): Promise<Result<Map<string, string>, MongoDbError>> => {
+  try {
+    const response = await UserModel.find(
+      { userId: { $in: userIds } },
+      { userId: 1, username: 1 },
+    ).lean();
+
+    return makeSuccessResult(
+      new Map(response.map((user) => [user.userId, user.username])),
+    );
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error finding usernames by user id", {
+        cause: error,
+      }),
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -307,12 +368,18 @@ export const findUsers = async (
 };
 
 export const updateUserKompassiLoginStatus = async (
-  oldUsername: string,
+  userId: string,
   newUsername: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username: oldUsername },
+      // An account accepts its username once.
+      // A simultaneous duplicate of the accepted name still matches, so a double submit succeeds.
+      {
+        userId,
+        kompassiId: { $ne: "" },
+        $or: [{ kompassiUsernameAccepted: false }, { username: newUsername }],
+      },
       {
         username: newUsername,
         kompassiUsernameAccepted: true,
@@ -323,7 +390,7 @@ export const updateUserKompassiLoginStatus = async (
     if (!response) {
       logger.error(
         new Error(
-          `MongoDB: Error updating Kompassi login status for user ${oldUsername}, user not found`,
+          `MongoDB: Error updating Kompassi login status for user id ${userId}, user not found`,
         ),
       );
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -342,21 +409,24 @@ export const updateUserKompassiLoginStatus = async (
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error updating Kompassi login status for user ${oldUsername}`,
+        `MongoDB: Error updating Kompassi login status for user id ${userId}`,
         { cause: error },
       ),
     );
+    if (isDuplicateKeyError(error)) {
+      return makeErrorResult(MongoDbError.DUPLICATE_KEY);
+    }
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const updateUserEmailAddress = async (
-  username: string,
+  userId: string,
   email: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       {
         email,
         emailNotificationPermitAsked: true,
@@ -367,7 +437,7 @@ export const updateUserEmailAddress = async (
     if (!response) {
       logger.error(
         new Error(
-          `MongoDB: Error updating email address for user ${username}, user not found`,
+          `MongoDB: Error updating email address for user ${userId}, user not found`,
         ),
       );
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -385,7 +455,7 @@ export const updateUserEmailAddress = async (
     return makeSuccessResult(result.data);
   } catch (error) {
     logger.error(
-      new Error(`MongoDB: Error updating email address for user ${username}`, {
+      new Error(`MongoDB: Error updating email address for user ${userId}`, {
         cause: error,
       }),
     );

@@ -10,9 +10,7 @@ import { logger } from "server/utils/logger";
 // Match the length of real registration codes from the serial generator
 const SERIAL_LENGTH = 10;
 
-// Faker can repeat a username, and nothing rejects a duplicate on save. Two user
-// documents sharing a username break assignment: results are produced for both,
-// but every username-filtered write lands on whichever document is found first.
+// Faker can repeat a username, and the unique index would then fail the whole run
 let generatedUsernameCount = 0;
 
 const generateUsername = (): string => {

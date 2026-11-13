@@ -12,12 +12,12 @@ import { ButtonStyle } from "client/components/componentStyles";
 import { updateUserPassword } from "client/services/userServices";
 
 interface Props {
-  usernameToUpdate: string;
+  userIdToUpdate: string;
   isLocalLogin: boolean;
 }
 
 export const PasswordChangeForm = ({
-  usernameToUpdate,
+  userIdToUpdate,
   isLocalLogin,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
@@ -53,7 +53,7 @@ export const PasswordChangeForm = ({
     }
 
     const response = await updateUserPassword(
-      usernameToUpdate,
+      userIdToUpdate,
       changePasswordInput,
     );
 

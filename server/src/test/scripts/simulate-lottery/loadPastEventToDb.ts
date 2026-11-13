@@ -16,7 +16,7 @@ import {
 } from "server/features/settings/settingsRepository";
 import {
   saveUser,
-  updateUsersByUsername,
+  updateUsersByUserId,
 } from "server/features/user/userRepository";
 import { PastEventDump } from "server/test/scripts/simulate-lottery/pastEventDump";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
@@ -154,6 +154,7 @@ export const loadPastEventToDb = async ({
   const users: User[] = [];
   for (const dumpUser of dump.users) {
     const saveUserResult = await saveUser({
+      userId: dumpUser.userId,
       // Every Kompassi account in a dump carries the same redacted id, which the unique
       // index rejects. Stored as a local account instead: nothing in a replay logs in, and
       // the lottery never reads the field.
@@ -179,7 +180,7 @@ export const loadPastEventToDb = async ({
     });
   }
 
-  const updateUsersResult = await updateUsersByUsername(users);
+  const updateUsersResult = await updateUsersByUserId(users);
   if (!updateUsersResult.ok) {
     return updateUsersResult;
   }
@@ -195,7 +196,7 @@ export const loadPastEventToDb = async ({
     directSignup.userSignups
       .filter((userSignup) => userSignup.priority === DIRECT_SIGNUP_PRIORITY)
       .map((userSignup): SignupRepositoryAddSignup => ({
-        username: userSignup.username,
+        userId: userSignup.userId,
         directSignupProgramItemId: directSignup.programItemId,
         message: userSignup.message,
         priority: userSignup.priority,

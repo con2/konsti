@@ -6,7 +6,7 @@ import {
   PostUpdateUserEmailAddressResponse,
   PostVerifyKompassiLoginResponse,
 } from "shared/types/api/login";
-import { UserGroup } from "shared/types/models/user";
+import { User, UserGroup } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
@@ -27,6 +27,7 @@ import {
 import {
   findUser,
   findUserByKompassiId,
+  findUserByUserId,
   saveUser,
   updateUserEmailAddress,
   updateUserKompassiLoginStatus,
@@ -196,10 +197,11 @@ export const doKompassiLogin = async (
       status: "success",
       username: existingUser.username,
       userGroup: existingUser.userGroup,
+      userId: existingUser.userId,
       serial: existingUser.serial,
       groupCode: existingUser.groupCode,
       isGroupCreator: existingUser.isGroupCreator,
-      jwt: getJWT(existingUser.userGroup, existingUser.username),
+      jwt: getJWT(existingUser.userGroup, existingUser),
       eventLogItems: existingUser.eventLogItems,
       kompassiUsernameAccepted: existingUser.kompassiUsernameAccepted,
       kompassiId: existingUser.kompassiId,
@@ -286,10 +288,11 @@ export const doKompassiLogin = async (
     status: "success",
     username: saveUserResponse.username,
     userGroup: saveUserResponse.userGroup,
+    userId: saveUserResponse.userId,
     serial: saveUserResponse.serial,
     groupCode: saveUserResponse.groupCode,
     isGroupCreator: saveUserResponse.isGroupCreator,
-    jwt: getJWT(saveUserResponse.userGroup, saveUserResponse.username),
+    jwt: getJWT(saveUserResponse.userGroup, saveUserResponse),
     eventLogItems: saveUserResponse.eventLogItems,
     kompassiUsernameAccepted: saveUserResponse.kompassiUsernameAccepted,
     kompassiId: saveUserResponse.kompassiId,
@@ -298,48 +301,78 @@ export const doKompassiLogin = async (
   };
 };
 
+const getVerifiedLoginResponse = (
+  user: User,
+): PostVerifyKompassiLoginResponse => {
+  return {
+    message: "Kompassi login status updated",
+    status: "success",
+    username: user.username,
+    kompassiUsernameAccepted: user.kompassiUsernameAccepted,
+    jwt: getJWT(user.userGroup, user),
+  };
+};
+
 export const verifyKompassiLogin = async (
-  oldUsername: string,
+  userId: string,
   newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse> => {
-  if (oldUsername !== newUsername) {
-    // Check if username already taken
-    const findUserResult = await findUser(newUsername);
-    if (!findUserResult.ok) {
-      return {
-        errorId: "unknown",
-        message: "Finding user failed",
-        status: "error",
-      };
-    }
-
-    const existingUser = findUserResult.value;
-
-    if (existingUser) {
-      logger.info(
-        `Kompassi verify: Username ${existingUser.username} is already registered`,
-      );
-      return {
-        errorId: "usernameNotFree",
-        message: "Username in already registered",
-        status: "error",
-      };
-    }
+  const currentUserResult = await findUserByUserId(userId);
+  if (!currentUserResult.ok) {
+    return {
+      errorId: "unknown",
+      message: "Finding user failed",
+      status: "error",
+    };
   }
 
-  const userResult = await updateUserKompassiLoginStatus(
-    oldUsername,
-    newUsername,
-  );
+  // A form left open in another tab can submit after the name is accepted, and the accepted name
+  // stands. The session is still valid, so answer with that name instead of logging the user out.
+  const currentUser = currentUserResult.value;
+  if (currentUser?.kompassiUsernameAccepted) {
+    return getVerifiedLoginResponse(currentUser);
+  }
+
+  // Check if username already taken
+  const findUserResult = await findUser(newUsername);
+  if (!findUserResult.ok) {
+    return {
+      errorId: "unknown",
+      message: "Finding user failed",
+      status: "error",
+    };
+  }
+
+  const existingUser = findUserResult.value;
+
+  // A user keeping their generated name finds their own account here
+  if (existingUser && existingUser.userId !== userId) {
+    logger.info(
+      `Kompassi verify: Username ${existingUser.username} is already registered`,
+    );
+    return {
+      errorId: "usernameNotFree",
+      message: "Username in already registered",
+      status: "error",
+    };
+  }
+
+  const userResult = await updateUserKompassiLoginStatus(userId, newUsername);
   if (!userResult.ok) {
-    // A valid JWT for a username that no longer exists means the session is
-    // stale (the account was renamed by an earlier verify or removed), so
-    // tell the client to log out instead of inviting a retry
+    // No match means the account was removed, is a local one, or lost a simultaneous
+    // rename, so tell the client to log out instead of inviting a retry
     if (userResult.error === MongoDbError.USER_NOT_FOUND) {
       return {
         message: "User of the current session not found",
         status: "error",
         errorId: "loginFailed",
+      };
+    }
+    if (userResult.error === MongoDbError.DUPLICATE_KEY) {
+      return {
+        errorId: "usernameNotFree",
+        message: "Username in already registered",
+        status: "error",
       };
     }
     return {
@@ -349,26 +382,18 @@ export const verifyKompassiLogin = async (
     };
   }
 
-  const user = userResult.value;
-
   logger.info(
-    `Kompassi login: username ${oldUsername} changed to ${newUsername}`,
+    `Kompassi login: user ${userId} accepted username ${newUsername}`,
   );
 
-  return {
-    message: "Kompassi login status updated",
-    status: "success",
-    username: user.username,
-    kompassiUsernameAccepted: user.kompassiUsernameAccepted,
-    jwt: getJWT(user.userGroup, user.username),
-  };
+  return getVerifiedLoginResponse(userResult.value);
 };
 
 export const verifyUpdateUserEmailAddress = async (
-  username: string,
+  userId: string,
   email: string,
 ): Promise<PostUpdateUserEmailAddressResponse> => {
-  const userResult = await updateUserEmailAddress(username, email);
+  const userResult = await updateUserEmailAddress(userId, email);
   if (!userResult.ok) {
     return {
       message: "Updating user email address failed",
@@ -384,6 +409,6 @@ export const verifyUpdateUserEmailAddress = async (
     status: "success",
     email: user.email,
     emailNotificationPermitAsked: user.emailNotificationPermitAsked,
-    jwt: getJWT(user.userGroup, user.username),
+    jwt: getJWT(user.userGroup, user),
   };
 };

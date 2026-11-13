@@ -88,11 +88,11 @@ export const verifyUserSignups = async (): Promise<
     // individual is the user themselves
     for (const userSignup of userSignups) {
       const matchingUser = users.find(
-        (user) => user.username === userSignup.username,
+        (user) => user.userId === userSignup.userId,
       );
 
       if (!matchingUser) {
-        logger.error(new Error(`No matching user: ${userSignup.username}`));
+        logger.error(new Error(`No matching user: ${userSignup.userId}`));
         mismatchFound = true;
         continue;
       }
@@ -117,7 +117,7 @@ export const verifyUserSignups = async (): Promise<
       if (!matchingCreatorLotterySignup) {
         logger.error(
           new Error(
-            `No matching signed program item found from group creator: ${userSignup.username} - ${programItemId}`,
+            `No matching signed program item found from group creator: ${userSignup.userId} - ${programItemId}`,
           ),
         );
         mismatchFound = true;
@@ -133,9 +133,12 @@ export const verifyUserSignups = async (): Promise<
 };
 
 export const assertUserUpdatedCorrectly = async (
-  usernames: string[],
+  userIds: string[],
 ): Promise<void> => {
-  const users = unsafelyUnwrap(await findUsers(usernames));
+  const users = unsafelyUnwrap(await findUsers()).filter((user) =>
+    userIds.includes(user.userId),
+  );
+  expect(users).toHaveLength(userIds.length);
 
   for (const user of users) {
     const newAssignmentEventLogItems = user.eventLogItems.filter(
@@ -171,7 +174,7 @@ export const assertSecondRunChangesNothing = async ({
   );
   expect(secondRunResults.results).toHaveLength(0);
 
-  const firstRunWinners = firstRunResults.map((result) => result.username);
+  const firstRunWinners = firstRunResults.map((result) => result.userId);
   const firstRunWinnerSet = new Set(firstRunWinners);
 
   // Same attendee, same program item, still exactly one spot each
@@ -179,13 +182,13 @@ export const assertSecondRunChangesNothing = async ({
   const heldProgramItemsByWinner = new Map(
     signupsAfterSecondRun.flatMap((signup) =>
       signup.userSignups
-        .filter((userSignup) => firstRunWinnerSet.has(userSignup.username))
-        .map((userSignup) => [userSignup.username, signup.programItemId]),
+        .filter((userSignup) => firstRunWinnerSet.has(userSignup.userId))
+        .map((userSignup) => [userSignup.userId, signup.programItemId]),
     ),
   );
   expect(heldProgramItemsByWinner.size).toEqual(firstRunWinnerSet.size);
   for (const result of firstRunResults) {
-    expect(heldProgramItemsByWinner.get(result.username)).toEqual(
+    expect(heldProgramItemsByWinner.get(result.userId)).toEqual(
       result.assignmentSignup.programItemId,
     );
   }
@@ -236,10 +239,10 @@ export const assertAssignmentInvariants = async (
   );
 
   // Nobody holds two spots at one start time
-  const usernamesWithSpot = signupsForStartTime.flatMap((directSignup) =>
-    directSignup.userSignups.map((userSignup) => userSignup.username),
+  const userIdsWithSpot = signupsForStartTime.flatMap((directSignup) =>
+    directSignup.userSignups.map((userSignup) => userSignup.userId),
   );
-  expect(usernamesWithSpot).toHaveLength(new Set(usernamesWithSpot).size);
+  expect(userIdsWithSpot).toHaveLength(new Set(userIdsWithSpot).size);
 
   for (const directSignup of signupsForStartTime) {
     const programItem = programItems.find(
@@ -260,11 +263,11 @@ export const assertAssignmentInvariants = async (
   // attend what their creator signed the group up for. Only spots the lottery handed out
   // count - a member keeping a first-come-first-served sign-up of their own while the group
   // goes unplaced is not a split, it is just their own sign-up standing.
-  const placedProgramItemByUsername = new Map(
+  const placedProgramItemByUserId = new Map(
     signupsForStartTime.flatMap((directSignup) =>
       directSignup.userSignups
         .filter((userSignup) => userSignup.priority !== DIRECT_SIGNUP_PRIORITY)
-        .map((userSignup) => [userSignup.username, directSignup.programItemId]),
+        .map((userSignup) => [userSignup.userId, directSignup.programItemId]),
     ),
   );
   const groupedUsers = groupBy(
@@ -274,7 +277,7 @@ export const assertAssignmentInvariants = async (
 
   for (const groupMembers of Object.values(groupedUsers)) {
     const placements = groupMembers.map((groupMember) =>
-      placedProgramItemByUsername.get(groupMember.username),
+      placedProgramItemByUserId.get(groupMember.userId),
     );
     expect(new Set(placements).size).toEqual(1);
   }

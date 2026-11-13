@@ -84,7 +84,7 @@ export const createEventLogItems = async (): Promise<void> => {
 
       if (!wonSignup || !wonProgramItem) {
         noAssignmentEventLogUpdates.push({
-          username: user.username,
+          userId: user.userId,
           programItemId: "",
           ...lotteriedSpan,
           createdAt,
@@ -94,7 +94,7 @@ export const createEventLogItems = async (): Promise<void> => {
       }
 
       const saveResult = await saveDirectSignup({
-        username: user.username,
+        userId: user.userId,
         directSignupProgramItemId: wonSignup.programItemId,
         // A spot is held for the hour its attendee turns up, so the program item's own start
         // time rather than the parent time its lottery was batched at
@@ -109,11 +109,11 @@ export const createEventLogItems = async (): Promise<void> => {
       const userGotIn =
         saveResult.ok &&
         saveResult.value.userSignups.some(
-          (userSignup) => userSignup.username === user.username,
+          (userSignup) => userSignup.userId === user.userId,
         );
       if (!userGotIn) {
         noAssignmentEventLogUpdates.push({
-          username: user.username,
+          userId: user.userId,
           programItemId: "",
           ...lotteriedSpan,
           createdAt,
@@ -123,7 +123,7 @@ export const createEventLogItems = async (): Promise<void> => {
       }
 
       newAssignmentEventLogUpdates.push({
-        username: user.username,
+        userId: user.userId,
         programItemId: wonSignup.programItemId,
         programItemStartTime: wonSignup.signedToStartTime,
         createdAt,

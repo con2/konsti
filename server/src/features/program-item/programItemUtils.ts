@@ -1,4 +1,5 @@
 import { isAfter } from "date-fns";
+import { unique } from "remeda";
 import { config } from "shared/config";
 import { EventSignupStrategy } from "shared/config/eventConfigTypes";
 import { MongoDbError } from "shared/types/api/errors";
@@ -34,6 +35,7 @@ import { queueCancelledDeletedEmails } from "server/features/notifications/queue
 import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { findOrCreateSettings } from "server/features/settings/settingsRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
+import { findUsernamesByUserIds } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
 const getCancelledProgramItems = (
@@ -228,6 +230,16 @@ export const enrichProgramItems = async (
   if (!signupsResult.ok) {
     return signupsResult;
   }
+  const usernamesResult = await findUsernamesByUserIds(
+    unique(
+      signupsResult.value.flatMap((signup) =>
+        signup.userSignups.map((userSignup) => userSignup.userId),
+      ),
+    ),
+  );
+  if (!usernamesResult.ok) {
+    return usernamesResult;
+  }
   const currentTimeResult = await getTimeNow();
   if (!currentTimeResult.ok) {
     return currentTimeResult;
@@ -249,6 +261,7 @@ export const enrichProgramItems = async (
       },
       users: getDirectSignupsForProgramItem(
         signupsResult.value,
+        usernamesResult.value,
         programItem.programItemId,
         programItem.programType,
         userGroup,
@@ -303,14 +316,27 @@ const getSignupStrategyForProgramItem = (
   return ProgramItemSignupStrategy.LOTTERY;
 };
 
+export const REDACTED_SIGNUP_VALUE = "redacted";
+
+export const isParticipantListHidden = (
+  programType: ProgramType,
+  userGroup: UserGroup | null,
+): boolean => {
+  return (
+    config.event().hideParticipantListProgramTypes.includes(programType) &&
+    !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELPER)
+  );
+};
+
 const getDirectSignupsForProgramItem = (
   directSignups: DirectSignupsForProgramItem[],
+  usernamesByUserId: ReadonlyMap<string, string>,
   programItemId: string,
   programType: ProgramType,
   userGroup: UserGroup | null,
   signupQuestion?: SignupQuestion,
 ): UserSignup[] => {
-  const { hideParticipantListProgramTypes } = config.event();
+  const participantListHidden = isParticipantListHidden(programType, userGroup);
 
   const directSignupsForProgramItem = directSignups.filter(
     (signup) => signup.programItemId === programItemId,
@@ -319,17 +345,14 @@ const getDirectSignupsForProgramItem = (
   const formattedDirectSignupsForProgramItem =
     directSignupsForProgramItem.flatMap((directSignupForProgramItem) => {
       return directSignupForProgramItem.userSignups.map((userSignups) => {
-        if (
-          hideParticipantListProgramTypes.includes(programType) &&
-          !(userGroup === UserGroup.ADMIN || userGroup === UserGroup.HELPER)
-        ) {
+        if (participantListHidden) {
           return {
-            username: "redacted",
-            signupMessage: "redacted",
+            username: REDACTED_SIGNUP_VALUE,
+            signupMessage: REDACTED_SIGNUP_VALUE,
           };
         }
         return {
-          username: userSignups.username,
+          username: usernamesByUserId.get(userSignups.userId) ?? "",
           signupMessage: getSignupMessage(signupQuestion, userSignups.message),
         };
       });
@@ -375,7 +398,7 @@ const notifyUsersWithDirectSignups = async (
         return [];
       }
       return directSignup.userSignups.map((userSignup) => ({
-        username: userSignup.username,
+        userId: userSignup.userId,
         programItemId,
         programItemStartTime: userSignup.signedToStartTime,
         createdAt: new Date().toISOString(),

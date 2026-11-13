@@ -1,5 +1,6 @@
 [
   {
+    "userId": "2bf2390a-37ba-46fe-91d8-8ab39f442341",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "478253",
@@ -15,6 +16,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "c2941b84-f18e-4756-a0e4-db0ac2f9e777",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "534154",
@@ -71,6 +73,7 @@
     "updatedAt": "2024-11-03T15:54:55.914Z"
   },
   {
+    "userId": "57e54f8a-b4fc-477f-9cef-c0d2275f3812",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "941139",
@@ -86,6 +89,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "0ec776b7-19bd-4f7a-b356-c14da47c976c",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "96725",
@@ -120,6 +124,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "58917b70-88ad-41eb-b96d-1c5ba1f4c16f",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "833504",
@@ -166,6 +171,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "61998a8c-c0ca-471a-a089-d367d882bf7f",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "374030",
@@ -217,6 +223,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "3b70f4bb-d831-4cd4-9d7c-9c5864c3a9b4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "285472",
@@ -255,6 +262,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "dfc6d7b0-858c-4ca0-abf2-feb8ee0796f4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "335864",
@@ -270,6 +278,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "a869c80c-8001-46ff-ad0f-39d938fe3110",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "729322",
@@ -346,6 +355,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "60e0aabf-154c-430b-b7a9-cba66be8a007",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "599171",
@@ -383,6 +393,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "e9280e21-ae7f-4a7b-ba63-821899eec1e1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "260427",
@@ -424,6 +435,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "07896eb5-4501-4f47-826c-7e0ba468d761",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "991118",
@@ -439,6 +451,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d7b94f04-fc9a-4804-93df-49763870f8d4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "758313",
@@ -454,6 +467,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d66d3311-a452-4a3e-900d-99a5af54cae7",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "878009",
@@ -469,6 +483,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "de7ccb89-96bf-4842-80f4-ff8ef07b44b4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "335134",
@@ -498,6 +513,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "12181ae0-a37d-4939-8e52-c8ffe157580d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "934216",
@@ -555,6 +571,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "55e31629-6bf6-4987-a950-6ca9f197c56d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "198867",
@@ -570,6 +587,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e92b9072-3d40-43a3-8f62-a4eec4fe347a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "534059",
@@ -596,6 +614,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5d403b2f-d66c-489a-a6c7-bc7b71d638d7",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "879999",
@@ -631,6 +650,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "cdac3ddd-1f46-4023-8819-3ff386f71a43",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "920292",
@@ -660,6 +680,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "c156184c-ba7d-458a-b328-49564bd94866",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "816005",
@@ -720,6 +741,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e7dc6d72-874d-4fcb-8a83-8b7d72fe6fda",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "623696",
@@ -763,6 +785,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d19bb25e-1ec0-495a-8d3d-4421256c2c35",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "804539",
@@ -789,6 +812,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "42bc6d81-5124-4a4e-ae5a-63599fb1995b",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "751445",
@@ -842,6 +866,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "a2d4b436-f99f-4f21-85bd-df3fbbccd241",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "287921",
@@ -857,6 +882,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "9da2ad15-c0e5-4404-9dcc-ba7b369becb7",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "646848",
@@ -926,6 +952,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d8776313-4dd2-475d-a483-ccc2ef8fc7fb",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "802874",
@@ -979,6 +1006,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "45710f02-4fc8-4bdc-8c43-bf85a0d484eb",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "653744",
@@ -1025,6 +1053,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "f8d20b28-54b2-4576-bcf5-f4991b879c47",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "169906",
@@ -1043,6 +1072,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "1d351311-3dd1-4d0c-af15-4f95150e0182",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "284629",
@@ -1072,6 +1102,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "479f892c-6d62-41a7-be1b-08cc4d24345f",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "645816",
@@ -1087,6 +1118,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "f9d5d593-47c3-49fe-86cc-3a3590becf04",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "720173",
@@ -1156,6 +1188,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "6673ea60-94de-44b2-8386-b90146c647a5",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "65445",
@@ -1174,6 +1207,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "56739fce-deec-4e81-ad90-73fccbdcbf35",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "445334",
@@ -1207,6 +1241,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "588c3104-360d-431c-8007-339b291f5f5a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "203638",
@@ -1267,6 +1302,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "90e0751d-011a-4a96-b700-daa50af14385",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "258646",
@@ -1304,6 +1340,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b7cd98b7-4892-4e06-be0d-f762ac006c67",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "19891",
@@ -1319,6 +1356,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "41f214c0-631e-47eb-97a0-7d5ce3a560fe",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "287943",
@@ -1365,6 +1403,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "e001993a-2266-4e9e-b655-6be387cca3ff",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "623085",
@@ -1398,6 +1437,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "dd6f42cc-7774-4ec3-aed8-a8b05e8e3440",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "117894",
@@ -1478,6 +1518,7 @@
     "updatedAt": "2024-11-03T12:00:05.554Z"
   },
   {
+    "userId": "39655f2b-c882-4886-b022-55579fb9f969",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "533720",
@@ -1504,6 +1545,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5c9243c4-27cb-45c1-94dc-24a5f1a21e2f",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "80282",
@@ -1559,6 +1601,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "39c086d2-6100-46d4-bf51-eeea624c1b58",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "508384",
@@ -1612,6 +1655,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "68d3e7e9-5cd0-4bc4-b74e-06a790f00df5",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "106163",
@@ -1660,6 +1704,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "84e14e1c-32df-49e8-9a7c-1d4011b04d02",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "247688",
@@ -1728,6 +1773,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "fc6428c5-f394-4234-b238-794e631ebb8e",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "318838",
@@ -1779,6 +1825,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "af922884-a26c-4b2f-b67c-81a1e6fe68fa",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "528932",
@@ -1794,6 +1841,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "c10fa29a-8c1f-4a1f-b383-79738a043400",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "613300",
@@ -1842,6 +1890,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "62fd9233-d2ec-4a3d-aba3-031725e8a086",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "137136",
@@ -1902,6 +1951,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "cc22ecac-4ba6-4bb3-8bd6-304e3e0f5612",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "734782",
@@ -1941,6 +1991,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "3190a8a4-48c4-49c2-94de-b798ea6e141a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "713008",
@@ -2023,6 +2074,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "1e4bb2ff-5bb2-4f1c-8777-3619823b31e1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "691088",
@@ -2086,6 +2138,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "a9e6e772-1af7-4c59-a435-7f83f2723b37",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "559697",
@@ -2101,6 +2154,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "4bb9d64c-a627-4d5b-b71d-23e1a8694f28",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "25827",
@@ -2137,6 +2191,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "4a36cd7a-a5b9-4842-b576-f3c908065816",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "468504",
@@ -2166,6 +2221,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "0e27ea27-6174-4e8c-ab78-0886e520fc33",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "219650",
@@ -2181,6 +2237,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d177922b-0754-4aa3-9ce5-22ce5d7235e7",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "662969",
@@ -2196,6 +2253,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "f50a6286-147c-4808-af2a-1bebda8a3fc0",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "706083",
@@ -2232,6 +2290,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "00023165-182d-4184-85c6-87541b8f7708",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "604301",
@@ -2255,6 +2314,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "d75d6a85-c8a1-4c7d-8612-9815d599c0b9",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "937554",
@@ -2320,6 +2380,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "9a0af5eb-e9ef-4b33-9fb9-e9d0d6290869",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "35578",
@@ -2368,6 +2429,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "a4e5f3d2-a0de-4056-9729-d437c4329262",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "194249",
@@ -2407,6 +2469,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7709f8f5-dbb6-4a1b-b5af-0619296ff236",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "874275",
@@ -2422,6 +2485,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7570c548-30b3-48c5-8903-123891bab58e",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "611198",
@@ -2448,6 +2512,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "fa9083ee-39e4-4aa9-82a1-027eb5669b1a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "781504",
@@ -2504,6 +2569,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7f0f47a4-7a9b-4e7f-a74e-dd4e2fcfc1c6",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "218166",
@@ -2533,6 +2599,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b4eb99b1-f2ab-4104-b8e3-3d02421eed51",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "322086",
@@ -2581,6 +2648,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7f493fd2-4700-478f-945e-43f246e9069e",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "603247",
@@ -2615,6 +2683,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "661fdb1f-6bc0-46c2-a08f-e1f9ae67b97c",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "430633",
@@ -2699,6 +2768,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "2baf3f14-0af8-4acf-bc17-41d3dd49fda1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "364157",
@@ -2733,6 +2803,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d9a03a40-c89a-4b33-8af8-d64195c47329",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": false,
     "username": "503288",
@@ -2748,6 +2819,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b8eb077c-ae10-4c40-8878-1a7897a52ab9",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "21147",
@@ -2794,6 +2866,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "4b2a616b-fb3a-4cbc-9f31-3d752a8246d1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "111164",
@@ -2847,6 +2920,7 @@
     "updatedAt": "2024-11-03T12:02:14.991Z"
   },
   {
+    "userId": "1e26527f-2048-43d8-9258-91434eeb844a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "752423",
@@ -2944,6 +3018,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d9d95c99-ff48-4cb4-af29-ecff07465862",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "704351",
@@ -2966,6 +3041,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "20d809a9-67af-40a4-90ad-691bb8f13303",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "819385",
@@ -3033,6 +3109,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "9d7118b5-fe89-4a5b-b9f4-940ea70cf2b0",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "916303",
@@ -3100,6 +3177,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "efd97188-6ff7-4a4b-8adf-ddb19c33ebb1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "375916",
@@ -3115,6 +3193,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b17f47ac-d181-46f4-97ee-eeb96bd51db0",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "189803",
@@ -3163,6 +3242,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "83e664a9-bc09-41c3-984b-daa5ea4f1b11",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "222718",
@@ -3197,6 +3277,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e071123b-cf95-4fdc-a745-98be7e1787ef",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "612118",
@@ -3226,6 +3307,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b9206259-160e-4e07-a71c-a34aad601e3f",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "364272",
@@ -3272,6 +3354,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b87017b5-f0a5-4b63-9bbf-d4687dd34a94",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "565592",
@@ -3292,6 +3375,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7cb99866-cea1-42e6-84ea-b998d4538da5",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "132985",
@@ -3339,6 +3423,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "77bf53c6-45e7-47e8-b10c-220cc98828e4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "546495",
@@ -3354,6 +3439,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "78c6f62c-eff7-4726-a069-1992f50c3ddd",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "758706",
@@ -3383,6 +3469,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "eb3b2622-9786-4a21-85c4-f67d501e3729",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "968261",
@@ -3416,6 +3503,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "8bc404b1-d06b-407f-bfa9-21978d32bc16",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "570261",
@@ -3431,6 +3519,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "93b5a1a5-8bed-449d-ad31-34387dd92736",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "144818",
@@ -3446,6 +3535,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "75e03f70-f480-449f-9060-fa98a8febe4d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "876561",
@@ -3461,6 +3551,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7ccdfaed-bce1-4d7e-80f2-b34dff1de94c",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "608267",
@@ -3476,6 +3567,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d3d6453c-66dd-4846-adb4-8882ac30be63",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "137204",
@@ -3511,6 +3603,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "40b06892-69c5-4d63-b5e1-b6bc5e6d31bc",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "990107",
@@ -3598,6 +3691,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "18712463-b93d-4659-8d8d-62ee57b54761",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "662977",
@@ -3627,6 +3721,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "4b48c22d-6c07-4546-9ba9-d4eb2713e6ce",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "138767",
@@ -3665,6 +3760,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "43145d04-0b99-4988-a707-b1d4b2c61d73",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "456125",
@@ -3694,6 +3790,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "6a532031-5fcc-4416-a04b-4a8d578ee17d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "325029",
@@ -3723,6 +3820,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "bad5bc4d-46cf-4201-96b0-a48d1b4c9f64",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "396144",
@@ -3749,6 +3847,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5ec7b20a-19b0-4ea5-a519-3211b2198de3",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "975534",
@@ -3764,6 +3863,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "cc27cb27-f252-46f6-b7ad-ae26ad1d42e0",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "739012",
@@ -3803,6 +3903,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "ab4b4ad2-1dbb-4247-a4f7-51c854d87871",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "352422",
@@ -3818,6 +3919,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5631db17-6d1c-4405-8874-34d14bc0aab3",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "635844",
@@ -3847,6 +3949,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "71f455b9-4fc0-449c-8198-d5933e138a7a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "72930",
@@ -3870,6 +3973,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "40019165-3b66-4ad2-a03e-305fad3021a1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "895217",
@@ -3911,6 +4015,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "0043444c-e38a-463a-899c-27e4edf759d6",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "147170",
@@ -3926,6 +4031,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "09e0b3b6-3b81-4a09-a937-eaa466b65bf7",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "599344",
@@ -3974,6 +4080,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "42a87915-03eb-43a5-8382-8dcfc09ff823",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "813191",
@@ -3992,6 +4099,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "c173409e-4977-498a-96f5-55776197303d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "495631",
@@ -4029,6 +4137,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d518fbf1-58cd-4890-9188-573cfabf8132",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "982326",
@@ -4058,6 +4167,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "289e78b9-11a1-4d01-99d9-d2311876503d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "166778",
@@ -4073,6 +4183,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "904d4e77-ad2f-4507-a259-eb0590deaf2e",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "214234",
@@ -4088,6 +4199,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5f253d91-f60b-4fad-99a4-826f4ea9b5cf",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "737061",
@@ -4129,6 +4241,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "50f81da6-fa33-49f1-b63d-ecc8b0d9ad10",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "841288",
@@ -4152,6 +4265,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "1727c783-ff45-404f-a9cc-73e30814a2e1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "995327",
@@ -4175,6 +4289,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "c422386b-12f4-40c3-9123-8b3931f6d692",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "895833",
@@ -4198,6 +4313,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "ff29c5ad-94f0-44c2-96e1-602ec3af51c1",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "334443",
@@ -4230,6 +4346,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "0c8c66dd-b29e-4624-aa8c-fa294b45e091",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "403648",
@@ -4265,6 +4382,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "8154fc71-0630-44e6-9632-00fa67bd4b94",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "871734",
@@ -4294,6 +4412,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "3a68b1ed-be7a-4d5c-a4b9-1de41c8ce24d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "316718",
@@ -4323,6 +4442,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d68c8d03-e1ad-4394-b326-ecc52aa14150",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "334478",
@@ -4352,6 +4472,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "6c23ca74-1c94-47d6-b63e-21b4fb0bb581",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "830589",
@@ -4381,6 +4502,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "4139e152-89db-4e33-a448-23a044e65e0d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "908239",
@@ -4416,6 +4538,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "af650d63-883c-4300-b674-8f397be957b4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "930070",
@@ -4452,6 +4575,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "fbc175e6-e381-4070-a576-5c8dc760e17a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "712290",
@@ -4485,6 +4609,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "2d415e8b-ca1e-4e06-b193-c5d784347b6b",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "700648",
@@ -4514,6 +4639,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "0875d3ff-318f-4cea-b010-6850551d13e8",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "19393",
@@ -4537,6 +4663,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "f0b67c29-33d4-4dab-b221-0b49f5edf758",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "907236",
@@ -4560,6 +4687,7 @@
     "updatedAt": "2024-11-04T09:05:00.388Z"
   },
   {
+    "userId": "cf4f75ca-6da4-45b8-82a0-b7b9a1f24f48",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "415137",
@@ -4611,6 +4739,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "08474fec-0068-44d1-9e87-7b08b168d509",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "430916",
@@ -4626,6 +4755,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "785a35bf-d9d0-48fa-a988-0e0bfa2bedd4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "846226",
@@ -4641,6 +4771,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b0b6aba8-bdd9-4286-9948-80cc89edb9f4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "177463",
@@ -4695,6 +4826,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "4cc5e306-ad4d-4060-9182-7628b1938b59",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "297921",
@@ -4710,6 +4842,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "582ed2e1-d39c-4e9d-8fcd-3fd417d44e95",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "406316",
@@ -4755,6 +4888,7 @@
     "updatedAt": "2024-11-03T12:00:05.554Z"
   },
   {
+    "userId": "88d9be0c-7785-4505-a60c-8c04ee98d534",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "162943",
@@ -4784,6 +4918,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "8cdeaf1f-e385-4ccc-9fe0-09e17204725a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "992253",
@@ -4799,6 +4934,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "907b641e-05c5-46fe-9728-2d6032beb2d4",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "502176",
@@ -4814,6 +4950,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "3f4cd9c6-da02-4b3b-b4ad-c543a43c9fee",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "982821",
@@ -4843,6 +4980,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e2e1323f-4183-4c60-9511-d336fba6963b",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "998206",
@@ -4886,6 +5024,7 @@
     "updatedAt": "2024-11-03T16:25:19.774Z"
   },
   {
+    "userId": "506433b9-6188-4e3b-b445-f133fd04ad90",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "556204",
@@ -4915,6 +5054,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d2dbd0bc-5e5a-4ce1-ba74-0d4fa51d1ba8",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "328245",
@@ -4930,6 +5070,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e6fb0bd3-29e2-414c-8f89-70adefa31a46",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "90262",
@@ -4945,6 +5086,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "dd348e9b-dec4-4b0b-82f0-0d558a87ce50",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "133244",
@@ -4974,6 +5116,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "ea2c30ce-c133-49a3-88ed-0c55990b7e8a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "971949",
@@ -4989,6 +5132,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "3d1ad613-a262-46ff-8824-166922085710",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "77939",
@@ -5023,6 +5167,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "a62a3d3d-9c54-45ef-974e-66d48b69871a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "40649",
@@ -5046,6 +5191,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "c37c0e85-43a3-4336-b8cb-bc7301b6d6f7",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "647326",
@@ -5092,6 +5238,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "6aa71f40-a503-4c28-a73f-903ff5b6a5be",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "691296",
@@ -5107,6 +5254,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "14ba4f69-e08a-4708-96bd-aba83d6ba3d9",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "586598",
@@ -5122,6 +5270,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "99ef78cd-3433-4730-b434-29791b0de14a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "13110",
@@ -5137,6 +5286,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "66faf980-c591-4604-9358-deb729fd0082",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "332445",
@@ -5171,6 +5321,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "dee80b75-b30d-4f9a-8aac-edf1a38d8489",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "30658",
@@ -5212,6 +5363,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "ae7c064c-d0d6-45a8-b63a-e6282d2f3419",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "299876",
@@ -5241,6 +5393,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "c984fe61-f065-440e-a5ff-97b7e38fe314",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "148452",
@@ -5270,6 +5423,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "b30d0d28-fcc2-449a-a34b-7f6c22c860fe",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "997190",
@@ -5299,6 +5453,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "6b15e583-bf36-4ce6-ad5c-3ec010db15f6",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "829872",
@@ -5328,6 +5483,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "7060e7f7-a2a0-4364-87c2-5214ac581e7f",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "423737",
@@ -5369,6 +5525,7 @@
     "updatedAt": "2024-11-03T13:51:09.231Z"
   },
   {
+    "userId": "191817b0-1c47-4393-af0c-eb49f32e48be",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "268259",
@@ -5401,6 +5558,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e8021554-13a3-45cc-a0a2-393d0a24afe5",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "787233",
@@ -5442,6 +5600,7 @@
     "updatedAt": "2024-11-03T13:26:16.378Z"
   },
   {
+    "userId": "a8f678ca-9a36-42dc-8944-b325db127357",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "960352",
@@ -5483,6 +5642,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "fad3da48-9784-4354-8c84-3fae9985be1a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "155757",
@@ -5498,6 +5658,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "16e806e6-1004-4c62-905c-8737109f994d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "127493",
@@ -5528,6 +5689,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "3e8698a9-8590-4a95-b2e2-09740104a804",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "123355",
@@ -5543,6 +5705,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5819aff6-ee0d-4ff6-b464-0ae9de04e711",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "921748",
@@ -5573,6 +5736,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "fde265fd-394c-4fd0-9a19-286f89ae3232",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "611013",
@@ -5610,6 +5774,7 @@
     "updatedAt": "2024-11-03T12:00:05.554Z"
   },
   {
+    "userId": "901add00-f26b-40f5-86b9-9ba390e23721",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "635750",
@@ -5625,6 +5790,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "5082cd6a-1e38-4b78-bea8-2f1bf90081ea",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "695024",
@@ -5655,6 +5821,7 @@
     "updatedAt": "2024-11-03T12:00:05.554Z"
   },
   {
+    "userId": "4080c89a-801c-43ea-91e5-92b405e02fcd",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "104188",
@@ -5684,6 +5851,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "506db8be-e529-4037-bb66-67b76848e961",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "551503",
@@ -5699,6 +5867,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "1fc1e85c-7c4a-474a-969d-10b64d001ad6",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "880646",
@@ -5728,6 +5897,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "af344d7d-d23b-4644-ba3c-b110a3d7be38",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "964490",
@@ -5751,6 +5921,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "da05f12c-c6db-49fb-86e6-9e5442a6a385",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "825854",
@@ -5774,6 +5945,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "2bd663b0-a19c-4d56-ad64-a49271d15dab",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "854667",
@@ -5797,6 +5969,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "54c043a8-7620-4a56-a16d-871e4d163c3a",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "971518",
@@ -5812,6 +5985,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "d4046e3e-aa1d-4d45-a571-b89ab1b962ac",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "111534",
@@ -5846,6 +6020,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "e117ee70-a8c1-48c7-9883-6170b63d982d",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "911479",
@@ -5861,6 +6036,7 @@
     "updatedAt": "2024-11-03T12:00:05.494Z"
   },
   {
+    "userId": "2892e39a-fd3e-484a-868a-427661a31140",
     "kompassiId": "<redacted>",
     "kompassiUsernameAccepted": true,
     "username": "202569",

@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { z } from "zod";
 
 const UserSignupsSchema = z.object({
-  username: z.string(),
+  userId: z.string(),
   priority: z.number(),
   signedToStartTime: z.date().transform((date) => date.toISOString()),
   signupTime: z.date().transform((date) => date.toISOString()),
@@ -21,7 +21,7 @@ export const DirectSignupSchemaDb = z
   .strip();
 
 const userSignupSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  userId: { type: String, required: true },
   priority: { type: Number, required: true },
   signedToStartTime: {
     type: Date,

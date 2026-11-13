@@ -96,7 +96,15 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send({})
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
+    expect(response.status).toEqual(422);
+  });
+
+  test("should return 422 with a username too short to register", async () => {
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "ab" })
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(422);
   });
 
@@ -107,7 +115,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, "testuser"));
+      .set(await authorizedAs(UserGroup.USER, "testuser"));
     expect(response.status).toEqual(200);
   });
 
@@ -118,7 +126,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, "user-removed-from-db"));
+      .set(await authorizedAs(UserGroup.USER, "user-removed-from-db"));
     expect(response.status).toEqual(200);
 
     const body = response.body as PostVerifyKompassiLoginError;
@@ -136,7 +144,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
     expect(response.status).toEqual(200);
     const body = response.body as PostVerifyKompassiLoginResult;
     expect(body.status).toEqual("success");
@@ -157,7 +165,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
 
@@ -166,7 +174,24 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(body.errorId).toEqual("usernameNotFree");
   });
 
-  test("should not check for existing username if username not changed", async () => {
+  test("should return error if username is taken between the check and the update", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    await saveUser(mockUser2);
+    const authHeader = await authorizedAs(UserGroup.USER, mockUser.username);
+    vi.spyOn(userRepository, "findUser").mockResolvedValueOnce(
+      makeSuccessResult(null),
+    );
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: mockUser2.username })
+      .set(authHeader);
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.errorId).toEqual("usernameNotFree");
+  });
+
+  test("should accept an unchanged username", async () => {
     await saveUser({ ...mockUser, kompassiId: "10" });
 
     const requestBody: PostVerifyKompassiLoginRequest = {
@@ -176,7 +201,7 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const response = await request(server)
       .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
       .send(requestBody)
-      .set(authorizedAs(UserGroup.USER, mockUser.username));
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
 
     expect(response.status).toEqual(200);
     const body = response.body as PostVerifyKompassiLoginResult;
@@ -185,6 +210,75 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     const user = unsafelyUnwrap(await findUser(mockUser.username));
     expect(user?.kompassiId).toEqual("10");
     expect(user?.kompassiUsernameAccepted).toEqual(true);
+  });
+
+  test("should succeed when the accepted username is submitted again", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    const requestBody: PostVerifyKompassiLoginRequest = {
+      username: mockUser.username,
+    };
+
+    await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send(requestBody)
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send(requestBody)
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostVerifyKompassiLoginResult;
+    expect(body.status).toEqual("success");
+  });
+
+  test("should succeed when a rename is retried with the token from before it", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    const authHeader = await authorizedAs(UserGroup.USER, mockUser.username);
+    await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "new_username" })
+      .set(authHeader);
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "new_username" })
+      .set(authHeader);
+
+    const body = response.body as PostVerifyKompassiLoginResult;
+    expect(body.status).toEqual("success");
+  });
+
+  test("should keep the accepted username when another name is submitted afterwards", async () => {
+    await saveUser({ ...mockUser, kompassiId: "10" });
+    await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: mockUser.username })
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "second_name" })
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+
+    expect(response.body).toMatchObject({
+      status: "success",
+      username: mockUser.username,
+      kompassiUsernameAccepted: true,
+    });
+    expect(unsafelyUnwrap(await findUser("second_name"))).toBeNull();
+  });
+
+  test("should not rename a local account", async () => {
+    await saveUser(mockUser);
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send({ username: "second_name" })
+      .set(await authorizedAs(UserGroup.USER, mockUser.username));
+
+    const body = response.body as PostVerifyKompassiLoginError;
+    expect(body.errorId).toEqual("loginFailed");
+    expect(unsafelyUnwrap(await findUser("second_name"))).toBeNull();
   });
 });
 

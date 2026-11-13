@@ -8,9 +8,12 @@ import { logger } from "server/utils/logger";
 const { TokenExpiredError } = jsonwebtoken;
 type SignOptions = jsonwebtoken.SignOptions;
 
-export const getJWT = (userGroup: UserGroup, username: string): string => {
+export const getJWT = (
+  userGroup: UserGroup,
+  { userId }: { userId: string },
+): string => {
   const payload = {
-    username,
+    userId,
     userGroup,
   };
 
@@ -34,13 +37,18 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
       return {
         status: "error",
         message: "Unknown JWT error",
-        body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
+        body: {
+          userId: "",
+          userGroup: UserGroup.USER,
+          iat: 0,
+          exp: 0,
+        },
       };
     }
 
     return {
       body: {
-        username: result.data.username,
+        userId: result.data.userId,
         userGroup: result.data.userGroup,
         iat: result.data.iat,
         exp: result.data.exp,
@@ -53,14 +61,24 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResponse => {
       return {
         status: "error",
         message: "Expired JWT",
-        body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
+        body: {
+          userId: "",
+          userGroup: UserGroup.USER,
+          iat: 0,
+          exp: 0,
+        },
       };
     }
 
     return {
       status: "error",
       message: "Unknown JWT error",
-      body: { username: "", userGroup: UserGroup.USER, iat: 0, exp: 0 },
+      body: {
+        userId: "",
+        userGroup: UserGroup.USER,
+        iat: 0,
+        exp: 0,
+      },
     };
   }
 };

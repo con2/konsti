@@ -6,7 +6,7 @@ import { ProgramType } from "shared/types/models/programItem";
 // New event log items
 
 export interface NewEventLogItem {
-  username: string;
+  userId: string;
   programItemId: string;
   programItemStartTime: string;
   lastProgramItemEndTime?: string;

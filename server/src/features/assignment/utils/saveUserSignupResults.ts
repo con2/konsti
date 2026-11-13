@@ -73,8 +73,8 @@ export const saveUserSignupResults = async ({
     return directSignupsByStartTimeResult;
   }
 
-  const groupCodeByUsername = new Map(
-    users.map((user) => [user.username, user.groupCode]),
+  const groupCodeByUserId = new Map(
+    users.map((user) => [user.userId, user.groupCode]),
   );
 
   const resultsToSave = dropResultsThatDoNotFit({
@@ -82,14 +82,14 @@ export const saveUserSignupResults = async ({
     assignmentTime,
     existingSignups: directSignupsByStartTimeResult.value,
     programItems,
-    groupCodeByUsername,
+    groupCodeByUserId,
   });
 
   // Save new assignment results
   const newSignups: SignupRepositoryAddSignup[] = resultsToSave.map(
     (result) => {
       return {
-        username: result.username,
+        userId: result.userId,
         directSignupProgramItemId: result.assignmentSignup.programItemId,
         // The hour of the slot they won, which for a batched program item is not the hour its
         // lottery ran: a spot belongs to when the attendee turns up
@@ -115,7 +115,7 @@ export const saveUserSignupResults = async ({
       (signup) =>
         signup.directSignupProgramItemId !==
           result.assignmentSignup.programItemId ||
-        signup.username !== result.username,
+        signup.userId !== result.userId,
     );
   });
 
@@ -132,7 +132,7 @@ export const saveUserSignupResults = async ({
 interface RemoveReplacedSignupsParams {
   assignmentTime: string;
   finalResults: readonly UserAssignmentResult[];
-  existingSignups: readonly { username: string; programItemId: string }[];
+  existingSignups: readonly { userId: string; programItemId: string }[];
   startTimeByProgramItemId: ReadonlyMap<string, string>;
 }
 
@@ -149,14 +149,12 @@ const removeReplacedSignups = async ({
   // one moves
   startTimeByProgramItemId,
 }: RemoveReplacedSignupsParams): Promise<void> => {
-  // A Map rather than a keyed object: a username is unrestricted input, and one that names an
-  // Object.prototype member would read back as an inherited function past the ?? below
-  const existingSignupsByUsername = new Map(
-    Object.entries(groupBy(existingSignups, (signup) => signup.username)),
+  const existingSignupsByUserId = new Map(
+    Object.entries(groupBy(existingSignups, (signup) => signup.userId)),
   );
 
   const signupsToDelete = finalResults.flatMap((result) =>
-    (existingSignupsByUsername.get(result.username) ?? [])
+    (existingSignupsByUserId.get(result.userId) ?? [])
       .filter((signup) => {
         const heldStartTime = startTimeByProgramItemId.get(
           signup.programItemId,
@@ -170,7 +168,7 @@ const removeReplacedSignups = async ({
         );
       })
       .map((signup) => ({
-        username: signup.username,
+        userId: signup.userId,
         directSignupProgramItemId: signup.programItemId,
       })),
   );
@@ -190,9 +188,9 @@ const removeReplacedSignups = async ({
 interface DropResultsThatDoNotFitParams {
   results: readonly UserAssignmentResult[];
   assignmentTime: string;
-  existingSignups: readonly { username: string; programItemId: string }[];
+  existingSignups: readonly { userId: string; programItemId: string }[];
   programItems: readonly ProgramItem[];
-  groupCodeByUsername: ReadonlyMap<string, string>;
+  groupCodeByUserId: ReadonlyMap<string, string>;
 }
 
 // The algorithm already respects the attendance limits, so this should never drop anything - it
@@ -204,18 +202,18 @@ const dropResultsThatDoNotFit = ({
   assignmentTime,
   existingSignups,
   programItems,
-  groupCodeByUsername,
+  groupCodeByUserId,
 }: DropResultsThatDoNotFitParams): readonly UserAssignmentResult[] => {
-  // Keyed per program item rather than by username alone: the write rewrites a winner's entry in
+  // Keyed per program item rather than by userId alone: the write rewrites a winner's entry in
   // the program item it places them into, so only that one entry is free. What they hold
   // elsewhere is still occupying a spot, because the deletion runs after the write.
   const placedByProgramItemId = new Map<string, Set<string>>();
   for (const result of results) {
     const { programItemId } = result.assignmentSignup;
-    const placedUsernames =
+    const placedUserIds =
       placedByProgramItemId.get(programItemId) ?? new Set<string>();
-    placedUsernames.add(result.username);
-    placedByProgramItemId.set(programItemId, placedUsernames);
+    placedUserIds.add(result.userId);
+    placedByProgramItemId.set(programItemId, placedUserIds);
   }
 
   const stayingPutByProgramItemId = new Map(
@@ -225,7 +223,7 @@ const dropResultsThatDoNotFit = ({
           (signup) =>
             !placedByProgramItemId
               .get(signup.programItemId)
-              ?.has(signup.username),
+              ?.has(signup.userId),
         ),
         (signup) => signup.programItemId,
       ),
@@ -244,9 +242,9 @@ const dropResultsThatDoNotFit = ({
 
   // A group is placed as a whole or not at all, so it has to fit as a whole
   const resultsByGroup = groupBy(results, (result) => {
-    const groupCode = groupCodeByUsername.get(result.username);
+    const groupCode = groupCodeByUserId.get(result.userId);
     return groupCode === undefined || groupCode === "0"
-      ? `individual-${result.username}`
+      ? `individual-${result.userId}`
       : `group-${groupCode}`;
   });
 
@@ -263,7 +261,7 @@ const dropResultsThatDoNotFit = ({
     if (!fits) {
       logger.error(
         new Error(
-          `Assignment ${assignmentTime}: dropping ${groupResults.length} result(s) that no longer fit, leaving the attendees' existing sign-ups in place: ${groupResults.map((result) => result.username).join(", ")}`,
+          `Assignment ${assignmentTime}: dropping ${groupResults.length} result(s) that no longer fit, leaving the attendees' existing sign-ups in place: ${groupResults.map((result) => result.userId).join(", ")}`,
         ),
       );
       return [];

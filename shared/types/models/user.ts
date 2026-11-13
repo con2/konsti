@@ -23,6 +23,7 @@ export enum UserGroup {
 export type FavoriteProgramItemId = string;
 
 export interface User {
+  userId: string;
   // The Kompassi OIDC `sub` claim, or "" for a local account
   kompassiId: string;
   kompassiUsernameAccepted: boolean;
@@ -47,6 +48,6 @@ export interface UserProgramItems {
 }
 
 export interface NewFavorite {
-  username: string;
+  userId: string;
   favoriteProgramItemIds: string[];
 }

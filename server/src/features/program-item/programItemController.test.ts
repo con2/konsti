@@ -36,7 +36,11 @@ import {
 } from "server/features/settings/settingsRepository";
 import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { findUser, saveUser } from "server/features/user/userRepository";
+import {
+  findUser,
+  saveUser,
+  updateUserKompassiLoginStatus,
+} from "server/features/user/userRepository";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   KompassiGamestyle,
@@ -54,7 +58,9 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { authorizedAs } from "server/test/utils/authorizedAs";
+import { getUserId } from "server/test/utils/getUserId";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
 
@@ -83,14 +89,18 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveUser(mockUser);
 
     const publicMessage = "Answer to public message";
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      message: publicMessage,
-    });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      message: "Answer to private message",
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        message: publicMessage,
+      }),
+    );
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        message: "Answer to private message",
+      }),
+    );
 
     await saveSignupQuestion({
       programItemId: testProgramItem.programItemId,
@@ -122,6 +132,23 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
   });
 
+  test("should list a direct sign-up under the user's current username", async () => {
+    await createSettings();
+    await saveProgramItems([testProgramItem]);
+    const user = unsafelyUnwrap(
+      await saveUser({ ...mockUser, kompassiId: "10" }),
+    );
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await updateUserKompassiLoginStatus(user.userId, "new_username");
+
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
+
+    const body = response.body as GetProgramItemsResult;
+    expect(body.programItems[0].users).toEqual([
+      { username: "new_username", signupMessage: "" },
+    ]);
+  });
+
   test("should not return direct sign-up users for hideParticipantListProgramTypes", async () => {
     vi.spyOn(config, "event").mockReturnValue({
       ...config.event(),
@@ -135,8 +162,8 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     ]);
     await saveUser(mockUser);
 
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
 
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
@@ -280,7 +307,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
@@ -300,13 +327,13 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
     await saveFavorite({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,
@@ -315,7 +342,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -334,7 +361,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
 
     const updatedSignups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(updatedSignups).toHaveLength(1);
     expect(updatedSignups[0].programItemId).toEqual(
@@ -352,7 +379,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -376,7 +403,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -417,7 +444,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -454,13 +481,13 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: mockLotterySignups,
     });
-    await saveDirectSignup(mockPostDirectSignupRequest);
-    await saveDirectSignup(mockPostDirectSignupRequest2);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest2));
     await saveFavorite({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       favoriteProgramItemIds: [
         testProgramItem.programItemId,
         testProgramItem2.programItemId,
@@ -469,7 +496,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
@@ -492,11 +519,15 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     );
 
     const signups = unsafelyUnwrap(
-      await findUserDirectSignups(mockUser.username),
+      await findUserDirectSignups(await getUserId(mockUser.username)),
     );
     expect(signups).toHaveLength(2);
-    expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
-    expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
+    expect(signups[0].userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
+    expect(signups[1].userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
   });
 
   test("should add program item even if program item contains unknown fields or enum values", async () => {
@@ -531,7 +562,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
     expect(response.status).toEqual(200);
 
     const programItems = unsafelyUnwrap(await findProgramItems());
@@ -564,7 +595,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
-      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+      .set(await authorizedAs(UserGroup.ADMIN, "admin"));
 
     expect(response.status).toEqual(200);
 

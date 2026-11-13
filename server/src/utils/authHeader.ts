@@ -2,7 +2,7 @@ import { UserGroup } from "shared/types/models/user";
 import { getJwtResponse } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 
-export const getAuthorizedUsername = (
+export const getAuthorizedUserId = (
   authHeader: string | undefined,
   requiredUserGroup: UserGroup | UserGroup[],
 ): string | null => {
@@ -26,7 +26,7 @@ export const getAuthorizedUsername = (
   }
 
   logger.debug(`Auth: Valid jwt for user group ${String(requiredUserGroup)}`);
-  return jwtResponse.body.username;
+  return jwtResponse.body.userId;
 };
 
 export const getAuthorizedUserGroup = (

@@ -53,11 +53,9 @@ export const saveResult = async (
     // An attendee holds one spot per start time, so a placement written again replaces the
     // earlier record of it rather than joining it. Only the placements merge: the algorithm,
     // the message and the group snapshot describe the attempt that wrote them.
-    const placedNow = new Set(
-      signupResultData.map((result) => result.username),
-    );
+    const placedNow = new Set(signupResultData.map((result) => result.userId));
     const previousResults = (previous?.results ?? []).filter(
-      (result) => !placedNow.has(result.username),
+      (result) => !placedNow.has(result.userId),
     );
 
     await ResultsModel.replaceOne(

@@ -15,6 +15,7 @@ import { saveProgramItems } from "server/features/program-item/programItemReposi
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { mockLotterySignups, mockUser } from "server/test/mock-data/mockUser";
+import { getUserId } from "server/test/utils/getUserId";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 import { AssignmentResultStatus } from "server/types/resultTypes";
@@ -48,7 +49,7 @@ test("If random assignment fails, should return PADG result", async () => {
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -79,7 +80,7 @@ test("If PADG assignment fails, should return random result", async () => {
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -113,7 +114,7 @@ test("If both assignments fail, should return error result", async () => {
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 

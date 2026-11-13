@@ -27,7 +27,6 @@ export const ProgramItemView = (): ReactElement => {
     (state) => state.allProgramItems.directSignups,
   );
   const directSignups = useAppSelector(selectDirectSignups);
-  const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
@@ -92,7 +91,6 @@ export const ProgramItemView = (): ReactElement => {
           }
           lotterySignups={ownOrGroupCreatorLotterySignups}
           directSignups={directSignups}
-          username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}
           publicSignupQuestion={publicSignupQuestion}

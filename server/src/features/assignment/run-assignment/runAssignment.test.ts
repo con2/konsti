@@ -57,9 +57,11 @@ import {
   mockUser3,
 } from "server/test/mock-data/mockUser";
 import { findSignupsByProgramItem } from "server/test/utils/findSignupsByProgramItem";
+import { getUserId } from "server/test/utils/getUserId";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { seedRandomness } from "server/test/utils/seedRandomness";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
+import { withUserId } from "server/test/utils/withUserId";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import {
   NotificationTaskType,
@@ -156,7 +158,7 @@ describe("Assignment with valid data", () => {
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(expectedResultsCount);
 
-    const updatedUsers = assignResults.results.map((result) => result.username);
+    const updatedUsers = assignResults.results.map((result) => result.userId);
     await assertUserUpdatedCorrectly(updatedUsers);
     await assertAssignmentInvariants(assignmentTime);
 
@@ -178,9 +180,7 @@ describe("Assignment with valid data", () => {
 
     expect(assignResults2.results.length).toEqual(expectedResultsCount);
 
-    const updatedUsers2 = assignResults2.results.map(
-      (result) => result.username,
-    );
+    const updatedUsers2 = assignResults2.results.map((result) => result.userId);
     await assertUserUpdatedCorrectly(updatedUsers2);
     await assertAssignmentInvariants(startTime2);
   });
@@ -228,9 +228,7 @@ describe.each([
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
       expect(assignResults.results.length).toEqual(placedAttendees);
 
-      const updatedUsers = assignResults.results.map(
-        (result) => result.username,
-      );
+      const updatedUsers = assignResults.results.map((result) => result.userId);
       await assertUserUpdatedCorrectly(updatedUsers);
       await assertAssignmentInvariants(assignmentTime);
 
@@ -295,7 +293,7 @@ describe.each([
       ]);
       await saveUser(mockUser);
       await saveLotterySignups({
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
       });
 
@@ -309,7 +307,9 @@ describe.each([
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
       expect(assignResults.results).toHaveLength(1);
       expect(assignResults.results[0]).toMatchObject(
-        getAssignmentResult({ username: mockUser.username }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser.username),
+        }),
       );
 
       const userAfterSave = unsafelyUnwrap(await findUser(mockUser.username));
@@ -345,7 +345,7 @@ describe.each([
       await saveUser({ ...mockUser2, groupCode: groupCreatorGroupCode });
 
       await saveLotterySignups({
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
       });
 
@@ -359,8 +359,12 @@ describe.each([
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
       expect(assignResults.results).toHaveLength(2);
       expect(assignResults.results).toMatchObject([
-        getAssignmentResult({ username: mockUser.username }),
-        getAssignmentResult({ username: mockUser2.username }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser.username),
+        }),
+        getAssignmentResult({
+          userId: await getUserId(mockUser2.username),
+        }),
       ]);
 
       const user1AfterSave = unsafelyUnwrap(await findUser(mockUser.username));
@@ -404,7 +408,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -414,7 +418,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // User has previous direct LARP sign-up at the same start time
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
     const programItemsWithSignups = signupsBeforeUpdate.filter(
@@ -445,8 +449,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(assignmentSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
   });
 
@@ -471,20 +475,22 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
     });
 
     // This sign-up should not be removed even if start time is same as assignment time
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      username: mockUser2.username,
-      signedToStartTime: testProgramItem.startTime,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        username: mockUser2.username,
+        signedToStartTime: testProgramItem.startTime,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -520,8 +526,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(1);
-    expect(directSignupAlwaysOpenSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
+    expect(directSignupAlwaysOpenSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser2.username),
     );
   });
 
@@ -546,7 +552,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -558,7 +564,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -572,11 +578,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     // An always-open spot is first-come-first-served, so it doesn't settle mockUser: they
     // stay in the lottery and the spot it gives them takes the place of this one
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      signedToStartTime: testProgramItem.startTime,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        signedToStartTime: testProgramItem.startTime,
+        directSignupProgramItemId: directSignupAlwaysOpenId,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -592,12 +600,13 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(
       assignResults.results
-        .map((result) => result.username)
+        .map((result) => result.userId)
         .toSorted((a, b) => a.localeCompare(b)),
     ).toEqual(
-      [mockUser.username, mockUser2.username].toSorted((a, b) =>
-        a.localeCompare(b),
-      ),
+      [
+        await getUserId(mockUser.username),
+        await getUserId(mockUser2.username),
+      ].toSorted((a, b) => a.localeCompare(b)),
     );
 
     const signupsByProgramItem = await findSignupsByProgramItem();
@@ -635,7 +644,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -648,12 +657,14 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // This sign-up should not be removed even if start time is same as assignment time
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      username: mockUser2.username,
-      signedToStartTime: testProgramItem.startTime,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        username: mockUser2.username,
+        signedToStartTime: testProgramItem.startTime,
+        directSignupProgramItemId: directSignupAlwaysOpenId,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
 
@@ -689,8 +700,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(1);
-    expect(directSignupAlwaysOpenSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
+    expect(directSignupAlwaysOpenSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser2.username),
     );
   });
 
@@ -717,7 +728,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -726,7 +737,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     // User has previous sign-up from the moved program item
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     await ProgramItemModel.updateOne(
       { programItemId: testProgramItem.programItemId },
@@ -761,8 +772,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(assignmentSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
   });
 
@@ -788,7 +799,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser2);
 
     // User 1 has previous sign-up from moved program item - this sign-up should not be removed
-    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(await withUserId(mockPostDirectSignupRequest));
 
     await ProgramItemModel.updateOne(
       { programItemId: testProgramItem.programItemId },
@@ -799,7 +810,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     // User 2 has selected program item for assignment
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[1] }],
     });
 
@@ -829,16 +840,16 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       testProgramItem.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
-    expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(previousSignupFromMovedProgramItem?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
 
     const assignmentSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser2.username,
+    expect(assignmentSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser2.username),
     );
   });
 });
@@ -878,49 +889,55 @@ describe("Assignment with first time bonus", () => {
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
     });
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest2,
-      username: mockUser.username,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        1,
-      ).toISOString(),
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest2,
+        username: mockUser.username,
+        signedToStartTime: subHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
+      }),
+    );
 
     // Non-lottery sign-up (tournament) should not affect the bonus
-    await saveDirectSignup({
-      username: mockUser2.username,
-      directSignupProgramItemId: tournamentProgramItemId,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        1,
-      ).toISOString(),
-      signupTime: testProgramItem.startTime,
-      message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        username: mockUser2.username,
+        directSignupProgramItemId: tournamentProgramItemId,
+        signedToStartTime: subHours(
+          new Date(testProgramItem.startTime),
+          1,
+        ).toISOString(),
+        signupTime: testProgramItem.startTime,
+        message: "",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      }),
+    );
 
     // 'directSignupAlwaysOpen' sign-up should not affect the bonus
-    await saveDirectSignup({
-      username: mockUser2.username,
-      directSignupProgramItemId: directSignupAlwaysOpenId,
-      signedToStartTime: subHours(
-        new Date(testProgramItem.startTime),
-        2,
-      ).toISOString(),
-      signupTime: testProgramItem.startTime,
-      message: "",
-      priority: DIRECT_SIGNUP_PRIORITY,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        username: mockUser2.username,
+        directSignupProgramItemId: directSignupAlwaysOpenId,
+        signedToStartTime: subHours(
+          new Date(testProgramItem.startTime),
+          2,
+        ).toISOString(),
+        signupTime: testProgramItem.startTime,
+        message: "",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      }),
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrap(await findDirectSignups());
     const programItemsWithSignups = signupsBeforeUpdate.filter(
@@ -943,7 +960,7 @@ describe("Assignment with first time bonus", () => {
       testProgramItem.programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: testProgramItem.startTime,
       message: "",
       priority: 3,
@@ -953,7 +970,7 @@ describe("Assignment with first time bonus", () => {
       testProgramItem2.programItemId,
     );
     expect(previousRpgSignup?.userSignups[0]).toMatchObject({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       signedToStartTime: subHours(
         new Date(testProgramItem.startTime),
         1,
@@ -966,7 +983,7 @@ describe("Assignment with first time bonus", () => {
       tournamentProgramItemId,
     );
     expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: subHours(
         new Date(testProgramItem.startTime),
         1,
@@ -979,7 +996,7 @@ describe("Assignment with first time bonus", () => {
       directSignupAlwaysOpenId,
     );
     expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: subHours(
         new Date(testProgramItem.startTime),
         2,
@@ -1001,7 +1018,7 @@ describe("Assignment with first time bonus", () => {
 
     await addEventLogItems([
       {
-        username: mockUser2.username,
+        userId: await getUserId(mockUser2.username),
         programItemId: testProgramItem.programItemId,
         programItemStartTime: testProgramItem.startTime,
         createdAt: new Date().toISOString(),
@@ -1011,11 +1028,11 @@ describe("Assignment with first time bonus", () => {
 
     // First user has higher priority but second user has additional first time bonus
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[1], priority: 1 }],
     });
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[1], priority: 3 }],
     });
 
@@ -1038,7 +1055,7 @@ describe("Assignment with first time bonus", () => {
       mockLotterySignups[1].programItemId,
     );
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       signedToStartTime: testProgramItem2.startTime,
       message: "",
       priority: 3,
@@ -1057,7 +1074,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1067,14 +1084,14 @@ describe("The lottery for a start time runs once", () => {
         assignmentTime: testProgramItem.startTime,
       }),
     );
-    expect(firstRun.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(firstRun.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
 
     // A second attendee enters and the start time is run again with two of its three spots
     // still free, so the run has something it could hand out and refuses anyway
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1093,8 +1110,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
 
     // The second run decided nothing, so it told nobody anything
     const user2 = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -1118,7 +1135,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 2 }],
     });
 
@@ -1135,7 +1152,7 @@ describe("The lottery for a start time runs once", () => {
 
     // They now add the empty program item as their first preference
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
@@ -1161,7 +1178,9 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(firstItemSignup?.userSignups).toHaveLength(1);
-    expect(firstItemSignup?.userSignups[0].username).toEqual(mockUser.username);
+    expect(firstItemSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
+    );
     const secondItemSignup = signupsByProgramItem.get(
       testProgramItem2.programItemId,
     );
@@ -1191,14 +1210,16 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     // First-come-first-served spot on testProgramItem...
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
 
     // ...but a lottery preference for testProgramItem2 at the same time
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1233,8 +1254,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem2.programItemId,
     );
     expect(preferenceSignup?.userSignups).toHaveLength(1);
-    expect(preferenceSignup?.userSignups[0].username).toEqual(
-      mockUser.username,
+    expect(preferenceSignup?.userSignups[0].userId).toEqual(
+      await getUserId(mockUser.username),
     );
   });
 
@@ -1266,15 +1287,17 @@ describe("The lottery for a start time runs once", () => {
       await saveUser({ ...mockUser2, groupCode, isGroupCreator: false });
       await saveUser({ ...mockUser3, groupCode, isGroupCreator: false });
 
-      await saveDirectSignup({
-        ...mockPostDirectSignupRequest,
-        directSignupProgramItemId: alwaysOpenId,
-        signedToStartTime: testProgramItem.startTime,
-        username,
-      });
+      await saveDirectSignup(
+        await withUserId({
+          ...mockPostDirectSignupRequest,
+          directSignupProgramItemId: alwaysOpenId,
+          signedToStartTime: testProgramItem.startTime,
+          username,
+        }),
+      );
 
       await saveLotterySignups({
-        username: mockUser.username,
+        userId: await getUserId(mockUser.username),
         lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
       });
 
@@ -1286,13 +1309,15 @@ describe("The lottery for a start time runs once", () => {
       );
 
       expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
-      const placedUsernames = assignResults.results.map(
-        (result) => result.username,
+      const placedUserIds = assignResults.results.map(
+        (result) => result.userId,
       );
-      expect(placedUsernames.toSorted((a, b) => a.localeCompare(b))).toEqual(
-        [mockUser.username, mockUser2.username, mockUser3.username].toSorted(
-          (a, b) => a.localeCompare(b),
-        ),
+      expect(placedUserIds.toSorted((a, b) => a.localeCompare(b))).toEqual(
+        [
+          await getUserId(mockUser.username),
+          await getUserId(mockUser2.username),
+          await getUserId(mockUser3.username),
+        ].toSorted((a, b) => a.localeCompare(b)),
       );
 
       const signupsByProgramItem = await findSignupsByProgramItem();
@@ -1334,7 +1359,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -1351,8 +1376,8 @@ describe("The lottery for a start time runs once", () => {
       }),
     );
 
-    expect(assignResults.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(assignResults.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
     expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
       testProgramItem.programItemId,
@@ -1373,7 +1398,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser2);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1396,7 +1421,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         {
           ...mockLotterySignups[0],
@@ -1422,8 +1447,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
   });
 
   test("leaves a program item holding first-come-first-served sign-ups out of the lottery", async () => {
@@ -1438,13 +1463,15 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
 
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1462,8 +1489,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      programItemSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      programItemSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
 
     // They took part and heard the outcome, so they know to go and take a spot themselves
     const user2 = unsafelyUnwrap(await findUser(mockUser2.username));
@@ -1490,13 +1517,15 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
 
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 1 },
         {
@@ -1534,14 +1563,16 @@ describe("The lottery for a start time runs once", () => {
     ]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-      priority: 1,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+        priority: 1,
+      }),
+    );
 
     unsafelyUnwrap(
       await runAssignment({
@@ -1566,7 +1597,7 @@ describe("The lottery for a start time runs once", () => {
     ]);
     await saveUser(mockUser);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1589,7 +1620,7 @@ describe("The lottery for a start time runs once", () => {
     ]);
     await saveUser(mockUser2);
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1627,12 +1658,14 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1663,12 +1696,14 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+      }),
+    );
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1680,7 +1715,7 @@ describe("The lottery for a start time runs once", () => {
     );
 
     await delDirectSignup({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       directSignupProgramItemId: testProgramItem.programItemId,
     });
 
@@ -1713,7 +1748,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1723,8 +1758,8 @@ describe("The lottery for a start time runs once", () => {
         assignmentTime: testProgramItem.startTime,
       }),
     );
-    expect(assignResults.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(assignResults.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
   });
 
@@ -1748,13 +1783,15 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser2);
     await saveUser(mockUser3);
 
-    await saveDirectSignup({
-      ...mockPostDirectSignupRequest,
-      username: mockUser.username,
-      priority: 1,
-    });
+    await saveDirectSignup(
+      await withUserId({
+        ...mockPostDirectSignupRequest,
+        username: mockUser.username,
+        priority: 1,
+      }),
+    );
     await saveLotterySignups({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1765,7 +1802,7 @@ describe("The lottery for a start time runs once", () => {
     });
     // Two spots are free in the half-written program item, and this run must not hand them out
     await saveLotterySignups({
-      username: mockUser3.username,
+      userId: await getUserId(mockUser3.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1788,8 +1825,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem.programItemId,
     );
     expect(
-      skippedSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      skippedSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
     expect(skippedSignup?.userSignups[0].priority).toEqual(1);
 
     // The hopeful took part and heard the outcome rather than being placed into it
@@ -1832,7 +1869,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser({ ...mockUser2, groupCode, isGroupCreator: false });
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1846,7 +1883,7 @@ describe("The lottery for a start time runs once", () => {
 
     // One member gives their spot up, then the program item moves onto the group's next slot
     await delDirectSignup({
-      username: mockUser2.username,
+      userId: await getUserId(mockUser2.username),
       directSignupProgramItemId: testProgramItem.programItemId,
     });
     await saveProgramItems([
@@ -1864,7 +1901,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1884,12 +1921,13 @@ describe("The lottery for a start time runs once", () => {
     // Both of them, together, rather than neither
     expect(
       laterRun.results
-        .map((result) => result.username)
+        .map((result) => result.userId)
         .toSorted((a, b) => a.localeCompare(b)),
     ).toEqual(
-      [mockUser.username, mockUser2.username].toSorted((a, b) =>
-        a.localeCompare(b),
-      ),
+      [
+        await getUserId(mockUser.username),
+        await getUserId(mockUser2.username),
+      ].toSorted((a, b) => a.localeCompare(b)),
     );
 
     const signupsByProgramItem = await findSignupsByProgramItem();
@@ -1921,7 +1959,7 @@ describe("The lottery for a start time runs once", () => {
     await saveUser(mockUser);
 
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
@@ -1949,7 +1987,7 @@ describe("The lottery for a start time runs once", () => {
       },
     ]);
     await saveLotterySignups({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       lotterySignups: [
         {
           ...mockLotterySignups[1],
@@ -1965,8 +2003,8 @@ describe("The lottery for a start time runs once", () => {
         assignmentTime: laterStartTime,
       }),
     );
-    expect(laterRun.results.map((result) => result.username)).toEqual([
-      mockUser.username,
+    expect(laterRun.results.map((result) => result.userId)).toEqual([
+      await getUserId(mockUser.username),
     ]);
     expect(laterRun.results[0].assignmentSignup.programItemId).toEqual(
       testProgramItem2.programItemId,
@@ -1980,8 +2018,8 @@ describe("The lottery for a start time runs once", () => {
       testProgramItem2.programItemId,
     );
     expect(
-      otherSignup?.userSignups.map((userSignup) => userSignup.username),
-    ).toEqual([mockUser.username]);
+      otherSignup?.userSignups.map((userSignup) => userSignup.userId),
+    ).toEqual([await getUserId(mockUser.username)]);
   });
 });
 
@@ -2032,7 +2070,7 @@ test("Should not place anyone into a cancelled program item", async () => {
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2072,7 +2110,7 @@ test("Should remove a lottery sign-up for a deleted program item before lotteryi
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       // testProgramItem2 was never saved, so this names a deleted program item
@@ -2099,7 +2137,7 @@ test("Should leave lottery sign-ups alone when no lottery program item starts at
   // users or sign-ups, so the cleanup above does not run either
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     // testProgramItem2 was never saved, so this names a deleted program item
     lotterySignups: [{ ...mockLotterySignups[1], priority: 1 }],
   });
@@ -2158,7 +2196,7 @@ test("Should write a results snapshot even when the lottery places nobody", asyn
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2191,7 +2229,7 @@ test("Should write a snapshot of the lottery groups to the results collection", 
 
   // Only the group creator stores lottery sign-ups; members inherit them
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2208,8 +2246,11 @@ test("Should write a snapshot of the lottery groups to the results collection", 
   expect(savedResults[0].groups).toEqual([
     {
       groupCode,
-      groupCreator: mockUser.username,
-      groupMembers: [mockUser.username, mockUser2.username],
+      groupCreatorId: await getUserId(mockUser.username),
+      groupMemberIds: [
+        await getUserId(mockUser.username),
+        await getUserId(mockUser2.username),
+      ],
     },
   ]);
 });
@@ -2233,7 +2274,7 @@ test("Program item with parent startTime from 'startTimesByParentIds' should not
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2276,7 +2317,7 @@ test("Should keep a past lottery sign-up but not let it affect an upcoming lotte
 
   // User keeps a leftover lottery sign-up for the past item and also has one for the current item
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       {
         programItemId: pastProgramItem.programItemId,
@@ -2303,7 +2344,7 @@ test("Should keep a past lottery sign-up but not let it affect an upcoming lotte
   expect(assignResults.results).toHaveLength(1);
   expect(assignResults.results[0]).toMatchObject(
     getAssignmentResult({
-      username: mockUser.username,
+      userId: await getUserId(mockUser.username),
       programItem: currentProgramItem,
     }),
   );
@@ -2336,7 +2377,7 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       { ...mockLotterySignups[1], priority: 1 },
@@ -2363,7 +2404,9 @@ test("Should not fail assignment or skip overlap cleanup when notification queue
   const signupsByProgramItem = await findSignupsByProgramItem();
   const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
-  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+  expect(wonSignup?.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 
   // The overlapping lottery sign-up was removed despite the queue failure
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2407,14 +2450,14 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       { ...mockLotterySignups[1], priority: 1 },
     ],
   });
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       {
         programItemId: "under-min-attendance-item",
@@ -2435,7 +2478,9 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   const assignResults = unsafelyUnwrap(assignResultsResult);
   expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
   expect(assignResults.results).toHaveLength(1);
-  expect(assignResults.results[0].username).toEqual(mockUser.username);
+  expect(assignResults.results[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
   expect(assignResults.results[0].assignmentSignup.programItemId).toEqual(
     testProgramItem.programItemId,
   );
@@ -2444,7 +2489,9 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
   const signupsByProgramItem = await findSignupsByProgramItem();
   const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
-  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+  expect(wonSignup?.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 
   // The overlapping lottery sign-up was removed despite the event log failures
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2462,9 +2509,13 @@ test("Should not fail assignment or skip overlap cleanup when event log writes f
     (task) => task.type === NotificationTaskType.SEND_EMAIL_REJECTED,
   );
   expect(acceptedNotifications).toHaveLength(1);
-  expect(acceptedNotifications[0].username).toEqual(mockUser.username);
+  expect(acceptedNotifications[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
   expect(rejectedNotifications).toHaveLength(1);
-  expect(rejectedNotifications[0].username).toEqual(mockUser2.username);
+  expect(rejectedNotifications[0].userId).toEqual(
+    await getUserId(mockUser2.username),
+  );
 });
 
 test("Should not fail assignment or skip overlap cleanup when email queueing fails", async () => {
@@ -2489,7 +2540,7 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [
       { ...mockLotterySignups[0], priority: 1 },
       { ...mockLotterySignups[1], priority: 1 },
@@ -2516,7 +2567,9 @@ test("Should not fail assignment or skip overlap cleanup when email queueing fai
   const signupsByProgramItem = await findSignupsByProgramItem();
   const wonSignup = signupsByProgramItem.get(testProgramItem.programItemId);
   expect(wonSignup?.userSignups).toHaveLength(1);
-  expect(wonSignup?.userSignups[0].username).toEqual(mockUser.username);
+  expect(wonSignup?.userSignups[0].userId).toEqual(
+    await getUserId(mockUser.username),
+  );
 
   // The overlapping lottery sign-up was removed despite the queueing failure
   const userAfterRun = unsafelyUnwrap(await findUser(mockUser.username));
@@ -2546,7 +2599,7 @@ test("Should mark a batched program item with its own start time, not the parent
   ]);
   await saveUser(mockUser);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2577,7 +2630,7 @@ test("Should keep the lottery sign-ups of a program item added to a lotteried st
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveLotterySignups({
-    username: mockUser.username,
+    userId: await getUserId(mockUser.username),
     lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
@@ -2599,7 +2652,7 @@ test("Should keep the lottery sign-ups of a program item added to a lotteried st
     addedProgramItem,
   ]);
   await saveLotterySignups({
-    username: mockUser2.username,
+    userId: await getUserId(mockUser2.username),
     lotterySignups: [
       {
         programItemId: addedProgramItem.programItemId,

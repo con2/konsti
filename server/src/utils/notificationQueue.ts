@@ -25,7 +25,7 @@ export enum NotificationTaskType {
 
 export interface NotificationTask {
   type: NotificationTaskType;
-  username: string;
+  userId: string;
   programItemId: string;
   programItemStartTime: string;
   // The end of the last program item a batched lottery covered, paired with the start time above
@@ -33,6 +33,11 @@ export interface NotificationTask {
   lastProgramItemEndTime?: string;
   programType?: ProgramType;
   programItemTitle?: string;
+}
+
+// A queued task resolved against its recipient, which is what an email is generated from
+export interface EmailNotification extends NotificationTask {
+  username: string;
 }
 
 export interface NotificationQueueService {

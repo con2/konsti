@@ -26,7 +26,7 @@ import {
 } from "server/features/program-item/programItemRepository";
 import { logger } from "server/utils/logger";
 import {
-  NotificationTask,
+  EmailNotification,
   NotificationTaskType,
 } from "server/utils/notificationQueue";
 
@@ -65,7 +65,8 @@ const getBatchedRejectionEmail = async ({
     return makeErrorResult(`No program items are in batch ${parentId}`);
   }
 
-  const mockNotification: NotificationTask = {
+  const mockNotification: EmailNotification = {
+    userId: "test-user-id",
     username: "test-user",
     // A rejection names no program item, the same as the one a run writes
     programItemId: "",
@@ -116,6 +117,7 @@ export const postEmailTest = async (
     }
 
     const baseMockNotification = {
+      userId: "test-user-id",
       username: "test-user",
       programItemId: programId,
       programItemStartTime: programItemResult.value.startTime,
@@ -126,7 +128,7 @@ export const postEmailTest = async (
 
     switch (notificationType) {
       case EmailNotificationTrigger.ACCEPTED: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_ACCEPTED,
         };
@@ -138,7 +140,7 @@ export const postEmailTest = async (
         break;
       }
       case EmailNotificationTrigger.REJECTED: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_REJECTED,
         };
@@ -150,7 +152,7 @@ export const postEmailTest = async (
         break;
       }
       case EmailNotificationTrigger.PROGRAM_ITEM_CANCELLED: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_CANCELLED,
           programItemTitle: programTitle,
@@ -163,7 +165,7 @@ export const postEmailTest = async (
         break;
       }
       case EmailNotificationTrigger.PROGRAM_ITEM_DELETED: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_DELETED,
           programItemTitle: programTitle,
@@ -176,7 +178,7 @@ export const postEmailTest = async (
         break;
       }
       case EmailNotificationTrigger.PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_KONSTI_SIGNUP_ANYMORE,
           programItemTitle: programTitle,
@@ -189,7 +191,7 @@ export const postEmailTest = async (
         break;
       }
       case EmailNotificationTrigger.PROGRAM_ITEM_NO_LOTTERY_ANYMORE: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_NO_LOTTERY_ANYMORE,
           programItemTitle: programTitle,
@@ -202,7 +204,7 @@ export const postEmailTest = async (
         break;
       }
       case EmailNotificationTrigger.PROGRAM_ITEM_TIME_CHANGED: {
-        const mockNotification: NotificationTask = {
+        const mockNotification: EmailNotification = {
           ...baseMockNotification,
           type: NotificationTaskType.SEND_EMAIL_PROGRAM_ITEM_TIME_CHANGED,
           programItemTitle: programTitle,

@@ -66,22 +66,22 @@ export const checkGroupExists = async (
 export const saveGroupCreator = async (
   groupCode: string,
   isGroupCreator: boolean,
-  username: string,
+  userId: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       { groupCode, isGroupCreator },
       { returnDocument: "after" },
     ).lean();
 
     if (!response) {
-      logger.info(`MongoDB: saveGroupCreator user ${username} not found`);
+      logger.info(`MongoDB: saveGroupCreator user ${userId} not found`);
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
     logger.info(
-      `MongoDB: Saved group creator status ${isGroupCreator} for user ${username} with groupCode ${groupCode}`,
+      `MongoDB: Saved group creator status ${isGroupCreator} for user ${userId} with groupCode ${groupCode}`,
     );
 
     const result = UserSchemaDb.safeParse(response);
@@ -97,7 +97,7 @@ export const saveGroupCreator = async (
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error saving group creator status for user ${username}`,
+        `MongoDB: Error saving group creator status for user ${userId}`,
         { cause: error },
       ),
     );
@@ -107,24 +107,24 @@ export const saveGroupCreator = async (
 
 export const saveGroupCode = async (
   groupCode: string,
-  username: string,
+  userId: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { userId },
       { groupCode },
       { returnDocument: "after" },
     ).lean();
 
     if (!response) {
-      logger.info(`MongoDB: saveGroupCode user ${username} not found`);
+      logger.info(`MongoDB: saveGroupCode user ${userId} not found`);
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
     if (groupCode === "0") {
-      logger.info(`MongoDB: User ${username} left group`);
+      logger.info(`MongoDB: User ${userId} left group`);
     } else {
-      logger.info(`MongoDB: Group ${groupCode} stored for user ${username}`);
+      logger.info(`MongoDB: Group ${groupCode} stored for user ${userId}`);
     }
     const result = UserSchemaDb.safeParse(response);
     if (!result.success) {
@@ -139,7 +139,7 @@ export const saveGroupCode = async (
   } catch (error) {
     logger.error(
       new Error(
-        `MongoDB: Error storing group ${groupCode} for user ${username}`,
+        `MongoDB: Error storing group ${groupCode} for user ${userId}`,
         { cause: error },
       ),
     );

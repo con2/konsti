@@ -3,6 +3,7 @@ import { Server } from "node:http";
 import request from "supertest";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { PostUserResponse } from "shared/types/api/users";
 import { UserGroup } from "shared/types/models/user";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { authorizedAs } from "server/test/utils/authorizedAs";
@@ -40,7 +41,7 @@ describe(`GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`, () => {
   test("should return 422 without valid body", async () => {
     const response = await request(server)
       .get(ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME)
-      .set(authorizedAs(UserGroup.HELPER, "helper"));
+      .set(await authorizedAs(UserGroup.HELPER, "helper"));
     expect(response.status).toEqual(422);
   });
 });
@@ -79,5 +80,45 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
       serial: serials[0].serial,
     });
     expect(response.status).toEqual(200);
+  });
+
+  test("should register only one of two simultaneous requests using one serial", async () => {
+    const serials = unsafelyUnwrap(await saveSerials(1));
+
+    const responses = await Promise.all(
+      ["testuser1", "testuser2"].map(async (username) => {
+        return request(server).post(ApiEndpoint.USERS).send({
+          username,
+          password: "testpass",
+          serial: serials[0].serial,
+        });
+      }),
+    );
+
+    const bodies = responses.map((r) => r.body as PostUserResponse);
+    expect(bodies.filter((b) => b.status === "success")).toHaveLength(1);
+    expect(bodies.find((b) => b.status === "error")).toMatchObject({
+      errorId: "invalidSerial",
+    });
+  });
+
+  test("should register only one of two simultaneous requests using one username", async () => {
+    const serials = unsafelyUnwrap(await saveSerials(2));
+
+    const responses = await Promise.all(
+      serials.map(async ({ serial }) => {
+        return request(server).post(ApiEndpoint.USERS).send({
+          username: "testuser",
+          password: "testpass",
+          serial,
+        });
+      }),
+    );
+
+    const bodies = responses.map((r) => r.body as PostUserResponse);
+    expect(bodies.filter((b) => b.status === "success")).toHaveLength(1);
+    expect(bodies.find((b) => b.status === "error")).toMatchObject({
+      errorId: "usernameNotFree",
+    });
   });
 });

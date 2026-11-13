@@ -165,6 +165,9 @@ const replayEvent = async ({
     return undefined;
   }
   const dump = dumpResult.value;
+  const usernameByUserId = new Map(
+    dump.users.map((user) => [user.userId, user.username]),
+  );
 
   const recordedRuns = dump.recordedRuns.toSorted((a, b) =>
     a.assignmentTime.localeCompare(b.assignmentTime),
@@ -264,12 +267,15 @@ const replayEvent = async ({
           assignmentTime,
           status,
           results,
+          usernameByUserId,
           entrants: entrantsResult.value,
           lotteriedProgramItems: lotteriedResult.value,
         }),
       );
       replay.placements.push(
-        ...placementLines(results).map((line) => `${assignmentTime}\t${line}`),
+        ...placementLines(results, usernameByUserId).map(
+          (line) => `${assignmentTime}\t${line}`,
+        ),
       );
       replay.historyComparisons.push(
         compareToHistory(recordedRun.results, results),

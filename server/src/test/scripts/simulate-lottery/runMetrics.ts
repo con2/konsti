@@ -26,11 +26,14 @@ export interface EventMetrics {
   programItemsUnderMinAttendance: number;
 }
 
-const digestPlacements = (results: readonly UserAssignmentResult[]): string => {
+const digestPlacements = (
+  results: readonly UserAssignmentResult[],
+  usernameByUserId: ReadonlyMap<string, string>,
+): string => {
   const lines = results
     .map(
       (result) =>
-        `${result.username}:${result.assignmentSignup.programItemId}:${result.assignmentSignup.priority}`,
+        `${usernameByUserId.get(result.userId) ?? result.userId}:${result.assignmentSignup.programItemId}:${result.assignmentSignup.priority}`,
     )
     .toSorted((a, b) => a.localeCompare(b));
   return createHash("sha256")
@@ -41,11 +44,12 @@ const digestPlacements = (results: readonly UserAssignmentResult[]): string => {
 
 export const placementLines = (
   results: readonly UserAssignmentResult[],
+  usernameByUserId: ReadonlyMap<string, string>,
 ): string[] =>
   results
     .map(
       (result) =>
-        `${result.username}\t${result.assignmentSignup.programItemId}\t${result.assignmentSignup.priority}`,
+        `${usernameByUserId.get(result.userId) ?? result.userId}\t${result.assignmentSignup.programItemId}\t${result.assignmentSignup.priority}`,
     )
     .toSorted((a, b) => a.localeCompare(b));
 
@@ -64,6 +68,8 @@ interface BuildRunMetricsParams {
   assignmentTime: string;
   status: AssignmentResultStatus;
   results: readonly UserAssignmentResult[];
+  // Placements are digested by username because the committed baselines were recorded that way
+  usernameByUserId: ReadonlyMap<string, string>;
   entrants: number;
   lotteriedProgramItems: readonly ProgramItem[];
 }
@@ -72,6 +78,7 @@ export const buildRunMetrics = ({
   assignmentTime,
   status,
   results,
+  usernameByUserId,
   entrants,
   lotteriedProgramItems,
 }: BuildRunMetricsParams): RunMetrics => {
@@ -100,7 +107,7 @@ export const buildRunMetrics = ({
         (placedPerProgramItem.get(programItem.programItemId) ?? 0) <
         programItem.minAttendance,
     ).length,
-    placementsDigest: digestPlacements(results),
+    placementsDigest: digestPlacements(results, usernameByUserId),
   };
 };
 
