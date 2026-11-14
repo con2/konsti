@@ -43,7 +43,9 @@ export const sentryDataCollection = {
     response: { deny: forwardingKeys },
   },
   httpBodies: [],
-  urlQueryParams: { deny: forwardingKeys },
+  // Only parameters known to carry nothing private are kept, matched as substrings: the rest
+  // hold group codes, serials, usernames and the Kompassi callback's OIDC code and state
+  urlQueryParams: { allow: ["programType", "invalid", "error"] },
   genAI: { inputs: false, outputs: false },
   databaseQueryData: false,
   queues: false,
