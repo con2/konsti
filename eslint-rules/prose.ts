@@ -1,3 +1,6 @@
+import { createHash } from "node:crypto";
+import { readFileSync, readdirSync } from "node:fs";
+import path from "node:path";
 import type { MarkdownRuleDefinition } from "@eslint/markdown";
 import type { AST, Rule } from "eslint";
 import type { Node as EstreeNode } from "estree";
@@ -416,6 +419,21 @@ const markdownProseRule: MarkdownRuleDefinition = {
   },
 };
 
+// ESLint's cache knows a plugin by its name and version rather than its code, so the version
+// is a hash of the rules' source and editing a rule re-lints every file
+const rulesSourceHash = (): string => {
+  const hash = createHash("sha256");
+  const files = readdirSync(import.meta.dirname, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .toSorted((a, b) => a.localeCompare(b));
+  for (const file of files) {
+    hash.update(readFileSync(path.join(import.meta.dirname, file)));
+  }
+  return hash.digest("hex").slice(0, 16);
+};
+
 export const konstiPlugin = {
+  meta: { name: "eslint-plugin-konsti", version: rulesSourceHash() },
   rules: { prose: proseRule, "markdown-prose": markdownProseRule },
 };
