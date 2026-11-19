@@ -13,6 +13,7 @@ import {
   getDirectSignupInProgress,
   getDirectSignupStartTime,
   getDirectSignupStarted,
+  getLotteryRunTime,
   getLotterySignupEndTime,
   getLotterySignupEnded,
   getLotterySignupInProgress,
@@ -21,6 +22,7 @@ import {
   getPhaseGapInProgress,
   hasLotteryAlreadyRun,
   isSameStartTime,
+  lotteryRanForProgramItem,
   tooEarlyForLotterySignup,
   willNotBeLotteried,
 } from "shared/utils/signupTimes";
@@ -284,6 +286,27 @@ describe("Pre-convention week direct sign-up", () => {
       true,
     );
   });
+
+  test("an always open program item outside the pre-convention week opens with the event", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      preConventionWeekSignupStartTime,
+      directSignupAlwaysOpenIds: [testProgramItem.programItemId],
+    });
+    expect(getDirectSignupStartTime(testProgramItem).toISOString()).toEqual(
+      new Date(baseEventConfig.eventStartTime).toISOString(),
+    );
+  });
+
+  test("direct sign-up opens with the event when no pre-convention week start time is configured", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      preConventionWeekSignupStartTime: null,
+    });
+    expect(
+      getDirectSignupStartTime(preConventionWeekItem).toISOString(),
+    ).toEqual(new Date(baseEventConfig.eventStartTime).toISOString());
+  });
 });
 
 describe("Parent start time override via 'startTimesByParentIds'", () => {
@@ -306,6 +329,20 @@ describe("Parent start time override via 'startTimesByParentIds'", () => {
     const signupStartTime = getLotterySignupStartTime(programItem);
     // preSignupStart (4h) before parent start time, not own start time
     expect(signupStartTime.toISOString()).toEqual(`${saturday}T08:00:00.000Z`);
+  });
+
+  test("getLotteryRunTime uses parent start time", () => {
+    const programItem = { ...testProgramItem, startTime: ownStartTime };
+    expect(getLotteryRunTime(programItem)).toEqual(parentStartTime);
+  });
+
+  test("getLotteryRunTime truncates its own start time to the minute without an override", () => {
+    const programItem = {
+      ...testProgramItem,
+      parentId: "parent-without-override",
+      startTime: `${saturday}T15:00:30.000Z`,
+    };
+    expect(getLotteryRunTime(programItem)).toEqual(ownStartTime);
   });
 
   test("getLotterySignupEndTime uses parent start time", () => {
@@ -464,6 +501,25 @@ describe("Direct sign-up with sign-up windows", () => {
   ])("$case", ({ startTime, signupTime }) => {
     assertSignupTime(startTime, signupTime);
   });
+
+  test("Larp starting outside every direct sign-up window should have direct sign-up starting at the event start", () => {
+    // Mon 01:00 GMT+3, after the last window closes
+    assertSignupTime(
+      `${sunday}T22:00:00.000Z`,
+      new Date(baseEventConfig.eventStartTime).toISOString(),
+    );
+  });
+
+  test("A program type without direct sign-up windows should have direct sign-up starting at the event start", () => {
+    const signupStartTime = getDirectSignupStartTime({
+      ...testProgramItem,
+      programType: ProgramType.TOURNAMENT,
+      startTime: `${saturday}T17:00:00.000Z`,
+    });
+    expect(signupStartTime.toISOString()).toEqual(
+      new Date(baseEventConfig.eventStartTime).toISOString(),
+    );
+  });
 });
 
 describe("Direct sign-up with rolling sign-up", () => {
@@ -548,6 +604,14 @@ describe("Direct sign-up with rolling sign-up", () => {
     },
   ])("$case", ({ startTime, signupTime }) => {
     assertSignupTime(startTime, signupTime);
+  });
+
+  test("Workshop starting at Sat 11:00 should have direct sign-up starting at Sat 07:00 without the previous evening opening", () => {
+    vi.spyOn(config, "event").mockReturnValue({
+      ...baseEventConfig,
+      enableRollingDirectSignupPreviousDay: false,
+    });
+    assertSignupTime(`${saturday}T08:00:00.000Z`, `${saturday}T04:00:00.000Z`);
   });
 });
 
@@ -1015,6 +1079,7 @@ describe("Program items no lottery will take", () => {
   const programItem = { ...testProgramItem, startTime };
 
   test("An unmarked program item still has its lottery ahead of it", () => {
+    expect(lotteryRanForProgramItem(programItem)).toEqual(false);
     expect(willNotBeLotteried(programItem)).toEqual(false);
     expect(getDirectSignupStarted(programItem, beforeLottery)).toEqual(false);
   });
@@ -1023,6 +1088,7 @@ describe("Program items no lottery will take", () => {
     // The mark every lotteried program item carries must not open its direct sign-up early
     const lotteried = { ...programItem, lotteryRanForStartTime: startTime };
 
+    expect(lotteryRanForProgramItem(lotteried)).toEqual(true);
     expect(willNotBeLotteried(lotteried)).toEqual(false);
     expect(getDirectSignupStarted(lotteried, duringPhaseGap)).toEqual(false);
     expect(getPhaseGapInProgress(lotteried, duringPhaseGap)).toEqual(true);
