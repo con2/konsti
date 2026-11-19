@@ -1246,7 +1246,7 @@ describe("The lottery for a start time runs once", () => {
     { role: "creator", username: mockUser.username },
     { role: "member", username: mockUser2.username },
   ])(
-    "places the whole group when the $role holds a non-lottery direct signup at the same time",
+    "places the whole group when the $role holds a non-lottery direct sign-up at the same time",
     async ({ username }) => {
       const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
       const groupCode = "group-with-one-direct-signup";
