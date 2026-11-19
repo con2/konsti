@@ -23,6 +23,7 @@ import { saveUserSignupResults } from "server/features/assignment/utils/saveUser
 import {
   findDirectSignups,
   findDirectSignupsByProgramItemIds,
+  findDirectSignupsByStartTimes,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
 import { EmailMessage } from "server/features/notifications/senderCommon";
@@ -59,6 +60,9 @@ vi.mock(
       ...actual,
       findDirectSignupsByProgramItemIds: vi.fn(
         actual.findDirectSignupsByProgramItemIds,
+      ),
+      findDirectSignupsByStartTimes: vi.fn(
+        actual.findDirectSignupsByStartTimes,
       ),
     };
   },
@@ -1399,4 +1403,133 @@ test("should displace spots at every hour a batched lottery placed somebody at",
   // Each winner holds what they won and nothing else at that hour, whichever hour it was
   expect(heldBy(mockUser.username)).toEqual([testProgramItem.programItemId]);
   expect(heldBy(mockUser2.username)).toEqual([testProgramItem2.programItemId]);
+});
+
+test("should record a won spot at the hour its program item starts now, not the hour on the lottery sign-up", async () => {
+  // The lottery sign-up was made before the program item moved an hour later
+  const hourBeforeMove = subHours(
+    new Date(testProgramItem.startTime),
+    1,
+  ).toISOString();
+
+  await saveUser(mockUser);
+  await saveProgramItems([testProgramItem]);
+
+  unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: testProgramItem.startTime,
+      results: [
+        {
+          username: mockUser.username,
+          assignmentSignup: {
+            programItemId: testProgramItem.programItemId,
+            priority: 1,
+            signedToStartTime: hourBeforeMove,
+          },
+        },
+      ],
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  const [userSignup] =
+    signupsByProgramItem.get(testProgramItem.programItemId)?.userSignups ?? [];
+  expect(new Date(userSignup.signedToStartTime).toISOString()).toEqual(
+    new Date(testProgramItem.startTime).toISOString(),
+  );
+});
+
+test("should keep a winner's direct sign-up when another direct sign-up takes the won spot during the run", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveUser(mockUser3);
+  // Room for both winners until the racing direct sign-up takes one of the spots
+  await saveProgramItems([
+    { ...testProgramItem, maxAttendance: 2 },
+    { ...testProgramItem2, startTime: testProgramItem.startTime },
+  ]);
+
+  // What the winner holds at the hour they are placed at
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
+    directSignupProgramItemId: testProgramItem2.programItemId,
+  });
+
+  const { findDirectSignupsByStartTimes: actualFind } = await vi.importActual<
+    typeof import("server/features/direct-signup/directSignupRepository")
+  >("server/features/direct-signup/directSignupRepository");
+  vi.mocked(findDirectSignupsByStartTimes).mockImplementationOnce(
+    async (...args) => {
+      const signupsBeforeRace = await actualFind(...args);
+      // Lands after the run has counted the free spots, so only the write itself sees it
+      await saveDirectSignup({
+        ...mockPostDirectSignupRequest,
+        username: mockUser2.username,
+      });
+      return signupsBeforeRace;
+    },
+  );
+
+  const finalResults = unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: testProgramItem.startTime,
+      // The write appends in this order, so the later winner is the one left without room
+      results: [mockUser3, mockUser].map((user) =>
+        getAssignmentResult({ username: user.username }),
+      ),
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  expect(finalResults.map((result) => result.username)).toEqual([
+    mockUser3.username,
+  ]);
+
+  // Losing the won spot must not cost them the one they held, or they would have neither
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  expect(
+    signupsByProgramItem
+      .get(testProgramItem2.programItemId)
+      ?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser.username]);
+  expect(
+    signupsByProgramItem
+      .get(testProgramItem.programItemId)
+      ?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser2.username, mockUser3.username]);
+});
+
+test("should drop a whole group whose room is taken by an attendee placed before it in the same run", async () => {
+  const groupCode = "group-behind-an-individual";
+
+  await saveUser(mockUser3);
+  await saveUser({ ...mockUser, groupCode, isGroupCreator: true });
+  await saveUser({ ...mockUser2, groupCode });
+  await saveProgramItems([{ ...testProgramItem, maxAttendance: 2 }]);
+
+  // Two spots: the individual takes one, which leaves the group of two without room
+  const finalResults = unsafelyUnwrap(
+    await saveUserSignupResults({
+      assignmentTime: testProgramItem.startTime,
+      results: [mockUser3, mockUser, mockUser2].map((user) =>
+        getAssignmentResult({ username: user.username }),
+      ),
+      users: unsafelyUnwrap(await findUsers()),
+      programItems: unsafelyUnwrap(await findProgramItems()),
+    }),
+  );
+
+  expect(finalResults.map((result) => result.username)).toEqual([
+    mockUser3.username,
+  ]);
+
+  const signupsByProgramItem = await findSignupsByProgramItem();
+  expect(
+    signupsByProgramItem
+      .get(testProgramItem.programItemId)
+      ?.userSignups.map((userSignup) => userSignup.username),
+  ).toEqual([mockUser3.username]);
 });
