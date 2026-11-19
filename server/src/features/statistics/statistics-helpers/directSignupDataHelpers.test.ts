@@ -71,10 +71,13 @@ test.each([
   ["2023-07-29T13:07:00.000Z", "  7min (2/4) - Test RPG"],
   ["2023-07-29T14:30:00.000Z", "  1h30min (2/4) - Test RPG"],
   ["2023-07-29T16:00:00.000Z", "  3h0min (2/4) - Test RPG"],
-])("signup filled at %s is reported as '%s'", (signupTime, expected) => {
-  printDirectSignupFillTimes([directSignup(signupTime)], [programItem]);
-  expect(infoLines()).toContain(expected);
-});
+])(
+  "direct sign-up filled at %s is reported as '%s'",
+  (signupTime, expected) => {
+    printDirectSignupFillTimes([directSignup(signupTime)], [programItem]);
+    expect(infoLines()).toContain(expected);
+  },
+);
 
 test("measures the fill time from the latest direct sign-up", () => {
   const first = directSignup("2023-07-29T13:07:00.000Z", 1);

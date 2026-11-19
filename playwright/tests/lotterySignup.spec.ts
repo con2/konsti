@@ -567,7 +567,7 @@ test("Offer direct sign-up instead of a lottery for a program item that already 
   });
 
   // Dropping the tag turns it into a lottery program item, but it already has a spot taken by
-  // another rule - so it stays on direct signup rather than being lotteried for the rest
+  // another rule - so it stays on direct sign-up rather than being lotteried for the rest
   await addProgramItems(request, [{ ...alwaysOpenProgramItem, tags: [] }]);
 
   await login(page, request, { username: "test1", password: "test" });
@@ -645,7 +645,7 @@ test("Did not receive spot in a lottery covering several starting times", async 
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  // Inside the batch's lottery signup window, which is derived from the parent start time
+  // Inside the batch's lottery sign-up window, which is derived from the parent start time
   await postTestSettings(request, {
     testTime: subHours(new Date(parentStartTime), 3).toISOString(),
   });
@@ -765,7 +765,7 @@ test("Receive spot in a lottery covering several starting times", async ({
   await postSettings(request, {
     signupStrategy: EventSignupStrategy.LOTTERY_AND_DIRECT,
   });
-  // Inside the batch's lottery signup window, which is derived from the parent start time
+  // Inside the batch's lottery sign-up window, which is derived from the parent start time
   await postTestSettings(request, {
     testTime: subHours(new Date(parentStartTime), 3).toISOString(),
   });

@@ -1190,7 +1190,7 @@ describe("isSameStartTime", () => {
 });
 
 describe("getLotterySignupEnded", () => {
-  // Sat 15:00 GMT+3, so its lottery signup closes at 13:00 GMT+3
+  // Sat 15:00 GMT+3, so its lottery sign-up closes at 13:00 GMT+3
   const startTime = `${saturday}T12:00:00.000Z`;
   const programItem = { ...testProgramItem, startTime };
   const lotterySignupEndTime = getLotterySignupEndTime(programItem);
