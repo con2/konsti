@@ -21,6 +21,7 @@ Guidance for working in `shared/`. See the [root CLAUDE.md](../CLAUDE.md) for th
 - **`tests/`** — shared test fixtures, notably `testProgramItem.ts` (fully-populated objects used by both server and playwright tests), `programItemFixtures.ts` (`signupsOpenTime`, `hoursIntoEvent`, `endTimeFor`, `twoPhaseProgramItem`: program items placed relative to the event's timing, used by the Playwright specs and the BrowserStack checks, which is why it stays free of Playwright imports), and test helpers such as `mockParentStartTime.ts`. The helpers may import `vitest`, so only test files may import from here: `shared/*` is bundled into the client, and a production import would pull vitest into the bundle.
 - **`utils/`** — see below.
 - **`vitest.config.ts`** — `shared`'s own vitest setup (`environment: "node"`). There is no setup file: the time utilities need no global initialization.
+- **`stryker.config.json`** — mutation testing for `utils/`, run in place with `yarn mutation:shared`; see "Mutation testing" in [server/CLAUDE.md](../server/CLAUDE.md).
 
 ## Utilities (`shared/utils`)
 
