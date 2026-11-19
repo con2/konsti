@@ -316,6 +316,8 @@ export const savePassedOverForLottery = async (
 // time is the same before and after a move and so could never tell the two apart.
 export const saveLotteryRanForStartTime = async (
   programItems: readonly ProgramItem[],
+  // Set by a caller that will try again, so its earlier attempts log a warning rather than an error
+  { willRetry = false }: { willRetry?: boolean } = {},
 ): Promise<Result<void, MongoDbError>> => {
   if (programItems.length === 0) {
     return makeSuccessResult();
@@ -337,11 +339,17 @@ export const saveLotteryRanForStartTime = async (
     );
     return makeSuccessResult();
   } catch (error) {
-    logger.error(
-      new Error("MongoDB: Error marking program items as lotteried", {
-        cause: error,
-      }),
-    );
+    if (willRetry) {
+      logger.warn(
+        `MongoDB: Error marking program items as lotteried, retrying: ${String(error)}`,
+      );
+    } else {
+      logger.error(
+        new Error("MongoDB: Error marking program items as lotteried", {
+          cause: error,
+        }),
+      );
+    }
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
