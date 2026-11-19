@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "vitest",
+  "vitest": {
+    "configFile": "vitest.config.ts"
+  },
+  "inPlace": true,
+  "disableTypeChecks": false,
+  "mutate": ["utils/**/*.ts", "!utils/**/*.test.ts"],
+  "coverageAnalysis": "perTest",
+  "reporters": ["html", "clear-text", "progress"],
+  "htmlReporter": {
+    "fileName": "reports/mutation/index.html"
+  },
+  "incremental": true,
+  "incrementalFile": "reports/mutation/stryker-incremental.json"
+}

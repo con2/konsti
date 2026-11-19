@@ -87,3 +87,8 @@ settings.local.json
 # Full placement lists from the past-event lottery replay. The committed baselines hold the
 # per-run figures; these are for diffing two runs when a digest moves.
 server/simulate-lottery-output
+
+# Mutation testing
+.stryker-tmp
+**/reports/mutation
+stryker-setup-*.js
