@@ -312,10 +312,9 @@ export const translationFI = {
     title: "Ilmoitukset",
     noNotifications: "Ei ilmoituksia",
     programItemDetails: "Aloitusaika {{START_TIME}}, paikkana {{LOCATION}}.",
-    upcomingLotterySignupsRemoved:
-      "Kaikki tulevat arvontailmoittautumiset on peruttu.",
+    upcomingLotterySignupsRemoved: "Tulevat arvontailmoittautumisesi perutaan.",
     overlapLotterySignupsRemoved:
-      "Päällekkäiset arvontailmoittautumiset on peruttu.",
+      "Tämän ohjelmanumeron kanssa päällekkäiset arvontailmoittautumisesi perutaan.",
   },
   eventLogActions: {
     newAssignment: "Olet päässyt arvonnassa {{PROGRAM_TYPE}}",
