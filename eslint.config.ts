@@ -2,6 +2,7 @@ import { fileURLToPath } from "node:url";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 import eslint from "@eslint/js";
+import eslintMarkdown from "@eslint/markdown";
 import eslintPluginVitest from "@vitest/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginCompat from "eslint-plugin-compat";
@@ -159,6 +160,8 @@ export default defineConfig([
     "**/.*", // Ignore dotfiles
     "!.claude", // un-prune .claude so the project hooks can be linted
     "!.claude/hooks/**",
+    "!.github",
+    "!.github/**",
     "**/coverage/**",
     "**/front/**",
     "**/build/**",
@@ -586,6 +589,19 @@ export default defineConfig([
       "react/jsx-curly-brace-presence": "off",
       "react/no-unescaped-entities": "off",
       "react/self-closing-comp": "off",
+    },
+  },
+
+  // ** Markdown **
+  {
+    files: ["**/*.md"],
+    // Agent instruction files keep their established em dash style
+    ignores: ["**/CLAUDE.md", ".claude/skills/**"],
+    plugins: { markdown: eslintMarkdown, konsti: konstiPlugin },
+    language: "markdown/gfm",
+    languageOptions: { frontmatter: "yaml" },
+    rules: {
+      "konsti/markdown-prose": "error",
     },
   },
 
