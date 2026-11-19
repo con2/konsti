@@ -323,8 +323,10 @@ test("should not remove upcoming lottery sign-ups when strategy is NONE", async 
   const resultProgramItemId = "result-program-item-id";
   const resultProgramItemStartTime = new Date(timeNow).toISOString();
 
+  // Starts while the won program item runs, so it is both upcoming and overlapping and neither
+  // removal may take it
   const upcomingProgramItemId = "upcoming-program-item-id";
-  const upcomingStartTime = addMinutes(new Date(timeNow), 1).toISOString();
+  const upcomingStartTime = addMinutes(new Date(timeNow), 30).toISOString();
 
   await saveProgramItems([
     {
@@ -542,4 +544,63 @@ test("should not remove upcoming lottery sign-up with past parent startTime", as
       signedToStartTime: upcomingStartTime,
     },
   ]);
+});
+
+test("should not remove an overlapping lottery sign-up whose lottery has already run", async () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
+  });
+
+  // Lotteried where it used to sit and moved to start while the won program item runs
+  const lotteriedProgramItemId = "lotteried-program-item-id";
+  const lotteriedStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  await saveProgramItems([
+    testProgramItem,
+    {
+      ...testProgramItem,
+      programItemId: lotteriedProgramItemId,
+      startTime: lotteriedStartTime,
+    },
+  ]);
+  await saveLotteryRanForStartTime([
+    {
+      ...testProgramItem,
+      programItemId: lotteriedProgramItemId,
+      startTime: subMinutes(
+        new Date(testProgramItem.startTime),
+        60,
+      ).toISOString(),
+    },
+  ]);
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      mockLotterySignups[0],
+      {
+        programItemId: lotteriedProgramItemId,
+        priority: 1,
+        signedToStartTime: lotteriedStartTime,
+      },
+    ],
+  });
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await removeOverlapLotterySignups(
+    [getAssignmentResult({ username: mockUser.username })],
+    programItems,
+    testProgramItem.startTime,
+  );
+
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    updatedUser?.lotterySignups.map((signup) => signup.programItemId),
+  ).toEqual([testProgramItem.programItemId, lotteriedProgramItemId]);
 });
