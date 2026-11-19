@@ -126,12 +126,16 @@ member joining afterwards enlarges the group and one leaving shrinks it, and the
 spots for the group it finds. A group that has outgrown a program item's attendance limit therefore
 lands nowhere rather than partly, which is this rule holding rather than failing.
 
-**The write is the exception, and [rule 7][7] is what covers it.** The attendance limit is applied once
-more as the spots are saved, over a flat list of attendees rather than over groups, so a group
-arriving at a program item with less room than it needs would be cut part way through and stored
-split. Nothing afterwards puts it back: the members who landed are recorded as placed, and the rest
-are told they got nothing. The room is never short, because a program item is empty when it is
-lotteried - so here the guarantee rests on that rule rather than on the write.
+**Two checks stand at the write, and [rule 7][7] is why neither fires.** Before anything is saved,
+the results are measured against the room each program item had when the run read it, and a group
+that does not fit is dropped whole. The write then applies the attendance limit again, against the
+sign-ups as they stand at that moment and over a flat list of attendees rather than over groups - so
+a group that lost room between the read and the write would be cut part way through and stored
+split, with the members who landed recorded as placed and the rest told they got nothing. Neither
+happens, because a program item is empty when it is lotteried and takes no first-come sign-up until
+its lottery is behind it, so the room the results were drawn against is the room they are saved
+into. The first check is the one that keeps a group whole if that ever changes before the read; the
+second is a cap rather than a guard, and cannot.
 
 ## 4. A first-time bonus goes to attendees who hold no lottery spot yet
 
