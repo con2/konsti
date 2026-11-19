@@ -40,6 +40,22 @@ const restrictedSyntax = [
     selector: "CallExpression[callee.name='useSelector']",
     message: "Please use useAppSelector()",
   },
+  {
+    selector:
+      "CallExpression:matches([callee.name='expect'], [callee.object.name='expect']) > LogicalExpression[operator='&&']",
+    message: "One assertion per expect, or assert the whole object",
+  },
+  {
+    // expect.poll takes a callback, so the condition sits in its body rather than its argument
+    selector:
+      "CallExpression[callee.object.name='expect'][callee.property.name='poll'] > :function > LogicalExpression[operator='&&']",
+    message: "One assertion per expect, or assert the whole object",
+  },
+  {
+    selector:
+      "CallExpression[callee.object.name='expect'][callee.property.name='poll'] > :function > BlockStatement > ReturnStatement > LogicalExpression[operator='&&']",
+    message: "One assertion per expect, or assert the whole object",
+  },
 ];
 
 const restrictedImportPaths = [
