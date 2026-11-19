@@ -25,6 +25,10 @@ import typescriptEslint from "typescript-eslint";
 
 const filetypesGlob = "**/*.{ts,tsx}";
 
+// Everything but plain Markdown, which is parsed as its own language that the
+// JavaScript and TypeScript rules refuse to run on
+const codeFiles = [filetypesGlob, "**/*.mdx"];
+
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
 const restrictedSyntax = [
@@ -133,15 +137,20 @@ const languageBindingModules = [
 ];
 
 export default defineConfig([
-  eslint.configs.recommended,
-  typescriptEslint.configs.strictTypeChecked,
-  typescriptEslint.configs.stylisticTypeChecked,
-  eslintPluginCommentsConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  eslintPluginPromise.configs["flat/recommended"],
-  eslintPluginImport.flatConfigs.recommended,
-  eslintPluginImport.flatConfigs.typescript,
-  eslintPluginUnicorn.configs.unopinionated,
+  {
+    files: codeFiles,
+    extends: [
+      eslint.configs.recommended,
+      typescriptEslint.configs.strictTypeChecked,
+      typescriptEslint.configs.stylisticTypeChecked,
+      eslintPluginCommentsConfigs.recommended,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      eslintPluginPromise.configs["flat/recommended"],
+      eslintPluginImport.flatConfigs.recommended,
+      eslintPluginImport.flatConfigs.typescript,
+      eslintPluginUnicorn.configs.unopinionated,
+    ],
+  },
 
   includeIgnoreFile(gitignorePath),
 
@@ -172,6 +181,8 @@ export default defineConfig([
   },
 
   {
+    files: codeFiles,
+
     plugins: {
       vitest: eslintPluginVitest,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -317,7 +328,12 @@ export default defineConfig([
 
     plugins: {
       react: fixupPluginRules(eslintPluginReact),
-      "react-hooks": eslintPluginReactHooks,
+      // The whole plugin does not type-check as one: its nested configs.flat
+      // fits no Plugin config shape, and a plugins entry needs only these two
+      "react-hooks": {
+        meta: eslintPluginReactHooks.meta,
+        rules: eslintPluginReactHooks.rules,
+      },
     },
 
     settings: {
