@@ -1,0 +1,5 @@
+rules:
+  # The self-repository fix, the `$/` local-action syntax, is rejected by
+  # actionlint, which still accepts only `./` paths
+  self-repository:
+    disable: true

@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
@@ -61,6 +63,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
@@ -73,7 +77,9 @@ jobs:
           browsers: chromium webkit
 
       - name: Run Playwright coverage shard
-        run: yarn coverage:e2e --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        env:
+          SHARD: ${{ matrix.shard }}/${{ strategy.job-total }}
+        run: yarn coverage:e2e "--shard=$SHARD"
 
       - name: Upload shard coverage
         if: ${{ !cancelled() }}
@@ -98,6 +104,8 @@ jobs:
       # the repo must be checked out at the same path the coverage was recorded
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install Node.js and dependencies
         uses: ./.github/actions/setup
@@ -198,5 +206,6 @@ jobs:
           timeout: 240000
 
       - name: Add report link to job summary
-        run: |
-          echo "Coverage report published: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
+        run: echo "Coverage report published at $PAGE_URL" >> "$GITHUB_STEP_SUMMARY"
