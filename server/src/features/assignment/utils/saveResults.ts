@@ -13,6 +13,7 @@ import {
 } from "server/features/program-item/programItemRepository";
 import { saveResult } from "server/features/results/resultsRepository";
 import { logger } from "server/utils/logger";
+import { sleep } from "server/utils/sleep";
 
 interface SaveResultsParams {
   results: readonly UserAssignmentResult[];
@@ -68,12 +69,11 @@ export const saveResults = async ({
   // The program items that went through the lottery, placed or not: their lottery has happened.
   // Written only once the spots exist, because nothing clears the mark - marking before a
   // failed save would strand them out of the lottery with nobody placed.
-  const saveLotteryRanResult = await saveLotteryRanForStartTime(
-    lotteriedProgramItems,
-  );
+  const saveLotteryRanResult = await markLotteried(lotteriedProgramItems);
   if (!saveLotteryRanResult.ok) {
-    // The spots are saved, so returning here would cost the winners their notifications over
-    // a mark that only bookkeeping needs
+    // The spots are saved, so returning here would cost the winners their notifications. A
+    // moved program item without the mark reads as never lotteried, though, which is why the
+    // write is retried before this.
     logger.error(
       new Error(
         `Assignment ${assignmentTime}: failed to mark the lotteried program items: ${saveLotteryRanResult.error}`,
@@ -114,6 +114,26 @@ export const saveResults = async ({
   }
 
   return makeSuccessResult(finalResults);
+};
+
+const MARK_RETRY_DELAYS_MS = [500, 2000];
+
+const markLotteried = async (
+  lotteriedProgramItems: readonly ProgramItem[],
+): Promise<Result<void, MongoDbError>> => {
+  let result = await saveLotteryRanForStartTime(lotteriedProgramItems, {
+    willRetry: true,
+  });
+  for (const [index, delayMs] of MARK_RETRY_DELAYS_MS.entries()) {
+    if (result.ok) {
+      break;
+    }
+    await sleep(delayMs);
+    result = await saveLotteryRanForStartTime(lotteriedProgramItems, {
+      willRetry: index < MARK_RETRY_DELAYS_MS.length - 1,
+    });
+  }
+  return result;
 };
 
 interface StoreResultsSnapshotParams {
