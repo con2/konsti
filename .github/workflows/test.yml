@@ -45,9 +45,9 @@ jobs:
             client/.stylelintcache
             node_modules/.cache/prettier
             node_modules/.cache/knip
-          key: lint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'yarn.lock') }}-${{ github.sha }}
+          key: lint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'eslint-rules/**', 'yarn.lock') }}-${{ github.sha }}
           restore-keys: |
-            lint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'yarn.lock') }}-
+            lint-${{ runner.os }}-${{ hashFiles('eslint.config.ts', 'eslint-rules/**', 'yarn.lock') }}-
 
       - name: Run Prettier
         run: yarn prettier:check
