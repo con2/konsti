@@ -763,14 +763,15 @@ Whichever it is:
   though the run has not marked those program items yet.
 - **A group gives up its creator's sign-ups**, because those are the group's ([rule 3][3]). Placing
   a group withdraws its later entries as a whole, and its members hold none of their own to lose.
-- **The placement says so.** The attendee's placement message tells them their other lottery
-  sign-ups were removed, worded for the event's strategy.
+- **The placement says so.** The attendee's placement message states the event's strategy: which
+  of their lottery sign-ups a win removes. It describes the policy rather than reporting a removal,
+  so it reads the same whether or not the attendee had any such sign-ups to lose.
 
 **It is set before the event and kept for its length.** Changing it part way would hold attendees of
 earlier and later runs to different rules. The placement message also reads the strategy as it
 stands when the attendee opens it rather than as it was when they won, so every earlier placement
-would start describing a removal that never happened, which [rule 14][14] exists to prevent. Changing
-it mid-event is a design change.
+would start describing a policy its win was never held to, which [rule 14][14] exists to prevent.
+Changing it mid-event is a design change.
 
 ## Known gaps
 

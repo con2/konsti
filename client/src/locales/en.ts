@@ -312,8 +312,9 @@ export const translationEN = {
     noNotifications: "No notifications",
     programItemDetails: "Starting time {{START_TIME}} at {{LOCATION}}.",
     upcomingLotterySignupsRemoved:
-      "All upcoming lottery sign-ups were removed.",
-    overlapLotterySignupsRemoved: "Overlapping lottery sign-ups were removed.",
+      "Your lottery sign-ups whose lottery is still to come are removed.",
+    overlapLotterySignupsRemoved:
+      "Your lottery sign-ups that overlap this spot and whose lottery is still to come are removed.",
   },
   eventLogActions: {
     newAssignment: "You were assigned to the {{PROGRAM_TYPE}}",
