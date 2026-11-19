@@ -1,3 +1,4 @@
+import type { MarkdownRuleDefinition } from "@eslint/markdown";
 import type { AST, Rule } from "eslint";
 import type { Node as EstreeNode } from "estree";
 
@@ -176,13 +177,54 @@ const proseRule: Rule.RuleModule = {
         }
       },
 
-      JSXText: (node: EstreeNode & { value: string }) => {
-        checkNode(node, node.value, [emDash, fcfs, signup]);
+      // The source rather than the decoded value, whose offsets drift after an entity
+      JSXText: (node: EstreeNode) => {
+        checkNode(node, sourceCode.getText(node), [emDash, fcfs, signup]);
+      },
+    };
+  },
+};
+
+// Code spans, code blocks and link targets are nodes of their own, so only the
+// prose itself is checked
+const markdownProseRule: MarkdownRuleDefinition = {
+  meta: {
+    type: "suggestion",
+    docs: {
+      description: "Enforce the project's wording rules in Markdown prose",
+    },
+  },
+
+  create: (context) => {
+    return {
+      text: (node) => {
+        const start = node.position?.start.offset;
+        const end = node.position?.end.offset;
+        if (start === undefined || end === undefined) {
+          return;
+        }
+        // The source rather than the decoded value, which drops blockquote markers, list
+        // indentation and escapes, so its offsets drift from the file's
+        const source = context.sourceCode.text.slice(start, end);
+        for (const check of [emDash, fcfs, signup]) {
+          for (const match of source.matchAll(check.pattern)) {
+            const matchStart = start + match.index;
+            context.report({
+              loc: {
+                start: context.sourceCode.getLocFromIndex(matchStart),
+                end: context.sourceCode.getLocFromIndex(
+                  matchStart + match[0].length,
+                ),
+              },
+              message: check.message,
+            });
+          }
+        }
       },
     };
   },
 };
 
 export const konstiPlugin = {
-  rules: { prose: proseRule },
+  rules: { prose: proseRule, "markdown-prose": markdownProseRule },
 };
