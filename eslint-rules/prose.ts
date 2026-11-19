@@ -84,7 +84,103 @@ const rootCalleeName = (callee: EstreeNode): string | undefined => {
   if (callee.type === "CallExpression") {
     return rootCalleeName(callee.callee);
   }
+  if (callee.type === "TaggedTemplateExpression") {
+    return rootCalleeName(callee.tag);
+  }
   return undefined;
+};
+
+const stringNodes = (node: EstreeNode | null | undefined): EstreeNode[] => {
+  if (node?.type === "Literal" && typeof node.value === "string") {
+    return [node];
+  }
+  return node?.type === "TemplateLiteral" ? [node] : [];
+};
+
+const titleKeysOf = (titleText: string): Set<string> => {
+  return new Set([...titleText.matchAll(/\$(\w+)/gu)].map((match) => match[1]));
+};
+
+// The rows of a `test.each(table)("$case" / "%s")` table hold the real test names: an object
+// row's properties named in the title, or an array row's string elements
+const tableTitleNodes = (
+  table: EstreeNode,
+  titleText: string,
+): EstreeNode[] => {
+  if (table.type !== "ArrayExpression") {
+    return [];
+  }
+  const titleKeys = titleKeysOf(titleText);
+  // %% is a literal percent sign rather than a placeholder
+  const positions =
+    titleText.replaceAll("%%", "").match(/%[sdifjoOc]/gu)?.length ?? 0;
+  return table.elements.flatMap((row) => {
+    if (row?.type === "ObjectExpression") {
+      return row.properties.flatMap((property) => {
+        if (property.type !== "Property") {
+          return [];
+        }
+        const key =
+          property.key.type === "Identifier"
+            ? property.key.name
+            : String((property.key as { value?: unknown }).value);
+        return titleKeys.has(key) ? stringNodes(property.value) : [];
+      });
+    }
+    // An array row's elements print through the placeholders in order, or by index as $0, $1
+    if (row?.type === "ArrayExpression") {
+      return row.elements
+        .filter((_element, index) => {
+          return index < positions || titleKeys.has(String(index));
+        })
+        .flatMap((element) => stringNodes(element));
+    }
+    return positions > 0 ? stringNodes(row) : [];
+  });
+};
+
+// A tagged-template table names its columns in a header line and fills them in order, so a
+// value's column is its position modulo the column count
+const taggedTableTitleNodes = (
+  table: EstreeNode,
+  titleText: string,
+): EstreeNode[] => {
+  if (table.type !== "TemplateLiteral") {
+    return [];
+  }
+  const columns = (table.quasis.at(0)?.value.raw ?? "")
+    .trim()
+    .split("|")
+    .map((column) => column.trim());
+  const titleKeys = titleKeysOf(titleText);
+  return table.expressions.flatMap((expression, index) => {
+    return titleKeys.has(columns[index % columns.length])
+      ? stringNodes(expression)
+      : [];
+  });
+};
+
+const tableFunctions = new Set(["each", "for"]);
+
+// The table of a test.each or test.for call, given as an argument or as a tagged template
+const tableOf = (callee: EstreeNode): EstreeNode | undefined => {
+  const member =
+    callee.type === "CallExpression"
+      ? callee.callee
+      : callee.type === "TaggedTemplateExpression"
+        ? callee.tag
+        : undefined;
+  if (
+    member?.type !== "MemberExpression" ||
+    member.property.type !== "Identifier" ||
+    !tableFunctions.has(member.property.name) ||
+    !testFunctions.has(rootCalleeName(member.object) ?? "")
+  ) {
+    return undefined;
+  }
+  return callee.type === "TaggedTemplateExpression"
+    ? callee.quasi
+    : (callee as { arguments: EstreeNode[] }).arguments.at(0);
 };
 
 const proseRule: Rule.RuleModule = {
@@ -148,6 +244,16 @@ const proseRule: Rule.RuleModule = {
       }
     };
 
+    const checkString = (node: EstreeNode, checks: Check[]): void => {
+      if (node.type === "Literal") {
+        checkNode(node, node.raw ?? "", checks);
+      } else if (node.type === "TemplateLiteral") {
+        for (const quasi of node.quasis) {
+          checkNode(quasi, quasi.value.raw, checks, 1);
+        }
+      }
+    };
+
     const isTestTitle = (node: EstreeNode): boolean => {
       const parent = (node as Rule.Node).parent;
       if (parent?.type !== "CallExpression") {
@@ -180,14 +286,32 @@ const proseRule: Rule.RuleModule = {
 
       Literal: (node) => {
         if (typeof node.value === "string") {
-          checkNode(node, node.raw ?? "", stringChecks(node));
+          checkString(node, stringChecks(node));
         }
       },
 
       TemplateLiteral: (node) => {
-        const checks = stringChecks(node);
-        for (const quasi of node.quasis) {
-          checkNode(quasi, quasi.value.raw, checks, 1);
+        checkString(node, stringChecks(node));
+      },
+
+      // Only the `signup` check, since every string already gets the others
+      CallExpression: (node) => {
+        const title = node.arguments.at(0);
+        const table = tableOf(node.callee);
+        if (!title || !table) {
+          return;
+        }
+        const titleText =
+          title.type === "Literal"
+            ? String(title.value)
+            : title.type === "TemplateLiteral"
+              ? title.quasis.map((quasi) => quasi.value.raw).join("")
+              : "";
+        for (const titleNode of [
+          ...tableTitleNodes(table, titleText),
+          ...taggedTableTitleNodes(table, titleText),
+        ]) {
+          checkString(titleNode, [signup]);
         }
       },
 
