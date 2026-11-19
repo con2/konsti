@@ -1,6 +1,9 @@
+import { addHours, isAfter, isBefore } from "date-fns";
 import { describe, expect, test } from "vitest";
 import { config } from "shared/config";
 import { EventConfigSchema } from "shared/config/eventConfigTypes";
+import { testProgramItem } from "shared/tests/testProgramItem";
+import { getLotterySignupEndTime } from "shared/utils/signupTimes";
 
 // The config is the one source of times that nothing validates on the way in:
 // program item times are checked as they are ingested and again as they come out
@@ -27,5 +30,28 @@ describe("event config", () => {
     });
 
     expect(result.success).toEqual(false);
+  });
+
+  // A batch closing its lottery in the first hour after the doors open would take lottery and
+  // direct sign-ups at once
+  test("closes no batch's lottery within the first hour after the doors open", () => {
+    const { eventStartTime, startTimesByParentIds } = config.event();
+    const doorsOpen = new Date(eventStartTime);
+    const hourAfterDoors = addHours(doorsOpen, 1);
+
+    const parentIdsClosingInsideTheHour = [...startTimesByParentIds]
+      .filter(([parentId]) => {
+        const lotteryCloses = getLotterySignupEndTime({
+          ...testProgramItem,
+          parentId,
+        });
+        return (
+          isAfter(lotteryCloses, doorsOpen) &&
+          isBefore(lotteryCloses, hourAfterDoors)
+        );
+      })
+      .map(([parentId]) => parentId);
+
+    expect(parentIdsClosingInsideTheHour).toEqual([]);
   });
 });
