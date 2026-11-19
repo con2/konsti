@@ -643,7 +643,9 @@ The run's own removal asks the mark and not the window. The sign-ups it takes fr
 places are picked by start time, so a program item another run has already decided is what it has
 to recognize, and the mark is what says so. Its own program items are not marked until it has
 saved its spots, so those it recognizes by the start time it is lotteried at - which is what keeps a
-batch's later program items, whose own hours fall inside the spot just won.
+batch's later program items, whose own hours fall inside the spot just won. A program item passed over
+for holding sign-ups carries the other mark, `passedOverForLottery`, and is spared the same way:
+whatever lottery sign-ups it still carries are records, since no lottery will take it.
 
 ## 14. An event log item is never deleted, and what it says never changes
 
@@ -760,7 +762,8 @@ Whichever it is:
   be entered again once its window has closed.
 - **Only sign-ups whose lottery is still ahead**, recognized by the lottery's mark ([rule 13][13]).
   One for the lottery just decided is kept as the record of having entered it, batch included,
-  though the run has not marked those program items yet.
+  though the run has not marked those program items yet, and so is one for a program item passed
+  over for holding sign-ups ([rule 7][7]), which no lottery will take.
 - **A group gives up its creator's sign-ups**, because those are the group's ([rule 3][3]). Placing
   a group withdraws its later entries as a whole, and its members hold none of their own to lose.
 - **The placement says so.** The attendee's placement message states the event's strategy: which
