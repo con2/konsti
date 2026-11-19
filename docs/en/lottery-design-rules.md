@@ -639,9 +639,11 @@ a closed window, the rest leaving the time it is derived from alone. So each aut
 the lottery's mark beside the window: `lotteryRanForStartTime` records that a run decided the
 program item, and is left out of the import's update so a programme change cannot clear it.
 
-The run's own removal goes by the mark alone. The sign-ups it takes from the attendees it places are
-picked by start time, so a program item another run has already decided is what it has to recognize,
-and the mark is what says so.
+The run's own removal asks the mark and not the window. The sign-ups it takes from the attendees it
+places are picked by start time, so a program item another run has already decided is what it has
+to recognize, and the mark is what says so. Its own program items are not marked until it has
+saved its spots, so those it recognizes by the start time it is lotteried at - which is what keeps a
+batch's later program items, whose own hours fall inside the spot just won.
 
 ## 14. An event log item is never deleted, and what it says never changes
 
@@ -758,7 +760,8 @@ Whichever it is:
   from what the algorithm proposed, since a sign-up removed for a spot that then did not land cannot
   be entered again once its window has closed.
 - **Only sign-ups whose lottery is still ahead**, recognized by the lottery's mark ([rule 13][13]).
-  One for the start time just decided is kept as the record of having entered it.
+  One for the lottery just decided is kept as the record of having entered it, batch included,
+  though the run has not marked those program items yet.
 - **A group's lottery sign-ups are its creator's** ([rule 3][3]). Placing a group removes its later
   entries as a whole, and its members hold none of their own.
 - **The placement says so.** The attendee's placement message tells them their other lottery
