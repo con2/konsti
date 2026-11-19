@@ -36,6 +36,7 @@
     "playwright/**/*.ts",
     "scripts/**/*.ts",
     "browserstack/**/*.ts",
+    "eslint-rules/**/*.ts",
     ".claude/hooks/**/*.ts"
   ]
 }

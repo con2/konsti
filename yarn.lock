@@ -2653,7 +2653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.6, @types/estree@npm:^1.0.8":
+"@types/estree@npm:*, @types/estree@npm:1.0.10, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.6, @types/estree@npm:^1.0.8":
   version: 1.0.10
   resolution: "@types/estree@npm:1.0.10"
   checksum: 10c0/d258926dac68425e77e43fd64045123b77f998ab2cf0bd0cc5a6ff016c365e60ed26f42adac64551906c1beab3bea08d60d113f905829ac60cfd6409db4761e9
@@ -8566,6 +8566,7 @@ __metadata:
     "@playwright/test": "npm:1.64.1"
     "@trivago/prettier-plugin-sort-imports": "npm:6.0.2"
     "@types/eslint-plugin-jsx-a11y": "npm:6.10.1"
+    "@types/estree": "npm:1.0.10"
     "@types/istanbul-lib-coverage": "npm:2.0.6"
     "@types/istanbul-lib-report": "npm:3.0.3"
     "@types/istanbul-lib-source-maps": "npm:4.0.4"
