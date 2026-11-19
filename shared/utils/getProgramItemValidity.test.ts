@@ -92,6 +92,17 @@ test("program item with minAttendance bigger than maxAttendance is invalid", () 
   expect(validity.allValuesValid).toBe(false);
 });
 
+test("program item with minAttendance equal to maxAttendance is valid", () => {
+  const validity = getProgramItemValidity({
+    ...testProgramItem,
+    minAttendance: 4,
+    maxAttendance: 4,
+  });
+
+  expect(validity.minAttendanceBiggerThanMax).toBe(false);
+  expect(validity.allValuesValid).toBe(true);
+});
+
 describe("Program item starting at half hour", () => {
   const halfHourStart = "2019-07-26T14:30:00.000Z";
   const evenHourStart = "2019-07-26T14:00:00.000Z";
@@ -110,6 +121,14 @@ describe("Program item starting at half hour", () => {
         twoPhaseSignupProgramTypes: [testProgramItem.programType],
       },
       invalid: true,
+    },
+    {
+      case: "lottery program item starting at even hour is valid",
+      programItem: { startTime: evenHourStart },
+      eventConfig: {
+        twoPhaseSignupProgramTypes: [testProgramItem.programType],
+      },
+      invalid: false,
     },
     {
       case: "direct sign-up program item is valid",
