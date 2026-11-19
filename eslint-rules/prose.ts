@@ -18,10 +18,11 @@ const fcfs: Check = {
   message: 'Write "first-come-first-served" in full',
 };
 
-// The unhyphenated spelling as a word of its own. A hyphenated compound like an
-// endpoint name is left alone, and so is an identifier, which has no word boundary.
+// The unhyphenated spelling as a word of its own or opening a compound like `signup-time`. One
+// that ends a compound, like an endpoint name, is left alone, and so are a URL path segment and
+// a camelCase identifier such as directSignup or signUp.
 const signup: Check = {
-  pattern: /(?<![\w-])signups?(?![\w-])/giu,
+  pattern: /(?<![\w/-])[sS]ignups?(?!\w)/gu,
   message: 'Write "sign-up" in prose, and say which: lottery or direct',
 };
 
@@ -33,6 +34,17 @@ const claudeMdReference: Check = {
 const designRuleNumber: Check = {
   pattern: /\brules? \d+\b/giu,
   message: "State the rule's substance, rule numbers change",
+};
+
+// URLs, and in code the backticked spans, name things that keep their own spelling. Blanked
+// rather than removed, so the offsets of what is left still match the source.
+const urlPattern = /https?:\/\/[^\s)>\]]+/gu;
+const codeSpanOrUrlPattern = /`[^`\n]*`|https?:\/\/[^\s)>\]]+/gu;
+
+const blank = (text: string, pattern: RegExp): string => {
+  return text.replaceAll(pattern, (span) => {
+    return " ".repeat(span.length);
+  });
 };
 
 const testFunctions = new Set(["describe", "it", "test", "suite", "bench"]);
@@ -108,7 +120,9 @@ const proseRule: Rule.RuleModule = {
       checks: Check[],
     ): void => {
       for (const check of checks) {
-        for (const match of text.matchAll(check.pattern)) {
+        const searched =
+          check === signup ? blank(text, codeSpanOrUrlPattern) : text;
+        for (const match of searched.matchAll(check.pattern)) {
           const start = textStart + match.index;
           context.report({
             loc: {
