@@ -32,6 +32,7 @@ They are collected in [Known gaps](#known-gaps) at the end.
 13. [A lottery sign-up is never deleted once its lottery has run][13]
 14. [An event log item is never deleted, and what it says never changes][14]
 15. [Every lottery that ran is recorded, whatever it placed][15]
+16. [What a win costs an attendee's other lottery sign-ups is set per event][16]
 
 ## 1. An always-open program item sits outside the lottery entirely
 
@@ -590,7 +591,7 @@ is a program item passed over for holding sign-ups. Joining a group gives up the
 was still waiting on ([rule 3][3]). Hiding removes them whatever their lottery has done, which is the
 second exception below. And a run removes the remaining sign-ups of the attendees it places, either
 the ones overlapping the spot just won or all their upcoming ones, according to the event's
-configured strategy. Adding a seventh should be treated as a design change, not an implementation
+configured strategy ([rule 16][16]). Adding a seventh should be treated as a design change, not an implementation
 detail.
 
 **The attendee cannot take one back either.** A record that survives only until its holder tidies it
@@ -732,6 +733,42 @@ Attendees see a filtered view of this: `/dashboard` lists only runs that placed 
 run that placed nobody has nothing for them to read. The filter belongs to the dashboard, not to
 what gets stored - the record is kept either way.
 
+## 16. What a win costs an attendee's other lottery sign-ups is set per event
+
+When a run places an attendee, it can give up the lottery sign-ups they still have waiting for later
+lotteries. How many is the event's choice, made in `removeLotterySignupsStrategy`, because what it
+trades is a convention's own call:
+
+- **`NONE`** keeps them all. A win at one hour leaves the attendee in every later lottery they
+  entered, and the first-time bonus ([rule 4][4]) is the only thing leaning those towards attendees
+  still without a spot.
+- **`OVERLAP`** gives up the ones for program items starting while the won one runs. They could only
+  win the attendee a second spot they cannot attend alongside the first, and [rule 10][10] would
+  leave both standing, since it displaces only the spot at the same hour. Overlapping spots an
+  attendee takes by their own hand are theirs to sort out; the lottery should not be the one handing
+  them out.
+- **`ALL_UPCOMING`** gives up every one, taking the winner out of the rest of the event's lotteries.
+  That turns the bonus's lean into a rule: a spot goes to somebody who has not had one whenever
+  anybody else entered for it.
+
+Whichever it is:
+
+- **Only for spots that landed.** The removal works from the results that were saved rather than
+  from what the algorithm proposed, since a sign-up given up for a spot that then did not land cannot
+  be entered again once its window has closed.
+- **Only sign-ups whose lottery is still ahead**, recognized by the lottery's mark ([rule 13][13]).
+  One for the start time just decided is kept as the record of having entered it.
+- **A group gives up its creator's sign-ups**, because those are the group's ([rule 3][3]). Placing
+  a group withdraws its later entries as a whole, and its members hold none of their own to lose.
+- **The placement says so.** The attendee's placement message tells them their other lottery
+  sign-ups were removed, worded for the event's strategy.
+
+**It is set before the event and kept for its length.** Changing it part way would hold attendees of
+earlier and later runs to different rules. The placement message also reads the strategy as it
+stands when the attendee opens it rather than as it was when they won, so every earlier placement
+would start describing a removal that never happened, which [rule 14][14] exists to prevent. Changing
+it mid-event is a design change.
+
 ## Known gaps
 
 Where the code does not yet do what a rule says. Each is set out in full under its own rule, with
@@ -769,3 +806,4 @@ what closing it would take.
 [13]: #13-a-lottery-sign-up-is-never-deleted-once-its-lottery-has-run
 [14]: #14-an-event-log-item-is-never-deleted-and-what-it-says-never-changes
 [15]: #15-every-lottery-that-ran-is-recorded-whatever-it-placed
+[16]: #16-what-a-win-costs-an-attendees-other-lottery-sign-ups-is-set-per-event
