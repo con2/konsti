@@ -40,6 +40,7 @@ import {
 import { EmailSender } from "server/features/notifications/email";
 import {
   findProgramItemById,
+  saveLotteryRanForStartTime,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
@@ -1614,6 +1615,50 @@ describe("The lottery for a start time runs once", () => {
       await findProgramItemById(testProgramItem2.programItemId),
     );
     expect(programItem.passedOverForLottery).toEqual(true);
+  });
+
+  test("does not lottery a program item again when it moves onto a start time still to be lotteried", async () => {
+    const assignmentAlgorithm = AssignmentAlgorithm.RANDOM_PADG;
+    const startTimeBeforeMove = subHours(
+      new Date(testProgramItem.startTime),
+      2,
+    ).toISOString();
+
+    // Lotteried two hours earlier and then moved here, next to one that has had no lottery
+    await saveProgramItems([
+      { ...testProgramItem, minAttendance: 1, maxAttendance: 3 },
+      {
+        ...testProgramItem2,
+        startTime: testProgramItem.startTime,
+        minAttendance: 1,
+        maxAttendance: 3,
+      },
+    ]);
+    await saveLotteryRanForStartTime([
+      { ...testProgramItem2, startTime: startTimeBeforeMove },
+    ]);
+    await saveUser(mockUser);
+    await saveLotterySignups({
+      username: mockUser.username,
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
+    });
+
+    const assignResults = unsafelyUnwrap(
+      await runAssignment({
+        assignmentAlgorithm,
+        assignmentTime: testProgramItem.startTime,
+      }),
+    );
+
+    expect(assignResults.status).toEqual(AssignmentResultStatus.SUCCESS);
+
+    // Still marked for the slot it was lotteried at, so it reads as moved rather than decided here
+    const movedProgramItem = unsafelyUnwrap(
+      await findProgramItemById(testProgramItem2.programItemId),
+    );
+    expect(movedProgramItem.lotteryRanForStartTime).toEqual(
+      startTimeBeforeMove,
+    );
   });
 
   test("writes no results record when every program item was skipped", async () => {
