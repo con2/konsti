@@ -59,7 +59,7 @@ Handler signature: `req: Request<unknown, unknown, RequestBody, RequestQuery>`. 
 
 Other middlewares:
 
-- `logApiCall` (mounted on `apiRoutes` only, not `sentryRoutes`) writes one access line per request via winston on response finish: `API call: METHOD /path STATUS Xms user=X ip=Y size=Z`. Skips OPTIONS preflights and strips `::ffff:` from IPv4-mapped IPs. Replaces morgan, which has been removed. It also **skips anything outside `/api` and `/auth`**: router-level middleware on a router mounted at the app root runs before any of that router's routes match, so it sees the static assets, `index.html` and SPA-fallback requests that fall through to the static middleware below it too - a single page load fetches dozens of chunks, which buried the API calls in the deployed logs.
+- `logApiCall` (mounted on `apiRoutes` only, not `sentryRoutes`) writes one access line per request via winston on response finish: `API call: METHOD /path STATUS Xms user=X ip=Y size=Z`. Skips OPTIONS preflights and strips `::ffff:` from IPv4-mapped IPs. It also **skips anything outside `/api` and `/auth`**: router-level middleware on a router mounted at the app root runs before any of that router's routes match, so it sees the static assets, `index.html` and SPA-fallback requests that fall through to the static middleware below it too - a single page load fetches dozens of chunks, which buried the API calls in the deployed logs.
 - `app.set("trust proxy", 1)` is unconditional (safe in dev because the server only binds to localhost; production reads `X-Forwarded-For` from k8s ingress).
 
 Intentional divergences from the standard chain:
@@ -102,7 +102,7 @@ When the unwrapped value is used **once**, inline `usersResult.value` at the use
 
 Local login (bcryptjs) and Kompassi OIDC (authorization code flow against `{KOMPASSI_BASE_URL}/oidc/authorize/` → `/oidc/token/` → `/oidc/userinfo/`; the `sub` claim is stored as `kompassiId`).
 
-**`kompassiId` must only ever meet a fresh database.** It holds the OIDC `sub` as a **string**, where the pre-OIDC code stored the legacy `/api/v2/people/me` numeric `id`. Both halves of that change break matching against rows written by the older code: Mongo queries are type-strict, so `findOne({kompassiId: "12"})` does not match a stored `12`, and `UserSchemaDb` now rejects a numeric `kompassiId` on every read — which fails `findUser`/`findUserByKompassiId`/session restore for **all** users, not just Kompassi ones. (Kompassi's own docs also call `sub` a different ID space from the legacy Person id, though the two values coincide in practice.) The per-event DB lifecycle already guarantees this, but a mid-event deploy against a populated DB, or a restored older dump, would silently re-create every Kompassi account with a fresh serial. Reset the local dev DB after pulling this. JWTs are signed/verified in `server/src/utils/jwt.ts` (per-role secret keys); the `Authorization: Bearer <jwt>` header is parsed in `utils/authHeader.ts` and enforced by `requireAuth`. User roles: admin, helper, regular user (`UserGroup` in `shared/types/models/user.ts`). The client stores the JWT in localStorage — see [client/CLAUDE.md](../client/CLAUDE.md).
+**`kompassiId` must only ever meet a fresh database.** It holds the OIDC `sub` as a **string**, where the pre-OIDC code stored the legacy `/api/v2/people/me` numeric `id`. Both halves of that change break matching against rows written by the older code: Mongo queries are type-strict, so `findOne({kompassiId: "12"})` does not match a stored `12`, and `UserSchemaDb` now rejects a numeric `kompassiId` on every read — which fails `findUser`/`findUserByKompassiId`/session restore for **all** users, not just Kompassi ones. (Kompassi's own docs also call `sub` a different ID space from the legacy Person id, though the two values coincide in practice.) The per-event DB lifecycle already guarantees this, but a mid-event deploy against a populated DB, or a restored older dump, would silently re-create every Kompassi account with a fresh serial. JWTs are signed/verified in `server/src/utils/jwt.ts` (per-role secret keys); the `Authorization: Bearer <jwt>` header is parsed in `utils/authHeader.ts` and enforced by `requireAuth`. User roles: admin, helper, regular user (`UserGroup` in `shared/types/models/user.ts`). The client stores the JWT in localStorage — see [client/CLAUDE.md](../client/CLAUDE.md).
 
 ## Rate Limiting
 
@@ -137,9 +137,7 @@ Two lottery algorithms: PADG (preference-based via `eventassigner-js`) and rando
   direct sign-up opening, on either side (`lotterySignupStillOpen`, `directSignupAlreadyOpen`). It
   lives there rather than in `runAssignment` because only a manual run can be off the mark - the
   cron derives its start time from the current time - and because every item in a run shares a
-  start time, making both verdicts properties of the run. Note this re-adds the guard reverted in
-  July 2026; the reason for that revert was that the re-run logic was about to be reworked, which
-  is what this is.
+  start time, making both verdicts properties of the run.
 
 **The rules the lottery is built around are written down in
 [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md)** - a group lands in one
@@ -172,9 +170,9 @@ over; `getAttendeeGroups` makes individuals groups of one so the group stays the
 `dropResultsThatDoNotFit` in `saveUserSignupResults` drops a whole group at a time for the same
 reason.
 
-Protecting a lottery-placed spot from being overwritten was built and removed. It only ever applied
+A lottery-placed spot gets no protection from being overwritten either. Protection would only apply
 to a program item rescheduled onto a slot its attendees had sign-ups for, where the attendee had
-never ranked the two against each other - and it withdrew an entire group whenever one member still
+never ranked the two against each other - and it would withdraw an entire group whenever one member
 held such a spot, since competing a member short would split the group.
 
 Taking part also means hearing the outcome: an attendee the lottery doesn't place gets the usual "no
@@ -206,7 +204,7 @@ attendees already in it leaves it over its new limit. Neither self-corrects, and
 the remedy - the ops answer to a lottery that went wrong, once its direct sign-up phase has opened,
 is the admin message plus direct sign-up. The clock gate above is what holds admins to that.
 
-**The assignment's event log is append-only** - see "an event log item is never deleted, and what it says never changes" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md). Nothing here removes or rewrites an item, and nothing needs to: `addAssignmentNotifications` runs after the spots are saved for a start time that is normally decided exactly once, so each attendee hears about it once. The de-duplication and follow-up notices that existed while re-runs did went with them. One case is left over: on the retry rule 6 permits, the winners are protected because the run reads their spots back off disk, but a rejection leaves no such trace, so everyone the first attempt turned down is told a second time. See "an event log item is never deleted" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md) for what closing it would take.
+**The assignment's event log is append-only** - see "an event log item is never deleted, and what it says never changes" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md). Nothing here removes or rewrites an item, and nothing needs to: `addAssignmentNotifications` runs after the spots are saved for a start time that is normally decided exactly once, so each attendee hears about it once. One case is left over: on the retry rule 6 permits, the winners are protected because the run reads their spots back off disk, but a rejection leaves no such trace, so everyone the first attempt turned down is told a second time. See "an event log item is never deleted" in [`docs/en/lottery-design-rules.md`](../docs/en/lottery-design-rules.md) for what closing it would take.
 
 Two mechanics hold the append-only half. `addEventLogItems` and the `isSeen` update are the only writes that touch `eventLogItems` at all, so **an update that saves a whole user document must leave the field out** — `updateUsersByUsername` lists five fields for exactly this reason, and its callers hand it a `User` they read moments earlier. Writing that back would silently drop any item appended in between, with no error and nothing in the log. And **`$addToSet` is not a duplicate guard here**: each item carries its own `createdAt` and Mongoose gives every subdocument an `_id`, so it behaves as `$push`. Nothing depends on it de-duplicating (the retry above assumes it doesn't), but don't read it as protection.
 
