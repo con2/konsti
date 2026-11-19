@@ -334,29 +334,82 @@ const markdownProseRule: MarkdownRuleDefinition = {
   },
 
   create: (context) => {
+    // The source rather than the decoded value, which drops blockquote markers, list
+    // indentation and escapes, so its offsets drift from the file's
+    const checkSource = (
+      position: { start: { offset?: number }; end: { offset?: number } },
+      prepare: (source: string) => string = (source) => source,
+    ): void => {
+      const { offset: start } = position.start;
+      const { offset: end } = position.end;
+      if (start === undefined || end === undefined) {
+        return;
+      }
+      const source = prepare(context.sourceCode.text.slice(start, end));
+      for (const check of [emDash, fcfs, signup]) {
+        const searched = check === signup ? blank(source, urlPattern) : source;
+        for (const match of searched.matchAll(check.pattern)) {
+          const matchStart = start + match.index;
+          context.report({
+            loc: {
+              start: context.sourceCode.getLocFromIndex(matchStart),
+              end: context.sourceCode.getLocFromIndex(
+                matchStart + match[0].length,
+              ),
+            },
+            message: check.message,
+          });
+        }
+      }
+    };
+
+    // Inline HTML splits into an opening tag, plain text and a closing tag, so the text between an
+    // inline code or pre element's tags is skipped by tracking which one is open. Inline HTML
+    // can't span blocks, so the flag is set only inside one and an unclosed one ends with it.
+    let insideInlineCode = false;
+    let phrasingDepth = 0;
+    const startBlock = (): void => {
+      phrasingDepth += 1;
+    };
+    const endBlock = (): void => {
+      phrasingDepth -= 1;
+      insideInlineCode = false;
+    };
+
     return {
       text: (node) => {
-        const start = node.position?.start.offset;
-        const end = node.position?.end.offset;
-        if (start === undefined || end === undefined) {
-          return;
+        if (node.position && !insideInlineCode) {
+          checkSource(node.position);
         }
-        // The source rather than the decoded value, which drops blockquote markers, list
-        // indentation and escapes, so its offsets drift from the file's
-        const source = context.sourceCode.text.slice(start, end);
-        for (const check of [emDash, fcfs, signup]) {
-          for (const match of source.matchAll(check.pattern)) {
-            const matchStart = start + match.index;
-            context.report({
-              loc: {
-                start: context.sourceCode.getLocFromIndex(matchStart),
-                end: context.sourceCode.getLocFromIndex(
-                  matchStart + match[0].length,
-                ),
-              },
-              message: check.message,
-            });
-          }
+      },
+
+      paragraph: startBlock,
+      heading: startBlock,
+      tableCell: startBlock,
+      "paragraph:exit": endBlock,
+      "heading:exit": endBlock,
+      "tableCell:exit": endBlock,
+
+      // Raw HTML is one node, text and tags together, so the tags are blanked out first
+      html: (node) => {
+        // An opening tag that isn't self-closing, and a closing one that may carry whitespace
+        if (
+          phrasingDepth > 0 &&
+          /^<(?:code|pre)(?=[\s/>])[^>]*(?<!\/)>$/iu.test(node.value)
+        ) {
+          insideInlineCode = true;
+        } else if (/^<\/(?:code|pre)\s*>$/iu.test(node.value)) {
+          insideInlineCode = false;
+        }
+        if (node.position) {
+          checkSource(node.position, (source) =>
+            source.replaceAll(
+              // Comments and code elements whole, then the remaining tags, skipping a > inside a
+              // quoted attribute value. A tag name only counts as code or pre where it ends.
+              /<!--[\s\S]*?-->|<(code|pre)(?=[\s/>])[\s\S]*?<\/\1\s*>|<(?:[^>"']|"[^"]*"|'[^']*')*>/giu,
+              (tag) => " ".repeat(tag.length),
+            ),
+          );
         }
       },
     };
