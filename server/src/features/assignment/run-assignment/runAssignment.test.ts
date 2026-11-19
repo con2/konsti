@@ -2092,6 +2092,10 @@ test("Should remove a lottery sign-up for a deleted program item before lotteryi
   expect(
     user?.lotterySignups.map((lotterySignup) => lotterySignup.programItemId),
   ).not.toContain(testProgramItem2.programItemId);
+  // The import that deleted the program item has already told them, so the run stays quiet
+  expect(
+    user?.eventLogItems.map((eventLogItem) => eventLogItem.action),
+  ).not.toContain(EventLogAction.PROGRAM_ITEM_DELETED);
 });
 
 test("Should leave lottery sign-ups alone when no lottery program item starts at the time", async () => {
