@@ -322,8 +322,9 @@ the doors opening, where the lottery window is empty only for those whose lotter
 before that moment. So a program item whose lottery closes during that hour would be taking
 first-come sign-ups from the doors while still accepting lottery entries. Nothing lands there: a
 lottery program item starts on the hour and so does the event, so its lottery closes on the hour
-too. A batched program item is the one exempt from that requirement, so a parent start time set
-inside that hour is the one thing that could open it.
+too. A batched program item is the one exempt from that requirement, so a parent start time whose
+lottery closes inside that hour is the one thing that could open it, and a test over the event config
+refuses one.
 
 So a lottery program item holding spots when its lottery is due has arrived there by some other
 route. Either it was always-open, or a non-lottery program type, and became a lottery item
