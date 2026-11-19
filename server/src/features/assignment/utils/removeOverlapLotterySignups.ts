@@ -29,13 +29,15 @@ export const removeOverlapLotterySignups = async (
     return usersResult;
   }
 
-  // A sign-up whose lottery has run records that the attendee entered it, so it is kept. The mark
-  // says which, since a move reopens the sign-up window; this run's own program items are not
-  // marked yet, so they are the ones the run itself starts.
-  const lotteriedProgramItemIds = new Set(
+  // A sign-up whose lottery has run records that the attendee entered it, so it is kept, and so is
+  // one for a program item passed over, which no lottery will take. The marks say which, since a
+  // move reopens the sign-up window; this run's own program items are not marked yet.
+  const sparedProgramItemIds = new Set(
     [
-      ...programItems.filter((programItem) =>
-        lotteryRanForProgramItem(programItem),
+      ...programItems.filter(
+        (programItem) =>
+          lotteryRanForProgramItem(programItem) ||
+          programItem.passedOverForLottery === true,
       ),
       ...getStartingProgramItems(programItems, assignmentTime),
     ].map((programItem) => programItem.programItemId),
@@ -87,7 +89,7 @@ export const removeOverlapLotterySignups = async (
           );
           if (
             !foundProgramItem ||
-            lotteriedProgramItemIds.has(foundProgramItem.programItemId)
+            sparedProgramItemIds.has(foundProgramItem.programItemId)
           ) {
             return false;
           }
@@ -120,7 +122,7 @@ export const removeOverlapLotterySignups = async (
         signedUser.lotterySignups,
         programItems,
         new Date(assignmentTime),
-      ).filter((programItemId) => !lotteriedProgramItemIds.has(programItemId));
+      ).filter((programItemId) => !sparedProgramItemIds.has(programItemId));
 
     if (upcomingLotterySignupProgramItemIds.length > 0) {
       usersToUpdate.push({

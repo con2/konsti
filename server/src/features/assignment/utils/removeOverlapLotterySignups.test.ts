@@ -16,6 +16,7 @@ import { removeOverlapLotterySignups } from "server/features/assignment/utils/re
 import {
   findProgramItems,
   saveLotteryRanForStartTime,
+  savePassedOverForLottery,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -655,4 +656,54 @@ test("should keep a winner's lottery sign-up for another program item in the sam
   expect(
     updatedUser?.lotterySignups.map((signup) => signup.programItemId),
   ).toEqual([testProgramItem.programItemId, testProgramItem2.programItemId]);
+});
+
+test("should not remove an overlapping lottery sign-up for a program item passed over for the lottery", async () => {
+  vi.spyOn(config, "event").mockReturnValue({
+    ...config.event(),
+    removeLotterySignupsStrategy: RemoveLotterySignupsStrategy.OVERLAP,
+  });
+
+  // Passed over at the hour it used to sit at, then moved to start while the won one runs
+  const passedOverProgramItemId = "passed-over-program-item-id";
+  const passedOverStartTime = addMinutes(
+    new Date(testProgramItem.startTime),
+    30,
+  ).toISOString();
+
+  await saveProgramItems([
+    testProgramItem,
+    {
+      ...testProgramItem,
+      programItemId: passedOverProgramItemId,
+      startTime: passedOverStartTime,
+    },
+  ]);
+  await savePassedOverForLottery([passedOverProgramItemId]);
+
+  await saveUser(mockUser);
+  await saveLotterySignups({
+    username: mockUser.username,
+    lotterySignups: [
+      mockLotterySignups[0],
+      {
+        programItemId: passedOverProgramItemId,
+        priority: 1,
+        signedToStartTime: passedOverStartTime,
+      },
+    ],
+  });
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+
+  await removeOverlapLotterySignups(
+    [getAssignmentResult({ username: mockUser.username })],
+    programItems,
+    testProgramItem.startTime,
+  );
+
+  const updatedUser = unsafelyUnwrap(await findUser(mockUser.username));
+  expect(
+    updatedUser?.lotterySignups.map((signup) => signup.programItemId),
+  ).toEqual([testProgramItem.programItemId, passedOverProgramItemId]);
 });
