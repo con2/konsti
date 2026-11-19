@@ -22,6 +22,7 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import { defineConfig, globalIgnores, includeIgnoreFile } from "eslint/config";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
+import { konstiPlugin } from "./eslint-rules/prose.ts";
 
 const filetypesGlob = "**/*.{ts,tsx}";
 
@@ -185,6 +186,7 @@ export default defineConfig([
 
     plugins: {
       vitest: eslintPluginVitest,
+      konsti: konstiPlugin,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       onlyError: eslintPluginOnlyError,
     },
@@ -216,6 +218,9 @@ export default defineConfig([
       "no-else-return": "error",
       curly: "error",
       "no-implicit-coercion": ["error", { boolean: false }],
+
+      // eslint-rules
+      "konsti/prose": "error",
 
       // eslint-plugin-import-x
       "import-x/no-namespace": [
@@ -487,6 +492,8 @@ export default defineConfig([
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
+      // The hooks are about the agent instruction files, so they name them
+      "konsti/prose": ["error", { allowClaudeMdReferences: true }],
     },
   },
 
