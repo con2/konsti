@@ -111,7 +111,7 @@ test("Helper can view private sign-up question answers", async ({
     message: "Wizard",
   });
 
-  // signup-message endpoint is helper-only, so sign in as a helper here
+  // The `signup-message` endpoint is helper-only, so sign in as a helper here
   await login(page, request, { username: "helper", password: "test" });
   await page.goto("/");
 

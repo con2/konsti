@@ -2,6 +2,7 @@ import { beforeEach, expect, test, vi } from "vitest";
 import { Locale } from "shared/types/locale";
 import {
   getLocaleSnapshot,
+  localeFor,
   setLocale,
   subscribeToLocale,
 } from "shared/utils/setLocale";
@@ -50,4 +51,10 @@ test("stops notifying after unsubscribe", () => {
   setLocale(Locale.FI);
 
   expect(listener).not.toHaveBeenCalled();
+});
+
+// The remap only touches the abbreviated width, so a call naming no width at all
+// still gets date-fns's own default
+test("Finnish weekday names without a width are the full names", () => {
+  expect(localeFor(Locale.FI).localize.day(4)).toEqual("torstai");
 });

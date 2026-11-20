@@ -2,7 +2,9 @@ import { fileURLToPath } from "node:url";
 import eslintPluginCommentsConfigs from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 import eslint from "@eslint/js";
+import eslintMarkdown from "@eslint/markdown";
 import eslintPluginVitest from "@vitest/eslint-plugin";
+import type { Linter } from "eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginCompat from "eslint-plugin-compat";
 import eslintPluginImport from "eslint-plugin-import-x";
@@ -22,8 +24,13 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import { defineConfig, globalIgnores, includeIgnoreFile } from "eslint/config";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
+import { konstiPlugin } from "./eslint-rules/prose.ts";
 
 const filetypesGlob = "**/*.{ts,tsx}";
+
+// TypeScript and MDX. Markdown is parsed as its own language that the JavaScript and
+// TypeScript rules refuse to run on, and plain JavaScript gets an untyped block of its own.
+const codeFiles = [filetypesGlob, "**/*.mdx"];
 
 const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
@@ -39,6 +46,22 @@ const restrictedSyntax = [
   {
     selector: "CallExpression[callee.name='useSelector']",
     message: "Please use useAppSelector()",
+  },
+  {
+    selector:
+      "CallExpression:matches([callee.name='expect'], [callee.object.name='expect']) > LogicalExpression[operator='&&']",
+    message: "One assertion per expect, or assert the whole object",
+  },
+  {
+    // expect.poll takes a callback, so the condition sits in its body rather than its argument
+    selector:
+      "CallExpression[callee.object.name='expect'][callee.property.name='poll'] > :function > LogicalExpression[operator='&&']",
+    message: "One assertion per expect, or assert the whole object",
+  },
+  {
+    selector:
+      "CallExpression[callee.object.name='expect'][callee.property.name='poll'] > :function > BlockStatement > ReturnStatement > LogicalExpression[operator='&&']",
+    message: "One assertion per expect, or assert the whole object",
   },
 ];
 
@@ -116,16 +139,68 @@ const languageBindingModules = [
   "client/src/views/program-item/programItemUtils.ts",
 ];
 
+// What every code file gets, plain JavaScript included, since none of it needs type information
+const untypedPlugins = {
+  konsti: konstiPlugin,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  onlyError: eslintPluginOnlyError,
+};
+
+const linterOptions: Linter.LinterOptions = {
+  reportUnusedInlineConfigs: "error",
+  reportUnusedDisableDirectives: "error",
+};
+
+const untypedRules: Linter.RulesRecord = {
+  // eslint
+  "no-param-reassign": "error",
+  "no-console": "error",
+  "object-shorthand": "error",
+  "no-restricted-syntax": ["error", ...restrictedSyntax],
+  "no-else-return": "error",
+  curly: "error",
+  "no-implicit-coercion": ["error", { boolean: false }],
+
+  // eslint-rules
+  "konsti/prose": "error",
+
+  // eslint-plugin-unicorn
+  "unicorn/prefer-top-level-await": "off", // Don't enforce top-level await style
+  "unicorn/no-top-level-side-effects": "off", // Express route registration, Mongoose schema setup and i18next init are top-level side effects by design
+  "unicorn/numeric-separators-style": "off", // Don't want this
+  "unicorn/no-lonely-if": "off", // Don't want this
+  "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
+  "unicorn/prefer-ternary": "off", // Prefer early returns - it also flags guard clauses that return one of two values
+};
+
 export default defineConfig([
-  eslint.configs.recommended,
-  typescriptEslint.configs.strictTypeChecked,
-  typescriptEslint.configs.stylisticTypeChecked,
-  eslintPluginCommentsConfigs.recommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  eslintPluginPromise.configs["flat/recommended"],
-  eslintPluginImport.flatConfigs.recommended,
-  eslintPluginImport.flatConfigs.typescript,
-  eslintPluginUnicorn.configs.unopinionated,
+  {
+    files: codeFiles,
+    extends: [
+      eslint.configs.recommended,
+      typescriptEslint.configs.strictTypeChecked,
+      typescriptEslint.configs.stylisticTypeChecked,
+      eslintPluginCommentsConfigs.recommended,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      eslintPluginPromise.configs["flat/recommended"],
+      eslintPluginImport.flatConfigs.recommended,
+      eslintPluginImport.flatConfigs.typescript,
+      eslintPluginUnicorn.configs.unopinionated,
+    ],
+  },
+
+  // Plain JavaScript sits outside every tsconfig, so it takes only the rules that need no types
+  {
+    files: ["**/*.{js,cjs,mjs}"],
+    extends: [
+      eslint.configs.recommended,
+      eslintPluginUnicorn.configs.unopinionated,
+    ],
+    plugins: untypedPlugins,
+    languageOptions: { globals: globals.node },
+    linterOptions,
+    rules: untypedRules,
+  },
 
   includeIgnoreFile(gitignorePath),
 
@@ -133,6 +208,8 @@ export default defineConfig([
     "**/.*", // Ignore dotfiles
     "!.claude", // un-prune .claude so the project hooks can be linted
     "!.claude/hooks/**",
+    "!.github",
+    "!.github/**",
     "**/coverage/**",
     "**/front/**",
     "**/build/**",
@@ -156,10 +233,11 @@ export default defineConfig([
   },
 
   {
+    files: codeFiles,
+
     plugins: {
       vitest: eslintPluginVitest,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      onlyError: eslintPluginOnlyError,
+      ...untypedPlugins,
     },
 
     settings: {
@@ -173,22 +251,12 @@ export default defineConfig([
       },
     },
 
-    linterOptions: {
-      reportUnusedInlineConfigs: "error",
-      reportUnusedDisableDirectives: "error",
-    },
+    linterOptions,
 
     rules: {
       ...eslintPluginVitest.configs.recommended.rules,
 
-      // eslint
-      "no-param-reassign": "error",
-      "no-console": "error",
-      "object-shorthand": "error",
-      "no-restricted-syntax": ["error", ...restrictedSyntax],
-      "no-else-return": "error",
-      curly: "error",
-      "no-implicit-coercion": ["error", { boolean: false }],
+      ...untypedRules,
 
       // eslint-plugin-import-x
       "import-x/no-namespace": [
@@ -213,14 +281,6 @@ export default defineConfig([
         "error",
         { assertFunctionNames: ["expect", "assertSignupTime"] },
       ],
-
-      // eslint-plugin-unicorn
-      "unicorn/prefer-top-level-await": "off", // Don't enforce top-level await style
-      "unicorn/no-top-level-side-effects": "off", // Express route registration, Mongoose schema setup and i18next init are top-level side effects by design
-      "unicorn/numeric-separators-style": "off", // Don't want this
-      "unicorn/no-lonely-if": "off", // Don't want this
-      "unicorn/no-declarations-before-early-exit": "off", // Don't want this - makes grouping similar kinds of things harder
-      "unicorn/prefer-ternary": "off", // Prefer early returns - it also flags guard clauses that return one of two values
 
       // @typescript-eslint
       "@typescript-eslint/explicit-module-boundary-types": "error",
@@ -301,7 +361,12 @@ export default defineConfig([
 
     plugins: {
       react: fixupPluginRules(eslintPluginReact),
-      "react-hooks": eslintPluginReactHooks,
+      // The whole plugin does not type-check as one: its nested configs.flat
+      // fits no Plugin config shape, and a plugins entry needs only these two
+      "react-hooks": {
+        meta: eslintPluginReactHooks.meta,
+        rules: eslintPluginReactHooks.rules,
+      },
     },
 
     settings: {
@@ -455,6 +520,8 @@ export default defineConfig([
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
+      // The hooks are about the agent instruction files, so they name them
+      "konsti/prose": ["error", { allowClaudeMdReferences: true }],
     },
   },
 
@@ -547,6 +614,19 @@ export default defineConfig([
       "react/jsx-curly-brace-presence": "off",
       "react/no-unescaped-entities": "off",
       "react/self-closing-comp": "off",
+    },
+  },
+
+  // ** Markdown **
+  {
+    files: ["**/*.md"],
+    // Agent instruction files keep their established em dash style
+    ignores: ["**/CLAUDE.md", ".claude/skills/**"],
+    plugins: { markdown: eslintMarkdown, konsti: konstiPlugin },
+    language: "markdown/gfm",
+    languageOptions: { frontmatter: "yaml" },
+    rules: {
+      "konsti/markdown-prose": "error",
     },
   },
 

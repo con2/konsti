@@ -32,6 +32,7 @@ They are collected in [Known gaps](#known-gaps) at the end.
 13. [A lottery sign-up is never deleted once its lottery has run][13]
 14. [An event log item is never deleted, and what it says never changes][14]
 15. [Every lottery that ran is recorded, whatever it placed][15]
+16. [What a win costs an attendee's other lottery sign-ups is set per event][16]
 
 ## 1. An always-open program item sits outside the lottery entirely
 
@@ -126,12 +127,16 @@ member joining afterwards enlarges the group and one leaving shrinks it, and the
 spots for the group it finds. A group that has outgrown a program item's attendance limit therefore
 lands nowhere rather than partly, which is this rule holding rather than failing.
 
-**The write is the exception, and [rule 7][7] is what covers it.** The attendance limit is applied once
-more as the spots are saved, over a flat list of attendees rather than over groups, so a group
-arriving at a program item with less room than it needs would be cut part way through and stored
-split. Nothing afterwards puts it back: the members who landed are recorded as placed, and the rest
-are told they got nothing. The room is never short, because a program item is empty when it is
-lotteried - so here the guarantee rests on that rule rather than on the write.
+**Two checks stand at the write, and [rule 7][7] is why neither fires.** Before anything is saved,
+the results are measured against the room each program item had when the run read it, and a group
+that does not fit is dropped whole. The write then applies the attendance limit again, against the
+sign-ups as they stand at that moment and over a flat list of attendees rather than over groups - so
+a group that lost room between the read and the write would be cut part way through and stored
+split, with the members who landed recorded as placed and the rest told they got nothing. Neither
+happens, because a program item is empty when it is lotteried and takes no first-come sign-up until
+its lottery is behind it, so the room the results were drawn against is the room they are saved
+into. The first check is the one that keeps a group whole if that ever changes before the read; the
+second is a cap rather than a guard, and cannot.
 
 ## 4. A first-time bonus goes to attendees who hold no lottery spot yet
 
@@ -322,8 +327,9 @@ the doors opening, where the lottery window is empty only for those whose lotter
 before that moment. So a program item whose lottery closes during that hour would be taking
 first-come sign-ups from the doors while still accepting lottery entries. Nothing lands there: a
 lottery program item starts on the hour and so does the event, so its lottery closes on the hour
-too. A batched program item is the one exempt from that requirement, so a parent start time set
-inside that hour is the one thing that could open it.
+too. A batched program item is the one exempt from that requirement, so a parent start time whose
+lottery closes inside that hour is the one thing that could open it, and a test over the event config
+refuses one.
 
 So a lottery program item holding spots when its lottery is due has arrived there by some other
 route. Either it was always-open, or a non-lottery program type, and became a lottery item
@@ -585,7 +591,7 @@ is a program item passed over for holding sign-ups. Joining a group gives up the
 was still waiting on ([rule 3][3]). Hiding removes them whatever their lottery has done, which is the
 second exception below. And a run removes the remaining sign-ups of the attendees it places, either
 the ones overlapping the spot just won or all their upcoming ones, according to the event's
-configured strategy. Adding a seventh should be treated as a design change, not an implementation
+configured strategy ([rule 16][16]). Adding a seventh should be treated as a design change, not an implementation
 detail.
 
 **The attendee cannot take one back either.** A record that survives only until its holder tidies it
@@ -633,9 +639,13 @@ a closed window, the rest leaving the time it is derived from alone. So each aut
 the lottery's mark beside the window: `lotteryRanForStartTime` records that a run decided the
 program item, and is left out of the import's update so a programme change cannot clear it.
 
-The run's own removal goes by the mark alone. The sign-ups it takes from the attendees it places are
-picked by start time, so a program item another run has already decided is what it has to recognize,
-and the mark is what says so.
+The run's own removal asks the mark and not the window. The sign-ups it takes from the attendees it
+places are picked by start time, so a program item another run has already decided is what it has
+to recognize, and the mark is what says so. Its own program items are not marked until it has
+saved its spots, so those it recognizes by the start time it is lotteried at - which is what keeps a
+batch's later program items, whose own hours fall inside the spot just won. A program item passed over
+for holding sign-ups carries the other mark, `passedOverForLottery`, and is spared the same way:
+whatever lottery sign-ups it still carries are records, since no lottery will take it.
 
 ## 14. An event log item is never deleted, and what it says never changes
 
@@ -727,6 +737,45 @@ Attendees see a filtered view of this: `/dashboard` lists only runs that placed 
 run that placed nobody has nothing for them to read. The filter belongs to the dashboard, not to
 what gets stored - the record is kept either way.
 
+## 16. What a win costs an attendee's other lottery sign-ups is set per event
+
+When a run places an attendee, it can give up the lottery sign-ups they still have waiting for later
+lotteries. How many is the event's choice, made in `removeLotterySignupsStrategy`, because what it
+trades is a convention's own call:
+
+- **`NONE`** keeps them all. A win at one hour leaves the attendee in every later lottery they
+  entered, and the first-time bonus ([rule 4][4]) is the only thing leaning those towards attendees
+  still without a spot.
+- **`OVERLAP`** gives up the ones for program items starting while the won one runs. They could only
+  win the attendee a second spot they cannot attend alongside the first, and [rule 10][10] would
+  leave both standing, since it displaces only the spot at the same hour. Overlapping spots an
+  attendee takes by their own hand are theirs to sort out; the lottery should not be the one handing
+  them out.
+- **`ALL_UPCOMING`** gives up every one, taking the winner out of the rest of the event's lotteries.
+  That turns the bonus's lean into a rule: a spot goes to somebody who has not had one whenever
+  anybody else entered for it.
+
+Whichever it is:
+
+- **Only for spots that landed.** The removal works from the results that were saved rather than
+  from what the algorithm proposed, since a sign-up given up for a spot that then did not land cannot
+  be entered again once its window has closed.
+- **Only sign-ups whose lottery is still ahead**, recognized by the lottery's mark ([rule 13][13]).
+  One for the lottery just decided is kept as the record of having entered it, batch included,
+  though the run has not marked those program items yet, and so is one for a program item passed
+  over for holding sign-ups ([rule 7][7]), which no lottery will take.
+- **A group gives up its creator's sign-ups**, because those are the group's ([rule 3][3]). Placing
+  a group withdraws its later entries as a whole, and its members hold none of their own to lose.
+- **The placement says so.** The attendee's placement message states the event's strategy: which
+  of their lottery sign-ups a win removes. It describes the policy rather than reporting a removal,
+  so it reads the same whether or not the attendee had any such sign-ups to lose.
+
+**It is set before the event and kept for its length.** Changing it part way would hold attendees of
+earlier and later runs to different rules. The placement message also reads the strategy as it
+stands when the attendee opens it rather than as it was when they won, so every earlier placement
+would start describing a policy its win was never held to, which [rule 14][14] exists to prevent.
+Changing it mid-event is a design change.
+
 ## Known gaps
 
 Where the code does not yet do what a rule says. Each is set out in full under its own rule, with
@@ -764,3 +813,4 @@ what closing it would take.
 [13]: #13-a-lottery-sign-up-is-never-deleted-once-its-lottery-has-run
 [14]: #14-an-event-log-item-is-never-deleted-and-what-it-says-never-changes
 [15]: #15-every-lottery-that-ran-is-recorded-whatever-it-placed
+[16]: #16-what-a-win-costs-an-attendees-other-lottery-sign-ups-is-set-per-event

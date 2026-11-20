@@ -7,6 +7,7 @@ import { UserAssignmentResult } from "shared/types/models/result";
 import { Result, makeSuccessResult } from "shared/utils/result";
 import { lotteryRanForProgramItem } from "shared/utils/signupTimes";
 import { isBetweenExclusive } from "shared/utils/timeComparison";
+import { getStartingProgramItems } from "server/features/assignment/utils/getStartingProgramItems";
 import { getUpcomingLotterySignupProgramItemIds } from "server/features/assignment/utils/getUpcomingLotterySignups";
 import {
   DeleteLotterySignupsParams,
@@ -28,13 +29,18 @@ export const removeOverlapLotterySignups = async (
     return usersResult;
   }
 
-  // A sign-up whose lottery has run records that the attendee entered it, so only one still
-  // waiting for its lottery is given up for the spot just won. The mark is what says which: the
-  // sign-up window is derived from the current start time, which a move reopens.
-  const lotteriedProgramItemIds = new Set(
-    programItems
-      .filter((programItem) => lotteryRanForProgramItem(programItem))
-      .map((programItem) => programItem.programItemId),
+  // A sign-up whose lottery has run records that the attendee entered it, so it is kept, and so is
+  // one for a program item passed over, which no lottery will take. The marks say which, since a
+  // move reopens the sign-up window; this run's own program items are not marked yet.
+  const sparedProgramItemIds = new Set(
+    [
+      ...programItems.filter(
+        (programItem) =>
+          lotteryRanForProgramItem(programItem) ||
+          programItem.passedOverForLottery === true,
+      ),
+      ...getStartingProgramItems(programItems, assignmentTime),
+    ].map((programItem) => programItem.programItemId),
   );
 
   const strategy = config.event().removeLotterySignupsStrategy;
@@ -83,7 +89,7 @@ export const removeOverlapLotterySignups = async (
           );
           if (
             !foundProgramItem ||
-            lotteriedProgramItemIds.has(foundProgramItem.programItemId)
+            sparedProgramItemIds.has(foundProgramItem.programItemId)
           ) {
             return false;
           }
@@ -116,7 +122,7 @@ export const removeOverlapLotterySignups = async (
         signedUser.lotterySignups,
         programItems,
         new Date(assignmentTime),
-      ).filter((programItemId) => !lotteriedProgramItemIds.has(programItemId));
+      ).filter((programItemId) => !sparedProgramItemIds.has(programItemId));
 
     if (upcomingLotterySignupProgramItemIds.length > 0) {
       usersToUpdate.push({

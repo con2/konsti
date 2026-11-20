@@ -115,7 +115,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
   });
 
   test("should refuse a manual assignment once direct sign-up for that starting time is open", async () => {
-    // A lottery run after the direct signup phase opens competes with the first-come queue
+    // A lottery run after the direct sign-up phase opens competes with the first-come queue
     // and moves attendees out of spots they picked themselves
     await saveProgramItems([
       { ...testProgramItem, startTime: subHours(new Date(), 1).toISOString() },
@@ -134,7 +134,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
     expect(body.status).toEqual("error");
     expect(body.errorId).toEqual("directSignupAlreadyOpen");
 
-    // Nothing was lotteried, so the program item can still take direct signups
+    // Nothing was lotteried, so the program item can still take direct sign-ups
     const programItems = unsafelyUnwrap(await findProgramItems());
     expect(programItems[0].lotteryRanForStartTime).toBeUndefined();
   });
@@ -162,7 +162,7 @@ describe(`POST ${ApiEndpoint.ASSIGNMENT}`, () => {
   });
 
   test("should allow a manual assignment while the lottery for that starting time is still due", async () => {
-    // The gap between a lottery and its direct signup phase is the window for re-running one
+    // The gap between a lottery and its direct sign-up phase is the window for re-running one
     // that failed: with directSignupPhaseStart at 2h, an item starting in 1h55m had its
     // lottery five minutes ago and opens direct sign-up in ten, so a run now is neither
     // early nor late

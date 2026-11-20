@@ -8,8 +8,12 @@ import {
   formattedCurrentTime,
   getDate,
   getDateAndTime,
+  getIsoDate,
+  getLocalDateAndTime,
+  getLocalTimezone,
   getShortDate,
   getShortWeekdayAndTime,
+  getShortWeekdayInEnglish,
   getTime,
   getTimezone,
   getWeekdayAndTime,
@@ -197,6 +201,48 @@ describe("getDateAndTime", () => {
     [SUMMER, Locale.EN, "Wed 15.7.2026 13:30"],
   ])("(%s, %s) is %s", (time, locale, expected) => {
     expect(getDateAndTime(time, locale)).toEqual(expected);
+  });
+});
+
+// The host runs in UTC, so these read the UTC wall clock where the event's
+// formatters above read Helsinki's
+describe("Viewer's own timezone", () => {
+  beforeAll(() => {
+    setLocale(Locale.EN);
+  });
+
+  test.each([
+    [WINTER, Locale.FI, "to 15.1.2026 10:30"],
+    [SUMMER, Locale.EN, "Wed 15.7.2026 10:30"],
+  ])("getLocalDateAndTime(%s, %s) is %s", (time, locale, expected) => {
+    expect(getLocalDateAndTime(time, locale)).toEqual(expected);
+  });
+
+  test("getLocalTimezone names the host's timezone", () => {
+    expect(getLocalTimezone(SUMMER, Locale.EN)).toEqual("GMT+0");
+  });
+});
+
+// The statistics documents group by the event's wall clock and are written in
+// English whatever the UI language is
+describe("Statistics document formatting", () => {
+  beforeAll(() => {
+    setLocale(Locale.FI);
+  });
+
+  test.each([
+    [WINTER, "2026-01-15"],
+    [MIDNIGHT, "2026-02-11"],
+    [YEAR_END, "2026-12-31"],
+  ])("getIsoDate(%s) is %s", (time, expected) => {
+    expect(getIsoDate(time)).toEqual(expected);
+  });
+
+  test.each([
+    [WINTER, "Thu"],
+    [MIDNIGHT, "Wed"],
+  ])("getShortWeekdayInEnglish(%s) is %s", (time, expected) => {
+    expect(getShortWeekdayInEnglish(time)).toEqual(expected);
   });
 });
 

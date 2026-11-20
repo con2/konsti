@@ -52,9 +52,10 @@ describe("An invalid date compares false, not true", () => {
   });
 
   test("an invalid date is never both at or after and at or before", () => {
-    expect(
-      isSameOrAfter(earlier, invalid) && isSameOrBefore(earlier, invalid),
-    ).toEqual(false);
+    expect([
+      isSameOrAfter(earlier, invalid),
+      isSameOrBefore(earlier, invalid),
+    ]).not.toEqual([true, true]);
   });
 });
 
