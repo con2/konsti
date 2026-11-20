@@ -13,6 +13,7 @@ import {
   findProgramItemById,
   findProgramItems,
   saveLotteryRanForStartTime,
+  savePassedOverForLottery,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { findUsers, saveUser } from "server/features/user/userRepository";
@@ -20,7 +21,7 @@ import { mockUser } from "server/test/mock-data/mockUser";
 import { mockNotificationQueue } from "server/test/utils/mockNotificationQueue";
 import { unsafelyUnwrap } from "server/test/utils/unsafelyUnwrapResult";
 
-// Kept as the real implementation, so only the case that needs a failed write replaces it
+// Kept as the real implementations, so only the cases that need a failed write replace them
 vi.mock(
   import("server/features/program-item/programItemRepository"),
   async (originalImport) => {
@@ -28,6 +29,7 @@ vi.mock(
     return {
       ...actual,
       saveLotteryRanForStartTime: vi.fn(actual.saveLotteryRanForStartTime),
+      savePassedOverForLottery: vi.fn(actual.savePassedOverForLottery),
     };
   },
 );
@@ -117,4 +119,31 @@ test("should still tell the winners when every attempt to mark the program items
   expect(user.eventLogItems.map((item) => item.action)).toEqual([
     EventLogAction.NEW_ASSIGNMENT,
   ]);
+});
+
+test("should record the passed-over program items when the first attempt fails", async () => {
+  await saveProgramItems([testProgramItem]);
+
+  vi.mocked(savePassedOverForLottery).mockResolvedValueOnce(
+    makeErrorResult(MongoDbError.UNKNOWN_ERROR),
+  );
+
+  const programItems = unsafelyUnwrap(await findProgramItems());
+  unsafelyUnwrap(
+    await saveResults({
+      results: [],
+      assignmentTime: testProgramItem.startTime,
+      algorithm: AssignmentAlgorithm.RANDOM,
+      message: "",
+      users: [],
+      programItems,
+      lotteriedProgramItems: [],
+      passedOverProgramItems: programItems,
+    }),
+  );
+
+  const programItem = unsafelyUnwrap(
+    await findProgramItemById(testProgramItem.programItemId),
+  );
+  expect(programItem.passedOverForLottery).toBe(true);
 });
