@@ -286,6 +286,8 @@ interface PopularityUpdate {
 // change as the clock moves past its sign-up window
 export const savePassedOverForLottery = async (
   programItemIds: readonly string[],
+  // Set by a caller that will try again, so its earlier attempts log a warning rather than an error
+  { willRetry = false }: { willRetry?: boolean } = {},
 ): Promise<Result<void, MongoDbError>> => {
   if (programItemIds.length === 0) {
     return makeSuccessResult();
@@ -301,11 +303,17 @@ export const savePassedOverForLottery = async (
     );
     return makeSuccessResult();
   } catch (error) {
-    logger.error(
-      new Error("MongoDB: Error recording program items as passed over", {
-        cause: error,
-      }),
-    );
+    if (willRetry) {
+      logger.warn(
+        `MongoDB: Error recording program items as passed over, retrying: ${String(error)}`,
+      );
+    } else {
+      logger.error(
+        new Error("MongoDB: Error recording program items as passed over", {
+          cause: error,
+        }),
+      );
+    }
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

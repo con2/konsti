@@ -69,7 +69,9 @@ export const saveResults = async ({
   // The program items that went through the lottery, placed or not: their lottery has happened.
   // Written only once the spots exist, because nothing clears the mark - marking before a
   // failed save would strand them out of the lottery with nobody placed.
-  const saveLotteryRanResult = await markLotteried(lotteriedProgramItems);
+  const saveLotteryRanResult = await writeWithRetries((options) =>
+    saveLotteryRanForStartTime(lotteriedProgramItems, options),
+  );
   if (!saveLotteryRanResult.ok) {
     // The spots are saved, so returning here would cost the winners their notifications. A
     // moved program item without the mark reads as never lotteried, though, which is why the
@@ -81,8 +83,12 @@ export const saveResults = async ({
     );
   }
 
-  const savePassedOverResult = await savePassedOverForLottery(
-    passedOverProgramItems.map((programItem) => programItem.programItemId),
+  // Retried too: a program item with neither mark reads as still to be lotteried
+  const savePassedOverResult = await writeWithRetries((options) =>
+    savePassedOverForLottery(
+      passedOverProgramItems.map((programItem) => programItem.programItemId),
+      options,
+    ),
   );
   if (!savePassedOverResult.ok) {
     logger.error(
@@ -118,18 +124,18 @@ export const saveResults = async ({
 
 const MARK_RETRY_DELAYS_MS = [500, 2000];
 
-const markLotteried = async (
-  lotteriedProgramItems: readonly ProgramItem[],
+const writeWithRetries = async (
+  write: (options: {
+    willRetry: boolean;
+  }) => Promise<Result<void, MongoDbError>>,
 ): Promise<Result<void, MongoDbError>> => {
-  let result = await saveLotteryRanForStartTime(lotteriedProgramItems, {
-    willRetry: true,
-  });
+  let result = await write({ willRetry: true });
   for (const [index, delayMs] of MARK_RETRY_DELAYS_MS.entries()) {
     if (result.ok) {
       break;
     }
     await sleep(delayMs);
-    result = await saveLotteryRanForStartTime(lotteriedProgramItems, {
+    result = await write({
       willRetry: index < MARK_RETRY_DELAYS_MS.length - 1,
     });
   }
