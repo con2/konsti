@@ -31,6 +31,7 @@ import {
   findOrCreateSettings,
   getLatestServerStartTime,
   isAssignmentInProgress,
+  releaseAssignmentLock,
   saveSettings,
 } from "server/features/settings/settingsRepository";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
@@ -43,6 +44,7 @@ import {
   setLatestServerStartTime,
   startCronJobs,
   stopCronJobs,
+  waitForAssignmentTick,
 } from "server/utils/cron";
 import { logger } from "server/utils/logger";
 import { closeServer, startServer } from "server/utils/server";
@@ -80,6 +82,7 @@ vi.mock(
       ...original,
       getLatestServerStartTime: vi.fn(original.getLatestServerStartTime),
       acquireAssignmentLock: vi.fn(original.acquireAssignmentLock),
+      releaseAssignmentLock: vi.fn(original.releaseAssignmentLock),
     };
   },
 );
@@ -127,6 +130,7 @@ afterEach(async () => {
   vi.mocked(getLatestServerStartTime).mockReset();
   vi.mocked(acquireAssignmentLock).mockReset();
   vi.mocked(runAssignment).mockReset();
+  vi.mocked(releaseAssignmentLock).mockReset();
   vi.setSystemTime(timeNow);
   await closeServer(server);
 });
@@ -744,6 +748,74 @@ describe("Cronjob registration", () => {
     expect(unsafelyUnwrap(await isAssignmentInProgress())).toEqual(false);
   });
 
+  test("should let a shutdown wait for a lottery tick in flight", async () => {
+    vi.spyOn(config, "server").mockReturnValue({
+      ...config.server(),
+      autoUpdateProgramEnabled: false,
+      autoAssignAttendeesEnabled: true,
+      autoAssignInterval: nextNewYear,
+    });
+    await startCronJobs();
+    const { promise: runFinished, resolve: finishRun } =
+      Promise.withResolvers<typeof databaseUnavailable>();
+    vi.mocked(runAssignment).mockReturnValueOnce(runFinished);
+    // The shutdown's time limit, which this tick finishes well within
+    vi.mocked(sleep).mockReturnValueOnce(
+      Promise.withResolvers<undefined>().promise,
+    );
+
+    const tick = autoAssignAttendees();
+    // Wait for the run attempt to start before the shutdown lands
+    await vi.waitUntil(() => {
+      return vi.mocked(runAssignment).mock.calls.length > 0;
+    });
+    stopCronJobs();
+    let shutdownWaited = false;
+    const waitForShutdown = async (): Promise<void> => {
+      await waitForAssignmentTick();
+      shutdownWaited = true;
+    };
+    const shutdown = waitForShutdown();
+    await new Promise(setImmediate);
+    expect(shutdownWaited).toEqual(false);
+
+    finishRun(databaseUnavailable);
+    await shutdown;
+    await tick;
+
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      new Error(
+        `***** Auto assignment abandoned start time ${addMinutes(new Date(timeNow), config.event().directSignupPhaseStart).toISOString()} as cronjobs stopped. If a lottery was due, run it manually before direct sign-up opens`,
+      ),
+    );
+    expect(unsafelyUnwrap(await isAssignmentInProgress())).toEqual(false);
+  });
+
+  test("should stop waiting for a stuck lottery tick once the time limit passes", async () => {
+    vi.spyOn(config, "server").mockReturnValue({
+      ...config.server(),
+      autoUpdateProgramEnabled: false,
+      autoAssignAttendeesEnabled: true,
+      autoAssignInterval: nextNewYear,
+    });
+    await startCronJobs();
+    const { promise: runFinished, resolve: finishRun } =
+      Promise.withResolvers<typeof databaseUnavailable>();
+    vi.mocked(runAssignment).mockReturnValueOnce(runFinished);
+    const tick = autoAssignAttendees();
+    await vi.waitUntil(() => {
+      return vi.mocked(runAssignment).mock.calls.length > 0;
+    });
+
+    // The time limit's sleep ends at once, as the mocked sleep does
+    await waitForAssignmentTick();
+
+    expect(sleep).toHaveBeenCalledWith(15 * 1000, expect.any(AbortSignal));
+    stopCronJobs();
+    finishRun(databaseUnavailable);
+    await tick;
+  });
+
   test("should not retry a run that throws, and say which start time to run by hand", async () => {
     const runError = new Error("Thrown by the run");
     vi.mocked(runAssignment).mockRejectedValueOnce(runError);
@@ -758,6 +830,20 @@ describe("Cronjob registration", () => {
       ),
     );
     expect(unsafelyUnwrap(await isAssignmentInProgress())).toEqual(false);
+  });
+
+  test("should let a shutdown carry on when the lottery tick it waits for throws", async () => {
+    const tickError = new Error("Thrown by the release");
+    vi.mocked(releaseAssignmentLock).mockRejectedValueOnce(tickError);
+    // Only the tick settling can end the wait, not its time limit
+    vi.mocked(sleep).mockReturnValueOnce(
+      Promise.withResolvers<undefined>().promise,
+    );
+
+    const tick = autoAssignAttendees();
+
+    await expect(waitForAssignmentTick()).resolves.toBeUndefined();
+    await expect(tick).rejects.toThrow(tickError);
   });
 
   test("should abandon an assignment retry when cronjobs are stopped during its delay", async () => {

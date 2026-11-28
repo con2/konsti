@@ -12,7 +12,7 @@ import { sentryRoutes } from "server/api/sentryRoutes";
 import { db } from "server/db/mongodb";
 import { allowCORS } from "server/middleware/cors";
 import { wwwRedirect } from "server/middleware/wwwRedirect";
-import { stopCronJobs } from "server/utils/cron";
+import { stopCronJobs, waitForAssignmentTick } from "server/utils/cron";
 import { logger } from "server/utils/logger";
 
 interface StartServerParams {
@@ -235,6 +235,7 @@ export const closeServer = async (
 
   if (enableCronjobs) {
     stopCronJobs();
+    await waitForAssignmentTick();
   }
   server.close();
   logger.info("Server closed");

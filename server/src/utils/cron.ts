@@ -29,6 +29,7 @@ const ASSIGNMENT_RETRY_DELAYS_MS = [5, 15, 30, 60].map((seconds) => {
   return seconds * 1000;
 });
 const ASSIGNMENT_RUN_MARGIN_MINUTES = 5;
+const SHUTDOWN_TICK_WAIT_MS = 15 * 1000;
 // Room for the last start attempt to reach the lock before the update checks it
 const PROGRAM_UPDATE_MARGIN_MINUTES = 1;
 
@@ -42,6 +43,34 @@ type AssignmentStart =
   | { status: "unavailable" };
 
 const cronJobs: Cron[] = [];
+
+// Aborted when the cronjobs stop, which cuts a retry's sleep short
+let cronJobsStopSignal = new AbortController();
+
+let assignmentTickInFlight: Promise<void> | undefined;
+
+const settle = async (tick: Promise<void>): Promise<void> => {
+  try {
+    await tick;
+  } catch {
+    // The tick's own failure is logged by the cronjob's error handler
+  }
+};
+
+// A shutdown waits for this before closing the database, so a lottery tick still running or
+// waiting to retry can give up its start time and release its lock while it still can. Bounded
+// well inside the pod's 30-second grace period, which the shutdown still has to close in.
+export const waitForAssignmentTick = async (): Promise<void> => {
+  if (!assignmentTickInFlight) {
+    return;
+  }
+  const timeout = new AbortController();
+  await Promise.race([
+    settle(assignmentTickInFlight),
+    sleep(SHUTDOWN_TICK_WAIT_MS, timeout.signal),
+  ]);
+  timeout.abort();
+};
 
 let instanceStartTime = "";
 
@@ -68,6 +97,8 @@ export const startCronJobs = async (): Promise<void> => {
     autoAssignAttendeesEnabled,
     autoAssignInterval,
   } = config.server();
+
+  cronJobsStopSignal = new AbortController();
 
   // Save latest server instance start time to limit running cronjobs to latest started instance
   const latestServerStartResult = await setLatestServerStartTime();
@@ -117,6 +148,7 @@ export const stopCronJobs = (): void => {
   for (const job of cronJobs) {
     job.stop();
   }
+  cronJobsStopSignal.abort();
 
   logger.info("CronJobs stopped");
 };
@@ -300,11 +332,23 @@ const waitBeforeRetry = async (
   logger.warn(
     `Auto assignment for start time ${assignmentTime} did not complete, retrying in ${delayMs / 1000}s`,
   );
-  await sleep(delayMs);
+  await sleep(delayMs, cronJobsStopSignal.signal);
   return !abandonIfStopped();
 };
 
 export const autoAssignAttendees = async (): Promise<void> => {
+  const tick = runAssignmentTick();
+  assignmentTickInFlight = tick;
+  try {
+    await tick;
+  } finally {
+    if (assignmentTickInFlight === tick) {
+      assignmentTickInFlight = undefined;
+    }
+  }
+};
+
+const runAssignmentTick = async (): Promise<void> => {
   logger.info("----> Auto assign attendees");
 
   // Resolved once because a retry must lottery the start time this tick was due, and a later
