@@ -33,6 +33,7 @@ They are collected in [Known gaps](#known-gaps) at the end.
 14. [An event log item is never deleted, and what it says never changes][14]
 15. [Every lottery that ran is recorded, whatever it placed][15]
 16. [Which lottery sign-ups a win removes is set per event][16]
+17. [Program items are not updated while a lottery is in progress][17]
 
 ## 1. An always-open program item sits outside the lottery entirely
 
@@ -292,11 +293,13 @@ Three things enforce the rule, at three different scopes:
   sign-up opening, and is refused on both sides of that gap. Too early, it decides the start time
   behind attendees who are still entering the lottery, and an hour that happens once gives them no
   second chance. Too late, it competes with the first-come queue. Both are checked where the admin
-  triggers it rather than inside the run: the cron derives its start time from the current time, so
-  it is on the mark by construction, and every program item in one run shares a start time, so
-  either verdict is true for all of them or none. The gap between the two is the window for
-  re-running a run that failed. A lottery missed entirely is not recovered by running it late; it
-  is announced with the admin message and the slot goes to direct sign-up.
+  triggers it rather than inside the run: the cron derives its start time from the clock when it
+  fires, and a tick that fails retries that same start time only until the next programme update
+  is due ([rule 17][17]) and always before direct sign-up opens, so it is on the mark by
+  construction, and every program item in one run shares a start time, so either verdict is true
+  for all of them or none. The gap between the two is the window for re-running a run that failed.
+  A lottery missed entirely is not recovered by running it late; it is announced with the admin
+  message and the slot goes to direct sign-up.
 
 **What arrives after the hour is decided joins it on direct sign-up.** A lottery program item added
 to a start time whose lottery has run is recorded as passed over on the spot, rather than left for
@@ -777,6 +780,44 @@ stands when the attendee opens it rather than as it was when they won, so every 
 would start describing a policy its win was never held to, which [rule 14][14] exists to prevent.
 Changing it mid-event is a design change.
 
+## 17. Program items are not updated while a lottery is in progress
+
+A lottery decides by the programme as it read it: which program items start at the hour, how many
+attendees each takes, and who entered for them. A programme update saved under a running lottery
+can cancel or move a program item it is placing attendees in, or move one onto its slot carrying
+lottery sign-ups for the hour it left, and the run then writes spots against a programme that no
+longer exists. So an update waits for the lottery to finish instead.
+
+The alternative is to let the update through and make every step of the run robust to whatever it
+changed. Each kind of change would need its own reasoning, and some have none that works: a spot
+written into a program item cancelled a moment earlier is a spot in something that is not
+happening. Holding the update back costs a few minutes, and what it carries reaches attendees on
+the next update.
+
+**In progress means holding the assignment lock**, from the run taking it until it releases it.
+For the automatic lottery that spans the retries of a failed run too, since the tick keeps the lock
+between attempts ([rule 6][6] is what makes running it again safe). The update checks the lock
+just before it saves and saves nothing while it is held: the scheduled update leaves it to its next
+tick, and an admin's update is refused with a message saying a lottery is in progress.
+
+**The retries stop a minute before the next scheduled update is due.** A tick that cannot reach
+the database to take the lock holds none while it waits, so its retries must not reach the
+update's tick, and no update can save while the database is unreachable either. Each attempt of a
+failed run takes the lock again, which restarts its time, so a last attempt still running when the
+update fires defers it to its next tick.
+
+**The programme is not frozen for the whole phase gap.** That would also hold every update back
+from a lottery that finished in seconds, costing each start time fifteen minutes of programme
+changes to guard against failures that usually last seconds.
+
+**Known gaps.** An update already saving when a lottery takes the lock is not stopped: the check is
+made before the save rather than held across it. The schedules keep the two apart, since the
+update never fires at the lottery's minutes, so this takes an update running for over five minutes
+or an admin's update landing in the same moment. A single attempt that holds the lock past its
+five-minute stale timeout no longer holds updates back, because the lock then counts as abandoned.
+And hiding a program item is not held back at all: it is a settings change rather than a programme
+update, and removes the hidden item's sign-ups whether or not a lottery is placing attendees in it.
+
 ## Known gaps
 
 Where the code does not yet do what a rule says. Each is set out in full under its own rule, with
@@ -798,6 +839,9 @@ what closing it would take.
 - [Rule 13][13] - hiding a program item removes the lottery sign-ups it carries whatever their
   lottery has done.
 - [Rule 14][14] - a retried run sends a second rejection to everyone the first attempt turned down.
+- [Rule 17][17] - an update already saving when a lottery takes the lock is not stopped.
+- [Rule 17][17] - a run holding the lock past its stale timeout no longer holds updates back.
+- [Rule 17][17] - hiding a program item is not held back while a lottery runs.
 
 [1]: #1-an-always-open-program-item-sits-outside-the-lottery-entirely
 [2]: #2-a-ranking-is-at-most-three-program-items-at-a-start-time-each-at-a-different-priority
@@ -815,3 +859,4 @@ what closing it would take.
 [14]: #14-an-event-log-item-is-never-deleted-and-what-it-says-never-changes
 [15]: #15-every-lottery-that-ran-is-recorded-whatever-it-placed
 [16]: #16-which-lottery-sign-ups-a-win-removes-is-set-per-event
+[17]: #17-program-items-are-not-updated-while-a-lottery-is-in-progress
