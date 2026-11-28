@@ -12,6 +12,7 @@ import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
+import { isAssignmentInProgress } from "server/features/settings/settingsRepository";
 import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFromKompassi";
 import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
 import { enrichProgramItems } from "./programItemUtils";
@@ -37,6 +38,25 @@ export const updateProgramItems =
         message: "Loading program items from Kompassi failed",
         status: "error",
         errorId: "kompassiError",
+      };
+    }
+
+    // A running lottery decides by the programme it read, so a change saved under it could
+    // place attendees in a program item that has moved or gone. Checked after the slow fetch, so
+    // a lottery that started meanwhile is seen.
+    const assignmentInProgressResult = await isAssignmentInProgress();
+    if (!assignmentInProgressResult.ok) {
+      return {
+        message: "Program items db update failed: Error checking lottery",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+    if (assignmentInProgressResult.value) {
+      return {
+        message: "Lottery in progress, program items not updated",
+        status: "error",
+        errorId: "assignmentInProgress",
       };
     }
 

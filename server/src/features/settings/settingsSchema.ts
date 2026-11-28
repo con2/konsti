@@ -83,6 +83,12 @@ const settingsSchema = new mongoose.Schema(
       // can't deadlock assignments. Fresh row starts free (null).
       default: null,
     },
+    assignmentInProgressToken: {
+      type: String,
+      // Which holder took the lock, so one retrying after a lost reply can tell its own lock from
+      // another run's; the time above can't, since two holders can take it in one millisecond
+      default: null,
+    },
     latestServerStartTime: {
       type: Date,
       get: (value: Date) => new Date(value),
