@@ -389,6 +389,26 @@ export const acquireAssignmentLock = async (
   }
 };
 
+// A stale lock counts as free here too, so a crashed run can't hold the programme back either
+export const isAssignmentInProgress = async (): Promise<
+  Result<boolean, MongoDbError>
+> => {
+  try {
+    const lockHeld = await SettingsModel.exists({
+      ...settingsFilter,
+      assignmentInProgressStartTime: {
+        $gte: subMinutes(new Date(), ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES),
+      },
+    });
+    return makeSuccessResult(lockHeld !== null);
+  } catch (error) {
+    logger.error(
+      new Error("MongoDB: Error checking assignment lock", { cause: error }),
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 // Release the assignment-in-progress lock, but only if we still hold it (the token matches) -
 // if the lock was reclaimed as stale and re-acquired by another run, this must not clobber it
 export const releaseAssignmentLock = async (

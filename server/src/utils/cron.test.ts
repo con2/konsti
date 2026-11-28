@@ -14,6 +14,7 @@ import { config } from "shared/config";
 import { EventName } from "shared/config/eventConfigTypes";
 import { KompassiError } from "shared/types/api/errors";
 import { makeErrorResult } from "shared/utils/result";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
   acquireAssignmentLock,
@@ -200,6 +201,25 @@ describe("Progam update cronjob", () => {
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
       "***** Program items auto update completed",
     );
+  });
+  test("should leave the program update to the next tick while a lottery is running", async () => {
+    const oldTime = subSeconds(
+      new Date(timeNow),
+      previousJobFinished,
+    ).toISOString();
+    await saveSettings({ programUpdateLastRun: oldTime });
+    // A run holds the in-progress lock
+    await acquireAssignmentLock();
+
+    await autoUpdateProgramItems();
+
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Lottery in progress, program update left to the next tick",
+    );
+    expect(infoLoggerSpy).not.toHaveBeenCalledWith(
+      "***** Program items auto update completed",
+    );
+    expect(unsafelyUnwrap(await findProgramItems())).toEqual([]);
   });
 });
 

@@ -165,6 +165,13 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
   logger.info("Auto update not running, continue");
 
   const updateProgramItemsResult = await updateProgramItems();
+  if (
+    updateProgramItemsResult.status === "error" &&
+    updateProgramItemsResult.errorId === "assignmentInProgress"
+  ) {
+    logger.info("Lottery in progress, program update left to the next tick");
+    return;
+  }
   if (updateProgramItemsResult.status === "error") {
     logger.error(
       new Error(

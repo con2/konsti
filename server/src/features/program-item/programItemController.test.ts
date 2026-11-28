@@ -31,6 +31,7 @@ import {
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import {
+  acquireAssignmentLock,
   createSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
@@ -288,6 +289,28 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
 
     expect(programItems).toHaveLength(1);
     expect(programItems[0].title).toEqual(testProgramItem.title);
+  });
+
+  test("should not update program items while a lottery is running", async () => {
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      ok: true,
+      value: [mockKompassiProgramItem],
+    });
+    await createSettings();
+    // A run holds the in-progress lock
+    await acquireAssignmentLock();
+
+    const response = await request(server)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
+      .set(authorizedAs(UserGroup.ADMIN, "admin"));
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      message: "Lottery in progress, program items not updated",
+      status: "error",
+      errorId: "assignmentInProgress",
+    });
+
+    expect(unsafelyUnwrap(await findProgramItems())).toEqual([]);
   });
 
   test("should remove program items, lottery sign-ups, direct sign-ups, and favorite program items that are not in the server response", async () => {

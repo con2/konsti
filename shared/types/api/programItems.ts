@@ -11,7 +11,7 @@ interface PostUpdateProgramItemsResult extends ApiResult {
 }
 
 interface PostUpdateProgramItemsError extends ApiError {
-  errorId: "unknown" | "kompassiError";
+  errorId: "unknown" | "kompassiError" | "assignmentInProgress";
 }
 
 export type PostUpdateProgramItemsResponse =
