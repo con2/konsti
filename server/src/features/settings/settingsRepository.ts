@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { subMinutes, subSeconds } from "date-fns";
 import { MongoDbError } from "shared/types/api/errors";
 import { PostSettingsRequest } from "shared/types/api/settings";
@@ -335,24 +336,25 @@ export const setProgramUpdateLastRun = async (
 // comfortably longer than any real assignment run so a slow run isn't reclaimed mid-flight.
 export const ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES = 5;
 
-// Acquire the assignment-in-progress lock if it is free or stale. Returns the lock token (the
-// acquisition time) to pass to releaseAssignmentLock, or SETTINGS_NOT_FOUND if another run
-// currently holds it.
-export const acquireAssignmentLock = async (): Promise<
-  Result<string, MongoDbError>
-> => {
-  const lockStartTime = new Date().toISOString();
+// Acquire the assignment-in-progress lock if it is free or stale. Returns the lock token to pass
+// to releaseAssignmentLock, or ASSIGNMENT_LOCK_HELD if another run currently holds it. Acquiring
+// again with the same token restarts the lock's time, and takes back a lock an earlier attempt
+// took when its reply was lost.
+export const acquireAssignmentLock = async (
+  lockToken: string = randomUUID(),
+): Promise<Result<string, MongoDbError>> => {
+  const lockStartTime = new Date();
   try {
-    // Acquire if the lock is free (null) or stale (acquired longer ago than the timeout)
     const response = await SettingsModel.findOneAndUpdate(
       {
         ...settingsFilter,
         $or: [
           { assignmentInProgressStartTime: null },
+          { assignmentInProgressToken: lockToken },
           {
             assignmentInProgressStartTime: {
               $lt: subMinutes(
-                new Date(lockStartTime),
+                lockStartTime,
                 ASSIGNMENT_LOCK_STALE_TIMEOUT_MINUTES,
               ),
             },
@@ -361,6 +363,7 @@ export const acquireAssignmentLock = async (): Promise<
       },
       {
         assignmentInProgressStartTime: lockStartTime,
+        assignmentInProgressToken: lockToken,
       },
     ).lean();
     if (!response) {
@@ -374,8 +377,10 @@ export const acquireAssignmentLock = async (): Promise<
           : MongoDbError.SETTINGS_NOT_FOUND,
       );
     }
-    logger.info(`MongoDB: Assignment lock acquired at ${lockStartTime}`);
-    return makeSuccessResult(lockStartTime);
+    logger.info(
+      `MongoDB: Assignment lock acquired at ${lockStartTime.toISOString()}`,
+    );
+    return makeSuccessResult(lockToken);
   } catch (error) {
     logger.error(
       new Error("MongoDB: Error acquiring assignment lock", { cause: error }),
@@ -393,10 +398,11 @@ export const releaseAssignmentLock = async (
     await SettingsModel.findOneAndUpdate(
       {
         ...settingsFilter,
-        assignmentInProgressStartTime: new Date(lockToken),
+        assignmentInProgressToken: lockToken,
       },
       {
         assignmentInProgressStartTime: null,
+        assignmentInProgressToken: null,
       },
     ).lean();
     logger.info("MongoDB: Assignment lock released");
